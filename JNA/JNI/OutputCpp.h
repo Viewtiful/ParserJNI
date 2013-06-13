@@ -1,6 +1,7 @@
 #include "Modules/Module.h"
 #include <map>
 #include <vector>
+#include <fstream>
 using namespace nsModules;
 using namespace std;
 using namespace nsC;
@@ -23,7 +24,7 @@ namespace nsJNI
 		
 	protected:	
 		map<string,string> toCppType;
-		
+		ofstream outputFile;		
 	};
 
 }

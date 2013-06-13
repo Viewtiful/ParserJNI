@@ -28,7 +28,7 @@ int JNIPARSER::run(nsModules::Module::vector modules)
     int k;
     for(int i = 0; i<modules.size(); i++)
     {
-    	ofstream f("test.java");
+    	ofstream f("test.java");   //faudra revoir ça !
     
     	cout << "C++" << endl;
     	cpp->convert(modules[i]);

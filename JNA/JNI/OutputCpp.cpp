@@ -14,6 +14,10 @@ OutputCpp::OutputCpp()
 	addCppType("long","jlong");	
 }
 
+OutputCpp::~OutputCpp() {
+	outputFile.close();
+}
+
 void OutputCpp::addCppType(std::string inputType, std::string cppType)
 {
 	toCppType.insert(std::pair<std::string,std::string>(inputType,cppType) );	
@@ -30,11 +34,13 @@ std::string OutputCpp::getCppType(std::string inputType)
 void OutputCpp::printPrototype(string typeRetour)
 {
 	cout << getCppType(typeRetour) << " ";
+	outputFile << getCppType(typeRetour) << " ";
 }
 
 void OutputCpp::printName(string name)
 {
 	cout << name << "(" ;
+	outputFile << name << "(";
 }
 
 void OutputCpp::printParameters(Param::vector& parameters)
@@ -43,19 +49,25 @@ void OutputCpp::printParameters(Param::vector& parameters)
 	for(i=0;i<parameters.size();i++)
 	{
 		printParameter(parameters[i]);
-		if(i+1<parameters.size())
+		if(i+1<parameters.size()) {
 			cout << ",";
+			outputFile << ",";
+		}
 	}	
 	cout << ");" << endl;
+	outputFile << ");" << endl;
 }
 
 void OutputCpp::printParameter(Param parameter)
 {
 	cout << getCppType(parameter.getType()) << " " << parameter.getName();
+	outputFile << getCppType(parameter.getType()) << " " << parameter.getName();
 }
 
 void OutputCpp::convert(Module& module)
 {
+	string fileName = module.getModuleName() +  ".c";
+	outputFile.open(fileName.c_str());
 	Function::vector fcts = module.getFunctions();
 	for(int k = 0;k<fcts.size();k++)
 	{
