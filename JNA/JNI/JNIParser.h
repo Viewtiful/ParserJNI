@@ -7,7 +7,9 @@
 
 #include "Modules/Module.h"
 #include "Utils/Parser.h"
-
+#include "JNI/OutputCpp.h"
+#include "JNI/OutputJava.h"
+#include <fstream>
 namespace nsJNI {
     class JNIParser: public nsUtils::Parser {
       public:
