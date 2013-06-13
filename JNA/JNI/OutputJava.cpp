@@ -72,11 +72,8 @@ void OutputJava::printParameter(ofstream &f,Param parameter)
 	f << getJavaType(parameter.getType()) << " " << parameter.getName();
 }
 
-void OutputJava::convert(ofstream &f,Module& module)
+void OutputJava::convertFunctions(ofstream &f,Function::vector fcts)
 {
-	Function::vector fcts = module.getFunctions();
-	printJavaHeader(f,module.getModuleName());
-	printLoadLibrary(f,"library");
 
 	for(int k = 0;k<fcts.size();k++)
 	{
@@ -86,6 +83,16 @@ void OutputJava::convert(ofstream &f,Module& module)
 		printPrototype(f,typeRetour);
 		printName(f,name); 
 		printParameters(f,parameters);
-	}	
+	}
+
+}
+void OutputJava::convert(ofstream &f,Module& module)
+{
+	Function::vector fcts = module.getFunctions();
+	printJavaHeader(f,module.getModuleName());
+	printLoadLibrary(f,"library");
+	convertFunctions(f,fcts);
+	
+		
 	f << "}" << endl;
 }

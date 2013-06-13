@@ -22,6 +22,7 @@ namespace nsJNI
 			void printParameter(ofstream &f,Param parameter);
 			void printJavaHeader(ofstream &f,string CHeaderFile);
 			void printLoadLibrary(ofstream &f,string library);
+			void convertFunctions(ofstream &f,Function::vector fcts);
 
 			
 		protected:
