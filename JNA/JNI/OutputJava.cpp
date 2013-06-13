@@ -75,6 +75,9 @@ void OutputJava::printParameter(ofstream &f,Param parameter)
 void OutputJava::convert(ofstream &f,Module& module)
 {
 	Function::vector fcts = module.getFunctions();
+	printJavaHeader(f,module.getModuleName());
+	printLoadLibrary(f,"library");
+
 	for(int k = 0;k<fcts.size();k++)
 	{
 		string typeRetour = fcts[k].getReturnType();
