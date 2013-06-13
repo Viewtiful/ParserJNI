@@ -3,7 +3,6 @@
 using namespace std;
 using namespace nsJNI;
 
-
 OutputJava::OutputJava()
 {
 	addJavaType("int","int");
@@ -55,9 +54,14 @@ void OutputJava::printParameters(ofstream &f,Param::vector& parameters)
 	f << ");" << endl;
 }
 
+void OutputJava::printJavaHeader(ofstream &f,string type,string CHeaderFile)
+{
+	f << "public "<< type << " " << CHeaderFile << "{" << endl << endl;
+}
+
 void OutputJava::printJavaHeader(ofstream &f,string CHeaderFile)
 {
-	f << "public class " << CHeaderFile << "{" << endl << endl;
+	f << "public "<< CHeaderFile << "{" << endl << endl;
 }
 
 void OutputJava::printLoadLibrary(ofstream &f,string library)
@@ -74,7 +78,6 @@ void OutputJava::printParameter(ofstream &f,Param parameter)
 
 void OutputJava::convertFunctions(ofstream &f,Function::vector fcts)
 {
-
 	for(int k = 0;k<fcts.size();k++)
 	{
 		string typeRetour = fcts[k].getReturnType();
@@ -84,15 +87,46 @@ void OutputJava::convertFunctions(ofstream &f,Function::vector fcts)
 		printName(f,name); 
 		printParameters(f,parameters);
 	}
-
 }
+
+void OutputJava::printEnumElement(ofstream &f,Enum::EnumValue value)
+{
+	f << value.first << "(" << value.second << ")";
+}
+
+void OutputJava::printEnum(ofstream &f,Enum e)
+{
+	Enum::EnumValues enumValues = e.getValues();
+	for(int k =0;k<enumValues.size();k++)
+	{
+		f << "\t" ;
+		printEnumElement(f,enumValues[k]);
+		if(k+1<enumValues.size())
+			f << "," << endl;
+	}
+	f << ";" << endl;
+}
+
+void OutputJava::convertEnums(ofstream &f, Enum::vector enums)
+{
+	for(int i = 0;i<enums.size();i++)
+	{
+		string enumName = enums[i].getName();
+		if(enumName=="")
+			enumName = enums[i].getTypedef();
+		printJavaHeader(f,enumName);
+		printEnum(f,enums[i]);
+		f << "}" << endl;			
+	}
+}
+
 void OutputJava::convert(ofstream &f,Module& module)
 {
 	Function::vector fcts = module.getFunctions();
-	printJavaHeader(f,module.getModuleName());
+	printJavaHeader(f,"class",module.getModuleName());
 	printLoadLibrary(f,"library");
 	convertFunctions(f,fcts);
-	
+	convertEnums(f,module.getEnums());
 		
 	f << "}" << endl;
 }
