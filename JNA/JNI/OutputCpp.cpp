@@ -141,7 +141,9 @@ void OutputCpp::convert(Module& module)
 		string typeRetour = fcts[k].getReturnType();
 		outputFile << getVMSignature(typeRetour);
 		
-		outputFile << "\", (void *)" << fcts[k].getName() << " }\n";
+		outputFile << "\", (void *)" << fcts[k].getName() << " }";
+		if(fcts.size() > 1 && k < fcts.size() - 1)
+			outputFile << ",\n";
 	}
 	outputFile << "};\n\n";
 
