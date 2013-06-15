@@ -51,7 +51,11 @@ string OutputCpp::getVMSignature(string inputType) {
 
 void OutputCpp::printPrototype(string typeRetour)
 {
-	outputFile << "JNIEXPORT " << getCppType(typeRetour) << " JNICALL ";
+	string returnType = getCppType(typeRetour);
+	if(returnType  == "")
+		returnType = typeRetour;
+
+	outputFile << "JNIEXPORT " << returnType << " JNICALL ";
 }
 
 void OutputCpp::printName(string name)
@@ -107,6 +111,7 @@ void OutputCpp::convert(Module& module)
 	string fileName = module.getModuleName() +  ".c";
 	outputFile.open(fileName.c_str());
 	fileName = module.getModuleName();
+	fileName[0] = toupper(fileName[0]);
 
 	//add include in the .c file
 	addInclude();
@@ -139,7 +144,10 @@ void OutputCpp::convert(Module& module)
 			outputFile << ")";
 		}
 		string typeRetour = fcts[k].getReturnType();
-		outputFile << getVMSignature(typeRetour);
+		string typeRetour2 = getVMSignature(typeRetour);
+		if(typeRetour2 == "")
+			typeRetour2 = "L" + fileName + "$" + typeRetour + ";"; 
+		outputFile << typeRetour2;
 		
 		outputFile << "\", (void *)" << fcts[k].getName() << " }";
 		if(fcts.size() > 1 && k < fcts.size() - 1)

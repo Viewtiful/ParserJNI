@@ -6,12 +6,12 @@ using namespace nsJNI;
 OutputJava::OutputJava()
 {
 	addJavaType("int","int");
-    addJavaType("float","float");
-    addJavaType("double","double");
-    addJavaType("char","byte");
-    addJavaType("void","void");
-    addJavaType("short","short");
-    addJavaType("bool","boolean");
+	addJavaType("float","float");
+	addJavaType("double","double");
+	addJavaType("char","byte");
+	addJavaType("void","void");
+	addJavaType("short","short");
+	addJavaType("bool","boolean");
 	addJavaType("long","long");
 }
 
@@ -34,7 +34,10 @@ OutputJava::~OutputJava()
 
 void OutputJava::printPrototype(ofstream& f,string typeRetour)
 {
-	f << "\t" << "public native " << getJavaType(typeRetour) << " ";
+	string returnType = getJavaType(typeRetour);
+	if(returnType  == "")
+		returnType = typeRetour;
+	f << "\t" << "public native " << returnType << " ";
 }
 
 void OutputJava::printName(ofstream &f,string name)
@@ -62,7 +65,7 @@ void OutputJava::printJavaHeader(ofstream &f,string type,string CHeaderFile)
 
 void OutputJava::printJavaHeader(ofstream &f,string CHeaderFile)
 {
-	f << "public "<< CHeaderFile << "{" << endl << endl;
+	f << "\npublic static enum "<< CHeaderFile << "{" << endl << endl;
 }
 
 void OutputJava::printLoadLibrary(ofstream &f,string library)
@@ -104,8 +107,26 @@ void OutputJava::printEnum(ofstream &f,Enum e)
 		printEnumElement(f,enumValues[k]);
 		if(k+1<enumValues.size())
 			f << "," << endl;
+		else if(k == enumValues.size()-1)
+			f << ";" << endl;
 	}
-	f << ";" << endl;
+
+	f << "\n\n\tint enumValue;\n\n";
+	string enumName = e.getName();
+    if(enumName == "")
+            enumName = e.getTypedef();
+
+	f << "\t" << enumName << " (int val) {\n";
+	f << "\t\tenumValue=val;\n";
+	f << "\t}\n\n";
+
+	f << "\tint getValue() {\n";
+	f << "\t\treturn enumValue;\n";
+	f << "\t}\n\n";
+
+	f << "\tvoid setValue(int val) {\n";
+	f << "\t\tenumValue=val;\n";
+	f << "\t}" << endl;
 }
 
 void OutputJava::convertEnums(ofstream &f, Enum::vector enums)
@@ -128,6 +149,6 @@ void OutputJava::convert(ofstream &f,Module& module)
 	printLoadLibrary(f,"library");
 	convertFunctions(f,fcts);
 	convertEnums(f,module.getEnums());
-		
+
 	f << "}" << endl;
 }
