@@ -62,13 +62,11 @@ void OutputCpp::printName(string name)
 void OutputCpp::printParameters(Param::vector& parameters)
 {
 	int i;
-	outputFile << "JNIEnv *env, jobject o, ";
+	outputFile << "JNIEnv *env, jobject o ";
 	for(i=0;i<parameters.size();i++)
 	{
+		outputFile << ",";
 		printParameter(parameters[i]);
-		if(i+1<parameters.size()) {
-			outputFile << ",";
-		}
 	}	
 	outputFile << ")\n";
 }
@@ -136,12 +134,13 @@ void OutputCpp::convert(Module& module)
 		else {
 			outputFile << "(";
 			for(int i = 0; i < parameters.size(); ++i) {
-				outputFile << getVMSignature(parameters[i].getType());
+					outputFile << getVMSignature(parameters[i].getType());
 			}
 			outputFile << ")";
 		}
 		string typeRetour = fcts[k].getReturnType();
 		outputFile << getVMSignature(typeRetour);
+		
 		outputFile << "\", (void *)" << fcts[k].getName() << " }\n";
 	}
 	outputFile << "};\n\n";
