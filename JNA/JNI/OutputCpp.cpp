@@ -133,6 +133,13 @@ void OutputCpp::convert(Module& module)
 		Param::vector parameters = fcts[k].getParamList();
 		if(parameters.size() == 0)
 			outputFile << "()";
+		else {
+			outputFile << "(";
+			for(int i = 0; i < parameters.size(); ++i) {
+				outputFile << getVMSignature(parameters[i].getType());
+			}
+			outputFile << ")";
+		}
 		string typeRetour = fcts[k].getReturnType();
 		outputFile << getVMSignature(typeRetour);
 		outputFile << "\", (void *)" << fcts[k].getName() << " }\n";
