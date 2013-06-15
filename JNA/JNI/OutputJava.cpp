@@ -56,6 +56,7 @@ void OutputJava::printParameters(ofstream &f,Param::vector& parameters)
 
 void OutputJava::printJavaHeader(ofstream &f,string type,string CHeaderFile)
 {
+	CHeaderFile[0] = toupper(CHeaderFile[0]);
 	f << "public "<< type << " " << CHeaderFile << "{" << endl << endl;
 }
 
@@ -67,7 +68,7 @@ void OutputJava::printJavaHeader(ofstream &f,string CHeaderFile)
 void OutputJava::printLoadLibrary(ofstream &f,string library)
 {
 	f << "\t" << "static {" << endl ;
-	f << "\t" << "\t" << "System.out.loadLibrary(lib" << library << ");";
+	f << "\t" << "\t" << "System.loadLibrary(\""<< library << "\");";
 	f << endl << "\t" << "}" << endl << endl;
 }
 
