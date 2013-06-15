@@ -1,8 +1,6 @@
 #include "JNI/OutputCpp.h"
-#include "Utils/Utils.h"
 
 using namespace std;
-using nsUtils::stringReplace;
 using namespace nsJNI;
 OutputCpp::OutputCpp()
 {
@@ -108,7 +106,6 @@ void OutputCpp::convert(Module& module)
 {
 	string fileName = module.getModuleName() +  ".c";
 	outputFile.open(fileName.c_str());
-	fileName = module.getModuleName();
 
 	//add include in the .c file
 	addInclude();
@@ -129,24 +126,15 @@ void OutputCpp::convert(Module& module)
 	
 	outputFile << "static JNINativeMethod method_table[] = {\n";
 	for(int k = 0; k < fcts.size(); k++) {
-		outputFile << "\t{ \"" << fcts[k].getName() << "\", \"";
-		Param::vector parameters = fcts[k].getParamList();
-		if(parameters.size() == 0)
-			outputFile << "()";
-		string typeRetour = fcts[k].getReturnType();
-		outputFile << getVMSignature(typeRetour);
-		outputFile << "\", (void *)" << fcts[k].getName() << " }\n";
+		outputFile << "\t{ \"" << fcts[k].getName() << "\", \"()I\", (void *) toto }\n";
 	}
 	outputFile << "};\n\n";
 
-	outputFile << "static int method_table_size = sizeof(method_table) / sizeof(method_table[0]);\n\n";
-
-   generateJNIOnload(fileName);
-
+	outputFile << "static int method_table_size = sizeof(method_table) / sizeof(method_table[0]);\n";
 	outputFile.close();
 }
 
-void OutputCpp::generateJNIOnload(string filename) {
+void OutputCpp::generateJNIOnload() {
 	string content(
 		"jint JNI_OnLoad (JavaVM *vm, void *reserved) {\n"
 		"\tJNIEnv *env;\n"
@@ -154,7 +142,7 @@ void OutputCpp::generateJNIOnload(string filename) {
 		"\tif ((*vm)->GetEnv(vm, (void**) &env, JNI_VERSION_1_6) != JNI_OK) {\n"
 		"\t\t\treturn JNI_ERR;\n"
 		"\t} else {\n"
-		"\t\tjclass class = (*env)->FindClass(env, \"%Print%\");\n"
+		"\t\tjclass class = (*env)->FindClass(env, %Print%);\n"
 		"\t\tif (class) {\n"
 		"\t\t\tjint ret = (*env)->RegisterNatives(env, class, method_table, method_table_size);\n"
 		"\t\t\t(*env)->DeleteLocalRef(env, class);\n"
@@ -165,7 +153,5 @@ void OutputCpp::generateJNIOnload(string filename) {
 		"\t}\n"
 		"}\n"
 	);
-	filename[0] = toupper(filename[0]);
-	stringReplace(content, "Print", filename);
 	outputFile << content << endl;
 }

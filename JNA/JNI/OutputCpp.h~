@@ -25,7 +25,6 @@ namespace nsJNI
 		void convert(Module& module);
 		void addInclude();
 		void addContent();
-      void generateJNIOnload(string filename);
 		
 	protected:	
 		map<string,string> toCppType;
