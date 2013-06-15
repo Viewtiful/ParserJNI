@@ -80,9 +80,8 @@ void OutputCpp::printParameter(Param parameter)
 }
 
 void OutputCpp::addInclude() {
-	cout << "here !!!" << endl;
 	string include(
-		"#include \"jni.h\"\n"
+		"#include <jni.h>\n"
 		"#include <stdio.h>\n"
 		"#include <ktb/err.h>\n"
 		"#include <ktb.h>\n"
