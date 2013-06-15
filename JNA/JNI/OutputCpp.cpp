@@ -62,6 +62,7 @@ void OutputCpp::printName(string name)
 void OutputCpp::printParameters(Param::vector& parameters)
 {
 	int i;
+	outputFile << "JNIEnv *env, jobject o, ";
 	for(i=0;i<parameters.size();i++)
 	{
 		printParameter(parameters[i]);
