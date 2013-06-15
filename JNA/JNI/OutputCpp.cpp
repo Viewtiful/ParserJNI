@@ -5,12 +5,12 @@ using namespace nsJNI;
 OutputCpp::OutputCpp()
 {
 	addCppType("int","jint");
-    addCppType("float","jfloat");
-    addCppType("double","jdouble");
-    addCppType("char","jbyte");
-    addCppType("void","void");
-    addCppType("short","jshort");
-    addCppType("bool","jboolean");
+	addCppType("float","jfloat");
+	addCppType("double","jdouble");
+	addCppType("char","jbyte");
+	addCppType("void","void");
+	addCppType("short","jshort");
+	addCppType("bool","jboolean");
 	addCppType("long","jlong");	
 }
 
@@ -33,13 +33,11 @@ std::string OutputCpp::getCppType(std::string inputType)
 
 void OutputCpp::printPrototype(string typeRetour)
 {
-	cout << getCppType(typeRetour) << " ";
-	outputFile << getCppType(typeRetour) << " ";
+	outputFile << "JNIEXPORT " << getCppType(typeRetour) << " JNICALL ";
 }
 
 void OutputCpp::printName(string name)
 {
-	cout << name << "(" ;
 	outputFile << name << "(";
 }
 
@@ -50,12 +48,10 @@ void OutputCpp::printParameters(Param::vector& parameters)
 	{
 		printParameter(parameters[i]);
 		if(i+1<parameters.size()) {
-			cout << ",";
 			outputFile << ",";
 		}
 	}	
-	cout << ");" << endl;
-	outputFile << ");" << endl;
+	outputFile << ")\n";
 }
 
 void OutputCpp::printParameter(Param parameter)
@@ -64,10 +60,40 @@ void OutputCpp::printParameter(Param parameter)
 	outputFile << getCppType(parameter.getType()) << " " << parameter.getName();
 }
 
+void OutputCpp::addInclude() {
+	cout << "here !!!" << endl;
+	string include(
+		"#include \"jni.h\"\n"
+		"#include <stdio.h>\n"
+		"#include <ktb/err.h>\n"
+		"#include <ktb.h>\n"
+		"#include <ktb/prng.h>\n"
+		"#include <ktb/prng_custom.h>\n"
+		"#include <ktb/cipher.h>\n"
+		"#include <ktb/keys.h>\n"
+		"#include <ktb/hash.h>\n"
+		"#include <ktb/sign.h>\n"
+		"#include <ktb/kdf.h>\n"
+		"#include <ktb/curves.h>\n"
+		"#include <kep/kep.h>\n"
+		"#include <kep/kep_sts.h>\n\n\n"
+	);
+
+	outputFile << include;
+}
+
+void OutputCpp::addContent() {
+	outputFile << "\t printf(\"Hello\");";
+}
+
 void OutputCpp::convert(Module& module)
 {
 	string fileName = module.getModuleName() +  ".c";
 	outputFile.open(fileName.c_str());
+
+	//add include in the .c file
+	addInclude();
+
 	Function::vector fcts = module.getFunctions();
 	for(int k = 0;k<fcts.size();k++)
 	{
@@ -77,6 +103,8 @@ void OutputCpp::convert(Module& module)
 		printPrototype(typeRetour);
 		printName(name); 
 		printParameters(parameters);
-			
+		outputFile << "{\n";
+		addContent();
+		outputFile << "\n}" << endl;
 	}
 }

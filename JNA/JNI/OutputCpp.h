@@ -21,6 +21,8 @@ namespace nsJNI
 		void printParameters(Param::vector& parameters);
 		void printParameter(Param parameter);
 		void convert(Module& module);
+		void addInclude();
+		void addContent();
 		
 	protected:	
 		map<string,string> toCppType;
