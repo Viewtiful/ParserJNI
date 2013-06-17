@@ -12,13 +12,15 @@ namespace nsJNI {
     {
       public:
         virtual ~Type();
-		Type(string javaType,string cppType);
+		Type(string javaType,string cppType,string vmSignature);
 		string javaType;
         string cppType;
+        string vmSignature;
         virtual void outputJava() = 0;
         virtual void outputCpp() = 0;
         string getJavaType();
         string getCppType();
+        string getVMSignature();
     };
 }
 

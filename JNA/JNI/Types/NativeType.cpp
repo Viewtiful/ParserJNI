@@ -6,7 +6,8 @@
 #include "JNI/Types/NativeType.h"
 using namespace nsJNI;
 using namespace std;
-NativeType::NativeType(string javaType,string cppType) : Type(javaType,cppType)
+
+NativeType::NativeType(string javaType,string cppType,string vmSignature) : Type(javaType,cppType,vmSignature)
 {
 	
 }

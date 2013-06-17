@@ -13,7 +13,7 @@ namespace nsJNI {
     {
       public:
         virtual ~NativeType();
-		NativeType(string javaType,string cppType);
+		NativeType(string javaType,string cppType,string VMSignature);
         void outputJava();
         void outputCpp();
     };

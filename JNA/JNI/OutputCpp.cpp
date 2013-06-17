@@ -22,7 +22,7 @@ OutputCpp::OutputCpp()
 	addVMSignature("void", "V");
 	addVMSignature("short", "S");
 	addVMSignature("bool", "Z");
-	addVMSignature("long", "J");
+	addVMSignature("long", "J"); 
 }
 
 OutputCpp::~OutputCpp() {

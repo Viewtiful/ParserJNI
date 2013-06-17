@@ -9,8 +9,7 @@
 
 TYPESDICTIONNARY::TypesDictionnary()
 {
-    addBaseType();
-    
+    addBaseType();    
 }
 
 TYPESDICTIONNARY::~TypesDictionnary()
@@ -21,15 +20,14 @@ TYPESDICTIONNARY::~TypesDictionnary()
 
 void TYPESDICTIONNARY::addBaseType()
 {
-	conversionMap["short"] = new NativeType("short","jshort"); 
-	conversionMap["int"] = new NativeType("int","jint");
-	conversionMap["long"] = new NativeType("long","jlong");
-	conversionMap["float"] = new NativeType("float","jfloat");
-	conversionMap["double"] = new NativeType("double","jdouble");
-	conversionMap["bool"] = new NativeType("boolean","jboolean");
-	conversionMap["char"] = new NativeType("byte","jbyte");
-
-
+	conversionMap["short"] = new NativeType("short","jshort","S"); 
+	conversionMap["int"] = new NativeType("int","jint","I");
+	conversionMap["long"] = new NativeType("long","jlong","J");
+	conversionMap["float"] = new NativeType("float","jfloat","F");
+	conversionMap["double"] = new NativeType("double","jdouble","D");
+	conversionMap["bool"] = new NativeType("boolean","jboolean","Z");
+	conversionMap["char"] = new NativeType("byte","jbyte","B");
+	conversionMap["void"] = new NativeType("void","void","V");
 
 }
 
@@ -53,5 +51,6 @@ string TYPESDICTIONNARY::getCppType(string Ctype)
 {
 	return conversionMap[Ctype]->getCppType();
 }
+
 #undef TYPESDICTIONNARY
 
