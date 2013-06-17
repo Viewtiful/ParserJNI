@@ -53,7 +53,7 @@ void OutputCpp::printPrototype(string typeRetour)
 {
 	string returnType = getCppType(typeRetour);
 	if(returnType  == "")
-		returnType = typeRetour;
+		returnType = "jobject";
 
 	outputFile << "JNIEXPORT " << returnType << " JNICALL ";
 }
