@@ -9,6 +9,7 @@
 #include <string>
 #include <iostream>
 #include <map>
+#include "JNI/Types/Type.h"
 namespace nsJNI
 {
     /** A dictionnary of all available types, and their converted names.
@@ -27,16 +28,15 @@ namespace nsJNI
       public:
         TypesDictionnary();
         virtual ~TypesDictionnary();
+        void addMap(std::string inputType, Type* type);
 
-		std::string getJavaType(std::string inputType);
-		std::string getCppType(std::string inputType);
-		void addCppType(std::string inputType, std::string cppType);
-		void addJavaType(std::string inputType, std::string cppType);
+		void addBaseType();
+
+
       protected:
 
         /** Add base types (int, size_t, char, those stuff) */
-        std::map<std::string,std::string> toJavaType;
-		std::map<std::string,std::string> toCppType;
+        std::map<std::string,Type*> conversionMap;
 
     };
 }
