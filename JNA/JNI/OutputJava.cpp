@@ -3,19 +3,29 @@
 using namespace std;
 using namespace nsJNI;
 
-OutputJava::OutputJava(TypesDictionnary *dictionnary)
+OutputJava::OutputJava()
 {
-	this->dictionnary = dictionnary;
+	addJavaType("int","int");
+	addJavaType("float","float");
+	addJavaType("double","double");
+	addJavaType("char","byte");
+	addJavaType("void","void");
+	addJavaType("short","short");
+	addJavaType("bool","boolean");
+	addJavaType("long","long");
 }
 
 
 string OutputJava::getJavaType(string inputType)
 {
-	return dictionnary->getJavaType(inputType);
+	return toJavaType[inputType];
 }
 
 
-
+void OutputJava::addJavaType(string inputType, string javaType)
+{
+	toJavaType.insert(pair<string,string>(inputType,javaType) );	
+}
 
 OutputJava::~OutputJava()
 {
@@ -24,7 +34,10 @@ OutputJava::~OutputJava()
 
 void OutputJava::printPrototype(ofstream& f,string typeRetour)
 {
-	f << "\t" << "public native " << getJavaType(typeRetour) << " ";
+	string returnType = getJavaType(typeRetour);
+	if(returnType  == "")
+		returnType = typeRetour;
+	f << "\t" << "public native " << returnType << " ";
 }
 
 void OutputJava::printName(ofstream &f,string name)
@@ -46,31 +59,25 @@ void OutputJava::printParameters(ofstream &f,Param::vector& parameters)
 
 void OutputJava::printJavaHeader(ofstream &f,string type,string CHeaderFile)
 {
+	CHeaderFile[0] = toupper(CHeaderFile[0]);
 	f << "public "<< type << " " << CHeaderFile << "{" << endl << endl;
 }
 
 void OutputJava::printJavaHeader(ofstream &f,string CHeaderFile)
 {
-	f << "public "<< CHeaderFile << "{" << endl << endl;
+	f << "\npublic static enum "<< CHeaderFile << "{" << endl << endl;
 }
 
 void OutputJava::printLoadLibrary(ofstream &f,string library)
 {
 	f << "\t" << "static {" << endl ;
-	f << "\t" << "\t" << "System.out.loadLibrary(lib" << library << ");";
+	f << "\t" << "\t" << "System.loadLibrary(\""<< library << "\");";
 	f << endl << "\t" << "}" << endl << endl;
 }
 
 void OutputJava::printParameter(ofstream &f,Param parameter)
 {
-		string convertedType = getJavaType(parameter.getCType());
-		if(convertedType=="")
-		{
-			if(parameter.getIndirections()>0)
-				convertedType = "long";
-		}
-		 			
-	f << convertedType << " " << parameter.getName();
+	f << getJavaType(parameter.getType()) << " " << parameter.getName();
 }
 
 void OutputJava::convertFunctions(ofstream &f,Function::vector fcts)
@@ -100,8 +107,26 @@ void OutputJava::printEnum(ofstream &f,Enum e)
 		printEnumElement(f,enumValues[k]);
 		if(k+1<enumValues.size())
 			f << "," << endl;
+		else if(k == enumValues.size()-1)
+			f << ";" << endl;
 	}
-	f << ";" << endl;
+
+	f << "\n\n\tint enumValue;\n\n";
+	string enumName = e.getName();
+    if(enumName == "")
+            enumName = e.getTypedef();
+
+	f << "\t" << enumName << " (int val) {\n";
+	f << "\t\tenumValue=val;\n";
+	f << "\t}\n\n";
+
+	f << "\tint getValue() {\n";
+	f << "\t\treturn enumValue;\n";
+	f << "\t}\n\n";
+
+	f << "\tvoid setValue(int val) {\n";
+	f << "\t\tenumValue=val;\n";
+	f << "\t}" << endl;
 }
 
 void OutputJava::convertEnums(ofstream &f, Enum::vector enums)
@@ -111,7 +136,6 @@ void OutputJava::convertEnums(ofstream &f, Enum::vector enums)
 		string enumName = enums[i].getName();
 		if(enumName=="")
 			enumName = enums[i].getTypedef();
-			
 		printJavaHeader(f,enumName);
 		printEnum(f,enums[i]);
 		f << "}" << endl;			
@@ -121,12 +145,10 @@ void OutputJava::convertEnums(ofstream &f, Enum::vector enums)
 void OutputJava::convert(ofstream &f,Module& module)
 {
 	Function::vector fcts = module.getFunctions();
-	
 	printJavaHeader(f,"class",module.getModuleName());
 	printLoadLibrary(f,"library");
-	
 	convertFunctions(f,fcts);
 	convertEnums(f,module.getEnums());
-		
+
 	f << "}" << endl;
 }

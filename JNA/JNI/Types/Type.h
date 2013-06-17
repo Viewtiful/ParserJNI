@@ -15,7 +15,7 @@ namespace nsJNI {
 		Type(string javaType,string cppType);
 		string javaType;
         string cppType;
-        //Generate conversion code from jniType to C/C++ types
+        virtual void outputJava() = 0;
         virtual void outputCpp() = 0;
         string getJavaType();
         string getCppType();

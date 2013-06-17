@@ -10,9 +10,6 @@
 #include <iostream>
 #include <map>
 #include "JNI/Types/Type.h"
-#include "JNI/Types/NativeType.h"
-#include "Modules/Module.h"
-using namespace nsModules;
 namespace nsJNI
 {
     /** A dictionnary of all available types, and their converted names.
@@ -31,11 +28,11 @@ namespace nsJNI
       public:
         TypesDictionnary();
         virtual ~TypesDictionnary();
-        void addBaseType();
-		void convertJava(Module::vector modules);
-		void convertCpp(Module::vector modules);
-		string getJavaType(string Ctype);
-		string getCppType(string Ctype);
+        void addMap(std::string inputType, Type* type);
+
+		void addBaseType();
+
+
       protected:
 
         /** Add base types (int, size_t, char, those stuff) */

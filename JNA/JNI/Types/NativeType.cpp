@@ -17,6 +17,11 @@ NativeType::~NativeType()
 
 }
 
+void NativeType::outputJava()
+{
+	cout << "JavaType = "<< javaType << endl;
+}
+
 void NativeType::outputCpp()
 {
 	cout << "JavaType = "<< cppType << endl;
