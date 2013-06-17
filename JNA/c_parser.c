@@ -1,6 +1,6 @@
-#line 2 "/home/baptiste/Documents/JNA/c_parser.c"
+#line 2 "/home/baptiste/git/ParserJNI/JNA/c_parser.c"
 
-#line 4 "/home/baptiste/Documents/JNA/c_parser.c"
+#line 4 "/home/baptiste/git/ParserJNI/JNA/c_parser.c"
 
 #define  YY_INT_ALIGNED short int
 
@@ -559,7 +559,7 @@ char *yytext;
 /* comment stuff from http://compilers.iecc.com/comparch/article/96-03-019 */
 #line 18 "flex/c_parser.l"
 #include "flex/tokens.h"
-#line 563 "/home/baptiste/Documents/JNA/c_parser.c"
+#line 563 "/home/baptiste/git/ParserJNI/JNA/c_parser.c"
 
 #define INITIAL 0
 
@@ -749,7 +749,7 @@ YY_DECL
 #line 20 "flex/c_parser.l"
 
     /* Reserve something for special instructions ? */
-#line 753 "/home/baptiste/Documents/JNA/c_parser.c"
+#line 753 "/home/baptiste/git/ParserJNI/JNA/c_parser.c"
 
 	if ( !(yy_init) )
 		{
@@ -959,7 +959,7 @@ YY_RULE_SETUP
 #line 53 "flex/c_parser.l"
 YY_FATAL_ERROR( "flex scanner jammed" );
 	YY_BREAK
-#line 963 "/home/baptiste/Documents/JNA/c_parser.c"
+#line 963 "/home/baptiste/git/ParserJNI/JNA/c_parser.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 

@@ -3,11 +3,11 @@
 
 # compile C with /usr/bin/gcc
 # compile CXX with /usr/bin/c++
-C_FLAGS = -I/home/baptiste/Documents/JNA   
+C_FLAGS = -I/home/baptiste/git/ParserJNI/JNA   
 
 C_DEFINES = 
 
-CXX_FLAGS = -I/home/baptiste/Documents/JNA   
+CXX_FLAGS = -I/home/baptiste/git/ParserJNI/JNA   
 
 CXX_DEFINES = 
 

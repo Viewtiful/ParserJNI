@@ -32,10 +32,10 @@ CMAKE_COMMAND = /usr/bin/cmake
 RM = /usr/bin/cmake -E remove -f
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/baptiste/Documents/JNA
+CMAKE_SOURCE_DIR = /home/baptiste/git/ParserJNI/JNA
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/baptiste/Documents/JNA
+CMAKE_BINARY_DIR = /home/baptiste/git/ParserJNI/JNA
 
 # Include any dependencies generated for this target.
 include CMakeFiles/JNAConvert.dir/depend.make
@@ -48,17 +48,17 @@ include CMakeFiles/JNAConvert.dir/flags.make
 
 CMakeFiles/JNAConvert.dir/main.cpp.o: CMakeFiles/JNAConvert.dir/flags.make
 CMakeFiles/JNAConvert.dir/main.cpp.o: main.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/Documents/JNA/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/git/ParserJNI/JNA/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/JNAConvert.dir/main.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/JNAConvert.dir/main.cpp.o -c /home/baptiste/Documents/JNA/main.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/JNAConvert.dir/main.cpp.o -c /home/baptiste/git/ParserJNI/JNA/main.cpp
 
 CMakeFiles/JNAConvert.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/JNAConvert.dir/main.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/baptiste/Documents/JNA/main.cpp > CMakeFiles/JNAConvert.dir/main.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/baptiste/git/ParserJNI/JNA/main.cpp > CMakeFiles/JNAConvert.dir/main.cpp.i
 
 CMakeFiles/JNAConvert.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/JNAConvert.dir/main.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/baptiste/Documents/JNA/main.cpp -o CMakeFiles/JNAConvert.dir/main.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/baptiste/git/ParserJNI/JNA/main.cpp -o CMakeFiles/JNAConvert.dir/main.cpp.s
 
 CMakeFiles/JNAConvert.dir/main.cpp.o.requires:
 .PHONY : CMakeFiles/JNAConvert.dir/main.cpp.o.requires
@@ -71,17 +71,17 @@ CMakeFiles/JNAConvert.dir/main.cpp.o.provides.build: CMakeFiles/JNAConvert.dir/m
 
 CMakeFiles/JNAConvert.dir/Convert/Parser.cpp.o: CMakeFiles/JNAConvert.dir/flags.make
 CMakeFiles/JNAConvert.dir/Convert/Parser.cpp.o: Convert/Parser.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/Documents/JNA/CMakeFiles $(CMAKE_PROGRESS_2)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/git/ParserJNI/JNA/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/JNAConvert.dir/Convert/Parser.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/JNAConvert.dir/Convert/Parser.cpp.o -c /home/baptiste/Documents/JNA/Convert/Parser.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/JNAConvert.dir/Convert/Parser.cpp.o -c /home/baptiste/git/ParserJNI/JNA/Convert/Parser.cpp
 
 CMakeFiles/JNAConvert.dir/Convert/Parser.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/JNAConvert.dir/Convert/Parser.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/baptiste/Documents/JNA/Convert/Parser.cpp > CMakeFiles/JNAConvert.dir/Convert/Parser.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/baptiste/git/ParserJNI/JNA/Convert/Parser.cpp > CMakeFiles/JNAConvert.dir/Convert/Parser.cpp.i
 
 CMakeFiles/JNAConvert.dir/Convert/Parser.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/JNAConvert.dir/Convert/Parser.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/baptiste/Documents/JNA/Convert/Parser.cpp -o CMakeFiles/JNAConvert.dir/Convert/Parser.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/baptiste/git/ParserJNI/JNA/Convert/Parser.cpp -o CMakeFiles/JNAConvert.dir/Convert/Parser.cpp.s
 
 CMakeFiles/JNAConvert.dir/Convert/Parser.cpp.o.requires:
 .PHONY : CMakeFiles/JNAConvert.dir/Convert/Parser.cpp.o.requires
@@ -94,17 +94,17 @@ CMakeFiles/JNAConvert.dir/Convert/Parser.cpp.o.provides.build: CMakeFiles/JNACon
 
 CMakeFiles/JNAConvert.dir/C/Struct.cpp.o: CMakeFiles/JNAConvert.dir/flags.make
 CMakeFiles/JNAConvert.dir/C/Struct.cpp.o: C/Struct.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/Documents/JNA/CMakeFiles $(CMAKE_PROGRESS_3)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/git/ParserJNI/JNA/CMakeFiles $(CMAKE_PROGRESS_3)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/JNAConvert.dir/C/Struct.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/JNAConvert.dir/C/Struct.cpp.o -c /home/baptiste/Documents/JNA/C/Struct.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/JNAConvert.dir/C/Struct.cpp.o -c /home/baptiste/git/ParserJNI/JNA/C/Struct.cpp
 
 CMakeFiles/JNAConvert.dir/C/Struct.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/JNAConvert.dir/C/Struct.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/baptiste/Documents/JNA/C/Struct.cpp > CMakeFiles/JNAConvert.dir/C/Struct.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/baptiste/git/ParserJNI/JNA/C/Struct.cpp > CMakeFiles/JNAConvert.dir/C/Struct.cpp.i
 
 CMakeFiles/JNAConvert.dir/C/Struct.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/JNAConvert.dir/C/Struct.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/baptiste/Documents/JNA/C/Struct.cpp -o CMakeFiles/JNAConvert.dir/C/Struct.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/baptiste/git/ParserJNI/JNA/C/Struct.cpp -o CMakeFiles/JNAConvert.dir/C/Struct.cpp.s
 
 CMakeFiles/JNAConvert.dir/C/Struct.cpp.o.requires:
 .PHONY : CMakeFiles/JNAConvert.dir/C/Struct.cpp.o.requires
@@ -117,17 +117,17 @@ CMakeFiles/JNAConvert.dir/C/Struct.cpp.o.provides.build: CMakeFiles/JNAConvert.d
 
 CMakeFiles/JNAConvert.dir/C/Param.cpp.o: CMakeFiles/JNAConvert.dir/flags.make
 CMakeFiles/JNAConvert.dir/C/Param.cpp.o: C/Param.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/Documents/JNA/CMakeFiles $(CMAKE_PROGRESS_4)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/git/ParserJNI/JNA/CMakeFiles $(CMAKE_PROGRESS_4)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/JNAConvert.dir/C/Param.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/JNAConvert.dir/C/Param.cpp.o -c /home/baptiste/Documents/JNA/C/Param.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/JNAConvert.dir/C/Param.cpp.o -c /home/baptiste/git/ParserJNI/JNA/C/Param.cpp
 
 CMakeFiles/JNAConvert.dir/C/Param.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/JNAConvert.dir/C/Param.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/baptiste/Documents/JNA/C/Param.cpp > CMakeFiles/JNAConvert.dir/C/Param.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/baptiste/git/ParserJNI/JNA/C/Param.cpp > CMakeFiles/JNAConvert.dir/C/Param.cpp.i
 
 CMakeFiles/JNAConvert.dir/C/Param.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/JNAConvert.dir/C/Param.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/baptiste/Documents/JNA/C/Param.cpp -o CMakeFiles/JNAConvert.dir/C/Param.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/baptiste/git/ParserJNI/JNA/C/Param.cpp -o CMakeFiles/JNAConvert.dir/C/Param.cpp.s
 
 CMakeFiles/JNAConvert.dir/C/Param.cpp.o.requires:
 .PHONY : CMakeFiles/JNAConvert.dir/C/Param.cpp.o.requires
@@ -140,17 +140,17 @@ CMakeFiles/JNAConvert.dir/C/Param.cpp.o.provides.build: CMakeFiles/JNAConvert.di
 
 CMakeFiles/JNAConvert.dir/C/Enum.cpp.o: CMakeFiles/JNAConvert.dir/flags.make
 CMakeFiles/JNAConvert.dir/C/Enum.cpp.o: C/Enum.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/Documents/JNA/CMakeFiles $(CMAKE_PROGRESS_5)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/git/ParserJNI/JNA/CMakeFiles $(CMAKE_PROGRESS_5)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/JNAConvert.dir/C/Enum.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/JNAConvert.dir/C/Enum.cpp.o -c /home/baptiste/Documents/JNA/C/Enum.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/JNAConvert.dir/C/Enum.cpp.o -c /home/baptiste/git/ParserJNI/JNA/C/Enum.cpp
 
 CMakeFiles/JNAConvert.dir/C/Enum.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/JNAConvert.dir/C/Enum.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/baptiste/Documents/JNA/C/Enum.cpp > CMakeFiles/JNAConvert.dir/C/Enum.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/baptiste/git/ParserJNI/JNA/C/Enum.cpp > CMakeFiles/JNAConvert.dir/C/Enum.cpp.i
 
 CMakeFiles/JNAConvert.dir/C/Enum.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/JNAConvert.dir/C/Enum.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/baptiste/Documents/JNA/C/Enum.cpp -o CMakeFiles/JNAConvert.dir/C/Enum.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/baptiste/git/ParserJNI/JNA/C/Enum.cpp -o CMakeFiles/JNAConvert.dir/C/Enum.cpp.s
 
 CMakeFiles/JNAConvert.dir/C/Enum.cpp.o.requires:
 .PHONY : CMakeFiles/JNAConvert.dir/C/Enum.cpp.o.requires
@@ -163,17 +163,17 @@ CMakeFiles/JNAConvert.dir/C/Enum.cpp.o.provides.build: CMakeFiles/JNAConvert.dir
 
 CMakeFiles/JNAConvert.dir/C/Callback.cpp.o: CMakeFiles/JNAConvert.dir/flags.make
 CMakeFiles/JNAConvert.dir/C/Callback.cpp.o: C/Callback.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/Documents/JNA/CMakeFiles $(CMAKE_PROGRESS_6)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/git/ParserJNI/JNA/CMakeFiles $(CMAKE_PROGRESS_6)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/JNAConvert.dir/C/Callback.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/JNAConvert.dir/C/Callback.cpp.o -c /home/baptiste/Documents/JNA/C/Callback.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/JNAConvert.dir/C/Callback.cpp.o -c /home/baptiste/git/ParserJNI/JNA/C/Callback.cpp
 
 CMakeFiles/JNAConvert.dir/C/Callback.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/JNAConvert.dir/C/Callback.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/baptiste/Documents/JNA/C/Callback.cpp > CMakeFiles/JNAConvert.dir/C/Callback.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/baptiste/git/ParserJNI/JNA/C/Callback.cpp > CMakeFiles/JNAConvert.dir/C/Callback.cpp.i
 
 CMakeFiles/JNAConvert.dir/C/Callback.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/JNAConvert.dir/C/Callback.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/baptiste/Documents/JNA/C/Callback.cpp -o CMakeFiles/JNAConvert.dir/C/Callback.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/baptiste/git/ParserJNI/JNA/C/Callback.cpp -o CMakeFiles/JNAConvert.dir/C/Callback.cpp.s
 
 CMakeFiles/JNAConvert.dir/C/Callback.cpp.o.requires:
 .PHONY : CMakeFiles/JNAConvert.dir/C/Callback.cpp.o.requires
@@ -186,17 +186,17 @@ CMakeFiles/JNAConvert.dir/C/Callback.cpp.o.provides.build: CMakeFiles/JNAConvert
 
 CMakeFiles/JNAConvert.dir/C/Consts.cpp.o: CMakeFiles/JNAConvert.dir/flags.make
 CMakeFiles/JNAConvert.dir/C/Consts.cpp.o: C/Consts.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/Documents/JNA/CMakeFiles $(CMAKE_PROGRESS_7)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/git/ParserJNI/JNA/CMakeFiles $(CMAKE_PROGRESS_7)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/JNAConvert.dir/C/Consts.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/JNAConvert.dir/C/Consts.cpp.o -c /home/baptiste/Documents/JNA/C/Consts.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/JNAConvert.dir/C/Consts.cpp.o -c /home/baptiste/git/ParserJNI/JNA/C/Consts.cpp
 
 CMakeFiles/JNAConvert.dir/C/Consts.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/JNAConvert.dir/C/Consts.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/baptiste/Documents/JNA/C/Consts.cpp > CMakeFiles/JNAConvert.dir/C/Consts.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/baptiste/git/ParserJNI/JNA/C/Consts.cpp > CMakeFiles/JNAConvert.dir/C/Consts.cpp.i
 
 CMakeFiles/JNAConvert.dir/C/Consts.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/JNAConvert.dir/C/Consts.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/baptiste/Documents/JNA/C/Consts.cpp -o CMakeFiles/JNAConvert.dir/C/Consts.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/baptiste/git/ParserJNI/JNA/C/Consts.cpp -o CMakeFiles/JNAConvert.dir/C/Consts.cpp.s
 
 CMakeFiles/JNAConvert.dir/C/Consts.cpp.o.requires:
 .PHONY : CMakeFiles/JNAConvert.dir/C/Consts.cpp.o.requires
@@ -209,17 +209,17 @@ CMakeFiles/JNAConvert.dir/C/Consts.cpp.o.provides.build: CMakeFiles/JNAConvert.d
 
 CMakeFiles/JNAConvert.dir/C/Typedef.cpp.o: CMakeFiles/JNAConvert.dir/flags.make
 CMakeFiles/JNAConvert.dir/C/Typedef.cpp.o: C/Typedef.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/Documents/JNA/CMakeFiles $(CMAKE_PROGRESS_8)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/git/ParserJNI/JNA/CMakeFiles $(CMAKE_PROGRESS_8)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/JNAConvert.dir/C/Typedef.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/JNAConvert.dir/C/Typedef.cpp.o -c /home/baptiste/Documents/JNA/C/Typedef.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/JNAConvert.dir/C/Typedef.cpp.o -c /home/baptiste/git/ParserJNI/JNA/C/Typedef.cpp
 
 CMakeFiles/JNAConvert.dir/C/Typedef.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/JNAConvert.dir/C/Typedef.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/baptiste/Documents/JNA/C/Typedef.cpp > CMakeFiles/JNAConvert.dir/C/Typedef.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/baptiste/git/ParserJNI/JNA/C/Typedef.cpp > CMakeFiles/JNAConvert.dir/C/Typedef.cpp.i
 
 CMakeFiles/JNAConvert.dir/C/Typedef.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/JNAConvert.dir/C/Typedef.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/baptiste/Documents/JNA/C/Typedef.cpp -o CMakeFiles/JNAConvert.dir/C/Typedef.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/baptiste/git/ParserJNI/JNA/C/Typedef.cpp -o CMakeFiles/JNAConvert.dir/C/Typedef.cpp.s
 
 CMakeFiles/JNAConvert.dir/C/Typedef.cpp.o.requires:
 .PHONY : CMakeFiles/JNAConvert.dir/C/Typedef.cpp.o.requires
@@ -232,17 +232,17 @@ CMakeFiles/JNAConvert.dir/C/Typedef.cpp.o.provides.build: CMakeFiles/JNAConvert.
 
 CMakeFiles/JNAConvert.dir/C/Function.cpp.o: CMakeFiles/JNAConvert.dir/flags.make
 CMakeFiles/JNAConvert.dir/C/Function.cpp.o: C/Function.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/Documents/JNA/CMakeFiles $(CMAKE_PROGRESS_9)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/git/ParserJNI/JNA/CMakeFiles $(CMAKE_PROGRESS_9)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/JNAConvert.dir/C/Function.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/JNAConvert.dir/C/Function.cpp.o -c /home/baptiste/Documents/JNA/C/Function.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/JNAConvert.dir/C/Function.cpp.o -c /home/baptiste/git/ParserJNI/JNA/C/Function.cpp
 
 CMakeFiles/JNAConvert.dir/C/Function.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/JNAConvert.dir/C/Function.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/baptiste/Documents/JNA/C/Function.cpp > CMakeFiles/JNAConvert.dir/C/Function.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/baptiste/git/ParserJNI/JNA/C/Function.cpp > CMakeFiles/JNAConvert.dir/C/Function.cpp.i
 
 CMakeFiles/JNAConvert.dir/C/Function.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/JNAConvert.dir/C/Function.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/baptiste/Documents/JNA/C/Function.cpp -o CMakeFiles/JNAConvert.dir/C/Function.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/baptiste/git/ParserJNI/JNA/C/Function.cpp -o CMakeFiles/JNAConvert.dir/C/Function.cpp.s
 
 CMakeFiles/JNAConvert.dir/C/Function.cpp.o.requires:
 .PHONY : CMakeFiles/JNAConvert.dir/C/Function.cpp.o.requires
@@ -253,19 +253,65 @@ CMakeFiles/JNAConvert.dir/C/Function.cpp.o.provides: CMakeFiles/JNAConvert.dir/C
 
 CMakeFiles/JNAConvert.dir/C/Function.cpp.o.provides.build: CMakeFiles/JNAConvert.dir/C/Function.cpp.o
 
+CMakeFiles/JNAConvert.dir/JNI/OutputCpp.cpp.o: CMakeFiles/JNAConvert.dir/flags.make
+CMakeFiles/JNAConvert.dir/JNI/OutputCpp.cpp.o: JNI/OutputCpp.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/git/ParserJNI/JNA/CMakeFiles $(CMAKE_PROGRESS_10)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/JNAConvert.dir/JNI/OutputCpp.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/JNAConvert.dir/JNI/OutputCpp.cpp.o -c /home/baptiste/git/ParserJNI/JNA/JNI/OutputCpp.cpp
+
+CMakeFiles/JNAConvert.dir/JNI/OutputCpp.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/JNAConvert.dir/JNI/OutputCpp.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/baptiste/git/ParserJNI/JNA/JNI/OutputCpp.cpp > CMakeFiles/JNAConvert.dir/JNI/OutputCpp.cpp.i
+
+CMakeFiles/JNAConvert.dir/JNI/OutputCpp.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/JNAConvert.dir/JNI/OutputCpp.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/baptiste/git/ParserJNI/JNA/JNI/OutputCpp.cpp -o CMakeFiles/JNAConvert.dir/JNI/OutputCpp.cpp.s
+
+CMakeFiles/JNAConvert.dir/JNI/OutputCpp.cpp.o.requires:
+.PHONY : CMakeFiles/JNAConvert.dir/JNI/OutputCpp.cpp.o.requires
+
+CMakeFiles/JNAConvert.dir/JNI/OutputCpp.cpp.o.provides: CMakeFiles/JNAConvert.dir/JNI/OutputCpp.cpp.o.requires
+	$(MAKE) -f CMakeFiles/JNAConvert.dir/build.make CMakeFiles/JNAConvert.dir/JNI/OutputCpp.cpp.o.provides.build
+.PHONY : CMakeFiles/JNAConvert.dir/JNI/OutputCpp.cpp.o.provides
+
+CMakeFiles/JNAConvert.dir/JNI/OutputCpp.cpp.o.provides.build: CMakeFiles/JNAConvert.dir/JNI/OutputCpp.cpp.o
+
+CMakeFiles/JNAConvert.dir/JNI/test.cpp.o: CMakeFiles/JNAConvert.dir/flags.make
+CMakeFiles/JNAConvert.dir/JNI/test.cpp.o: JNI/test.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/git/ParserJNI/JNA/CMakeFiles $(CMAKE_PROGRESS_11)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/JNAConvert.dir/JNI/test.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/JNAConvert.dir/JNI/test.cpp.o -c /home/baptiste/git/ParserJNI/JNA/JNI/test.cpp
+
+CMakeFiles/JNAConvert.dir/JNI/test.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/JNAConvert.dir/JNI/test.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/baptiste/git/ParserJNI/JNA/JNI/test.cpp > CMakeFiles/JNAConvert.dir/JNI/test.cpp.i
+
+CMakeFiles/JNAConvert.dir/JNI/test.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/JNAConvert.dir/JNI/test.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/baptiste/git/ParserJNI/JNA/JNI/test.cpp -o CMakeFiles/JNAConvert.dir/JNI/test.cpp.s
+
+CMakeFiles/JNAConvert.dir/JNI/test.cpp.o.requires:
+.PHONY : CMakeFiles/JNAConvert.dir/JNI/test.cpp.o.requires
+
+CMakeFiles/JNAConvert.dir/JNI/test.cpp.o.provides: CMakeFiles/JNAConvert.dir/JNI/test.cpp.o.requires
+	$(MAKE) -f CMakeFiles/JNAConvert.dir/build.make CMakeFiles/JNAConvert.dir/JNI/test.cpp.o.provides.build
+.PHONY : CMakeFiles/JNAConvert.dir/JNI/test.cpp.o.provides
+
+CMakeFiles/JNAConvert.dir/JNI/test.cpp.o.provides.build: CMakeFiles/JNAConvert.dir/JNI/test.cpp.o
+
 CMakeFiles/JNAConvert.dir/JNI/JNIParser.cpp.o: CMakeFiles/JNAConvert.dir/flags.make
 CMakeFiles/JNAConvert.dir/JNI/JNIParser.cpp.o: JNI/JNIParser.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/Documents/JNA/CMakeFiles $(CMAKE_PROGRESS_10)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/git/ParserJNI/JNA/CMakeFiles $(CMAKE_PROGRESS_12)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/JNAConvert.dir/JNI/JNIParser.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/JNAConvert.dir/JNI/JNIParser.cpp.o -c /home/baptiste/Documents/JNA/JNI/JNIParser.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/JNAConvert.dir/JNI/JNIParser.cpp.o -c /home/baptiste/git/ParserJNI/JNA/JNI/JNIParser.cpp
 
 CMakeFiles/JNAConvert.dir/JNI/JNIParser.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/JNAConvert.dir/JNI/JNIParser.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/baptiste/Documents/JNA/JNI/JNIParser.cpp > CMakeFiles/JNAConvert.dir/JNI/JNIParser.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/baptiste/git/ParserJNI/JNA/JNI/JNIParser.cpp > CMakeFiles/JNAConvert.dir/JNI/JNIParser.cpp.i
 
 CMakeFiles/JNAConvert.dir/JNI/JNIParser.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/JNAConvert.dir/JNI/JNIParser.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/baptiste/Documents/JNA/JNI/JNIParser.cpp -o CMakeFiles/JNAConvert.dir/JNI/JNIParser.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/baptiste/git/ParserJNI/JNA/JNI/JNIParser.cpp -o CMakeFiles/JNAConvert.dir/JNI/JNIParser.cpp.s
 
 CMakeFiles/JNAConvert.dir/JNI/JNIParser.cpp.o.requires:
 .PHONY : CMakeFiles/JNAConvert.dir/JNI/JNIParser.cpp.o.requires
@@ -276,19 +322,203 @@ CMakeFiles/JNAConvert.dir/JNI/JNIParser.cpp.o.provides: CMakeFiles/JNAConvert.di
 
 CMakeFiles/JNAConvert.dir/JNI/JNIParser.cpp.o.provides.build: CMakeFiles/JNAConvert.dir/JNI/JNIParser.cpp.o
 
+CMakeFiles/JNAConvert.dir/JNI/OutputJava.cpp.o: CMakeFiles/JNAConvert.dir/flags.make
+CMakeFiles/JNAConvert.dir/JNI/OutputJava.cpp.o: JNI/OutputJava.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/git/ParserJNI/JNA/CMakeFiles $(CMAKE_PROGRESS_13)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/JNAConvert.dir/JNI/OutputJava.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/JNAConvert.dir/JNI/OutputJava.cpp.o -c /home/baptiste/git/ParserJNI/JNA/JNI/OutputJava.cpp
+
+CMakeFiles/JNAConvert.dir/JNI/OutputJava.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/JNAConvert.dir/JNI/OutputJava.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/baptiste/git/ParserJNI/JNA/JNI/OutputJava.cpp > CMakeFiles/JNAConvert.dir/JNI/OutputJava.cpp.i
+
+CMakeFiles/JNAConvert.dir/JNI/OutputJava.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/JNAConvert.dir/JNI/OutputJava.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/baptiste/git/ParserJNI/JNA/JNI/OutputJava.cpp -o CMakeFiles/JNAConvert.dir/JNI/OutputJava.cpp.s
+
+CMakeFiles/JNAConvert.dir/JNI/OutputJava.cpp.o.requires:
+.PHONY : CMakeFiles/JNAConvert.dir/JNI/OutputJava.cpp.o.requires
+
+CMakeFiles/JNAConvert.dir/JNI/OutputJava.cpp.o.provides: CMakeFiles/JNAConvert.dir/JNI/OutputJava.cpp.o.requires
+	$(MAKE) -f CMakeFiles/JNAConvert.dir/build.make CMakeFiles/JNAConvert.dir/JNI/OutputJava.cpp.o.provides.build
+.PHONY : CMakeFiles/JNAConvert.dir/JNI/OutputJava.cpp.o.provides
+
+CMakeFiles/JNAConvert.dir/JNI/OutputJava.cpp.o.provides.build: CMakeFiles/JNAConvert.dir/JNI/OutputJava.cpp.o
+
+CMakeFiles/JNAConvert.dir/JNI/TypesDictionnary.cpp.o: CMakeFiles/JNAConvert.dir/flags.make
+CMakeFiles/JNAConvert.dir/JNI/TypesDictionnary.cpp.o: JNI/TypesDictionnary.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/git/ParserJNI/JNA/CMakeFiles $(CMAKE_PROGRESS_14)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/JNAConvert.dir/JNI/TypesDictionnary.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/JNAConvert.dir/JNI/TypesDictionnary.cpp.o -c /home/baptiste/git/ParserJNI/JNA/JNI/TypesDictionnary.cpp
+
+CMakeFiles/JNAConvert.dir/JNI/TypesDictionnary.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/JNAConvert.dir/JNI/TypesDictionnary.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/baptiste/git/ParserJNI/JNA/JNI/TypesDictionnary.cpp > CMakeFiles/JNAConvert.dir/JNI/TypesDictionnary.cpp.i
+
+CMakeFiles/JNAConvert.dir/JNI/TypesDictionnary.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/JNAConvert.dir/JNI/TypesDictionnary.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/baptiste/git/ParserJNI/JNA/JNI/TypesDictionnary.cpp -o CMakeFiles/JNAConvert.dir/JNI/TypesDictionnary.cpp.s
+
+CMakeFiles/JNAConvert.dir/JNI/TypesDictionnary.cpp.o.requires:
+.PHONY : CMakeFiles/JNAConvert.dir/JNI/TypesDictionnary.cpp.o.requires
+
+CMakeFiles/JNAConvert.dir/JNI/TypesDictionnary.cpp.o.provides: CMakeFiles/JNAConvert.dir/JNI/TypesDictionnary.cpp.o.requires
+	$(MAKE) -f CMakeFiles/JNAConvert.dir/build.make CMakeFiles/JNAConvert.dir/JNI/TypesDictionnary.cpp.o.provides.build
+.PHONY : CMakeFiles/JNAConvert.dir/JNI/TypesDictionnary.cpp.o.provides
+
+CMakeFiles/JNAConvert.dir/JNI/TypesDictionnary.cpp.o.provides.build: CMakeFiles/JNAConvert.dir/JNI/TypesDictionnary.cpp.o
+
+CMakeFiles/JNAConvert.dir/JNI/Types/Type.cpp.o: CMakeFiles/JNAConvert.dir/flags.make
+CMakeFiles/JNAConvert.dir/JNI/Types/Type.cpp.o: JNI/Types/Type.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/git/ParserJNI/JNA/CMakeFiles $(CMAKE_PROGRESS_15)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/JNAConvert.dir/JNI/Types/Type.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/JNAConvert.dir/JNI/Types/Type.cpp.o -c /home/baptiste/git/ParserJNI/JNA/JNI/Types/Type.cpp
+
+CMakeFiles/JNAConvert.dir/JNI/Types/Type.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/JNAConvert.dir/JNI/Types/Type.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/baptiste/git/ParserJNI/JNA/JNI/Types/Type.cpp > CMakeFiles/JNAConvert.dir/JNI/Types/Type.cpp.i
+
+CMakeFiles/JNAConvert.dir/JNI/Types/Type.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/JNAConvert.dir/JNI/Types/Type.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/baptiste/git/ParserJNI/JNA/JNI/Types/Type.cpp -o CMakeFiles/JNAConvert.dir/JNI/Types/Type.cpp.s
+
+CMakeFiles/JNAConvert.dir/JNI/Types/Type.cpp.o.requires:
+.PHONY : CMakeFiles/JNAConvert.dir/JNI/Types/Type.cpp.o.requires
+
+CMakeFiles/JNAConvert.dir/JNI/Types/Type.cpp.o.provides: CMakeFiles/JNAConvert.dir/JNI/Types/Type.cpp.o.requires
+	$(MAKE) -f CMakeFiles/JNAConvert.dir/build.make CMakeFiles/JNAConvert.dir/JNI/Types/Type.cpp.o.provides.build
+.PHONY : CMakeFiles/JNAConvert.dir/JNI/Types/Type.cpp.o.provides
+
+CMakeFiles/JNAConvert.dir/JNI/Types/Type.cpp.o.provides.build: CMakeFiles/JNAConvert.dir/JNI/Types/Type.cpp.o
+
+CMakeFiles/JNAConvert.dir/JNI/Types/Struct.cpp.o: CMakeFiles/JNAConvert.dir/flags.make
+CMakeFiles/JNAConvert.dir/JNI/Types/Struct.cpp.o: JNI/Types/Struct.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/git/ParserJNI/JNA/CMakeFiles $(CMAKE_PROGRESS_16)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/JNAConvert.dir/JNI/Types/Struct.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/JNAConvert.dir/JNI/Types/Struct.cpp.o -c /home/baptiste/git/ParserJNI/JNA/JNI/Types/Struct.cpp
+
+CMakeFiles/JNAConvert.dir/JNI/Types/Struct.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/JNAConvert.dir/JNI/Types/Struct.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/baptiste/git/ParserJNI/JNA/JNI/Types/Struct.cpp > CMakeFiles/JNAConvert.dir/JNI/Types/Struct.cpp.i
+
+CMakeFiles/JNAConvert.dir/JNI/Types/Struct.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/JNAConvert.dir/JNI/Types/Struct.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/baptiste/git/ParserJNI/JNA/JNI/Types/Struct.cpp -o CMakeFiles/JNAConvert.dir/JNI/Types/Struct.cpp.s
+
+CMakeFiles/JNAConvert.dir/JNI/Types/Struct.cpp.o.requires:
+.PHONY : CMakeFiles/JNAConvert.dir/JNI/Types/Struct.cpp.o.requires
+
+CMakeFiles/JNAConvert.dir/JNI/Types/Struct.cpp.o.provides: CMakeFiles/JNAConvert.dir/JNI/Types/Struct.cpp.o.requires
+	$(MAKE) -f CMakeFiles/JNAConvert.dir/build.make CMakeFiles/JNAConvert.dir/JNI/Types/Struct.cpp.o.provides.build
+.PHONY : CMakeFiles/JNAConvert.dir/JNI/Types/Struct.cpp.o.provides
+
+CMakeFiles/JNAConvert.dir/JNI/Types/Struct.cpp.o.provides.build: CMakeFiles/JNAConvert.dir/JNI/Types/Struct.cpp.o
+
+CMakeFiles/JNAConvert.dir/JNI/Types/Enum.cpp.o: CMakeFiles/JNAConvert.dir/flags.make
+CMakeFiles/JNAConvert.dir/JNI/Types/Enum.cpp.o: JNI/Types/Enum.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/git/ParserJNI/JNA/CMakeFiles $(CMAKE_PROGRESS_17)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/JNAConvert.dir/JNI/Types/Enum.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/JNAConvert.dir/JNI/Types/Enum.cpp.o -c /home/baptiste/git/ParserJNI/JNA/JNI/Types/Enum.cpp
+
+CMakeFiles/JNAConvert.dir/JNI/Types/Enum.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/JNAConvert.dir/JNI/Types/Enum.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/baptiste/git/ParserJNI/JNA/JNI/Types/Enum.cpp > CMakeFiles/JNAConvert.dir/JNI/Types/Enum.cpp.i
+
+CMakeFiles/JNAConvert.dir/JNI/Types/Enum.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/JNAConvert.dir/JNI/Types/Enum.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/baptiste/git/ParserJNI/JNA/JNI/Types/Enum.cpp -o CMakeFiles/JNAConvert.dir/JNI/Types/Enum.cpp.s
+
+CMakeFiles/JNAConvert.dir/JNI/Types/Enum.cpp.o.requires:
+.PHONY : CMakeFiles/JNAConvert.dir/JNI/Types/Enum.cpp.o.requires
+
+CMakeFiles/JNAConvert.dir/JNI/Types/Enum.cpp.o.provides: CMakeFiles/JNAConvert.dir/JNI/Types/Enum.cpp.o.requires
+	$(MAKE) -f CMakeFiles/JNAConvert.dir/build.make CMakeFiles/JNAConvert.dir/JNI/Types/Enum.cpp.o.provides.build
+.PHONY : CMakeFiles/JNAConvert.dir/JNI/Types/Enum.cpp.o.provides
+
+CMakeFiles/JNAConvert.dir/JNI/Types/Enum.cpp.o.provides.build: CMakeFiles/JNAConvert.dir/JNI/Types/Enum.cpp.o
+
+CMakeFiles/JNAConvert.dir/JNI/Types/Pointer.cpp.o: CMakeFiles/JNAConvert.dir/flags.make
+CMakeFiles/JNAConvert.dir/JNI/Types/Pointer.cpp.o: JNI/Types/Pointer.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/git/ParserJNI/JNA/CMakeFiles $(CMAKE_PROGRESS_18)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/JNAConvert.dir/JNI/Types/Pointer.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/JNAConvert.dir/JNI/Types/Pointer.cpp.o -c /home/baptiste/git/ParserJNI/JNA/JNI/Types/Pointer.cpp
+
+CMakeFiles/JNAConvert.dir/JNI/Types/Pointer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/JNAConvert.dir/JNI/Types/Pointer.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/baptiste/git/ParserJNI/JNA/JNI/Types/Pointer.cpp > CMakeFiles/JNAConvert.dir/JNI/Types/Pointer.cpp.i
+
+CMakeFiles/JNAConvert.dir/JNI/Types/Pointer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/JNAConvert.dir/JNI/Types/Pointer.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/baptiste/git/ParserJNI/JNA/JNI/Types/Pointer.cpp -o CMakeFiles/JNAConvert.dir/JNI/Types/Pointer.cpp.s
+
+CMakeFiles/JNAConvert.dir/JNI/Types/Pointer.cpp.o.requires:
+.PHONY : CMakeFiles/JNAConvert.dir/JNI/Types/Pointer.cpp.o.requires
+
+CMakeFiles/JNAConvert.dir/JNI/Types/Pointer.cpp.o.provides: CMakeFiles/JNAConvert.dir/JNI/Types/Pointer.cpp.o.requires
+	$(MAKE) -f CMakeFiles/JNAConvert.dir/build.make CMakeFiles/JNAConvert.dir/JNI/Types/Pointer.cpp.o.provides.build
+.PHONY : CMakeFiles/JNAConvert.dir/JNI/Types/Pointer.cpp.o.provides
+
+CMakeFiles/JNAConvert.dir/JNI/Types/Pointer.cpp.o.provides.build: CMakeFiles/JNAConvert.dir/JNI/Types/Pointer.cpp.o
+
+CMakeFiles/JNAConvert.dir/JNI/Types/NativeType.cpp.o: CMakeFiles/JNAConvert.dir/flags.make
+CMakeFiles/JNAConvert.dir/JNI/Types/NativeType.cpp.o: JNI/Types/NativeType.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/git/ParserJNI/JNA/CMakeFiles $(CMAKE_PROGRESS_19)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/JNAConvert.dir/JNI/Types/NativeType.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/JNAConvert.dir/JNI/Types/NativeType.cpp.o -c /home/baptiste/git/ParserJNI/JNA/JNI/Types/NativeType.cpp
+
+CMakeFiles/JNAConvert.dir/JNI/Types/NativeType.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/JNAConvert.dir/JNI/Types/NativeType.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/baptiste/git/ParserJNI/JNA/JNI/Types/NativeType.cpp > CMakeFiles/JNAConvert.dir/JNI/Types/NativeType.cpp.i
+
+CMakeFiles/JNAConvert.dir/JNI/Types/NativeType.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/JNAConvert.dir/JNI/Types/NativeType.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/baptiste/git/ParserJNI/JNA/JNI/Types/NativeType.cpp -o CMakeFiles/JNAConvert.dir/JNI/Types/NativeType.cpp.s
+
+CMakeFiles/JNAConvert.dir/JNI/Types/NativeType.cpp.o.requires:
+.PHONY : CMakeFiles/JNAConvert.dir/JNI/Types/NativeType.cpp.o.requires
+
+CMakeFiles/JNAConvert.dir/JNI/Types/NativeType.cpp.o.provides: CMakeFiles/JNAConvert.dir/JNI/Types/NativeType.cpp.o.requires
+	$(MAKE) -f CMakeFiles/JNAConvert.dir/build.make CMakeFiles/JNAConvert.dir/JNI/Types/NativeType.cpp.o.provides.build
+.PHONY : CMakeFiles/JNAConvert.dir/JNI/Types/NativeType.cpp.o.provides
+
+CMakeFiles/JNAConvert.dir/JNI/Types/NativeType.cpp.o.provides.build: CMakeFiles/JNAConvert.dir/JNI/Types/NativeType.cpp.o
+
+CMakeFiles/JNAConvert.dir/JNI/Types/CallBack.cpp.o: CMakeFiles/JNAConvert.dir/flags.make
+CMakeFiles/JNAConvert.dir/JNI/Types/CallBack.cpp.o: JNI/Types/CallBack.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/git/ParserJNI/JNA/CMakeFiles $(CMAKE_PROGRESS_20)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/JNAConvert.dir/JNI/Types/CallBack.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/JNAConvert.dir/JNI/Types/CallBack.cpp.o -c /home/baptiste/git/ParserJNI/JNA/JNI/Types/CallBack.cpp
+
+CMakeFiles/JNAConvert.dir/JNI/Types/CallBack.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/JNAConvert.dir/JNI/Types/CallBack.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/baptiste/git/ParserJNI/JNA/JNI/Types/CallBack.cpp > CMakeFiles/JNAConvert.dir/JNI/Types/CallBack.cpp.i
+
+CMakeFiles/JNAConvert.dir/JNI/Types/CallBack.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/JNAConvert.dir/JNI/Types/CallBack.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/baptiste/git/ParserJNI/JNA/JNI/Types/CallBack.cpp -o CMakeFiles/JNAConvert.dir/JNI/Types/CallBack.cpp.s
+
+CMakeFiles/JNAConvert.dir/JNI/Types/CallBack.cpp.o.requires:
+.PHONY : CMakeFiles/JNAConvert.dir/JNI/Types/CallBack.cpp.o.requires
+
+CMakeFiles/JNAConvert.dir/JNI/Types/CallBack.cpp.o.provides: CMakeFiles/JNAConvert.dir/JNI/Types/CallBack.cpp.o.requires
+	$(MAKE) -f CMakeFiles/JNAConvert.dir/build.make CMakeFiles/JNAConvert.dir/JNI/Types/CallBack.cpp.o.provides.build
+.PHONY : CMakeFiles/JNAConvert.dir/JNI/Types/CallBack.cpp.o.provides
+
+CMakeFiles/JNAConvert.dir/JNI/Types/CallBack.cpp.o.provides.build: CMakeFiles/JNAConvert.dir/JNI/Types/CallBack.cpp.o
+
 CMakeFiles/JNAConvert.dir/Modules/Module.cpp.o: CMakeFiles/JNAConvert.dir/flags.make
 CMakeFiles/JNAConvert.dir/Modules/Module.cpp.o: Modules/Module.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/Documents/JNA/CMakeFiles $(CMAKE_PROGRESS_11)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/git/ParserJNI/JNA/CMakeFiles $(CMAKE_PROGRESS_21)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/JNAConvert.dir/Modules/Module.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/JNAConvert.dir/Modules/Module.cpp.o -c /home/baptiste/Documents/JNA/Modules/Module.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/JNAConvert.dir/Modules/Module.cpp.o -c /home/baptiste/git/ParserJNI/JNA/Modules/Module.cpp
 
 CMakeFiles/JNAConvert.dir/Modules/Module.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/JNAConvert.dir/Modules/Module.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/baptiste/Documents/JNA/Modules/Module.cpp > CMakeFiles/JNAConvert.dir/Modules/Module.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/baptiste/git/ParserJNI/JNA/Modules/Module.cpp > CMakeFiles/JNAConvert.dir/Modules/Module.cpp.i
 
 CMakeFiles/JNAConvert.dir/Modules/Module.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/JNAConvert.dir/Modules/Module.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/baptiste/Documents/JNA/Modules/Module.cpp -o CMakeFiles/JNAConvert.dir/Modules/Module.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/baptiste/git/ParserJNI/JNA/Modules/Module.cpp -o CMakeFiles/JNAConvert.dir/Modules/Module.cpp.s
 
 CMakeFiles/JNAConvert.dir/Modules/Module.cpp.o.requires:
 .PHONY : CMakeFiles/JNAConvert.dir/Modules/Module.cpp.o.requires
@@ -301,17 +531,17 @@ CMakeFiles/JNAConvert.dir/Modules/Module.cpp.o.provides.build: CMakeFiles/JNACon
 
 CMakeFiles/JNAConvert.dir/Modules/ModuleList.cpp.o: CMakeFiles/JNAConvert.dir/flags.make
 CMakeFiles/JNAConvert.dir/Modules/ModuleList.cpp.o: Modules/ModuleList.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/Documents/JNA/CMakeFiles $(CMAKE_PROGRESS_12)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/git/ParserJNI/JNA/CMakeFiles $(CMAKE_PROGRESS_22)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/JNAConvert.dir/Modules/ModuleList.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/JNAConvert.dir/Modules/ModuleList.cpp.o -c /home/baptiste/Documents/JNA/Modules/ModuleList.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/JNAConvert.dir/Modules/ModuleList.cpp.o -c /home/baptiste/git/ParserJNI/JNA/Modules/ModuleList.cpp
 
 CMakeFiles/JNAConvert.dir/Modules/ModuleList.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/JNAConvert.dir/Modules/ModuleList.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/baptiste/Documents/JNA/Modules/ModuleList.cpp > CMakeFiles/JNAConvert.dir/Modules/ModuleList.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/baptiste/git/ParserJNI/JNA/Modules/ModuleList.cpp > CMakeFiles/JNAConvert.dir/Modules/ModuleList.cpp.i
 
 CMakeFiles/JNAConvert.dir/Modules/ModuleList.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/JNAConvert.dir/Modules/ModuleList.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/baptiste/Documents/JNA/Modules/ModuleList.cpp -o CMakeFiles/JNAConvert.dir/Modules/ModuleList.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/baptiste/git/ParserJNI/JNA/Modules/ModuleList.cpp -o CMakeFiles/JNAConvert.dir/Modules/ModuleList.cpp.s
 
 CMakeFiles/JNAConvert.dir/Modules/ModuleList.cpp.o.requires:
 .PHONY : CMakeFiles/JNAConvert.dir/Modules/ModuleList.cpp.o.requires
@@ -324,17 +554,17 @@ CMakeFiles/JNAConvert.dir/Modules/ModuleList.cpp.o.provides.build: CMakeFiles/JN
 
 CMakeFiles/JNAConvert.dir/JNA/Type.cpp.o: CMakeFiles/JNAConvert.dir/flags.make
 CMakeFiles/JNAConvert.dir/JNA/Type.cpp.o: JNA/Type.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/Documents/JNA/CMakeFiles $(CMAKE_PROGRESS_13)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/git/ParserJNI/JNA/CMakeFiles $(CMAKE_PROGRESS_23)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/JNAConvert.dir/JNA/Type.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/JNAConvert.dir/JNA/Type.cpp.o -c /home/baptiste/Documents/JNA/JNA/Type.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/JNAConvert.dir/JNA/Type.cpp.o -c /home/baptiste/git/ParserJNI/JNA/JNA/Type.cpp
 
 CMakeFiles/JNAConvert.dir/JNA/Type.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/JNAConvert.dir/JNA/Type.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/baptiste/Documents/JNA/JNA/Type.cpp > CMakeFiles/JNAConvert.dir/JNA/Type.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/baptiste/git/ParserJNI/JNA/JNA/Type.cpp > CMakeFiles/JNAConvert.dir/JNA/Type.cpp.i
 
 CMakeFiles/JNAConvert.dir/JNA/Type.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/JNAConvert.dir/JNA/Type.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/baptiste/Documents/JNA/JNA/Type.cpp -o CMakeFiles/JNAConvert.dir/JNA/Type.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/baptiste/git/ParserJNI/JNA/JNA/Type.cpp -o CMakeFiles/JNAConvert.dir/JNA/Type.cpp.s
 
 CMakeFiles/JNAConvert.dir/JNA/Type.cpp.o.requires:
 .PHONY : CMakeFiles/JNAConvert.dir/JNA/Type.cpp.o.requires
@@ -347,17 +577,17 @@ CMakeFiles/JNAConvert.dir/JNA/Type.cpp.o.provides.build: CMakeFiles/JNAConvert.d
 
 CMakeFiles/JNAConvert.dir/JNA/Struct.cpp.o: CMakeFiles/JNAConvert.dir/flags.make
 CMakeFiles/JNAConvert.dir/JNA/Struct.cpp.o: JNA/Struct.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/Documents/JNA/CMakeFiles $(CMAKE_PROGRESS_14)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/git/ParserJNI/JNA/CMakeFiles $(CMAKE_PROGRESS_24)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/JNAConvert.dir/JNA/Struct.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/JNAConvert.dir/JNA/Struct.cpp.o -c /home/baptiste/Documents/JNA/JNA/Struct.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/JNAConvert.dir/JNA/Struct.cpp.o -c /home/baptiste/git/ParserJNI/JNA/JNA/Struct.cpp
 
 CMakeFiles/JNAConvert.dir/JNA/Struct.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/JNAConvert.dir/JNA/Struct.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/baptiste/Documents/JNA/JNA/Struct.cpp > CMakeFiles/JNAConvert.dir/JNA/Struct.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/baptiste/git/ParserJNI/JNA/JNA/Struct.cpp > CMakeFiles/JNAConvert.dir/JNA/Struct.cpp.i
 
 CMakeFiles/JNAConvert.dir/JNA/Struct.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/JNAConvert.dir/JNA/Struct.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/baptiste/Documents/JNA/JNA/Struct.cpp -o CMakeFiles/JNAConvert.dir/JNA/Struct.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/baptiste/git/ParserJNI/JNA/JNA/Struct.cpp -o CMakeFiles/JNAConvert.dir/JNA/Struct.cpp.s
 
 CMakeFiles/JNAConvert.dir/JNA/Struct.cpp.o.requires:
 .PHONY : CMakeFiles/JNAConvert.dir/JNA/Struct.cpp.o.requires
@@ -370,17 +600,17 @@ CMakeFiles/JNAConvert.dir/JNA/Struct.cpp.o.provides.build: CMakeFiles/JNAConvert
 
 CMakeFiles/JNAConvert.dir/JNA/PackageList.cpp.o: CMakeFiles/JNAConvert.dir/flags.make
 CMakeFiles/JNAConvert.dir/JNA/PackageList.cpp.o: JNA/PackageList.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/Documents/JNA/CMakeFiles $(CMAKE_PROGRESS_15)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/git/ParserJNI/JNA/CMakeFiles $(CMAKE_PROGRESS_25)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/JNAConvert.dir/JNA/PackageList.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/JNAConvert.dir/JNA/PackageList.cpp.o -c /home/baptiste/Documents/JNA/JNA/PackageList.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/JNAConvert.dir/JNA/PackageList.cpp.o -c /home/baptiste/git/ParserJNI/JNA/JNA/PackageList.cpp
 
 CMakeFiles/JNAConvert.dir/JNA/PackageList.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/JNAConvert.dir/JNA/PackageList.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/baptiste/Documents/JNA/JNA/PackageList.cpp > CMakeFiles/JNAConvert.dir/JNA/PackageList.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/baptiste/git/ParserJNI/JNA/JNA/PackageList.cpp > CMakeFiles/JNAConvert.dir/JNA/PackageList.cpp.i
 
 CMakeFiles/JNAConvert.dir/JNA/PackageList.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/JNAConvert.dir/JNA/PackageList.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/baptiste/Documents/JNA/JNA/PackageList.cpp -o CMakeFiles/JNAConvert.dir/JNA/PackageList.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/baptiste/git/ParserJNI/JNA/JNA/PackageList.cpp -o CMakeFiles/JNAConvert.dir/JNA/PackageList.cpp.s
 
 CMakeFiles/JNAConvert.dir/JNA/PackageList.cpp.o.requires:
 .PHONY : CMakeFiles/JNAConvert.dir/JNA/PackageList.cpp.o.requires
@@ -393,17 +623,17 @@ CMakeFiles/JNAConvert.dir/JNA/PackageList.cpp.o.provides.build: CMakeFiles/JNACo
 
 CMakeFiles/JNAConvert.dir/JNA/SupportClass.cpp.o: CMakeFiles/JNAConvert.dir/flags.make
 CMakeFiles/JNAConvert.dir/JNA/SupportClass.cpp.o: JNA/SupportClass.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/Documents/JNA/CMakeFiles $(CMAKE_PROGRESS_16)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/git/ParserJNI/JNA/CMakeFiles $(CMAKE_PROGRESS_26)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/JNAConvert.dir/JNA/SupportClass.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/JNAConvert.dir/JNA/SupportClass.cpp.o -c /home/baptiste/Documents/JNA/JNA/SupportClass.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/JNAConvert.dir/JNA/SupportClass.cpp.o -c /home/baptiste/git/ParserJNI/JNA/JNA/SupportClass.cpp
 
 CMakeFiles/JNAConvert.dir/JNA/SupportClass.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/JNAConvert.dir/JNA/SupportClass.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/baptiste/Documents/JNA/JNA/SupportClass.cpp > CMakeFiles/JNAConvert.dir/JNA/SupportClass.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/baptiste/git/ParserJNI/JNA/JNA/SupportClass.cpp > CMakeFiles/JNAConvert.dir/JNA/SupportClass.cpp.i
 
 CMakeFiles/JNAConvert.dir/JNA/SupportClass.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/JNAConvert.dir/JNA/SupportClass.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/baptiste/Documents/JNA/JNA/SupportClass.cpp -o CMakeFiles/JNAConvert.dir/JNA/SupportClass.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/baptiste/git/ParserJNI/JNA/JNA/SupportClass.cpp -o CMakeFiles/JNAConvert.dir/JNA/SupportClass.cpp.s
 
 CMakeFiles/JNAConvert.dir/JNA/SupportClass.cpp.o.requires:
 .PHONY : CMakeFiles/JNAConvert.dir/JNA/SupportClass.cpp.o.requires
@@ -416,17 +646,17 @@ CMakeFiles/JNAConvert.dir/JNA/SupportClass.cpp.o.provides.build: CMakeFiles/JNAC
 
 CMakeFiles/JNAConvert.dir/JNA/Enum.cpp.o: CMakeFiles/JNAConvert.dir/flags.make
 CMakeFiles/JNAConvert.dir/JNA/Enum.cpp.o: JNA/Enum.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/Documents/JNA/CMakeFiles $(CMAKE_PROGRESS_17)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/git/ParserJNI/JNA/CMakeFiles $(CMAKE_PROGRESS_27)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/JNAConvert.dir/JNA/Enum.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/JNAConvert.dir/JNA/Enum.cpp.o -c /home/baptiste/Documents/JNA/JNA/Enum.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/JNAConvert.dir/JNA/Enum.cpp.o -c /home/baptiste/git/ParserJNI/JNA/JNA/Enum.cpp
 
 CMakeFiles/JNAConvert.dir/JNA/Enum.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/JNAConvert.dir/JNA/Enum.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/baptiste/Documents/JNA/JNA/Enum.cpp > CMakeFiles/JNAConvert.dir/JNA/Enum.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/baptiste/git/ParserJNI/JNA/JNA/Enum.cpp > CMakeFiles/JNAConvert.dir/JNA/Enum.cpp.i
 
 CMakeFiles/JNAConvert.dir/JNA/Enum.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/JNAConvert.dir/JNA/Enum.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/baptiste/Documents/JNA/JNA/Enum.cpp -o CMakeFiles/JNAConvert.dir/JNA/Enum.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/baptiste/git/ParserJNI/JNA/JNA/Enum.cpp -o CMakeFiles/JNAConvert.dir/JNA/Enum.cpp.s
 
 CMakeFiles/JNAConvert.dir/JNA/Enum.cpp.o.requires:
 .PHONY : CMakeFiles/JNAConvert.dir/JNA/Enum.cpp.o.requires
@@ -439,17 +669,17 @@ CMakeFiles/JNAConvert.dir/JNA/Enum.cpp.o.provides.build: CMakeFiles/JNAConvert.d
 
 CMakeFiles/JNAConvert.dir/JNA/Module.cpp.o: CMakeFiles/JNAConvert.dir/flags.make
 CMakeFiles/JNAConvert.dir/JNA/Module.cpp.o: JNA/Module.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/Documents/JNA/CMakeFiles $(CMAKE_PROGRESS_18)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/git/ParserJNI/JNA/CMakeFiles $(CMAKE_PROGRESS_28)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/JNAConvert.dir/JNA/Module.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/JNAConvert.dir/JNA/Module.cpp.o -c /home/baptiste/Documents/JNA/JNA/Module.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/JNAConvert.dir/JNA/Module.cpp.o -c /home/baptiste/git/ParserJNI/JNA/JNA/Module.cpp
 
 CMakeFiles/JNAConvert.dir/JNA/Module.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/JNAConvert.dir/JNA/Module.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/baptiste/Documents/JNA/JNA/Module.cpp > CMakeFiles/JNAConvert.dir/JNA/Module.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/baptiste/git/ParserJNI/JNA/JNA/Module.cpp > CMakeFiles/JNAConvert.dir/JNA/Module.cpp.i
 
 CMakeFiles/JNAConvert.dir/JNA/Module.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/JNAConvert.dir/JNA/Module.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/baptiste/Documents/JNA/JNA/Module.cpp -o CMakeFiles/JNAConvert.dir/JNA/Module.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/baptiste/git/ParserJNI/JNA/JNA/Module.cpp -o CMakeFiles/JNAConvert.dir/JNA/Module.cpp.s
 
 CMakeFiles/JNAConvert.dir/JNA/Module.cpp.o.requires:
 .PHONY : CMakeFiles/JNAConvert.dir/JNA/Module.cpp.o.requires
@@ -462,17 +692,17 @@ CMakeFiles/JNAConvert.dir/JNA/Module.cpp.o.provides.build: CMakeFiles/JNAConvert
 
 CMakeFiles/JNAConvert.dir/JNA/Callback.cpp.o: CMakeFiles/JNAConvert.dir/flags.make
 CMakeFiles/JNAConvert.dir/JNA/Callback.cpp.o: JNA/Callback.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/Documents/JNA/CMakeFiles $(CMAKE_PROGRESS_19)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/git/ParserJNI/JNA/CMakeFiles $(CMAKE_PROGRESS_29)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/JNAConvert.dir/JNA/Callback.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/JNAConvert.dir/JNA/Callback.cpp.o -c /home/baptiste/Documents/JNA/JNA/Callback.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/JNAConvert.dir/JNA/Callback.cpp.o -c /home/baptiste/git/ParserJNI/JNA/JNA/Callback.cpp
 
 CMakeFiles/JNAConvert.dir/JNA/Callback.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/JNAConvert.dir/JNA/Callback.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/baptiste/Documents/JNA/JNA/Callback.cpp > CMakeFiles/JNAConvert.dir/JNA/Callback.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/baptiste/git/ParserJNI/JNA/JNA/Callback.cpp > CMakeFiles/JNAConvert.dir/JNA/Callback.cpp.i
 
 CMakeFiles/JNAConvert.dir/JNA/Callback.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/JNAConvert.dir/JNA/Callback.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/baptiste/Documents/JNA/JNA/Callback.cpp -o CMakeFiles/JNAConvert.dir/JNA/Callback.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/baptiste/git/ParserJNI/JNA/JNA/Callback.cpp -o CMakeFiles/JNAConvert.dir/JNA/Callback.cpp.s
 
 CMakeFiles/JNAConvert.dir/JNA/Callback.cpp.o.requires:
 .PHONY : CMakeFiles/JNAConvert.dir/JNA/Callback.cpp.o.requires
@@ -485,17 +715,17 @@ CMakeFiles/JNAConvert.dir/JNA/Callback.cpp.o.provides.build: CMakeFiles/JNAConve
 
 CMakeFiles/JNAConvert.dir/JNA/Pointer.cpp.o: CMakeFiles/JNAConvert.dir/flags.make
 CMakeFiles/JNAConvert.dir/JNA/Pointer.cpp.o: JNA/Pointer.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/Documents/JNA/CMakeFiles $(CMAKE_PROGRESS_20)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/git/ParserJNI/JNA/CMakeFiles $(CMAKE_PROGRESS_30)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/JNAConvert.dir/JNA/Pointer.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/JNAConvert.dir/JNA/Pointer.cpp.o -c /home/baptiste/Documents/JNA/JNA/Pointer.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/JNAConvert.dir/JNA/Pointer.cpp.o -c /home/baptiste/git/ParserJNI/JNA/JNA/Pointer.cpp
 
 CMakeFiles/JNAConvert.dir/JNA/Pointer.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/JNAConvert.dir/JNA/Pointer.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/baptiste/Documents/JNA/JNA/Pointer.cpp > CMakeFiles/JNAConvert.dir/JNA/Pointer.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/baptiste/git/ParserJNI/JNA/JNA/Pointer.cpp > CMakeFiles/JNAConvert.dir/JNA/Pointer.cpp.i
 
 CMakeFiles/JNAConvert.dir/JNA/Pointer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/JNAConvert.dir/JNA/Pointer.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/baptiste/Documents/JNA/JNA/Pointer.cpp -o CMakeFiles/JNAConvert.dir/JNA/Pointer.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/baptiste/git/ParserJNI/JNA/JNA/Pointer.cpp -o CMakeFiles/JNAConvert.dir/JNA/Pointer.cpp.s
 
 CMakeFiles/JNAConvert.dir/JNA/Pointer.cpp.o.requires:
 .PHONY : CMakeFiles/JNAConvert.dir/JNA/Pointer.cpp.o.requires
@@ -508,17 +738,17 @@ CMakeFiles/JNAConvert.dir/JNA/Pointer.cpp.o.provides.build: CMakeFiles/JNAConver
 
 CMakeFiles/JNAConvert.dir/JNA/TypesDictionnary.cpp.o: CMakeFiles/JNAConvert.dir/flags.make
 CMakeFiles/JNAConvert.dir/JNA/TypesDictionnary.cpp.o: JNA/TypesDictionnary.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/Documents/JNA/CMakeFiles $(CMAKE_PROGRESS_21)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/git/ParserJNI/JNA/CMakeFiles $(CMAKE_PROGRESS_31)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/JNAConvert.dir/JNA/TypesDictionnary.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/JNAConvert.dir/JNA/TypesDictionnary.cpp.o -c /home/baptiste/Documents/JNA/JNA/TypesDictionnary.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/JNAConvert.dir/JNA/TypesDictionnary.cpp.o -c /home/baptiste/git/ParserJNI/JNA/JNA/TypesDictionnary.cpp
 
 CMakeFiles/JNAConvert.dir/JNA/TypesDictionnary.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/JNAConvert.dir/JNA/TypesDictionnary.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/baptiste/Documents/JNA/JNA/TypesDictionnary.cpp > CMakeFiles/JNAConvert.dir/JNA/TypesDictionnary.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/baptiste/git/ParserJNI/JNA/JNA/TypesDictionnary.cpp > CMakeFiles/JNAConvert.dir/JNA/TypesDictionnary.cpp.i
 
 CMakeFiles/JNAConvert.dir/JNA/TypesDictionnary.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/JNAConvert.dir/JNA/TypesDictionnary.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/baptiste/Documents/JNA/JNA/TypesDictionnary.cpp -o CMakeFiles/JNAConvert.dir/JNA/TypesDictionnary.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/baptiste/git/ParserJNI/JNA/JNA/TypesDictionnary.cpp -o CMakeFiles/JNAConvert.dir/JNA/TypesDictionnary.cpp.s
 
 CMakeFiles/JNAConvert.dir/JNA/TypesDictionnary.cpp.o.requires:
 .PHONY : CMakeFiles/JNAConvert.dir/JNA/TypesDictionnary.cpp.o.requires
@@ -531,17 +761,17 @@ CMakeFiles/JNAConvert.dir/JNA/TypesDictionnary.cpp.o.provides.build: CMakeFiles/
 
 CMakeFiles/JNAConvert.dir/JNA/JNAParser.cpp.o: CMakeFiles/JNAConvert.dir/flags.make
 CMakeFiles/JNAConvert.dir/JNA/JNAParser.cpp.o: JNA/JNAParser.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/Documents/JNA/CMakeFiles $(CMAKE_PROGRESS_22)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/git/ParserJNI/JNA/CMakeFiles $(CMAKE_PROGRESS_32)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/JNAConvert.dir/JNA/JNAParser.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/JNAConvert.dir/JNA/JNAParser.cpp.o -c /home/baptiste/Documents/JNA/JNA/JNAParser.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/JNAConvert.dir/JNA/JNAParser.cpp.o -c /home/baptiste/git/ParserJNI/JNA/JNA/JNAParser.cpp
 
 CMakeFiles/JNAConvert.dir/JNA/JNAParser.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/JNAConvert.dir/JNA/JNAParser.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/baptiste/Documents/JNA/JNA/JNAParser.cpp > CMakeFiles/JNAConvert.dir/JNA/JNAParser.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/baptiste/git/ParserJNI/JNA/JNA/JNAParser.cpp > CMakeFiles/JNAConvert.dir/JNA/JNAParser.cpp.i
 
 CMakeFiles/JNAConvert.dir/JNA/JNAParser.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/JNAConvert.dir/JNA/JNAParser.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/baptiste/Documents/JNA/JNA/JNAParser.cpp -o CMakeFiles/JNAConvert.dir/JNA/JNAParser.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/baptiste/git/ParserJNI/JNA/JNA/JNAParser.cpp -o CMakeFiles/JNAConvert.dir/JNA/JNAParser.cpp.s
 
 CMakeFiles/JNAConvert.dir/JNA/JNAParser.cpp.o.requires:
 .PHONY : CMakeFiles/JNAConvert.dir/JNA/JNAParser.cpp.o.requires
@@ -554,17 +784,17 @@ CMakeFiles/JNAConvert.dir/JNA/JNAParser.cpp.o.provides.build: CMakeFiles/JNAConv
 
 CMakeFiles/JNAConvert.dir/JNA/NativeType.cpp.o: CMakeFiles/JNAConvert.dir/flags.make
 CMakeFiles/JNAConvert.dir/JNA/NativeType.cpp.o: JNA/NativeType.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/Documents/JNA/CMakeFiles $(CMAKE_PROGRESS_23)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/git/ParserJNI/JNA/CMakeFiles $(CMAKE_PROGRESS_33)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/JNAConvert.dir/JNA/NativeType.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/JNAConvert.dir/JNA/NativeType.cpp.o -c /home/baptiste/Documents/JNA/JNA/NativeType.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/JNAConvert.dir/JNA/NativeType.cpp.o -c /home/baptiste/git/ParserJNI/JNA/JNA/NativeType.cpp
 
 CMakeFiles/JNAConvert.dir/JNA/NativeType.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/JNAConvert.dir/JNA/NativeType.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/baptiste/Documents/JNA/JNA/NativeType.cpp > CMakeFiles/JNAConvert.dir/JNA/NativeType.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/baptiste/git/ParserJNI/JNA/JNA/NativeType.cpp > CMakeFiles/JNAConvert.dir/JNA/NativeType.cpp.i
 
 CMakeFiles/JNAConvert.dir/JNA/NativeType.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/JNAConvert.dir/JNA/NativeType.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/baptiste/Documents/JNA/JNA/NativeType.cpp -o CMakeFiles/JNAConvert.dir/JNA/NativeType.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/baptiste/git/ParserJNI/JNA/JNA/NativeType.cpp -o CMakeFiles/JNAConvert.dir/JNA/NativeType.cpp.s
 
 CMakeFiles/JNAConvert.dir/JNA/NativeType.cpp.o.requires:
 .PHONY : CMakeFiles/JNAConvert.dir/JNA/NativeType.cpp.o.requires
@@ -577,17 +807,17 @@ CMakeFiles/JNAConvert.dir/JNA/NativeType.cpp.o.provides.build: CMakeFiles/JNACon
 
 CMakeFiles/JNAConvert.dir/JNA/Wrappers/Wrapper.cpp.o: CMakeFiles/JNAConvert.dir/flags.make
 CMakeFiles/JNAConvert.dir/JNA/Wrappers/Wrapper.cpp.o: JNA/Wrappers/Wrapper.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/Documents/JNA/CMakeFiles $(CMAKE_PROGRESS_24)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/git/ParserJNI/JNA/CMakeFiles $(CMAKE_PROGRESS_34)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/JNAConvert.dir/JNA/Wrappers/Wrapper.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/JNAConvert.dir/JNA/Wrappers/Wrapper.cpp.o -c /home/baptiste/Documents/JNA/JNA/Wrappers/Wrapper.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/JNAConvert.dir/JNA/Wrappers/Wrapper.cpp.o -c /home/baptiste/git/ParserJNI/JNA/JNA/Wrappers/Wrapper.cpp
 
 CMakeFiles/JNAConvert.dir/JNA/Wrappers/Wrapper.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/JNAConvert.dir/JNA/Wrappers/Wrapper.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/baptiste/Documents/JNA/JNA/Wrappers/Wrapper.cpp > CMakeFiles/JNAConvert.dir/JNA/Wrappers/Wrapper.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/baptiste/git/ParserJNI/JNA/JNA/Wrappers/Wrapper.cpp > CMakeFiles/JNAConvert.dir/JNA/Wrappers/Wrapper.cpp.i
 
 CMakeFiles/JNAConvert.dir/JNA/Wrappers/Wrapper.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/JNAConvert.dir/JNA/Wrappers/Wrapper.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/baptiste/Documents/JNA/JNA/Wrappers/Wrapper.cpp -o CMakeFiles/JNAConvert.dir/JNA/Wrappers/Wrapper.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/baptiste/git/ParserJNI/JNA/JNA/Wrappers/Wrapper.cpp -o CMakeFiles/JNAConvert.dir/JNA/Wrappers/Wrapper.cpp.s
 
 CMakeFiles/JNAConvert.dir/JNA/Wrappers/Wrapper.cpp.o.requires:
 .PHONY : CMakeFiles/JNAConvert.dir/JNA/Wrappers/Wrapper.cpp.o.requires
@@ -600,17 +830,17 @@ CMakeFiles/JNAConvert.dir/JNA/Wrappers/Wrapper.cpp.o.provides.build: CMakeFiles/
 
 CMakeFiles/JNAConvert.dir/JNA/Wrappers/ReturnWrapper.cpp.o: CMakeFiles/JNAConvert.dir/flags.make
 CMakeFiles/JNAConvert.dir/JNA/Wrappers/ReturnWrapper.cpp.o: JNA/Wrappers/ReturnWrapper.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/Documents/JNA/CMakeFiles $(CMAKE_PROGRESS_25)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/git/ParserJNI/JNA/CMakeFiles $(CMAKE_PROGRESS_35)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/JNAConvert.dir/JNA/Wrappers/ReturnWrapper.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/JNAConvert.dir/JNA/Wrappers/ReturnWrapper.cpp.o -c /home/baptiste/Documents/JNA/JNA/Wrappers/ReturnWrapper.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/JNAConvert.dir/JNA/Wrappers/ReturnWrapper.cpp.o -c /home/baptiste/git/ParserJNI/JNA/JNA/Wrappers/ReturnWrapper.cpp
 
 CMakeFiles/JNAConvert.dir/JNA/Wrappers/ReturnWrapper.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/JNAConvert.dir/JNA/Wrappers/ReturnWrapper.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/baptiste/Documents/JNA/JNA/Wrappers/ReturnWrapper.cpp > CMakeFiles/JNAConvert.dir/JNA/Wrappers/ReturnWrapper.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/baptiste/git/ParserJNI/JNA/JNA/Wrappers/ReturnWrapper.cpp > CMakeFiles/JNAConvert.dir/JNA/Wrappers/ReturnWrapper.cpp.i
 
 CMakeFiles/JNAConvert.dir/JNA/Wrappers/ReturnWrapper.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/JNAConvert.dir/JNA/Wrappers/ReturnWrapper.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/baptiste/Documents/JNA/JNA/Wrappers/ReturnWrapper.cpp -o CMakeFiles/JNAConvert.dir/JNA/Wrappers/ReturnWrapper.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/baptiste/git/ParserJNI/JNA/JNA/Wrappers/ReturnWrapper.cpp -o CMakeFiles/JNAConvert.dir/JNA/Wrappers/ReturnWrapper.cpp.s
 
 CMakeFiles/JNAConvert.dir/JNA/Wrappers/ReturnWrapper.cpp.o.requires:
 .PHONY : CMakeFiles/JNAConvert.dir/JNA/Wrappers/ReturnWrapper.cpp.o.requires
@@ -623,17 +853,17 @@ CMakeFiles/JNAConvert.dir/JNA/Wrappers/ReturnWrapper.cpp.o.provides.build: CMake
 
 CMakeFiles/JNAConvert.dir/JNA/Wrappers/ReturningArray.cpp.o: CMakeFiles/JNAConvert.dir/flags.make
 CMakeFiles/JNAConvert.dir/JNA/Wrappers/ReturningArray.cpp.o: JNA/Wrappers/ReturningArray.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/Documents/JNA/CMakeFiles $(CMAKE_PROGRESS_26)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/git/ParserJNI/JNA/CMakeFiles $(CMAKE_PROGRESS_36)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/JNAConvert.dir/JNA/Wrappers/ReturningArray.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/JNAConvert.dir/JNA/Wrappers/ReturningArray.cpp.o -c /home/baptiste/Documents/JNA/JNA/Wrappers/ReturningArray.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/JNAConvert.dir/JNA/Wrappers/ReturningArray.cpp.o -c /home/baptiste/git/ParserJNI/JNA/JNA/Wrappers/ReturningArray.cpp
 
 CMakeFiles/JNAConvert.dir/JNA/Wrappers/ReturningArray.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/JNAConvert.dir/JNA/Wrappers/ReturningArray.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/baptiste/Documents/JNA/JNA/Wrappers/ReturningArray.cpp > CMakeFiles/JNAConvert.dir/JNA/Wrappers/ReturningArray.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/baptiste/git/ParserJNI/JNA/JNA/Wrappers/ReturningArray.cpp > CMakeFiles/JNAConvert.dir/JNA/Wrappers/ReturningArray.cpp.i
 
 CMakeFiles/JNAConvert.dir/JNA/Wrappers/ReturningArray.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/JNAConvert.dir/JNA/Wrappers/ReturningArray.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/baptiste/Documents/JNA/JNA/Wrappers/ReturningArray.cpp -o CMakeFiles/JNAConvert.dir/JNA/Wrappers/ReturningArray.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/baptiste/git/ParserJNI/JNA/JNA/Wrappers/ReturningArray.cpp -o CMakeFiles/JNAConvert.dir/JNA/Wrappers/ReturningArray.cpp.s
 
 CMakeFiles/JNAConvert.dir/JNA/Wrappers/ReturningArray.cpp.o.requires:
 .PHONY : CMakeFiles/JNAConvert.dir/JNA/Wrappers/ReturningArray.cpp.o.requires
@@ -646,17 +876,17 @@ CMakeFiles/JNAConvert.dir/JNA/Wrappers/ReturningArray.cpp.o.provides.build: CMak
 
 CMakeFiles/JNAConvert.dir/JNA/Wrappers/Default.cpp.o: CMakeFiles/JNAConvert.dir/flags.make
 CMakeFiles/JNAConvert.dir/JNA/Wrappers/Default.cpp.o: JNA/Wrappers/Default.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/Documents/JNA/CMakeFiles $(CMAKE_PROGRESS_27)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/git/ParserJNI/JNA/CMakeFiles $(CMAKE_PROGRESS_37)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/JNAConvert.dir/JNA/Wrappers/Default.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/JNAConvert.dir/JNA/Wrappers/Default.cpp.o -c /home/baptiste/Documents/JNA/JNA/Wrappers/Default.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/JNAConvert.dir/JNA/Wrappers/Default.cpp.o -c /home/baptiste/git/ParserJNI/JNA/JNA/Wrappers/Default.cpp
 
 CMakeFiles/JNAConvert.dir/JNA/Wrappers/Default.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/JNAConvert.dir/JNA/Wrappers/Default.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/baptiste/Documents/JNA/JNA/Wrappers/Default.cpp > CMakeFiles/JNAConvert.dir/JNA/Wrappers/Default.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/baptiste/git/ParserJNI/JNA/JNA/Wrappers/Default.cpp > CMakeFiles/JNAConvert.dir/JNA/Wrappers/Default.cpp.i
 
 CMakeFiles/JNAConvert.dir/JNA/Wrappers/Default.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/JNAConvert.dir/JNA/Wrappers/Default.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/baptiste/Documents/JNA/JNA/Wrappers/Default.cpp -o CMakeFiles/JNAConvert.dir/JNA/Wrappers/Default.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/baptiste/git/ParserJNI/JNA/JNA/Wrappers/Default.cpp -o CMakeFiles/JNAConvert.dir/JNA/Wrappers/Default.cpp.s
 
 CMakeFiles/JNAConvert.dir/JNA/Wrappers/Default.cpp.o.requires:
 .PHONY : CMakeFiles/JNAConvert.dir/JNA/Wrappers/Default.cpp.o.requires
@@ -669,17 +899,17 @@ CMakeFiles/JNAConvert.dir/JNA/Wrappers/Default.cpp.o.provides.build: CMakeFiles/
 
 CMakeFiles/JNAConvert.dir/JNA/Wrappers/ReturningArrayDirect.cpp.o: CMakeFiles/JNAConvert.dir/flags.make
 CMakeFiles/JNAConvert.dir/JNA/Wrappers/ReturningArrayDirect.cpp.o: JNA/Wrappers/ReturningArrayDirect.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/Documents/JNA/CMakeFiles $(CMAKE_PROGRESS_28)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/git/ParserJNI/JNA/CMakeFiles $(CMAKE_PROGRESS_38)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/JNAConvert.dir/JNA/Wrappers/ReturningArrayDirect.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/JNAConvert.dir/JNA/Wrappers/ReturningArrayDirect.cpp.o -c /home/baptiste/Documents/JNA/JNA/Wrappers/ReturningArrayDirect.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/JNAConvert.dir/JNA/Wrappers/ReturningArrayDirect.cpp.o -c /home/baptiste/git/ParserJNI/JNA/JNA/Wrappers/ReturningArrayDirect.cpp
 
 CMakeFiles/JNAConvert.dir/JNA/Wrappers/ReturningArrayDirect.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/JNAConvert.dir/JNA/Wrappers/ReturningArrayDirect.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/baptiste/Documents/JNA/JNA/Wrappers/ReturningArrayDirect.cpp > CMakeFiles/JNAConvert.dir/JNA/Wrappers/ReturningArrayDirect.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/baptiste/git/ParserJNI/JNA/JNA/Wrappers/ReturningArrayDirect.cpp > CMakeFiles/JNAConvert.dir/JNA/Wrappers/ReturningArrayDirect.cpp.i
 
 CMakeFiles/JNAConvert.dir/JNA/Wrappers/ReturningArrayDirect.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/JNAConvert.dir/JNA/Wrappers/ReturningArrayDirect.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/baptiste/Documents/JNA/JNA/Wrappers/ReturningArrayDirect.cpp -o CMakeFiles/JNAConvert.dir/JNA/Wrappers/ReturningArrayDirect.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/baptiste/git/ParserJNI/JNA/JNA/Wrappers/ReturningArrayDirect.cpp -o CMakeFiles/JNAConvert.dir/JNA/Wrappers/ReturningArrayDirect.cpp.s
 
 CMakeFiles/JNAConvert.dir/JNA/Wrappers/ReturningArrayDirect.cpp.o.requires:
 .PHONY : CMakeFiles/JNAConvert.dir/JNA/Wrappers/ReturningArrayDirect.cpp.o.requires
@@ -692,17 +922,17 @@ CMakeFiles/JNAConvert.dir/JNA/Wrappers/ReturningArrayDirect.cpp.o.provides.build
 
 CMakeFiles/JNAConvert.dir/Utils/Output.cpp.o: CMakeFiles/JNAConvert.dir/flags.make
 CMakeFiles/JNAConvert.dir/Utils/Output.cpp.o: Utils/Output.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/Documents/JNA/CMakeFiles $(CMAKE_PROGRESS_29)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/git/ParserJNI/JNA/CMakeFiles $(CMAKE_PROGRESS_39)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/JNAConvert.dir/Utils/Output.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/JNAConvert.dir/Utils/Output.cpp.o -c /home/baptiste/Documents/JNA/Utils/Output.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/JNAConvert.dir/Utils/Output.cpp.o -c /home/baptiste/git/ParserJNI/JNA/Utils/Output.cpp
 
 CMakeFiles/JNAConvert.dir/Utils/Output.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/JNAConvert.dir/Utils/Output.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/baptiste/Documents/JNA/Utils/Output.cpp > CMakeFiles/JNAConvert.dir/Utils/Output.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/baptiste/git/ParserJNI/JNA/Utils/Output.cpp > CMakeFiles/JNAConvert.dir/Utils/Output.cpp.i
 
 CMakeFiles/JNAConvert.dir/Utils/Output.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/JNAConvert.dir/Utils/Output.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/baptiste/Documents/JNA/Utils/Output.cpp -o CMakeFiles/JNAConvert.dir/Utils/Output.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/baptiste/git/ParserJNI/JNA/Utils/Output.cpp -o CMakeFiles/JNAConvert.dir/Utils/Output.cpp.s
 
 CMakeFiles/JNAConvert.dir/Utils/Output.cpp.o.requires:
 .PHONY : CMakeFiles/JNAConvert.dir/Utils/Output.cpp.o.requires
@@ -715,17 +945,17 @@ CMakeFiles/JNAConvert.dir/Utils/Output.cpp.o.provides.build: CMakeFiles/JNAConve
 
 CMakeFiles/JNAConvert.dir/Utils/Parameters.cpp.o: CMakeFiles/JNAConvert.dir/flags.make
 CMakeFiles/JNAConvert.dir/Utils/Parameters.cpp.o: Utils/Parameters.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/Documents/JNA/CMakeFiles $(CMAKE_PROGRESS_30)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/git/ParserJNI/JNA/CMakeFiles $(CMAKE_PROGRESS_40)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/JNAConvert.dir/Utils/Parameters.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/JNAConvert.dir/Utils/Parameters.cpp.o -c /home/baptiste/Documents/JNA/Utils/Parameters.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/JNAConvert.dir/Utils/Parameters.cpp.o -c /home/baptiste/git/ParserJNI/JNA/Utils/Parameters.cpp
 
 CMakeFiles/JNAConvert.dir/Utils/Parameters.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/JNAConvert.dir/Utils/Parameters.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/baptiste/Documents/JNA/Utils/Parameters.cpp > CMakeFiles/JNAConvert.dir/Utils/Parameters.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/baptiste/git/ParserJNI/JNA/Utils/Parameters.cpp > CMakeFiles/JNAConvert.dir/Utils/Parameters.cpp.i
 
 CMakeFiles/JNAConvert.dir/Utils/Parameters.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/JNAConvert.dir/Utils/Parameters.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/baptiste/Documents/JNA/Utils/Parameters.cpp -o CMakeFiles/JNAConvert.dir/Utils/Parameters.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/baptiste/git/ParserJNI/JNA/Utils/Parameters.cpp -o CMakeFiles/JNAConvert.dir/Utils/Parameters.cpp.s
 
 CMakeFiles/JNAConvert.dir/Utils/Parameters.cpp.o.requires:
 .PHONY : CMakeFiles/JNAConvert.dir/Utils/Parameters.cpp.o.requires
@@ -738,17 +968,17 @@ CMakeFiles/JNAConvert.dir/Utils/Parameters.cpp.o.provides.build: CMakeFiles/JNAC
 
 CMakeFiles/JNAConvert.dir/Utils/Displayable.cpp.o: CMakeFiles/JNAConvert.dir/flags.make
 CMakeFiles/JNAConvert.dir/Utils/Displayable.cpp.o: Utils/Displayable.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/Documents/JNA/CMakeFiles $(CMAKE_PROGRESS_31)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/git/ParserJNI/JNA/CMakeFiles $(CMAKE_PROGRESS_41)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/JNAConvert.dir/Utils/Displayable.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/JNAConvert.dir/Utils/Displayable.cpp.o -c /home/baptiste/Documents/JNA/Utils/Displayable.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/JNAConvert.dir/Utils/Displayable.cpp.o -c /home/baptiste/git/ParserJNI/JNA/Utils/Displayable.cpp
 
 CMakeFiles/JNAConvert.dir/Utils/Displayable.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/JNAConvert.dir/Utils/Displayable.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/baptiste/Documents/JNA/Utils/Displayable.cpp > CMakeFiles/JNAConvert.dir/Utils/Displayable.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/baptiste/git/ParserJNI/JNA/Utils/Displayable.cpp > CMakeFiles/JNAConvert.dir/Utils/Displayable.cpp.i
 
 CMakeFiles/JNAConvert.dir/Utils/Displayable.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/JNAConvert.dir/Utils/Displayable.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/baptiste/Documents/JNA/Utils/Displayable.cpp -o CMakeFiles/JNAConvert.dir/Utils/Displayable.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/baptiste/git/ParserJNI/JNA/Utils/Displayable.cpp -o CMakeFiles/JNAConvert.dir/Utils/Displayable.cpp.s
 
 CMakeFiles/JNAConvert.dir/Utils/Displayable.cpp.o.requires:
 .PHONY : CMakeFiles/JNAConvert.dir/Utils/Displayable.cpp.o.requires
@@ -761,17 +991,17 @@ CMakeFiles/JNAConvert.dir/Utils/Displayable.cpp.o.provides.build: CMakeFiles/JNA
 
 CMakeFiles/JNAConvert.dir/Utils/Parser.cpp.o: CMakeFiles/JNAConvert.dir/flags.make
 CMakeFiles/JNAConvert.dir/Utils/Parser.cpp.o: Utils/Parser.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/Documents/JNA/CMakeFiles $(CMAKE_PROGRESS_32)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/git/ParserJNI/JNA/CMakeFiles $(CMAKE_PROGRESS_42)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/JNAConvert.dir/Utils/Parser.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/JNAConvert.dir/Utils/Parser.cpp.o -c /home/baptiste/Documents/JNA/Utils/Parser.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/JNAConvert.dir/Utils/Parser.cpp.o -c /home/baptiste/git/ParserJNI/JNA/Utils/Parser.cpp
 
 CMakeFiles/JNAConvert.dir/Utils/Parser.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/JNAConvert.dir/Utils/Parser.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/baptiste/Documents/JNA/Utils/Parser.cpp > CMakeFiles/JNAConvert.dir/Utils/Parser.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/baptiste/git/ParserJNI/JNA/Utils/Parser.cpp > CMakeFiles/JNAConvert.dir/Utils/Parser.cpp.i
 
 CMakeFiles/JNAConvert.dir/Utils/Parser.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/JNAConvert.dir/Utils/Parser.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/baptiste/Documents/JNA/Utils/Parser.cpp -o CMakeFiles/JNAConvert.dir/Utils/Parser.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/baptiste/git/ParserJNI/JNA/Utils/Parser.cpp -o CMakeFiles/JNAConvert.dir/Utils/Parser.cpp.s
 
 CMakeFiles/JNAConvert.dir/Utils/Parser.cpp.o.requires:
 .PHONY : CMakeFiles/JNAConvert.dir/Utils/Parser.cpp.o.requires
@@ -784,17 +1014,17 @@ CMakeFiles/JNAConvert.dir/Utils/Parser.cpp.o.provides.build: CMakeFiles/JNAConve
 
 CMakeFiles/JNAConvert.dir/Utils/Utils.cpp.o: CMakeFiles/JNAConvert.dir/flags.make
 CMakeFiles/JNAConvert.dir/Utils/Utils.cpp.o: Utils/Utils.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/Documents/JNA/CMakeFiles $(CMAKE_PROGRESS_33)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/git/ParserJNI/JNA/CMakeFiles $(CMAKE_PROGRESS_43)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/JNAConvert.dir/Utils/Utils.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/JNAConvert.dir/Utils/Utils.cpp.o -c /home/baptiste/Documents/JNA/Utils/Utils.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/JNAConvert.dir/Utils/Utils.cpp.o -c /home/baptiste/git/ParserJNI/JNA/Utils/Utils.cpp
 
 CMakeFiles/JNAConvert.dir/Utils/Utils.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/JNAConvert.dir/Utils/Utils.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/baptiste/Documents/JNA/Utils/Utils.cpp > CMakeFiles/JNAConvert.dir/Utils/Utils.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/baptiste/git/ParserJNI/JNA/Utils/Utils.cpp > CMakeFiles/JNAConvert.dir/Utils/Utils.cpp.i
 
 CMakeFiles/JNAConvert.dir/Utils/Utils.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/JNAConvert.dir/Utils/Utils.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/baptiste/Documents/JNA/Utils/Utils.cpp -o CMakeFiles/JNAConvert.dir/Utils/Utils.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/baptiste/git/ParserJNI/JNA/Utils/Utils.cpp -o CMakeFiles/JNAConvert.dir/Utils/Utils.cpp.s
 
 CMakeFiles/JNAConvert.dir/Utils/Utils.cpp.o.requires:
 .PHONY : CMakeFiles/JNAConvert.dir/Utils/Utils.cpp.o.requires
@@ -807,17 +1037,17 @@ CMakeFiles/JNAConvert.dir/Utils/Utils.cpp.o.provides.build: CMakeFiles/JNAConver
 
 CMakeFiles/JNAConvert.dir/c_parser.c.o: CMakeFiles/JNAConvert.dir/flags.make
 CMakeFiles/JNAConvert.dir/c_parser.c.o: c_parser.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/Documents/JNA/CMakeFiles $(CMAKE_PROGRESS_34)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/git/ParserJNI/JNA/CMakeFiles $(CMAKE_PROGRESS_44)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object CMakeFiles/JNAConvert.dir/c_parser.c.o"
-	/usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -w -o CMakeFiles/JNAConvert.dir/c_parser.c.o   -c /home/baptiste/Documents/JNA/c_parser.c
+	/usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -w -o CMakeFiles/JNAConvert.dir/c_parser.c.o   -c /home/baptiste/git/ParserJNI/JNA/c_parser.c
 
 CMakeFiles/JNAConvert.dir/c_parser.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/JNAConvert.dir/c_parser.c.i"
-	/usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -w -E /home/baptiste/Documents/JNA/c_parser.c > CMakeFiles/JNAConvert.dir/c_parser.c.i
+	/usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -w -E /home/baptiste/git/ParserJNI/JNA/c_parser.c > CMakeFiles/JNAConvert.dir/c_parser.c.i
 
 CMakeFiles/JNAConvert.dir/c_parser.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/JNAConvert.dir/c_parser.c.s"
-	/usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -w -S /home/baptiste/Documents/JNA/c_parser.c -o CMakeFiles/JNAConvert.dir/c_parser.c.s
+	/usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -w -S /home/baptiste/git/ParserJNI/JNA/c_parser.c -o CMakeFiles/JNAConvert.dir/c_parser.c.s
 
 CMakeFiles/JNAConvert.dir/c_parser.c.o.requires:
 .PHONY : CMakeFiles/JNAConvert.dir/c_parser.c.o.requires
@@ -829,9 +1059,9 @@ CMakeFiles/JNAConvert.dir/c_parser.c.o.provides: CMakeFiles/JNAConvert.dir/c_par
 CMakeFiles/JNAConvert.dir/c_parser.c.o.provides.build: CMakeFiles/JNAConvert.dir/c_parser.c.o
 
 c_parser.c: flex/c_parser.l
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/Documents/JNA/CMakeFiles $(CMAKE_PROGRESS_35)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/baptiste/git/ParserJNI/JNA/CMakeFiles $(CMAKE_PROGRESS_45)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "[FLEX][C_PARSER] Building scanner with flex 2.5.35"
-	/usr/bin/flex --header-file=/home/baptiste/Documents/JNA/flex.h -s --yylineno -o/home/baptiste/Documents/JNA/c_parser.c flex/c_parser.l
+	/usr/bin/flex --header-file=/home/baptiste/git/ParserJNI/JNA/flex.h -s --yylineno -o/home/baptiste/git/ParserJNI/JNA/c_parser.c flex/c_parser.l
 
 # Object files for target JNAConvert
 JNAConvert_OBJECTS = \
@@ -844,7 +1074,17 @@ JNAConvert_OBJECTS = \
 "CMakeFiles/JNAConvert.dir/C/Consts.cpp.o" \
 "CMakeFiles/JNAConvert.dir/C/Typedef.cpp.o" \
 "CMakeFiles/JNAConvert.dir/C/Function.cpp.o" \
+"CMakeFiles/JNAConvert.dir/JNI/OutputCpp.cpp.o" \
+"CMakeFiles/JNAConvert.dir/JNI/test.cpp.o" \
 "CMakeFiles/JNAConvert.dir/JNI/JNIParser.cpp.o" \
+"CMakeFiles/JNAConvert.dir/JNI/OutputJava.cpp.o" \
+"CMakeFiles/JNAConvert.dir/JNI/TypesDictionnary.cpp.o" \
+"CMakeFiles/JNAConvert.dir/JNI/Types/Type.cpp.o" \
+"CMakeFiles/JNAConvert.dir/JNI/Types/Struct.cpp.o" \
+"CMakeFiles/JNAConvert.dir/JNI/Types/Enum.cpp.o" \
+"CMakeFiles/JNAConvert.dir/JNI/Types/Pointer.cpp.o" \
+"CMakeFiles/JNAConvert.dir/JNI/Types/NativeType.cpp.o" \
+"CMakeFiles/JNAConvert.dir/JNI/Types/CallBack.cpp.o" \
 "CMakeFiles/JNAConvert.dir/Modules/Module.cpp.o" \
 "CMakeFiles/JNAConvert.dir/Modules/ModuleList.cpp.o" \
 "CMakeFiles/JNAConvert.dir/JNA/Type.cpp.o" \
@@ -882,7 +1122,17 @@ JNAConvert: CMakeFiles/JNAConvert.dir/C/Callback.cpp.o
 JNAConvert: CMakeFiles/JNAConvert.dir/C/Consts.cpp.o
 JNAConvert: CMakeFiles/JNAConvert.dir/C/Typedef.cpp.o
 JNAConvert: CMakeFiles/JNAConvert.dir/C/Function.cpp.o
+JNAConvert: CMakeFiles/JNAConvert.dir/JNI/OutputCpp.cpp.o
+JNAConvert: CMakeFiles/JNAConvert.dir/JNI/test.cpp.o
 JNAConvert: CMakeFiles/JNAConvert.dir/JNI/JNIParser.cpp.o
+JNAConvert: CMakeFiles/JNAConvert.dir/JNI/OutputJava.cpp.o
+JNAConvert: CMakeFiles/JNAConvert.dir/JNI/TypesDictionnary.cpp.o
+JNAConvert: CMakeFiles/JNAConvert.dir/JNI/Types/Type.cpp.o
+JNAConvert: CMakeFiles/JNAConvert.dir/JNI/Types/Struct.cpp.o
+JNAConvert: CMakeFiles/JNAConvert.dir/JNI/Types/Enum.cpp.o
+JNAConvert: CMakeFiles/JNAConvert.dir/JNI/Types/Pointer.cpp.o
+JNAConvert: CMakeFiles/JNAConvert.dir/JNI/Types/NativeType.cpp.o
+JNAConvert: CMakeFiles/JNAConvert.dir/JNI/Types/CallBack.cpp.o
 JNAConvert: CMakeFiles/JNAConvert.dir/Modules/Module.cpp.o
 JNAConvert: CMakeFiles/JNAConvert.dir/Modules/ModuleList.cpp.o
 JNAConvert: CMakeFiles/JNAConvert.dir/JNA/Type.cpp.o
@@ -926,7 +1176,17 @@ CMakeFiles/JNAConvert.dir/requires: CMakeFiles/JNAConvert.dir/C/Callback.cpp.o.r
 CMakeFiles/JNAConvert.dir/requires: CMakeFiles/JNAConvert.dir/C/Consts.cpp.o.requires
 CMakeFiles/JNAConvert.dir/requires: CMakeFiles/JNAConvert.dir/C/Typedef.cpp.o.requires
 CMakeFiles/JNAConvert.dir/requires: CMakeFiles/JNAConvert.dir/C/Function.cpp.o.requires
+CMakeFiles/JNAConvert.dir/requires: CMakeFiles/JNAConvert.dir/JNI/OutputCpp.cpp.o.requires
+CMakeFiles/JNAConvert.dir/requires: CMakeFiles/JNAConvert.dir/JNI/test.cpp.o.requires
 CMakeFiles/JNAConvert.dir/requires: CMakeFiles/JNAConvert.dir/JNI/JNIParser.cpp.o.requires
+CMakeFiles/JNAConvert.dir/requires: CMakeFiles/JNAConvert.dir/JNI/OutputJava.cpp.o.requires
+CMakeFiles/JNAConvert.dir/requires: CMakeFiles/JNAConvert.dir/JNI/TypesDictionnary.cpp.o.requires
+CMakeFiles/JNAConvert.dir/requires: CMakeFiles/JNAConvert.dir/JNI/Types/Type.cpp.o.requires
+CMakeFiles/JNAConvert.dir/requires: CMakeFiles/JNAConvert.dir/JNI/Types/Struct.cpp.o.requires
+CMakeFiles/JNAConvert.dir/requires: CMakeFiles/JNAConvert.dir/JNI/Types/Enum.cpp.o.requires
+CMakeFiles/JNAConvert.dir/requires: CMakeFiles/JNAConvert.dir/JNI/Types/Pointer.cpp.o.requires
+CMakeFiles/JNAConvert.dir/requires: CMakeFiles/JNAConvert.dir/JNI/Types/NativeType.cpp.o.requires
+CMakeFiles/JNAConvert.dir/requires: CMakeFiles/JNAConvert.dir/JNI/Types/CallBack.cpp.o.requires
 CMakeFiles/JNAConvert.dir/requires: CMakeFiles/JNAConvert.dir/Modules/Module.cpp.o.requires
 CMakeFiles/JNAConvert.dir/requires: CMakeFiles/JNAConvert.dir/Modules/ModuleList.cpp.o.requires
 CMakeFiles/JNAConvert.dir/requires: CMakeFiles/JNAConvert.dir/JNA/Type.cpp.o.requires
@@ -958,6 +1218,6 @@ CMakeFiles/JNAConvert.dir/clean:
 .PHONY : CMakeFiles/JNAConvert.dir/clean
 
 CMakeFiles/JNAConvert.dir/depend: c_parser.c
-	cd /home/baptiste/Documents/JNA && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/baptiste/Documents/JNA /home/baptiste/Documents/JNA /home/baptiste/Documents/JNA /home/baptiste/Documents/JNA /home/baptiste/Documents/JNA/CMakeFiles/JNAConvert.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/baptiste/git/ParserJNI/JNA && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/baptiste/git/ParserJNI/JNA /home/baptiste/git/ParserJNI/JNA /home/baptiste/git/ParserJNI/JNA /home/baptiste/git/ParserJNI/JNA /home/baptiste/git/ParserJNI/JNA/CMakeFiles/JNAConvert.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/JNAConvert.dir/depend
 

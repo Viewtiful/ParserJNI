@@ -354,15 +354,71 @@ CMakeFiles/JNAConvert.dir/JNI/JNIParser.cpp.o: C/Function.h
 CMakeFiles/JNAConvert.dir/JNI/JNIParser.cpp.o: C/Param.h
 CMakeFiles/JNAConvert.dir/JNI/JNIParser.cpp.o: C/Struct.h
 CMakeFiles/JNAConvert.dir/JNI/JNIParser.cpp.o: C/Typedef.h
+CMakeFiles/JNAConvert.dir/JNI/JNIParser.cpp.o: JNA/Module.h
 CMakeFiles/JNAConvert.dir/JNI/JNIParser.cpp.o: JNA/PackageList.h
+CMakeFiles/JNAConvert.dir/JNI/JNIParser.cpp.o: JNA/SupportClass.h
 CMakeFiles/JNAConvert.dir/JNI/JNIParser.cpp.o: JNA/Type.h
 CMakeFiles/JNAConvert.dir/JNI/JNIParser.cpp.o: JNA/TypesDictionnary.h
 CMakeFiles/JNAConvert.dir/JNI/JNIParser.cpp.o: JNI/JNIParser.h
+CMakeFiles/JNAConvert.dir/JNI/JNIParser.cpp.o: JNI/OutputCpp.h
+CMakeFiles/JNAConvert.dir/JNI/JNIParser.cpp.o: JNI/OutputJava.h
+CMakeFiles/JNAConvert.dir/JNI/JNIParser.cpp.o: JNI/Types/Type.h
+CMakeFiles/JNAConvert.dir/JNI/JNIParser.cpp.o: JNI/TypesDictionnary.h
 CMakeFiles/JNAConvert.dir/JNI/JNIParser.cpp.o: Modules/Module.h
 CMakeFiles/JNAConvert.dir/JNI/JNIParser.cpp.o: Modules/ModuleList.h
 CMakeFiles/JNAConvert.dir/JNI/JNIParser.cpp.o: Utils/Displayable.h
+CMakeFiles/JNAConvert.dir/JNI/JNIParser.cpp.o: Utils/Output.h
 CMakeFiles/JNAConvert.dir/JNI/JNIParser.cpp.o: Utils/Parameters.h
 CMakeFiles/JNAConvert.dir/JNI/JNIParser.cpp.o: Utils/Parser.h
+
+CMakeFiles/JNAConvert.dir/JNI/OutputCpp.cpp.o: JNI/OutputCpp.cpp
+CMakeFiles/JNAConvert.dir/JNI/OutputCpp.cpp.o: C/Callback.h
+CMakeFiles/JNAConvert.dir/JNI/OutputCpp.cpp.o: C/Consts.h
+CMakeFiles/JNAConvert.dir/JNI/OutputCpp.cpp.o: C/Enum.h
+CMakeFiles/JNAConvert.dir/JNI/OutputCpp.cpp.o: C/Function.h
+CMakeFiles/JNAConvert.dir/JNI/OutputCpp.cpp.o: C/Param.h
+CMakeFiles/JNAConvert.dir/JNI/OutputCpp.cpp.o: C/Struct.h
+CMakeFiles/JNAConvert.dir/JNI/OutputCpp.cpp.o: C/Typedef.h
+CMakeFiles/JNAConvert.dir/JNI/OutputCpp.cpp.o: JNI/OutputCpp.h
+CMakeFiles/JNAConvert.dir/JNI/OutputCpp.cpp.o: Modules/Module.h
+CMakeFiles/JNAConvert.dir/JNI/OutputCpp.cpp.o: Modules/ModuleList.h
+CMakeFiles/JNAConvert.dir/JNI/OutputCpp.cpp.o: Utils/Displayable.h
+CMakeFiles/JNAConvert.dir/JNI/OutputCpp.cpp.o: Utils/Utils.h
+
+CMakeFiles/JNAConvert.dir/JNI/OutputJava.cpp.o: JNI/OutputJava.cpp
+CMakeFiles/JNAConvert.dir/JNI/OutputJava.cpp.o: JNI/OutputJava.h
+CMakeFiles/JNAConvert.dir/JNI/OutputJava.cpp.o: C/Callback.h
+CMakeFiles/JNAConvert.dir/JNI/OutputJava.cpp.o: C/Consts.h
+CMakeFiles/JNAConvert.dir/JNI/OutputJava.cpp.o: C/Enum.h
+CMakeFiles/JNAConvert.dir/JNI/OutputJava.cpp.o: C/Function.h
+CMakeFiles/JNAConvert.dir/JNI/OutputJava.cpp.o: C/Param.h
+CMakeFiles/JNAConvert.dir/JNI/OutputJava.cpp.o: C/Struct.h
+CMakeFiles/JNAConvert.dir/JNI/OutputJava.cpp.o: C/Typedef.h
+CMakeFiles/JNAConvert.dir/JNI/OutputJava.cpp.o: Modules/Module.h
+CMakeFiles/JNAConvert.dir/JNI/OutputJava.cpp.o: Modules/ModuleList.h
+CMakeFiles/JNAConvert.dir/JNI/OutputJava.cpp.o: Utils/Displayable.h
+
+CMakeFiles/JNAConvert.dir/JNI/Types/CallBack.cpp.o: JNI/Types/CallBack.cpp
+
+CMakeFiles/JNAConvert.dir/JNI/Types/Enum.cpp.o: JNI/Types/Enum.cpp
+
+CMakeFiles/JNAConvert.dir/JNI/Types/NativeType.cpp.o: JNI/Types/NativeType.cpp
+CMakeFiles/JNAConvert.dir/JNI/Types/NativeType.cpp.o: JNI/Types/NativeType.h
+CMakeFiles/JNAConvert.dir/JNI/Types/NativeType.cpp.o: JNI/Types/Type.h
+
+CMakeFiles/JNAConvert.dir/JNI/Types/Pointer.cpp.o: JNI/Types/Pointer.cpp
+
+CMakeFiles/JNAConvert.dir/JNI/Types/Struct.cpp.o: JNI/Types/Struct.cpp
+
+CMakeFiles/JNAConvert.dir/JNI/Types/Type.cpp.o: JNI/Types/Type.cpp
+CMakeFiles/JNAConvert.dir/JNI/Types/Type.cpp.o: JNI/Types/Type.h
+
+CMakeFiles/JNAConvert.dir/JNI/TypesDictionnary.cpp.o: JNI/TypesDictionnary.cpp
+CMakeFiles/JNAConvert.dir/JNI/TypesDictionnary.cpp.o: JNI/Types/Type.h
+CMakeFiles/JNAConvert.dir/JNI/TypesDictionnary.cpp.o: JNI/TypesDictionnary.h
+
+CMakeFiles/JNAConvert.dir/JNI/test.cpp.o: JNI/test.cpp
+CMakeFiles/JNAConvert.dir/JNI/test.cpp.o: JNI/test.h
 
 CMakeFiles/JNAConvert.dir/Modules/Module.cpp.o: Modules/Module.cpp
 CMakeFiles/JNAConvert.dir/Modules/Module.cpp.o: C/Callback.h
@@ -404,6 +460,8 @@ CMakeFiles/JNAConvert.dir/Utils/Parser.cpp.o: C/Struct.h
 CMakeFiles/JNAConvert.dir/Utils/Parser.cpp.o: C/Typedef.h
 CMakeFiles/JNAConvert.dir/Utils/Parser.cpp.o: JNA/JNAParser.h
 CMakeFiles/JNAConvert.dir/Utils/Parser.cpp.o: JNI/JNIParser.h
+CMakeFiles/JNAConvert.dir/Utils/Parser.cpp.o: JNI/OutputCpp.h
+CMakeFiles/JNAConvert.dir/Utils/Parser.cpp.o: JNI/OutputJava.h
 CMakeFiles/JNAConvert.dir/Utils/Parser.cpp.o: Modules/Module.h
 CMakeFiles/JNAConvert.dir/Utils/Parser.cpp.o: Modules/ModuleList.h
 CMakeFiles/JNAConvert.dir/Utils/Parser.cpp.o: Utils/Displayable.h

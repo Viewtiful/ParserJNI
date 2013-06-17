@@ -6,3 +6,21 @@
 
 #IncludeRegexTransform: 
 
+/home/baptiste/git/ParserJNI/JNA/c_parser.c
+stdio.h
+-
+string.h
+-
+errno.h
+-
+stdlib.h
+-
+inttypes.h
+-
+flex/tokens.h
+/home/baptiste/git/ParserJNI/JNA/flex/tokens.h
+unistd.h
+-
+
+/home/baptiste/git/ParserJNI/JNA/flex/tokens.h
+

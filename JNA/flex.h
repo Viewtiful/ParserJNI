@@ -2,9 +2,9 @@
 #define yyHEADER_H 1
 #define yyIN_HEADER 1
 
-#line 6 "/home/baptiste/Documents/JNA/flex.h"
+#line 6 "/home/baptiste/git/ParserJNI/JNA/flex.h"
 
-#line 8 "/home/baptiste/Documents/JNA/flex.h"
+#line 8 "/home/baptiste/git/ParserJNI/JNA/flex.h"
 
 #define  YY_INT_ALIGNED short int
 
@@ -327,6 +327,6 @@ extern int yylex (void);
 #line 53 "flex/c_parser.l"
 
 
-#line 331 "/home/baptiste/Documents/JNA/flex.h"
+#line 331 "/home/baptiste/git/ParserJNI/JNA/flex.h"
 #undef yyIN_HEADER
 #endif /* yyHEADER_H */
