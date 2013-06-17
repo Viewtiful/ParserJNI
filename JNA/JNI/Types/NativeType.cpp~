@@ -5,7 +5,7 @@
 #define TYPES nsJNI::TYPES
 #include "JNI/Types/NativeType.h"
 using namespace nsJNI;
-
+using namespace std;
 NativeType::NativeType(string javaType,string cppType) : Type(javaType,cppType)
 {
 	

@@ -2,6 +2,7 @@
 #include <map>
 #include <fstream>
 #include "C/Enum.h"
+#include "JNI/TypesDictionnary.h"
 using namespace nsModules;
 using namespace std;
 using namespace nsC;
@@ -12,7 +13,7 @@ namespace nsJNI
 	{
 	
 		public:
-			OutputJava();
+			OutputJava(TypesDictionnary *dictionnary);
 			~OutputJava();
 			string getJavaType(string inputType);
 			void addJavaType(string inputType, string javaType);
@@ -29,7 +30,7 @@ namespace nsJNI
 			void printEnumElement(ofstream &f,Enum::EnumValue value);
 			void printJavaHeader(ofstream &f,string type,string CHeaderFile);
 		protected:
-		map<string, string> toJavaType;
+		TypesDictionnary *dictionnary;
 		
 		
 	};
