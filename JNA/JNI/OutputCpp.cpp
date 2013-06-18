@@ -7,23 +7,6 @@ using namespace nsJNI;
 OutputCpp::OutputCpp(TypesDictionnary *dictionnary)
 {
 	this->dictionnary = dictionnary;
-	addCppType("int","jint");
-	addCppType("float","jfloat");
-	addCppType("double","jdouble");
-	addCppType("char","jbyte");
-	addCppType("void","void");
-	addCppType("short","jshort");
-	addCppType("bool","jboolean");
-	addCppType("long","jlong");
-
-	addVMSignature("int", "I");
-	addVMSignature("float", "F");
-	addVMSignature("double", "D");
-	addVMSignature("char", "B");
-	addVMSignature("void", "V");
-	addVMSignature("short", "S");
-	addVMSignature("bool", "Z");
-	addVMSignature("long", "J"); 
 }
 
 OutputCpp::~OutputCpp() {
@@ -48,7 +31,8 @@ void OutputCpp::addVMSignature(string inputType, string vmSignature) {
 }
 
 string OutputCpp::getVMSignature(string inputType) {
-	return toVMSignature[inputType];
+//	return toVMSignature[inputType];
+	return dictionnary->convertVM(inputType);
 }
 
 void OutputCpp::printPrototype(string typeRetour)
