@@ -13,25 +13,11 @@ OutputCpp::~OutputCpp() {
 	outputFile.close();
 }
 
-void OutputCpp::addCppType(std::string inputType, std::string cppType)
-{
-	toCppType.insert(std::pair<std::string,std::string>(inputType,cppType) );	
-}
-
-
-std::string OutputCpp::getCppType(std::string inputType)
-{
-//	return toCppType[inputType];
+std::string OutputCpp::getCppType(std::string inputType) {
 	return dictionnary->convertCpp(inputType);
-
-}
-
-void OutputCpp::addVMSignature(string inputType, string vmSignature) {
-	toVMSignature.insert(std::pair<string, string>(inputType, vmSignature));
 }
 
 string OutputCpp::getVMSignature(string inputType) {
-//	return toVMSignature[inputType];
 	return dictionnary->convertVM(inputType);
 }
 
