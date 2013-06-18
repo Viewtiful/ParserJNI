@@ -14,7 +14,7 @@ namespace nsJNI
 	class OutputCpp{
 	
 	public:
-		OutputCpp();
+		OutputCpp(TypesDictionnary *dictionnary);
 		~OutputCpp();
 		void addCppType(std::string inputType, std::string cppType);
 		void addVMSignature(string inputType, string vmSignature);

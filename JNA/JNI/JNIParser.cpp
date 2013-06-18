@@ -22,8 +22,9 @@ JNIPARSER::~JNIParser() {
 
 int JNIPARSER::run(nsModules::Module::vector modules) 
 {
-    OutputCpp *cpp = new OutputCpp();
+//    OutputCpp *cpp = new OutputCpp();
     TypesDictionnary *dico = new TypesDictionnary();
+	OutputCpp *cpp = new OutputCpp(dico);
     OutputJava *java = new OutputJava(dico);
     
     // Recupération des proto de fonctions 

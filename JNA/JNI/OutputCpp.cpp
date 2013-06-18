@@ -4,8 +4,9 @@
 using namespace std;
 using nsUtils::stringReplace;
 using namespace nsJNI;
-OutputCpp::OutputCpp()
+OutputCpp::OutputCpp(TypesDictionnary *dictionnary)
 {
+	this->dictionnary = dictionnary;
 	addCppType("int","jint");
 	addCppType("float","jfloat");
 	addCppType("double","jdouble");
