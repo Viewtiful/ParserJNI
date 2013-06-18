@@ -2,6 +2,8 @@
 #include <map>
 #include <vector>
 #include <fstream>
+#include "JNI/TypesDictionnary.h"
+
 using namespace nsModules;
 using namespace std;
 using namespace nsC;
@@ -31,6 +33,7 @@ namespace nsJNI
 		map<string,string> toCppType;
 		map<string, string> toVMSignature;
 		ofstream outputFile;		
+		TypesDictionnary *dictionnary;
 	};
 
 }
