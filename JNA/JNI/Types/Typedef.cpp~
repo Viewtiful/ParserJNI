@@ -1,4 +1,4 @@
-#include "JNI/Types/Typedef.cpp"
+#include "JNI/Types/Typedef.h"
 
 using namespace std;
 using namespace nsJNI;

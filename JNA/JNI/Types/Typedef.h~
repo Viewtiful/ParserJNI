@@ -10,7 +10,6 @@
 #include <iostream>
 #include <map>
 #include "JNI/Types/Type.h"
-using namespace nsModules;
 namespace nsJNI
 {
     class Typedef : public Type

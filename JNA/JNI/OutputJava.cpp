@@ -12,7 +12,7 @@ OutputJava::OutputJava(TypesDictionnary *dictionnary)
 string OutputJava::getJavaType(string inputType)
 {
 	cout << "Get" << endl;
-	return dictionnary->getJavaType(inputType);
+	return dictionnary->convertJava(inputType);
 }
 
 

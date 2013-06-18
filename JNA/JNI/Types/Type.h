@@ -16,8 +16,8 @@ namespace nsJNI {
 		string javaType;
         string cppType;
         string vmSignature;
-        virtual void outputJava() = 0;
-        virtual void outputCpp() = 0;
+        virtual std::string outputJava() = 0;
+        virtual std::string outputCpp() = 0;
         string getJavaType();
         string getCppType();
         string getVMSignature();

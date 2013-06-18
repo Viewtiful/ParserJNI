@@ -28,7 +28,7 @@ void TYPESDICTIONNARY::addBaseType()
 	conversionMap["bool"] = new NativeType("boolean","jboolean","Z");
 	conversionMap["char"] = new NativeType("byte","jbyte","B");
 	conversionMap["void"] = new NativeType("void","void","V");
-
+	conversionMap["size_t"] = new NativeType("long","jlong","J");
 }
 
 void TYPESDICTIONNARY::convertJava(Module::vector modules)
@@ -39,15 +39,14 @@ void TYPESDICTIONNARY::convertJava(Module::vector modules)
 void TYPESDICTIONNARY::convertCpp(Module::vector modules)
 {
 
-
 }
 
-string TYPESDICTIONNARY::getJavaType(string Ctype)
+string TYPESDICTIONNARY::convertJava(string Ctype)
 {
 	return conversionMap[Ctype]->getJavaType();
 }
 
-string TYPESDICTIONNARY::getCppType(string Ctype)
+string TYPESDICTIONNARY::convertCpp(string Ctype)
 {
 	return conversionMap[Ctype]->getCppType();
 }

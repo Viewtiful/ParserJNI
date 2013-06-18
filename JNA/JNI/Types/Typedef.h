@@ -15,7 +15,7 @@ namespace nsJNI
     class Typedef : public Type
     {
 		public:
-	        Typedef();
+	        Typedef(string javaType, string cppType, string VMSignature, string structName);
 	        virtual ~Typedef();
         
 		protected:

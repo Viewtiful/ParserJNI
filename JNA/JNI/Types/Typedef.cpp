@@ -3,7 +3,7 @@
 using namespace std;
 using namespace nsJNI;
 
-Typedef::Typedef(string javaType, string cppType, string VMSignature, string structName) : Type(javaType,cppType)
+Typedef::Typedef(string javaType, string cppType, string VMSignature, string structName) : Type(javaType,cppType,VMSignature)
 {	
 	this->structName = structName;
 }

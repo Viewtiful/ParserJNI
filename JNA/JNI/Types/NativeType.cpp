@@ -2,7 +2,7 @@
  *
  * Body for JNIParser
  */
-#define TYPES nsJNI::TYPES
+#define NATIVETYPE nsJNI::NATIVETYPE
 #include "JNI/Types/NativeType.h"
 using namespace nsJNI;
 using namespace std;
@@ -18,14 +18,14 @@ NativeType::~NativeType()
 
 }
 
-void NativeType::outputJava()
+std::string NativeType::outputJava()
 {
-	cout << "JavaType = "<< javaType << endl;
+	return javaType;
 }
 
-void NativeType::outputCpp()
+std::string NativeType::outputCpp()
 {
-	cout << "JavaType = "<< cppType << endl;
+	return cppType ;
 }
 
 

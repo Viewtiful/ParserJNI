@@ -34,13 +34,17 @@ namespace nsJNI
         void addBaseType();
 		void convertJava(Module::vector modules);
 		void convertCpp(Module::vector modules);
+		
+		string convertJava(string Ctype);
+		string convertCpp(string Ctype);
+		
 		string getJavaType(string Ctype);
 		string getCppType(string Ctype);
       protected:
 
         /** Add base types (int, size_t, char, those stuff) */
-        std::map<std::string,Type*> conversionMap;
-
+        std::map<string, Type*> conversionMap;
+		
     };
 }
 

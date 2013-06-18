@@ -20,7 +20,7 @@ namespace nsJNI {
         virtual void outputCpp() = 0;
         string getJavaType();
         string getCppType();
-        string getVmSignature();
+        string getVMSignature();
     };
 }
 
