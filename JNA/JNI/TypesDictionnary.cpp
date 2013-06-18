@@ -51,5 +51,10 @@ string TYPESDICTIONNARY::convertCpp(string Ctype)
 	return conversionMap[Ctype]->getCppType();
 }
 
+string TYPESDICTIONNARY::convertVM(string Ctype)
+{
+	return conversionMap[Ctype]->getVMSignature();
+}
+
 #undef TYPESDICTIONNARY
 

@@ -38,7 +38,8 @@ void OutputCpp::addCppType(std::string inputType, std::string cppType)
 
 std::string OutputCpp::getCppType(std::string inputType)
 {
-	return toCppType[inputType];
+//	return toCppType[inputType];
+	return dictionnary->convertCpp(inputType);
 
 }
 

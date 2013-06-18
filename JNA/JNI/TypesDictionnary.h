@@ -37,9 +37,11 @@ namespace nsJNI
 		
 		string convertJava(string Ctype);
 		string convertCpp(string Ctype);
+		string convertVM(string Ctype);
 		
 		string getJavaType(string Ctype);
 		string getCppType(string Ctype);
+		string getVMType(string Ctype);
       protected:
 
         /** Add base types (int, size_t, char, those stuff) */
