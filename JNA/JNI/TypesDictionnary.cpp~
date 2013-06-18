@@ -41,15 +41,42 @@ void TYPESDICTIONNARY::convertCpp(Module::vector modules)
 
 }
 
-string TYPESDICTIONNARY::getJavaType(string Ctype)
+string TYPESDICTIONNARY::convertJava(string Ctype)
 {
-	return conversionMap[Ctype]->getJavaType();
+	return conversionMap[Ctype]->outputJava();
 }
 
-string TYPESDICTIONNARY::getCppType(string Ctype)
+string TYPESDICTIONNARY::convertCpp(string Ctype)
 {
-	return conversionMap[Ctype]->getCppType();
+	return conversionMap[Ctype]->outputCpp();
 }
 
+string TYPESDICTIONNARY::convertVM(string Ctype)
+{
+	return conversionMap[Ctype]->getVMSignature();
+}
+
+void TYPESDICTIONNARY::addTypedef(Typedef t)
+{
+	string cType = t.getCType();
+	string targetType = t.getTargetType();
+	string VMSignature;
+	string javaType;
+	if(nbIndirections(cType)>0)
+	{
+		javaType = "long";
+		
+	//Type *currentTypedef = NativeType(string javaType,string cppType,string VMSignature)
+}
+
+int TYPESDICTIONNARY::nbIndirections(string CType)
+{
+	int strSize = CType.size();
+	int nbIndirection = 0;
+	for(int i = strSize-1;i>-1;i--)
+		nbIndirection++;
+	return nbIndirection;
+
+}
 #undef TYPESDICTIONNARY
 

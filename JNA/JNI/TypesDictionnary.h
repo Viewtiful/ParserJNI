@@ -11,8 +11,10 @@
 #include <map>
 #include "JNI/Types/Type.h"
 #include "JNI/Types/NativeType.h"
+#include "JNI/Types/Typedef.h"
 #include "Modules/Module.h"
 using namespace nsModules;
+using namespace nsC;
 namespace nsJNI
 {
     /** A dictionnary of all available types, and their converted names.
@@ -42,6 +44,9 @@ namespace nsJNI
 		string getJavaType(string Ctype);
 		string getCppType(string Ctype);
 		string getVMType(string Ctype);
+		void addTypedef(Typedef t);
+		int nbIndirections(string CType);
+
       protected:
 
         /** Add base types (int, size_t, char, those stuff) */

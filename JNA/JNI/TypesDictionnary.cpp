@@ -43,12 +43,12 @@ void TYPESDICTIONNARY::convertCpp(Module::vector modules)
 
 string TYPESDICTIONNARY::convertJava(string Ctype)
 {
-	return conversionMap[Ctype]->getJavaType();
+	return conversionMap[Ctype]->outputJava();
 }
 
 string TYPESDICTIONNARY::convertCpp(string Ctype)
 {
-	return conversionMap[Ctype]->getCppType();
+	return conversionMap[Ctype]->outputCpp();
 }
 
 string TYPESDICTIONNARY::convertVM(string Ctype)
@@ -56,5 +56,18 @@ string TYPESDICTIONNARY::convertVM(string Ctype)
 	return conversionMap[Ctype]->getVMSignature();
 }
 
+void TYPESDICTIONNARY::addTypedef(Typedef t)
+{
+}
+
+int TYPESDICTIONNARY::nbIndirections(string CType)
+{
+	int strSize = CType.size();
+	int nbIndirection = 0;
+	for(int i = strSize-1;i>-1;i--)
+		nbIndirection++;
+	return nbIndirection;
+
+}
 #undef TYPESDICTIONNARY
 

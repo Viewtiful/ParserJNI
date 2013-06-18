@@ -13,5 +13,19 @@ Typedef::~Typedef()
 
 }
 
+std::string Typedef::outputJava()
+{
 
+
+
+}
+
+
+std::string Typedef::outputCpp()
+{
+
+
+
+
+}
 

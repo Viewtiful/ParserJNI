@@ -38,17 +38,13 @@ int JNIPARSER::run(nsModules::Module::vector modules)
     	cpp->convert(modules[i]);
     	cout << "Java" << endl;
     	java->convert(f,modules[i]);
-    	Typedef::vector typedefs = modules[i].getTypedefs();
     	Struct::vector structs = modules[i].getStructs();
-    	cout << "Number de typedef" << typedefs.size() << endl;
     	cout << "Number structs" << structs.size() << endl;
     	for(int l = 0;l<structs.size();l++)
     	{
     		cout << structs[l] << endl;
     		cout << "Nb indirection " << structs[l].getTypedefIndirection() << endl;
     	}
-    	for(int k = 0;k<typedefs.size();k++)
-    		cout << "Real C" << typedefs[k].getCType() << "Target Type = " << typedefs[k].getTargetType() << endl;
     		
     }
     std::cout << "Nombre de Modules = " << modules.size() << std::endl; 
