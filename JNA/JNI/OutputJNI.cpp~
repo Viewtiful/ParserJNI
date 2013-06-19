@@ -1,41 +1,41 @@
-#include "JNI/OutputCpp.h"
+#include "JNI/OutputJNI.h"
 #include "Utils/Utils.h"
 
 using namespace std;
 using nsUtils::stringReplace;
 using namespace nsJNI;
-OutputCpp::OutputCpp(TypesDictionnary *dictionnary)
+OutputJNI::OutputJNI(TypesDictionnary *dictionnary)
 {
 	this->dictionnary = dictionnary;
 }
 
-OutputCpp::~OutputCpp() {
+OutputJNI::~OutputJNI() {
 	outputFile.close();
 }
 
-std::string OutputCpp::getCppType(std::string inputType) {
-	return dictionnary->convertCpp(inputType);
+std::string OutputJNI::getCppType(std::string inputType) {
+	return dictionnary->convertJNI(inputType);
 }
 
-string OutputCpp::getVMSignature(string inputType) {
+string OutputJNI::getVMSignature(string inputType) {
 	return dictionnary->convertVM(inputType);
 }
 
-void OutputCpp::printPrototype(string typeRetour)
+void OutputJNI::printPrototype(string typeRetour)
 {
-	string returnType = getCppType(typeRetour);
+	string returnType = getJNIType(typeRetour);
 	if(returnType  == "")  //TODO revoir ça !
 		returnType = "jobject";   
 
 	outputFile << "JNIEXPORT " << returnType << " JNICALL ";
 }
 
-void OutputCpp::printName(string name)
+void OutputJNI::printName(string name)
 {
 	outputFile << name << "(";
 }
 
-void OutputCpp::printParameters(Param::vector& parameters)
+void OutputJNI::printParameters(Param::vector& parameters)
 {
 	int i;
 	outputFile << "JNIEnv *env, jobject o ";
@@ -47,12 +47,12 @@ void OutputCpp::printParameters(Param::vector& parameters)
 	outputFile << ")\n";
 }
 
-void OutputCpp::printParameter(Param parameter)
+void OutputJNI::printParameter(Param parameter)
 {
-	outputFile << getCppType(parameter.getType()) << " " << parameter.getName();
+	outputFile << getJNIType(parameter.getType()) << " " << parameter.getName();
 }
 
-void OutputCpp::addInclude() {
+void OutputJNI::addInclude() {
 	string include(
 			"#include <jni.h>\n"
 			"#include <stdio.h>\n"
@@ -73,11 +73,11 @@ void OutputCpp::addInclude() {
 	outputFile << include;
 }
 
-void OutputCpp::addContent() {   //TODO faudra revoir ça !
+void OutputJNI::addContent() {   //TODO faudra revoir ça !
 	outputFile << "\t printf(\"Hello\");";
 }
 
-void OutputCpp::addFunctionPrototype(Function::vector fcts) {
+void OutputJNI::addFunctionPrototype(Function::vector fcts) {
 	for(int k = 0;k<fcts.size();k++)
 	{   
 		string typeRetour = fcts[k].getReturnType();
@@ -92,7 +92,7 @@ void OutputCpp::addFunctionPrototype(Function::vector fcts) {
 	}
 }
 
-void OutputCpp::addNativeFunctionTable(Function::vector fcts, string fileName) {
+void OutputJNI::addNativeFunctionTable(Function::vector fcts, string fileName) {
 	outputFile << "static JNINativeMethod method_table[] = {\n";
 	for(int k = 0; k < fcts.size(); k++) {
 		outputFile << "\t{ \"" << fcts[k].getName() << "\", \"";
@@ -122,7 +122,7 @@ void OutputCpp::addNativeFunctionTable(Function::vector fcts, string fileName) {
 
 }
 
-void OutputCpp::convert(Module& module)
+void OutputJNI::convert(Module& module)
 {
 	string fileName = module.getModuleName() +  ".c";
 	outputFile.open(fileName.c_str());
@@ -140,7 +140,7 @@ void OutputCpp::convert(Module& module)
 	outputFile.close();
 }
 
-void OutputCpp::generateJNIOnload(string filename) {
+void OutputJNI::generateJNIOnload(string filename) {
 	string content(
 			"jint JNI_OnLoad (JavaVM *vm, void *reserved) {\n"
 			"\tJNIEnv *env;\n"

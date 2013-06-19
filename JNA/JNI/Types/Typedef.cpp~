@@ -24,12 +24,12 @@ std::string Typedef::outputCpp()
 	
 }
 
-string getTargetType()
+string Typedef::getTargetType()
 {
 	return _targetType;
 }
 
-string getStructName()
+string Typedef::getStructName()
 {
 	return _structName;
 }

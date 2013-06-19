@@ -19,7 +19,7 @@ std::string Typedef::outputJava()
 }
 
 
-std::string Typedef::outputCpp()
+std::string Typedef::outputJNI()
 {
 	
 }

@@ -13,9 +13,9 @@ namespace nsJNI {
     {
       public:
         virtual ~NativeType();
-		NativeType(string javaType,string cppType,string VMSignature);
+		NativeType(string javaType,string jniType,string VMSignature);
         std::string outputJava();
-        std::string outputCpp();
+        std::string OutputJNI();
        
     };
 }

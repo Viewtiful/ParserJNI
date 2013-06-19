@@ -38,7 +38,7 @@ void TYPESDICTIONNARY::convertJava(Module::vector modules)
 	
 }
 
-void TYPESDICTIONNARY::convertCpp(Module::vector modules)
+void TYPESDICTIONNARY::convertJNI(Module::vector modules)
 {
 
 }
@@ -48,9 +48,9 @@ string TYPESDICTIONNARY::convertJava(string Ctype)
 	return _conversionMap[Ctype]->outputJava();
 }
 
-string TYPESDICTIONNARY::convertCpp(string Ctype)
+string TYPESDICTIONNARY::convertJNI(string Ctype)
 {
-	return _conversionMap[Ctype]->outputCpp();
+	return _conversionMap[Ctype]->OutputJNI();
 }
 
 string TYPESDICTIONNARY::convertVM(string Ctype)

@@ -9,7 +9,7 @@ using namespace std;
 
 NativeType::NativeType(string javaType, string cppType, string VMSignature) : Type(javaType, cppType, VMSignature)
 {
-	cout << "toto" << endl;
+
 }
 
 
@@ -23,7 +23,7 @@ std::string NativeType::outputJava()
 	return getJavaType();
 }
 
-std::string NativeType::outputCpp()
+std::string NativeType::OutputJNI()
 {
 	return getCppType();
 }

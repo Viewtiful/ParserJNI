@@ -35,17 +35,17 @@ namespace nsJNI
         virtual ~TypesDictionnary();
         void addBaseType();
 		void convertJava(Module::vector modules);
-		void convertCpp(Module::vector modules);
+		void convertJNI(Module::vector modules);
 		
 		string convertJava(string Ctype);
-		string convertCpp(string Ctype);
+		string convertJNI(string Ctype);
 		string convertVM(string Ctype);
 		
-		string getJavaType(string Ctype);
-		string getCppType(string Ctype);
-		string getVMType(string Ctype);
+		/*string getJavaType(string Ctype);
+		string getJNIType(string Ctype);
+		string getVMType(string Ctype);*/
 		
-		void addTypedef(Typedef t);
+		//void addTypedef(Typedef t);
 		int nbIndirections(string CType);
 		void addTypedefs(nsC::Typedef::vector typedefs);
 		void addStruct(nsC::Struct::vector structs);

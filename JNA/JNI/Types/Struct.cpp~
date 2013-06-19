@@ -1,7 +1,7 @@
 #include "JNI/Types/Struct.h"
 using namespace nsJNI;
 
-Struct::Struct(string javaType, string cppType, string VMSignature, nsC::Struct cStruct, TypesDictionnary* dictionnary) : Type(javaType,cppType,VMSignature)
+Struct::Struct(string javaType, string jniType, string VMSignature, nsC::Struct cStruct, TypesDictionnary* dictionnary) : Type(javaType,cppType,VMSignature)
 {
 	this->cStruct = cStruct;
 	this->dictionnary = dictionnary;
@@ -18,7 +18,7 @@ std::string Struct::outputJava()
 	cout << "}" << endl;
 }
 
-std::string Struct::outputCpp()
+std::string Struct::outputJNI()
 {
 
 }

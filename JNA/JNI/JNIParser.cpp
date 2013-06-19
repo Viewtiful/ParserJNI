@@ -25,7 +25,7 @@ int JNIPARSER::run(nsModules::Module::vector modules)
 {
 	
     TypesDictionnary *dico = new TypesDictionnary();
-    OutputCpp *cpp = new OutputCpp(dico);
+    OutputJNI *cpp = new OutputJNI(dico);
     OutputJava *java = new OutputJava(dico);
     
     // Recupération des proto de fonctions 

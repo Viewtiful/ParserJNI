@@ -50,7 +50,7 @@ string TYPESDICTIONNARY::convertJava(string Ctype)
 
 string TYPESDICTIONNARY::convertCpp(string Ctype)
 {
-	return _conversionMap[Ctype]->outputCpp();
+	return _conversionMap[Ctype]->OutputJNI();
 }
 
 string TYPESDICTIONNARY::convertVM(string Ctype)
@@ -74,17 +74,7 @@ void TYPESDICTIONNARY::addTypedefs(nsC::Typedef::vector typedefs)
 }
 void TYPESDICTIONNARY::addStruct(nsC::Struct::vector structs)
 {
-	string javaType = "struct";
-	string cppType = "jobject";
-	string vmSignature = "test";
-	for(int i = 0;i<structs.size();i++)
-	{
-		nsJNI::Struct *test = new nsJNI::Struct(javaType, cppType, vmSignature, structs[i], this) ;
-		cout << structs[i] << endl;
-		cout << "Typedef" << structs[i].getTypedef() << endl;
-		_conversionMap[structs[i].getTypedef()] = test; 
-		test->outputJava();
-	}
+	
 }
 
 #undef TYPESDICTIONNARY

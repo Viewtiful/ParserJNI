@@ -18,9 +18,9 @@ namespace nsJNI {
     {
       public:
         virtual ~Struct();
-		Struct(string javaType,string cppType,string vmSignature,nsC::Struct cStruct,TypesDictionnary *dictionnary);
+		Struct(string javaType,string jniType,string vmSignature,nsC::Struct cStruct,TypesDictionnary *dictionnary);
 		std::string outputJava();
-        std::string outputCpp();
+        std::string outputJNI();
         
         protected:
         	nsC::Struct cStruct;

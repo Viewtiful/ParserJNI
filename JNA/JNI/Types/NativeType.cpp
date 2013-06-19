@@ -7,7 +7,7 @@
 using namespace nsJNI;
 using namespace std;
 
-NativeType::NativeType(string javaType, string cppType, string VMSignature) : Type(javaType, cppType, VMSignature)
+NativeType::NativeType(string javaType, string jniType, string VMSignature) : Type(javaType, jniType, VMSignature)
 {
 
 }
@@ -23,9 +23,9 @@ std::string NativeType::outputJava()
 	return getJavaType();
 }
 
-std::string NativeType::outputCpp()
+std::string NativeType::OutputJNI()
 {
-	return getCppType();
+	return getJNIType();
 }
 
 

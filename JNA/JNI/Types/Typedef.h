@@ -19,7 +19,7 @@ namespace nsJNI
 	        Typedef(string javaType, string cppType, string VMSignature, string structName);
 	        virtual ~Typedef();
 	        std::string outputJava();
-        	std::string outputCpp();
+        	std::string outputJNI();
         	string getStructName();
         	string getTargetType();
         

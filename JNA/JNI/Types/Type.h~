@@ -15,16 +15,16 @@ namespace nsJNI {
         virtual ~Type();
 		Type(string javaType,string cppType,string VMSignature);
 		virtual std::string outputJava() =0;
-        virtual std::string outputCpp() =0;
+        virtual std::string OutputJNI() =0;
         
         string getJavaType();
-        string getCppType();
+        string getJNIType();
         string getVMSignature();
         
       protected:
-      	string javaType;
-      	string cppType;
-      	string VMSignature;
+      	string _javaType;
+      	string _jniType;
+      	string _VMSignature;
       
     };
 }

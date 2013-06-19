@@ -32,7 +32,7 @@ int JNIPARSER::run(nsModules::Module::vector modules)
    for(int i = 0; i<modules.size(); ++i)
 	{
       string filename = modules[i].getModuleName() + ".java";
-      filename = nsUtils::toJavaName(filename, false, false, true)
+      filename = nsUtils::toJavaName(filename, false, false, true);
     	ofstream f(filename.c_str());   //faudra revoir ça (Un peu mieux)!
     
     	cout << "C++" << endl;
