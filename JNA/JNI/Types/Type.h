@@ -15,7 +15,7 @@ namespace nsJNI {
         virtual ~Type();
 		Type(string javaType,string jniType,string VMSignature);
 		virtual std::string outputJava() =0;
-        virtual std::string OutputJNI() =0;
+        virtual std::string outputJNI() =0;
         
         string getJavaType();
         string getJNIType();

@@ -50,7 +50,7 @@ string TYPESDICTIONNARY::convertJava(string Ctype)
 
 string TYPESDICTIONNARY::convertJNI(string Ctype)
 {
-	return _conversionMap[Ctype]->OutputJNI();
+	return _conversionMap[Ctype]->outputJNI();
 }
 
 string TYPESDICTIONNARY::convertVM(string Ctype)
@@ -83,20 +83,15 @@ void TYPESDICTIONNARY::addStruct(nsC::Struct::vector structs)
       bool haveTypedef(!CStruct.getTypedef().empty());
       bool haveFields(CStruct.getFields().size() != 0);
       bool isTypedefPointer(CStruct.getTypedefIndirection() == 1);
+      bool isDeepPointer(CStruct.getTypedefIndirection() > 1);
 
-      if (haveName && !haveTypedef) {
+      if (haveName || haveTypedef && haveFields && !isTypedefPointer && !isDeepPointer) {
          std::cout << CStruct.getName() << std::endl;
-         /*_conversionMap[CStruct.getName()] = */
-         Struct ee = new Struct(CStruct.getName(), CStruct.getName(), "idk", CStruct, this);
+         _conversionMap[CStruct.getName()] = new Struct(CStruct.getName(), CStruct.getName(), "idk", CStruct, this);
       }
-      if(haveTypedef)
-          std::cout << CStruct.getTypedef() << std::endl;
-      if(haveFields)
-         std::cout << "create structure" << std::endl;
-      if(isTypedefPointer)
-         std::cout << "crée un typedef " << CStruct.getTypedef() << std::endl;
-      
-
+      if(isTypedefPointer) {
+         //crée un typedef
+      }
    }
 }
 

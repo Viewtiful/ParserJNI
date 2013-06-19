@@ -23,7 +23,7 @@ std::string NativeType::outputJava()
 	return getJavaType();
 }
 
-std::string NativeType::OutputJNI()
+std::string NativeType::outputJNI()
 {
 	return getJNIType();
 }

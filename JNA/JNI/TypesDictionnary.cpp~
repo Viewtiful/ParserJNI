@@ -50,7 +50,7 @@ string TYPESDICTIONNARY::convertJava(string Ctype)
 
 string TYPESDICTIONNARY::convertJNI(string Ctype)
 {
-	return _conversionMap[Ctype]->OutputJNI();
+	return _conversionMap[Ctype]->outputJNI();
 }
 
 string TYPESDICTIONNARY::convertVM(string Ctype)
@@ -86,9 +86,7 @@ void TYPESDICTIONNARY::addStruct(nsC::Struct::vector structs)
 
       if (haveName && !haveTypedef) {
          std::cout << CStruct.getName() << std::endl;
-         /*_conversionMap[CStruct.getName()] = */
-         //Struct ee = new Struct(CStruct.getName(), CStruct.getName(), "idk", CStruct, this);
-         NativeType *n = new NativeType("short","jshort","S"); 
+         _conversionMap[CStruct.getName()] = new Struct(CStruct.getName(), CStruct.getName(), "idk", CStruct, this);
       }
       if(haveTypedef)
           std::cout << CStruct.getTypedef() << std::endl;
