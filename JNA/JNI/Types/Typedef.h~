@@ -17,13 +17,14 @@ namespace nsJNI
 		public:
 	        Typedef(string javaType, string cppType, string VMSignature, string structName);
 	        virtual ~Typedef();
-	        virtual std::string outputJava() = 0;
-        	virtual std::string outputCpp() = 0;
-        
+	        std::string outputJava();
+        	std::string outputCpp();
+        	string getStructName();
+        	string getTargetType();
         
 		protected:
-			string structName;
-				
+			string _structName;
+			string _targetType;	
     };
 }
 

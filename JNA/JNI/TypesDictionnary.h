@@ -44,6 +44,7 @@ namespace nsJNI
 		string getJavaType(string Ctype);
 		string getCppType(string Ctype);
 		string getVMType(string Ctype);
+		
 		void addTypedef(Typedef t);
 		int nbIndirections(string CType);
 		void addTypedefs(nsC::Typedef::vector typedefs);
@@ -53,7 +54,7 @@ namespace nsJNI
       protected:
 
         /** Add base types (int, size_t, char, those stuff) */
-        std::map<string, Type*> conversionMap;
+        std::map<std::string, Type*> _conversionMap;
 		
     };
 }

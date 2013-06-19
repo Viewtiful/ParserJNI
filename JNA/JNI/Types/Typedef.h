@@ -10,6 +10,7 @@
 #include <iostream>
 #include <map>
 #include "JNI/Types/Type.h"
+using namespace std;
 namespace nsJNI
 {
     class Typedef : public Type
@@ -19,11 +20,12 @@ namespace nsJNI
 	        virtual ~Typedef();
 	        std::string outputJava();
         	std::string outputCpp();
-        
+        	string getStructName();
+        	string getTargetType();
         
 		protected:
-			string structName;
-				
+			string _structName;
+			string _targetType;	
     };
 }
 

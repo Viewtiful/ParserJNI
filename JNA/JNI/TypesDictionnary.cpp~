@@ -11,7 +11,7 @@ using namespace nsC;
 using namespace nsModules;
 TYPESDICTIONNARY::TypesDictionnary()
 {
-    addBaseType();    
+	addBaseType();   
 }
 
 TYPESDICTIONNARY::~TypesDictionnary()
@@ -22,15 +22,15 @@ TYPESDICTIONNARY::~TypesDictionnary()
 
 void TYPESDICTIONNARY::addBaseType()
 {
-	conversionMap["short"] = new NativeType("short","jshort","S"); 
-	conversionMap["int"] = new NativeType("int","jint","I");
-	conversionMap["long"] = new NativeType("long","jlong","J");
-	conversionMap["float"] = new NativeType("float","jfloat","F");
-	conversionMap["double"] = new NativeType("double","jdouble","D");
-	conversionMap["bool"] = new NativeType("boolean","jboolean","Z");
-	conversionMap["char"] = new NativeType("byte","jbyte","B");
-	conversionMap["void"] = new NativeType("void","void","V");
-	conversionMap["size_t"] = new NativeType("long","jlong","J");
+	_conversionMap["short"] = new NativeType("short","jshort","S"); 
+	_conversionMap["int"] = new NativeType("int","jint","I");
+	_conversionMap["long"] = new NativeType("long","jlong","J");
+	_conversionMap["float"] = new NativeType("float","jfloat","F");
+	_conversionMap["double"] = new NativeType("double","jdouble","D");
+	_conversionMap["bool"] = new NativeType("boolean","jboolean","Z");
+	_conversionMap["char"] = new NativeType("byte","jbyte","B");
+	_conversionMap["void"] = new NativeType("void","void","V");
+	_conversionMap["size_t"] = new NativeType("long","jlong","J");
 }
 
 void TYPESDICTIONNARY::convertJava(Module::vector modules)
@@ -45,17 +45,17 @@ void TYPESDICTIONNARY::convertCpp(Module::vector modules)
 
 string TYPESDICTIONNARY::convertJava(string Ctype)
 {
-	return conversionMap[Ctype]->outputJava();
+	return _conversionMap[Ctype]->outputJava();
 }
 
 string TYPESDICTIONNARY::convertCpp(string Ctype)
 {
-	return conversionMap[Ctype]->outputCpp();
+	return _conversionMap[Ctype]->outputCpp();
 }
 
 string TYPESDICTIONNARY::convertVM(string Ctype)
 {
-	return conversionMap[Ctype]->getVMSignature();
+	return _conversionMap[Ctype]->getVMSignature();
 }
 
 int TYPESDICTIONNARY::nbIndirections(string CType)
@@ -70,25 +70,22 @@ int TYPESDICTIONNARY::nbIndirections(string CType)
 
 void TYPESDICTIONNARY::addTypedefs(nsC::Typedef::vector typedefs)
 {
-	for(int i = 0;i<typedefs.size();i++)
-	{
-	
-		
-	
-	}
 
 }
 void TYPESDICTIONNARY::addStruct(nsC::Struct::vector structs)
 {
 	string javaType = "struct";
-	string cppType = "struct";
+	string cppType = "jobject";
 	string vmSignature = "test";
 	for(int i = 0;i<structs.size();i++)
 	{
-		nsJNI::Struct test* = new nsJNI::Struct(javaType, cppType, vmSignature, structs[i], this) ;
-		conversionMap[structs[i].getTypedef()] = test; 
+		nsJNI::Struct *test = new nsJNI::Struct(javaType, cppType, vmSignature, structs[i], this) ;
+		cout << structs[i] << endl;
+		cout << "Typedef" << structs[i].getTypedef() << endl;
+		_conversionMap[structs[i].getTypedef()] = test; 
 		test->outputJava();
 	}
 }
+
 #undef TYPESDICTIONNARY
 

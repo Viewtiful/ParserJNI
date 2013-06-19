@@ -6,28 +6,30 @@
 #include "JNI/Types/Type.h"
 
 using namespace nsJNI;
-Type::Type(string javaType,string cppType,string vmSignature)
+using namespace std;
+Type::Type(string javaType,string cppType,string VMSignature)
 {
-	this->javaType = javaType;
-	this->cppType = cppType;
-	this->vmSignature = vmSignature;
+	this->_javaType = javaType;
+	this->_cppType = cppType;
+	this->_VMSignature = VMSignature;
 }
 
-Type::~Type(){
+Type::~Type()
+{
 
 }
 
 string Type::getJavaType()
 {
-	return javaType;
+	return _javaType;
 }
 
 string Type::getCppType()
 {
-	return cppType;
+	return _cppType;
 }
 
 string Type::getVMSignature()
 {
-	return vmSignature;
+	return _VMSignature;
 }
