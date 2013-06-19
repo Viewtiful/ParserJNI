@@ -41,10 +41,6 @@ namespace nsJNI
 		string convertJNI(string Ctype);
 		string convertVM(string Ctype);
 		
-		/*string getJavaType(string Ctype);
-		string getJNIType(string Ctype);
-		string getVMType(string Ctype);*/
-		
 		//void addTypedef(Typedef t);
 		int nbIndirections(string CType);
 		void addTypedefs(nsC::Typedef::vector typedefs);

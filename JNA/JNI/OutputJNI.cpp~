@@ -1,5 +1,6 @@
 #include "JNI/OutputJNI.h"
 #include "Utils/Utils.h"
+#include "Utils/Utils.h"
 
 using namespace std;
 using nsUtils::stringReplace;
@@ -13,7 +14,7 @@ OutputJNI::~OutputJNI() {
 	outputFile.close();
 }
 
-std::string OutputJNI::getCppType(std::string inputType) {
+std::string OutputJNI::getJNIType(std::string inputType) {
 	return dictionnary->convertJNI(inputType);
 }
 
@@ -127,7 +128,7 @@ void OutputJNI::convert(Module& module)
 	string fileName = module.getModuleName() +  ".c";
 	outputFile.open(fileName.c_str());
 	fileName = module.getModuleName();
-	fileName[0] = toupper(fileName[0]);
+	fileName = nsUtils::toJavaName(fileName, false, false, true);
 
 	//add include in the .c file
 	addInclude();
