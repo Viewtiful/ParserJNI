@@ -21,15 +21,15 @@ Type::~Type()
 
 string Type::getJavaType()
 {
-	return javaType;
+	return _javaType;
 }
 
 string Type::getCppType()
 {
-	return cppType;
+	return _cppType;
 }
 
 string Type::getVMSignature()
 {
-	return VMSignature;
+	return _VMSignature;
 }

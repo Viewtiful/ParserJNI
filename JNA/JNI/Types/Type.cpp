@@ -9,9 +9,9 @@ using namespace nsJNI;
 using namespace std;
 Type::Type(string javaType,string cppType,string VMSignature)
 {
-	this->_javaType = javaType;
-	this->_cppType = cppType;
-	this->_VMSignature = VMSignature;
+	_javaType = javaType;
+	_cppType = cppType;
+	_VMSignature = VMSignature;
 }
 
 Type::~Type()
