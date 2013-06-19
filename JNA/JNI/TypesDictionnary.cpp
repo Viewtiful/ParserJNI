@@ -6,7 +6,9 @@
 #include <fstream>
 #include "JNI/TypesDictionnary.h"
 #define TYPESDICTIONNARY nsJNI::TypesDictionnary
-
+using namespace nsJNI;
+using namespace nsC;
+using namespace nsModules;
 TYPESDICTIONNARY::TypesDictionnary()
 {
     addBaseType();    
@@ -56,10 +58,6 @@ string TYPESDICTIONNARY::convertVM(string Ctype)
 	return conversionMap[Ctype]->getVMSignature();
 }
 
-void TYPESDICTIONNARY::addTypedef(Typedef t)
-{
-}
-
 int TYPESDICTIONNARY::nbIndirections(string CType)
 {
 	int strSize = CType.size();
@@ -68,6 +66,29 @@ int TYPESDICTIONNARY::nbIndirections(string CType)
 		nbIndirection++;
 	return nbIndirection;
 
+}
+
+void TYPESDICTIONNARY::addTypedefs(nsC::Typedef::vector typedefs)
+{
+	for(int i = 0;i<typedefs.size();i++)
+	{
+	
+		
+	
+	}
+
+}
+void TYPESDICTIONNARY::addStruct(nsC::Struct::vector structs)
+{
+	string javaType = "struct";
+	string cppType = "struct";
+	string vmSignature = "test";
+	for(int i = 0;i<structs.size();i++)
+	{
+		nsJNI::Struct *test = new nsJNI::Struct(javaType, cppType, vmSignature, structs[i], this) ;
+		conversionMap[structs[i].getTypedef()] = test; 
+		test->outputJava();
+	}
 }
 #undef TYPESDICTIONNARY
 

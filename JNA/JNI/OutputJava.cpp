@@ -11,7 +11,6 @@ OutputJava::OutputJava(TypesDictionnary *dictionnary)
 
 string OutputJava::getJavaType(string inputType)
 {
-	cout << "Get" << endl;
 	return dictionnary->convertJava(inputType);
 }
 

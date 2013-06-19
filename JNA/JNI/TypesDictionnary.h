@@ -12,9 +12,9 @@
 #include "JNI/Types/Type.h"
 #include "JNI/Types/NativeType.h"
 #include "JNI/Types/Typedef.h"
+#include "JNI/Types/Struct.h"
 #include "Modules/Module.h"
 using namespace nsModules;
-using namespace nsC;
 namespace nsJNI
 {
     /** A dictionnary of all available types, and their converted names.
@@ -46,6 +46,9 @@ namespace nsJNI
 		string getVMType(string Ctype);
 		void addTypedef(Typedef t);
 		int nbIndirections(string CType);
+		void addTypedefs(nsC::Typedef::vector typedefs);
+		void addStruct(nsC::Struct::vector structs);
+
 
       protected:
 

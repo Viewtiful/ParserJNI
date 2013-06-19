@@ -15,7 +15,7 @@ Typedef::~Typedef()
 
 std::string Typedef::outputJava()
 {
-
+	
 
 
 }

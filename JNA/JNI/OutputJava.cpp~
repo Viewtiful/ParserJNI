@@ -11,8 +11,7 @@ OutputJava::OutputJava(TypesDictionnary *dictionnary)
 
 string OutputJava::getJavaType(string inputType)
 {
-	cout << "Get" << endl;
-	return dictionnary->getJavaType(inputType);
+	return dictionnary->convertJava(inputType);
 }
 
 
@@ -146,3 +145,23 @@ void OutputJava::convert(ofstream &f,Module& module)
 
 	f << "}" << endl;
 }
+
+void OutputJava::addTypedefs(nsC::Typedef::vector typedefs)
+{
+	for(int i = 0;i<typedefs.size();i++)
+	{
+	
+		
+	
+	}
+
+}
+
+void OutputJava::addStruct(nsC::Struct::vector structs)
+{
+	for(int i = 0;i<structs.size();i++)
+	{
+	
+		
+	
+	}
