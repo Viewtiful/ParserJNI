@@ -95,5 +95,13 @@ void TYPESDICTIONNARY::addStruct(nsC::Struct::vector structs)
    }
 }
 
+void TYPESDICTIONNARY::addEnums(nsC::Enum::vector enums) {
+	Enum::create(enums, this);
+}
+
+void TYPESDICTIONNARY::addToMap(string cType, Type *type) {
+	_conversionMap[cType] = type;
+}
+
 #undef TYPESDICTIONNARY
 

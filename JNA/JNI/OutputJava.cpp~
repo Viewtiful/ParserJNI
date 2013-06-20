@@ -47,8 +47,11 @@ void OutputJava::printParameters(ofstream &f,Param::vector& parameters)
 		if(parameters[i].getIndirections()>0 && i+1<n)
 		{
 			Param size = parameters[i+1];
-				if(parameters[i].getName() + "_size" == size.getName()){
-		}
+			if(parameters[i].getName() + "_size" == size.getName())
+			{
+				cout << "Array" << endl;
+			}
+		}	
 		printParameter(f,parameters[i]);
 		if(i+1<parameters.size())
 			f << ",";
@@ -92,7 +95,7 @@ void OutputJava::convertFunctions(ofstream &f,Function::vector fcts)
 	}
 }
 
-void OutputJava::printEnumElement(ofstream &f,Enum::EnumValue value)
+/*void OutputJava::printEnumElement(ofstream &f,Enum::EnumValue value)
 {
 	f << value.first << "(" << value.second << ")";
 }
@@ -139,7 +142,7 @@ void OutputJava::convertEnums(ofstream &f, Enum::vector enums)
 		printEnum(f,enums[i]);
 		f << "}" << endl;			
 	}
-}
+}*/
 
 void OutputJava::convert(ofstream &f,Module& module)
 {

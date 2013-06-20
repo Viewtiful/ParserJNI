@@ -13,6 +13,7 @@
 #include "JNI/Types/NativeType.h"
 #include "JNI/Types/Typedef.h"
 #include "JNI/Types/Struct.h"
+#include "JNI/Types/Enum.h"
 #include "JNI/Types/Pointer.h"
 #include "Modules/Module.h"
 using namespace nsModules;
@@ -37,6 +38,7 @@ namespace nsJNI
         void addBaseType();
 		void convertJava(Module::vector modules);
 		void convertJNI(Module::vector modules);
+		void addToMap(string cType, Type *type);
 		
 		string convertJava(string Ctype);
 		string convertJNI(string Ctype);
@@ -44,6 +46,7 @@ namespace nsJNI
 		int nbIndirections(string CType);
 		void addTypedefs(nsC::Typedef::vector typedefs);
 		void addStruct(nsC::Struct::vector structs);
+	   void addEnums(nsC::Enum::vector enums);
 
 
       protected:

@@ -36,6 +36,9 @@ int JNIPARSER::run(nsModules::Module::vector modules)
    		ofstream f(filename.c_str());   //faudra revoir ça (Un peu mieux)!
     
    		dico->addStruct(modules[i].getStructs());
+		   if(modules[i].getEnums().size() > 0)
+			   dico->addEnums(modules[i].getEnums());
+
    		cout << "C++" << endl;
    		
    		jni->convert(modules[i]);

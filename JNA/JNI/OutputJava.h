@@ -25,9 +25,9 @@ namespace nsJNI
 			void printJavaHeader(ofstream &f,string CHeaderFile);
 			void printLoadLibrary(ofstream &f,string library);
 			void convertFunctions(ofstream &f,Function::vector fcts);
-			void convertEnums(ofstream &f, Enum::vector enums);
+		/*	void convertEnums(ofstream &f, Enum::vector enums);
 			void printEnum(ofstream &f,Enum e);
-			void printEnumElement(ofstream &f,Enum::EnumValue value);
+			void printEnumElement(ofstream &f,Enum::EnumValue value);*/
 			void printJavaHeader(ofstream &f,string type,string CHeaderFile);
 		protected:
 		map<string, string> toJavaType;

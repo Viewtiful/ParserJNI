@@ -95,7 +95,7 @@ void OutputJava::convertFunctions(ofstream &f,Function::vector fcts)
 	}
 }
 
-void OutputJava::printEnumElement(ofstream &f,Enum::EnumValue value)
+/*void OutputJava::printEnumElement(ofstream &f,Enum::EnumValue value)
 {
 	f << value.first << "(" << value.second << ")";
 }
@@ -142,7 +142,7 @@ void OutputJava::convertEnums(ofstream &f, Enum::vector enums)
 		printEnum(f,enums[i]);
 		f << "}" << endl;			
 	}
-}
+}*/
 
 void OutputJava::convert(ofstream &f,Module& module)
 {
@@ -150,7 +150,7 @@ void OutputJava::convert(ofstream &f,Module& module)
 	printJavaHeader(f,"class",module.getModuleName());
 	printLoadLibrary(f,"library");
 	convertFunctions(f,fcts);
-	convertEnums(f,module.getEnums());
+	//convertEnums(f,module.getEnums());
 
 	f << "}" << endl;
 }
