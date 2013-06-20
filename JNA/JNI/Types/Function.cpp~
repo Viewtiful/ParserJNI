@@ -1,0 +1,23 @@
+#include "Function.h"
+
+
+Function::Function(nsC::Function)
+{
+
+
+
+}
+
+Function::~Function()
+{
+
+
+}
+
+void Function::convert()
+{
+
+
+
+
+}

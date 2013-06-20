@@ -41,8 +41,17 @@ void OutputJava::printName(ofstream &f,string name)
 void OutputJava::printParameters(ofstream &f,Param::vector& parameters)
 {
 	int i;
-	for(i=0;i<parameters.size();i++)
+	int n = parameters.size();
+	for(i=0;i<n;i++)
 	{
+		if(parameters[i].getIndirections()>0 && i+1<n)
+		{
+			Param size = parameters[i+1];
+			if(parameters[i].getName() + "_size" == size.getName())
+			{
+				cout << "Array" << endl;
+			}
+		}	
 		printParameter(f,parameters[i]);
 		if(i+1<parameters.size())
 			f << ",";
