@@ -2,20 +2,23 @@
 #include "JNI/Types/Struct.h"
 using namespace nsJNI;
 
-Struct::Struct(string javaType, string jniType, string VMSignature, nsC::Struct cStruct, TypesDictionnary* dictionnary) : Type(javaType,jniType,VMSignature)
+Struct::Struct(string VMSignature, nsC::Struct cStruct, TypesDictionnary* dictionnary) : Type(VMSignature)
 {
-	this->cStruct = cStruct;
-	this->dictionnary = dictionnary;
+	this->_cStruct = cStruct;
+	this->_dictionnary = dictionnary;
+	this->_jniType = "jobject";
+	toupper(_cStruct.getTypedef()[0]);
+	this->_javaType = cStruct.getTypedef();
 }
 
 
 std::string Struct::outputJava()
 {
-	cout << "public class " << cStruct.getTypedef() << " {" << endl;
-	nsC::Param::vector fields = cStruct.getFields();
+	cout << "public class " << _cStruct.getTypedef() << " {" << endl;
+	nsC::Param::vector fields = _cStruct.getFields();
 	
 	for(int i =0; i<fields.size(); i++)
-		cout << "\t" << dictionnary->convertJava(fields[i].getType()) << " " << fields[i].getName() << ";"<< endl;
+		cout << "\t" << _dictionnary->convertJava(fields[i].getType()) << " " << fields[i].getName() << ";"<< endl;
 	cout << "}" << endl;
 }
 

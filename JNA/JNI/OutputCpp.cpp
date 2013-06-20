@@ -14,7 +14,7 @@ OutputCpp::~OutputCpp() {
 }
 
 std::string OutputCpp::getCppType(std::string inputType) {
-	return dictionnary->convertCpp(inputType);
+	return dictionnary->convertJNI(inputType);
 }
 
 string OutputCpp::getVMSignature(string inputType) {

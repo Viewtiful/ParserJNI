@@ -16,13 +16,13 @@ namespace nsJNI {
     {
       public:
         virtual ~Struct();
-		Struct(string javaType,string jniType,string vmSignature,nsC::Struct cStruct,TypesDictionnary *dictionnary);
+		Struct(string vmSignature,nsC::Struct cStruct,TypesDictionnary *dictionnary);
 		std::string outputJava();
         std::string outputJNI();
         
-        protected:
-        	nsC::Struct cStruct;
-        	TypesDictionnary* dictionnary;
+      protected:
+        nsC::Struct cStruct;
+        TypesDictionnary* dictionnary;
     };
 }
 

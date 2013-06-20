@@ -72,26 +72,26 @@ void TYPESDICTIONNARY::addTypedefs(nsC::Typedef::vector typedefs)
 {
 
 }
+
 void TYPESDICTIONNARY::addStruct(nsC::Struct::vector structs)
 {
 	for (nsC::Struct::vector::const_iterator iterator(structs.begin());
          iterator != structs.end();
          ++iterator)
-   {
-      const nsC::Struct CStruct(*iterator);
-      bool haveName(!CStruct.getName().empty());
-      bool haveTypedef(!CStruct.getTypedef().empty());
-      bool haveFields(CStruct.getFields().size() != 0);
-      bool isTypedefPointer(CStruct.getTypedefIndirection() == 1);
-      bool isDeepPointer(CStruct.getTypedefIndirection() > 1);
+   	{
+     	const nsC::Struct CStruct(*iterator);
+      	bool haveName(!CStruct.getName().empty());
+      	bool haveTypedef(!CStruct.getTypedef().empty());
+      	bool haveFields(CStruct.getFields().size() > 0);
+      	bool isTypedefPointer(CStruct.getTypedefIndirection() == 1);
+      	bool isDeepPointer(CStruct.getTypedefIndirection() > 1);
 
-      if (haveName || haveTypedef && haveFields && !isTypedefPointer && !isDeepPointer) {
-         std::cout << CStruct.getName() << std::endl;
-         _conversionMap[CStruct.getName()] = new Struct(CStruct.getName(), CStruct.getName(), "idk", CStruct, this);
-      }
-      if(isTypedefPointer) {
-         //crée un typedef
-      }
+      	if(haveTypedef && !haveFields && (isTypedefPointer || isDeepPointer))
+      		_conversionMap[CStruct.getTypedef()] = new Pointer("J",CStruct.getTypedef(),this);
+      		
+      	else if(haveTypedef && haveFields && !isTypedefPointer && !isDeepPointer)
+      		_conversionMap[CStruct.getTypedef()] = new Struct("idk",CStruct,this);
+	      	
    }
 }
 

@@ -11,7 +11,7 @@ Pointer::Pointer(string VMSignature,string CBaseType,TypesDictionnary *dictionna
 {
 	this->_CBaseType = CBaseType;
 	this->_dictionnary = dictionnary;
-	this->_javaType = "long";
+	this->_javaType = "long"
 	this->_jniType = "jlong";
 }
 
