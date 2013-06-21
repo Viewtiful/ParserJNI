@@ -18,7 +18,7 @@ std::string Struct::outputJava()
 	nsC::Param::vector fields = _cStruct.getFields();
 	
 	for(int i =0; i<fields.size(); i++)
-		cout << "\t" << dictionnary->convertJava(fields[i].getType()) << " " << fields[i].getName() << ";"<< endl;
+		cout << "\t" << _dictionnary->convertJava(fields[i].getType()) << " " << fields[i].getName() << ";"<< endl;
 	cout << "}" << endl;
 }
 

@@ -16,11 +16,9 @@ namespace nsJNI {
     {
       public:
         virtual ~Array();
-		Array(string CBaseType, string vmSignature, TypesDictionnary *dictionnary) ;
+		Array(const string& CBaseType, const string& vmSignature, TypesDictionnary *dictionnary) ;
 		std::string outputJava();
         std::string outputJNI() ;
-        std::string getCBaseTypeFromPointer(string pointerType);
-
       protected:
         TypesDictionnary* _dictionnary;
         std::string _CBaseType;

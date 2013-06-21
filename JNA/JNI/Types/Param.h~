@@ -7,11 +7,12 @@
 
 #include <iostream>
 #include <string>
+using namespace std;
 namespace nsJNI {
     class Param
     {
       public:
-        Param(string type,string name);
+        Param(const string& type,const string& name);
 		virtual ~Param();
         void convert();
       protected:

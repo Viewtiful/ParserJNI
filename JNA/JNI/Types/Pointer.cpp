@@ -7,7 +7,7 @@
 using namespace nsJNI;
 using namespace std;
 
-Pointer::Pointer(string VMSignature,string CBaseType,TypesDictionnary *dictionnary) : Type(VMSignature)
+Pointer::Pointer(const string& VMSignature,const string& CBaseType,TypesDictionnary *dictionnary) : Type(VMSignature)
 {
 	this->_CBaseType = CBaseType;
 	this->_dictionnary = dictionnary;

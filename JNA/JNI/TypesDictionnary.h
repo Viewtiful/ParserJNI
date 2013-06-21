@@ -15,6 +15,7 @@
 #include "JNI/Types/Struct.h"
 #include "JNI/Types/Enum.h"
 #include "JNI/Types/Pointer.h"
+#include "JNI/Types/Array.h"
 #include "Modules/Module.h"
 using namespace nsModules;
 namespace nsJNI
@@ -36,17 +37,17 @@ namespace nsJNI
         TypesDictionnary();
         virtual ~TypesDictionnary();
         void addBaseType();
-		void convertJava(Module::vector modules);
-		void convertJNI(Module::vector modules);
-		void addToMap(string cType, Type *type);
+		void convertJava(const Module::vector& modules);
+		void convertJNI(const Module::vector& modules);
+		void addToMap(const string& cType, Type *type);
 		
-		string convertJava(string Ctype);
-		string convertJNI(string Ctype);
-		string convertVM(string Ctype);
-		int nbIndirections(string CType);
-		void addTypedefs(nsC::Typedef::vector typedefs);
-		void addStruct(nsC::Struct::vector structs);
-	   void addEnums(nsC::Enum::vector enums);
+		string convertJava(const string& Ctype);
+		string convertJNI(const string& Ctype);
+		string convertVM(const string& Ctype);
+		int nbIndirections(const string& CType);
+		void addTypedefs(const nsC::Typedef::vector& typedefs);
+		void addStruct(const nsC::Struct::vector& structs);
+	   	void addEnums(const nsC::Enum::vector& enums);
 
 
       protected:

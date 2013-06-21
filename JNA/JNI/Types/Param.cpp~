@@ -1,7 +1,9 @@
 #include "JNI/Types/Param.h"
 
-Param::Param(string type,string name)
+using namespace nsJNI;
+Param::Param(const string& type, const string& name)
 {
+	cout << "2.4.3.4.7.1" << endl;
 	this->_type=type;
 	this->_name = name;
 }
@@ -16,4 +18,14 @@ void Param::convert()
 {
 
 
+}
+
+std::string& Param::getName()
+{
+	return _name;
+}
+
+std::string& Param::getType()
+{
+	return _type;
 }

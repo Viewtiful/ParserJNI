@@ -27,7 +27,7 @@ bool Enum::create(const nsC::Enum::vector& en,
 	return true;
 }
 
-Enum::Enum(string javaType, string jniType, string VMSignature, nsC::Enum cEnum) : Type(javaType, jniType, VMSignature)
+Enum::Enum(const string& javaType, const string& jniType, const string& VMSignature, const nsC::Enum& cEnum) : Type(javaType, jniType, VMSignature)
 {
 	_cEnum = cEnum;
 	outputJava();
@@ -81,4 +81,5 @@ std::string Enum::outputJava()
 
 std::string Enum::outputJNI()
 {
+
 }

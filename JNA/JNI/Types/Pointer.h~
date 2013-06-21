@@ -7,7 +7,6 @@
 #define __JNI_POINTER_H
 #include <string>
 #include "JNI/Types/Type.h"
-#include "C/
 namespace nsJNI {
 
 	class TypesDictionnary;

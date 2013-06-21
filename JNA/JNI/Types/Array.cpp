@@ -2,9 +2,11 @@
 #include "JNI/Types/Array.h"
 using namespace nsJNI;
 
-Array::Array(string CBaseType,string VMSignature,TypesDictionnary *dictionnary) : Type(VMSignature)
+Array::Array(const string& CBaseType,const string& VMSignature,TypesDictionnary *dictionnary) : Type(VMSignature)
 {
-	this->_CBaseType = getCBaseTypeFromPointer(CBaseType);	
+	_CBaseType = CBaseType;	
+	cout <<"Constructeur" <<  _CBaseType << endl;
+	_dictionnary = dictionnary;
 }
 
 Array::~Array()
@@ -14,6 +16,12 @@ Array::~Array()
 
 std::string Array::outputJava()
 {
+	cout << "Convert java Array" << endl;
+	cout << "Signature" << getVMSignature() << endl;
+	cout << "Base type = "<< _CBaseType;
+	
+	string test = _dictionnary->convertJava(_CBaseType)+"[]";
+	cout << "Type = " << _dictionnary->convertJava(_CBaseType)<< endl;
 	return _dictionnary->convertJava(_CBaseType)+"[]";
 }
 
@@ -23,15 +31,3 @@ std::string Array::outputJNI()
 	return jniType + "Array";
 }
 
-std::string Array::getCBaseTypeFromPointer(string pointerType)
-{
-	string CBaseType;
-	int i,k;
-	
-	for(i = pointerType.size()-1 && pointerType[i]=='*';i>-1;i--);
-	for(k = 0; k<i; k++)
-		CBaseType[k] = pointerType[k];
-				
-	CBaseType[k]='\0';
-	return CBaseType;
-}

@@ -7,7 +7,7 @@
 using namespace nsJNI;
 using namespace std;
 
-NativeType::NativeType(string javaType, string jniType, string VMSignature) : Type(javaType, jniType, VMSignature)
+NativeType::NativeType(const string& javaType, const string& jniType, const string& VMSignature) : Type(javaType, jniType, VMSignature)
 {
 
 }

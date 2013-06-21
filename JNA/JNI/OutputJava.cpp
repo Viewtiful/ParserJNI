@@ -5,58 +5,18 @@ using namespace nsJNI;
 
 OutputJava::OutputJava(TypesDictionnary *dictionnary)
 {
-	this->dictionnary = dictionnary;
+	this->_dictionnary = dictionnary;
 }
 
 
 string OutputJava::getJavaType(string inputType)
 {
-	return dictionnary->convertJava(inputType);
-}
-
-
-void OutputJava::addJavaType(string inputType, string javaType)
-{
-	toJavaType.insert(pair<string,string>(inputType,javaType) );	
+	return _dictionnary->convertJava(inputType);
 }
 
 OutputJava::~OutputJava()
 {
 
-}
-
-void OutputJava::printPrototype(ofstream& f,string typeRetour)
-{
-	string returnType = getJavaType(typeRetour);
-	if(returnType  == "")
-		returnType = typeRetour;
-	f << "\t" << "public native " << returnType << " ";
-}
-
-void OutputJava::printName(ofstream &f,string name)
-{
-	f << name << "(" ;
-}
-
-void OutputJava::printParameters(ofstream &f,Param::vector& parameters)
-{
-	int i;
-	int n = parameters.size();
-	for(i=0;i<n;i++)
-	{
-		if(parameters[i].getIndirections()>0 && i+1<n)
-		{
-			Param size = parameters[i+1];
-			if(parameters[i].getName() + "_size" == size.getName())
-			{
-				cout << "Array" << endl;
-			}
-		}	
-		printParameter(f,parameters[i]);
-		if(i+1<parameters.size())
-			f << ",";
-	}	
-	f << ");" << endl;
 }
 
 void OutputJava::printJavaHeader(ofstream &f,string type,string CHeaderFile)
@@ -77,21 +37,16 @@ void OutputJava::printLoadLibrary(ofstream &f,string library)
 	f << endl << "\t" << "}" << endl << endl;
 }
 
-void OutputJava::printParameter(ofstream &f,Param parameter)
+void OutputJava::convertFunctions(ofstream &f,nsC::Function::vector fcts)
 {
-	f << getJavaType(parameter.getType()) << " " << parameter.getName();
-}
-
-void OutputJava::convertFunctions(ofstream &f,Function::vector fcts)
-{
+	cout << "2.4.1" << endl;
 	for(int k = 0;k<fcts.size();k++)
 	{
-		string typeRetour = fcts[k].getReturnType();
-		string name = fcts[k].getName();
-		Param::vector parameters = fcts[k].getParamList();
-		printPrototype(f,typeRetour);
-		printName(f,name); 
-		printParameters(f,parameters);
+		cout << "2.4.2" << endl;
+		nsJNI::Function *fct = new Function(_dictionnary);
+		fct->create(fcts[k]);
+		cout << "2.4.3" << endl;
+		fct->convert(f);
 	}
 }
 
@@ -146,9 +101,13 @@ void OutputJava::convertEnums(ofstream &f, Enum::vector enums)
 
 void OutputJava::convert(ofstream &f,Module& module)
 {
-	Function::vector fcts = module.getFunctions();
+	cout << "2.1" << endl;
+	nsC::Function::vector fcts = module.getFunctions();
+	cout << "2.2" << endl;
 	printJavaHeader(f,"class",module.getModuleName());
+	cout << "2.3" << endl;
 	printLoadLibrary(f,"library");
+	cout << "2.4" << endl;
 	convertFunctions(f,fcts);
 	//convertEnums(f,module.getEnums());
 

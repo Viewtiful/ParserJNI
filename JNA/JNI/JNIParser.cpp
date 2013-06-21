@@ -27,7 +27,6 @@ int JNIPARSER::run(nsModules::Module::vector modules)
     TypesDictionnary *dico = new TypesDictionnary();
     OutputJNI *jni = new OutputJNI(dico);
     OutputJava *java = new OutputJava(dico);
-    
     // Recupération des proto de fonctions 
    for(int i = 0; i<modules.size(); ++i)
 	{
@@ -41,9 +40,11 @@ int JNIPARSER::run(nsModules::Module::vector modules)
 
    		cout << "C++" << endl;
    		
-   		jni->convert(modules[i]);
+   		//jni->convert(modules[i]);
    		cout << "Java" << endl;
+   		cout << "1" << endl;
    		java->convert(f,modules[i]);
+   		cout << "2" <<endl;
    		
     }
     std::cout << "Nombre de Modules = " << modules.size() << std::endl; 

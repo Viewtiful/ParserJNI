@@ -22,7 +22,7 @@ namespace nsJNI{
       protected : 
          nsC::Enum _cEnum;
 
-         Enum(string javaType,string jniType,string vmSignature,nsC::Enum cEnum);
+         Enum(const string& javaType,const string& jniType,const string& vmSignature,const nsC::Enum& cEnum);
 	};
 }
 #endif

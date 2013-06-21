@@ -14,7 +14,7 @@ namespace nsJNI {
     {
       public:
         virtual ~Pointer();
-		Pointer(string vmSignature,string CBaseType,TypesDictionnary *dictionnary);
+		Pointer(const string& vmSignature,const string& CBaseType,TypesDictionnary *dictionnary);
 		std::string outputJava();
         std::string outputJNI();
         

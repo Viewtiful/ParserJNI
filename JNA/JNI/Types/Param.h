@@ -12,9 +12,11 @@ namespace nsJNI {
     class Param
     {
       public:
-        Param(string type,string name);
+        Param(const string& type,const string& name);
 		virtual ~Param();
         void convert();
+        std::string& getType();
+        std::string& getName();
       protected:
       	string _type;
       	string _name;
