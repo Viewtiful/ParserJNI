@@ -31,16 +31,17 @@ void TYPESDICTIONNARY::addBaseType()
 	_conversionMap["char"] = new NativeType("byte","jbyte","B");
 	_conversionMap["void"] = new NativeType("void","void","V");
 	_conversionMap["size_t"] = new NativeType("long","jlong","J");
+   _conversionMap["char *"] = new NativeType("String","jstring","J");
 	
 	//Array Types
-	_conversionMap["shortArray"] = new Array("short","[S]",this);
-	_conversionMap["intArray"] = new Array("int","[I]",this);
-	_conversionMap["longArray"] = new Array("long","[J]",this);
-	_conversionMap["floatArray"] = new Array("float","[F]",this);
-	_conversionMap["doubleArray"] = new Array("double","[D]",this);
-	_conversionMap["boolArray"] = new Array("boolean","[Z]",this);
-	_conversionMap["charArray"] = new Array("byte","[B]",this);
-	_conversionMap["size_tArray"] = new Array("long","[J]",this);
+	_conversionMap["shortArray"] = new Array("short","[S",this);
+	_conversionMap["intArray"] = new Array("int","[I",this);
+	_conversionMap["longArray"] = new Array("long","[J",this);
+	_conversionMap["floatArray"] = new Array("float","[F",this);
+	_conversionMap["doubleArray"] = new Array("double","[D",this);
+	_conversionMap["boolArray"] = new Array("boolean","[Z",this);
+	_conversionMap["charArray"] = new Array("byte","[B",this);
+	_conversionMap["size_tArray"] = new Array("long","[J",this);
 	
 }
 

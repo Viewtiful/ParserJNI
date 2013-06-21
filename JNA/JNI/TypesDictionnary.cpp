@@ -31,6 +31,7 @@ void TYPESDICTIONNARY::addBaseType()
 	_conversionMap["char"] = new NativeType("byte","jbyte","B");
 	_conversionMap["void"] = new NativeType("void","void","V");
 	_conversionMap["size_t"] = new NativeType("long","jlong","J");
+   _conversionMap["char *"] = new NativeType("String","jstring","Ljava/lang/String;");
 	
 	//Array Types
 	_conversionMap["shortArray"] = new Array("short","[S",this);
