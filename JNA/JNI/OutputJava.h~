@@ -28,7 +28,7 @@ namespace nsJNI
 			void printJavaHeader(ofstream &f,string type,string CHeaderFile);
 		protected:
 		map<string, string> toJavaType;
-		TypesDictionnary *dictionnary;
+		TypesDictionnary *_dictionnary;
 		
 		
 	};

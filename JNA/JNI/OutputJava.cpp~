@@ -43,7 +43,8 @@ void OutputJava::convertFunctions(ofstream &f,nsC::Function::vector fcts)
 	for(int k = 0;k<fcts.size();k++)
 	{
 		cout << "2.4.2" << endl;
-		nsJNI::Function *fct = new Function(fcts[k],_dictionnary);
+		nsJNI::Function *fct = new Function(_dictionnary);
+		fct->create(fcts[k]);
 		cout << "2.4.3" << endl;
 		fct->convert(f);
 	}

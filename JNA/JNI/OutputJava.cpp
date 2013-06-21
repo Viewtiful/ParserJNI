@@ -50,55 +50,6 @@ void OutputJava::convertFunctions(ofstream &f,nsC::Function::vector fcts)
 	}
 }
 
-/*void OutputJava::printEnumElement(ofstream &f,Enum::EnumValue value)
-{
-	f << value.first << "(" << value.second << ")";
-}
-
-void OutputJava::printEnum(ofstream &f,Enum e)
-{
-	Enum::EnumValues enumValues = e.getValues();
-	for(int k =0;k<enumValues.size();k++)
-	{
-		f << "\t" ;
-		printEnumElement(f,enumValues[k]);
-		if(k+1<enumValues.size())
-			f << "," << endl;
-		else if(k == enumValues.size()-1)
-			f << ";" << endl;
-	}
-
-	f << "\n\n\tint enumValue;\n\n";
-	string enumName = e.getName();
-    if(enumName == "")
-            enumName = e.getTypedef();
-
-	f << "\t" << enumName << " (int val) {\n";
-	f << "\t\tenumValue=val;\n";
-	f << "\t}\n\n";
-
-	f << "\tint getValue() {\n";
-	f << "\t\treturn enumValue;\n";
-	f << "\t}\n\n";
-
-	f << "\tvoid setValue(int val) {\n";
-	f << "\t\tenumValue=val;\n";
-	f << "\t}" << endl;
-}
-
-void OutputJava::convertEnums(ofstream &f, Enum::vector enums)
-{
-	for(int i = 0;i<enums.size();i++)
-	{
-		string enumName = enums[i].getName();
-		if(enumName=="")
-			enumName = enums[i].getTypedef();
-		printJavaHeader(f,enumName);
-		printEnum(f,enums[i]);
-		f << "}" << endl;			
-	}
-}*/
-
 void OutputJava::convert(ofstream &f,Module& module)
 {
 	cout << "2.1" << endl;
