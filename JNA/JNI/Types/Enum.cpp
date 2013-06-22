@@ -68,18 +68,25 @@ std::string Enum::outputJava()
 		fields += field;
 	}
 	
-	if(!_cEnum.getName().empty())
+   string enumName;
+	if(!_cEnum.getName().empty()) {
 		stringReplace(structure, "ENUMNAME", _cEnum.getName());
-	else
+      enumName = _cEnum.getName();
+   }
+	else {
 		stringReplace(structure, "ENUMNAME", _cEnum.getTypedef());
+      enumName = _cEnum.getTypedef();
+   }
 
 	stringReplace(structure, "FIELDS", fields);
 
 	cout << structure << endl;
-	return "";
+
+   
+	return enumName;
 }
 
 std::string Enum::outputJNI()
 {
-
+   return "jobject";
 }

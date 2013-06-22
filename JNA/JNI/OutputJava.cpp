@@ -21,20 +21,19 @@ OutputJava::~OutputJava()
 
 void OutputJava::printJavaHeader(ofstream &f,string type,string CHeaderFile)
 {
-	CHeaderFile[0] = toupper(CHeaderFile[0]);
-	f << "public "<< type << " " << CHeaderFile << "{" << endl << endl;
+	f << "public "<< type << " " << CHeaderFile << "{\n\n";
 }
 
 void OutputJava::printJavaHeader(ofstream &f,string CHeaderFile)
 {
-	f << "\npublic static enum "<< CHeaderFile << "{" << endl << endl;
+	f << "\npublic static enum "<< CHeaderFile << "{\n";
 }
 
 void OutputJava::printLoadLibrary(ofstream &f,string library)
 {
-	f << "\t" << "static {" << endl ;
-	f << "\t" << "\t" << "System.loadLibrary(\""<< library << "\");";
-	f << endl << "\t" << "}" << endl << endl;
+	f << "\t" << "static {\n";
+	f << "\t" << "\t" << "System.loadLibrary(\""<< library << "\");\n";
+	f << "\t" << "}\n\n";
 }
 
 void OutputJava::convertFunctions(ofstream &f,nsC::Function::vector fcts)
@@ -50,17 +49,15 @@ void OutputJava::convertFunctions(ofstream &f,nsC::Function::vector fcts)
 	}
 }
 
+void OutputJava::addClassDefinition(ofstream &f, string className) {
+	printJavaHeader(f, "class", className);
+	printLoadLibrary(f, "library");
+}
+
 void OutputJava::convert(ofstream &f,Module& module)
 {
-	cout << "2.1" << endl;
 	nsC::Function::vector fcts = module.getFunctions();
-	cout << "2.2" << endl;
-	printJavaHeader(f,"class",module.getModuleName());
-	cout << "2.3" << endl;
-	printLoadLibrary(f,"library");
 	cout << "2.4" << endl;
 	convertFunctions(f,fcts);
 	//convertEnums(f,module.getEnums());
-
-	f << "}" << endl;
 }

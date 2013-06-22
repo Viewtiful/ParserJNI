@@ -23,6 +23,7 @@ namespace nsJNI
 			void printLoadLibrary(ofstream &f,string library);
 			void convertFunctions(ofstream &f,nsC::Function::vector fcts);
 			void printJavaHeader(ofstream &f,string type,string CHeaderFile);
+         void addClassDefinition(ofstream &f, string className);
 		protected:
 		map<string, string> toJavaType;
 		TypesDictionnary *_dictionnary;

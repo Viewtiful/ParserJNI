@@ -14,6 +14,7 @@ Function::~Function()
 
 void Function::create(const nsC::Function& fct)
 {
+   cout << "fct.getReturnType() : " << fct.getReturnType() << endl;
 	setReturnType(fct.getReturnType());
 	_name = fct.getName();
 	addArgs(fct.getParamList());
@@ -21,7 +22,9 @@ void Function::create(const nsC::Function& fct)
 
 void Function::printPrototype(ofstream& file)
 {
+   cout << "_returnType : " << _returnType << endl;
 	string returnType = _dictionnary->convertJava(_returnType);
+   cout << "returnType : " << returnType << endl;
 	if(returnType  == "")
 		returnType = "void";
 	file << "\t" << "public native " << returnType << " " <<  _name ;
@@ -93,7 +96,7 @@ void Function::addArgs(const nsC::Param::vector& parameters)
 					
 	 	}
 		else
-			_args.push_back(new nsJNI::Param(parameters[i].getType(),parameters[i].getName()));
+			_args.push_back(new nsJNI::Param(parameters[i].getCType(),parameters[i].getName()));
 	}
 }
 

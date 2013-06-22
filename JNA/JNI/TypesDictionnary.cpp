@@ -102,7 +102,7 @@ void TYPESDICTIONNARY::addStruct(const nsC::Struct::vector& structs)
       		_conversionMap[CStruct.getTypedef()] = new Pointer("J",CStruct.getTypedef(),this);
       		
       	else if(haveTypedef && haveFields && !isTypedefPointer && !isDeepPointer)
-      		_conversionMap[CStruct.getTypedef()] = new Struct("idk",CStruct,this);
+      		_conversionMap[CStruct.getTypedef()] = new Struct("jobject",CStruct,this);
 	      	
    }
 }
