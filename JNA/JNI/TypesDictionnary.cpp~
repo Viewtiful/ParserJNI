@@ -31,7 +31,7 @@ void TYPESDICTIONNARY::addBaseType()
 	_conversionMap["char"] = new NativeType("byte","jbyte","B");
 	_conversionMap["void"] = new NativeType("void","void","V");
 	_conversionMap["size_t"] = new NativeType("long","jlong","J");
-   _conversionMap["char *"] = new NativeType("String","jstring","J");
+   _conversionMap["char *"] = new NativeType("String","jstring","Ljava/lang/String;");
 	
 	//Array Types
 	_conversionMap["shortArray"] = new Array("short","[S",this);
@@ -43,6 +43,16 @@ void TYPESDICTIONNARY::addBaseType()
 	_conversionMap["charArray"] = new Array("byte","[B",this);
 	_conversionMap["size_tArray"] = new Array("long","[J",this);
 	
+	//Pointer type
+	_conversionMap["short*"] = new Pointer("ptr","short",this);
+	_conversionMap["int*"] = new Pointer("ptr","int",this);
+	_conversionMap["long*"] = new Pointer("ptr","long",this);
+	_conversionMap["float*"] = new Pointer("ptr","float",this);
+	_conversionMap["double*"] = new Pointer("ptr","double",this);
+	_conversionMap["bool*"] = new Pointer("ptr","bool",this);
+	_conversionMap["char*"] = new Pointer("ptr","char",this);
+	_conversionMap["void*"] = new Pointer("ptr","void",this);
+	_conversionMap["size_t*"] = new Pointer("ptr","size_t",this);
 }
 
 void TYPESDICTIONNARY::convertJava(const Module::vector& modules)

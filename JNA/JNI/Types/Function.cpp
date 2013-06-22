@@ -89,11 +89,11 @@ void Function::addArgs(const nsC::Param::vector& parameters)
 					cout << parameters[i].getType()+"Array" << endl;
 				}
 				else
-					_args.push_back(new nsJNI::Param(parameters[i].getType(),parameters[i].getName()));
+					_args.push_back(new nsJNI::Param(parameters[i].getCType(),parameters[i].getName()));
 					
 	 	}
 		else
-			_args.push_back(new nsJNI::Param(parameters[i].getType(),parameters[i].getName()));
+			_args.push_back(new nsJNI::Param(parameters[i].getCType(),parameters[i].getName()));
 	}
 }
 
