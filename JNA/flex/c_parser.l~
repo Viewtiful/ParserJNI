@@ -37,7 +37,7 @@ volatile return TOK_KEYWORD;
 
     /* litteral constants */
 {quote}(\\.|[^\"\\])*{quote} return TOK_STRING;
-{digit}+([uUlL])? return TOK_NUMBER;
+{digit}*([uUlL])? return TOK_NUMBER;
 
     /* Symbols */
 {openbracket}|{closebracket} return TOK_SYMBOL;
