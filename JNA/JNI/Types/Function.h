@@ -21,8 +21,7 @@ namespace nsJNI {
 		virtual ~Function();
         void convert(ofstream &f);
         void setReturnType(const string& returnType);
-        int nbIndirections(const string& CType);
-		void addArgs(const nsC::Param::vector& args);
+        void addArgs(const nsC::Param::vector& args);
 		void printParameters(ofstream &f);
 		void printPrototype(ofstream &f);
 		void printParameter(ofstream &f);

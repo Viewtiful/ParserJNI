@@ -27,11 +27,11 @@ int JNIPARSER::run(nsModules::Module::vector modules)
     TypesDictionnary *dico = new TypesDictionnary();
     // Recupération des types
    for(int i = 0; i<modules.size(); ++i)
-	{
+   {
    		dico->addStruct(modules[i].getStructs());
 		   if(modules[i].getEnums().size() > 0)
 			   dico->addEnums(modules[i].getEnums());
-    }
+   }
 
    string filename = "ArcanaJNI";
    string extension = ".java";

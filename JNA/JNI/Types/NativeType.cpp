@@ -20,6 +20,8 @@ NativeType::~NativeType()
 
 std::string NativeType::outputJava()
 {
+	cout << "Output Java : NativeType" << endl;
+	cout << "javaType = " << getJavaType() << endl;
 	return getJavaType();
 }
 

@@ -26,7 +26,7 @@ namespace nsJNI {
 		void printParameters(ofstream &f);
 		void printPrototype(ofstream &f);
 		void printParameter(ofstream &f);
-		void create(nsC::Function& fct);
+		void create(const nsC::Function& fct);
 		std::string& getReturnType();
 		vector<Param*> getArgs();
        protected:

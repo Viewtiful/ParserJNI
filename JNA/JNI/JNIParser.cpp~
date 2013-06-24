@@ -50,6 +50,7 @@ int JNIPARSER::run(nsModules::Module::vector modules)
    		java->convert(f,modules[i]);
    		cout << "2" <<endl;
    }
+	f << "}" << endl;
     std::cout << "Nombre de Modules = " << modules.size() << std::endl; 
 	return EXIT_SUCCESS;
 }

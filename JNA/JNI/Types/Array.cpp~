@@ -6,6 +6,7 @@ Array::Array(const string& CBaseType,const string& VMSignature,TypesDictionnary 
 {
 	_CBaseType = CBaseType;	
 	cout <<"Constructeur" <<  _CBaseType << endl;
+	_dictionnary = dictionnary;
 }
 
 Array::~Array()

@@ -14,7 +14,7 @@ Function::~Function()
 
 void Function::create(const nsC::Function& fct)
 {
-   cout << "fct.getReturnType() : " << fct.getReturnType() << endl;
+	
 	setReturnType(fct.getReturnType());
 	_name = fct.getName();
 	addArgs(fct.getParamList());
@@ -22,9 +22,10 @@ void Function::create(const nsC::Function& fct)
 
 void Function::printPrototype(ofstream& file)
 {
-   cout << "_returnType : " << _returnType << endl;
-	string returnType = _dictionnary->convertJava(_returnType);
-   cout << "returnType : " << returnType << endl;
+	cout << "returnType = " << _returnType << endl;
+	string returnType;
+	returnType = _dictionnary->convertJava(_returnType);
+	cout << "returnType = " << returnType << endl;
 	if(returnType  == "")
 		returnType = "void";
 	file << "\t" << "public native " << returnType << " " <<  _name ;
@@ -50,21 +51,14 @@ void Function::convert(ofstream& file)
 {
 	cout << "Convert début" << endl;
 	printPrototype(file);
+	cout << "Converting Parameters" << endl;
 	file << "(";
 	printParameters(file);	
 	file << ");" << endl; 	
 	cout << "Convert Fin" << endl;
 }
 
-int Function::nbIndirections(const string& CType)
-{
-	int strSize = CType.size();
-	int nbIndirection = 0;
-	for(int i = strSize-1;i>-1;i--)
-		nbIndirection++;
-	return nbIndirection;
 
-}
 
 void Function::setReturnType(const string& returnType)
 {
@@ -79,8 +73,23 @@ void Function::addArgs(const nsC::Param::vector& parameters)
 	cout << "2.4.3.4.1" << endl;
 	
 	int n = parameters.size();
-	for(int i = 0; i<n; i++)
+	int beginArgs = 0;
+	string init;
+	init = _name.substr(_name.size()- 5, _name.size()-1);
+	
+	if(init=="_init" && n>0)
 	{
+		//cout << "Dans le if" << endl;
+		_args.push_back(new nsJNI::Param("AddressWrapper",parameters[0].getName()));
+		if(n>1)
+			beginArgs = 1;
+		else
+			return;
+	}
+			
+	for(int i = beginArgs; i<n; i++)
+	{
+		int size = _args.size();
 		cout << "2.4.3.4.2" << endl;
 		cout << "i = " << i << "n =" << n << endl;
 		if(parameters[i].getIndirections()>0 && i+1<n)
@@ -88,7 +97,12 @@ void Function::addArgs(const nsC::Param::vector& parameters)
 				nsC::Param size = parameters[i+1];
 				if(parameters[i].getName() + "_size" == size.getName())
 				{
-					_args.push_back(new nsJNI::Param(parameters[i].getType()+"Array",parameters[i].getName()));
+					//Remplacer le if par le nombre d'indirection
+					string type = parameters[i].getType();
+					if(type == "void" || type == "const void")
+						type = parameters[i].getCType();
+						
+					_args.push_back(new nsJNI::Param(type+"Array",parameters[i].getName()));
 					cout << parameters[i].getType()+"Array" << endl;
 				}
 				else
@@ -97,6 +111,7 @@ void Function::addArgs(const nsC::Param::vector& parameters)
 	 	}
 		else
 			_args.push_back(new nsJNI::Param(parameters[i].getCType(),parameters[i].getName()));
+		assert(_args.size()==size+1);
 	}
 }
 

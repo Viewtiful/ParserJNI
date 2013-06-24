@@ -7,12 +7,12 @@
 using namespace nsJNI;
 using namespace std;
 
-Pointer::Pointer(const string& VMSignature,const string& CBaseType,TypesDictionnary *dictionnary) : Type(VMSignature)
+Pointer::Pointer(const string& VMSignature,const string& CBaseType,TypesDictionnary *dictionnary) : Type("long","jlong",VMSignature)
 {
+	cout << "toto" << endl;
 	this->_CBaseType = CBaseType;
 	this->_dictionnary = dictionnary;
-	this->_javaType = "long";
-	this->_jniType = "jlong";
+	
 }
 
 

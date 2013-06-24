@@ -16,6 +16,7 @@
 #include "JNI/Types/Enum.h"
 #include "JNI/Types/Pointer.h"
 #include "JNI/Types/Array.h"
+#include <assert.h>
 #include "Modules/Module.h"
 using namespace nsModules;
 namespace nsJNI
@@ -44,6 +45,7 @@ namespace nsJNI
 		string convertJava(const string& Ctype);
 		string convertJNI(const string& Ctype);
 		string convertVM(const string& Ctype);
+		string getRealType(const string& CType);
 		int nbIndirections(const string& CType);
 		void addTypedefs(const nsC::Typedef::vector& typedefs);
 		void addStruct(const nsC::Struct::vector& structs);

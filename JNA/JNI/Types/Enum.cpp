@@ -22,6 +22,7 @@ bool Enum::create(const nsC::Enum::vector& en,
 		string enumName = CEnum.getName();
 		if(enumName == "")
 			enumName = CEnum.getTypedef();
+		cout << "Enum Name = " << enumName << endl;
 		dictionnary->addToMap(enumName, new Enum(enumName, enumName, "jobject", CEnum));
 	}
 	return true;

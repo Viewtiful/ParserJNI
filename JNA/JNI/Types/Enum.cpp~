@@ -40,7 +40,6 @@ Enum::~Enum()
 
 std::string Enum::outputJava()
 {
-   cout << "llllllllllllllllllllllllllllllllllllllllllllll" << endl;
 	string structure(
 			"\tpublic static enum %ENUMNAME% {\n"
 			"%FIELDS%"
