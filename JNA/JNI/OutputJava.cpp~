@@ -49,9 +49,45 @@ void OutputJava::convertFunctions(ofstream &f,nsC::Function::vector fcts)
 	}
 }
 
+void OutputJava::addAddressWrapper(ofstream &f) {
+	
+   string structure (
+      "\tpublic static class AddressWrapper {\n"
+      "\t\tprivate long address;\n\n"
+      "\t\tpublic long getAddress() {\n"
+      "\t\t\treturn address;\n"
+      "\t\t}\n\n"
+      "\t\tpublic void setAddress(long addr) {\n"
+      "\t\t\taddress = addr;\n"
+      "\t\t}\n"
+      "\t}\n\n"
+   );
+
+   f << structure;
+}
+
+void OutputJava::addBoolWrapper(ofstream &f) {
+   
+   string structure (
+      "\tpublic static class BoolWrapper {\n"
+      "\t\tprivate boolean booleanVal;\n\n"
+      "\t\tpublic boolean getValue() {\n"
+      "\t\t\treturn booleanVal;\n"
+      "\t\t}\n\n"
+      "\t\tpublic void setValue(boolean val) {\n"
+      "\t\t\tbooleanVal = val;\n"
+      "\t\t}\n"
+      "\t}\n\n"
+   );
+
+   f << structure;
+}
+
 void OutputJava::addClassDefinition(ofstream &f, string className) {
 	printJavaHeader(f, "class", className);
-	printLoadLibrary(f, "library");
+	printLoadLibrary(f, "arcanaJNI");
+   addAddressWrapper(f);
+   addBoolWrapper(f);
 }
 
 void OutputJava::convert(ofstream &f,Module& module)
@@ -60,6 +96,4 @@ void OutputJava::convert(ofstream &f,Module& module)
 	cout << "2.4" << endl;
 	convertFunctions(f,fcts);
 	//convertEnums(f,module.getEnums());
-
-	//f << "}" << endl;
 }

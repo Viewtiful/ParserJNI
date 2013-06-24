@@ -24,6 +24,8 @@ namespace nsJNI
 			void convertFunctions(ofstream &f,nsC::Function::vector fcts);
 			void printJavaHeader(ofstream &f,string type,string CHeaderFile);
          void addClassDefinition(ofstream &f, string className);
+         void addAddressWrapper(ofstream &f);
+         void addBoolWrapper(ofstream &f);
 		protected:
 		map<string, string> toJavaType;
 		TypesDictionnary *_dictionnary;
