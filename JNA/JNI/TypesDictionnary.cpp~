@@ -83,16 +83,16 @@ void TYPESDICTIONNARY::addBaseType()
 	//_conversionMap["void *"] = new Pointer("ptr","void",this);
 	//_conversionMap["size_t *"] = new Pointer("ptr","size_t",this);
 	
-	/*
-	addToMap("short *", new Pointer("ptr","short",this));
+	
+	/*addToMap("short *", new Pointer("ptr","short",this));
 	addToMap("int *", new Pointer("ptr","int",this));
 	addToMap("long *", new Pointer("ptr","long",this));
 	addToMap("float *", new Pointer("ptr","float",this));
 	addToMap("double *", new Pointer("ptr","double",this));
 	addToMap("bool *", new Pointer("ptr","bool",this));
 	addToMap("char *", new Pointer("ptr","char",this));
-	addToMap("size_t *", new Pointer("ptr","size_t",this));
-	*/
+	addToMap("size_t *", new Pointer("ptr","size_t",this));*/
+	
 }
 
 void TYPESDICTIONNARY::convertJava(const Module::vector& modules)
@@ -110,7 +110,7 @@ int TYPESDICTIONNARY::nbIndirections(const string& CType)
 {
 	int strSize = CType.size();
 	int nbIndirection = 0;
-	for(int i = strSize-1 && CType[i]=='*';i>-1;i--)
+	for(int i = strSize-1 && CType[i]=='*';i>0;i--)
 		nbIndirection++;
 	return nbIndirection;
 }

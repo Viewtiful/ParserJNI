@@ -35,6 +35,7 @@ void TYPESDICTIONNARY::addBaseType()
 	//addToMap("char*", new NativeType("String","jstring","Ljava/lang/String;"));
 	addToMap("const char *", new NativeType("String","jstring","Ljava/lang/String;"));
 	addToMap("const void *", new NativeType("byte","jbyte","B"));
+	addToMap("void *", new NativeType("byte","jbyte","B"));
 	addToMap(" char *", new NativeType("byte","jbyte","B"));
 	addToMap("AddressWrapper",new NativeType("AddressWrapper","jobject","O"));	
 	
@@ -83,16 +84,16 @@ void TYPESDICTIONNARY::addBaseType()
 	//_conversionMap["void *"] = new Pointer("ptr","void",this);
 	//_conversionMap["size_t *"] = new Pointer("ptr","size_t",this);
 	
-	/*
-	addToMap("short *", new Pointer("ptr","short",this));
+	
+	/*addToMap("short *", new Pointer("ptr","short",this));
 	addToMap("int *", new Pointer("ptr","int",this));
 	addToMap("long *", new Pointer("ptr","long",this));
 	addToMap("float *", new Pointer("ptr","float",this));
 	addToMap("double *", new Pointer("ptr","double",this));
 	addToMap("bool *", new Pointer("ptr","bool",this));
 	addToMap("char *", new Pointer("ptr","char",this));
-	addToMap("size_t *", new Pointer("ptr","size_t",this));
-	*/
+	addToMap("size_t *", new Pointer("ptr","size_t",this));*/
+	
 }
 
 void TYPESDICTIONNARY::convertJava(const Module::vector& modules)

@@ -79,7 +79,6 @@ void Function::addArgs(const nsC::Param::vector& parameters)
 	
 	if(init=="_init" && n>0)
 	{
-		//cout << "Dans le if" << endl;
 		_args.push_back(new nsJNI::Param("AddressWrapper",parameters[0].getName()));
 		if(n>1)
 			beginArgs = 1;
@@ -97,6 +96,7 @@ void Function::addArgs(const nsC::Param::vector& parameters)
 				nsC::Param size = parameters[i+1];
 				if(parameters[i].getName() + "_size" == size.getName())
 				{
+               cout << "here eeeeee" << endl;
 					//Remplacer le if par le nombre d'indirection
 					string type = parameters[i].getType();
 					if(type == "void" || type == "const void")
