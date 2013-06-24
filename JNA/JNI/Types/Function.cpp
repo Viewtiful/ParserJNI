@@ -93,6 +93,7 @@ void Function::addArgs(const nsC::Param::vector& parameters)
 		cout << "i = " << i << "n =" << n << endl;
 		if(parameters[i].getIndirections()>0 && i+1<n)
 		{
+            string type = parameters[i].getType();
 				nsC::Param size = parameters[i+1];
 				if(parameters[i].getName() + "_size" == size.getName())
 				{

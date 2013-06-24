@@ -96,7 +96,6 @@ void Function::addArgs(const nsC::Param::vector& parameters)
 				nsC::Param size = parameters[i+1];
 				if(parameters[i].getName() + "_size" == size.getName())
 				{
-               cout << "here eeeeee" << endl;
 					//Remplacer le if par le nombre d'indirection
 					string type = parameters[i].getType();
 					if(type == "void" || type == "const void")
