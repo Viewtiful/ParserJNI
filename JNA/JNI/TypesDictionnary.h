@@ -49,7 +49,7 @@ namespace nsJNI
 		int nbIndirections(const string& CType);
 		void addTypedefs(const nsC::Typedef::vector& typedefs);
 		void addStruct(const nsC::Struct::vector& structs);
-	   	void addEnums(const nsC::Enum::vector& enums);
+	   void addEnums(ofstream &f, const nsC::Enum::vector& enums);
 
 
       protected:

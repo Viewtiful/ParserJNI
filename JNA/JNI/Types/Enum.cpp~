@@ -5,11 +5,13 @@
 
 #include "JNI/Types/Enum.h"
 #include "Utils/Utils.h"
+#include <string>
+#include <fstream>
 #define ENUM nsJNI::ENUM
 using namespace nsJNI;
 using namespace nsUtils;
 
-bool Enum::create(const nsC::Enum::vector& en,
+bool Enum::create(ofstream &f, const nsC::Enum::vector& en,
 		TypesDictionnary *dictionnary)
 {
 	cout << "Creating Java enums from \"" << endl;
@@ -22,25 +24,21 @@ bool Enum::create(const nsC::Enum::vector& en,
 		string enumName = CEnum.getName();
 		if(enumName == "")
 			enumName = CEnum.getTypedef();
-		dictionnary->addToMap(enumName, new Enum(enumName, enumName, "jobject", CEnum));
+		cout << "Enum Name = " << enumName << endl;
+		dictionnary->addToMap(enumName, new Enum(f, enumName, enumName, "jobject", CEnum));
 	}
 	return true;
 }
 
-Enum::Enum(const string& javaType, const string& jniType, const string& VMSignature, const nsC::Enum& cEnum) : Type(javaType, jniType, VMSignature)
+Enum::Enum(ofstream &f, const string& javaType, const string& jniType, const string& VMSignature, const nsC::Enum& cEnum) : Type(javaType, jniType, VMSignature)
 {
 	_cEnum = cEnum;
-	outputJava();
+	addEnumToJava(f);
 }
 
-Enum::~Enum()
-{
+void Enum::addEnumToJava(ofstream &f) {
 
-}
-
-std::string Enum::outputJava()
-{
-	string structure(
+   string structure(
 			"\tpublic static enum %ENUMNAME% {\n"
 			"%FIELDS%"
 			"\t\tint enumValue;\n\n"
@@ -67,21 +65,33 @@ std::string Enum::outputJava()
 		stringReplace(field, "VALUE2", values[i].second);
 		fields += field;
 	}
-	
-   string enumName;
+
 	if(!_cEnum.getName().empty()) {
 		stringReplace(structure, "ENUMNAME", _cEnum.getName());
-      enumName = _cEnum.getName();
    }
 	else {
 		stringReplace(structure, "ENUMNAME", _cEnum.getTypedef());
-      enumName = _cEnum.getTypedef();
    }
 
 	stringReplace(structure, "FIELDS", fields);
 
-	cout << structure << endl;
+   f << structure;
+}
 
+Enum::~Enum()
+{
+
+}
+
+std::string Enum::outputJava()
+{	
+   string enumName;
+	if(!_cEnum.getName().empty()) {
+      enumName = _cEnum.getName();
+   }
+	else {
+      enumName = _cEnum.getTypedef();
+   }
    
 	return enumName;
 }

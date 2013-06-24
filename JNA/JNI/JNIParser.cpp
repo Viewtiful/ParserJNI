@@ -23,25 +23,25 @@ JNIPARSER::~JNIParser() {
 
 int JNIPARSER::run(nsModules::Module::vector modules) 
 {
-	
-    TypesDictionnary *dico = new TypesDictionnary();
-    // Recupération des types
-   for(int i = 0; i<modules.size(); ++i)
-   {
-   		dico->addStruct(modules[i].getStructs());
-		   if(modules[i].getEnums().size() > 0)
-			   dico->addEnums(modules[i].getEnums());
-   }
+   TypesDictionnary *dico = new TypesDictionnary();
+   OutputJNI *jni = new OutputJNI(dico);
+   OutputJava *java = new OutputJava(dico);
 
    string filename = "ArcanaJNI";
    string extension = ".java";
    string fullName = filename + extension;
    filename = nsUtils::toJavaName(filename, false, false, true);
    ofstream f(fullName.c_str());   //faudra revoir ça (Un peu mieux)!
-   OutputJNI *jni = new OutputJNI(dico);
-   OutputJava *java = new OutputJava(dico);
 
    java->addClassDefinition(f, filename);
+	
+    // Recupération des types
+   for(int i = 0; i<modules.size(); ++i)
+   {
+   		dico->addStruct(modules[i].getStructs());
+		   if(modules[i].getEnums().size() > 0)
+			   dico->addEnums(f, modules[i].getEnums());
+   }
 
    for(int i = 0; i<modules.size(); ++i)
 	{

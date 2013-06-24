@@ -38,6 +38,7 @@ void TYPESDICTIONNARY::addBaseType()
 	addToMap("void *", new NativeType("byte","jbyte","B"));
 	addToMap(" char *", new NativeType("byte","jbyte","B"));
 	addToMap("AddressWrapper",new NativeType("AddressWrapper","jobject","O"));	
+	addToMap("bool *",new NativeType("BoolWrapper","jobject","O"));	
 	
 	//Native types
 	//_conversionMap["short"] = new NativeType("short","jshort","S"); 
@@ -199,7 +200,7 @@ void TYPESDICTIONNARY::addStruct(const nsC::Struct::vector& structs)
   
 }
 
-void TYPESDICTIONNARY::addEnums(const nsC::Enum::vector &enums) {
+void TYPESDICTIONNARY::addEnums(ofstream &f, const nsC::Enum::vector &enums) {
 	Enum::create(enums, this);
 }
 

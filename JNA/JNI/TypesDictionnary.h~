@@ -45,7 +45,7 @@ namespace nsJNI
 		string convertJava(const string& Ctype);
 		string convertJNI(const string& Ctype);
 		string convertVM(const string& Ctype);
-		string TYPESDICTIONNARY::getRealType(const string& CType)
+		string getRealType(const string& CType);
 		int nbIndirections(const string& CType);
 		void addTypedefs(const nsC::Typedef::vector& typedefs);
 		void addStruct(const nsC::Struct::vector& structs);

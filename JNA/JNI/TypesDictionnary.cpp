@@ -200,8 +200,8 @@ void TYPESDICTIONNARY::addStruct(const nsC::Struct::vector& structs)
   
 }
 
-void TYPESDICTIONNARY::addEnums(const nsC::Enum::vector &enums) {
-	Enum::create(enums, this);
+void TYPESDICTIONNARY::addEnums(ofstream &f, const nsC::Enum::vector &enums) {
+	Enum::create(f, enums, this);
 }
 
 void TYPESDICTIONNARY::addToMap(const string& cType, Type *type) {

@@ -15,14 +15,15 @@ namespace nsJNI{
 	   public : 
          virtual ~Enum();
        
-	      static bool create(const nsC::Enum::vector& en, TypesDictionnary *dictionnary);
+	      static bool create(ofstream &f, const nsC::Enum::vector& en, TypesDictionnary *dictionnary);
          std::string outputJava();
          std::string outputJNI();
+         void addEnumToJava(ofstream &f);
 
       protected : 
          nsC::Enum _cEnum;
 
-         Enum(const string& javaType,const string& jniType,const string& vmSignature,const nsC::Enum& cEnum);
+         Enum(ofstream &f, const string& javaType,const string& jniType,const string& vmSignature,const nsC::Enum& cEnum);
 	};
 }
 #endif
