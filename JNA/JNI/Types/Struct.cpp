@@ -1,25 +1,51 @@
 #define STRUCT nsJNI::STRUCT
 #include "JNI/Types/Struct.h"
+#include "Utils/Utils.h"
+#include <string>
+#include <fstream>
 using namespace nsJNI;
+using namespace nsUtils;
 
-Struct::Struct(const string& VMSignature, const nsC::Struct& cStruct, TypesDictionnary* dictionnary) : Type(VMSignature)
+Struct::Struct(ofstream &f, const string& VMSignature, const nsC::Struct& cStruct, TypesDictionnary* dictionnary) : Type(VMSignature)
 {
 	this->_cStruct = cStruct;
 	this->_dictionnary = dictionnary;
 	this->_jniType = "jobject";
 	toupper(_cStruct.getTypedef()[0]);
 	this->_javaType = cStruct.getTypedef();
+   addStructToJava(f);
 }
 
 
 std::string Struct::outputJava()
 {
-	cout << "public class " << _cStruct.getTypedef() << " {" << endl;
-	nsC::Param::vector fields = _cStruct.getFields();
-	
-	for(int i =0; i<fields.size(); i++)
-		cout << "\t" << _dictionnary->convertJava(fields[i].getType()) << " " << fields[i].getName() << ";"<< endl;
-	cout << "}" << endl;
+
+}
+
+void Struct::addStructToJava(ofstream &f)
+{
+   string structure(
+		"\tpublic class %CLASSNAME% {\n"
+		"%FIELDS%"
+		"\t}\n\n"
+	);
+
+   nsC::Param::vector fields = _cStruct.getFields();
+	string fieldsTemp;
+
+	for(int i =0; i<fields.size(); i++) {
+      string field("\t\t%VALUE1% %VALUE2%;");
+		
+		stringReplace(field, "VALUE1", _dictionnary->convertJava(fields[i].getType()));
+		stringReplace(field, "VALUE2", fields[i].getName());
+		fieldsTemp += field;
+   }
+
+   stringReplace(structure, "CLASSNAME", _cStruct.getTypedef());
+
+	stringReplace(structure, "FIELDS", fieldsTemp);
+
+   f << structure;
 }
 
 std::string Struct::outputJNI()

@@ -49,7 +49,7 @@ namespace nsJNI
 		string getRealType(const string& CType);
 		int nbIndirections(const string& CType);
 		void addTypedefs(const nsC::Typedef::vector& typedefs);
-		void addStruct(const nsC::Struct::vector& structs);
+		void addStruct(ofstream &f, const nsC::Struct::vector& structs);
 	   	void addEnums(ofstream &f, const nsC::Enum::vector& enums);
 		bool isNativeType(const string &type);
 

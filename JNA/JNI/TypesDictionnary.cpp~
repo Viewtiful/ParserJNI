@@ -35,7 +35,7 @@ void TYPESDICTIONNARY::addBaseType()
 	addToMap("size_t", new NativeType("long","jlong","J",true));
 	//addToMap("char*", new NativeType("String","jstring","Ljava/lang/String;"));
 	addToMap("const char *", new NativeType("String","jstring","Ljava/lang/String;",true));
-	addToMap("const void *", new NativeType("byte","jbyte","B",true));
+	addToMap("const void *", new Array("char","[B",this));
 	addToMap("void *", new NativeType("byte","jbyte","B",true));
 	addToMap("char *", new NativeType("byte","jbyte","B",true));
 	addToMap("AddressWrapper",new NativeType("AddressWrapper","jobject","O",false));	
@@ -186,7 +186,7 @@ void TYPESDICTIONNARY::addTypedefs(const nsC::Typedef::vector& typedefs)
 
 }
 
-void TYPESDICTIONNARY::addStruct(const nsC::Struct::vector& structs)
+void TYPESDICTIONNARY::addStruct(ofstream &f, const nsC::Struct::vector& structs)
 {
 	for (nsC::Struct::vector::const_iterator iterator(structs.begin());
          iterator != structs.end();
