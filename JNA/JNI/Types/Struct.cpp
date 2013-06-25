@@ -36,7 +36,7 @@ void Struct::addStructToJava(ofstream &f)
 	for(int i =0; i<fields.size(); i++) {
       string field("\t\t%VALUE1% %VALUE2%;");
 		
-		stringReplace(field, "VALUE1", _dictionnary->convertJava(fields[i].getType()));
+		stringReplace(field, "VALUE1", _dictionnary->convertJava(fields[i].getCType()));
 		stringReplace(field, "VALUE2", fields[i].getName());
 		fieldsTemp += field;
    }

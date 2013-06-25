@@ -38,9 +38,9 @@ int JNIPARSER::run(nsModules::Module::vector modules)
     // Recupération des types
    for(int i = 0; i<modules.size(); ++i)
    {
-   		dico->addStruct(f, modules[i].getStructs());
 		   if(modules[i].getEnums().size() > 0)
 			   dico->addEnums(f, modules[i].getEnums());
+   		dico->addStruct(f, modules[i].getStructs());
    }
 
    for(int i = 0; i<modules.size(); ++i)

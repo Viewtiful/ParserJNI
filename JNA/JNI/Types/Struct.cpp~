@@ -44,6 +44,8 @@ void Struct::addStructToJava(ofstream &f)
    stringReplace(structure, "CLASSNAME", _cStruct.getTypedef());
 
 	stringReplace(structure, "FIELDS", fieldsTemp);
+
+   f << structure;
 }
 
 std::string Struct::outputJNI()
