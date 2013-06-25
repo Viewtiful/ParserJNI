@@ -7,9 +7,10 @@
 using namespace nsJNI;
 using namespace std;
 
-NativeType::NativeType(const string& javaType, const string& jniType, const string& VMSignature) : Type(javaType, jniType, VMSignature)
+NativeType::NativeType(const string& javaType, const string& jniType, const string& VMSignature,bool isNativeType) : Type(javaType, jniType, VMSignature)
 {
-
+	_isNativeType = isNativeType;
+	cout << "isNativeType Value : " << _isNativeType << endl;
 }
 
 
@@ -30,4 +31,7 @@ std::string NativeType::outputJNI()
 	return getJNIType();
 }
 
-
+bool NativeType::isNativeType()
+{
+	return _isNativeType;
+}

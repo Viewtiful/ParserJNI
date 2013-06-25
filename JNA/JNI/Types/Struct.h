@@ -19,7 +19,7 @@ namespace nsJNI {
 		Struct(const string& vmSignature,const nsC::Struct& cStruct,TypesDictionnary *dictionnary);
 		std::string outputJava();
         std::string outputJNI();
-        
+        bool isNativeType();
       protected:
         nsC::Struct _cStruct;
         TypesDictionnary* _dictionnary;

@@ -19,6 +19,7 @@ namespace nsJNI {
 		Array(const string& CBaseType, const string& vmSignature, TypesDictionnary *dictionnary) ;
 		std::string outputJava();
         std::string outputJNI() ;
+        bool isNativeType();
       protected:
         TypesDictionnary* _dictionnary;
         std::string _CBaseType;

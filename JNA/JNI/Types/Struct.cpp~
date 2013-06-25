@@ -2,7 +2,7 @@
 #include "JNI/Types/Struct.h"
 using namespace nsJNI;
 
-Struct::Struct(string VMSignature, nsC::Struct cStruct, TypesDictionnary* dictionnary) : Type(VMSignature)
+Struct::Struct(const string& VMSignature, const nsC::Struct& cStruct, TypesDictionnary* dictionnary) : Type(VMSignature)
 {
 	this->_cStruct = cStruct;
 	this->_dictionnary = dictionnary;
@@ -30,4 +30,7 @@ Struct::~Struct(){
 
 }        
 
-
+bool Struct::isNativeType()
+{
+	return false;
+}

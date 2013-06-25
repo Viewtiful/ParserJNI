@@ -7,7 +7,7 @@
 
 using namespace nsJNI;
 using namespace std;
-Type::Type(string javaType,string jniType,string VMSignature)
+Type::Type(string javaType, string jniType, string VMSignature)
 {
 	_javaType = javaType;
 	_jniType = jniType;
@@ -38,3 +38,6 @@ string Type::getVMSignature()
 {
 	return _VMSignature;
 }
+
+
+

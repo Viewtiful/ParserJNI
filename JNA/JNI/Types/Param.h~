@@ -15,6 +15,9 @@ namespace nsJNI {
         Param(const string& type,const string& name);
 		virtual ~Param();
         void convert();
+        std::string& getType();
+        std::string& getName();
+        bool isNativeType()
       protected:
       	string _type;
       	string _name;

@@ -19,7 +19,7 @@ namespace nsJNI{
          std::string outputJava();
          std::string outputJNI();
          void addEnumToJava(ofstream &f);
-
+         bool isNativeType();
       protected : 
          nsC::Enum _cEnum;
 

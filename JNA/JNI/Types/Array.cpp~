@@ -2,7 +2,7 @@
 #include "JNI/Types/Array.h"
 using namespace nsJNI;
 
-Array::Array(const string& CBaseType,const string& VMSignature,TypesDictionnary *dictionnary) : Type(VMSignature)
+Array::Array(const string& CBaseType, const string& VMSignature, TypesDictionnary *dictionnary) : Type(VMSignature)
 {
 	_CBaseType = CBaseType;	
 	cout <<"Constructeur" <<  _CBaseType << endl;
@@ -31,3 +31,7 @@ std::string Array::outputJNI()
 	return jniType + "Array";
 }
 
+bool Array::isNativeType()
+{
+	return _dictionnary[_CBaseType]->isNativeType();
+}

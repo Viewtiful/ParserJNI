@@ -7,6 +7,7 @@
 #define __JNI_POINTER_H
 #include <string>
 #include "JNI/Types/Type.h"
+#include "JNI/TypesDictionnary.h"
 namespace nsJNI {
 
 	class TypesDictionnary;
@@ -14,13 +15,14 @@ namespace nsJNI {
     {
       public:
         virtual ~Pointer();
-		Pointer(const string& vmSignature,const string& CBaseType,TypesDictionnary *dictionnary);
+		Pointer(const string& vmSignature,const string& CBaseType,TypesDictionnary *dictionnary,bool isNativeType);
 		std::string outputJava();
         std::string outputJNI();
-        
+        bool isNativeType();
       protected:
         std::string _CBaseType;
         TypesDictionnary* _dictionnary;
+        bool _isNativeType;
     };
 }
 

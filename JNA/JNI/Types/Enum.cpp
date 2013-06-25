@@ -115,3 +115,8 @@ std::string Enum::outputJNI()
 {
    return "jobject";
 }
+
+bool Enum::isNativeType()
+{
+	return false;
+}

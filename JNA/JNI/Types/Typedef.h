@@ -22,7 +22,7 @@ namespace nsJNI
         	std::string outputJNI();
         	string getStructName();
         	string getTargetType();
-        
+        	bool isNativeType();
 		protected:
 			string _structName;
 			string _targetType;	

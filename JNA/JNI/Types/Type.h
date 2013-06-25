@@ -13,11 +13,11 @@ namespace nsJNI {
     {
       public:
         virtual ~Type();
-		Type(string javaType,string jniType,string VMSignature);
+		Type(string javaType, string jniType, string VMSignature);
 		Type(string VMSignature);
 		virtual std::string outputJava() =0;
         virtual std::string outputJNI() =0;
-        
+        virtual bool isNativeType() =0;
         string getJavaType();
         string getJNIType();
         string getVMSignature();
@@ -26,7 +26,7 @@ namespace nsJNI {
       	string _javaType;
       	string _jniType;
       	string _VMSignature;
-      
+      	
     };
 }
 

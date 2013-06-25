@@ -24,6 +24,7 @@ void Function::printPrototype(ofstream& file)
 {
 	cout << "returnType = " << _returnType << endl;
 	string returnType;
+	cout << "Delta" << endl;
 	returnType = _dictionnary->convertJava(_returnType);
 	cout << "returnType = " << returnType << endl;
 	if(returnType  == "")
@@ -37,13 +38,17 @@ void Function::printParameters(ofstream& file)
 {
 	int i;
 	int n = _args.size();
+	bool skip;
 	for(i=0;i<n;i++)
 	{	
 		cout << _args[i]->getType() << endl;
 		cout << "Type = " << _dictionnary->convertJava(_args[i]->getType()) << endl;
-		file << _dictionnary->convertJava(_args[i]->getType()) << " " << _args[i]->getName();
-		if(i+1<n)
-			file << ",";
+		if(!skip)
+		{
+			file << _dictionnary->convertJava(_args[i]->getType()) << " " << _args[i]->getName();
+			if(i+1<n && _args[i+1]->getType()!="size_t *")
+				file << "," ;
+		}
 	}	
 }
 
@@ -72,45 +77,69 @@ void Function::addArgs(const nsC::Param::vector& parameters)
 {
 	cout << "2.4.3.4.1" << endl;
 	
-	int n = parameters.size();
-	int beginArgs = 0;
-	string init;
-	init = _name.substr(_name.size()- 5, _name.size()-1);
-	
-	if(init=="_init" && n>0)
-	{
-		_args.push_back(new nsJNI::Param("AddressWrapper",parameters[0].getName()));
-		if(n>1)
-			beginArgs = 1;
-		else
-			return;
-	}
-			
-	for(int i = beginArgs; i<n; i++)
+	int n = parameters.size();	
+	for(int i = 0; i<n; i++)
 	{
 		int size = _args.size();
 		cout << "2.4.3.4.2" << endl;
 		cout << "i = " << i << "n =" << n << endl;
-		if(parameters[i].getIndirections()>0 && i+1<n)
+		if(parameters[i].getIndirections()>0  && parameters[i].getCType()!= "const char *")
 		{
-				nsC::Param size = parameters[i+1];
-				if(parameters[i].getName() + "_size" == size.getName())
+			cout << "Pointer !" << endl;
+			if(i+1<n)
+			{
+				nsC::Param arraySize = parameters[i+1];
+				if(parameters[i].getName() + "_size" == arraySize.getName())
 				{
+					cout << "Create an Array" << endl;
 					//Remplacer le if par le nombre d'indirection
 					string type = parameters[i].getType();
 					if(type == "void" || type == "const void")
 						type = parameters[i].getCType();
-						
+					
 					_args.push_back(new nsJNI::Param(type+"Array",parameters[i].getName()));
 					cout << parameters[i].getType()+"Array" << endl;
+					continue;
 				}
-				else
-					_args.push_back(new nsJNI::Param(parameters[i].getCType(),parameters[i].getName()));
-					
-	 	}
-		else
-			_args.push_back(new nsJNI::Param(parameters[i].getCType(),parameters[i].getName()));
-		assert(_args.size()==size+1);
+			}
+			if(!_dictionnary->isNativeType(parameters[i].getType()))
+	 		{
+	 			cout << "This is not a Native Type = " << parameters[i].getType() << endl;
+	 			if(_dictionnary->countAt(parameters[i].getCType())==0)
+	 			{
+	 				cout << "The object does not exists = " << parameters[i].getCType();
+	 			
+	 				Type *object = new Pointer("bla",parameters[i].getType(),_dictionnary,false);
+	 				_dictionnary->addToMap(parameters[i].getCType(),object);
+	 			}
+	 			cout << "Creating a new Param as following" << "[" << "Address Wrapper , " << parameters[i].getName() << "]" << endl; 
+	 			_args.push_back(new nsJNI::Param("AddressWrapper",parameters[i].getName()));
+			}
+								
+			else
+			{
+				cout << "Native Type pointer " << endl; 
+				if(_dictionnary->countAt(parameters[i].getCType())==0)
+	 			{	
+	 				cout << "The object does not exists = " << parameters[i].getCType();
+	 			
+	 				Type *object = new Pointer("bla",parameters[i].getType(),_dictionnary,false);
+	 				_dictionnary->addToMap(parameters[i].getCType(),object);
+	 			}
+	 			cout << "Creating a new Param as following" << "[" << "Address Wrapper , " << parameters[i].getName() << "]" << endl;
+				_args.push_back(new nsJNI::Param(parameters[i].getCType(),parameters[i].getName()));
+			}
+			cout << "Apres le for" << endl;
+			cout << "_args.size() : " << _args.size() << endl;
+			assert(_args.size()==size+1);
+	}
+	else
+	{
+		cout << "Normal Type" << endl;
+		cout << "Creating a new Param as following" << "[" << parameters[i].getCType()<<" , "  << parameters[i].getName() << "]" << endl; 
+		_args.push_back(new nsJNI::Param(parameters[i].getCType(),parameters[i].getName()));
+	}
+	cout << "FIN fONCTION" << endl;
 	}
 }
 

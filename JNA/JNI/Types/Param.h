@@ -17,6 +17,7 @@ namespace nsJNI {
         void convert();
         std::string& getType();
         std::string& getName();
+        bool isNativeType();
       protected:
       	string _type;
       	string _name;

@@ -16,7 +16,7 @@
 #include "JNI/Types/Enum.h"
 #include "JNI/Types/Pointer.h"
 #include "JNI/Types/Array.h"
-#include <assert.h>
+#include <cassert>
 #include "Modules/Module.h"
 using namespace nsModules;
 namespace nsJNI
@@ -41,7 +41,8 @@ namespace nsJNI
 		void convertJava(const Module::vector& modules);
 		void convertJNI(const Module::vector& modules);
 		void addToMap(const string& cType, Type *type);
-		
+		int countAt(const string& Ctype);
+
 		string convertJava(const string& Ctype);
 		string convertJNI(const string& Ctype);
 		string convertVM(const string& Ctype);
@@ -49,8 +50,8 @@ namespace nsJNI
 		int nbIndirections(const string& CType);
 		void addTypedefs(const nsC::Typedef::vector& typedefs);
 		void addStruct(const nsC::Struct::vector& structs);
-	   void addEnums(ofstream &f, const nsC::Enum::vector& enums);
-
+	   	void addEnums(ofstream &f, const nsC::Enum::vector& enums);
+		bool isNativeType(const string &type);
 
       protected:
 
