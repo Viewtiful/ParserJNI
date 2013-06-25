@@ -22,8 +22,13 @@ bool Enum::create(ofstream &f, const nsC::Enum::vector& en,
 		const nsC::Enum& CEnum(*iterator);
 
 		string enumName = CEnum.getName();
-		if(enumName == "")
+		if(enumName == "") {
 			enumName = CEnum.getTypedef();
+      }
+
+      if(CEnum.getName() != "" && CEnum.getTypedef() != "") {
+         enumName = CEnum.getTypedef();
+      }
 		cout << "Enum Name = " << enumName << endl;
 		dictionnary->addToMap(enumName, new Enum(f, enumName, enumName, "jobject", CEnum));
 	}
@@ -66,12 +71,22 @@ void Enum::addEnumToJava(ofstream &f) {
 		fields += field;
 	}
 
-	if(!_cEnum.getName().empty()) {
+	/*if(!_cEnum.getName().empty()) {
 		stringReplace(structure, "ENUMNAME", _cEnum.getName());
    }
 	else {
 		stringReplace(structure, "ENUMNAME", _cEnum.getTypedef());
+   }*/
+
+   string enumName = _cEnum.getName();
+   if(_cEnum.getName().empty()) {
+      enumName = _cEnum.getTypedef();
    }
+
+   if(!_cEnum.getName().empty() && !_cEnum.getTypedef().empty()) {
+      enumName = _cEnum.getTypedef();
+   }
+   stringReplace(structure, "ENUMNAME", enumName);
 
 	stringReplace(structure, "FIELDS", fields);
 
@@ -85,14 +100,14 @@ Enum::~Enum()
 
 std::string Enum::outputJava()
 {	
-   string enumName;
-	if(!_cEnum.getName().empty()) {
-      enumName = _cEnum.getName();
+	string enumName = _cEnum.getName();
+	if(enumName == "") {
+		enumName = _cEnum.getTypedef();
    }
-	else {
+
+   if(_cEnum.getName() != "" && _cEnum.getTypedef() != "") {
       enumName = _cEnum.getTypedef();
    }
-   
 	return enumName;
 }
 

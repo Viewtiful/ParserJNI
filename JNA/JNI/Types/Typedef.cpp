@@ -5,7 +5,8 @@ using namespace nsJNI;
 
 Typedef::Typedef(string javaType, string cppType, string VMSignature, string structName) : Type(javaType,cppType,VMSignature)
 {	
-	this->_structName = structName;
+   _structName = structName;
+   _targetType = javaType;  
 }
 
 Typedef::~Typedef()
@@ -15,7 +16,7 @@ Typedef::~Typedef()
 
 std::string Typedef::outputJava()
 {
-	
+	return _targetType;
 }
 
 
