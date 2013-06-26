@@ -31,7 +31,7 @@ namespace nsJNI
 			void addNativeFunctionTable(Function::vector fcts, string fileName);
 
 		protected:	
-			ofstream outputFile;		
-			TypesDictionnary *dictionnary;
+			fstream _outputFile;		
+			TypesDictionnary *_dictionnary;
 	};
 }

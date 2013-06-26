@@ -7,7 +7,7 @@ using nsUtils::stringReplace;
 using namespace nsJNI;
 OutputJNI::OutputJNI(TypesDictionnary *dictionnary)
 {
-	this->dictionnary = dictionnary;
+	_dictionnary = dictionnary;
 }
 
 OutputJNI::~OutputJNI() {
@@ -15,11 +15,11 @@ OutputJNI::~OutputJNI() {
 }
 
 std::string OutputJNI::getJNIType(std::string inputType) {
-	return dictionnary->convertJNI(inputType);
+	return _dictionnary->convertJNI(inputType);
 }
 
 string OutputJNI::getVMSignature(string inputType) {
-	return dictionnary->convertVM(inputType);
+	return _dictionnary->convertVM(inputType);
 }
 
 void OutputJNI::printPrototype(string typeRetour)
@@ -28,29 +28,29 @@ void OutputJNI::printPrototype(string typeRetour)
 	if(returnType  == "")  //TODO revoir ça !
 		returnType = "jobject";   
 
-	outputFile << "JNIEXPORT " << returnType << " JNICALL ";
+	_outputFile << "JNIEXPORT " << returnType << " JNICALL ";
 }
 
 void OutputJNI::printName(string name)
 {
-	outputFile << name << "(";
+	_outputFile << name << "(";
 }
 
 void OutputJNI::printParameters(Param::vector& parameters)
 {
 	int i;
-	outputFile << "JNIEnv *env, jobject o ";
+	_outputFile << "JNIEnv *env, jobject o ";
 	for(i=0;i<parameters.size();i++)
 	{
-		outputFile << ", ";
+		_outputFile << ", ";
 		printParameter(parameters[i]);
 	}	
-	outputFile << ")\n";
+	_outputFile << ")\n";
 }
 
 void OutputJNI::printParameter(Param parameter)
 {
-	outputFile << getJNIType(parameter.getType()) << " " << parameter.getName();
+	_outputFile << getJNIType(parameter.getType()) << " " << parameter.getName();
 }
 
 void OutputJNI::addInclude() {
@@ -71,11 +71,11 @@ void OutputJNI::addInclude() {
 			"#include <kep/kep_sts.h>\n\n\n"
 			);
 
-	outputFile << include;
+	_outputFile << include;
 }
 
 void OutputJNI::addContent() {   //TODO faudra revoir ça !
-	outputFile << "\t printf(\"Hello\");";
+	_outputFile << "\t printf(\"Hello\");";
 }
 
 void OutputJNI::addFunctionPrototype(Function::vector fcts) {
@@ -87,46 +87,46 @@ void OutputJNI::addFunctionPrototype(Function::vector fcts) {
 		printPrototype(typeRetour);
 		printName(name);
 		printParameters(parameters);
-		outputFile << "{\n";
+		_outputFile << "{\n";
 		addContent();
 		outputFile << "\n}\n\n";
 	}
 }
 
 void OutputJNI::addNativeFunctionTable(Function::vector fcts, string fileName) {
-	outputFile << "static JNINativeMethod method_table[] = {\n";
+	_outputFile << "static JNINativeMethod method_table[] = {\n";
 	for(int k = 0; k < fcts.size(); k++) {
-		outputFile << "\t{ \"" << fcts[k].getName() << "\", \"";
+		_outputFile << "\t{ \"" << fcts[k].getName() << "\", \"";
 		Param::vector parameters = fcts[k].getParamList();
 		if(parameters.size() == 0)
-			outputFile << "()";
+			_outputFile << "()";
 		else {
-			outputFile << "(";
+			_outputFile << "(";
 			for(int i = 0; i < parameters.size(); ++i) {
-				outputFile << getVMSignature(parameters[i].getType());
+				_outputFile << getVMSignature(parameters[i].getType());
 			}
-			outputFile << ")";
+			_outputFile << ")";
 		}
 		string typeRetour = fcts[k].getReturnType();
 		string typeRetour2 = getVMSignature(typeRetour);
 		if(typeRetour2 == "")
 			typeRetour2 = "L" + fileName + "$" + typeRetour + ";"; 
-		outputFile << typeRetour2;
+		_outputFile << typeRetour2;
 
-		outputFile << "\", (void *)" << fcts[k].getName() << " }";
+		_outputFile << "\", (void *)" << fcts[k].getName() << " }";
 		if(fcts.size() > 1 && k < fcts.size() - 1)
-			outputFile << ",\n";
+			_outputFile << ",\n";
 	}
-	outputFile << "};\n\n";
+	_outputFile << "};\n\n";
 
-	outputFile << "static int method_table_size = sizeof(method_table) / sizeof(method_table[0]);\n\n";
+	_outputFile << "static int method_table_size = sizeof(method_table) / sizeof(method_table[0]);\n\n";
 
 }
 
 void OutputJNI::convert(Module& module)
 {
 	string fileName = module.getModuleName() +  ".c";
-	outputFile.open(fileName.c_str());
+	_outputFile.open(fileName.c_str());
 	fileName = module.getModuleName();
 	fileName = nsUtils::toJavaName(fileName, false, false, true);
 
@@ -138,14 +138,13 @@ void OutputJNI::convert(Module& module)
 
 	generateJNIOnload(fileName);
 
-	outputFile.close();
+	_outputFile.close();
 }
 
 void OutputJNI::generateJNIOnload(string filename) {
 	string content(
 			"jint JNI_OnLoad (JavaVM *vm, void *reserved) {\n"
 			"\tJNIEnv *env;\n"
-
 			"\tif ((*vm)->GetEnv(vm, (void**) &env, JNI_VERSION_1_6) != JNI_OK) {\n"
 			"\t\t\treturn JNI_ERR;\n"
 			"\t} else {\n"
@@ -162,5 +161,5 @@ void OutputJNI::generateJNIOnload(string filename) {
 			);
 	filename[0] = toupper(filename[0]);
 	stringReplace(content, "Print", filename);
-	outputFile << content << endl;
+	_outputFile << content << endl;
 }
