@@ -50,13 +50,18 @@ int JNIPARSER::run(nsModules::Module::vector modules)
 		if(modules[i].getStructs().size() > 0)
 			dico->addStruct(f, modules[i].getStructs());
 	}
-
+   
+   cout << "modules.size : " << modules.size() << endl;
 	// Converting everything to JNI and Java.
-	for(int i = 0; i<modules.size(); ++i)
+	for(int i = 0; i<modules.size(); i++)
 	{
+      
 		cout << "Java" << endl;
 		cout << "1" << endl;
+      cout << "Valeur de i avant : " << i << endl;
+      cout << "Nom du module : " << modules[i].getModuleName() << endl;
 		java->convert(f,modules[i]);
+      cout << "Valeur de i apres : " << i << endl;
 		cout << "2" <<endl;
 	}
 

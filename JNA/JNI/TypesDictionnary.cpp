@@ -114,8 +114,6 @@ bool TYPESDICTIONNARY::isNativeType(const string &type)
 	cout << "Beta" << endl;
 	cout << "Type = " << type << "Call " << i << endl;
 	i++;
-	if(i>10)
-		exit(1);
 	return _conversionMap[type]->isNativeType();
 }
 

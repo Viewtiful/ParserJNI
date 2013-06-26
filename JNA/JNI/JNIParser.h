@@ -11,12 +11,12 @@
 #include "JNI/OutputJava.h"
 #include <fstream>
 namespace nsJNI {
-    class JNIParser: public nsUtils::Parser {
-      public:
-        virtual ~JNIParser();
+	class JNIParser: public nsUtils::Parser {
+		public:
+			virtual ~JNIParser();
 
-        int run(nsModules::Module::vector modules);
-    };
+			int run(nsModules::Module::vector modules);
+	};
 }
 
 #endif
