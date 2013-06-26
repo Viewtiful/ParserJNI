@@ -35,7 +35,7 @@ void TYPESDICTIONNARY::addBaseType()
 	addToMap("size_t", new NativeType("long","jlong","J",true));
 	//addToMap("char*", new NativeType("String","jstring","Ljava/lang/String;"));
 	addToMap("const char *", new NativeType("String","jstring","Ljava/lang/String;",true));
-	addToMap("const void *", new Array("char","[B",this));
+	addToMap("const void *", new NativeType("byte","jbyte","B",true));
 	addToMap("void *", new NativeType("byte","jbyte","B",true));
 	addToMap("char *", new NativeType("byte","jbyte","B",true));
 	addToMap("AddressWrapper",new NativeType("AddressWrapper","jobject","O",false));	
@@ -110,10 +110,10 @@ void TYPESDICTIONNARY::convertJNI(const Module::vector& modules)
 
 bool TYPESDICTIONNARY::isNativeType(const string &type)
 {
-	static int i = 0;
+	static int call = 0;
 	cout << "Beta" << endl;
-	cout << "Type = " << type << "Call " << i << endl;
-	i++;
+	cout << "Type = " << type << "Call : " << call << endl;
+	assert(_conversionMap.count(type)==1);
 	return _conversionMap[type]->isNativeType();
 }
 
@@ -139,23 +139,11 @@ string TYPESDICTIONNARY::getRealType(const string& CType)
 string TYPESDICTIONNARY::convertJava(const string& Ctype)
 {
 	Type *object = NULL;
-	/*
-	if(indirections>0 && _conversionMap.count(Ctype)==0)
-	{
-		string realType = getRealType(Ctype);
-		//cout << "Add pointer" << endl;
-		object = new Pointer("bla",realType,this);
-		//cout << "realType =" << realType << "CType = " << Ctype << endl;
-		addToMap(Ctype,object);
-		return object->outputJava();		
-	}
-	*/
 	cout << "Converting to Java : "<< Ctype << endl;
 	if(_conversionMap.count(Ctype)==1)
 		object = _conversionMap[Ctype];
 		
 	assert(object!=NULL);
-	//cout << "signature = " << object->getVMSignature() << endl;
 	return object->outputJava();
 	
 }
