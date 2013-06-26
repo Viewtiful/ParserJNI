@@ -26,9 +26,9 @@ namespace nsJNI {
 		void printParameterJava(ofstream &f);
 		
         void convertJNI(ofstream& file);
-        void printParametersJNI(ofstream &f);
+        void printContentJNI(ofstream &f);
 		void printPrototypeJNI(ofstream &f);
-		void printParameterJNI(ofstream &f);
+		void printParametersJNI(ofstream &f);
 		
         void setReturnType(const string& returnType);
         void addArgs(const nsC::Param::vector& args);
@@ -36,6 +36,7 @@ namespace nsJNI {
 		void create(const nsC::Function& fct);
 		std::string& getReturnType();
 		vector<Param*> getArgs();
+		string getName();
        protected:
        	string _returnType;
        	string _name;

@@ -33,26 +33,12 @@ void TYPESDICTIONNARY::addBaseType()
 	addToMap("char", new NativeType("byte","jbyte","B",true));
 	addToMap("void", new NativeType("void","void","V",true));
 	addToMap("size_t", new NativeType("long","jlong","J",true));
-	//addToMap("char*", new NativeType("String","jstring","Ljava/lang/String;"));
 	addToMap("const char *", new NativeType("String","jstring","Ljava/lang/String;",true));
 	addToMap("const void *", new NativeType("byte","jbyte","B",true));
 	addToMap("void *", new NativeType("byte","jbyte","B",true));
 	addToMap("char *", new NativeType("byte","jbyte","B",true));
-	addToMap("AddressWrapper",new NativeType("AddressWrapper","jobject","O",false));	
-	addToMap("bool *",new NativeType("BoolWrapper","jobject","O",false));	
-	
-	//Native types
-	//_conversionMap["short"] = new NativeType("short","jshort","S"); 
-	//_conversionMap["int"] = new NativeType("int","jint","I");
-	//_conversionMap["long"] = new NativeType("long","jlong","J");
-	//_conversionMap["float"] = new NativeType("float","jfloat","F");
-	//_conversionMap["double"] = new NativeType("double","jdouble","D");
-	//_conversionMap["bool"] = new NativeType("boolean","jboolean","Z");
-	//_conversionMap["char"] = new NativeType("byte","jbyte","B");
-	//_conversionMap["void"] = new NativeType("void","void","V");
-	//_conversionMap["size_t"] = new NativeType("long","jlong","J");
-    //_conversionMap["char *"] = new NativeType("String","jstring","Ljava/lang/String;");
-	
+	addToMap("AddressWrapper",new NativeType("AddressWrapper","jobject","AddressWrapper",false));	
+	addToMap("bool *",new NativeType("BoolWrapper","jobject","BoolWrapper",false));	
 	
 	addToMap("shortArray", new Array("short","[S",this));
 	addToMap("intArray", new Array("int","[I",this));
@@ -64,38 +50,6 @@ void TYPESDICTIONNARY::addBaseType()
 	addToMap("size_tArray", new Array("long","[J",this));
 	addToMap("const void *Array", new Array("const void *","[B",this));
 	addToMap("void *Array", new Array("void *","[B",this));
-	
-	//Array Types
-	//_conversionMap["shortArray"] = new Array("short","[S",this);
-	//_conversionMap["intArray"] = new Array("int","[I",this);
-	//_conversionMap["longArray"] = new Array("long","[J",this);
-	//_conversionMap["floatArray"] = new Array("float","[F",this);
-	//_conversionMap["doubleArray"] = new Array("double","[D",this);
-	//_conversionMap["boolArray"] = new Array("boolean","[Z",this);
-	//_conversionMap["charArray"] = new Array("byte","[B",this);
-	//_conversionMap["size_tArray"] = new Array("long","[J",this);
-	
-	//Pointer type
-	//_conversionMap["short *"] = new Pointer("ptr","short",this);
-	//_conversionMap["int *"] = new Pointer("ptr","int",this);
-	//_conversionMap["long *"] = new Pointer("ptr","long",this);
-	//_conversionMap["float *"] = new Pointer("ptr","float",this);
-	//_conversionMap["double *"] = new Pointer("ptr","double",this);
-	//_conversionMap["bool *"] = new Pointer("ptr","bool",this);
-	//_conversionMap["char *"] = new Pointer("ptr","char",this);
-	//_conversionMap["void *"] = new Pointer("ptr","void",this);
-	//_conversionMap["size_t *"] = new Pointer("ptr","size_t",this);
-	
-	
-	/*addToMap("short *", new Pointer("ptr","short",this));
-	addToMap("int *", new Pointer("ptr","int",this));
-	addToMap("long *", new Pointer("ptr","long",this));
-	addToMap("float *", new Pointer("ptr","float",this));
-	addToMap("double *", new Pointer("ptr","double",this));
-	addToMap("bool *", new Pointer("ptr","bool",this));
-	addToMap("char *", new Pointer("ptr","char",this));
-	addToMap("size_t *", new Pointer("ptr","size_t",this));*/
-	
 }
 
 void TYPESDICTIONNARY::convertJava(const Module::vector& modules)

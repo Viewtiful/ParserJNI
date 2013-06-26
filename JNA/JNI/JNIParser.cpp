@@ -36,6 +36,7 @@ int JNIPARSER::run(nsModules::Module::vector modules)
 	ofstream f(realPath.c_str());   //It seems well better now !
 	ofstream f2("ArcanaJNI.c");
 	java->addClassDefinition(f, filename);
+	jni->addInclude(f2);
 
 	// Getting all the types from all the modules.
 	for(int i = 0; i<modules.size(); ++i)
@@ -48,29 +49,33 @@ int JNIPARSER::run(nsModules::Module::vector modules)
 		if(modules[i].getStructs().size() > 0)
 			dico->addStruct(f, modules[i].getStructs());
 	}
-   
-   cout << "modules.size : " << modules.size() << endl;
+
+	cout << "modules.size : " << modules.size() << endl;
+	
+	vector<nsJNI::Function*> saveFcts;
+
 	// Converting everything to JNI and Java.
 	for(int i = 0; i<modules.size(); i++)
 	{
-      	nsC::Function::vector fcts = modules[i].getFunctions();
-      	for(int k = 0;k<fcts.size();k++)
+		nsC::Function::vector fcts = modules[i].getFunctions();
+		for(int k = 0;k<fcts.size();k++)
 		{
 			nsJNI::Function *fct = new Function(dico);
+			saveFcts.push_back(fct);
 			fct->create(fcts[k]);
 			java->convert(f,fct);
 			jni->convert(f2,fct);
-		
+
 		}
 		cout << "Java" << endl;
-		cout << "1" << endl;
-      cout << "Valeur de i avant : " << i << endl;
-      cout << "Nom du module : " << modules[i].getModuleName() << endl;
-
-      cout << "Valeur de i apres : " << i << endl;
+	cout << "1" << endl;
+		cout << "Nom du module : " << modules[i].getModuleName() << endl;
 		cout << "2" <<endl;
 	}
-
+	
+	jni->addNativeFunctionTable(f2, filename, saveFcts);
+	
+	jni->generateJNIOnload(f2, filename);
 	// Just for tests !
 	f << "}" << endl;
 	std::cout << "Nombre de Modules = " << modules.size() << std::endl; 

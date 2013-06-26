@@ -76,17 +76,38 @@ void Function::convertJNI(ofstream& file)
 	cout << "Converting Parameters" << endl;
 	file << "(";
 	printParametersJNI(file);	
-	file << ");" << endl; 	
+	file << ") "; 	
+	printContentJNI(file);
 	cout << "Convert Fin" << endl;
 }
 
 
 void Function::printParametersJNI(ofstream &f)
 {
+	int i;
+	int n = _args.size();
+	bool skip;
 
-
-
+	for(i = 0; i < n; ++i) {
+		skip = false;
+		cout << _args[i]->getType() << endl;
+		if(_args[i]->getType() == "size_t *") {
+			cout << "size_t * found skipping" << endl;
+			skip = true;
+		}
+		cout << "Type = " << _dictionnary->convertJNI(_args[i]->getType()) << endl;
+		if(!skip) {
+			f << _dictionnary->convertJNI(_args[i]->getType()) << " " << _args[i]->getName();
+			if(i + 1 < n && _args[i]->getType() != "size_t *")
+				f << ',';
+		}
+	}
 }
+
+string Function::getName() {
+	return _name;
+}
+
 void Function::printPrototypeJNI(ofstream &f)
 {
 	cout << "returnType = " << _returnType << endl;
@@ -96,9 +117,11 @@ void Function::printPrototypeJNI(ofstream &f)
 	f << "\t" << "JNIEXPORT " << returnType << " JNICALL " << "JNI_" << _name;
 }
 
-void Function::printParameterJNI(ofstream &f)
+void Function::printContentJNI(ofstream &f)
 {
-
+	f << "{\n";
+	f << "\t\tprintf(\"Hello world !\");\n";
+	f << "\t}\n\n";
 }
 
 void Function::setReturnType(const string& returnType)

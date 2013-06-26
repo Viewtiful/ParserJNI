@@ -59,7 +59,7 @@ void OutputJNI::printParameter(Param parameter)
 }
 */
 
-void OutputJNI::addInclude() {
+void OutputJNI::addInclude(ofstream &f) {
 	string include(
 			"#include <jni.h>\n"
 			"#include <stdio.h>\n"
@@ -77,12 +77,9 @@ void OutputJNI::addInclude() {
 			"#include <kep/kep_sts.h>\n\n\n"
 			);
 
-	_outputFile << include;
+	f << include;
 }
 
-void OutputJNI::addContent() {   //TODO faudra revoir ça !
-	_outputFile << "\t printf(\"Hello\");";
-}
 
 /*
 void OutputJNI::addFunctionPrototype(Function::vector fcts) {
@@ -99,34 +96,35 @@ void OutputJNI::addFunctionPrototype(Function::vector fcts) {
 		_outputFile << "\n}\n\n";
 	}
 }
-
-void OutputJNI::addNativeFunctionTable(Function::vector fcts, string fileName) {
-	_outputFile << "static JNINativeMethod method_table[] = {\n";
+*/
+void OutputJNI::addNativeFunctionTable(ofstream &f, string filename, vector<nsJNI::Function*> fcts) {
+	f << "static JNINativeMethod method_table[] = {\n";
 	for(int k = 0; k < fcts.size(); k++) {
-		_outputFile << "\t{ \"" << fcts[k].getName() << "\", \"";
-		Param::vector parameters = fcts[k].getParamList();
-		if(parameters.size() == 0)
-			_outputFile << "()";
+		f << "\t{ \"" << fcts[k]->getName() << "\", \"";
+		vector<nsJNI::Param *> prms = fcts[k]->getArgs();
+
+		if(prms.size() == 0)
+			f << "()";
 		else {
-			_outputFile << "(";
-			for(int i = 0; i < parameters.size(); ++i) {
-				_outputFile << getVMSignature(parameters[i].getType());
+			f << "(";
+			for(int i = 0; i < prms.size(); ++i) {
+				f << _dictionnary->convertVM(prms[i]->getType()); 
 			}
-			_outputFile << ")";
+			f << ")";
 		}
-		string typeRetour = fcts[k].getReturnType();
-		string typeRetour2 = getVMSignature(typeRetour);
+		string typeRetour = fcts[k]->getReturnType();
+		string typeRetour2 = _dictionnary->convertVM(typeRetour);
 		if(typeRetour2 == "")
-			typeRetour2 = "L" + fileName + "$" + typeRetour + ";"; 
-		_outputFile << typeRetour2;
+			typeRetour2 = "L" + filename + "$" + typeRetour + ";"; 
+		f << typeRetour2;
 
-		_outputFile << "\", (void *)" << fcts[k].getName() << " }";
+		f << "\", (void *)" << fcts[k]->getName() << " }";
 		if(fcts.size() > 1 && k < fcts.size() - 1)
-			_outputFile << ",\n";
+			f << ",\n";
 	}
-	_outputFile << "};\n\n";
+	f << "};\n\n";
 
-	_outputFile << "static int method_table_size = sizeof(method_table) / sizeof(method_table[0]);\n\n";
+	f << "static int method_table_size = sizeof(method_table) / sizeof(method_table[0]);\n\n";
 
 }
 /*
@@ -155,7 +153,7 @@ void OutputJNI::convert(ofstream &f,Function *fct)
 	fct->convertJNI(f);
 }
 
-void OutputJNI::generateJNIOnload(string filename) {
+void OutputJNI::generateJNIOnload(ofstream &f, string filename) {
 	string content(
 			"jint JNI_OnLoad (JavaVM *vm, void *reserved) {\n"
 			"\tJNIEnv *env;\n"
@@ -175,5 +173,5 @@ void OutputJNI::generateJNIOnload(string filename) {
 			);
 	filename[0] = toupper(filename[0]);
 	stringReplace(content, "Print", filename);
-	_outputFile << content << endl;
+	f << content << endl;
 }
