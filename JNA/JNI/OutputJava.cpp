@@ -36,19 +36,6 @@ void OutputJava::printLoadLibrary(ofstream &f,string library)
 	f << "\t" << "}\n\n";
 }
 
-void OutputJava::convertFunctions(ofstream &f,nsC::Function::vector fcts)
-{
-	cout << "2.4.1" << endl;
-	for(int k = 0;k<fcts.size();k++)
-	{
-		cout << "2.4.2" << endl;
-		nsJNI::Function *fct = new Function(_dictionnary);
-		fct->create(fcts[k]);
-		cout << "2.4.3" << endl;
-		fct->convert(f);
-	}
-}
-
 void OutputJava::addAddressWrapper(ofstream &f) {
 	
    string structure (
@@ -90,9 +77,8 @@ void OutputJava::addClassDefinition(ofstream &f, string className) {
    addBoolWrapper(f);
 }
 
-void OutputJava::convert(ofstream &f,Module& module)
+void OutputJava::convert(ofstream &f,nsJNI::Function *fct)
 {
-	nsC::Function::vector fcts = module.getFunctions();
 	cout << "2.4" << endl;
-	convertFunctions(f,fcts);
+	fct->convertJava(f);
 }

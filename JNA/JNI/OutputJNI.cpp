@@ -11,7 +11,7 @@ OutputJNI::OutputJNI(TypesDictionnary *dictionnary)
 }
 
 OutputJNI::~OutputJNI() {
-	outputFile.close();
+	_outputFile.close();
 }
 
 std::string OutputJNI::getJNIType(std::string inputType) {
@@ -89,7 +89,7 @@ void OutputJNI::addFunctionPrototype(Function::vector fcts) {
 		printParameters(parameters);
 		_outputFile << "{\n";
 		addContent();
-		outputFile << "\n}\n\n";
+		_outputFile << "\n}\n\n";
 	}
 }
 

@@ -55,12 +55,19 @@ int JNIPARSER::run(nsModules::Module::vector modules)
 	// Converting everything to JNI and Java.
 	for(int i = 0; i<modules.size(); i++)
 	{
-      
+      	nsC::Function::vector fcts = modules[i].getFunctions();
+      	for(int k = 0;k<fcts.size();k++)
+		{
+			nsJNI::Function *fct = new Function(dico);
+			fct->create(fcts[k]);
+			java->convert(f,fct);
+		
+		}
 		cout << "Java" << endl;
 		cout << "1" << endl;
       cout << "Valeur de i avant : " << i << endl;
       cout << "Nom du module : " << modules[i].getModuleName() << endl;
-		java->convert(f,modules[i]);
+
       cout << "Valeur de i apres : " << i << endl;
 		cout << "2" <<endl;
 	}

@@ -18,10 +18,9 @@ namespace nsJNI
 			~OutputJava();
 			string getJavaType(string inputType);
 			void addJavaType(string inputType, string javaType);
-			void convert(ofstream &f,Module& module);	
+			void convert(ofstream &f,nsJNI::Function *fct);
 			void printJavaHeader(ofstream &f,string CHeaderFile);
 			void printLoadLibrary(ofstream &f,string library);
-			void convertFunctions(ofstream &f,nsC::Function::vector fcts);
 			void printJavaHeader(ofstream &f,string type,string CHeaderFile);
          void addClassDefinition(ofstream &f, string className);
          void addAddressWrapper(ofstream &f);
