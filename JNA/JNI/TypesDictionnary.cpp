@@ -155,9 +155,14 @@ int TYPESDICTIONNARY::countAt(const string& Ctype)
 
 string TYPESDICTIONNARY::convertJNI(const string& Ctype)
 {
-	Type *object =  _conversionMap[Ctype];
+	Type *object = NULL;
+	cout << "Converting to JNI : "<< Ctype << endl;
+	if(_conversionMap.count(Ctype)==1)
+		object = _conversionMap[Ctype];
+		
 	assert(object!=NULL);
 	return object->outputJNI();
+	
 }
 
 string TYPESDICTIONNARY::convertVM(const string& Ctype)

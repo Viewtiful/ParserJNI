@@ -1,3 +1,5 @@
+#ifndef __JNI_OUTPUTJAVA_H
+#define __JNI_OUTPUTJAVA_H
 #include "Modules/Module.h"
 #include <map>
 #include <fstream>
@@ -31,12 +33,6 @@ namespace nsJNI
 		
 		
 	};
-
-
-
-
-
-
-
-
 }
+
+#endif

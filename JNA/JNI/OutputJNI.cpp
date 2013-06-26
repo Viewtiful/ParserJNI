@@ -1,6 +1,5 @@
 #include "JNI/OutputJNI.h"
 #include "Utils/Utils.h"
-#include "Utils/Utils.h"
 
 using namespace std;
 using nsUtils::stringReplace;
@@ -21,7 +20,7 @@ std::string OutputJNI::getJNIType(std::string inputType) {
 string OutputJNI::getVMSignature(string inputType) {
 	return _dictionnary->convertVM(inputType);
 }
-
+/*
 void OutputJNI::printPrototype(string typeRetour)
 {
 	string returnType = getJNIType(typeRetour);
@@ -30,12 +29,16 @@ void OutputJNI::printPrototype(string typeRetour)
 
 	_outputFile << "JNIEXPORT " << returnType << " JNICALL ";
 }
+*/
 
+/*
 void OutputJNI::printName(string name)
 {
 	_outputFile << name << "(";
 }
+*/
 
+/*
 void OutputJNI::printParameters(Param::vector& parameters)
 {
 	int i;
@@ -47,11 +50,14 @@ void OutputJNI::printParameters(Param::vector& parameters)
 	}	
 	_outputFile << ")\n";
 }
+*/
 
+/*
 void OutputJNI::printParameter(Param parameter)
 {
 	_outputFile << getJNIType(parameter.getType()) << " " << parameter.getName();
 }
+*/
 
 void OutputJNI::addInclude() {
 	string include(
@@ -78,6 +84,7 @@ void OutputJNI::addContent() {   //TODO faudra revoir ça !
 	_outputFile << "\t printf(\"Hello\");";
 }
 
+/*
 void OutputJNI::addFunctionPrototype(Function::vector fcts) {
 	for(int k = 0;k<fcts.size();k++)
 	{   
@@ -122,7 +129,7 @@ void OutputJNI::addNativeFunctionTable(Function::vector fcts, string fileName) {
 	_outputFile << "static int method_table_size = sizeof(method_table) / sizeof(method_table[0]);\n\n";
 
 }
-
+/*
 void OutputJNI::convert(Module& module)
 {
 	string fileName = module.getModuleName() +  ".c";
@@ -139,6 +146,13 @@ void OutputJNI::convert(Module& module)
 	generateJNIOnload(fileName);
 
 	_outputFile.close();
+}
+*/
+
+void OutputJNI::convert(ofstream &f,Function *fct)
+{
+	cout << "2.4" << endl;
+	fct->convertJNI(f);
 }
 
 void OutputJNI::generateJNIOnload(string filename) {

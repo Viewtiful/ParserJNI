@@ -3,6 +3,7 @@
  * Body for JNIParser
  */
 
+#include "JNI/JNIParser.h"
 #include <cstdlib>
 #include <iostream>
 #include "Utils/Output.h"
@@ -12,10 +13,7 @@
 #include "JNI/TypesDictionnary.h"
 #include "JNA/SupportClass.h"
 #include "JNA/Module.h"
-#include "JNI/JNIParser.h"
 #define JNIPARSER nsJNI::JNIParser
-
-using nsJNA::SupportClass;
 using namespace nsC;
 #define JNIPARSER nsJNI::JNIParser
 
@@ -36,7 +34,7 @@ int JNIPARSER::run(nsModules::Module::vector modules)
 	// Even if the filename ArcanaJNI is correct as a java type, we ensure that.
 	filename = nsUtils::toJavaName(filename, false, false, true);
 	ofstream f(realPath.c_str());   //It seems well better now !
-
+	ofstream f2("ArcanaJNI.c");
 	java->addClassDefinition(f, filename);
 
 	// Getting all the types from all the modules.
@@ -61,6 +59,7 @@ int JNIPARSER::run(nsModules::Module::vector modules)
 			nsJNI::Function *fct = new Function(dico);
 			fct->create(fcts[k]);
 			java->convert(f,fct);
+			jni->convert(f2,fct);
 		
 		}
 		cout << "Java" << endl;
