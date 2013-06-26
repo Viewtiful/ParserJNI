@@ -4,7 +4,7 @@
  */
 
 #ifndef __JNI_FUNCTION_H
-
+#define __JNI_FUNCTION_H
 #include "JNI/TypesDictionnary.h"
 #include "C/Function.h"
 #include "JNI/Types/Param.h"
@@ -20,12 +20,19 @@ namespace nsJNI {
       public:
         Function(TypesDictionnary *dictionnary);
 		virtual ~Function();
-        void convert(ofstream &f);
+        void convertJava(ofstream &f);
+        void printParametersJava(ofstream &f);
+		void printPrototypeJava(ofstream &f);
+		void printParameterJava(ofstream &f);
+		
+        void convertJNI(ofstream& file);
+        void printParametersJNI(ofstream &f);
+		void printPrototypeJNI(ofstream &f);
+		void printParameterJNI(ofstream &f);
+		
         void setReturnType(const string& returnType);
         void addArgs(const nsC::Param::vector& args);
-		void printParameters(ofstream &f);
-		void printPrototype(ofstream &f);
-		void printParameter(ofstream &f);
+		
 		void create(const nsC::Function& fct);
 		std::string& getReturnType();
 		vector<Param*> getArgs();

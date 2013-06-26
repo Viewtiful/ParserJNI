@@ -4,7 +4,7 @@
  */
 
 #ifndef __JNI_PARAM_H
-
+#define __JNI_PARAM_H
 #include <iostream>
 #include <string>
 using namespace std;

@@ -20,7 +20,7 @@ void Function::create(const nsC::Function& fct)
 	addArgs(fct.getParamList());
 }
 
-void Function::printPrototype(ofstream& file)
+void Function::printPrototypeJava(ofstream& file)
 {
 	cout << "returnType = " << _returnType << endl;
 	string returnType;
@@ -34,7 +34,7 @@ void Function::printPrototype(ofstream& file)
 
 
 
-void Function::printParameters(ofstream& file)
+void Function::printParametersJava(ofstream& file)
 {
 	int i;
 	int n = _args.size();
@@ -58,18 +58,48 @@ void Function::printParameters(ofstream& file)
 	}	
 }
 
-void Function::convert(ofstream& file)
+void Function::convertJava(ofstream& file)
 {
 	cout << "Convert début" << endl;
-	printPrototype(file);
+	printPrototypeJava(file);
 	cout << "Converting Parameters" << endl;
 	file << "(";
-	printParameters(file);	
+	printParametersJava(file);	
+	file << ");" << endl; 	
+	cout << "Convert Fin" << endl;
+}
+
+void Function::convertJNI(ofstream& file)
+{
+	cout << "Convert début" << endl;
+	printPrototypeJNI(file);
+	cout << "Converting Parameters" << endl;
+	file << "(";
+	printParametersJNI(file);	
 	file << ");" << endl; 	
 	cout << "Convert Fin" << endl;
 }
 
 
+void Function::printParametersJNI(ofstream &f)
+{
+
+
+
+}
+void Function::printPrototypeJNI(ofstream &f)
+{
+	cout << "returnType = " << _returnType << endl;
+	string returnType;
+	returnType = _dictionnary->convertJNI(_returnType);
+	cout << "returnType = " << returnType << endl;
+	f << "\t" << "JNIEXPORT " << returnType << " JNICALL " << "JNI_" << _name;
+}
+
+void Function::printParameterJNI(ofstream &f)
+{
+
+}
 
 void Function::setReturnType(const string& returnType)
 {
@@ -84,7 +114,21 @@ void Function::addArgs(const nsC::Param::vector& parameters)
 	cout << "2.4.3.4.1" << endl;
 	
 	int n = parameters.size();	
-	for(int i = 0; i<n; i++)
+	int beginArgs = 0;
+	if(_name.find("_init",0)!=string::npos && parameters.size()>0)
+	{
+		cout << "This is a init Function" << endl;
+		if(!_dictionnary->isNativeType(parameters[0].getType()))
+		{
+			cout << "The first argument type is not Native" << endl;
+			_args.push_back(new nsJNI::Param("AddressWrapper",parameters[0].getName()));
+			beginArgs = 1;
+		}
+		else
+			cout << "The first argument type is Native" << endl;
+	
+	}
+	for(int i = beginArgs; i<n; i++)
 	{
 		int size = _args.size();
 		cout << "2.4.3.4.2" << endl;
