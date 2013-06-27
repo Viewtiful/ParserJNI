@@ -11,9 +11,9 @@ using namespace nsJNI;
 using namespace nsC;
 using namespace nsModules;
 
-TYPESDICTIONNARY::TypesDictionnary()
+TYPESDICTIONNARY::TypesDictionnary(string filename)
 {
-	addBaseType();   
+	addBaseType(filename);   
 }
 
 TYPESDICTIONNARY::~TypesDictionnary()
@@ -21,7 +21,7 @@ TYPESDICTIONNARY::~TypesDictionnary()
     
 }
 
-void TYPESDICTIONNARY::addBaseType()
+void TYPESDICTIONNARY::addBaseType(string filename)
 {
 
 	addToMap("short", new NativeType("short","jshort","S",true));
@@ -37,8 +37,8 @@ void TYPESDICTIONNARY::addBaseType()
 	addToMap("const void *", new NativeType("byte","jbyte","B",true));
 	addToMap("void *", new NativeType("byte","jbyte","B",true));
 	addToMap("char *", new NativeType("byte","jbyte","B",true));
-	addToMap("AddressWrapper",new NativeType("AddressWrapper","jobject","AddressWrapper",false));	
-	addToMap("bool *",new NativeType("BoolWrapper","jobject","BoolWrapper",false));	
+	addToMap("AddressWrapper",new NativeType("AddressWrapper","jobject","L" + filename + "$AddressWrapper;",false));	
+	addToMap("bool *",new NativeType("BoolWrapper","jobject","L" + filename + "$BoolWrapper;",false));	
 	
 	addToMap("shortArray", new Array("short","[S",this));
 	addToMap("intArray", new Array("int","[I",this));

@@ -22,17 +22,18 @@ JNIPARSER::~JNIParser() {
 
 int JNIPARSER::run(nsModules::Module::vector modules) 
 {
-	TypesDictionnary *dico = new TypesDictionnary();
+	string filename = "ArcanaJNI";
+	// Even if the filename ArcanaJNI is correct as a java type, we ensure that.
+	
+	filename = nsUtils::toJavaName(filename, false, false, true);
+	TypesDictionnary *dico = new TypesDictionnary(filename);
 	OutputJNI *jni = new OutputJNI(dico);
 	OutputJava *java = new OutputJava(dico);
 
 	// Get the java path from the command line parameters.
 	string javaPath = nsUtils::Parameters::getInstance().getJavaSrcDir();
-	string filename = "ArcanaJNI";
 	// Creating the real path with the name of the file.
 	string realPath = nsUtils::createJavaFileName(javaPath, "", filename);
-	// Even if the filename ArcanaJNI is correct as a java type, we ensure that.
-	filename = nsUtils::toJavaName(filename, false, false, true);
 	ofstream f(realPath.c_str());   //It seems well better now !
 	ofstream f2("ArcanaJNI.c");
 	java->addClassDefinition(f, filename);

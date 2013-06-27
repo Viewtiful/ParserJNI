@@ -87,6 +87,10 @@ void Function::printParametersJNI(ofstream &f)
 	int i;
 	int n = _args.size();
 	bool skip;
+	
+	f << "JNIEnv *env, jclass cls";
+	if(n > 0)
+		f << ", ";
 
 	for(i = 0; i < n; ++i) {
 		skip = false;
@@ -133,7 +137,7 @@ void Function::setReturnType(const string& returnType)
 }
 
 void Function::addArgs(const nsC::Param::vector& parameters)
-{
+{	
 	cout << "2.4.3.4.1" << endl;
 	
 	int n = parameters.size();	

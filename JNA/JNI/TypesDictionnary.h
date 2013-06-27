@@ -35,9 +35,9 @@ namespace nsJNI
     class TypesDictionnary
     {
       public:
-        TypesDictionnary();
+        TypesDictionnary(string filename);
         virtual ~TypesDictionnary();
-        void addBaseType();
+        void addBaseType(string filename);
 		void convertJava(const Module::vector& modules);
 		void convertJNI(const Module::vector& modules);
 		void addToMap(const string& cType, Type *type);
