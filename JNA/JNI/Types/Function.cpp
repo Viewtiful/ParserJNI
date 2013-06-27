@@ -169,7 +169,8 @@ void Function::addArgs(const nsC::Param::vector& parameters)
 			{	
 				cout << "Const void* or void* array" << endl;
 				type = parameters[i].getCType();
-				//_args.push_back(new nsJNI::Param(type+"Array",parameters[i].getName()));
+				_args.push_back(new nsJNI::Param(type+"Array",parameters[i].getName()));
+				continue;
 			}		
 			if(i+1<n)
 			{
