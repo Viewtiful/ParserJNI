@@ -163,6 +163,12 @@ void Function::addArgs(const nsC::Param::vector& parameters)
 		if(parameters[i].getIndirections()>0  && parameters[i].getCType()!= "const char *")
 		{
 			cout << "Pointer !" << endl;
+			string type = parameters[i].getType();
+			if(type == "void" || type == "const void")
+			{
+				type = parameters[i].getCType();
+				_args.push_back(new nsJNI::Param(type+"Array",parameters[i].getName()));
+			}		
 			if(i+1<n)
 			{
 				nsC::Param arraySize = parameters[i+1];
@@ -170,7 +176,7 @@ void Function::addArgs(const nsC::Param::vector& parameters)
 				{
 					cout << "Create an Array" << endl;
 					//Remplacer le if par le nombre d'indirection
-					string type = parameters[i].getType();
+					//string type = parameters[i].getType();
 					if(type == "void" || type == "const void")
 						type = parameters[i].getCType();
 					
