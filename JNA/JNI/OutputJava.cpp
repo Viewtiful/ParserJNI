@@ -80,5 +80,6 @@ void OutputJava::addClassDefinition(ofstream &f, string className) {
 void OutputJava::convert(ofstream &f,nsJNI::Function *fct)
 {
 	cout << "2.4" << endl;
+	cout << "Converting Function : "<< fct->getName() << endl;
 	fct->convertJava(f);
 }

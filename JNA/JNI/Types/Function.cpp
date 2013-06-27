@@ -32,8 +32,6 @@ void Function::printPrototypeJava(ofstream& file)
 	file << "\t" << "public native " << returnType << " " <<  _name ;
 }
 
-
-
 void Function::printParametersJava(ofstream& file)
 {
 	int i;
@@ -92,7 +90,7 @@ void Function::printParametersJNI(ofstream &f)
 	if(n > 0)
 		f << ", ";
 
-	for(i = 0; i < n; ++i) {
+	for(i = 0; i < n; i++) {
 		skip = false;
 		cout << _args[i]->getType() << endl;
 		if(_args[i]->getType() == "size_t *") {
@@ -102,7 +100,7 @@ void Function::printParametersJNI(ofstream &f)
 		cout << "Type = " << _dictionnary->convertJNI(_args[i]->getType()) << endl;
 		if(!skip) {
 			f << _dictionnary->convertJNI(_args[i]->getType()) << " " << _args[i]->getName();
-			if(i + 1 < n && _args[i]->getType() != "size_t *")
+			if(i + 1 < n && _args[i+1]->getType() != "size_t *")
 				f << ',';
 		}
 	}
@@ -142,6 +140,9 @@ void Function::addArgs(const nsC::Param::vector& parameters)
 	
 	int n = parameters.size();	
 	int beginArgs = 0;
+	if(_returnType=="const void *" || _returnType=="void *")
+		_returnType = _returnType+"Array";
+	
 	if(_name.find("_init",0)!=string::npos && parameters.size()>0)
 	{
 		cout << "This is a init Function" << endl;
@@ -165,9 +166,10 @@ void Function::addArgs(const nsC::Param::vector& parameters)
 			cout << "Pointer !" << endl;
 			string type = parameters[i].getType();
 			if(type == "void" || type == "const void")
-			{
+			{	
+				cout << "Const void* or void* array" << endl;
 				type = parameters[i].getCType();
-				_args.push_back(new nsJNI::Param(type+"Array",parameters[i].getName()));
+				//_args.push_back(new nsJNI::Param(type+"Array",parameters[i].getName()));
 			}		
 			if(i+1<n)
 			{

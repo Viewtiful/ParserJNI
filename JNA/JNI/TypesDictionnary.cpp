@@ -37,7 +37,7 @@ void TYPESDICTIONNARY::addBaseType(string filename)
 	addToMap("const void *", new NativeType("byte","jbyte","B",true));
 	addToMap("void *", new NativeType("byte","jbyte","B",true));
 	addToMap("char *", new NativeType("byte","jbyte","B",true));
-	addToMap("AddressWrapper",new NativeType("AddressWrapper","jobject","L" + filename + "$AddressWrapper;",false));	
+	addToMap("AddressWrapper", new NativeType("AddressWrapper","jobject","L" + filename + "$AddressWrapper;",false));	
 	addToMap("bool *",new NativeType("BoolWrapper","jobject","L" + filename + "$BoolWrapper;",false));	
 	
 	addToMap("shortArray", new Array("short","[S",this));
