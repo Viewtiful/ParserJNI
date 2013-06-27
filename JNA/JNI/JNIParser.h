@@ -1,6 +1,7 @@
 /** @file
- *
- * Header for JNIParser
+ * @defgroup JNI_parser JNI Parser of C headers
+ * @brief Parsing C headers in order to create the corresponding java class 
+ * and JNI code.
  */
 
 #ifndef __JNI_JNIPARSER_H
@@ -10,11 +11,22 @@
 #include "JNI/OutputJNI.h"
 #include "JNI/OutputJava.h"
 #include <fstream>
+
+
+/** @addtogroup JNI_parser
+ * @{ */
+
 namespace nsJNI {
 	
 	class JNIParser: public nsUtils::Parser {
 		public:
 			virtual ~JNIParser();
+
+			/// Running the JNI parser.
+			/**	This is where we start the conversion from C headers to 
+			 * Java/JNI. We first transform C types to Java / JNI / VM 
+			 * signatures and then we write them to a java / c file.
+			*/
 			int run(nsModules::Module::vector modules);
 	};
 }

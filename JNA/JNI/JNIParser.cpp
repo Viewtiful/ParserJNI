@@ -1,8 +1,3 @@
-/** @file
- *
- * Body for JNIParser
- */
-
 #include "JNI/JNIParser.h"
 #include <cstdlib>
 #include <iostream>
