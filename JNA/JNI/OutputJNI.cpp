@@ -20,44 +20,6 @@ std::string OutputJNI::getJNIType(std::string inputType) {
 string OutputJNI::getVMSignature(string inputType) {
 	return _dictionnary->convertVM(inputType);
 }
-/*
-void OutputJNI::printPrototype(string typeRetour)
-{
-	string returnType = getJNIType(typeRetour);
-	if(returnType  == "")  //TODO revoir ça !
-		returnType = "jobject";   
-
-	_outputFile << "JNIEXPORT " << returnType << " JNICALL ";
-}
-*/
-
-/*
-void OutputJNI::printName(string name)
-{
-	_outputFile << name << "(";
-}
-*/
-
-/*
-void OutputJNI::printParameters(Param::vector& parameters)
-{
-	int i;
-	_outputFile << "JNIEnv *env, jobject o ";
-	for(i=0;i<parameters.size();i++)
-	{
-		_outputFile << ", ";
-		printParameter(parameters[i]);
-	}	
-	_outputFile << ")\n";
-}
-*/
-
-/*
-void OutputJNI::printParameter(Param parameter)
-{
-	_outputFile << getJNIType(parameter.getType()) << " " << parameter.getName();
-}
-*/
 
 void OutputJNI::addInclude(ofstream &f) {
 	string include(
@@ -80,23 +42,6 @@ void OutputJNI::addInclude(ofstream &f) {
 	f << include;
 }
 
-
-/*
-void OutputJNI::addFunctionPrototype(Function::vector fcts) {
-	for(int k = 0;k<fcts.size();k++)
-	{   
-		string typeRetour = fcts[k].getReturnType();
-		string name = fcts[k].getName();
-		Param::vector parameters = fcts[k].getParamList();
-		printPrototype(typeRetour);
-		printName(name);
-		printParameters(parameters);
-		_outputFile << "{\n";
-		addContent();
-		_outputFile << "\n}\n\n";
-	}
-}
-*/
 void OutputJNI::addNativeFunctionTable(ofstream &f, string filename, vector<nsJNI::Function*> fcts) {
 	f << "static JNINativeMethod method_table[] = {\n";
 	for(int k = 0; k < fcts.size(); k++) {
@@ -128,25 +73,6 @@ void OutputJNI::addNativeFunctionTable(ofstream &f, string filename, vector<nsJN
 	f << "static int method_table_size = sizeof(method_table) / sizeof(method_table[0]);\n\n";
 
 }
-/*
-void OutputJNI::convert(Module& module)
-{
-	string fileName = module.getModuleName() +  ".c";
-	_outputFile.open(fileName.c_str());
-	fileName = module.getModuleName();
-	fileName = nsUtils::toJavaName(fileName, false, false, true);
-
-	//add include in the .c file
-	addInclude();
-
-	addFunctionPrototype(module.getFunctions());
-	addNativeFunctionTable(module.getFunctions(), fileName);
-
-	generateJNIOnload(fileName);
-
-	_outputFile.close();
-}
-*/
 
 void OutputJNI::convert(ofstream &f,Function *fct)
 {
