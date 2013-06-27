@@ -40,3 +40,20 @@ bool Pointer::isNativeType()
 	return _dictionnary->isNativeType(_CBaseType);
 }
 
+void Pointer::prepareCall(ofstream& f,string& varName)
+{
+
+}
+
+string Pointer::getJNIParameterName(string& varName)
+{
+	return "Pointer";
+}
+
+void Pointer::getReturnValue(ofstream& f)
+{
+
+
+
+}
+        

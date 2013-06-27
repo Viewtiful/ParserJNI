@@ -19,6 +19,10 @@ namespace nsJNI {
 		std::string outputJava();
         std::string outputJNI();
         bool isNativeType();
+        void prepareCall(ofstream& f,string& varName);
+        string getJNIParameterName(string& varName);
+        void getReturnValue(ofstream& f);
+        
       protected:
         std::string _CBaseType;
         TypesDictionnary* _dictionnary;

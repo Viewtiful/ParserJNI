@@ -61,3 +61,20 @@ bool Struct::isNativeType()
 	cout << "isNativeType Struct" << endl;
 	return false;
 }
+
+void Struct::prepareCall(ofstream &f,string& varName)
+{
+
+}
+
+string Struct::getJNIParameterName(string& varName)
+{
+	return "Struct";
+}
+
+void Struct::getReturnValue(ofstream& f)
+{
+
+
+}
+        

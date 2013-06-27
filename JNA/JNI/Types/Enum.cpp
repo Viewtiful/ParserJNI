@@ -120,3 +120,23 @@ bool Enum::isNativeType()
 {
 	return false;
 }
+
+
+
+void Enum::prepareCall(ofstream& f,string& varName)
+{
+
+}
+
+string Enum::getJNIParameterName(string& varName)
+{
+	return "Enum";
+}
+
+
+void Enum::getReturnValue(ofstream& f)
+{
+
+
+}
+        

@@ -18,9 +18,13 @@ namespace nsJNI {
         virtual ~Struct();
 		Struct(ofstream &f, const string& vmSignature,const nsC::Struct& cStruct,TypesDictionnary *dictionnary);
 		std::string outputJava();
-      void addStructToJava(ofstream &f);
+     	void addStructToJava(ofstream &f);
         std::string outputJNI();
         bool isNativeType();
+        
+        void prepareCall(ofstream& f,string& varName);
+        string getJNIParameterName(string& varName);
+        void getReturnValue(ofstream& f);
       protected:
         nsC::Struct _cStruct;
         TypesDictionnary* _dictionnary;

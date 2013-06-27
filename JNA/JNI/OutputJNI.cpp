@@ -108,7 +108,8 @@ void OutputJNI::addNativeFunctionTable(ofstream &f, string filename, vector<nsJN
 		else {
 			f << "(";
 			for(int i = 0; i < prms.size(); ++i) {
-				f << _dictionnary->convertVM(prms[i]->getType()); 
+				if(!(prms[i]->getType()=="size_t *"))
+					f << _dictionnary->convertVM(prms[i]->getType()); 
 			}
 			f << ")";
 		}
@@ -118,7 +119,7 @@ void OutputJNI::addNativeFunctionTable(ofstream &f, string filename, vector<nsJN
 			typeRetour2 = "L" + filename + "$" + typeRetour + ";"; 
 		f << typeRetour2;
 
-		f << "\", (void *)" << fcts[k]->getName() << " }";
+		f << "\", (void *)" << "JNI_" << fcts[k]->getName() << " }";
 		if(fcts.size() > 1 && k < fcts.size() - 1)
 			f << ",\n";
 	}

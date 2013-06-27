@@ -15,11 +15,15 @@ namespace nsJNI{
 	   public : 
          virtual ~Enum();
        
-	      static bool create(ofstream &f, const nsC::Enum::vector& en, TypesDictionnary *dictionnary,string filename);
-         std::string outputJava();
-         std::string outputJNI();
-         void addEnumToJava(ofstream &f);
-         bool isNativeType();
+	    static bool create(ofstream &f, const nsC::Enum::vector& en, TypesDictionnary *dictionnary,string filename);
+        std::string outputJava();
+        std::string outputJNI();
+        void addEnumToJava(ofstream &f);
+        bool isNativeType();
+        void prepareCall(ofstream& f,string& varName);
+        string getJNIParameterName(string& varName);
+        void getReturnValue(ofstream& f);
+        
       protected : 
          nsC::Enum _cEnum;
 

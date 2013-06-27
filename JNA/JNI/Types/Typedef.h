@@ -23,6 +23,11 @@ namespace nsJNI
         	string getStructName();
         	string getTargetType();
         	bool isNativeType();
+        	
+        	void prepareCall(ofstream& f,string& varName);
+        	string getJNIParameterName(string& varName);
+        	virtual void getReturnValue(ofstream& f) =0;
+        
 		protected:
 			string _structName;
 			string _targetType;	

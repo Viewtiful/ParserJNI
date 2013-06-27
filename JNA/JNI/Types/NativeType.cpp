@@ -35,3 +35,20 @@ bool NativeType::isNativeType()
 {
 	return _isNativeType;
 }
+
+void NativeType::prepareCall(ofstream& f,string& varName)
+{
+
+}
+
+string NativeType::getJNIParameterName(string& varName)
+{
+	return "NativeType";
+}
+
+void NativeType::getReturnValue(ofstream& f)
+{
+
+
+}
+        

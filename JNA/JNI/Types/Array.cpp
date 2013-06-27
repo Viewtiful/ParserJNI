@@ -35,3 +35,20 @@ bool Array::isNativeType()
 {
 	return _dictionnary->isNativeType(_CBaseType);
 }
+
+void Array::prepareCall(ofstream& f,string& varName)
+{
+	cout << "Prepare call" << endl;
+}
+
+std::string Array::getJNIParameterName(string& varName)
+{
+	return "Array";
+}
+
+void Array::getReturnValue(ofstream& f)
+{
+
+}
+        
+        

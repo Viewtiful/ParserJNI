@@ -40,3 +40,21 @@ bool Typedef::isNativeType()
 	cout << "Typedef" << endl;
 	return false;
 }
+
+void Typedef::prepareCall(ofstream& f,string& varName)
+{
+
+}
+
+string Typedef::getJNIParameterName(string& varName)
+{
+	return "Typedef";
+}
+
+void Typedef::getReturnValue(ofstream& f)
+{
+
+
+
+}
+        
