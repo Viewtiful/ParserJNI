@@ -13,7 +13,9 @@ using namespace nsModules;
 
 TYPESDICTIONNARY::TypesDictionnary(string filename)
 {
-	addBaseType(filename);   
+	_filename = filename;
+	addBaseType(filename);
+	   
 }
 
 TYPESDICTIONNARY::~TypesDictionnary()
@@ -151,7 +153,7 @@ void TYPESDICTIONNARY::addStruct(ofstream &f, const nsC::Struct::vector& structs
       	}	
       	else if(haveTypedef && haveFields && !isTypedefPointer && !isDeepPointer)
       	{
-      		addToMap(CStruct.getTypedef(), new Struct(f, "jobject",CStruct,this));
+      		addToMap(CStruct.getTypedef(), new Struct(f, "L"+_filename+"$"+CStruct.getTypedef() + ";",CStruct,this));
       		//_conversionMap[CStruct.getTypedef()] = new Struct("jobject",CStruct,this);
 	    }  	
    }
@@ -159,7 +161,7 @@ void TYPESDICTIONNARY::addStruct(ofstream &f, const nsC::Struct::vector& structs
 }
 
 void TYPESDICTIONNARY::addEnums(ofstream &f, const nsC::Enum::vector &enums) {
-	Enum::create(f, enums, this);
+	Enum::create(f, enums, this,_filename);
 }
 
 void TYPESDICTIONNARY::addToMap(const string& cType, Type *type) {

@@ -15,7 +15,7 @@ namespace nsJNI{
 	   public : 
          virtual ~Enum();
        
-	      static bool create(ofstream &f, const nsC::Enum::vector& en, TypesDictionnary *dictionnary);
+	      static bool create(ofstream &f, const nsC::Enum::vector& en, TypesDictionnary *dictionnary,string filename);
          std::string outputJava();
          std::string outputJNI();
          void addEnumToJava(ofstream &f);

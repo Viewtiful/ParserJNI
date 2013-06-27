@@ -194,7 +194,7 @@ void Function::addArgs(const nsC::Param::vector& parameters)
 	 			{
 	 				cout << "The object does not exists = " << parameters[i].getCType();
 	 			
-	 				Type *object = new Pointer("bla",parameters[i].getType(),_dictionnary,false);
+	 				Type *object = new Pointer("J",parameters[i].getType(),_dictionnary,false);
 	 				_dictionnary->addToMap(parameters[i].getCType(),object);
 	 			}
 	 			cout << "Creating a new Param as following" << "[" << "Address Wrapper , " << parameters[i].getName() << "]" << endl; 
@@ -208,7 +208,7 @@ void Function::addArgs(const nsC::Param::vector& parameters)
 	 			{	
 	 				cout << "The object does not exists = " << parameters[i].getCType();
 	 			
-	 				Type *object = new Pointer("bla",parameters[i].getType(),_dictionnary,false);
+	 				Type *object = new Pointer("J",parameters[i].getType(),_dictionnary,false);
 	 				_dictionnary->addToMap(parameters[i].getCType(),object);
 	 			}
 	 			cout << "Creating a new Param as following" << "[" << "Address Wrapper , " << parameters[i].getName() << "]" << endl;

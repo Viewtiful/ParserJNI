@@ -57,7 +57,7 @@ namespace nsJNI
 
         /** Add base types (int, size_t, char, those stuff) */
         std::map<std::string, Type*> _conversionMap;
-		
+		string _filename;
     };
 }
 

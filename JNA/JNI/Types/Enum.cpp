@@ -12,7 +12,7 @@ using namespace nsJNI;
 using namespace nsUtils;
 
 bool Enum::create(ofstream &f, const nsC::Enum::vector& en,
-		TypesDictionnary *dictionnary)
+		TypesDictionnary *dictionnary,string filename)
 {
 	cout << "Creating Java enums from \"" << endl;
 	for (nsC::Enum::vector::const_iterator iterator(en.begin());
@@ -30,7 +30,7 @@ bool Enum::create(ofstream &f, const nsC::Enum::vector& en,
          enumName = CEnum.getTypedef();
       }
 		cout << "Enum Name = " << enumName << endl;
-		dictionnary->addToMap(enumName, new Enum(f, enumName, enumName, "jobject", CEnum));
+		dictionnary->addToMap(enumName, new Enum(f, enumName, enumName, "L" + filename + "$" + enumName + ";", CEnum));
 	}
 	return true;
 }
