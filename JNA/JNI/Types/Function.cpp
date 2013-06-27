@@ -122,6 +122,8 @@ void Function::printPrototypeJNI(ofstream &f)
 void Function::printContentJNI(ofstream &f)
 {
 	f << "{\n";
+	if(!(_returnType=="void"))
+		f << "\t" << _dictionnary->convertJNI(_returnType) << " " << "JNI_result;" << endl;
 	f << "\t\tprintf(\"Hello world !\");\n";
 	f << "\t}\n\n";
 }
