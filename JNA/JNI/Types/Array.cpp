@@ -1,6 +1,9 @@
 #define ARRAY nsJNI::ARRAY
 #include "JNI/Types/Array.h"
+#include <string>
+#include "Utils/Utils.h"
 using namespace nsJNI;
+using namespace nsUtils;
 
 Array::Array(const string& CBaseType, const string& VMSignature, TypesDictionnary *dictionnary) : Type(VMSignature)
 {
@@ -38,7 +41,25 @@ bool Array::isNativeType()
 
 void Array::prepareCall(ofstream& f,string& varName) //Unused Parameters
 {
-	cout << "Prepare call" << endl;
+	string structure (
+			"%TYPE% * %NAME%;\n"
+			"int %NAMELENGTH% = (*env)->GetArrayLength(%CNAME%);\n"
+			"%NAME% = (%TYPE% *)malloc(%NAMELENGTH%);\n"
+			"%NAME% = (*env)->Get%TYPEMAJ%ArrayElements(%CNAME%, NULL);\n\n"
+			);
+	string type = _dictionnary->convertJNI(_CBaseType);
+	string name = "C_" + varName;
+	string nameLength = name + "_length";
+	string typeMaj = type.substr(1, type.size());
+	typeMaj = toJavaName(typeMaj, false, false, true);
+
+	stringReplace(structure, "TYPE", type);
+	stringReplace(structure, "NAME", name);
+	stringReplace(structure, "NAMELENGTH", nameLength);
+	stringReplace(structure, "TYPEMAJ", typeMaj);
+	stringReplace(structure, "CNAME", varName);
+
+	f << structure;
 }
 
 std::string Array::getJNIParameterName(string& varName) // Unused parameter

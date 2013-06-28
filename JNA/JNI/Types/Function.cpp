@@ -124,7 +124,13 @@ void Function::printContentJNI(ofstream &f)
 	f << "{\n";
 	if(!(_returnType=="void"))
 		f << "\t" << _dictionnary->convertJNI(_returnType) << " " << "JNI_result;" << endl;
-	f << "\t\tprintf(\"Hello world !\");\n";
+
+	for(int i = 0; i < _args.size(); ++i) {
+		Type * param = _dictionnary->getType(_args[i]->getType());
+
+		param->prepareCall(f, _args[i]->getName());
+	}
+
 	f << "\t}\n\n";
 }
 

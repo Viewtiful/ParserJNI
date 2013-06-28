@@ -54,6 +54,7 @@ namespace nsJNI
 		void addStruct(ofstream &f, const nsC::Struct::vector& structs);
 	   	void addEnums(ofstream &f, const nsC::Enum::vector& enums);
 		bool isNativeType(const string &type);
+		Type* getType(const string & Ctype);
 
       protected:
 

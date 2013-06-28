@@ -29,7 +29,7 @@ namespace nsJNI {
       protected:
       	string _javaType;
       	string _jniType;
-      	string _VMSignature;
+    	string _VMSignature;
       	
     };
 }

@@ -69,7 +69,16 @@ string TYPESDICTIONNARY::getRealType(const string& CType)
 
 	return CType.substr(0,i);
 }	
-					
+
+Type* TYPESDICTIONNARY::getType(const string& Ctype) {
+	Type *object = NULL;
+	if(_conversionMap.count(Ctype) == 1)
+		object = _conversionMap[Ctype];
+
+	assert(object != NULL);
+	return object;
+}
+
 string TYPESDICTIONNARY::convertJava(const string& Ctype)
 {
 	Type *object = NULL;
