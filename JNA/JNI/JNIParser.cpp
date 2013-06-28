@@ -35,7 +35,7 @@ int JNIPARSER::run(nsModules::Module::vector modules)
 	jni->addInclude(f2);
 
 	// Getting all the types from all the modules.
-	for(int i = 0; i<modules.size(); ++i)
+	for(size_t i = 0; i<modules.size(); ++i)
 	{
 		// If there is enums, adding them.
 		if(modules[i].getEnums().size() > 0)
@@ -51,10 +51,10 @@ int JNIPARSER::run(nsModules::Module::vector modules)
 	vector<nsJNI::Function*> saveFcts;
 
 	// Converting everything to JNI and Java.
-	for(int i = 0; i<modules.size(); i++)
+	for(size_t i = 0; i<modules.size(); i++)
 	{
 		nsC::Function::vector fcts = modules[i].getFunctions();
-		for(int k = 0;k<fcts.size();k++)
+		for(size_t k = 0;k<fcts.size();k++)
 		{
 			nsJNI::Function *fct = new Function(dico);
 			saveFcts.push_back(fct);

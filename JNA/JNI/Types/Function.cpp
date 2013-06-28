@@ -139,7 +139,7 @@ void Function::setReturnType(const string& returnType)
 void Function::addArgs(const nsC::Param::vector& parameters)
 {	
 	cout << "2.4.3.4.1" << endl;
-	
+	string special = "AddressWrapper";
 	int n = parameters.size();	
 	int beginArgs = 0;
 	if(_returnType=="const void *" || _returnType=="void *")
@@ -151,7 +151,16 @@ void Function::addArgs(const nsC::Param::vector& parameters)
 		if(!_dictionnary->isNativeType(parameters[0].getType()))
 		{
 			cout << "The first argument type is not Native" << endl;
-			_args.push_back(new nsJNI::Param("AddressWrapper",parameters[0].getName()));
+			if(_dictionnary->countAt(parameters[0].getCType()+special)==0)
+	 		{
+	 			cout << "The object does not exists = " << parameters[0].getCType();
+	 			
+	 			//Type *object = new Pointer("J",parameters[i].getType(),_dictionnary,false);
+				Type *object = new AddressWrapper(parameters[0].getCType(),"L" + _dictionnary->getFilename() + "$AddressWrapper;");
+ 				_dictionnary->addToMap(parameters[0].getCType()+special,object);
+	 		}
+	 			
+			_args.push_back(new nsJNI::Param(parameters[0].getCType()+special,parameters[0].getName()));
 			beginArgs = 1;
 		}
 		else
@@ -160,7 +169,7 @@ void Function::addArgs(const nsC::Param::vector& parameters)
 	}
 	for(int i = beginArgs; i<n; i++)
 	{
-		int size = _args.size();
+		size_t size = _args.size();
 		cout << "2.4.3.4.2" << endl;
 		cout << "i = " << i << "n =" << n << endl;
 		if(parameters[i].getIndirections()>0  && parameters[i].getCType()!= "const char *")
@@ -193,15 +202,16 @@ void Function::addArgs(const nsC::Param::vector& parameters)
 			if(!_dictionnary->isNativeType(parameters[i].getType()))
 	 		{
 	 			cout << "This is not a Native Type = " << parameters[i].getType() << endl;
-	 			if(_dictionnary->countAt(parameters[i].getCType())==0)
+	 			if(_dictionnary->countAt(parameters[i].getCType()+special)==0)
 	 			{
 	 				cout << "The object does not exists = " << parameters[i].getCType();
 	 			
-	 				Type *object = new Pointer("J",parameters[i].getType(),_dictionnary,false);
-	 				_dictionnary->addToMap(parameters[i].getCType(),object);
+	 				//Type *object = new Pointer("J",parameters[i].getType(),_dictionnary,false);
+	 				Type *object = new AddressWrapper(parameters[i].getCType(),"L" + _dictionnary->getFilename() + "$AddressWrapper;");
+	 				_dictionnary->addToMap(parameters[i].getCType()+special,object);
 	 			}
 	 			cout << "Creating a new Param as following" << "[" << "Address Wrapper , " << parameters[i].getName() << "]" << endl; 
-	 			_args.push_back(new nsJNI::Param("AddressWrapper",parameters[i].getName()));
+	 			_args.push_back(new nsJNI::Param(parameters[i].getCType()+special,parameters[i].getName()));
 			}
 								
 			else
@@ -227,7 +237,7 @@ void Function::addArgs(const nsC::Param::vector& parameters)
 		cout << "Creating a new Param as following" << "[" << parameters[i].getCType()<<" , "  << parameters[i].getName() << "]" << endl; 
 		_args.push_back(new nsJNI::Param(parameters[i].getCType(),parameters[i].getName()));
 	}
-	cout << "FIN fONCTION" << endl;
+	cout << "Fin Fonction" << endl;
 	}
 }
 

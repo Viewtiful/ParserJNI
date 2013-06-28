@@ -9,6 +9,7 @@
 #include "C/Function.h"
 #include "JNI/Types/Param.h"
 #include "JNI/Types/Pointer.h"
+#include "JNI/Types/AddressWrapper.h"
 #include <iostream>
 #include <fstream>
 #include <vector>

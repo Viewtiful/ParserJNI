@@ -44,7 +44,7 @@ void OutputJNI::addInclude(ofstream &f) {
 
 void OutputJNI::addNativeFunctionTable(ofstream &f, string filename, vector<nsJNI::Function*> fcts) {
 	f << "static JNINativeMethod method_table[] = {\n";
-	for(int k = 0; k < fcts.size(); k++) {
+	for(size_t k = 0; k < fcts.size(); k++) {
 		f << "\t{ \"" << fcts[k]->getName() << "\", \"";
 		vector<nsJNI::Param *> prms = fcts[k]->getArgs();
 
@@ -52,7 +52,7 @@ void OutputJNI::addNativeFunctionTable(ofstream &f, string filename, vector<nsJN
 			f << "()";
 		else {
 			f << "(";
-			for(int i = 0; i < prms.size(); ++i) {
+			for(size_t i = 0; i < prms.size(); ++i) {
 				if(!(prms[i]->getType()=="size_t *"))
 					f << _dictionnary->convertVM(prms[i]->getType()); 
 			}

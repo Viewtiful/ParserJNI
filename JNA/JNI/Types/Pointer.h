@@ -22,7 +22,7 @@ namespace nsJNI {
         void prepareCall(ofstream& f,string& varName);
         string getJNIParameterName(string& varName);
         void getReturnValue(ofstream& f);
-        
+        string getVMSignature();
       protected:
         std::string _CBaseType;
         TypesDictionnary* _dictionnary;

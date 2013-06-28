@@ -17,11 +17,15 @@ Struct::Struct(ofstream &f, const string& VMSignature, const nsC::Struct& cStruc
 }
 
 
-std::string Struct::outputJava()
+std::string Struct::outputJava() // Warning unused overridden function
 {
-
+	return "Java";
 }
 
+std::string Struct::outputJNI() // Warning unused overridden function
+{
+	return "JNI";
+}
 void Struct::addStructToJava(ofstream &f)
 {
    string structure(
@@ -33,7 +37,7 @@ void Struct::addStructToJava(ofstream &f)
    nsC::Param::vector fields = _cStruct.getFields();
 	string fieldsTemp;
 
-	for(int i =0; i<fields.size(); i++) {
+	for(size_t i =0; i<fields.size(); i++) {
       string field("\t\t%VALUE1% %VALUE2%;");
 		
 		stringReplace(field, "VALUE1", _dictionnary->convertJava(fields[i].getCType()));
@@ -48,9 +52,7 @@ void Struct::addStructToJava(ofstream &f)
    f << structure;
 }
 
-std::string Struct::outputJNI()
-{
-}
+
 
 Struct::~Struct(){
 

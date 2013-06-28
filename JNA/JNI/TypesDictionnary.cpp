@@ -39,8 +39,7 @@ void TYPESDICTIONNARY::addBaseType(string filename)
 	addToMap("const void *", new NativeType("byte","jbyte","B",true));
 	addToMap("void *", new NativeType("byte","jbyte","B",true));
 	addToMap("char *", new NativeType("byte","jbyte","B",true));
-	addToMap("AddressWrapper", new NativeType("AddressWrapper","jobject","L" + filename + "$AddressWrapper;",false));	
-	addToMap("bool *",new NativeType("BoolWrapper","jobject","L" + filename + "$BoolWrapper;",false));	
+	addToMap("bool *",new BoolWrapper("bool *", "L" + filename + "$BoolWrapper;"));	
 	
 	addToMap("shortArray", new Array("short","[S",this));
 	addToMap("intArray", new Array("int","[I",this));
@@ -54,16 +53,6 @@ void TYPESDICTIONNARY::addBaseType(string filename)
 	addToMap("void *Array", new Array("void *","[B",this));
 }
 
-void TYPESDICTIONNARY::convertJava(const Module::vector& modules)
-{
-	
-}
-
-void TYPESDICTIONNARY::convertJNI(const Module::vector& modules)
-{
-
-}
-
 bool TYPESDICTIONNARY::isNativeType(const string &type)
 {
 	static int call = 0;
@@ -71,17 +60,6 @@ bool TYPESDICTIONNARY::isNativeType(const string &type)
 	cout << "Type = " << type << "Call : " << call << endl;
 	assert(_conversionMap.count(type)==1);
 	return _conversionMap[type]->isNativeType();
-}
-
-int TYPESDICTIONNARY::nbIndirections(const string& CType)
-{
-	cout << "début indirection" << endl;
-	int strSize = CType.size();
-	int nbIndirection = 0;
-	for(int i = strSize-1 && CType[i]=='*';i>0;i--)
-		nbIndirection++;
-	cout << "fin indirection" << endl;
-	return nbIndirection;
 }
 
 string TYPESDICTIONNARY::getRealType(const string& CType)
@@ -128,10 +106,6 @@ string TYPESDICTIONNARY::convertVM(const string& Ctype)
 	return object->getVMSignature();
 }
 
-void TYPESDICTIONNARY::addTypedefs(const nsC::Typedef::vector& typedefs)
-{
-
-}
 
 void TYPESDICTIONNARY::addStruct(ofstream &f, const nsC::Struct::vector& structs)
 {
@@ -140,7 +114,8 @@ void TYPESDICTIONNARY::addStruct(ofstream &f, const nsC::Struct::vector& structs
          ++iterator)
    	{
      	const nsC::Struct CStruct(*iterator);
-      	bool haveName(!CStruct.getName().empty());
+     	
+      	//bool haveName(!CStruct.getName().empty());  <- Unused variable 
       	bool haveTypedef(!CStruct.getTypedef().empty());
       	bool haveFields(CStruct.getFields().size() > 0);
       	bool isTypedefPointer(CStruct.getTypedefIndirection() == 1);
@@ -165,8 +140,8 @@ void TYPESDICTIONNARY::addEnums(ofstream &f, const nsC::Enum::vector &enums) {
 }
 
 void TYPESDICTIONNARY::addToMap(const string& cType, Type *type) {
-	int size = _conversionMap.size();
-	int sizeCType = _conversionMap.count(cType);
+	size_t size = _conversionMap.size();
+	size_t sizeCType = _conversionMap.count(cType);
 	cout << "insert= "<< cType << endl;
 	cout << cType << ": " << (_conversionMap.count(cType)) << endl ;
 	assert(_conversionMap[cType]==NULL);
@@ -177,5 +152,9 @@ void TYPESDICTIONNARY::addToMap(const string& cType, Type *type) {
 	assert(_conversionMap.count(cType)==sizeCType+1);
 }
 
+string TYPESDICTIONNARY::getFilename()
+{
+	return _filename;
+}
 #undef TYPESDICTIONNARY
 

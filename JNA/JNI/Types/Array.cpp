@@ -36,17 +36,17 @@ bool Array::isNativeType()
 	return _dictionnary->isNativeType(_CBaseType);
 }
 
-void Array::prepareCall(ofstream& f,string& varName)
+void Array::prepareCall(ofstream& f,string& varName) //Unused Parameters
 {
 	cout << "Prepare call" << endl;
 }
 
-std::string Array::getJNIParameterName(string& varName)
+std::string Array::getJNIParameterName(string& varName) // Unused parameter
 {
 	return "Array";
 }
 
-void Array::getReturnValue(ofstream& f)
+void Array::getReturnValue(ofstream& f) //Unused parameter
 {
 
 }
