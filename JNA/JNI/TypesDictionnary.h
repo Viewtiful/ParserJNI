@@ -33,6 +33,7 @@ namespace nsJNI
      *   converted to Java
      * - call outputJava() to write out the resulting Java classes
      */
+   class Array;
     class TypesDictionnary
     {
       public:

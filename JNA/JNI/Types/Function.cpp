@@ -141,6 +141,10 @@ void Function::printContentJNI(ofstream &f)
 
       if(param->isAddressWrapper() || param->isBooleanWrapper())
 		   param->getReturnValue(f);
+      if(param->isArray()) {
+         Array *a = (Array *)param;
+         a->getReturnValueAndFree(f);
+      }
 	}
 
    Type *typeRetour = _dictionnary->getType(_returnType);

@@ -100,7 +100,7 @@ void NativeType::getReturnValue(ofstream& f)
       
       if(_jniType == "jstring") {
          string structure (
-               "\t\tJNI_result = (env*)->New%TYPEMAJ%UTF(env, tempJNI_result);\n"
+               "\t\tJNI_result = (*env)->New%TYPEMAJ%UTF(env, tempJNI_result);\n"
                );
          string type = getJNIType();
          string typeMaj = type.substr(1, type.size());

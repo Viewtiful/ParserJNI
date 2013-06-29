@@ -79,6 +79,11 @@ void Struct::prepareCall(ofstream &f,string& varName)
 
 }
 
+bool Struct::isArray()
+{
+	return false;
+}
+
 string Struct::getJNIParameterName(string& varName)
 {
 	return "Struct";

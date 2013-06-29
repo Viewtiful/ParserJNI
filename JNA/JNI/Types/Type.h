@@ -21,6 +21,7 @@ namespace nsJNI {
         virtual bool isNativeType() =0;
         virtual bool isAddressWrapper() = 0;
         virtual bool isBooleanWrapper() = 0;
+        virtual bool isArray() = 0;
         virtual void prepareCall(ofstream& f,string& varName) =0;
         virtual string getJNIParameterName(string& varName) =0;
         virtual void getReturnValue(ofstream& f) =0;

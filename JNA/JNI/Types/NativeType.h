@@ -19,6 +19,7 @@ namespace nsJNI {
         bool isNativeType();
         bool isAddressWrapper();
         bool isBooleanWrapper();
+        bool isArray();
         void prepareCall(ofstream& f, string& varName);
         string getJNIParameterName(string& varName);
         void getReturnValue(ofstream& f);

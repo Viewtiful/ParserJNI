@@ -51,6 +51,11 @@ bool Typedef::isBooleanWrapper()
 	return false;
 }
 
+bool Typedef::isArray()
+{
+	return false;
+}
+
 void Typedef::prepareCall(ofstream& f,string& varName)
 {
 

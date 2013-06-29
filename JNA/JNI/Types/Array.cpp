@@ -49,6 +49,11 @@ bool Array::isBooleanWrapper()
 	return false;
 }
 
+bool Array::isArray()
+{
+	return true;
+}
+
 void Array::prepareCall(ofstream& f,string& varName) 
 {
 	string structure (
@@ -57,6 +62,7 @@ void Array::prepareCall(ofstream& f,string& varName)
 			"\t\t%NAME% = (%TYPE% *)malloc(%NAMELENGTH%);\n"
 			"\t\t%NAME% = (*env)->Get%TYPEMAJ%ArrayElements(env, %CNAME%, NULL);\n\n"
 			);
+   _varName = varName;
 	string type = _dictionnary->convertJNI(_CBaseType);
 	string name = "C_" + varName;
 	string nameLength = name + "_length";
@@ -91,6 +97,25 @@ void Array::getReturnValue(ofstream& f)
 
    stringReplace(structure, "TYPEMAJ", typeMaj);
    stringReplace(structure, "CTYPE", type);
+
+   f << structure;
+}
+
+void Array::getReturnValueAndFree(ofstream& f) 
+{
+   string structure (
+         "\t\t(*env)->Set%TYPEMAJ%ArrayRegion(env, %CNAME%, 0, %CNAMELENGTH%, %NAME%);\n"
+         "\t\tfree(%NAME%);\n\n"
+         );
+
+	string type = _dictionnary->convertJNI(_CBaseType);
+   string typeMaj = type.substr(1, type.size());
+ 	typeMaj = toJavaName(typeMaj, false, false, true);
+
+   stringReplace(structure, "TYPEMAJ", typeMaj);
+   stringReplace(structure, "CNAME", _varName);
+   stringReplace(structure, "NAME", "C_" + _varName);
+   stringReplace(structure, "CNAMELENGTH", "C_" + _varName + "_length");
 
    f << structure;
 }

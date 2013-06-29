@@ -79,6 +79,19 @@ Type* TYPESDICTIONNARY::getType(const string& Ctype) {
 	return object;
 }
 
+Array* TYPESDICTIONNARY::getArray(const string& Ctype) {
+	Type *object = NULL;
+   Array *a = NULL;
+	if(_conversionMap.count(Ctype) == 1) {
+		a = (Array *) _conversionMap[Ctype];
+      //a = (Array *) object;
+    }
+
+
+	assert(a != NULL);
+	return a;
+}
+
 string TYPESDICTIONNARY::convertJava(const string& Ctype)
 {
 	Type *object = NULL;
@@ -145,7 +158,7 @@ void TYPESDICTIONNARY::addStruct(ofstream &f, const nsC::Struct::vector& structs
 }
 
 void TYPESDICTIONNARY::addEnums(ofstream &f, const nsC::Enum::vector &enums) {
-	Enum::create(f, enums, this,_filename);
+	Enum::create(f, enums, this);
 }
 
 void TYPESDICTIONNARY::addToMap(const string& cType, Type *type) {

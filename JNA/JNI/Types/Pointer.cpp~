@@ -34,6 +34,11 @@ std::string Pointer::outputJNI()
 	return getJNIType();
 }
 
+bool Pointer::isBooleanWrapper()
+{
+	return false;
+}
+
 bool Pointer::isNativeType()
 {
 	if(!_isNativeType)

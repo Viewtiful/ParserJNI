@@ -78,7 +78,7 @@ void BoolWrapper::getReturnValue(ofstream& f)
          );
 
    stringReplace(structure, "CNAME", _varName);
-   stringReplace(structure, "NAME", "c_" + _varName);
+   stringReplace(structure, "NAME", "C_" + _varName);
    f << structure;
 }
         

@@ -39,6 +39,11 @@ bool Pointer::isBooleanWrapper()
 	return false;
 }
 
+bool Pointer::isArray()
+{
+	return false;
+}
+
 bool Pointer::isNativeType()
 {
 	if(!_isNativeType)

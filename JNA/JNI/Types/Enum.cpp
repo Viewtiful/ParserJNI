@@ -131,6 +131,11 @@ bool Enum::isBooleanWrapper()
 	return false;
 }
 
+bool Enum::isArray()
+{
+	return false;
+}
+
 void Enum::prepareCall(ofstream& f,string& varName)
 {
    string structure (

@@ -22,13 +22,16 @@ namespace nsJNI {
         bool isNativeType();
 		  bool isAddressWrapper();
         bool isBooleanWrapper();
+        bool isArray();
         void prepareCall(ofstream& f,std::string& varName);
         std::string getJNIParameterName(std::string& varName);
         void getReturnValue(ofstream& f);
+        void getReturnValueAndFree(ofstream& f);
         
       protected:
         TypesDictionnary* _dictionnary;
         std::string _CBaseType;
+        string _varName;
     };
 }
 

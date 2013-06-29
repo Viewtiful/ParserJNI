@@ -16,6 +16,7 @@
 #include "JNI/Types/Enum.h"
 #include "JNI/Types/Pointer.h"
 #include "JNI/Types/Array.h"
+#include "JNI/Types/BoolWrapper.h"
 #include <cassert>
 #include "Modules/Module.h"
 using namespace nsModules;
@@ -32,12 +33,13 @@ namespace nsJNI
      *   converted to Java
      * - call outputJava() to write out the resulting Java classes
      */
+   class Array;
     class TypesDictionnary
     {
       public:
-        TypesDictionnary();
+        TypesDictionnary(string filename);
         virtual ~TypesDictionnary();
-        void addBaseType();
+        void addBaseType(string filename);
 		void convertJava(const Module::vector& modules);
 		void convertJNI(const Module::vector& modules);
 		void addToMap(const string& cType, Type *type);
@@ -47,17 +49,20 @@ namespace nsJNI
 		string convertJNI(const string& Ctype);
 		string convertVM(const string& Ctype);
 		string getRealType(const string& CType);
+		string getFilename();
 		int nbIndirections(const string& CType);
 		void addTypedefs(const nsC::Typedef::vector& typedefs);
-		void addStruct(const nsC::Struct::vector& structs);
+		void addStruct(ofstream &f, const nsC::Struct::vector& structs);
 	   	void addEnums(ofstream &f, const nsC::Enum::vector& enums);
 		bool isNativeType(const string &type);
+		Type* getType(const string & Ctype);
+		nsJNI::Array* getArray(const string & Ctype);
 
       protected:
 
         /** Add base types (int, size_t, char, those stuff) */
         std::map<std::string, Type*> _conversionMap;
-		
+		string _filename;
     };
 }
 

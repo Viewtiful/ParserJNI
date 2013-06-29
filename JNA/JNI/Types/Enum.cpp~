@@ -126,6 +126,11 @@ bool Enum::isAddressWrapper()
 	return false;
 }
 
+bool Enum::isBooleanWrapper()
+{
+	return false;
+}
+
 void Enum::prepareCall(ofstream& f,string& varName)
 {
    string structure (

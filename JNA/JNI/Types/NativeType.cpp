@@ -51,6 +51,11 @@ bool NativeType::isBooleanWrapper()
 	return false;
 }
 
+bool NativeType::isArray()
+{
+	return false;
+}
+
 void NativeType::prepareCall(ofstream& f,string& varName)
 {
    if(_jniType != "jstring") {
