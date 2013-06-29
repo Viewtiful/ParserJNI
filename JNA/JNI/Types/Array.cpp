@@ -39,13 +39,18 @@ bool Array::isNativeType()
 	return _dictionnary->isNativeType(_CBaseType);
 }
 
+bool Array::isAddressWrapper()
+{
+	return false;
+}
+
 void Array::prepareCall(ofstream& f,string& varName) //Unused Parameters
 {
 	string structure (
-			"%TYPE% * %NAME%;\n"
-			"int %NAMELENGTH% = (*env)->GetArrayLength(%CNAME%);\n"
-			"%NAME% = (%TYPE% *)malloc(%NAMELENGTH%);\n"
-			"%NAME% = (*env)->Get%TYPEMAJ%ArrayElements(%CNAME%, NULL);\n\n"
+			"\t\t%TYPE% * %NAME%;\n"
+			"\t\tint %NAMELENGTH% = (*env)->GetArrayLength(env, %CNAME%);\n"
+			"\t\t%NAME% = (%TYPE% *)malloc(%NAMELENGTH%);\n"
+			"\t\t%NAME% = (*env)->Get%TYPEMAJ%ArrayElements(env, %CNAME%, NULL);\n\n"
 			);
 	string type = _dictionnary->convertJNI(_CBaseType);
 	string name = "C_" + varName;

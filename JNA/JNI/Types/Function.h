@@ -35,6 +35,7 @@ namespace nsJNI {
         void addArgs(const nsC::Param::vector& args);
 		
 		void create(const nsC::Function& fct);
+      void callNativeMethod(ofstream &f);
 		std::string& getReturnType();
 		vector<Param*> getArgs();
 		string getName();

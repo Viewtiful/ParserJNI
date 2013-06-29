@@ -53,6 +53,7 @@ void AddressWrapper::prepareCall(ofstream& f,string& varName)
    oss << nbOfOcc;
    string name = "C_" + varName;
    if(_realCType.find("*", 0) != string::npos) {
+      f << _realCType << "here\n";
       stringReplace(structure, "TYPE", _realCType.substr(0, _realCType.size() -2));
    }
    else

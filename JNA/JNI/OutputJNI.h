@@ -23,12 +23,12 @@ namespace nsJNI
 			string getVMSignature(string inputType);
 			void convert(ofstream &f,Function *fct);
 			void addInclude(ofstream &f);
+         void addContextWrapper(ofstream &f);
 			void generateJNIOnload(ofstream &f, string filename);
 			//void addFunctionPrototype(Function::vector fcts);
 			void addNativeFunctionTable(ofstream &f, string filename, vector<nsJNI::Function*> fcts);
 			
 		protected:	
-			fstream _outputFile;		
 			TypesDictionnary *_dictionnary;
 	};
 }

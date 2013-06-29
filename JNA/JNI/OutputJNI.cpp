@@ -10,7 +10,6 @@ OutputJNI::OutputJNI(TypesDictionnary *dictionnary)
 }
 
 OutputJNI::~OutputJNI() {
-	_outputFile.close();
 }
 
 std::string OutputJNI::getJNIType(std::string inputType) {
@@ -40,6 +39,18 @@ void OutputJNI::addInclude(ofstream &f) {
 			);
 
 	f << include;
+}
+
+void OutputJNI::addContextWrapper(ofstream &f) {
+   string contextWrapper (
+         "\ttypedef struct\n"
+         "\t{\n"
+         "\t\tvoid *ctxRef;\n"
+         "\t\tJNIEnv *env;\n"
+         "\t} contextWrapper;\n\n"
+         );
+   
+   f << contextWrapper;
 }
 
 void OutputJNI::addNativeFunctionTable(ofstream &f, string filename, vector<nsJNI::Function*> fcts) {

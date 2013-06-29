@@ -64,6 +64,11 @@ bool Struct::isNativeType()
 	return false;
 }
 
+bool Struct::isAddressWrapper()
+{
+	return false;
+}
+
 void Struct::prepareCall(ofstream &f,string& varName)
 {
 

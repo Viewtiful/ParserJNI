@@ -16,9 +16,13 @@ namespace nsJNI {
 		NativeType(const string& javaType,const string& jniType,const string& VMSignature,bool isNativeType);
         std::string outputJava();
         std::string outputJNI();
-        bool isNativeType()
+        bool isNativeType();
+        void prepareCall(ofstream& f, string& varName);
+        string getJNIParameterName(string& varName);
+        void getReturnValue(ofstream& f);
         protected:
         bool _isNativeType;
+        string _jniType;
        
     };
 }

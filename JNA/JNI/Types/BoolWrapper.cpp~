@@ -42,12 +42,12 @@ void BoolWrapper::prepareCall(ofstream& f,string& varName)
 {
       bool C_is_valid;
    string structure (
-         "\t\t%TYPE% %NAME%;\n\n"
+         "%TYPE% %NAME%;\n\n"
          );
    
    string name = "C_" + varName;
    string type = _realCType.substr(0, _realCType.size()-2);
-   stringReplace(structure, "TYPE", type);
+   stringReplace(structure, "TYPE", _realCType);
    stringReplace(structure, "NAME", name);
 
    f << structure;

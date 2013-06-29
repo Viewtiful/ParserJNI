@@ -1,6 +1,9 @@
 #define ARRAY nsJNI::ARRAY
 #include "JNI/Types/Array.h"
+#include <string>
+#include "Utils/Utils.h"
 using namespace nsJNI;
+using namespace nsUtils;
 
 Array::Array(const string& CBaseType, const string& VMSignature, TypesDictionnary *dictionnary) : Type(VMSignature)
 {
@@ -33,5 +36,45 @@ std::string Array::outputJNI()
 
 bool Array::isNativeType()
 {
-	return _dictionnary[_CBaseType]->isNativeType();
+	return _dictionnary->isNativeType(_CBaseType);
 }
+
+bool Array::isAddressWrapper()
+{
+	return false;
+}
+
+void Array::prepareCall(ofstream& f,string& varName) //Unused Parameters
+{
+	string structure (
+			"\t\t%TYPE% * %NAME%;\n"
+			"\t\tint %NAMELENGTH% = (*env)->GetArrayLength(%CNAME%);\n"
+			"\t\t%NAME% = (%TYPE% *)malloc(%NAMELENGTH%);\n"
+			"\t\t%NAME% = (*env)->Get%TYPEMAJ%ArrayElements(%CNAME%, NULL);\n\n"
+			);
+	string type = _dictionnary->convertJNI(_CBaseType);
+	string name = "C_" + varName;
+	string nameLength = name + "_length";
+	string typeMaj = type.substr(1, type.size());
+	typeMaj = toJavaName(typeMaj, false, false, true);
+
+	stringReplace(structure, "TYPE", type);
+	stringReplace(structure, "NAME", name);
+	stringReplace(structure, "NAMELENGTH", nameLength);
+	stringReplace(structure, "TYPEMAJ", typeMaj);
+	stringReplace(structure, "CNAME", varName);
+
+	f << structure;
+}
+
+std::string Array::getJNIParameterName(string& varName) // Unused parameter
+{
+	return "Array";
+}
+
+void Array::getReturnValue(ofstream& f) //Unused parameter
+{
+
+}
+        
+        

@@ -33,6 +33,7 @@ int JNIPARSER::run(nsModules::Module::vector modules)
 	ofstream f2("ArcanaJNI.c");
 	java->addClassDefinition(f, filename);
 	jni->addInclude(f2);
+   jni->addContextWrapper(f2);
 
 	// Getting all the types from all the modules.
 	for(size_t i = 0; i<modules.size(); ++i)

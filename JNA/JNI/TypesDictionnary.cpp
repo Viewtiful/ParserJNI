@@ -145,7 +145,7 @@ void TYPESDICTIONNARY::addStruct(ofstream &f, const nsC::Struct::vector& structs
 }
 
 void TYPESDICTIONNARY::addEnums(ofstream &f, const nsC::Enum::vector &enums) {
-	Enum::create(f, enums, this,_filename);
+	Enum::create(f, enums, this);
 }
 
 void TYPESDICTIONNARY::addToMap(const string& cType, Type *type) {

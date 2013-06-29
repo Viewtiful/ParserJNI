@@ -1,5 +1,8 @@
 #include "JNI/Types/Function.h"
+#include "Utils/Utils.h"
+#include <typeinfo>
 
+using namespace nsUtils;
 using namespace nsJNI;
 Function::Function(TypesDictionnary *dictionnary)
 {
@@ -121,9 +124,9 @@ void Function::printPrototypeJNI(ofstream &f)
 
 void Function::printContentJNI(ofstream &f)
 {
-	f << "{\n";
+	f << "{\n\n";
 	if(!(_returnType=="void"))
-		f << "\t" << _dictionnary->convertJNI(_returnType) << " " << "JNI_result;" << endl;
+		f << "\t\t" << _dictionnary->convertJNI(_returnType) << " " << "JNI_result;\n\n";
 
 	for(int i = 0; i < _args.size(); ++i) {
 		Type * param = _dictionnary->getType(_args[i]->getType());
@@ -131,7 +134,59 @@ void Function::printContentJNI(ofstream &f)
 		param->prepareCall(f, _args[i]->getName());
 	}
 
+   callNativeMethod(f);
+
+   Type *typeRetour = _dictionnary->getType(_returnType);
+   typeRetour->getReturnValue(f);
+
 	f << "\t}\n\n";
+}
+
+void Function::callNativeMethod(ofstream &f) {
+   if(_returnType != "void") {
+      string structure (
+               "\t\t%RETURNTYPE% %NAME% = %CAST%%METHODNAME% (%PARAMS%);\n\n"
+            );
+
+      if(_dictionnary->convertJNI(_returnType) == "jbyteArray") {
+         stringReplace(structure, "RETURNTYPE", "void*");
+         stringReplace(structure, "CAST", "(void*)");
+         stringReplace(structure, "NAME", "tempJNI_result");
+      }
+      else if (_dictionnary->getType(_returnType)->isNativeType()) {
+         stringReplace(structure, "RETURNTYPE", "");
+         stringReplace(structure, "CAST", "");
+         stringReplace(structure, "NAME", "JNI_result");
+      }
+      else {
+         stringReplace(structure, "RETURNTYPE", _returnType);
+         stringReplace(structure, "CAST", "");
+         stringReplace(structure, "NAME", "tempJNI_result");
+      }
+
+      stringReplace(structure, "METHODNAME", _name);
+
+      string params;
+      for(int i = 0; i < _args.size(); ++i) {
+         string param ("%PARAMNAME%");
+         if(i+1 < _args.size())
+			   param = param + ", ";
+         Type *typeRetour = _dictionnary->getType(_args[i]->getType());
+
+         if(_args[i]->getType() == "bool *" || _args[i]->getType() == "size_t *" || typeRetour->isAddressWrapper())
+		      stringReplace(param, "PARAMNAME", "&C_" + _args[i]->getName());
+         else
+		      stringReplace(param, "PARAMNAME", "C_" + _args[i]->getName());
+		   params += param;
+      }
+
+      stringReplace(structure, "PARAMS", params);
+
+      f << structure;
+   }
+   else {
+
+   }
 }
 
 void Function::setReturnType(const string& returnType)
@@ -211,8 +266,6 @@ void Function::addArgs(const nsC::Param::vector& parameters)
 	 			if(_dictionnary->countAt(parameters[i].getCType()+special)==0)
 	 			{
 	 				cout << "The object does not exists = " << parameters[i].getCType();
-	 			
-	 				//Type *object = new Pointer("J",parameters[i].getType(),_dictionnary,false);
 	 				Type *object = new AddressWrapper(parameters[i].getCType(),"L" + _dictionnary->getFilename() + "$AddressWrapper;");
 	 				_dictionnary->addToMap(parameters[i].getCType()+special,object);
 	 			}

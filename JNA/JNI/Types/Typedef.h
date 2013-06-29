@@ -23,7 +23,7 @@ namespace nsJNI
         	string getStructName();
         	string getTargetType();
         	bool isNativeType();
-        	
+        	bool isAddressWrapper();
         	void prepareCall(ofstream& f,string& varName);
         	string getJNIParameterName(string& varName);
         	virtual void getReturnValue(ofstream& f) =0;

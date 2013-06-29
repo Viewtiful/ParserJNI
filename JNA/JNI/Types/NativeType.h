@@ -17,11 +17,13 @@ namespace nsJNI {
         std::string outputJava();
         std::string outputJNI();
         bool isNativeType();
+        bool isAddressWrapper();
         void prepareCall(ofstream& f, string& varName);
         string getJNIParameterName(string& varName);
         void getReturnValue(ofstream& f);
         protected:
         bool _isNativeType;
+        string _jniType;
        
     };
 }

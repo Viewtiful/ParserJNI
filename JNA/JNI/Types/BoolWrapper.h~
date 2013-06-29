@@ -3,24 +3,23 @@
  * Header for Types
  */
 
-#ifndef __JNI_ADDRESSWRAPPER_H
-#define __JNI_ADDRESSWRAPPER_H
+#ifndef __JNI_SPECIALTYPE_H
+#define __JNI_SPECIALTYPE_H
 #include "JNI/Types/Type.h"
 #include <string>
 #include <iostream>
 #include <fstream>
 using namespace std;
 namespace nsJNI {
-    class AddressWrapper : public Type
+    class BoolWrapper : public Type
     {
       public:
-        virtual ~AddressWrapper();
-		AddressWrapper(string realCType, string VMSignature);
-		AddressWrapper(string VMSignature);
+        virtual ~BoolWrapper();
+		BoolWrapper(string realCType, string VMSignature);
+		BoolWrapper(string VMSignature);
 		std::string outputJava();
         std::string outputJNI();
         bool isNativeType();
-        bool isAddressWrapper();
         void prepareCall(ofstream& f,string& varName);
         string getJNIParameterName(string& varName);
         void getReturnValue(ofstream& f);
