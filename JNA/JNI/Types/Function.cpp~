@@ -136,6 +136,13 @@ void Function::printContentJNI(ofstream &f)
 
    callNativeMethod(f);
 
+	for(int i = 0; i < _args.size(); ++i) {
+		Type * param = _dictionnary->getType(_args[i]->getType());
+
+      if(param->isAddressWrapper())
+		   param->getReturnValue(f);
+	}
+
    Type *typeRetour = _dictionnary->getType(_returnType);
    typeRetour->getReturnValue(f);
 
@@ -143,50 +150,60 @@ void Function::printContentJNI(ofstream &f)
 }
 
 void Function::callNativeMethod(ofstream &f) {
-   if(_returnType != "void") {
-      string structure (
-               "%RETURNTYPE% %NAME% = %CAST%%METHODNAME% (%PARAMS%);\n\n"
+   
+   string structure (
+            "\t\t%RETURNTYPE% %NAME% %CAST%%METHODNAME% (%PARAMS%);\n\n"
             );
+   if(_returnType != "void") {
 
       if(_dictionnary->convertJNI(_returnType) == "jbyteArray") {
          stringReplace(structure, "RETURNTYPE", "void*");
          stringReplace(structure, "CAST", "(void*)");
-         stringReplace(structure, "NAME", "tempJNI_result");
+         stringReplace(structure, "NAME", "tempJNI_result =");
       }
-      else if (_dictionnary->getType(_returnType)->isNativeType()) {
+      else if (_dictionnary->getType(_returnType)->isNativeType() &&
+                  _dictionnary->convertJNI(_returnType) != "jstring") {
          stringReplace(structure, "RETURNTYPE", "");
          stringReplace(structure, "CAST", "");
-         stringReplace(structure, "NAME", "JNI_result");
+         stringReplace(structure, "NAME", "JNI_result =");
+      }
+      else if (_dictionnary->convertJNI(_returnType) == "jstring") {
+         stringReplace(structure, "RETURNTYPE", "char *");
+         stringReplace(structure, "CAST", "(char *)");
+         stringReplace(structure, "NAME", "tempJNI_result =");
       }
       else {
          stringReplace(structure, "RETURNTYPE", _returnType);
          stringReplace(structure, "CAST", "");
-         stringReplace(structure, "NAME", "tempJNI_result");
+         stringReplace(structure, "NAME", "tempJNI_result =");
       }
-
-      stringReplace(structure, "METHODNAME", _name);
-
-      string params;
-      for(int i = 0; i < _args.size(); ++i) {
-         string param ("%PARAMNAME%");
-         if(i+1 < _args.size())
-			   param = param + ", ";
-         Type *typeRetour = _dictionnary->getType(_args[i]->getType());
-
-         if(_args[i]->getType() == "bool *" || _args[i]->getType() == "size_t *" || typeRetour->isAddressWrapper())
-		      stringReplace(param, "PARAMNAME", "&C_" + _args[i]->getName());
-         else
-		      stringReplace(param, "PARAMNAME", "C_" + _args[i]->getName());
-		   params += param;
-      }
-
-      stringReplace(structure, "PARAMS", params);
-
-      f << structure;
    }
    else {
-
+         stringReplace(structure, "RETURNTYPE", "");
+         stringReplace(structure, "CAST", "");
+         stringReplace(structure, "NAME", "");
    }
+
+   stringReplace(structure, "METHODNAME", _name);
+
+   string params;
+   for(int i = 0; i < _args.size(); ++i) {
+      string param ("%PARAMNAME%");
+      if(i+1 < _args.size())
+         param = param + ", ";
+
+      Type *typeRetour = _dictionnary->getType(_args[i]->getType());
+
+      if(_args[i]->getType() == "bool *" || _args[i]->getType() == "size_t *" || typeRetour->isAddressWrapper())
+         stringReplace(param, "PARAMNAME", "&C_" + _args[i]->getName());
+      else
+         stringReplace(param, "PARAMNAME", "C_" + _args[i]->getName());
+
+      params += param;
+   }
+   stringReplace(structure, "PARAMS", params);
+
+   f << structure;
 }
 
 void Function::setReturnType(const string& returnType)

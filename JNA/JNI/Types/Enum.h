@@ -21,6 +21,7 @@ namespace nsJNI{
         void addEnumToJava(ofstream &f);
         bool isNativeType();
         bool isAddressWrapper();
+        bool isBooleanWrapper();
         void prepareCall(ofstream& f,string& varName);
         string getJNIParameterName(string& varName);
         void getReturnValue(ofstream& f);

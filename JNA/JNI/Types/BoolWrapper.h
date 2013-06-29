@@ -21,12 +21,14 @@ namespace nsJNI {
         std::string outputJNI();
         bool isNativeType();
         bool isAddressWrapper();
+        bool isBooleanWrapper();
         void prepareCall(ofstream& f,string& varName);
         string getJNIParameterName(string& varName);
         void getReturnValue(ofstream& f);
         
       	protected:
       	string _realCType;
+         string _varName;
     };
 }
 

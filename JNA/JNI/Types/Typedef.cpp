@@ -46,6 +46,11 @@ bool Typedef::isAddressWrapper()
 	return false;
 }
 
+bool Typedef::isBooleanWrapper()
+{
+	return false;
+}
+
 void Typedef::prepareCall(ofstream& f,string& varName)
 {
 

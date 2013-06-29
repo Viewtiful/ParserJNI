@@ -44,7 +44,12 @@ bool Array::isAddressWrapper()
 	return false;
 }
 
-void Array::prepareCall(ofstream& f,string& varName) //Unused Parameters
+bool Array::isBooleanWrapper()
+{
+	return false;
+}
+
+void Array::prepareCall(ofstream& f,string& varName) 
 {
 	string structure (
 			"\t\t%TYPE% * %NAME%;\n"
@@ -67,14 +72,27 @@ void Array::prepareCall(ofstream& f,string& varName) //Unused Parameters
 	f << structure;
 }
 
-std::string Array::getJNIParameterName(string& varName) // Unused parameter
+std::string Array::getJNIParameterName(string& varName) 
 {
 	return "Array";
 }
 
-void Array::getReturnValue(ofstream& f) //Unused parameter
+void Array::getReturnValue(ofstream& f) 
 {
+   string structure (
+         "\t\tJNI_result = (*env)->New%TYPEMAJ%Array(env, C_size);\n" 
+         "\t\t(*env)->Set%TYPEMAJ%ArrayRegion(env, JNI_result, 0, C_size, (%CTYPE% *)tempJNI_result);\n"
+         "\t\treturn JNI_result;\n"
+         );
 
+	string type = _dictionnary->convertJNI(_CBaseType);
+   string typeMaj = type.substr(1, type.size());
+ 	typeMaj = toJavaName(typeMaj, false, false, true);
+
+   stringReplace(structure, "TYPEMAJ", typeMaj);
+   stringReplace(structure, "CTYPE", type);
+
+   f << structure;
 }
         
         

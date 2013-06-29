@@ -69,6 +69,11 @@ bool Struct::isAddressWrapper()
 	return false;
 }
 
+bool Struct::isBooleanWrapper()
+{
+	return false;
+}
+
 void Struct::prepareCall(ofstream &f,string& varName)
 {
 

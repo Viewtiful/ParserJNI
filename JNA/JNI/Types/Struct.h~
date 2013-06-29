@@ -21,7 +21,7 @@ namespace nsJNI {
      	void addStructToJava(ofstream &f);
         std::string outputJNI();
         bool isNativeType();
-        
+        bool isAddressWrapper();
         void prepareCall(ofstream& f,string& varName);
         string getJNIParameterName(string& varName);
         void getReturnValue(ofstream& f);

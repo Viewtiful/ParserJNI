@@ -41,6 +41,11 @@ bool Typedef::isNativeType()
 	return false;
 }
 
+bool Typedef::isAddressWrapper()
+{
+	return false;
+}
+
 void Typedef::prepareCall(ofstream& f,string& varName)
 {
 

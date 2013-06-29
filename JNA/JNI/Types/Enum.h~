@@ -28,6 +28,7 @@ namespace nsJNI{
       protected : 
          nsC::Enum _cEnum;
          string _filename;
+         string _enumName;
 
          Enum(ofstream &f, const string& javaType,const string& jniType,const string& vmSignature,const nsC::Enum& cEnum, string filename);
 	};

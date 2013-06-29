@@ -169,8 +169,8 @@ void Enum::getReturnValue(ofstream& f)
          "\t\t\tif(val == tempJNI_result) {\n"
          "\t\t\t\tbreak;\n"
          "\t\t\t}\n"
-         "\t\t}\n\n"
-         "\t\treturn JNI_result;\n"
+         "\t\t}\n"
+         "\t\treturn JNI_result;\n\n"
          );
 
    stringReplace(structure, "FILENAME", _filename);

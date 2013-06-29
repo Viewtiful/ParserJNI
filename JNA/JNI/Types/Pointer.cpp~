@@ -65,7 +65,7 @@ void Pointer::prepareCall(ofstream& f,string& varName)
    }
    else if(_CBaseType == "size_t") {
       string structure (
-            "%TYPE% %NAME%;\n\n"
+            "\t\t%TYPE% %NAME%;\n\n"
             );
 
       string name = "C_" + varName;
