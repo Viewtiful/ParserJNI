@@ -88,7 +88,7 @@ void AddressWrapper::getReturnValue(ofstream& f)
          "\t\tadrWrp_%CNAME% = (*env)->GetObjectClass(env, %CNAME%);\n"
          "\t\tsetAddr_%CNAME% = (*env)->GetMethodID(env, adrWrp_%CNAME%, \"setAddress\", \"(J)V\");\n"
          "\t\targ_%CNAME% = (jlong) ctxWrp%VALUE%;\n"
-         "\t\t(*env)->CallVoidMethod(%CNAME%, setAdrr_%CNAME%, arg_%CNAME%);\n\n"
+         "\t\t(*env)->CallVoidMethod(%CNAME%, setAddr_%CNAME%, arg_%CNAME%);\n\n"
          );
 
    std::ostringstream oss;
