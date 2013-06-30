@@ -1,4 +1,3 @@
-/** Provide the glue to use the KTB library */
 public class hash
 {
    public static void main(String[] args) {

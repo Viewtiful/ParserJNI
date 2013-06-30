@@ -124,6 +124,9 @@
 
 		ktb_errno tempJNI_result = ktb_sign_process (C_ctx, C_data, C_data_size);
 
+		(*env)->SetByteArrayRegion(env, data, 0, C_data_length, C_data);
+		free(C_data);
+
 		jclass retObjCls = (*env)->FindClass(env, "ArcanaJNI$ktb_errno");
 		jmethodID getArrayValues = (*env)->GetStaticMethodID(env, retObjCls, "values", "()[LArcanaJNI$ktb_errno;");
 		jobjectArray valuesArray = (jobjectArray)(*env)->CallStaticObjectMethod(env, retObjCls, getArrayValues);
@@ -229,6 +232,9 @@
 
 		ktb_errno tempJNI_result = ktb_sign_verify (C_ctx, C_signature, C_signature_size, &C_is_valid);
 
+		(*env)->SetByteArrayRegion(env, signature, 0, C_signature_length, C_signature);
+		free(C_signature);
+
 		jclass boolWrp;
 		jmethodID setVal;
 		jboolean arg;
@@ -289,6 +295,12 @@
 		bool C_is_valid;
 
 		ktb_errno tempJNI_result = ktb_sign_verify_block (C_algo, C_public_key, C_data, C_data_size, C_signature, C_signature_size, &C_is_valid);
+
+		(*env)->SetByteArrayRegion(env, signature, 0, C_signature_length, C_signature);
+		free(C_signature);
+
+		(*env)->SetByteArrayRegion(env, signature, 0, C_signature_length, C_signature);
+		free(C_signature);
 
 		jclass boolWrp;
 		jmethodID setVal;
@@ -429,6 +441,12 @@
 
 		ktb_errno tempJNI_result = ktb_sign_sign_block (C_algo, C_prng, C_private_key, C_data, C_data_size, C_signature, C_signature_size);
 
+		(*env)->SetByteArrayRegion(env, data, 0, C_data_length, C_data);
+		free(C_data);
+
+		(*env)->SetByteArrayRegion(env, signature, 0, C_signature_length, C_signature);
+		free(C_signature);
+
 		jclass retObjCls = (*env)->FindClass(env, "ArcanaJNI$ktb_errno");
 		jmethodID getArrayValues = (*env)->GetStaticMethodID(env, retObjCls, "values", "()[LArcanaJNI$ktb_errno;");
 		jobjectArray valuesArray = (jobjectArray)(*env)->CallStaticObjectMethod(env, retObjCls, getArrayValues);
@@ -476,6 +494,12 @@
 		jlong C_derived_key_size = (jlong) derived_key_size;
 
 		ktb_errno tempJNI_result = ktb_kdf (C_algo, C_seed, C_seed_size, C_derived_key, C_derived_key_size);
+
+		(*env)->SetByteArrayRegion(env, seed, 0, C_seed_length, C_seed);
+		free(C_seed);
+
+		(*env)->SetByteArrayRegion(env, derived_key, 0, C_derived_key_length, C_derived_key);
+		free(C_derived_key);
 
 		jclass retObjCls = (*env)->FindClass(env, "ArcanaJNI$ktb_errno");
 		jmethodID getArrayValues = (*env)->GetStaticMethodID(env, retObjCls, "values", "()[LArcanaJNI$ktb_errno;");
@@ -533,6 +557,15 @@
 		jlong C_derived_key_size = (jlong) derived_key_size;
 
 		ktb_errno tempJNI_result = ktb_pbkdf (C_algo, C_passwd, C_passwd_size, C_salt, C_salt_size, C_iteration_count, C_derived_key, C_derived_key_size);
+
+		(*env)->SetByteArrayRegion(env, salt, 0, C_salt_length, C_salt);
+		free(C_salt);
+
+		(*env)->SetByteArrayRegion(env, salt, 0, C_salt_length, C_salt);
+		free(C_salt);
+
+		(*env)->SetByteArrayRegion(env, derived_key, 0, C_derived_key_length, C_derived_key);
+		free(C_derived_key);
 
 		jclass retObjCls = (*env)->FindClass(env, "ArcanaJNI$ktb_errno");
 		jmethodID getArrayValues = (*env)->GetStaticMethodID(env, retObjCls, "values", "()[LArcanaJNI$ktb_errno;");
@@ -615,6 +648,12 @@
 
 		ktb_errno tempJNI_result = ktb_kem_psec_encrypt (C_algo, C_prng, C_peer_public_key, C_secret_key, C_secret_key_size, C_ciphertext, C_ciphertext_size);
 
+		(*env)->SetByteArrayRegion(env, ciphertext, 0, C_ciphertext_length, C_ciphertext);
+		free(C_ciphertext);
+
+		(*env)->SetByteArrayRegion(env, ciphertext, 0, C_ciphertext_length, C_ciphertext);
+		free(C_ciphertext);
+
 		jclass retObjCls = (*env)->FindClass(env, "ArcanaJNI$ktb_errno");
 		jmethodID getArrayValues = (*env)->GetStaticMethodID(env, retObjCls, "values", "()[LArcanaJNI$ktb_errno;");
 		jobjectArray valuesArray = (jobjectArray)(*env)->CallStaticObjectMethod(env, retObjCls, getArrayValues);
@@ -666,6 +705,12 @@
 
 		ktb_errno tempJNI_result = ktb_kem_psec_decrypt (C_algo, C_self_private_key, C_input_ciphertext, C_input_ciphertext_size, C_secret_key, C_secret_key_size);
 
+		(*env)->SetByteArrayRegion(env, input_ciphertext, 0, C_input_ciphertext_length, C_input_ciphertext);
+		free(C_input_ciphertext);
+
+		(*env)->SetByteArrayRegion(env, secret_key, 0, C_secret_key_length, C_secret_key);
+		free(C_secret_key);
+
 		jclass retObjCls = (*env)->FindClass(env, "ArcanaJNI$ktb_errno");
 		jmethodID getArrayValues = (*env)->GetStaticMethodID(env, retObjCls, "values", "()[LArcanaJNI$ktb_errno;");
 		jobjectArray valuesArray = (jobjectArray)(*env)->CallStaticObjectMethod(env, retObjCls, getArrayValues);
@@ -712,6 +757,9 @@
 		jlong C_buffer_size = (jlong) buffer_size;
 
 		ktb_errno tempJNI_result = ktb_prng_reseed_with (C_prng, C_buffer, C_buffer_size);
+
+		(*env)->SetByteArrayRegion(env, buffer, 0, C_buffer_length, C_buffer);
+		free(C_buffer);
 
 		jclass retObjCls = (*env)->FindClass(env, "ArcanaJNI$ktb_errno");
 		jmethodID getArrayValues = (*env)->GetStaticMethodID(env, retObjCls, "values", "()[LArcanaJNI$ktb_errno;");
@@ -769,9 +817,14 @@
 	JNIEXPORT jobject JNICALL JNI_ktb_prng_fill_buffer(JNIEnv *env, jclass cls, jlong prng,jbyteArray buffer,jlong buffer_size) {
 
 		jobject JNI_result;
-
-		ktb_prng_t C_prng = (ktb_prng_t)((contextWrapper *)prng)->ctxRef;
+      ktb_prng_t C_prng;
+      if(prng != 0) {
+		C_prng = (ktb_prng_t)((contextWrapper *)prng)->ctxRef;
 		((contextWrapper *)prng)->env = env;
+      /*}
+      else {
+      C_prng = NULL;
+      }*/
 
 		jbyte * C_buffer;
 		int C_buffer_length = (*env)->GetArrayLength(env, buffer);
@@ -781,6 +834,9 @@
 		jlong C_buffer_size = (jlong) buffer_size;
 
 		ktb_errno tempJNI_result = ktb_prng_fill_buffer (C_prng, C_buffer, C_buffer_size);
+
+		(*env)->SetByteArrayRegion(env, buffer, 0, C_buffer_length, C_buffer);
+		free(C_buffer);
 
 		jclass retObjCls = (*env)->FindClass(env, "ArcanaJNI$ktb_errno");
 		jmethodID getArrayValues = (*env)->GetStaticMethodID(env, retObjCls, "values", "()[LArcanaJNI$ktb_errno;");
@@ -850,6 +906,9 @@
 
 		ktb_errno tempJNI_result = ktb_keys_public_key_export (C_public_key, C_result, C_result_size);
 
+		(*env)->SetByteArrayRegion(env, result, 0, C_result_length, C_result);
+		free(C_result);
+
 		jclass retObjCls = (*env)->FindClass(env, "ArcanaJNI$ktb_errno");
 		jmethodID getArrayValues = (*env)->GetStaticMethodID(env, retObjCls, "values", "()[LArcanaJNI$ktb_errno;");
 		jobjectArray valuesArray = (jobjectArray)(*env)->CallStaticObjectMethod(env, retObjCls, getArrayValues);
@@ -888,6 +947,9 @@
 		ctxWrp1->env = env;
 
 		ktb_errno tempJNI_result = ktb_keys_public_key_import (C_public_key_bytes, C_public_key_bytes_size, &C_public_key);
+
+		(*env)->SetByteArrayRegion(env, public_key_bytes, 0, C_public_key_bytes_length, C_public_key_bytes);
+		free(C_public_key_bytes);
 
 		ctxWrp1->ctxRef = C_public_key;
 		jclass adrWrp_public_key;
@@ -949,6 +1011,9 @@
 
 		ktb_errno tempJNI_result = ktb_keys_private_key_export (C_key, C_buffer, C_buffer_size);
 
+		(*env)->SetByteArrayRegion(env, buffer, 0, C_buffer_length, C_buffer);
+		free(C_buffer);
+
 		jclass retObjCls = (*env)->FindClass(env, "ArcanaJNI$ktb_errno");
 		jmethodID getArrayValues = (*env)->GetStaticMethodID(env, retObjCls, "values", "()[LArcanaJNI$ktb_errno;");
 		jobjectArray valuesArray = (jobjectArray)(*env)->CallStaticObjectMethod(env, retObjCls, getArrayValues);
@@ -987,6 +1052,9 @@
 		ctxWrp1->env = env;
 
 		ktb_errno tempJNI_result = ktb_keys_private_key_import (C_private_key_bytes, C_private_key_bytes_size, &C_private_key);
+
+		(*env)->SetByteArrayRegion(env, private_key_bytes, 0, C_private_key_bytes_length, C_private_key_bytes);
+		free(C_private_key_bytes);
 
 		ctxWrp1->ctxRef = C_private_key;
 		jclass adrWrp_private_key;
@@ -1117,6 +1185,12 @@
 
 		ktb_errno tempJNI_result = ktb_radix64_encode (C_input, C_input_size, C_result, C_result_size);
 
+		(*env)->SetByteArrayRegion(env, input, 0, C_input_length, C_input);
+		free(C_input);
+
+		(*env)->SetByteArrayRegion(env, result, 0, C_result_length, C_result);
+		free(C_result);
+
 		jclass retObjCls = (*env)->FindClass(env, "ArcanaJNI$ktb_errno");
 		jmethodID getArrayValues = (*env)->GetStaticMethodID(env, retObjCls, "values", "()[LArcanaJNI$ktb_errno;");
 		jobjectArray valuesArray = (jobjectArray)(*env)->CallStaticObjectMethod(env, retObjCls, getArrayValues);
@@ -1152,6 +1226,9 @@
 
 		 JNI_result = ktb_radix64_decode_size (C_input, C_input_size);
 
+		(*env)->SetByteArrayRegion(env, input, 0, C_input_length, C_input);
+		free(C_input);
+
 		 return JNI_result;
 	}
 
@@ -1174,6 +1251,12 @@
 		jlong C_result_size = (jlong) result_size;
 
 		ktb_errno tempJNI_result = ktb_radix64_decode (C_input, C_input_size, C_result, C_result_size);
+
+		(*env)->SetByteArrayRegion(env, input, 0, C_input_length, C_input);
+		free(C_input);
+
+		(*env)->SetByteArrayRegion(env, result, 0, C_result_length, C_result);
+		free(C_result);
 
 		jclass retObjCls = (*env)->FindClass(env, "ArcanaJNI$ktb_errno");
 		jmethodID getArrayValues = (*env)->GetStaticMethodID(env, retObjCls, "values", "()[LArcanaJNI$ktb_errno;");
@@ -1211,6 +1294,9 @@
 		bool C_verified;
 
 		ktb_errno tempJNI_result = ktb_radix64_verify (C_input, C_input_size, &C_verified);
+
+		(*env)->SetByteArrayRegion(env, input, 0, C_input_length, C_input);
+		free(C_input);
 
 		jclass boolWrp;
 		jmethodID setVal;
@@ -1332,6 +1418,9 @@
 
 		ktb_errno tempJNI_result = ktb_cipher_set_key (C_ctx, C_key, C_key_size);
 
+		(*env)->SetByteArrayRegion(env, key, 0, C_key_length, C_key);
+		free(C_key);
+
 		jclass retObjCls = (*env)->FindClass(env, "ArcanaJNI$ktb_errno");
 		jmethodID getArrayValues = (*env)->GetStaticMethodID(env, retObjCls, "values", "()[LArcanaJNI$ktb_errno;");
 		jobjectArray valuesArray = (jobjectArray)(*env)->CallStaticObjectMethod(env, retObjCls, getArrayValues);
@@ -1370,6 +1459,9 @@
 
 		ktb_errno tempJNI_result = ktb_cipher_set_iv (C_ctx, C_iv, C_iv_size);
 
+		(*env)->SetByteArrayRegion(env, iv, 0, C_iv_length, C_iv);
+		free(C_iv);
+
 		jclass retObjCls = (*env)->FindClass(env, "ArcanaJNI$ktb_errno");
 		jmethodID getArrayValues = (*env)->GetStaticMethodID(env, retObjCls, "values", "()[LArcanaJNI$ktb_errno;");
 		jobjectArray valuesArray = (jobjectArray)(*env)->CallStaticObjectMethod(env, retObjCls, getArrayValues);
@@ -1407,6 +1499,9 @@
 		jlong C_auth_data_size = (jlong) auth_data_size;
 
 		ktb_errno tempJNI_result = ktb_cipher_set_auth_data (C_ctx, C_auth_data, C_auth_data_size);
+
+		(*env)->SetByteArrayRegion(env, auth_data, 0, C_auth_data_length, C_auth_data);
+		free(C_auth_data);
 
 		jclass retObjCls = (*env)->FindClass(env, "ArcanaJNI$ktb_errno");
 		jmethodID getArrayValues = (*env)->GetStaticMethodID(env, retObjCls, "values", "()[LArcanaJNI$ktb_errno;");
@@ -1458,6 +1553,9 @@
 
 		ktb_errno tempJNI_result = ktb_cipher_get_prefix (C_ctx, C_prefix, C_prefix_size);
 
+		(*env)->SetByteArrayRegion(env, prefix, 0, C_prefix_length, C_prefix);
+		free(C_prefix);
+
 		jclass retObjCls = (*env)->FindClass(env, "ArcanaJNI$ktb_errno");
 		jmethodID getArrayValues = (*env)->GetStaticMethodID(env, retObjCls, "values", "()[LArcanaJNI$ktb_errno;");
 		jobjectArray valuesArray = (jobjectArray)(*env)->CallStaticObjectMethod(env, retObjCls, getArrayValues);
@@ -1495,6 +1593,9 @@
 		jlong C_prefix_size = (jlong) prefix_size;
 
 		ktb_errno tempJNI_result = ktb_cipher_set_prefix (C_ctx, C_prefix, C_prefix_size);
+
+		(*env)->SetByteArrayRegion(env, prefix, 0, C_prefix_length, C_prefix);
+		free(C_prefix);
 
 		jclass retObjCls = (*env)->FindClass(env, "ArcanaJNI$ktb_errno");
 		jmethodID getArrayValues = (*env)->GetStaticMethodID(env, retObjCls, "values", "()[LArcanaJNI$ktb_errno;");
@@ -1546,6 +1647,9 @@
 
 		ktb_errno tempJNI_result = ktb_cipher_get_suffix (C_ctx, C_suffix, C_suffix_size);
 
+		(*env)->SetByteArrayRegion(env, suffix, 0, C_suffix_length, C_suffix);
+		free(C_suffix);
+
 		jclass retObjCls = (*env)->FindClass(env, "ArcanaJNI$ktb_errno");
 		jmethodID getArrayValues = (*env)->GetStaticMethodID(env, retObjCls, "values", "()[LArcanaJNI$ktb_errno;");
 		jobjectArray valuesArray = (jobjectArray)(*env)->CallStaticObjectMethod(env, retObjCls, getArrayValues);
@@ -1591,6 +1695,12 @@
 
 		ktb_errno tempJNI_result = ktb_cipher_encrypt_block (C_ctx, C_in, C_in_size, C_out, C_out_size);
 
+		(*env)->SetByteArrayRegion(env, in, 0, C_in_length, C_in);
+		free(C_in);
+
+		(*env)->SetByteArrayRegion(env, out, 0, C_out_length, C_out);
+		free(C_out);
+
 		jclass retObjCls = (*env)->FindClass(env, "ArcanaJNI$ktb_errno");
 		jmethodID getArrayValues = (*env)->GetStaticMethodID(env, retObjCls, "values", "()[LArcanaJNI$ktb_errno;");
 		jobjectArray valuesArray = (jobjectArray)(*env)->CallStaticObjectMethod(env, retObjCls, getArrayValues);
@@ -1635,6 +1745,12 @@
 		jlong C_out_size = (jlong) out_size;
 
 		ktb_errno tempJNI_result = ktb_cipher_decrypt_block (C_ctx, C_in, C_in_size, C_out, C_out_size);
+
+		(*env)->SetByteArrayRegion(env, in, 0, C_in_length, C_in);
+		free(C_in);
+
+		(*env)->SetByteArrayRegion(env, out, 0, C_out_length, C_out);
+		free(C_out);
 
 		jclass retObjCls = (*env)->FindClass(env, "ArcanaJNI$ktb_errno");
 		jmethodID getArrayValues = (*env)->GetStaticMethodID(env, retObjCls, "values", "()[LArcanaJNI$ktb_errno;");
@@ -1871,6 +1987,9 @@
 		arg_ctx = (jlong) ctxWrp2;
 		(*env)->CallVoidMethod(env, ctx, setAddr_ctx, arg_ctx);
 
+		(*env)->SetByteArrayRegion(env, key, 0, C_key_length, C_key);
+		free(C_key);
+
 		jclass retObjCls = (*env)->FindClass(env, "ArcanaJNI$ktb_errno");
 		jmethodID getArrayValues = (*env)->GetStaticMethodID(env, retObjCls, "values", "()[LArcanaJNI$ktb_errno;");
 		jobjectArray valuesArray = (jobjectArray)(*env)->CallStaticObjectMethod(env, retObjCls, getArrayValues);
@@ -1924,6 +2043,9 @@
 		jlong C_buf_size = (jlong) buf_size;
 
 		  ktb_hash_process (C_ctx, C_buf, C_buf_size);
+
+		(*env)->SetByteArrayRegion(env, buf, 0, C_buf_length, C_buf);
+		free(C_buf);
 
 	}
 
@@ -2046,12 +2168,11 @@
 
 		ktb_errno tempJNI_result = ktb_hash_block (C_algo, C_block, C_block_size, C_result, C_result_size);
 
-      int e;
-      for(e = 0; e < C_result_size; ++e)
-         printf("%d ", C_result[e]);
-      printf("\n");
-      (*env)->SetByteArrayRegion(env, result, 0, C_result_size, C_result);
+		(*env)->SetByteArrayRegion(env, block, 0, C_block_length, C_block);
+		free(C_block);
 
+		(*env)->SetByteArrayRegion(env, result, 0, C_result_length, C_result);
+		free(C_result);
 
 		jclass retObjCls = (*env)->FindClass(env, "ArcanaJNI$ktb_errno");
 		jmethodID getArrayValues = (*env)->GetStaticMethodID(env, retObjCls, "values", "()[LArcanaJNI$ktb_errno;");
@@ -2071,8 +2192,6 @@
 				break;
 			}
 		}
-(*env)->SetByteArrayRegion(env, result,0,C_result_length,C_result);
-free(C_result);
 		return JNI_result;
 
 	}
@@ -2129,6 +2248,12 @@ free(C_result);
 
 		ktb_errno tempJNI_result = ktb_base64_encode (C_input, C_input_size, C_result, C_result_size);
 
+		(*env)->SetByteArrayRegion(env, input, 0, C_input_length, C_input);
+		free(C_input);
+
+		(*env)->SetByteArrayRegion(env, result, 0, C_result_length, C_result);
+		free(C_result);
+
 		jclass retObjCls = (*env)->FindClass(env, "ArcanaJNI$ktb_errno");
 		jmethodID getArrayValues = (*env)->GetStaticMethodID(env, retObjCls, "values", "()[LArcanaJNI$ktb_errno;");
 		jobjectArray valuesArray = (jobjectArray)(*env)->CallStaticObjectMethod(env, retObjCls, getArrayValues);
@@ -2164,6 +2289,9 @@ free(C_result);
 
 		 JNI_result = ktb_base64_decode_size (C_input, C_input_size);
 
+		(*env)->SetByteArrayRegion(env, input, 0, C_input_length, C_input);
+		free(C_input);
+
 		 return JNI_result;
 	}
 
@@ -2186,6 +2314,12 @@ free(C_result);
 		jlong C_result_size = (jlong) result_size;
 
 		ktb_errno tempJNI_result = ktb_base64_decode (C_input, C_input_size, C_result, C_result_size);
+
+		(*env)->SetByteArrayRegion(env, input, 0, C_input_length, C_input);
+		free(C_input);
+
+		(*env)->SetByteArrayRegion(env, result, 0, C_result_length, C_result);
+		free(C_result);
 
 		jclass retObjCls = (*env)->FindClass(env, "ArcanaJNI$ktb_errno");
 		jmethodID getArrayValues = (*env)->GetStaticMethodID(env, retObjCls, "values", "()[LArcanaJNI$ktb_errno;");
@@ -2325,6 +2459,9 @@ free(C_result);
 
 		ktb_errno tempJNI_result = ktb_kep_put_data (C_ctx, C_peer_data, C_peer_data_size, &C_continue_exchange);
 
+		(*env)->SetByteArrayRegion(env, peer_data, 0, C_peer_data_length, C_peer_data);
+		free(C_peer_data);
+
 		jclass boolWrp;
 		jmethodID setVal;
 		jboolean arg;
@@ -2370,6 +2507,9 @@ free(C_result);
 		jlong C_secret_key_size = (jlong) secret_key_size;
 
 		ktb_errno tempJNI_result = ktb_kep_finalise (C_ctx, C_secret_key, C_secret_key_size);
+
+		(*env)->SetByteArrayRegion(env, secret_key, 0, C_secret_key_length, C_secret_key);
+		free(C_secret_key);
 
 		jclass retObjCls = (*env)->FindClass(env, "ArcanaJNI$ktb_errno");
 		jmethodID getArrayValues = (*env)->GetStaticMethodID(env, retObjCls, "values", "()[LArcanaJNI$ktb_errno;");

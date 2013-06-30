@@ -817,9 +817,14 @@
 	JNIEXPORT jobject JNICALL JNI_ktb_prng_fill_buffer(JNIEnv *env, jclass cls, jlong prng,jbyteArray buffer,jlong buffer_size) {
 
 		jobject JNI_result;
-
-		ktb_prng_t C_prng = (ktb_prng_t)((contextWrapper *)prng)->ctxRef;
-		((contextWrapper *)prng)->env = env;
+      ktb_prng_t C_prng;
+      if(prng != 0) {
+		   C_prng = (ktb_prng_t)((contextWrapper *)prng)->ctxRef;
+		   ((contextWrapper *)prng)->env = env;
+      }
+      else {
+         C_prng = NULL;
+      }
 
 		jbyte * C_buffer;
 		int C_buffer_length = (*env)->GetArrayLength(env, buffer);
