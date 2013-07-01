@@ -14,6 +14,7 @@ namespace nsJNI {
       public:
         virtual ~NativeType();
 		NativeType(const string& javaType,const string& jniType,const string& VMSignature,bool isNativeType);
+		NativeType(const string& javaType, const string& jniType,const string& CType,const string& VMSignature,bool isNativeType);
         std::string outputJava();
         std::string outputJNI();
         bool isNativeType();
@@ -23,9 +24,11 @@ namespace nsJNI {
         void prepareCall(ofstream& f, string& varName);
         string getJNIParameterName(string& varName);
         void getReturnValue(ofstream& f);
+        string getCType();
         protected:
         bool _isNativeType;
         string _jniType;
+        string _CType;
        
     };
 }

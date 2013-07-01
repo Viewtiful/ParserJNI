@@ -15,10 +15,19 @@ NativeType::NativeType(const string& javaType, const string& jniType,
 {
 	_isNativeType = isNativeType;
    _jniType = jniType;
+   _CType = javaType;
 	cout << "isNativeType Value : " << _isNativeType << endl;
 }
 
-
+NativeType::NativeType(const string& javaType, const string& jniType,const string& CType,
+		const string& VMSignature,bool isNativeType) : Type(javaType,
+			jniType, VMSignature)
+{
+	_isNativeType = isNativeType;
+   _jniType = jniType;
+	cout << "isNativeType Value : " << _isNativeType << endl;
+	_CType = CType;
+}
 NativeType::~NativeType()
 {
 
@@ -29,6 +38,11 @@ std::string NativeType::outputJava()
 	cout << "Output Java : NativeType" << endl;
 	cout << "javaType = " << getJavaType() << endl;
 	return getJavaType();
+}
+
+string NativeType::getCType()
+{
+	return _CType;
 }
 
 std::string NativeType::outputJNI()
@@ -62,7 +76,8 @@ void NativeType::prepareCall(ofstream& f,string& varName)
 	   string structure (
 			   "\t\t%TYPE% %NAME% = (%TYPE%) %NAMEBASE%;\n\n"
 			   );
-	   string type = getJNIType();    //get C type !!!!!! probleme
+	   //string type = getJNIType();    //get C type !!!!!! probleme
+	   string type = getCType();
 	   string name = "C_" + varName;
 
       stringReplace(structure, "TYPE", type);
