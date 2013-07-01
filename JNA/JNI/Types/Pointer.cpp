@@ -61,8 +61,13 @@ void Pointer::prepareCall(ofstream& f,string& varName)
 {
    if(!_isNativeType && _CBaseType != "size_t") {
       string structure (
-            "\t\t%TYPE% %NAME% = (%TYPE%)((contextWrapper *)%CName%)->ctxRef;\n"
-            "\t\t((contextWrapper *)%CName%)->env = env;\n\n"
+            "\t\t%TYPE% %NAME%;\n"
+            "\t\tif(%CName% != 0) {\n"
+            "\t\t\t%NAME% = (%TYPE%)((contextWrapper *)%CName%)->ctxRef;\n"
+            "\t\t\t((contextWrapper *)%CName%)->env = env;\n"
+            "\t\t}\n"
+            "\t\telse\n"
+            "\t\t\t%NAME% = NULL;\n\n"
             );
 
       string name = "C_" + varName;
