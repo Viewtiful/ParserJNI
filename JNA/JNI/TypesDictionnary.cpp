@@ -31,10 +31,10 @@ void TYPESDICTIONNARY::addBaseType(string filename)
 	addToMap("long", new NativeType("long","jlong","J",true));
 	addToMap("float", new NativeType("float","jfloat","F",true));
 	addToMap("double", new NativeType("double","jdouble","D",true));
-	addToMap("bool", new NativeType("boolean","jboolean","Z",true));
+	addToMap("bool", new NativeType("boolean","jboolean","bool","Z",true));
 	addToMap("char", new NativeType("byte","jbyte","B",true));
 	addToMap("void", new NativeType("void","void","V",true));
-	addToMap("size_t", new NativeType("long","jlong","J",true));
+	addToMap("size_t", new NativeType("long","jlong","size_t","J",true));
 	addToMap("const char *", new NativeType("String","jstring","Ljava/lang/String;",true));
 	addToMap("const void *", new NativeType("byte","jbyte","B",true));
 	addToMap("void *", new NativeType("byte","jbyte","B",true));
