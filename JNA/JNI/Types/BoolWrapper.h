@@ -3,6 +3,11 @@
  * Header for Types
  */
 
+/*!
+	\file BoolWrapper.h
+	\author Baptiste HAUDEGAND & Antoine MOISE
+	\version 1.0
+!*/
 #ifndef __JNI_SPECIALTYPE_H
 #define __JNI_SPECIALTYPE_H
 #include "JNI/Types/Type.h"
@@ -10,10 +15,22 @@
 #include <iostream>
 #include <fstream>
 using namespace std;
+/*!
+	\namespace nsJNI 
+	JNI parser namespace
+!*/
 namespace nsJNI {
+
+	/*!
+		\class BoolWrapper
+		\brief handle bool* type
+	*/
     class BoolWrapper : public Type
     {
       public:
+      /*!
+      	\brief destructor
+      */
         virtual ~BoolWrapper();
 		BoolWrapper(string realCType, string VMSignature);
 		BoolWrapper(string VMSignature);

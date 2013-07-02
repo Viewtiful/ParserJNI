@@ -1,4 +1,8 @@
-
+/*!
+	\file Enum.h
+	\author Baptiste HAUDEGAND & Antoine MOISE
+	\version 1.0
+!*/
 
 #ifndef __JNI_ENUM_H
 #define __JNI_ENUM_H
@@ -6,13 +10,23 @@
 #include "C/Enum.h"
 #include "JNI/TypesDictionnary.h"
 #include "Modules/Module.h"
-
+/*!
+	\namespace nsJNI 
+	JNI parser namespace
+!*/
 namespace nsJNI{
 
    class TypesDictionnary;
+   /*!
+		\class Enum
+		\brief represents an Enum
+	*/
 	class Enum : public Type
 	{
 	   public : 
+	   /*!
+      	\brief destructor
+      */
          virtual ~Enum();
        
 	    static bool create(ofstream &f, const nsC::Enum::vector& en, TypesDictionnary *dictionnary);

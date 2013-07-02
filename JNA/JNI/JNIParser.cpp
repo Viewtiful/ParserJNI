@@ -54,7 +54,12 @@ int JNIPARSER::run(nsModules::Module::vector modules)
 	// Converting everything to JNI and Java.
 	for(size_t i = 0; i<modules.size(); i++)
 	{
+		nsC::Callback::vector calls = modules[i].getCallbacks();
 		nsC::Function::vector fcts = modules[i].getFunctions();
+		
+		cout << "Show Callbacks" << endl;
+		for(size_t l = 0;l<calls.size();l++)
+			cout << calls[l] << endl;
 		for(size_t k = 0;k<fcts.size();k++)
 		{
 			nsJNI::Function *fct = new Function(dico);

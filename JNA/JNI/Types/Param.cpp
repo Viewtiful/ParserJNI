@@ -16,12 +16,6 @@ Param::~Param()
 
 }
 
-void Param::convert()
-{
-
-
-}
-
 std::string& Param::getName()
 {
 	return _name;
