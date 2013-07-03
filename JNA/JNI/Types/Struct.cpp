@@ -6,7 +6,7 @@
 using namespace nsJNI;
 using namespace nsUtils;
 
-Struct::Struct(ofstream &f, const string& VMSignature, const nsC::Struct& cStruct, TypesDictionnary* dictionnary) : Type(VMSignature)
+Struct::Struct(ofstream &f, ofstream &f2, const string& VMSignature, const nsC::Struct& cStruct, TypesDictionnary* dictionnary) : Type(VMSignature)
 {
 	this->_cStruct = cStruct;
 	this->_dictionnary = dictionnary;
@@ -14,6 +14,7 @@ Struct::Struct(ofstream &f, const string& VMSignature, const nsC::Struct& cStruc
 	toupper(_cStruct.getTypedef()[0]);
 	this->_javaType = cStruct.getTypedef();
    addStructToJava(f);
+   //addStructFunctionToJNI(f2);
 }
 
 
@@ -30,30 +31,49 @@ void Struct::addStructToJava(ofstream &f)
 {
    string structure(
 		"\tpublic class %CLASSNAME% {\n"
-		"%FIELDS%"
-		"\t}\n\n%GS%\n\n"
+		"\t\t%FIELDS%\n"
+      "\t\tprivate long mInternal;\n\n"
+      "\t\t%CONSTRUCTOR%\n\n"
+		"\t}\n\n"
+      "%GS%\n\n"
 	);
 
    nsC::Param::vector fields = _cStruct.getFields();
 	string fieldsTemp;
 	string getterSetter;
 	for(size_t i =0; i<fields.size(); i++) {
-      string field("\t\t%VALUE1% %VALUE2%;");
+      string field("%VALUE1% %VALUE2%;");
 		
 		stringReplace(field, "VALUE1", _dictionnary->convertJava(fields[i].getCType()));
 		stringReplace(field, "VALUE2", fields[i].getName());
-		getterSetter = getterSetter +generateGetterSetter(fields[i].getCType(),fields[i].getName()); 
+
+		getterSetter = getterSetter 
+            + generateGetter(fields[i].getCType(),fields[i].getName())
+            + generateSetter(fields[i].getCType(),fields[i].getName());
+ 
 		fieldsTemp += field;
-   	}
+   }
 
    stringReplace(structure, "CLASSNAME", _cStruct.getTypedef());
-
 	stringReplace(structure, "FIELDS", fieldsTemp);
+	//stringReplace(structure, "CONSTRUCTOR", getterSetter);
 	stringReplace(structure, "GS", getterSetter);	
    f << structure;
 }
 
+/*string Struct::generateConstructor(const string& fieldName)
+{
+	string getterStructure(
+            "\tpublic native %RETURNTYPE% gen_jni_%CLASSNAME%_get_%ATTRIBUTENAME%"
+	         "(long mInternal);\n"
+            );
+	
+	stringReplace(getterStructure, "RETURNTYPE", _dictionnary->convertJava(fieldType));
+	stringReplace(getterStructure, "CLASSNAME", _cStruct.getTypedef());
+	stringReplace(getterStructure, "ATTRIBUTENAME", fieldName);
 
+	return getterStructure;
+}*/
 
 Struct::~Struct(){
 
@@ -96,23 +116,31 @@ void Struct::getReturnValue(ofstream& f)
 
 }
 
-string Struct::generateGetterSetter(const string& fieldType,const string& fieldName)
+string Struct::generateGetter(const string& fieldType,const string& fieldName)
 {
-	string setterStructure("\tpublic native void set%CLASSNAME%_%ATTRIBUTENAME%"
-	"(long mInternal,%JAVATYPE% %FIELDNAME%);\n\n");
+	string getterStructure(
+            "\tpublic native %RETURNTYPE% gen_jni_%CLASSNAME%_get_%ATTRIBUTENAME%"
+	         "(long mInternal);\n"
+            );
 	
-	string getterStructure("\tpublic native %RETURNTYPE% get%CLASSNAME%_%ATTRIBUTENAME%"
-	"(long mInternal);\n\n");
-	
+	stringReplace(getterStructure, "RETURNTYPE", _dictionnary->convertJava(fieldType));
+	stringReplace(getterStructure, "CLASSNAME", _cStruct.getTypedef());
+	stringReplace(getterStructure, "ATTRIBUTENAME", fieldName);
+
+	return getterStructure;
+}        
+
+string Struct::generateSetter(const string& fieldType,const string& fieldName)
+{
+	string setterStructure(
+            "\tpublic native void gen_jni_%CLASSNAME%_set_%ATTRIBUTENAME%"
+	         "(long mInternal, %JAVATYPE% %FIELDNAME%);\n"
+            );
 	
 	stringReplace(setterStructure, "CLASSNAME", _cStruct.getTypedef());
 	stringReplace(setterStructure, "ATTRIBUTENAME", fieldName);
 	stringReplace(setterStructure, "JAVATYPE", _dictionnary->convertJava(fieldType));
 	stringReplace(setterStructure, "FIELDNAME", fieldName);
-	
-	
-	stringReplace(getterStructure, "RETURNTYPE", _dictionnary->convertJava(fieldType));
-	stringReplace(getterStructure, "CLASSNAME", _cStruct.getTypedef());
-	stringReplace(getterStructure, "ATTRIBUTENAME", fieldName);
-	return setterStructure + getterStructure;
+
+	return setterStructure;
 }        

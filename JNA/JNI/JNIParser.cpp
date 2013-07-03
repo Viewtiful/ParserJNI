@@ -44,11 +44,11 @@ int JNIPARSER::run(nsModules::Module::vector modules)
 		// Same thing for structures, adding them after enums because structs
 		// can use enum type.
 		if(modules[i].getStructs().size() > 0)
-			dico->addStruct(f, modules[i].getStructs());
+			dico->addStruct(f, f2, modules[i].getStructs());
 	}
 
 	cout << "modules.size : " << modules.size() << endl;
-	
+
 	vector<nsJNI::Function*> saveFcts;
 
 	// Converting everything to JNI and Java.

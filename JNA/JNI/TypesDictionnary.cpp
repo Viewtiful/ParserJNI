@@ -116,7 +116,7 @@ string TYPESDICTIONNARY::convertVM(const string& Ctype)
 }
 
 
-void TYPESDICTIONNARY::addStruct(ofstream &f, const nsC::Struct::vector& structs)
+void TYPESDICTIONNARY::addStruct(ofstream &f, ofstream &f2, const nsC::Struct::vector& structs)
 {
 	for (nsC::Struct::vector::const_iterator iterator(structs.begin());
          iterator != structs.end();
@@ -137,7 +137,7 @@ void TYPESDICTIONNARY::addStruct(ofstream &f, const nsC::Struct::vector& structs
       	}	
       	else if(haveTypedef && haveFields && !isTypedefPointer && !isDeepPointer)
       	{
-      		addToMap(CStruct.getTypedef(), new Struct(f, "L"+_filename+"$"+CStruct.getTypedef() + ";",CStruct,this));
+      		addToMap(CStruct.getTypedef(), new Struct(f, f2, "L"+_filename+"$"+CStruct.getTypedef() + ";",CStruct,this));
       		//_conversionMap[CStruct.getTypedef()] = new Struct("jobject",CStruct,this);
 	    }  	
    }

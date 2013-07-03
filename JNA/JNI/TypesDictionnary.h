@@ -52,7 +52,7 @@ namespace nsJNI
 		string getFilename();
 		int nbIndirections(const string& CType);
 		void addTypedefs(const nsC::Typedef::vector& typedefs);
-		void addStruct(ofstream &f, const nsC::Struct::vector& structs);
+		void addStruct(ofstream &f, ofstream &f2, const nsC::Struct::vector& structs);
 	   	void addEnums(ofstream &f, const nsC::Enum::vector& enums);
 		bool isNativeType(const string &type);
 		Type* getType(const string & Ctype);

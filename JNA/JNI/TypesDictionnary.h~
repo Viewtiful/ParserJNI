@@ -56,7 +56,6 @@ namespace nsJNI
 	   	void addEnums(ofstream &f, const nsC::Enum::vector& enums);
 		bool isNativeType(const string &type);
 		Type* getType(const string & Ctype);
-		nsJNI::Array* getArray(const string & Ctype);
 
       protected:
 
