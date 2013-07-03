@@ -31,24 +31,26 @@ void Struct::addStructToJava(ofstream &f)
    string structure(
 		"\tpublic class %CLASSNAME% {\n"
 		"%FIELDS%"
+		"\n\n%GS%"
 		"\t}\n\n"
 	);
 
    nsC::Param::vector fields = _cStruct.getFields();
 	string fieldsTemp;
-
+	string getterSetter;
 	for(size_t i =0; i<fields.size(); i++) {
       string field("\t\t%VALUE1% %VALUE2%;");
 		
 		stringReplace(field, "VALUE1", _dictionnary->convertJava(fields[i].getCType()));
 		stringReplace(field, "VALUE2", fields[i].getName());
+		getterSetter = getterSetter +generateGetterSetter(fields[i].getCType(),fields[i].getName()); 
 		fieldsTemp += field;
-   }
+   	}
 
    stringReplace(structure, "CLASSNAME", _cStruct.getTypedef());
 
 	stringReplace(structure, "FIELDS", fieldsTemp);
-
+	stringReplace(structure, "GS", getterSetter);	
    f << structure;
 }
 
@@ -94,4 +96,24 @@ void Struct::getReturnValue(ofstream& f)
 
 
 }
-        
+
+string Struct::generateGetterSetter(const string& fieldType,const string& fieldName)
+{
+	string setterStructure("\tpublic native void set%CLASSNAME%_%ATTRIBUTENAME%"
+	"(long mInternal,%JAVATYPE% %FIELDNAME%);\n\n");
+	
+	string getterStructure("\tpublic native %RETURNTYPE% get%CLASSNAME%_%ATTRIBUTENAME%"
+	"(long mInternal);\n\n");
+	
+	
+	stringReplace(setterStructure, "CLASSNAME", _cStruct.getTypedef());
+	stringReplace(setterStructure, "ATTRIBUTENAME", fieldName);
+	stringReplace(setterStructure, "JAVATYPE", _dictionnary->convertJava(fieldType));
+	stringReplace(setterStructure, "FIELDNAME", fieldName);
+	
+	
+	stringReplace(getterStructure, "RETURNTYPE", _dictionnary->convertJava(fieldType));
+	stringReplace(getterStructure, "CLASSNAME", _cStruct.getTypedef());
+	stringReplace(getterStructure, "ATTRIBUTENAME", fieldName);
+	return setterStructure + getterStructure;
+}        

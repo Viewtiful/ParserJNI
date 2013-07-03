@@ -42,6 +42,7 @@ namespace nsJNI {
         bool isArray();
         void prepareCall(ofstream& f,string& varName);
         string getJNIParameterName(string& varName);
+        string generateGetterSetter(const string& fieldType,const string& fieldName);
         void getReturnValue(ofstream& f);
       protected:
         nsC::Struct _cStruct;
