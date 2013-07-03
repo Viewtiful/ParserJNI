@@ -35,6 +35,8 @@ void OutputJNI::addInclude(ofstream &f) {
 			"#include <ktb/kdf.h>\n"
 			"#include <ktb/curves.h>\n"
 			"#include <kep/kep.h>\n"
+			"#include <kep/kep_dh.h>\n"
+			"#include <kep/kep_dhpass.h>\n"
 			"#include <kep/kep_sts.h>\n\n\n"
 			);
 

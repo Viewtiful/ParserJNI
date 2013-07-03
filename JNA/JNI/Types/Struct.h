@@ -35,6 +35,7 @@ namespace nsJNI {
 		Struct(ofstream &f, ofstream& f2, const string& vmSignature,const nsC::Struct& cStruct,TypesDictionnary *dictionnary);
 		std::string outputJava();
      	void addStructToJava(ofstream &f);
+     	void addStructFunctionToJNI(ofstream &f);
         std::string outputJNI();
         bool isNativeType();
         bool isAddressWrapper();
@@ -42,8 +43,14 @@ namespace nsJNI {
         bool isArray();
         void prepareCall(ofstream& f,string& varName);
         string getJNIParameterName(string& varName);
-        string generateGetter(const string& fieldType,const string& fieldName);
-        string generateSetter(const string& fieldType,const string& fieldName);
+        string generateGetter(bool java, const string& fieldType,const string& fieldName);
+        string generateSetter(bool java, const string& fieldType,const string& fieldName);
+        string generateConstructor();
+        string generateFinalize();
+        string generateFreeFunction(bool java);
+        string generateWrite();
+        string generateRead();
+        string generateCreateFunction(bool java);
         void getReturnValue(ofstream& f);
       protected:
         nsC::Struct _cStruct;

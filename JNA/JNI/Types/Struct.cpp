@@ -14,7 +14,7 @@ Struct::Struct(ofstream &f, ofstream &f2, const string& VMSignature, const nsC::
 	toupper(_cStruct.getTypedef()[0]);
 	this->_javaType = cStruct.getTypedef();
    addStructToJava(f);
-   //addStructFunctionToJNI(f2);
+   addStructFunctionToJNI(f2);
 }
 
 
@@ -27,14 +27,44 @@ std::string Struct::outputJNI() // Warning unused overridden function
 {
 	return "JNI";
 }
+
+void Struct::addStructFunctionToJNI(ofstream &f) {
+	string jniFunction(
+            "%CREATE%"
+            "%FREE%"
+            "%GS%\n\n"
+            );
+
+   stringReplace(jniFunction, "CREATE", generateCreateFunction(false));
+   stringReplace(jniFunction, "FREE", generateFreeFunction(false));
+
+   nsC::Param::vector fields = _cStruct.getFields();
+	string getterSetter;
+	for(size_t i =0; i<fields.size(); i++) {
+
+		getterSetter = getterSetter 
+            + generateGetter(false, fields[i].getCType(),fields[i].getName())
+            + generateSetter(false, fields[i].getCType(),fields[i].getName());
+   }
+
+	stringReplace(jniFunction, "GS", getterSetter);	
+
+	f << jniFunction;
+}
+
 void Struct::addStructToJava(ofstream &f)
 {
    string structure(
 		"\tpublic class %CLASSNAME% {\n"
 		"\t\t%FIELDS%\n"
       "\t\tprivate long mInternal;\n\n"
-      "\t\t%CONSTRUCTOR%\n\n"
+      "%CONSTRUCTOR%"
+      "%FINALIZE%"
+      "%WRITE%"
+      "%READ%"
 		"\t}\n\n"
+      "%CREATE%"
+      "%FREE%"
       "%GS%\n\n"
 	);
 
@@ -48,32 +78,138 @@ void Struct::addStructToJava(ofstream &f)
 		stringReplace(field, "VALUE2", fields[i].getName());
 
 		getterSetter = getterSetter 
-            + generateGetter(fields[i].getCType(),fields[i].getName())
-            + generateSetter(fields[i].getCType(),fields[i].getName());
+            + generateGetter(true, fields[i].getCType(),fields[i].getName())
+            + generateSetter(true, fields[i].getCType(),fields[i].getName());
  
 		fieldsTemp += field;
    }
 
    stringReplace(structure, "CLASSNAME", _cStruct.getTypedef());
 	stringReplace(structure, "FIELDS", fieldsTemp);
-	//stringReplace(structure, "CONSTRUCTOR", getterSetter);
+	stringReplace(structure, "CONSTRUCTOR", generateConstructor());
+   stringReplace(structure, "CREATE", generateCreateFunction(true));
+   stringReplace(structure, "FINALIZE", generateFinalize());
+   stringReplace(structure, "WRITE", generateWrite());
+   stringReplace(structure, "READ", generateRead());
+   stringReplace(structure, "FREE", generateFreeFunction(true));
 	stringReplace(structure, "GS", getterSetter);	
    f << structure;
 }
 
-/*string Struct::generateConstructor(const string& fieldName)
+string Struct::generateConstructor()
 {
-	string getterStructure(
-            "\tpublic native %RETURNTYPE% gen_jni_%CLASSNAME%_get_%ATTRIBUTENAME%"
-	         "(long mInternal);\n"
+	string constructor(
+            "\t\tpublic %CLASSNAME%() {\n"
+	         "\t\t\tmInternal = gen_jni_%CLASSNAME%_create();\n"
+            "\t\t}\n\n"
             );
 	
-	stringReplace(getterStructure, "RETURNTYPE", _dictionnary->convertJava(fieldType));
-	stringReplace(getterStructure, "CLASSNAME", _cStruct.getTypedef());
-	stringReplace(getterStructure, "ATTRIBUTENAME", fieldName);
+	stringReplace(constructor, "CLASSNAME", _cStruct.getTypedef());
 
-	return getterStructure;
-}*/
+	return constructor;
+}
+
+string Struct::generateFinalize()
+{
+	string constructor(
+            "\t\t@Override\n"
+            "\t\tpublic void finalize() {\n"
+	         "\t\t\tgen_jni_%CLASSNAME%_free(mInternal);\n"
+            "\t\t}\n\n"
+            );
+	
+	stringReplace(constructor, "CLASSNAME", _cStruct.getTypedef());
+
+	return constructor;
+}
+
+string Struct::generateWrite()
+{
+	string write(
+            "\t\tpublic void write() {\n"
+	         "%FIELDS%"
+            "\t\t}\n\n"
+            );
+
+
+   nsC::Param::vector fields = _cStruct.getFields();
+	string fieldsTemp;
+	for(size_t i =0; i<fields.size(); i++) {
+      string field("\t\t\tgen_jni_%CLASSNAME%_set_%VALUE%(mInternal, %VALUE%);\n");
+		
+		stringReplace(field, "VALUE", fields[i].getName());
+	   stringReplace(field, "CLASSNAME", _cStruct.getTypedef());
+		fieldsTemp += field;
+   }
+	
+	stringReplace(write, "FIELDS", fieldsTemp);
+
+	return write;
+}
+
+string Struct::generateRead()
+{
+	string read(
+            "\t\tpublic void read() {\n"
+	         "%FIELDS%"
+            "\t\t}\n\n"
+            );
+
+
+   nsC::Param::vector fields = _cStruct.getFields();
+	string fieldsTemp;
+	for(size_t i =0; i<fields.size(); i++) {
+      string field("\t\t\t%VALUE% = gen_jni_%CLASSNAME%_get_%VALUE%(mInternal);\n");
+		
+		stringReplace(field, "VALUE", fields[i].getName());
+	   stringReplace(field, "CLASSNAME", _cStruct.getTypedef());
+		fieldsTemp += field;
+   }
+	
+	stringReplace(read, "FIELDS", fieldsTemp);
+
+	return read;
+}
+
+string Struct::generateFreeFunction(bool java)
+{
+	string freeFunction;
+
+   if(java) {
+      freeFunction = "\tpublic native void gen_jni_%CLASSNAME%_free(long mInternal);\n";
+	   stringReplace(freeFunction, "CLASSNAME", _cStruct.getTypedef());
+   }
+   else {
+      freeFunction = 
+         "\tJNIEXPORT void JNICALL gen_jni_%CLASSNAME%_free(JNIEnv *env, jclass cls, jlong stru) {\n"
+         "\t\t%CLASSNAME% *C_ctx = (%CLASSNAME% *)stru;\n"
+         "\t\tfree(C_ctx);\n"
+         "\t}\n\n";
+	   stringReplace(freeFunction, "CLASSNAME", _cStruct.getTypedef());
+   }
+
+	return freeFunction;
+}
+
+string Struct::generateCreateFunction(bool java)
+{
+   string createFunction;
+   
+   if(java) {
+      createFunction = "\tpublic native long gen_jni_%CLASSNAME%_create();\n";
+	   stringReplace(createFunction, "CLASSNAME", _cStruct.getTypedef());
+   }
+   else {
+      createFunction = 
+         "\tJNIEXPORT jlong JNICALL gen_jni_%CLASSNAME%_create(JNIEnv *env, jclass cls) {\n"
+         "\t\t%CLASSNAME% *C_ctx = (%CLASSNAME% *)malloc(sizeof(%CLASSNAME%));\n"
+         "\t\treturn C_ctx;\n"
+         "\t}\n\n";
+	   stringReplace(createFunction, "CLASSNAME", _cStruct.getTypedef());
+   }
+
+	return createFunction;
+}
 
 Struct::~Struct(){
 
@@ -116,31 +252,58 @@ void Struct::getReturnValue(ofstream& f)
 
 }
 
-string Struct::generateGetter(const string& fieldType,const string& fieldName)
+string Struct::generateGetter(bool java, const string& fieldType,const string& fieldName)
 {
-	string getterStructure(
-            "\tpublic native %RETURNTYPE% gen_jni_%CLASSNAME%_get_%ATTRIBUTENAME%"
-	         "(long mInternal);\n"
-            );
-	
-	stringReplace(getterStructure, "RETURNTYPE", _dictionnary->convertJava(fieldType));
-	stringReplace(getterStructure, "CLASSNAME", _cStruct.getTypedef());
-	stringReplace(getterStructure, "ATTRIBUTENAME", fieldName);
+	string getterStructure;
+
+   if(java) {
+      getterStructure = "\tpublic native %RETURNTYPE% gen_jni_%CLASSNAME%_get_%ATTRIBUTENAME%"
+      "(long mInternal);\n";
+
+	   stringReplace(getterStructure, "RETURNTYPE", _dictionnary->convertJava(fieldType));
+	   stringReplace(getterStructure, "CLASSNAME", _cStruct.getTypedef());
+	   stringReplace(getterStructure, "ATTRIBUTENAME", fieldName);
+   }
+   else {
+      getterStructure = "\tJNIEXPORT %RETURNTYPE% JNICALL gen_jni_%CLASSNAME%_get_%ATTRIBUTENAME%"
+      "(JNIEnv *env, jclass cls, jlong stru) {\n"
+      "\t\t%CLASSNAME% *C_ctx = (%CLASSNAME% *)stru;\n"
+      "\t\treturn C_ctx->%ATTRIBUTENAME%;\n"
+      "\t}\n\n";
+
+	   stringReplace(getterStructure, "RETURNTYPE", _dictionnary->convertJNI(fieldType));
+	   stringReplace(getterStructure, "CLASSNAME", _cStruct.getTypedef());
+	   stringReplace(getterStructure, "ATTRIBUTENAME", fieldName);
+   }
 
 	return getterStructure;
 }        
 
-string Struct::generateSetter(const string& fieldType,const string& fieldName)
+string Struct::generateSetter(bool java, const string& fieldType,const string& fieldName)
 {
-	string setterStructure(
-            "\tpublic native void gen_jni_%CLASSNAME%_set_%ATTRIBUTENAME%"
-	         "(long mInternal, %JAVATYPE% %FIELDNAME%);\n"
-            );
-	
-	stringReplace(setterStructure, "CLASSNAME", _cStruct.getTypedef());
-	stringReplace(setterStructure, "ATTRIBUTENAME", fieldName);
-	stringReplace(setterStructure, "JAVATYPE", _dictionnary->convertJava(fieldType));
-	stringReplace(setterStructure, "FIELDNAME", fieldName);
+	string setterStructure;
+
+   if(java) {
+      setterStructure = "\tpublic native void gen_jni_%CLASSNAME%_set_%ATTRIBUTENAME%"
+      "(long mInternal, %JAVATYPE% %FIELDNAME%);\n";
+
+	   stringReplace(setterStructure, "CLASSNAME", _cStruct.getTypedef());
+	   stringReplace(setterStructure, "ATTRIBUTENAME", fieldName);
+	   stringReplace(setterStructure, "JAVATYPE", _dictionnary->convertJava(fieldType));
+	   stringReplace(setterStructure, "FIELDNAME", fieldName);
+   }
+   else {
+      setterStructure = "\tJNIEXPORT void JNICALL gen_jni_%CLASSNAME%_set_%ATTRIBUTENAME%"
+      "(JNIEnv *env, jclass cls, jlong stru, %JNITYPE% %FIELDNAME%) {\n"
+      "\t\t%CLASSNAME% *C_ctx = (%CLASSNAME% *)stru;\n"
+      "\t\tC_ctx->%ATTRIBUTENAME% = %FIELDNAME%;\n"
+      "\t}\n\n";
+
+	   stringReplace(setterStructure, "CLASSNAME", _cStruct.getTypedef());
+	   stringReplace(setterStructure, "ATTRIBUTENAME", fieldName);
+	   stringReplace(setterStructure, "JNITYPE", _dictionnary->convertJNI(fieldType));
+	   stringReplace(setterStructure, "FIELDNAME", fieldName);
+   }
 
 	return setterStructure;
 }        
