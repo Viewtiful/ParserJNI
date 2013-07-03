@@ -56,7 +56,7 @@ void Struct::addStructToJava(ofstream &f)
 {
    string structure(
 		"\tpublic class %CLASSNAME% {\n"
-		"\t\t%FIELDS%\n"
+		"%FIELDS%\n"
       "\t\tprivate long mInternal;\n\n"
       "%CONSTRUCTOR%"
       "%FINALIZE%"
@@ -72,7 +72,7 @@ void Struct::addStructToJava(ofstream &f)
 	string fieldsTemp;
 	string getterSetter;
 	for(size_t i =0; i<fields.size(); i++) {
-      string field("%VALUE1% %VALUE2%;");
+      string field("\t\t%VALUE1% %VALUE2%;\n");
 		
 		stringReplace(field, "VALUE1", _dictionnary->convertJava(fields[i].getCType()));
 		stringReplace(field, "VALUE2", fields[i].getName());
@@ -271,7 +271,13 @@ string Struct::generateGetter(bool java, const string& fieldType,const string& f
       "\t\treturn C_ctx->%ATTRIBUTENAME%;\n"
       "\t}\n\n";
 
-	   stringReplace(getterStructure, "RETURNTYPE", _dictionnary->convertJNI(fieldType));
+      string typeRetour = _dictionnary->convertJNI(fieldType);
+
+      if(typeRetour == "jobject") {
+         typeRetour = "jint";
+      }
+
+	   stringReplace(getterStructure, "RETURNTYPE", typeRetour);
 	   stringReplace(getterStructure, "CLASSNAME", _cStruct.getTypedef());
 	   stringReplace(getterStructure, "ATTRIBUTENAME", fieldName);
    }
@@ -296,13 +302,35 @@ string Struct::generateSetter(bool java, const string& fieldType,const string& f
       setterStructure = "\tJNIEXPORT void JNICALL gen_jni_%CLASSNAME%_set_%ATTRIBUTENAME%"
       "(JNIEnv *env, jclass cls, jlong stru, %JNITYPE% %FIELDNAME%) {\n"
       "\t\t%CLASSNAME% *C_ctx = (%CLASSNAME% *)stru;\n"
-      "\t\tC_ctx->%ATTRIBUTENAME% = %FIELDNAME%;\n"
+      "%WRITEFIELD%"
       "\t}\n\n";
+
+      string field = _dictionnary->convertJNI(fieldType);
+      string writeField;
+      if(field == "jobject") {
+		   writeField = "\t\tjclass enm_%ATTRIBUTENAME%;\n"
+		                "\t\tenm_%ATTRIBUTENAME% = (*env)->GetObjectClass(env, %ATTRIBUTENAME%);\n"
+		                "\t\tjmethodID get_%ATTRIBUTENAME% = (*env)->GetMethodID(env, enm_%ATTRIBUTENAME%, \"getValue\", \"()I\");\n"
+		                "\t\tjint %ATTRIBUTENAME%_value = (*env)->CallIntMethod(env, %ATTRIBUTENAME%, get_%ATTRIBUTENAME%);\n"
+		                "\t\t%Type% C_%ATTRIBUTENAME% = (%Type%)%ATTRIBUTENAME%_value;\n"
+                      "\t\tC_ctx->%ATTRIBUTENAME% = C_%ATTRIBUTENAME%;\n";
+
+         stringReplace(writeField, "CLASSNAME", _cStruct.getTypedef());
+	      stringReplace(writeField, "ATTRIBUTENAME", fieldName);
+	      stringReplace(writeField, "Type", fieldType);
+      }
+      else {
+         writeField = "\t\tC_ctx->%ATTRIBUTENAME% = %FIELDNAME%;\n";
+
+	      stringReplace(writeField, "FIELDNAME", fieldName);
+	      stringReplace(writeField, "ATTRIBUTENAME", fieldName);
+      }
 
 	   stringReplace(setterStructure, "CLASSNAME", _cStruct.getTypedef());
 	   stringReplace(setterStructure, "ATTRIBUTENAME", fieldName);
-	   stringReplace(setterStructure, "JNITYPE", _dictionnary->convertJNI(fieldType));
+	   stringReplace(setterStructure, "JNITYPE", field);
 	   stringReplace(setterStructure, "FIELDNAME", fieldName);
+	   stringReplace(setterStructure, "WRITEFIELD", writeField);
    }
 
 	return setterStructure;
