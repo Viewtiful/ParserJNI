@@ -31,8 +31,7 @@ void Struct::addStructToJava(ofstream &f)
    string structure(
 		"\tpublic class %CLASSNAME% {\n"
 		"%FIELDS%"
-		"\n\n%GS%"
-		"\t}\n\n"
+		"\t}\n\n%GS%\n\n"
 	);
 
    nsC::Param::vector fields = _cStruct.getFields();
