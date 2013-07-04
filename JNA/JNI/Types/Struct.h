@@ -14,6 +14,9 @@
 #include "C/Struct.h"
 #include "JNI/Types/Type.h"
 #include "JNI/TypesDictionnary.h"
+#include "JNI/Types/Getter.h"
+#include "JNI/Types/Setter.h"
+#include <vector>
 /*!
 	\namespace nsJNI 
 	JNI parser namespace
@@ -55,6 +58,8 @@ namespace nsJNI {
       protected:
         nsC::Struct _cStruct;
         TypesDictionnary* _dictionnary;
+      	vector<Getter*> _getters;
+      	vector<Setter*> _setters;
     };
 }
 

@@ -8,8 +8,8 @@
 	\author Baptiste HAUDEGAND & Antoine MOISE
 	\version 1.0
 !*/
-#ifndef __JNI_SPECIALTYPE_H
-#define __JNI_SPECIALTYPE_H
+#ifndef __JNI_BOOLWRAPPER_H
+#define __JNI_BOOLWRAPPER_H
 #include "JNI/Types/Type.h"
 #include <string>
 #include <iostream>

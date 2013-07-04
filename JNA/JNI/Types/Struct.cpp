@@ -1,6 +1,7 @@
 #define STRUCT nsJNI::STRUCT
 #include "JNI/Types/Struct.h"
 #include "Utils/Utils.h"
+#include "JNI/Types/Getter.h"
 #include <string>
 #include <fstream>
 using namespace nsJNI;
@@ -32,24 +33,17 @@ void Struct::addStructFunctionToJNI(ofstream &f) {
 	string jniFunction(
             "%CREATE%"
             "%FREE%"
-            "%GS%\n\n"
+            "\n\n"
             );
-
+	
    stringReplace(jniFunction, "CREATE", generateCreateFunction(false));
    stringReplace(jniFunction, "FREE", generateFreeFunction(false));
 
    nsC::Param::vector fields = _cStruct.getFields();
 	string getterSetter;
-	for(size_t i =0; i<fields.size(); i++) {
-
-		getterSetter = getterSetter 
-            + generateGetter(false, fields[i].getCType(),fields[i].getName())
-            + generateSetter(false, fields[i].getCType(),fields[i].getName());
-   }
-
-	stringReplace(jniFunction, "GS", getterSetter);	
-
 	f << jniFunction;
+	for(size_t i = 0;i<_getters.size();i++)
+		_getters[i]->convertJNI(f);
 }
 
 void Struct::addStructToJava(ofstream &f)
@@ -65,7 +59,6 @@ void Struct::addStructToJava(ofstream &f)
 		"\t}\n\n"
       "%CREATE%"
       "%FREE%"
-      "%GS%\n\n"
 	);
 
    nsC::Param::vector fields = _cStruct.getFields();
@@ -76,12 +69,11 @@ void Struct::addStructToJava(ofstream &f)
 		
 		stringReplace(field, "VALUE1", _dictionnary->convertJava(fields[i].getCType()));
 		stringReplace(field, "VALUE2", fields[i].getName());
-
-		getterSetter = getterSetter 
-            + generateGetter(true, fields[i].getCType(),fields[i].getName())
-            + generateSetter(true, fields[i].getCType(),fields[i].getName());
- 
-		fieldsTemp += field;
+ 		Getter *g = new Getter(fields[i],_javaType,_dictionnary);
+        _getters.push_back(g);
+        Setter *s = new Setter(fields[i],_javaType,_dictionnary);
+        _setters.push_back(s);
+        fieldsTemp += field;
    }
 
    stringReplace(structure, "CLASSNAME", _cStruct.getTypedef());
@@ -92,8 +84,12 @@ void Struct::addStructToJava(ofstream &f)
    stringReplace(structure, "WRITE", generateWrite());
    stringReplace(structure, "READ", generateRead());
    stringReplace(structure, "FREE", generateFreeFunction(true));
-	stringReplace(structure, "GS", getterSetter);	
    f << structure;
+   for(size_t i = 0;i<_getters.size();i++)
+   {
+   		_getters[i]->convertJava(f);
+   		f << endl;
+   }
 }
 
 string Struct::generateConstructor()
@@ -158,12 +154,8 @@ string Struct::generateRead()
 
    nsC::Param::vector fields = _cStruct.getFields();
 	string fieldsTemp;
-	for(size_t i =0; i<fields.size(); i++) {
-      string field("\t\t\t%VALUE% = gen_jni_%CLASSNAME%_get_%VALUE%(mInternal);\n");
-		
-		stringReplace(field, "VALUE", fields[i].getName());
-	   stringReplace(field, "CLASSNAME", _cStruct.getTypedef());
-		fieldsTemp += field;
+	for(size_t i =0; i<_getters.size(); i++) {
+		fieldsTemp += "\t\t\t"+_getters[i]->call() + "\n";
    }
 	
 	stringReplace(read, "FIELDS", fieldsTemp);
@@ -316,8 +308,8 @@ string Struct::generateSetter(bool java, const string& fieldType,const string& f
                       "\t\tC_ctx->%ATTRIBUTENAME% = C_%ATTRIBUTENAME%;\n";
 
          stringReplace(writeField, "CLASSNAME", _cStruct.getTypedef());
-	      stringReplace(writeField, "ATTRIBUTENAME", fieldName);
-	      stringReplace(writeField, "Type", fieldType);
+	     stringReplace(writeField, "ATTRIBUTENAME", fieldName);
+	     stringReplace(writeField, "Type", fieldType);
       }
       else {
          writeField = "\t\tC_ctx->%ATTRIBUTENAME% = %FIELDNAME%;\n";

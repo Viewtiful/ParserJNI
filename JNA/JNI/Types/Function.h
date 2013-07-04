@@ -8,6 +8,7 @@
 	\author Baptiste HAUDEGAND & Antoine MOISE
 	\version 1.0
 !*/
+
 #ifndef __JNI_FUNCTION_H
 #define __JNI_FUNCTION_H
 #include "JNI/TypesDictionnary.h"
@@ -77,13 +78,13 @@ namespace nsJNI {
 			\brief Print the body of the JNI Function
 			\param f: Output JNI file
 		*/
-        void printContentJNI(ofstream &f);
+        virtual void printContentJNI(ofstream &f);
         
         /*!
         	\brief print the JNI Function prototype
         	\param f: Output JNI file
         */
-		void printPrototypeJNI(ofstream &f);
+		virtual void printPrototypeJNI(ofstream &f);
 		
 		/*!
         	\brief print all converted JNI Parameters
@@ -92,6 +93,7 @@ namespace nsJNI {
 		void printParametersJNI(ofstream &f);
 		
         void setReturnType(const string& returnType);
+        
         /*!
         	\brief Add Arguments from the C Function object
         	\param args : the C function argsuments
