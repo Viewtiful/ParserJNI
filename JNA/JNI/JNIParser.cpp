@@ -1,16 +1,12 @@
 #include "JNI/JNIParser.h"
 #include <cstdlib>
 #include <iostream>
-#include "Utils/Output.h"
-#include "Utils/Parameters.h"
-#include "Utils/Utils.h"
-#include "Modules/Module.h"
 #include "JNI/TypesDictionnary.h"
-#include "JNA/SupportClass.h"
-#include "JNA/Module.h"
+#include "JNI/OutputJNI.h"
+#include "JNI/OutputJava.h"
+#include <fstream>
 #define JNIPARSER nsJNI::JNIParser
 using namespace nsC;
-#define JNIPARSER nsJNI::JNIParser
 
 JNIPARSER::~JNIParser() {
 }

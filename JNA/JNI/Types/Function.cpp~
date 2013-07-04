@@ -145,7 +145,6 @@ void Function::printContentJNI(ofstream &f)
          Array *a = (Array *)param;
          a->getReturnValueAndFree(f);
       }
-        // (Array)param->getReturnValueAndFree(f);
 	}
 
    Type *typeRetour = _dictionnary->getType(_returnType);

@@ -14,8 +14,6 @@
 #include "C/Struct.h"
 #include "JNI/Types/Type.h"
 #include "JNI/TypesDictionnary.h"
-#include "JNI/Types/Getter.h"
-#include "JNI/Types/Setter.h"
 #include <vector>
 /*!
 	\namespace nsJNI 
@@ -24,6 +22,8 @@
 namespace nsJNI {
 
 	 class TypesDictionnary;
+    class Getter;
+    class Setter;
 	 /*!
 		\class Struct
 		\brief represents a Struct

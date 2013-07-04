@@ -13,7 +13,10 @@
 #include <string>
 #include "C/Struct.h"
 #include "JNI/Types/Type.h"
+#include "JNI/Types/Getter.h"
+#include "JNI/Types/Setter.h"
 #include "JNI/TypesDictionnary.h"
+#include <vector>
 /*!
 	\namespace nsJNI 
 	JNI parser namespace
@@ -43,18 +46,20 @@ namespace nsJNI {
         bool isArray();
         void prepareCall(ofstream& f,string& varName);
         string getJNIParameterName(string& varName);
-        string generateGetter(const string& fieldType,const string& fieldName);
-        string generateSetter(const string& fieldType,const string& fieldName);
+        string generateGetter(bool java, const string& fieldType,const string& fieldName);
+        string generateSetter(bool java, const string& fieldType,const string& fieldName);
         string generateConstructor();
         string generateFinalize();
-        string generateFreeFunction();
+        string generateFreeFunction(bool java);
         string generateWrite();
         string generateRead();
-        string generateCreateFunction();
+        string generateCreateFunction(bool java);
         void getReturnValue(ofstream& f);
       protected:
         nsC::Struct _cStruct;
         TypesDictionnary* _dictionnary;
+      	vector<Getter*> _getters;
+      	vector<Setter*> _setters;
     };
 }
 

@@ -49,6 +49,11 @@ bool AddressWrapper::isBooleanWrapper()
 	return false;
 }
 
+bool AddressWrapper::isArray()
+{
+	return false;
+}
+
 void AddressWrapper::prepareCall(ofstream& f,string& varName)
 {
    string structure (

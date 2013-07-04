@@ -1,16 +1,13 @@
 #include "JNI/JNIParser.h"
 #include <cstdlib>
 #include <iostream>
-#include "Utils/Output.h"
-#include "Utils/Parameters.h"
-#include "Utils/Utils.h"
-#include "Modules/Module.h"
+
 #include "JNI/TypesDictionnary.h"
-#include "JNA/SupportClass.h"
-#include "JNA/Module.h"
+#include "JNI/OutputJNI.h"
+#include "JNI/OutputJava.h"
+#include <fstream>
 #define JNIPARSER nsJNI::JNIParser
 using namespace nsC;
-#define JNIPARSER nsJNI::JNIParser
 
 JNIPARSER::~JNIParser() {
 }
@@ -44,7 +41,7 @@ int JNIPARSER::run(nsModules::Module::vector modules)
 		// Same thing for structures, adding them after enums because structs
 		// can use enum type.
 		if(modules[i].getStructs().size() > 0)
-			dico->addStruct(f, modules[i].getStructs());
+			dico->addStruct(f, f2, modules[i].getStructs());
 	}
 
 	cout << "modules.size : " << modules.size() << endl;

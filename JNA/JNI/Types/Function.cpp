@@ -1,6 +1,4 @@
 #include "JNI/Types/Function.h"
-#include "Utils/Utils.h"
-#include <typeinfo>
 
 using namespace nsUtils;
 using namespace nsJNI;

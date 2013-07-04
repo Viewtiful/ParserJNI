@@ -10,6 +10,7 @@
 #ifndef __JNI_ADDRESSWRAPPER_H
 #define __JNI_ADDRESSWRAPPER_H
 #include "JNI/Types/Type.h"
+#include "Utils/Utils.h"
 #include <string>
 #include <iostream>
 #include <fstream>

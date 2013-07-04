@@ -1,14 +1,15 @@
 #ifndef __JNI_SETTER_H
 #define __JNI_SETTER_H
 
+#include "JNI/Types/Function.h"
 #include "C/Param.h"
 #include "Utils/Utils.h"
-#include "JNI/Types/Param.h"
 #include <fstream>
-#include <string>
 
 namespace nsJNI
 {
+   class Function;
+   class TypesDictionnary;
 	class Setter : public Function
 	{
 		public : 

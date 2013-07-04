@@ -8,9 +8,6 @@
 #define __JNI_JNIPARSER_H
 #include "Modules/Module.h"
 #include "Utils/Parser.h"
-#include "JNI/OutputJNI.h"
-#include "JNI/OutputJava.h"
-#include <fstream>
 
 
 /** @addtogroup JNI_parser

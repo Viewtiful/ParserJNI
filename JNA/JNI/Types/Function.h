@@ -16,6 +16,8 @@
 #include "JNI/Types/Param.h"
 #include "JNI/Types/Pointer.h"
 #include "JNI/Types/AddressWrapper.h"
+#include "Utils/Utils.h"
+#include <typeinfo>
 #include <iostream>
 #include <fstream>
 #include <vector>

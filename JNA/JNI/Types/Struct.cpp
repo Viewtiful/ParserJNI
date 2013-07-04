@@ -2,6 +2,7 @@
 #include "JNI/Types/Struct.h"
 #include "Utils/Utils.h"
 #include "JNI/Types/Getter.h"
+#include "JNI/Types/Setter.h"
 #include <string>
 #include <fstream>
 using namespace nsJNI;
@@ -71,7 +72,7 @@ void Struct::addStructToJava(ofstream &f)
 		stringReplace(field, "VALUE2", fields[i].getName());
  		Getter *g = new Getter(fields[i],_javaType,_dictionnary);
         _getters.push_back(g);
-        Setter *s = new Setter(fields[i],_javaType,_dictionnary);
+        Setter *s = new Setter(fields[i], _javaType,_dictionnary);
         _setters.push_back(s);
         fieldsTemp += field;
    }

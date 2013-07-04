@@ -1,17 +1,21 @@
-#ifndef __JNI_GETTER_H
-#define __JNI_GETTER_H
+#ifndef __JNI_SETTER_H
+#define __JNI_SETTER_H
 
-#include "JNI/Types/Function.h"
 #include "C/Param.h"
 #include "Utils/Utils.h"
+#include "JNI/Types/Param.h"
 #include <fstream>
+#include <string>
+
 namespace nsJNI
 {
-	class Getter : public Function
+   class Function;
+   class TypesDictionnary;
+	class Setter : public Function
 	{
 		public : 
-			Getter(nsC::Param& param,string structName,TypesDictionnary * dictionnary);
-			virtual ~Getter();
+			Setter(nsC::Param& param,string structName,TypesDictionnary * dictionnary);
+			virtual ~Setter();
 			void create(nsC::Param& param);
 			void printPrototypeJNI(ofstream &f);
 			string call();
