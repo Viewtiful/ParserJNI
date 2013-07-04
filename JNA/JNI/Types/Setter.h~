@@ -1,11 +1,10 @@
 #ifndef __JNI_SETTER_H
 #define __JNI_SETTER_H
 
+#include "JNI/Types/Function.h"
 #include "C/Param.h"
 #include "Utils/Utils.h"
-#include "JNI/Types/Param.h"
 #include <fstream>
-#include <string>
 
 namespace nsJNI
 {
@@ -14,7 +13,7 @@ namespace nsJNI
 	class Setter : public Function
 	{
 		public : 
-			Setter(nsC::Param& param,string structName,TypesDictionnary * dictionnary);
+			Setter(nsC::Param& param,string structName, TypesDictionnary * dictionnary);
 			virtual ~Setter();
 			void create(nsC::Param& param);
 			void printPrototypeJNI(ofstream &f);
@@ -24,6 +23,7 @@ namespace nsJNI
 			void prepareCall(ofstream &f);
 		private:
 			string _structName;
+         string _fieldName;
 			nsJNI::Param *_handledVariable; 
 	
 	};

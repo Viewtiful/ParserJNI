@@ -13,7 +13,7 @@ namespace nsJNI
 	class Setter : public Function
 	{
 		public : 
-			Setter(nsC::Param& param,string structName,TypesDictionnary * dictionnary);
+			Setter(nsC::Param& param,string structName, TypesDictionnary * dictionnary);
 			virtual ~Setter();
 			void create(nsC::Param& param);
 			void printPrototypeJNI(ofstream &f);

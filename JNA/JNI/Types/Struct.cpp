@@ -31,7 +31,7 @@ std::string Struct::outputJNI() // Warning unused overridden function
 }
 
 void Struct::addStructFunctionToJNI(ofstream &f) {
-	string jniFunction(
+	/*string jniFunction(
             "%CREATE%"
             "%FREE%"
             "\n\n"
@@ -42,9 +42,11 @@ void Struct::addStructFunctionToJNI(ofstream &f) {
 
    nsC::Param::vector fields = _cStruct.getFields();
 	string getterSetter;
-	f << jniFunction;
+	f << jniFunction;*/
 	for(size_t i = 0;i<_getters.size();i++)
 		_getters[i]->convertJNI(f);
+	for(size_t i = 0;i<_setters.size();i++)
+		_setters[i]->convertJNI(f);
 }
 
 void Struct::addStructToJava(ofstream &f)
@@ -70,9 +72,9 @@ void Struct::addStructToJava(ofstream &f)
 		
 		stringReplace(field, "VALUE1", _dictionnary->convertJava(fields[i].getCType()));
 		stringReplace(field, "VALUE2", fields[i].getName());
- 		Getter *g = new Getter(fields[i],_javaType,_dictionnary);
+ 		Getter *g = new Getter(fields[i],_javaType, _dictionnary);
         _getters.push_back(g);
-        Setter *s = new Setter(fields[i], _javaType,_dictionnary);
+        Setter *s = new Setter(fields[i], _javaType,  _dictionnary);
         _setters.push_back(s);
         fieldsTemp += field;
    }

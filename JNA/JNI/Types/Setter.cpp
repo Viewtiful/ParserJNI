@@ -3,7 +3,7 @@
 using namespace nsJNI;
 using namespace nsUtils;
 
-Setter::Setter(nsC::Param& param, string structName,TypesDictionnary *dictionnary) : Function(dictionnary)
+Setter::Setter(nsC::Param& param, string structName, TypesDictionnary *dictionnary) : Function(dictionnary)
 {
 
 	_structName = structName;
@@ -20,7 +20,7 @@ Setter::~Setter()
 void Setter::create(nsC::Param& param)
 {
 	_name = "gen_jni" +_structName + "_" + "set" + "_" +param.getName();
-	_args.push_back(new nsJNI::Param("long", "mInternal"));
+	_args.push_back(new nsJNI::Param("long", "stru"));
 	_args.push_back(new nsJNI::Param(param.getCType(), param.getName()));
 	_returnType = "void";
 }
@@ -38,8 +38,7 @@ void Setter::printContentJNI(ofstream &f)
 {
 	f << "{\n\n";
 	string body = "\t\t%CLASSNAME% *C_ctx = (%CLASSNAME% *)stru;\n"
-      "%WRITEFIELD%"
-      "\t}\n\n";
+      "%WRITEFIELD%";
      string writeField;
 	if(_dictionnary->convertJNI(_args[1]->getType())=="jobject")
 	{
@@ -50,20 +49,20 @@ void Setter::printContentJNI(ofstream &f)
 		"\t\t%Type% C_%ATTRIBUTENAME% = (%Type%)%ATTRIBUTENAME%_value;\n"
 		"\t\tC_ctx->%ATTRIBUTENAME% = C_%ATTRIBUTENAME%;\n";
 		
-		stringReplace(writeField, "CLASSNAME", _structName);
 		stringReplace(writeField, "ATTRIBUTENAME", _args[1]->getName());
 		stringReplace(writeField, "Type", _args[1]->getType());
 	}
 	else
 	{
 		writeField = "\t\tC_ctx->%ATTRIBUTENAME% = %FIELDNAME%;\n";
+
+	   stringReplace(writeField, "ATTRIBUTENAME", _args[1]->getName());
+	   stringReplace(writeField, "FIELDNAME", _args[1]->getName());
 	
 	}
 	stringReplace(body, "CLASSNAME", _structName);
-	stringReplace(body, "ATTRIBUTENAME", _args[1]->getName());
-	stringReplace(body, "JNITYPE", _dictionnary->convertJNI(_args[1]->getType()));
-	stringReplace(body, "FIELDNAME", _args[1]->getName());
 	stringReplace(body, "WRITEFIELD", writeField);
+
 	f << body << "\t}\n\n";
 }
 

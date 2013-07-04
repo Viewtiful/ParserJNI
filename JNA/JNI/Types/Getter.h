@@ -10,7 +10,7 @@ namespace nsJNI
 	class Getter : public Function
 	{
 		public : 
-			Getter(nsC::Param& param,string structName,TypesDictionnary * dictionnary);
+			Getter(nsC::Param& param,string structName, TypesDictionnary * dictionnary);
 			virtual ~Getter();
 			void create(nsC::Param& param);
 			void printPrototypeJNI(ofstream &f);
@@ -20,6 +20,7 @@ namespace nsJNI
 			void prepareCall(ofstream &f);
 		private:
 			string _structName;
+         string _fieldName;
 			nsJNI::Param *_handledVariable; 
 	
 	};
