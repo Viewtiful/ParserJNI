@@ -39,7 +39,6 @@ void Function::printParametersJava(ofstream& file)
 	for(i=0;i<n;i++)
 	{	
 		skip = false;
-		cout << _args[i]->getType() << endl;
 		if(_args[i]->getType()=="size_t *")
 			skip = true;
 		
@@ -232,8 +231,6 @@ void Function::addArgs(const nsC::Param::vector& parameters)
 	for(int i = beginArgs; i<n; i++)
 	{
 		size_t size = _args.size();
-		cout << "2.4.3.4.2" << endl;
-		cout << "i = " << i << "n =" << n << endl;
 		if(parameters[i].getIndirections()>0  && parameters[i].getCType()!= "const char *")
 		{
 			cout << "Pointer !" << endl;
