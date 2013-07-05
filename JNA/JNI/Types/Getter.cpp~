@@ -19,8 +19,8 @@ Getter::~Getter()
 
 void Getter::create(nsC::Param& param)
 {
-	_name = "gen_jni" +_structName + "_" + "get" + "_" +param.getName();
-	_args.push_back(new nsJNI::Param("long","stru"));
+	_name = "gen_jni_" +_structName + "_" + "get" + "_" +param.getName();
+	_args.push_back(new nsJNI::Param("long","mInternal"));
 	_returnType = param.getCType();
 }
 

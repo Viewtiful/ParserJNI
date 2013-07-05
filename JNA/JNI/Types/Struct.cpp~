@@ -7,7 +7,7 @@
 #include <fstream>
 using namespace nsJNI;
 using namespace nsUtils;
-
+using namespace std;
 Struct::Struct(ofstream &f, ofstream &f2, const string& VMSignature, const nsC::Struct& cStruct, TypesDictionnary* dictionnary) : Type(VMSignature)
 {
 	this->_cStruct = cStruct;
@@ -72,9 +72,9 @@ void Struct::addStructToJava(ofstream &f)
 		
 		stringReplace(field, "VALUE1", _dictionnary->convertJava(fields[i].getCType()));
 		stringReplace(field, "VALUE2", fields[i].getName());
- 		Getter *g = new Getter(fields[i],_javaType, fields[i].getName(), _dictionnary);
+ 		Getter *g = new Getter(fields[i],_javaType, _dictionnary);
         _getters.push_back(g);
-        Setter *s = new Setter(fields[i], _javaType, fields[i].getName(), _dictionnary);
+        Setter *s = new Setter(fields[i], _javaType,  _dictionnary);
         _setters.push_back(s);
         fieldsTemp += field;
    }
@@ -158,7 +158,7 @@ string Struct::generateRead()
    nsC::Param::vector fields = _cStruct.getFields();
 	string fieldsTemp;
 	for(size_t i =0; i<_getters.size(); i++) {
-		fieldsTemp += "\t\t\t"+_getters[i]->call() + "\n";
+		fieldsTemp += "\t\t\t " + fields[i].getName() + " = " + _getters[i]->call() + "\n";
    }
 	
 	stringReplace(read, "FIELDS", fieldsTemp);
@@ -329,4 +329,20 @@ string Struct::generateSetter(bool java, const string& fieldType,const string& f
    }
 
 	return setterStructure;
+}
+
+vector<Function*> Struct::getGetterSetters()
+{
+	int size = _getterSetters.size();
+	copy(_getters.begin(),_getters.end(),back_inserter(_getterSetters));
+	assert(_getterSetters.size()==size+_getters.size());
+	
+	size = _getterSetters.size();
+	copy(_setters.begin(),_setters.end(),back_inserter(_getterSetters));
+	assert(_getterSetters.size()==size+_setters.size());
+	cout << "Size Getter = " << _getters.size() << endl;
+	cout << "Size Setter = " << _setters.size() << endl;
+	cout << "Size GetterSetter = " << _getterSetters.size() << endl; 
+	
+	return _getterSetters;
 }        

@@ -19,8 +19,8 @@ Getter::~Getter()
 
 void Getter::create(nsC::Param& param)
 {
-	_name = "gen_jni" +_structName + "_" + "get" + "_" +param.getName();
-	_args.push_back(new nsJNI::Param("long","stru"));
+	_name = "gen_jni_" +_structName + "_" + "get" + "_" +param.getName();
+	_args.push_back(new nsJNI::Param("long","mInternal"));
 	_returnType = param.getCType();
 }
 
@@ -39,7 +39,7 @@ void Getter::printContentJNI(ofstream &f)
 {
 	f << "{\n\n";
 	cout << "Getter bla" << endl;
-	string structure("\t\t%CLASSNAME% *C_ctx = (%CLASSNAME% *)stru;\n"
+	string structure("\t\t%CLASSNAME% *C_ctx = (%CLASSNAME% *)mInternal;\n"
       "\t\treturn C_ctx->%ATTRIBUTENAME%;\n");
 	stringReplace(structure,"CLASSNAME",_structName);
 	stringReplace(structure,"ATTRIBUTENAME",_fieldName);

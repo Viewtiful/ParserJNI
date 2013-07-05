@@ -19,8 +19,8 @@ Setter::~Setter()
 
 void Setter::create(nsC::Param& param)
 {
-	_name = "gen_jni" +_structName + "_" + "set" + "_" +param.getName();
-	_args.push_back(new nsJNI::Param("long", "stru"));
+	_name = "gen_jni_" +_structName + "_" + "set" + "_" +param.getName();
+	_args.push_back(new nsJNI::Param("long", "mInternal"));
 	_args.push_back(new nsJNI::Param(param.getCType(), param.getName()));
 	_returnType = "void";
 }
@@ -37,7 +37,7 @@ void Setter::printPrototypeJNI(ofstream &f)
 void Setter::printContentJNI(ofstream &f)
 {
 	f << "{\n\n";
-	string body = "\t\t%CLASSNAME% *C_ctx = (%CLASSNAME% *)stru;\n"
+	string body = "\t\t%CLASSNAME% *C_ctx = (%CLASSNAME% *)mInternal;\n"
       "%WRITEFIELD%";
      string writeField;
 	if(_dictionnary->convertJNI(_args[1]->getType())=="jobject")

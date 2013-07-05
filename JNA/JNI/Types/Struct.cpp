@@ -93,6 +93,11 @@ void Struct::addStructToJava(ofstream &f)
    		_getters[i]->convertJava(f);
    		f << endl;
    }
+   for(size_t i = 0;i<_setters.size();i++)
+   {
+   		_setters[i]->convertJava(f);
+   		f << endl;
+   }
 }
 
 string Struct::generateConstructor()
@@ -158,7 +163,7 @@ string Struct::generateRead()
    nsC::Param::vector fields = _cStruct.getFields();
 	string fieldsTemp;
 	for(size_t i =0; i<_getters.size(); i++) {
-		fieldsTemp += "\t\t\t"+_getters[i]->call() + "\n";
+		fieldsTemp += "\t\t\t " + fields[i].getName() + " = " + _getters[i]->call() + "\n";
    }
 	
 	stringReplace(read, "FIELDS", fieldsTemp);

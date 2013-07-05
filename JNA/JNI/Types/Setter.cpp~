@@ -3,7 +3,7 @@
 using namespace nsJNI;
 using namespace nsUtils;
 
-Setter::Setter(nsC::Param& param, string structName, string fieldName, TypesDictionnary *dictionnary) : Function(dictionnary)
+Setter::Setter(nsC::Param& param, string structName, TypesDictionnary *dictionnary) : Function(dictionnary)
 {
 
 	_structName = structName;
@@ -19,8 +19,8 @@ Setter::~Setter()
 
 void Setter::create(nsC::Param& param)
 {
-	_name = "gen_jni" +_structName + "_" + "set" + "_" +param.getName();
-	_args.push_back(new nsJNI::Param("long", "stru"));
+	_name = "gen_jni_" +_structName + "_" + "set" + "_" +param.getName();
+	_args.push_back(new nsJNI::Param("long", "mInternal"));
 	_args.push_back(new nsJNI::Param(param.getCType(), param.getName()));
 	_returnType = "void";
 }
