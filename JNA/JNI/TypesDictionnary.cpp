@@ -2,15 +2,14 @@
  *
  * Body for TypesDictionnary class
  */
-
-#include <fstream>
+ 
 #include "JNI/TypesDictionnary.h"
+#include <fstream>
 #include <cstdlib>
 #define TYPESDICTIONNARY nsJNI::TypesDictionnary
 using namespace nsJNI;
 using namespace nsC;
 using namespace nsModules;
-
 TYPESDICTIONNARY::TypesDictionnary(string filename)
 {
 	_filename = filename;
@@ -137,7 +136,14 @@ void TYPESDICTIONNARY::addStruct(ofstream &f, ofstream &f2, const nsC::Struct::v
       	}	
       	else if(haveTypedef && haveFields && !isTypedefPointer && !isDeepPointer)
       	{
-      		addToMap(CStruct.getTypedef(), new Struct(f, f2, "L"+_filename+"$"+CStruct.getTypedef() + ";",CStruct,this));
+      		Struct *s = new Struct(f, f2, "L"+_filename+"$"+CStruct.getTypedef() + ";",CStruct,this);
+      		int size = _fcts.size();
+      		vector<nsJNI::Function*> getSet = s->getGetterSetters();
+      		cout << "Dictionnary Size = " << getSet.size() << endl;
+      		copy(getSet.begin(),getSet.end(),back_inserter(_fcts));
+      		assert(_fcts.size()==size+getSet.size());
+      		cout << "FCTS Size = " << _fcts.size() << endl;
+      		addToMap(CStruct.getTypedef(), s);
       		//_conversionMap[CStruct.getTypedef()] = new Struct("jobject",CStruct,this);
 	    }  	
    }
@@ -164,6 +170,11 @@ void TYPESDICTIONNARY::addToMap(const string& cType, Type *type) {
 string TYPESDICTIONNARY::getFilename()
 {
 	return _filename;
+}
+
+vector<nsJNI::Function*> TYPESDICTIONNARY::getFcts()
+{ 
+	return _fcts;
 }
 #undef TYPESDICTIONNARY
 

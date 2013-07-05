@@ -32,6 +32,7 @@ namespace nsJNI {
 		\class Function
 		\brief represents a Function
 	*/
+	class TypesDictionnary;
     class Function
     {
       public:

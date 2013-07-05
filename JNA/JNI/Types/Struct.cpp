@@ -7,7 +7,7 @@
 #include <fstream>
 using namespace nsJNI;
 using namespace nsUtils;
-
+using namespace std;
 Struct::Struct(ofstream &f, ofstream &f2, const string& VMSignature, const nsC::Struct& cStruct, TypesDictionnary* dictionnary) : Type(VMSignature)
 {
 	this->_cStruct = cStruct;
@@ -329,4 +329,20 @@ string Struct::generateSetter(bool java, const string& fieldType,const string& f
    }
 
 	return setterStructure;
+}
+
+vector<Function*> Struct::getGetterSetters()
+{
+	int size = _getterSetters.size();
+	copy(_getters.begin(),_getters.end(),back_inserter(_getterSetters));
+	assert(_getterSetters.size()==size+_getters.size());
+	
+	size = _getterSetters.size();
+	copy(_setters.begin(),_setters.end(),back_inserter(_getterSetters));
+	assert(_getterSetters.size()==size+_setters.size());
+	cout << "Size Getter = " << _getters.size() << endl;
+	cout << "Size Setter = " << _setters.size() << endl;
+	cout << "Size GetterSetter = " << _getterSetters.size() << endl; 
+	
+	return _getterSetters;
 }        

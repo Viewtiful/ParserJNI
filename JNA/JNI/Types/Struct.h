@@ -14,6 +14,7 @@
 #include "C/Struct.h"
 #include "JNI/Types/Type.h"
 #include "JNI/TypesDictionnary.h"
+#include "JNI/Types/Function.h"
 #include <vector>
 /*!
 	\namespace nsJNI 
@@ -24,6 +25,7 @@ namespace nsJNI {
 	 class TypesDictionnary;
     class Getter;
     class Setter;
+    class Function;
 	 /*!
 		\class Struct
 		\brief represents a Struct
@@ -55,11 +57,13 @@ namespace nsJNI {
         string generateRead();
         string generateCreateFunction(bool java);
         void getReturnValue(ofstream& f);
+        vector<Function*> getGetterSetters();
       protected:
         nsC::Struct _cStruct;
         TypesDictionnary* _dictionnary;
       	vector<Getter*> _getters;
       	vector<Setter*> _setters;
+      	vector<Function*> _getterSetters;
     };
 }
 

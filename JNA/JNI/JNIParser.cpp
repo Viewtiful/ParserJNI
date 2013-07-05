@@ -7,7 +7,7 @@
 #include <fstream>
 #define JNIPARSER nsJNI::JNIParser
 using namespace nsC;
-
+using namespace std;
 JNIPARSER::~JNIParser() {
 }
 
@@ -29,8 +29,9 @@ int JNIPARSER::run(nsModules::Module::vector modules)
 	ofstream f2("ArcanaJNI.c");
 	java->addClassDefinition(f, filename);
 	jni->addInclude(f2);
-   jni->addContextWrapper(f2);
-
+   	jni->addContextWrapper(f2);
+	vector<Function*> gettersSetters;
+		
 	// Getting all the types from all the modules.
 	for(size_t i = 0; i<modules.size(); ++i)
 	{
@@ -41,18 +42,25 @@ int JNIPARSER::run(nsModules::Module::vector modules)
 		// can use enum type.
 		if(modules[i].getStructs().size() > 0)
 			dico->addStruct(f, f2, modules[i].getStructs());
+			
 	}
 
 	cout << "modules.size : " << modules.size() << endl;
-
+//
 	vector<nsJNI::Function*> saveFcts;
-
+	vector<nsJNI::Function*> getSet;
+	getSet = dico->getFcts();
+	cout << "SaveFctsSize : " << saveFcts.size() << endl;
+	cout << "JNIParser size : " << getSet.size() << endl;
+	copy(getSet.begin(),getSet.end(),back_inserter(saveFcts));
+	cout << "JNIParser size : " << getSet.size() << endl;
+	
+	cout << "SaveFctsSize : " << saveFcts.size() << endl;
 	// Converting everything to JNI and Java.
 	for(size_t i = 0; i<modules.size(); i++)
 	{
 		nsC::Callback::vector calls = modules[i].getCallbacks();
 		nsC::Function::vector fcts = modules[i].getFunctions();
-		
 		cout << "Show Callbacks" << endl;
 		for(size_t l = 0;l<calls.size();l++)
 			cout << calls[l] << endl;
