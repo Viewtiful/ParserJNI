@@ -26,19 +26,16 @@ void Getter::create(nsC::Param& param)
 
 void Getter::printPrototypeJNI(ofstream &f)
 {
-	cout << "returnType = " << _returnType << endl;
 	string returnType;
 	returnType = _dictionnary->convertJNI(_returnType);
 	if(returnType == "jobject")
 		returnType = "jint";
-	cout << "returnType = " << returnType << endl;
 	f << "\t" << "JNIEXPORT " << returnType << " JNICALL " << "JNI_" << _name;
 }
 
 void Getter::printContentJNI(ofstream &f)
 {
 	f << "{\n\n";
-	cout << "Getter bla" << endl;
 	string structure("\t\t%CLASSNAME% *C_ctx = (%CLASSNAME% *)mInternal;\n"
       "\t\treturn C_ctx->%ATTRIBUTENAME%;\n");
 	stringReplace(structure,"CLASSNAME",_structName);

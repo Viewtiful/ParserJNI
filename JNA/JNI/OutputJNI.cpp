@@ -57,10 +57,12 @@ void OutputJNI::addContextWrapper(ofstream &f) {
 
 void OutputJNI::addNativeFunctionTable(ofstream &f, string filename, vector<nsJNI::Function*> fcts) {
 	f << "static JNINativeMethod method_table[] = {\n";
-	for(size_t k = 0; k < fcts.size(); k++) {
+	for(size_t k = 0; k < fcts.size(); k++) 
+	{
 		f << "\t{ \"" << fcts[k]->getName() << "\", \"";
 		vector<nsJNI::Param *> prms = fcts[k]->getArgs();
 
+		/*
 		if(prms.size() == 0)
 			f << "()";
 		else {
@@ -71,6 +73,13 @@ void OutputJNI::addNativeFunctionTable(ofstream &f, string filename, vector<nsJN
 			}
 			f << ")";
 		}
+		*/
+		f << "(";
+		for(size_t i = 0; i < prms.size(); ++i) {
+			if(!(prms[i]->getType()=="size_t *"))
+				f << _dictionnary->convertVM(prms[i]->getType()); 
+		}
+		f << ")";
 		string typeRetour = fcts[k]->getReturnType();
 		string typeRetour2 = _dictionnary->convertVM(typeRetour);
 		if(typeRetour2 == "")
@@ -89,7 +98,6 @@ void OutputJNI::addNativeFunctionTable(ofstream &f, string filename, vector<nsJN
 
 void OutputJNI::convert(ofstream &f,Function *fct)
 {
-	cout << "2.4" << endl;
 	fct->convertJNI(f);
 }
 

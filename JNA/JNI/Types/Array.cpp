@@ -8,7 +8,6 @@ using namespace nsUtils;
 Array::Array(const string& CBaseType, const string& VMSignature, TypesDictionnary *dictionnary) : Type(VMSignature)
 {
 	_CBaseType = CBaseType;	
-	cout <<"Constructeur" <<  _CBaseType << endl;
 	_dictionnary = dictionnary;
 }
 
@@ -19,18 +18,12 @@ Array::~Array()
 
 std::string Array::outputJava()
 {
-	cout << "Convert java Array" << endl;
-	cout << "Signature" << getVMSignature() << endl;
-	cout << "Base type = "<< _CBaseType;
-	
-	string test = _dictionnary->convertJava(_CBaseType)+"[]";
-	cout << "Type = " << _dictionnary->convertJava(_CBaseType)<< endl;
 	return _dictionnary->convertJava(_CBaseType)+"[]";
 }
 
 std::string Array::outputJNI()
 {
-	string jniType = _dictionnary->convertJNI(_CBaseType);
+	string jniType = _dictionnary->convertJNI(_CBaseType); // Voir si  référence possible
 	return jniType + "Array";
 }
 
@@ -92,7 +85,7 @@ void Array::getReturnValue(ofstream& f)
          );
 
 	string type = _dictionnary->convertJNI(_CBaseType);
-   string typeMaj = type.substr(1, type.size());
+   	string typeMaj = type.substr(1, type.size());
  	typeMaj = toJavaName(typeMaj, false, false, true);
 
    stringReplace(structure, "TYPEMAJ", typeMaj);
@@ -109,7 +102,7 @@ void Array::getReturnValueAndFree(ofstream& f)
          );
 
 	string type = _dictionnary->convertJNI(_CBaseType);
-   string typeMaj = type.substr(1, type.size());
+   	string typeMaj = type.substr(1, type.size());
  	typeMaj = toJavaName(typeMaj, false, false, true);
 
    stringReplace(structure, "TYPEMAJ", typeMaj);

@@ -11,8 +11,8 @@ static int nbOfRtn;
 AddressWrapper::AddressWrapper(string realCType,string VMSignature) : Type("AddressWrapper", "jobject", VMSignature)
 {
 	_realCType = realCType;
-   nbOfOcc = 1;
-   nbOfRtn = 1;
+	nbOfOcc = 1;
+	nbOfRtn = 1;
 }
 
 
@@ -65,7 +65,7 @@ void AddressWrapper::prepareCall(ofstream& f,string& varName)
    _varName = varName;
 
    string name = "C_" + varName;
-   if(_realCType.find("*", 0) != string::npos) {
+   if(_realCType.find("*", 0) != string::npos) {   //A optimiser
       stringReplace(structure, "TYPE", _realCType.substr(0, _realCType.size() -2));
    }
    else

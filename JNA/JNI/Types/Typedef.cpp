@@ -37,7 +37,6 @@ string Typedef::getStructName()
 
 bool Typedef::isNativeType()
 {
-	cout << "Typedef" << endl;
 	return false;
 }
 

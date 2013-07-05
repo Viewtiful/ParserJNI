@@ -16,7 +16,6 @@ NativeType::NativeType(const string& javaType, const string& jniType,
 	_isNativeType = isNativeType;
    _jniType = jniType;
    _CType = javaType;
-	cout << "isNativeType Value : " << _isNativeType << endl;
 }
 
 NativeType::NativeType(const string& javaType, const string& jniType,const string& CType,
@@ -25,7 +24,6 @@ NativeType::NativeType(const string& javaType, const string& jniType,const strin
 {
 	_isNativeType = isNativeType;
    _jniType = jniType;
-	cout << "isNativeType Value : " << _isNativeType << endl;
 	_CType = CType;
 }
 NativeType::~NativeType()
@@ -35,8 +33,6 @@ NativeType::~NativeType()
 
 std::string NativeType::outputJava()
 {
-	cout << "Output Java : NativeType" << endl;
-	cout << "javaType = " << getJavaType() << endl;
 	return getJavaType();
 }
 
@@ -72,14 +68,15 @@ bool NativeType::isArray()
 
 void NativeType::prepareCall(ofstream& f,string& varName)
 {
+	string type = getCType();
+	string name = "C_" + varName;
+      
    if(_jniType != "jstring") {
 	   string structure (
 			   "\t\t%TYPE% %NAME% = (%TYPE%) %NAMEBASE%;\n\n"
 			   );
-	   //string type = getJNIType();    //get C type !!!!!! probleme
-	   string type = getCType();
-	   string name = "C_" + varName;
-
+	  //string type = getCType();
+	  //string name = "C_" + varName;
       stringReplace(structure, "TYPE", type);
       stringReplace(structure, "NAME", name);
       stringReplace(structure, "NAMEBASE", varName);
@@ -95,8 +92,8 @@ void NativeType::prepareCall(ofstream& f,string& varName)
             "\t\t\t exit(1);\n"
             "\t\t}\n\n"
             );
-      string type = getJNIType();
-	   string name = "C_" + varName;
+      //string type = getJNIType();
+	  //string name = "C_" + varName;
       string typeMaj = type.substr(1, type.size());
       typeMaj = toJavaName(typeMaj, false, false, true);
 
@@ -116,6 +113,7 @@ string NativeType::getJNIParameterName(string& varName)
 
 void NativeType::getReturnValue(ofstream& f)
 {
+/*
    if(_jniType != "void") {
       
       if(_jniType == "jstring") {
@@ -133,5 +131,24 @@ void NativeType::getReturnValue(ofstream& f)
 
       f << "\t\t return JNI_result;\n";
    }
-}
-        
+*/
+	if(_jniType == "void") 
+		return ;
+		
+	else if(_jniType == "jstring") 
+	{
+		     string structure (
+		           "\t\tJNI_result = (*env)->New%TYPEMAJ%UTF(env, tempJNI_result);\n"
+		           );
+		     string type = getJNIType();
+		     string typeMaj = type.substr(1, type.size());
+	 	      typeMaj = toJavaName(typeMaj, false, false, true);
+
+		     stringReplace(structure, "TYPEMAJ", typeMaj);
+
+		     f << structure;
+	}
+
+	f << "\t\t return JNI_result;\n";
+	   
+}        

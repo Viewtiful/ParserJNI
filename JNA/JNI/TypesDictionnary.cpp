@@ -123,29 +123,21 @@ void TYPESDICTIONNARY::addStruct(ofstream &f, ofstream &f2, const nsC::Struct::v
    	{
      	const nsC::Struct CStruct(*iterator);
      	
-      	//bool haveName(!CStruct.getName().empty());  <- Unused variable 
       	bool haveTypedef(!CStruct.getTypedef().empty());
       	bool haveFields(CStruct.getFields().size() > 0);
       	bool isTypedefPointer(CStruct.getTypedefIndirection() == 1);
       	bool isDeepPointer(CStruct.getTypedefIndirection() > 1);
 		if(haveTypedef && !haveFields && (isTypedefPointer || isDeepPointer))
-      	{
       		addToMap(CStruct.getTypedef(), new Pointer("J",CStruct.getTypedef(),this,false));
-      		cout << "Typedef = "<< CStruct.getTypedef() << endl;
-      		//_conversionMap[CStruct.getTypedef()] = new Pointer("J",CStruct.getTypedef(),this);
-      	}	
       	else if(haveTypedef && haveFields && !isTypedefPointer && !isDeepPointer)
       	{
-      		Struct *s = new Struct(f, f2, "L"+_filename+"$"+CStruct.getTypedef() + ";",CStruct,this);
       		int size = _fcts.size();
+      		Struct *s = new Struct(f, f2, "L"+_filename+"$"+CStruct.getTypedef() + ";",CStruct,this);
       		vector<nsJNI::Function*> getSet = s->getGetterSetters();
-      		cout << "Dictionnary Size = " << getSet.size() << endl;
       		copy(getSet.begin(),getSet.end(),back_inserter(_fcts));
       		assert(_fcts.size()==size+getSet.size());
-      		cout << "FCTS Size = " << _fcts.size() << endl;
       		addToMap(CStruct.getTypedef(), s);
-      		//_conversionMap[CStruct.getTypedef()] = new Struct("jobject",CStruct,this);
-	    }  	
+        }  	
    }
   
 }
@@ -157,12 +149,9 @@ void TYPESDICTIONNARY::addEnums(ofstream &f, const nsC::Enum::vector &enums) {
 void TYPESDICTIONNARY::addToMap(const string& cType, Type *type) {
 	size_t size = _conversionMap.size();
 	size_t sizeCType = _conversionMap.count(cType);
-	cout << "insert= "<< cType << endl;
-	cout << cType << ": " << (_conversionMap.count(cType)) << endl ;
 	assert(_conversionMap[cType]==NULL);
 	_conversionMap[cType] = type;
 	assert(_conversionMap[cType]==type);
-	cout << "Size now = " << _conversionMap.size() << " " << "Size before =" << size << endl;
 	assert(_conversionMap.size()==size+1);
 	assert(_conversionMap.count(cType)==sizeCType+1);
 }
