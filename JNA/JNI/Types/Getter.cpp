@@ -36,10 +36,14 @@ void Getter::printPrototypeJNI(ofstream &f)
 void Getter::printContentJNI(ofstream &f)
 {
 	f << "{\n\n";
-	string structure("\t\t%CLASSNAME% *C_ctx = (%CLASSNAME% *)mInternal;\n"
-      "\t\treturn C_ctx->%ATTRIBUTENAME%;\n");
+	string structure(
+            "\t\t%CLASSNAME% *C_ctx = (%CLASSNAME% *)mInternal;\n"
+            "\t\treturn C_ctx->%ATTRIBUTENAME%;\n"
+            );
+
 	stringReplace(structure,"CLASSNAME",_structName);
 	stringReplace(structure,"ATTRIBUTENAME",_fieldName);
+
 	f << structure;
 	f << "\t}\n\n";
 }

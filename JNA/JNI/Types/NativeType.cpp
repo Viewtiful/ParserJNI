@@ -94,8 +94,8 @@ void NativeType::prepareCall(ofstream& f,string& varName)
             );
       //string type = getJNIType();
 	  //string name = "C_" + varName;
-      string typeMaj = type.substr(1, type.size());
-      typeMaj = toJavaName(typeMaj, false, false, true);
+      //string typeMaj = type.substr(1, type.size());
+      string typeMaj = toJavaName(type, false, false, true);
 
       stringReplace(structure, "TYPEMAJ", typeMaj);
       stringReplace(structure, "NAME", name);

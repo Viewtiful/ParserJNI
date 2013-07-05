@@ -25,6 +25,8 @@ namespace nsJNI {
 	 class TypesDictionnary;
     class Getter;
     class Setter;
+    class Create;
+    class Free;
     class Function;
 	 /*!
 		\class Struct
@@ -64,6 +66,8 @@ namespace nsJNI {
       	vector<Getter*> _getters;
       	vector<Setter*> _setters;
       	vector<Function*> _getterSetters;
+         Create *_createFunction;
+         Free *_freeFunction;
     };
 }
 
