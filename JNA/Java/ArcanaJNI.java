@@ -162,13 +162,134 @@ public class ArcanaJNI{
 	}
 
 	public class ktb_kep_dh_t {
-		int dummy;	}
+		public int dummy;
+
+		private long mInternal;
+
+		public ktb_kep_dh_t() {
+			mInternal = gen_jni_ktb_kep_dh_t_create();
+		}
+
+		@Override
+		public void finalize() {
+			gen_jni_ktb_kep_dh_t_free(mInternal);
+		}
+
+		long getMInternal() {
+			return mInternal;
+		}
+
+		public void write() {
+			gen_jni_ktb_kep_dh_t_set_dummy(mInternal, dummy);
+		}
+
+		public void read() {
+			 dummy = gen_jni_ktb_kep_dh_t_get_dummy(mInternal);
+		}
+
+	}
+
+	public native long gen_jni_ktb_kep_dh_t_create();
+	public native void gen_jni_ktb_kep_dh_t_free(long mInternal);
+	public native int gen_jni_ktb_kep_dh_t_get_dummy(long mInternal);
+
+	public native void gen_jni_ktb_kep_dh_t_set_dummy(long mInternal,int dummy);
 
 	public class ktb_kep_dh_pass_t {
-		ktb_cipher_algo_t cipher_algo;		byte discuss_key;		long discuss_key_size;	}
+		public ktb_cipher_algo_t cipher_algo;
+		public byte discuss_key;
+		public long discuss_key_size;
+
+		private long mInternal;
+
+		public ktb_kep_dh_pass_t() {
+			mInternal = gen_jni_ktb_kep_dh_pass_t_create();
+		}
+
+		@Override
+		public void finalize() {
+			gen_jni_ktb_kep_dh_pass_t_free(mInternal);
+		}
+
+		long getMInternal() {
+			return mInternal;
+		}
+
+		public void write() {
+			gen_jni_ktb_kep_dh_pass_t_set_cipher_algo(mInternal, cipher_algo);
+			gen_jni_ktb_kep_dh_pass_t_set_discuss_key(mInternal, discuss_key);
+			gen_jni_ktb_kep_dh_pass_t_set_discuss_key_size(mInternal, discuss_key_size);
+		}
+
+		public void read() {
+			 cipher_algo = gen_jni_ktb_kep_dh_pass_t_get_cipher_algo(mInternal);
+			 discuss_key = gen_jni_ktb_kep_dh_pass_t_get_discuss_key(mInternal);
+			 discuss_key_size = gen_jni_ktb_kep_dh_pass_t_get_discuss_key_size(mInternal);
+		}
+
+	}
+
+	public native long gen_jni_ktb_kep_dh_pass_t_create();
+	public native void gen_jni_ktb_kep_dh_pass_t_free(long mInternal);
+	public native ktb_cipher_algo_t gen_jni_ktb_kep_dh_pass_t_get_cipher_algo(long mInternal);
+
+	public native byte gen_jni_ktb_kep_dh_pass_t_get_discuss_key(long mInternal);
+
+	public native long gen_jni_ktb_kep_dh_pass_t_get_discuss_key_size(long mInternal);
+
+	public native void gen_jni_ktb_kep_dh_pass_t_set_cipher_algo(long mInternal,ktb_cipher_algo_t cipher_algo);
+
+	public native void gen_jni_ktb_kep_dh_pass_t_set_discuss_key(long mInternal,byte discuss_key);
+
+	public native void gen_jni_ktb_kep_dh_pass_t_set_discuss_key_size(long mInternal,long discuss_key_size);
 
 	public class ktb_kep_sts_t {
-		ktb_cipher_algo_t cipher_algo;		long peer_public_key;		long self_private_key;	}
+		public ktb_cipher_algo_t cipher_algo;
+		public long peer_public_key;
+		public long self_private_key;
+
+		private long mInternal;
+
+		public ktb_kep_sts_t() {
+			mInternal = gen_jni_ktb_kep_sts_t_create();
+		}
+
+		@Override
+		public void finalize() {
+			gen_jni_ktb_kep_sts_t_free(mInternal);
+		}
+
+		long getMInternal() {
+			return mInternal;
+		}
+
+		public void write() {
+			gen_jni_ktb_kep_sts_t_set_cipher_algo(mInternal, cipher_algo);
+			gen_jni_ktb_kep_sts_t_set_peer_public_key(mInternal, peer_public_key);
+			gen_jni_ktb_kep_sts_t_set_self_private_key(mInternal, self_private_key);
+		}
+
+		public void read() {
+			 cipher_algo = gen_jni_ktb_kep_sts_t_get_cipher_algo(mInternal);
+			 peer_public_key = gen_jni_ktb_kep_sts_t_get_peer_public_key(mInternal);
+			 self_private_key = gen_jni_ktb_kep_sts_t_get_self_private_key(mInternal);
+		}
+
+	}
+
+	public native long gen_jni_ktb_kep_sts_t_create();
+	public native void gen_jni_ktb_kep_sts_t_free(long mInternal);
+	public native ktb_cipher_algo_t gen_jni_ktb_kep_sts_t_get_cipher_algo(long mInternal);
+
+	public native long gen_jni_ktb_kep_sts_t_get_peer_public_key(long mInternal);
+
+	public native long gen_jni_ktb_kep_sts_t_get_self_private_key(long mInternal);
+
+	public native void gen_jni_ktb_kep_sts_t_set_cipher_algo(long mInternal,ktb_cipher_algo_t cipher_algo);
+
+	public native void gen_jni_ktb_kep_sts_t_set_peer_public_key(long mInternal,long peer_public_key);
+
+	public native void gen_jni_ktb_kep_sts_t_set_self_private_key(long mInternal,long self_private_key);
 
 	public static enum ktb_kep_algo_t {
 		KTB_KEP_ALGO_DH (0),
@@ -205,6 +326,7 @@ public class ArcanaJNI{
 	public native ktb_errno ktb_kdf(ktb_hash_algo_t algo,byte[] seed,long seed_size,byte[] derived_key,long derived_key_size);
 	public native ktb_errno ktb_pbkdf(ktb_hash_algo_t algo,byte[] passwd,long passwd_size,byte[] salt,long salt_size,long iteration_count,byte[] derived_key,long derived_key_size);
 	public native long ktb_kdf_max_size(ktb_hash_algo_t algo);
+	public native int ktb_strerror(ktb_errno err,byte[] buf,long buf_size);
 	public native long ktb_kem_psec_encrypt_size(long peer_public_key);
 	public native ktb_errno ktb_kem_psec_encrypt(ktb_hash_algo_t algo,long prng,long peer_public_key,byte[] secret_key,long secret_key_size,byte[] ciphertext,long ciphertext_size);
 	public native ktb_errno ktb_kem_psec_decrypt(ktb_hash_algo_t algo,long self_private_key,byte[] input_ciphertext,long input_ciphertext_size,byte[] secret_key,long secret_key_size);

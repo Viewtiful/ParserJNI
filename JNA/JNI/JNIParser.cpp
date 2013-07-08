@@ -85,6 +85,10 @@ int JNIPARSER::run(nsModules::Module::vector modules)
 	// Just for tests !
 	f << "}" << endl;
 	std::cout << "Nombre de Modules = " << modules.size() << std::endl; 
+
+	delete jni;
+	delete java;
+	delete dico;
 	return EXIT_SUCCESS;
 }
 

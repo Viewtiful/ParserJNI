@@ -2789,23 +2789,53 @@
 
 		jobject JNI_result;
 
+		ktb_kep_ctx_t C_ctx;
 		contextWrapper *ctxWrp1 = (contextWrapper *)malloc(sizeof(contextWrapper));
 		ctxWrp1->env = env;
-      ktb_init();
-		 ktb_kep_dh_t algo_params;
-ktb_kep_ctx_t C_ctx = NULL;
-size_t shared_key_size = 64;
-unsigned char shared_key[shared_key_size];
-const void* send_buffer = NULL;
-size_t send_buffer_size;
-void* recv_buffer = NULL;
-size_t recv_buffer_size;
-bool continue_exchange;
-int loop = 1;
-ktb_errno tempJNI_result = ktb_kep_init(&C_ctx, NULL, KTB_KEP_ALGO_DH, &algo_params,
-sizeof(algo_params), "nistP521", KTB_HASH_ALGO_SHA512,
-64, 2);
-printf("ktb_errno : %d\n", tempJNI_result);
+
+		ktb_prng_t C_prng;
+		if(prng != 0) {
+			C_prng = (ktb_prng_t)((contextWrapper *)prng)->ctxRef;
+			((contextWrapper *)prng)->env = env;
+		}
+		else
+			C_prng = NULL;
+
+		jclass enm_algo;
+		enm_algo = (*env)->GetObjectClass(env, algo);
+		jmethodID get_algo = (*env)->GetMethodID(env, enm_algo, "getValue", "()I");
+		jint algo_value = (*env)->CallIntMethod(env, algo, get_algo);
+		ktb_kep_algo_t C_algo = (ktb_kep_algo_t)algo_value;
+
+		ktb_kep_algo_data_t C_algo_data;
+		if(algo_data != 0) {
+			C_algo_data = (ktb_kep_algo_data_t)((contextWrapper *)algo_data)->ctxRef;
+			((contextWrapper *)algo_data)->env = env;
+		}
+		else
+			C_algo_data = NULL;
+
+		size_t C_algo_data_size = (size_t) algo_data_size;
+
+		char * C_curve_id;
+		C_curve_id = (char *)(*env)->GetStringUTFChars(env, curve_id, NULL);
+		if(C_curve_id == NULL) {
+			 fprintf(stderr, " Out of memory");
+			 exit(1);
+		}
+
+		jclass enm_hash_algo;
+		enm_hash_algo = (*env)->GetObjectClass(env, hash_algo);
+		jmethodID get_hash_algo = (*env)->GetMethodID(env, enm_hash_algo, "getValue", "()I");
+		jint hash_algo_value = (*env)->CallIntMethod(env, hash_algo, get_hash_algo);
+		ktb_hash_algo_t C_hash_algo = (ktb_hash_algo_t)hash_algo_value;
+
+		size_t C_secret_key_size = (size_t) secret_key_size;
+
+		int C_peer_count = (int) peer_count;
+
+		ktb_errno tempJNI_result = ktb_kep_init (&C_ctx, C_prng, C_algo, C_algo_data, C_algo_data_size, C_curve_id, C_hash_algo, C_secret_key_size, C_peer_count);
+
 		ctxWrp1->ctxRef = C_ctx;
 		jclass adrWrp_ctx;
 		jmethodID setAddr_ctx;

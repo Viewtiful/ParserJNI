@@ -77,7 +77,7 @@ public class ArcanaJNI{
 		KTB_ERRNO_MAX (45);
 		int enumValue;
 
-		ktb_errno(int val) {
+		ktb_errno (int val) {
 			enumValue = val;
 		}
 
@@ -99,8 +99,12 @@ public class ArcanaJNI{
 		KTB_CIPHER_ALGO_TWOFISH256 (5);
 		int enumValue;
 
-		ktb_cipher_algo_t(int val) {
+		ktb_cipher_algo_t (int val) {
 			enumValue = val;
+		}
+
+		int getValue() {
+			return enumValue;
 		}
 
 		void setValue(int val) {
@@ -114,8 +118,12 @@ public class ArcanaJNI{
 		KTB_CIPHER_MODE_CBC (2);
 		int enumValue;
 
-		ktb_cipher_mode_t(int val) {
+		ktb_cipher_mode_t (int val) {
 			enumValue = val;
+		}
+
+		int getValue() {
+			return enumValue;
 		}
 
 		void setValue(int val) {
@@ -140,8 +148,12 @@ public class ArcanaJNI{
 		KTB_HASH_ALGO_SHABAL512 (13);
 		int enumValue;
 
-		ktb_hash_algo_t(int val) {
+		ktb_hash_algo_t (int val) {
 			enumValue = val;
+		}
+
+		int getValue() {
+			return enumValue;
 		}
 
 		void setValue(int val) {
@@ -149,17 +161,109 @@ public class ArcanaJNI{
 		}
 	}
 
-	public class test {
-		int i;	}
-
 	public class ktb_kep_dh_t {
-		int dummy;	}
+		int dummy;
+
+		private long mInternal;
+
+		public ktb_kep_dh_t() {
+			mInternal = gen_jni_ktb_kep_dh_t_create();
+		}
+
+		@Override
+		public void finalize() {
+			gen_jni_ktb_kep_dh_t_free(mInternal);
+		}
+
+		public void write() {
+			gen_jni_ktb_kep_dh_t_set_dummy(mInternal, dummy);
+		}
+
+		public void read() {
+			dummy = gen_jniktb_kep_dh_t_get_dummy(stru);
+		}
+
+	}
+
+	public native long gen_jni_ktb_kep_dh_t_create();
+	public native void gen_jni_ktb_kep_dh_t_free(long mInternal);
+	public native int gen_jniktb_kep_dh_t_get_dummy(long stru);
 
 	public class ktb_kep_dh_pass_t {
-		ktb_cipher_algo_t cipher_algo;		byte discuss_key;		long discuss_key_size;	}
+		ktb_cipher_algo_t cipher_algo;
+		byte discuss_key;
+		long discuss_key_size;
+
+		private long mInternal;
+
+		public ktb_kep_dh_pass_t() {
+			mInternal = gen_jni_ktb_kep_dh_pass_t_create();
+		}
+
+		@Override
+		public void finalize() {
+			gen_jni_ktb_kep_dh_pass_t_free(mInternal);
+		}
+
+		public void write() {
+			gen_jni_ktb_kep_dh_pass_t_set_cipher_algo(mInternal, cipher_algo);
+			gen_jni_ktb_kep_dh_pass_t_set_discuss_key(mInternal, discuss_key);
+			gen_jni_ktb_kep_dh_pass_t_set_discuss_key_size(mInternal, discuss_key_size);
+		}
+
+		public void read() {
+			gen_jniktb_kep_dh_pass_t_get_cipher_algo(stru);
+			gen_jniktb_kep_dh_pass_t_get_discuss_key(stru);
+			gen_jniktb_kep_dh_pass_t_get_discuss_key_size(stru);
+		}
+
+	}
+
+	public native long gen_jni_ktb_kep_dh_pass_t_create();
+	public native void gen_jni_ktb_kep_dh_pass_t_free(long mInternal);
+	public native ktb_cipher_algo_t gen_jniktb_kep_dh_pass_t_get_cipher_algo(long stru);
+
+	public native byte gen_jniktb_kep_dh_pass_t_get_discuss_key(long stru);
+
+	public native long gen_jniktb_kep_dh_pass_t_get_discuss_key_size(long stru);
 
 	public class ktb_kep_sts_t {
-		ktb_cipher_algo_t cipher_algo;		long peer_public_key;		long self_private_key;	}
+		ktb_cipher_algo_t cipher_algo;
+		long peer_public_key;
+		long self_private_key;
+
+		private long mInternal;
+
+		public ktb_kep_sts_t() {
+			mInternal = gen_jni_ktb_kep_sts_t_create();
+		}
+
+		@Override
+		public void finalize() {
+			gen_jni_ktb_kep_sts_t_free(mInternal);
+		}
+
+		public void write() {
+			gen_jni_ktb_kep_sts_t_set_cipher_algo(mInternal, cipher_algo);
+			gen_jni_ktb_kep_sts_t_set_peer_public_key(mInternal, peer_public_key);
+			gen_jni_ktb_kep_sts_t_set_self_private_key(mInternal, self_private_key);
+		}
+
+		public void read() {
+			gen_jniktb_kep_sts_t_get_cipher_algo(stru);
+			gen_jniktb_kep_sts_t_get_peer_public_key(stru);
+			gen_jniktb_kep_sts_t_get_self_private_key(stru);
+		}
+
+	}
+
+	public native long gen_jni_ktb_kep_sts_t_create();
+	public native void gen_jni_ktb_kep_sts_t_free(long mInternal);
+	public native ktb_cipher_algo_t gen_jniktb_kep_sts_t_get_cipher_algo(long stru);
+
+	public native long gen_jniktb_kep_sts_t_get_peer_public_key(long stru);
+
+	public native long gen_jniktb_kep_sts_t_get_self_private_key(long stru);
 
 	public static enum ktb_kep_algo_t {
 		KTB_KEP_ALGO_DH (0),
@@ -167,8 +271,12 @@ public class ArcanaJNI{
 		KTB_KEP_ALGO_STS (2);
 		int enumValue;
 
-		ktb_kep_algo_t(int val) {
+		ktb_kep_algo_t (int val) {
 			enumValue = val;
+		}
+
+		int getValue() {
+			return enumValue;
 		}
 
 		void setValue(int val) {

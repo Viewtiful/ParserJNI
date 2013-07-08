@@ -816,31 +816,6 @@
 		 return JNI_result;
 	}
 
-	JNIEXPORT jint JNICALL JNI_ktb_strerror(JNIEnv *env, jclass cls, jobject err,jbyteArray buf,jlong buf_size) {
-
-		jint JNI_result;
-
-		jclass enm_err;
-		enm_err = (*env)->GetObjectClass(env, err);
-		jmethodID get_err = (*env)->GetMethodID(env, enm_err, "getValue", "()I");
-		jint err_value = (*env)->CallIntMethod(env, err, get_err);
-		ktb_errno C_err = (ktb_errno)err_value;
-
-		jbyte * C_buf;
-		int C_buf_length = (*env)->GetArrayLength(env, buf);
-		C_buf = (jbyte *)malloc(C_buf_length);
-		C_buf = (*env)->GetByteArrayElements(env, buf, NULL);
-
-		size_t C_buf_size = (size_t) buf_size;
-
-		 JNI_result = ktb_strerror (C_err, C_buf, C_buf_size);
-
-		(*env)->SetByteArrayRegion(env, buf, 0, C_buf_length, C_buf);
-		free(C_buf);
-
-		 return JNI_result;
-	}
-
 	JNIEXPORT jlong JNICALL JNI_ktb_kem_psec_encrypt_size(JNIEnv *env, jclass cls, jlong peer_public_key) {
 
 		jlong JNI_result;
@@ -2789,23 +2764,47 @@
 
 		jobject JNI_result;
 
+		ktb_kep_ctx_t C_ctx;
 		contextWrapper *ctxWrp1 = (contextWrapper *)malloc(sizeof(contextWrapper));
 		ctxWrp1->env = env;
-      ktb_init();
-		 ktb_kep_dh_t algo_params;
-ktb_kep_ctx_t C_ctx = NULL;
-size_t shared_key_size = 64;
-unsigned char shared_key[shared_key_size];
-const void* send_buffer = NULL;
-size_t send_buffer_size;
-void* recv_buffer = NULL;
-size_t recv_buffer_size;
-bool continue_exchange;
-int loop = 1;
-ktb_errno tempJNI_result = ktb_kep_init(&C_ctx, NULL, KTB_KEP_ALGO_DH, &algo_params,
-sizeof(algo_params), "nistP521", KTB_HASH_ALGO_SHA512,
-64, 2);
-printf("ktb_errno : %d\n", tempJNI_result);
+
+		ktb_prng_t C_prng;
+		if(prng != 0) {
+			C_prng = (ktb_prng_t)((contextWrapper *)prng)->ctxRef;
+			((contextWrapper *)prng)->env = env;
+		}
+		else
+			C_prng = NULL;
+
+		jclass enm_algo;
+		enm_algo = (*env)->GetObjectClass(env, algo);
+		jmethodID get_algo = (*env)->GetMethodID(env, enm_algo, "getValue", "()I");
+		jint algo_value = (*env)->CallIntMethod(env, algo, get_algo);
+		ktb_kep_algo_t C_algo = (ktb_kep_algo_t)algo_value;
+
+		ktb_kep_dh_t *C_algo_data = (ktb_kep_dh_t*)algo_data;
+
+		size_t C_algo_data_size = sizeof(algo_data_size);
+
+		char * C_curve_id;
+		C_curve_id = (char *)(*env)->GetStringUTFChars(env, curve_id, NULL);
+		if(C_curve_id == NULL) {
+			 fprintf(stderr, " Out of memory");
+			 exit(1);
+		}
+
+		jclass enm_hash_algo;
+		enm_hash_algo = (*env)->GetObjectClass(env, hash_algo);
+		jmethodID get_hash_algo = (*env)->GetMethodID(env, enm_hash_algo, "getValue", "()I");
+		jint hash_algo_value = (*env)->CallIntMethod(env, hash_algo, get_hash_algo);
+		ktb_hash_algo_t C_hash_algo = (ktb_hash_algo_t)hash_algo_value;
+
+		size_t C_secret_key_size = (size_t) secret_key_size;
+
+		int C_peer_count = (int) peer_count;
+
+		ktb_errno tempJNI_result = ktb_kep_init (&C_ctx, C_prng, C_algo, C_algo_data, C_algo_data_size, C_curve_id, C_hash_algo, C_secret_key_size, C_peer_count);
+
 		ctxWrp1->ctxRef = C_ctx;
 		jclass adrWrp_ctx;
 		jmethodID setAddr_ctx;
@@ -3062,7 +3061,6 @@ static JNINativeMethod method_table[] = {
 	{ "ktb_kdf", "(LArcanaJNI$ktb_hash_algo_t;[BJ[BJ)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_kdf },
 	{ "ktb_pbkdf", "(LArcanaJNI$ktb_hash_algo_t;[BJ[BJJ[BJ)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_pbkdf },
 	{ "ktb_kdf_max_size", "(LArcanaJNI$ktb_hash_algo_t;)J", (void *)JNI_ktb_kdf_max_size },
-	{ "ktb_strerror", "(LArcanaJNI$ktb_errno;[BJ)I", (void *)JNI_ktb_strerror },
 	{ "ktb_kem_psec_encrypt_size", "(J)J", (void *)JNI_ktb_kem_psec_encrypt_size },
 	{ "ktb_kem_psec_encrypt", "(LArcanaJNI$ktb_hash_algo_t;JJ[BJ[BJ)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_kem_psec_encrypt },
 	{ "ktb_kem_psec_decrypt", "(LArcanaJNI$ktb_hash_algo_t;J[BJ[BJ)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_kem_psec_decrypt },

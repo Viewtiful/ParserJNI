@@ -708,29 +708,29 @@ JNI/JNIParser.cpp.s:
 	$(MAKE) -f CMakeFiles/JNAConvert.dir/build.make CMakeFiles/JNAConvert.dir/JNI/JNIParser.cpp.s
 .PHONY : JNI/JNIParser.cpp.s
 
-JNI/OutputCpp.o: JNI/OutputCpp.cpp.o
-.PHONY : JNI/OutputCpp.o
+JNI/OutputJNI.o: JNI/OutputJNI.cpp.o
+.PHONY : JNI/OutputJNI.o
 
 # target to build an object file
-JNI/OutputCpp.cpp.o:
-	$(MAKE) -f CMakeFiles/JNAConvert.dir/build.make CMakeFiles/JNAConvert.dir/JNI/OutputCpp.cpp.o
-.PHONY : JNI/OutputCpp.cpp.o
+JNI/OutputJNI.cpp.o:
+	$(MAKE) -f CMakeFiles/JNAConvert.dir/build.make CMakeFiles/JNAConvert.dir/JNI/OutputJNI.cpp.o
+.PHONY : JNI/OutputJNI.cpp.o
 
-JNI/OutputCpp.i: JNI/OutputCpp.cpp.i
-.PHONY : JNI/OutputCpp.i
+JNI/OutputJNI.i: JNI/OutputJNI.cpp.i
+.PHONY : JNI/OutputJNI.i
 
 # target to preprocess a source file
-JNI/OutputCpp.cpp.i:
-	$(MAKE) -f CMakeFiles/JNAConvert.dir/build.make CMakeFiles/JNAConvert.dir/JNI/OutputCpp.cpp.i
-.PHONY : JNI/OutputCpp.cpp.i
+JNI/OutputJNI.cpp.i:
+	$(MAKE) -f CMakeFiles/JNAConvert.dir/build.make CMakeFiles/JNAConvert.dir/JNI/OutputJNI.cpp.i
+.PHONY : JNI/OutputJNI.cpp.i
 
-JNI/OutputCpp.s: JNI/OutputCpp.cpp.s
-.PHONY : JNI/OutputCpp.s
+JNI/OutputJNI.s: JNI/OutputJNI.cpp.s
+.PHONY : JNI/OutputJNI.s
 
 # target to generate assembly for a file
-JNI/OutputCpp.cpp.s:
-	$(MAKE) -f CMakeFiles/JNAConvert.dir/build.make CMakeFiles/JNAConvert.dir/JNI/OutputCpp.cpp.s
-.PHONY : JNI/OutputCpp.cpp.s
+JNI/OutputJNI.cpp.s:
+	$(MAKE) -f CMakeFiles/JNAConvert.dir/build.make CMakeFiles/JNAConvert.dir/JNI/OutputJNI.cpp.s
+.PHONY : JNI/OutputJNI.cpp.s
 
 JNI/OutputJava.o: JNI/OutputJava.cpp.o
 .PHONY : JNI/OutputJava.o
@@ -756,6 +756,78 @@ JNI/OutputJava.cpp.s:
 	$(MAKE) -f CMakeFiles/JNAConvert.dir/build.make CMakeFiles/JNAConvert.dir/JNI/OutputJava.cpp.s
 .PHONY : JNI/OutputJava.cpp.s
 
+JNI/Types/AddressWrapper.o: JNI/Types/AddressWrapper.cpp.o
+.PHONY : JNI/Types/AddressWrapper.o
+
+# target to build an object file
+JNI/Types/AddressWrapper.cpp.o:
+	$(MAKE) -f CMakeFiles/JNAConvert.dir/build.make CMakeFiles/JNAConvert.dir/JNI/Types/AddressWrapper.cpp.o
+.PHONY : JNI/Types/AddressWrapper.cpp.o
+
+JNI/Types/AddressWrapper.i: JNI/Types/AddressWrapper.cpp.i
+.PHONY : JNI/Types/AddressWrapper.i
+
+# target to preprocess a source file
+JNI/Types/AddressWrapper.cpp.i:
+	$(MAKE) -f CMakeFiles/JNAConvert.dir/build.make CMakeFiles/JNAConvert.dir/JNI/Types/AddressWrapper.cpp.i
+.PHONY : JNI/Types/AddressWrapper.cpp.i
+
+JNI/Types/AddressWrapper.s: JNI/Types/AddressWrapper.cpp.s
+.PHONY : JNI/Types/AddressWrapper.s
+
+# target to generate assembly for a file
+JNI/Types/AddressWrapper.cpp.s:
+	$(MAKE) -f CMakeFiles/JNAConvert.dir/build.make CMakeFiles/JNAConvert.dir/JNI/Types/AddressWrapper.cpp.s
+.PHONY : JNI/Types/AddressWrapper.cpp.s
+
+JNI/Types/Array.o: JNI/Types/Array.cpp.o
+.PHONY : JNI/Types/Array.o
+
+# target to build an object file
+JNI/Types/Array.cpp.o:
+	$(MAKE) -f CMakeFiles/JNAConvert.dir/build.make CMakeFiles/JNAConvert.dir/JNI/Types/Array.cpp.o
+.PHONY : JNI/Types/Array.cpp.o
+
+JNI/Types/Array.i: JNI/Types/Array.cpp.i
+.PHONY : JNI/Types/Array.i
+
+# target to preprocess a source file
+JNI/Types/Array.cpp.i:
+	$(MAKE) -f CMakeFiles/JNAConvert.dir/build.make CMakeFiles/JNAConvert.dir/JNI/Types/Array.cpp.i
+.PHONY : JNI/Types/Array.cpp.i
+
+JNI/Types/Array.s: JNI/Types/Array.cpp.s
+.PHONY : JNI/Types/Array.s
+
+# target to generate assembly for a file
+JNI/Types/Array.cpp.s:
+	$(MAKE) -f CMakeFiles/JNAConvert.dir/build.make CMakeFiles/JNAConvert.dir/JNI/Types/Array.cpp.s
+.PHONY : JNI/Types/Array.cpp.s
+
+JNI/Types/BoolWrapper.o: JNI/Types/BoolWrapper.cpp.o
+.PHONY : JNI/Types/BoolWrapper.o
+
+# target to build an object file
+JNI/Types/BoolWrapper.cpp.o:
+	$(MAKE) -f CMakeFiles/JNAConvert.dir/build.make CMakeFiles/JNAConvert.dir/JNI/Types/BoolWrapper.cpp.o
+.PHONY : JNI/Types/BoolWrapper.cpp.o
+
+JNI/Types/BoolWrapper.i: JNI/Types/BoolWrapper.cpp.i
+.PHONY : JNI/Types/BoolWrapper.i
+
+# target to preprocess a source file
+JNI/Types/BoolWrapper.cpp.i:
+	$(MAKE) -f CMakeFiles/JNAConvert.dir/build.make CMakeFiles/JNAConvert.dir/JNI/Types/BoolWrapper.cpp.i
+.PHONY : JNI/Types/BoolWrapper.cpp.i
+
+JNI/Types/BoolWrapper.s: JNI/Types/BoolWrapper.cpp.s
+.PHONY : JNI/Types/BoolWrapper.s
+
+# target to generate assembly for a file
+JNI/Types/BoolWrapper.cpp.s:
+	$(MAKE) -f CMakeFiles/JNAConvert.dir/build.make CMakeFiles/JNAConvert.dir/JNI/Types/BoolWrapper.cpp.s
+.PHONY : JNI/Types/BoolWrapper.cpp.s
+
 JNI/Types/CallBack.o: JNI/Types/CallBack.cpp.o
 .PHONY : JNI/Types/CallBack.o
 
@@ -779,6 +851,30 @@ JNI/Types/CallBack.s: JNI/Types/CallBack.cpp.s
 JNI/Types/CallBack.cpp.s:
 	$(MAKE) -f CMakeFiles/JNAConvert.dir/build.make CMakeFiles/JNAConvert.dir/JNI/Types/CallBack.cpp.s
 .PHONY : JNI/Types/CallBack.cpp.s
+
+JNI/Types/Create.o: JNI/Types/Create.cpp.o
+.PHONY : JNI/Types/Create.o
+
+# target to build an object file
+JNI/Types/Create.cpp.o:
+	$(MAKE) -f CMakeFiles/JNAConvert.dir/build.make CMakeFiles/JNAConvert.dir/JNI/Types/Create.cpp.o
+.PHONY : JNI/Types/Create.cpp.o
+
+JNI/Types/Create.i: JNI/Types/Create.cpp.i
+.PHONY : JNI/Types/Create.i
+
+# target to preprocess a source file
+JNI/Types/Create.cpp.i:
+	$(MAKE) -f CMakeFiles/JNAConvert.dir/build.make CMakeFiles/JNAConvert.dir/JNI/Types/Create.cpp.i
+.PHONY : JNI/Types/Create.cpp.i
+
+JNI/Types/Create.s: JNI/Types/Create.cpp.s
+.PHONY : JNI/Types/Create.s
+
+# target to generate assembly for a file
+JNI/Types/Create.cpp.s:
+	$(MAKE) -f CMakeFiles/JNAConvert.dir/build.make CMakeFiles/JNAConvert.dir/JNI/Types/Create.cpp.s
+.PHONY : JNI/Types/Create.cpp.s
 
 JNI/Types/Enum.o: JNI/Types/Enum.cpp.o
 .PHONY : JNI/Types/Enum.o
@@ -804,6 +900,78 @@ JNI/Types/Enum.cpp.s:
 	$(MAKE) -f CMakeFiles/JNAConvert.dir/build.make CMakeFiles/JNAConvert.dir/JNI/Types/Enum.cpp.s
 .PHONY : JNI/Types/Enum.cpp.s
 
+JNI/Types/Free.o: JNI/Types/Free.cpp.o
+.PHONY : JNI/Types/Free.o
+
+# target to build an object file
+JNI/Types/Free.cpp.o:
+	$(MAKE) -f CMakeFiles/JNAConvert.dir/build.make CMakeFiles/JNAConvert.dir/JNI/Types/Free.cpp.o
+.PHONY : JNI/Types/Free.cpp.o
+
+JNI/Types/Free.i: JNI/Types/Free.cpp.i
+.PHONY : JNI/Types/Free.i
+
+# target to preprocess a source file
+JNI/Types/Free.cpp.i:
+	$(MAKE) -f CMakeFiles/JNAConvert.dir/build.make CMakeFiles/JNAConvert.dir/JNI/Types/Free.cpp.i
+.PHONY : JNI/Types/Free.cpp.i
+
+JNI/Types/Free.s: JNI/Types/Free.cpp.s
+.PHONY : JNI/Types/Free.s
+
+# target to generate assembly for a file
+JNI/Types/Free.cpp.s:
+	$(MAKE) -f CMakeFiles/JNAConvert.dir/build.make CMakeFiles/JNAConvert.dir/JNI/Types/Free.cpp.s
+.PHONY : JNI/Types/Free.cpp.s
+
+JNI/Types/Function.o: JNI/Types/Function.cpp.o
+.PHONY : JNI/Types/Function.o
+
+# target to build an object file
+JNI/Types/Function.cpp.o:
+	$(MAKE) -f CMakeFiles/JNAConvert.dir/build.make CMakeFiles/JNAConvert.dir/JNI/Types/Function.cpp.o
+.PHONY : JNI/Types/Function.cpp.o
+
+JNI/Types/Function.i: JNI/Types/Function.cpp.i
+.PHONY : JNI/Types/Function.i
+
+# target to preprocess a source file
+JNI/Types/Function.cpp.i:
+	$(MAKE) -f CMakeFiles/JNAConvert.dir/build.make CMakeFiles/JNAConvert.dir/JNI/Types/Function.cpp.i
+.PHONY : JNI/Types/Function.cpp.i
+
+JNI/Types/Function.s: JNI/Types/Function.cpp.s
+.PHONY : JNI/Types/Function.s
+
+# target to generate assembly for a file
+JNI/Types/Function.cpp.s:
+	$(MAKE) -f CMakeFiles/JNAConvert.dir/build.make CMakeFiles/JNAConvert.dir/JNI/Types/Function.cpp.s
+.PHONY : JNI/Types/Function.cpp.s
+
+JNI/Types/Getter.o: JNI/Types/Getter.cpp.o
+.PHONY : JNI/Types/Getter.o
+
+# target to build an object file
+JNI/Types/Getter.cpp.o:
+	$(MAKE) -f CMakeFiles/JNAConvert.dir/build.make CMakeFiles/JNAConvert.dir/JNI/Types/Getter.cpp.o
+.PHONY : JNI/Types/Getter.cpp.o
+
+JNI/Types/Getter.i: JNI/Types/Getter.cpp.i
+.PHONY : JNI/Types/Getter.i
+
+# target to preprocess a source file
+JNI/Types/Getter.cpp.i:
+	$(MAKE) -f CMakeFiles/JNAConvert.dir/build.make CMakeFiles/JNAConvert.dir/JNI/Types/Getter.cpp.i
+.PHONY : JNI/Types/Getter.cpp.i
+
+JNI/Types/Getter.s: JNI/Types/Getter.cpp.s
+.PHONY : JNI/Types/Getter.s
+
+# target to generate assembly for a file
+JNI/Types/Getter.cpp.s:
+	$(MAKE) -f CMakeFiles/JNAConvert.dir/build.make CMakeFiles/JNAConvert.dir/JNI/Types/Getter.cpp.s
+.PHONY : JNI/Types/Getter.cpp.s
+
 JNI/Types/NativeType.o: JNI/Types/NativeType.cpp.o
 .PHONY : JNI/Types/NativeType.o
 
@@ -828,6 +996,30 @@ JNI/Types/NativeType.cpp.s:
 	$(MAKE) -f CMakeFiles/JNAConvert.dir/build.make CMakeFiles/JNAConvert.dir/JNI/Types/NativeType.cpp.s
 .PHONY : JNI/Types/NativeType.cpp.s
 
+JNI/Types/Param.o: JNI/Types/Param.cpp.o
+.PHONY : JNI/Types/Param.o
+
+# target to build an object file
+JNI/Types/Param.cpp.o:
+	$(MAKE) -f CMakeFiles/JNAConvert.dir/build.make CMakeFiles/JNAConvert.dir/JNI/Types/Param.cpp.o
+.PHONY : JNI/Types/Param.cpp.o
+
+JNI/Types/Param.i: JNI/Types/Param.cpp.i
+.PHONY : JNI/Types/Param.i
+
+# target to preprocess a source file
+JNI/Types/Param.cpp.i:
+	$(MAKE) -f CMakeFiles/JNAConvert.dir/build.make CMakeFiles/JNAConvert.dir/JNI/Types/Param.cpp.i
+.PHONY : JNI/Types/Param.cpp.i
+
+JNI/Types/Param.s: JNI/Types/Param.cpp.s
+.PHONY : JNI/Types/Param.s
+
+# target to generate assembly for a file
+JNI/Types/Param.cpp.s:
+	$(MAKE) -f CMakeFiles/JNAConvert.dir/build.make CMakeFiles/JNAConvert.dir/JNI/Types/Param.cpp.s
+.PHONY : JNI/Types/Param.cpp.s
+
 JNI/Types/Pointer.o: JNI/Types/Pointer.cpp.o
 .PHONY : JNI/Types/Pointer.o
 
@@ -851,6 +1043,30 @@ JNI/Types/Pointer.s: JNI/Types/Pointer.cpp.s
 JNI/Types/Pointer.cpp.s:
 	$(MAKE) -f CMakeFiles/JNAConvert.dir/build.make CMakeFiles/JNAConvert.dir/JNI/Types/Pointer.cpp.s
 .PHONY : JNI/Types/Pointer.cpp.s
+
+JNI/Types/Setter.o: JNI/Types/Setter.cpp.o
+.PHONY : JNI/Types/Setter.o
+
+# target to build an object file
+JNI/Types/Setter.cpp.o:
+	$(MAKE) -f CMakeFiles/JNAConvert.dir/build.make CMakeFiles/JNAConvert.dir/JNI/Types/Setter.cpp.o
+.PHONY : JNI/Types/Setter.cpp.o
+
+JNI/Types/Setter.i: JNI/Types/Setter.cpp.i
+.PHONY : JNI/Types/Setter.i
+
+# target to preprocess a source file
+JNI/Types/Setter.cpp.i:
+	$(MAKE) -f CMakeFiles/JNAConvert.dir/build.make CMakeFiles/JNAConvert.dir/JNI/Types/Setter.cpp.i
+.PHONY : JNI/Types/Setter.cpp.i
+
+JNI/Types/Setter.s: JNI/Types/Setter.cpp.s
+.PHONY : JNI/Types/Setter.s
+
+# target to generate assembly for a file
+JNI/Types/Setter.cpp.s:
+	$(MAKE) -f CMakeFiles/JNAConvert.dir/build.make CMakeFiles/JNAConvert.dir/JNI/Types/Setter.cpp.s
+.PHONY : JNI/Types/Setter.cpp.s
 
 JNI/Types/Struct.o: JNI/Types/Struct.cpp.o
 .PHONY : JNI/Types/Struct.o
@@ -899,6 +1115,30 @@ JNI/Types/Type.s: JNI/Types/Type.cpp.s
 JNI/Types/Type.cpp.s:
 	$(MAKE) -f CMakeFiles/JNAConvert.dir/build.make CMakeFiles/JNAConvert.dir/JNI/Types/Type.cpp.s
 .PHONY : JNI/Types/Type.cpp.s
+
+JNI/Types/Typedef.o: JNI/Types/Typedef.cpp.o
+.PHONY : JNI/Types/Typedef.o
+
+# target to build an object file
+JNI/Types/Typedef.cpp.o:
+	$(MAKE) -f CMakeFiles/JNAConvert.dir/build.make CMakeFiles/JNAConvert.dir/JNI/Types/Typedef.cpp.o
+.PHONY : JNI/Types/Typedef.cpp.o
+
+JNI/Types/Typedef.i: JNI/Types/Typedef.cpp.i
+.PHONY : JNI/Types/Typedef.i
+
+# target to preprocess a source file
+JNI/Types/Typedef.cpp.i:
+	$(MAKE) -f CMakeFiles/JNAConvert.dir/build.make CMakeFiles/JNAConvert.dir/JNI/Types/Typedef.cpp.i
+.PHONY : JNI/Types/Typedef.cpp.i
+
+JNI/Types/Typedef.s: JNI/Types/Typedef.cpp.s
+.PHONY : JNI/Types/Typedef.s
+
+# target to generate assembly for a file
+JNI/Types/Typedef.cpp.s:
+	$(MAKE) -f CMakeFiles/JNAConvert.dir/build.make CMakeFiles/JNAConvert.dir/JNI/Types/Typedef.cpp.s
+.PHONY : JNI/Types/Typedef.cpp.s
 
 JNI/TypesDictionnary.o: JNI/TypesDictionnary.cpp.o
 .PHONY : JNI/TypesDictionnary.o
@@ -1248,30 +1488,60 @@ help:
 	@echo "... JNI/JNIParser.o"
 	@echo "... JNI/JNIParser.i"
 	@echo "... JNI/JNIParser.s"
-	@echo "... JNI/OutputCpp.o"
-	@echo "... JNI/OutputCpp.i"
-	@echo "... JNI/OutputCpp.s"
+	@echo "... JNI/OutputJNI.o"
+	@echo "... JNI/OutputJNI.i"
+	@echo "... JNI/OutputJNI.s"
 	@echo "... JNI/OutputJava.o"
 	@echo "... JNI/OutputJava.i"
 	@echo "... JNI/OutputJava.s"
+	@echo "... JNI/Types/AddressWrapper.o"
+	@echo "... JNI/Types/AddressWrapper.i"
+	@echo "... JNI/Types/AddressWrapper.s"
+	@echo "... JNI/Types/Array.o"
+	@echo "... JNI/Types/Array.i"
+	@echo "... JNI/Types/Array.s"
+	@echo "... JNI/Types/BoolWrapper.o"
+	@echo "... JNI/Types/BoolWrapper.i"
+	@echo "... JNI/Types/BoolWrapper.s"
 	@echo "... JNI/Types/CallBack.o"
 	@echo "... JNI/Types/CallBack.i"
 	@echo "... JNI/Types/CallBack.s"
+	@echo "... JNI/Types/Create.o"
+	@echo "... JNI/Types/Create.i"
+	@echo "... JNI/Types/Create.s"
 	@echo "... JNI/Types/Enum.o"
 	@echo "... JNI/Types/Enum.i"
 	@echo "... JNI/Types/Enum.s"
+	@echo "... JNI/Types/Free.o"
+	@echo "... JNI/Types/Free.i"
+	@echo "... JNI/Types/Free.s"
+	@echo "... JNI/Types/Function.o"
+	@echo "... JNI/Types/Function.i"
+	@echo "... JNI/Types/Function.s"
+	@echo "... JNI/Types/Getter.o"
+	@echo "... JNI/Types/Getter.i"
+	@echo "... JNI/Types/Getter.s"
 	@echo "... JNI/Types/NativeType.o"
 	@echo "... JNI/Types/NativeType.i"
 	@echo "... JNI/Types/NativeType.s"
+	@echo "... JNI/Types/Param.o"
+	@echo "... JNI/Types/Param.i"
+	@echo "... JNI/Types/Param.s"
 	@echo "... JNI/Types/Pointer.o"
 	@echo "... JNI/Types/Pointer.i"
 	@echo "... JNI/Types/Pointer.s"
+	@echo "... JNI/Types/Setter.o"
+	@echo "... JNI/Types/Setter.i"
+	@echo "... JNI/Types/Setter.s"
 	@echo "... JNI/Types/Struct.o"
 	@echo "... JNI/Types/Struct.i"
 	@echo "... JNI/Types/Struct.s"
 	@echo "... JNI/Types/Type.o"
 	@echo "... JNI/Types/Type.i"
 	@echo "... JNI/Types/Type.s"
+	@echo "... JNI/Types/Typedef.o"
+	@echo "... JNI/Types/Typedef.i"
+	@echo "... JNI/Types/Typedef.s"
 	@echo "... JNI/TypesDictionnary.o"
 	@echo "... JNI/TypesDictionnary.i"
 	@echo "... JNI/TypesDictionnary.s"

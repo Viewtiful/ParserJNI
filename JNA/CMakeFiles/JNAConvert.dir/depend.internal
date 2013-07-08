@@ -355,24 +355,29 @@ CMakeFiles/JNAConvert.dir/JNI/JNIParser.cpp.o
  C/Param.h
  C/Struct.h
  C/Typedef.h
- JNA/Module.h
- JNA/PackageList.h
- JNA/SupportClass.h
- JNA/Type.h
- JNA/TypesDictionnary.h
  JNI/JNIParser.h
- JNI/OutputCpp.h
+ JNI/OutputJNI.h
  JNI/OutputJava.h
+ JNI/Types/AddressWrapper.h
+ JNI/Types/Array.h
+ JNI/Types/BoolWrapper.h
+ JNI/Types/Enum.h
+ JNI/Types/Function.h
+ JNI/Types/NativeType.h
+ JNI/Types/Param.h
+ JNI/Types/Pointer.h
+ JNI/Types/Struct.h
  JNI/Types/Type.h
+ JNI/Types/Typedef.h
  JNI/TypesDictionnary.h
  Modules/Module.h
  Modules/ModuleList.h
  Utils/Displayable.h
- Utils/Output.h
  Utils/Parameters.h
  Utils/Parser.h
-CMakeFiles/JNAConvert.dir/JNI/OutputCpp.cpp.o
- /home/baptiste/git/ParserJNI/JNA/JNI/OutputCpp.cpp
+ Utils/Utils.h
+CMakeFiles/JNAConvert.dir/JNI/OutputJNI.cpp.o
+ /home/baptiste/git/ParserJNI/JNA/JNI/OutputJNI.cpp
  C/Callback.h
  C/Consts.h
  C/Enum.h
@@ -380,7 +385,19 @@ CMakeFiles/JNAConvert.dir/JNI/OutputCpp.cpp.o
  C/Param.h
  C/Struct.h
  C/Typedef.h
- JNI/OutputCpp.h
+ JNI/OutputJNI.h
+ JNI/Types/AddressWrapper.h
+ JNI/Types/Array.h
+ JNI/Types/BoolWrapper.h
+ JNI/Types/Enum.h
+ JNI/Types/Function.h
+ JNI/Types/NativeType.h
+ JNI/Types/Param.h
+ JNI/Types/Pointer.h
+ JNI/Types/Struct.h
+ JNI/Types/Type.h
+ JNI/Types/Typedef.h
+ JNI/TypesDictionnary.h
  Modules/Module.h
  Modules/ModuleList.h
  Utils/Displayable.h
@@ -395,28 +412,307 @@ CMakeFiles/JNAConvert.dir/JNI/OutputJava.cpp.o
  C/Param.h
  C/Struct.h
  C/Typedef.h
+ JNI/Types/AddressWrapper.h
+ JNI/Types/Array.h
+ JNI/Types/BoolWrapper.h
+ JNI/Types/Enum.h
+ JNI/Types/Function.h
+ JNI/Types/NativeType.h
+ JNI/Types/Param.h
+ JNI/Types/Pointer.h
+ JNI/Types/Struct.h
+ JNI/Types/Type.h
+ JNI/Types/Typedef.h
+ JNI/TypesDictionnary.h
  Modules/Module.h
  Modules/ModuleList.h
  Utils/Displayable.h
+ Utils/Utils.h
+CMakeFiles/JNAConvert.dir/JNI/Types/AddressWrapper.cpp.o
+ /home/baptiste/git/ParserJNI/JNA/JNI/Types/AddressWrapper.cpp
+ JNI/Types/AddressWrapper.h
+ JNI/Types/Type.h
+ Utils/Utils.h
+CMakeFiles/JNAConvert.dir/JNI/Types/Array.cpp.o
+ /home/baptiste/git/ParserJNI/JNA/JNI/Types/Array.cpp
+ C/Callback.h
+ C/Consts.h
+ C/Enum.h
+ C/Function.h
+ C/Param.h
+ C/Struct.h
+ C/Typedef.h
+ JNI/Types/AddressWrapper.h
+ JNI/Types/Array.h
+ JNI/Types/BoolWrapper.h
+ JNI/Types/Enum.h
+ JNI/Types/Function.h
+ JNI/Types/NativeType.h
+ JNI/Types/Param.h
+ JNI/Types/Pointer.h
+ JNI/Types/Struct.h
+ JNI/Types/Type.h
+ JNI/Types/Typedef.h
+ JNI/TypesDictionnary.h
+ Modules/Module.h
+ Modules/ModuleList.h
+ Utils/Displayable.h
+ Utils/Utils.h
+CMakeFiles/JNAConvert.dir/JNI/Types/BoolWrapper.cpp.o
+ /home/baptiste/git/ParserJNI/JNA/JNI/Types/BoolWrapper.cpp
+ JNI/Types/BoolWrapper.h
+ JNI/Types/Type.h
+ Utils/Utils.h
 CMakeFiles/JNAConvert.dir/JNI/Types/CallBack.cpp.o
  /home/baptiste/git/ParserJNI/JNA/JNI/Types/CallBack.cpp
+CMakeFiles/JNAConvert.dir/JNI/Types/Create.cpp.o
+ /home/baptiste/git/ParserJNI/JNA/JNI/Types/Create.cpp
+ C/Callback.h
+ C/Consts.h
+ C/Enum.h
+ C/Function.h
+ C/Param.h
+ C/Struct.h
+ C/Typedef.h
+ JNI/Types/AddressWrapper.h
+ JNI/Types/Array.h
+ JNI/Types/BoolWrapper.h
+ JNI/Types/Create.h
+ JNI/Types/Enum.h
+ JNI/Types/Function.h
+ JNI/Types/NativeType.h
+ JNI/Types/Param.h
+ JNI/Types/Pointer.h
+ JNI/Types/Struct.h
+ JNI/Types/Type.h
+ JNI/Types/Typedef.h
+ JNI/TypesDictionnary.h
+ Modules/Module.h
+ Modules/ModuleList.h
+ Utils/Displayable.h
+ Utils/Utils.h
 CMakeFiles/JNAConvert.dir/JNI/Types/Enum.cpp.o
  /home/baptiste/git/ParserJNI/JNA/JNI/Types/Enum.cpp
+ C/Callback.h
+ C/Consts.h
+ C/Enum.h
+ C/Function.h
+ C/Param.h
+ C/Struct.h
+ C/Typedef.h
+ JNI/Types/AddressWrapper.h
+ JNI/Types/Array.h
+ JNI/Types/BoolWrapper.h
+ JNI/Types/Enum.h
+ JNI/Types/Function.h
+ JNI/Types/NativeType.h
+ JNI/Types/Param.h
+ JNI/Types/Pointer.h
+ JNI/Types/Struct.h
+ JNI/Types/Type.h
+ JNI/Types/Typedef.h
+ JNI/TypesDictionnary.h
+ Modules/Module.h
+ Modules/ModuleList.h
+ Utils/Displayable.h
+ Utils/Utils.h
+CMakeFiles/JNAConvert.dir/JNI/Types/Free.cpp.o
+ /home/baptiste/git/ParserJNI/JNA/JNI/Types/Free.cpp
+ C/Callback.h
+ C/Consts.h
+ C/Enum.h
+ C/Function.h
+ C/Param.h
+ C/Struct.h
+ C/Typedef.h
+ JNI/Types/AddressWrapper.h
+ JNI/Types/Array.h
+ JNI/Types/BoolWrapper.h
+ JNI/Types/Enum.h
+ JNI/Types/Free.h
+ JNI/Types/Function.h
+ JNI/Types/NativeType.h
+ JNI/Types/Param.h
+ JNI/Types/Pointer.h
+ JNI/Types/Struct.h
+ JNI/Types/Type.h
+ JNI/Types/Typedef.h
+ JNI/TypesDictionnary.h
+ Modules/Module.h
+ Modules/ModuleList.h
+ Utils/Displayable.h
+ Utils/Utils.h
+CMakeFiles/JNAConvert.dir/JNI/Types/Function.cpp.o
+ /home/baptiste/git/ParserJNI/JNA/JNI/Types/Function.cpp
+ C/Callback.h
+ C/Consts.h
+ C/Enum.h
+ C/Function.h
+ C/Param.h
+ C/Struct.h
+ C/Typedef.h
+ JNI/Types/AddressWrapper.h
+ JNI/Types/Array.h
+ JNI/Types/BoolWrapper.h
+ JNI/Types/Enum.h
+ JNI/Types/Function.h
+ JNI/Types/NativeType.h
+ JNI/Types/Param.h
+ JNI/Types/Pointer.h
+ JNI/Types/Struct.h
+ JNI/Types/Type.h
+ JNI/Types/Typedef.h
+ JNI/TypesDictionnary.h
+ Modules/Module.h
+ Modules/ModuleList.h
+ Utils/Displayable.h
+ Utils/Utils.h
+CMakeFiles/JNAConvert.dir/JNI/Types/Getter.cpp.o
+ /home/baptiste/git/ParserJNI/JNA/JNI/Types/Getter.cpp
+ C/Callback.h
+ C/Consts.h
+ C/Enum.h
+ C/Function.h
+ C/Param.h
+ C/Struct.h
+ C/Typedef.h
+ JNI/Types/AddressWrapper.h
+ JNI/Types/Array.h
+ JNI/Types/BoolWrapper.h
+ JNI/Types/Enum.h
+ JNI/Types/Function.h
+ JNI/Types/Getter.h
+ JNI/Types/NativeType.h
+ JNI/Types/Param.h
+ JNI/Types/Pointer.h
+ JNI/Types/Struct.h
+ JNI/Types/Type.h
+ JNI/Types/Typedef.h
+ JNI/TypesDictionnary.h
+ Modules/Module.h
+ Modules/ModuleList.h
+ Utils/Displayable.h
+ Utils/Utils.h
 CMakeFiles/JNAConvert.dir/JNI/Types/NativeType.cpp.o
  /home/baptiste/git/ParserJNI/JNA/JNI/Types/NativeType.cpp
  JNI/Types/NativeType.h
  JNI/Types/Type.h
+ Utils/Utils.h
+CMakeFiles/JNAConvert.dir/JNI/Types/Param.cpp.o
+ /home/baptiste/git/ParserJNI/JNA/JNI/Types/Param.cpp
+ JNI/Types/Param.h
 CMakeFiles/JNAConvert.dir/JNI/Types/Pointer.cpp.o
  /home/baptiste/git/ParserJNI/JNA/JNI/Types/Pointer.cpp
+ C/Callback.h
+ C/Consts.h
+ C/Enum.h
+ C/Function.h
+ C/Param.h
+ C/Struct.h
+ C/Typedef.h
+ JNI/Types/AddressWrapper.h
+ JNI/Types/Array.h
+ JNI/Types/BoolWrapper.h
+ JNI/Types/Enum.h
+ JNI/Types/Function.h
+ JNI/Types/NativeType.h
+ JNI/Types/Param.h
+ JNI/Types/Pointer.h
+ JNI/Types/Struct.h
+ JNI/Types/Type.h
+ JNI/Types/Typedef.h
+ JNI/TypesDictionnary.h
+ Modules/Module.h
+ Modules/ModuleList.h
+ Utils/Displayable.h
+ Utils/Utils.h
+CMakeFiles/JNAConvert.dir/JNI/Types/Setter.cpp.o
+ /home/baptiste/git/ParserJNI/JNA/JNI/Types/Setter.cpp
+ C/Callback.h
+ C/Consts.h
+ C/Enum.h
+ C/Function.h
+ C/Param.h
+ C/Struct.h
+ C/Typedef.h
+ JNI/Types/AddressWrapper.h
+ JNI/Types/Array.h
+ JNI/Types/BoolWrapper.h
+ JNI/Types/Enum.h
+ JNI/Types/Function.h
+ JNI/Types/NativeType.h
+ JNI/Types/Param.h
+ JNI/Types/Pointer.h
+ JNI/Types/Setter.h
+ JNI/Types/Struct.h
+ JNI/Types/Type.h
+ JNI/Types/Typedef.h
+ JNI/TypesDictionnary.h
+ Modules/Module.h
+ Modules/ModuleList.h
+ Utils/Displayable.h
+ Utils/Utils.h
 CMakeFiles/JNAConvert.dir/JNI/Types/Struct.cpp.o
  /home/baptiste/git/ParserJNI/JNA/JNI/Types/Struct.cpp
+ C/Callback.h
+ C/Consts.h
+ C/Enum.h
+ C/Function.h
+ C/Param.h
+ C/Struct.h
+ C/Typedef.h
+ JNI/Types/AddressWrapper.h
+ JNI/Types/Array.h
+ JNI/Types/BoolWrapper.h
+ JNI/Types/Create.h
+ JNI/Types/Enum.h
+ JNI/Types/Free.h
+ JNI/Types/Function.h
+ JNI/Types/Getter.h
+ JNI/Types/NativeType.h
+ JNI/Types/Param.h
+ JNI/Types/Pointer.h
+ JNI/Types/Setter.h
+ JNI/Types/Struct.h
+ JNI/Types/Type.h
+ JNI/Types/Typedef.h
+ JNI/TypesDictionnary.h
+ Modules/Module.h
+ Modules/ModuleList.h
+ Utils/Displayable.h
+ Utils/Utils.h
 CMakeFiles/JNAConvert.dir/JNI/Types/Type.cpp.o
  /home/baptiste/git/ParserJNI/JNA/JNI/Types/Type.cpp
  JNI/Types/Type.h
+CMakeFiles/JNAConvert.dir/JNI/Types/Typedef.cpp.o
+ /home/baptiste/git/ParserJNI/JNA/JNI/Types/Typedef.cpp
+ JNI/Types/Type.h
+ JNI/Types/Typedef.h
 CMakeFiles/JNAConvert.dir/JNI/TypesDictionnary.cpp.o
  /home/baptiste/git/ParserJNI/JNA/JNI/TypesDictionnary.cpp
+ C/Callback.h
+ C/Consts.h
+ C/Enum.h
+ C/Function.h
+ C/Param.h
+ C/Struct.h
+ C/Typedef.h
+ JNI/Types/AddressWrapper.h
+ JNI/Types/Array.h
+ JNI/Types/BoolWrapper.h
+ JNI/Types/Enum.h
+ JNI/Types/Function.h
+ JNI/Types/NativeType.h
+ JNI/Types/Param.h
+ JNI/Types/Pointer.h
+ JNI/Types/Struct.h
  JNI/Types/Type.h
+ JNI/Types/Typedef.h
  JNI/TypesDictionnary.h
+ Modules/Module.h
+ Modules/ModuleList.h
+ Utils/Displayable.h
+ Utils/Utils.h
 CMakeFiles/JNAConvert.dir/JNI/test.cpp.o
  /home/baptiste/git/ParserJNI/JNA/JNI/test.cpp
  JNI/test.h
@@ -461,8 +757,6 @@ CMakeFiles/JNAConvert.dir/Utils/Parser.cpp.o
  C/Typedef.h
  JNA/JNAParser.h
  JNI/JNIParser.h
- JNI/OutputCpp.h
- JNI/OutputJava.h
  Modules/Module.h
  Modules/ModuleList.h
  Utils/Displayable.h
