@@ -9,7 +9,7 @@ Function::Function(TypesDictionnary *dictionnary)
 
 Function::~Function()
 {
-
+	_args.clear();
 
 }
 

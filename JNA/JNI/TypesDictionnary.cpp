@@ -10,6 +10,7 @@
 using namespace nsJNI;
 using namespace nsC;
 using namespace nsModules;
+
 TYPESDICTIONNARY::TypesDictionnary(string filename)
 {
 	_filename = filename;
@@ -19,7 +20,8 @@ TYPESDICTIONNARY::TypesDictionnary(string filename)
 
 TYPESDICTIONNARY::~TypesDictionnary()
 {
-    
+    _conversionMap.clear();
+    _fcts.clear();
 }
 
 void TYPESDICTIONNARY::addBaseType(string filename)
