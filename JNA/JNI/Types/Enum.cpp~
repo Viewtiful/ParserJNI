@@ -16,15 +16,13 @@ static int nbOfOcc;
 bool Enum::create(ofstream &f, const nsC::Enum::vector& en,
 		TypesDictionnary *dictionnary)
 {
-	cout << "Creating Java enums from \"" << endl;  
-
 	for (nsC::Enum::vector::const_iterator iterator(en.begin());
 			iterator != en.end();
 			++iterator)
 	{
 		const nsC::Enum& CEnum(*iterator);
 
-		string enumName = CEnum.getName();
+		string enumName = CEnum.getName(); //Optimisation à faire (3 fois le même test
 		if(enumName == "") {
 			enumName = CEnum.getTypedef();
       }
@@ -32,7 +30,6 @@ bool Enum::create(ofstream &f, const nsC::Enum::vector& en,
       if(CEnum.getName() != "" && CEnum.getTypedef() != "") {
          enumName = CEnum.getTypedef();
       }
-		cout << "Enum Name = " << enumName << endl;
 		dictionnary->addToMap(enumName, new Enum(f, enumName, enumName, "L" + dictionnary->getFilename() + "$" + enumName + ";", CEnum, dictionnary->getFilename()));
 	}
 	return true;
@@ -95,7 +92,7 @@ void Enum::addEnumToJava(ofstream &f) {
 
 Enum::~Enum()
 {
-
+   delete _cEnum;
 }
 
 std::string Enum::outputJava()
@@ -127,6 +124,11 @@ bool Enum::isAddressWrapper()
 }
 
 bool Enum::isBooleanWrapper()
+{
+	return false;
+}
+
+bool Enum::isArray()
 {
 	return false;
 }

@@ -9,6 +9,7 @@
 #include <string>
 #include <iostream>
 #include <map>
+#include <vector>
 #include "JNI/Types/Type.h"
 #include "JNI/Types/NativeType.h"
 #include "JNI/Types/Typedef.h"
@@ -16,6 +17,7 @@
 #include "JNI/Types/Enum.h"
 #include "JNI/Types/Pointer.h"
 #include "JNI/Types/Array.h"
+#include "JNI/Types/Function.h"
 #include "JNI/Types/BoolWrapper.h"
 #include <cassert>
 #include "Modules/Module.h"
@@ -34,6 +36,7 @@ namespace nsJNI
      * - call outputJava() to write out the resulting Java classes
      */
    class Array;
+   class Function;
     class TypesDictionnary
     {
       public:
@@ -52,16 +55,18 @@ namespace nsJNI
 		string getFilename();
 		int nbIndirections(const string& CType);
 		void addTypedefs(const nsC::Typedef::vector& typedefs);
-		void addStruct(ofstream &f, const nsC::Struct::vector& structs);
+		void addStruct(ofstream &f, ofstream &f2, const nsC::Struct::vector& structs);
 	   	void addEnums(ofstream &f, const nsC::Enum::vector& enums);
 		bool isNativeType(const string &type);
 		Type* getType(const string & Ctype);
-
+		vector<Function*> getFcts();
+      template <typename M> void FreeClear( M & amap ); 
       protected:
 
         /** Add base types (int, size_t, char, those stuff) */
         std::map<std::string, Type*> _conversionMap;
 		string _filename;
+		std::vector<Function*> _fcts;
     };
 }
 

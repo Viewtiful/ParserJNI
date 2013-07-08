@@ -9,6 +9,10 @@ Function::Function(TypesDictionnary *dictionnary)
 
 Function::~Function()
 {
+   for(vector<Param*>::const_iterator it = _args.begin(); it != _args.end(); it++)
+   {
+       delete *it;
+   } 
 	_args.clear();
 
 }

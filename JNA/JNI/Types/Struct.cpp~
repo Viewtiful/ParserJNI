@@ -10,6 +10,7 @@
 using namespace nsJNI;
 using namespace nsUtils;
 using namespace std;
+
 Struct::Struct(ofstream &f, ofstream &f2, const string& VMSignature, const nsC::Struct& cStruct, TypesDictionnary* dictionnary) : Type(VMSignature)
 {
 	this->_cStruct = cStruct;
@@ -51,7 +52,7 @@ void Struct::addStructToJava(ofstream &f)
       "\t\tprivate long mInternal;\n\n"
       "%CONSTRUCTOR%"
       "%FINALIZE%"
-      "%MINTERNAL%
+      "%MINTERNAL%"
       "%WRITE%"
       "%READ%"
 		"\t}\n\n"
@@ -179,8 +180,21 @@ string Struct::generateRead()
 	return read;
 }
 
-Struct::~Struct(){
+Struct::~Struct() {
+   delete _createFunction;
+   delete _freeFunction;
 
+   /*for(vector<Getter*>::const_iterator it = _getters.begin(); it != _getters.end(); it++)
+   {
+       delete *it;
+   } 
+   _getters.clear();
+
+   for(vector<Setter*>::const_iterator it = _setters.begin(); it != _setters.end(); it++)
+   {
+       delete *it;
+   } 
+   _setters.clear();*/
 }        
 
 bool Struct::isNativeType()

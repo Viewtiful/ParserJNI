@@ -62,18 +62,6 @@ void OutputJNI::addNativeFunctionTable(ofstream &f, string filename, vector<nsJN
 		f << "\t{ \"" << fcts[k]->getName() << "\", \"";
 		vector<nsJNI::Param *> prms = fcts[k]->getArgs();
 
-		/*
-		if(prms.size() == 0)
-			f << "()";
-		else {
-			f << "(";
-			for(size_t i = 0; i < prms.size(); ++i) {
-				if(!(prms[i]->getType()=="size_t *"))
-					f << _dictionnary->convertVM(prms[i]->getType()); 
-			}
-			f << ")";
-		}
-		*/
 		f << "(";
 		for(size_t i = 0; i < prms.size(); ++i) {
 			if(!(prms[i]->getType()=="size_t *"))

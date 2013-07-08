@@ -1,15 +1,15 @@
 #include "JNI/JNIParser.h"
 #include <cstdlib>
 #include <iostream>
-#include "JNI/TypesDictionnary.h"
-#include "JNI/OutputJNI.h"
-#include "JNI/OutputJava.h"
 #include <fstream>
 #define JNIPARSER nsJNI::JNIParser
 using namespace nsC;
 using namespace std;
 
 JNIPARSER::~JNIParser() {
+	delete jni;
+	delete java;
+   delete dico;
 }
 
 int JNIPARSER::run(nsModules::Module::vector modules) 
@@ -18,9 +18,9 @@ int JNIPARSER::run(nsModules::Module::vector modules)
 	// Even if the filename ArcanaJNI is correct as a java type, we ensure that.
 	
 	filename = nsUtils::toJavaName(filename, false, false, true);
-	TypesDictionnary *dico = new TypesDictionnary(filename);
-	OutputJNI *jni = new OutputJNI(dico);
-	OutputJava *java = new OutputJava(dico);
+	dico = new TypesDictionnary(filename);
+	jni = new OutputJNI(dico);
+	java = new OutputJava(dico);
 
 	// Get the java path from the command line parameters.
 	string javaPath = nsUtils::Parameters::getInstance().getJavaSrcDir();
@@ -34,7 +34,7 @@ int JNIPARSER::run(nsModules::Module::vector modules)
 	//We add in the header of each file what is specific (include, class def..)
 	java->addClassDefinition(fileJava, filename);
 	jni->addInclude(fileJNI);
-   	jni->addContextWrapper(fileJNI);
+   jni->addContextWrapper(fileJNI);
 		
 	// Getting all the types from all the modules.
 	for(size_t i = 0; i<modules.size(); ++i)
@@ -91,9 +91,21 @@ int JNIPARSER::run(nsModules::Module::vector modules)
 	fileJava << "}" << endl;
 	std::cout << "Nombre de Modules = " << modules.size() << std::endl; 
 
-	delete jni;
-	delete java;
-	delete dico;
+   fileJNI.close();
+   fileJava.close();
+
+   for(vector<nsJNI::Function*>::const_iterator it = saveFcts.begin(); it != saveFcts.end(); it++)
+   {
+       delete *it;
+   } 
+   saveFcts.clear();
+
+   /*for(vector<nsJNI::Function*>::const_iterator it = getSet.begin(); it != getSet.end(); it++)
+   {
+       delete *it;
+   } */
+   getSet.clear();
+
 	return EXIT_SUCCESS;
 }
 

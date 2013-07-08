@@ -7,7 +7,10 @@
 #ifndef __JNI_JNIPARSER_H
 #define __JNI_JNIPARSER_H
 #include "Modules/Module.h"
-//#include "Utils/Parser.h"
+#include "Utils/Parser.h"
+#include "JNI/TypesDictionnary.h"
+#include "JNI/OutputJNI.h"
+#include "JNI/OutputJava.h"
 
 
 /** @addtogroup JNI_parser
@@ -25,6 +28,11 @@ namespace nsJNI {
 			 * signatures and then we write them to a java / c file.
 			*/
 			int run(nsModules::Module::vector modules);
+
+      protected :
+         OutputJNI *jni;
+         OutputJava *java
+         TypesDictionnary *dico;
 	};
 }
 

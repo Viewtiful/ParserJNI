@@ -92,7 +92,6 @@ void Enum::addEnumToJava(ofstream &f) {
 
 Enum::~Enum()
 {
-
 }
 
 std::string Enum::outputJava()

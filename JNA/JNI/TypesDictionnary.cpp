@@ -20,8 +20,17 @@ TYPESDICTIONNARY::TypesDictionnary(string filename)
 
 TYPESDICTIONNARY::~TypesDictionnary()
 {
-    _conversionMap.clear();
+   /*for(std::vector<Function*>::const_iterator it = _fcts.begin(); it != _fcts.end(); it++)
+   {
+       delete *it;
+   } */
     _fcts.clear();
+   /* for ( std::map<std::string, Type*>::iterator it = _conversionMap.begin(); it != _conversionMap.end(); ++it ) {
+        delete it->second;
+    }*/
+    _conversionMap.clear();
+
+
 }
 
 void TYPESDICTIONNARY::addBaseType(string filename)

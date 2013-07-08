@@ -73,7 +73,7 @@ void OutputJava::addBoolWrapper(ofstream &f) {
 void OutputJava::addClassDefinition(ofstream &f, string className) {
 	printJavaHeader(f, "class", className);
 	printLoadLibrary(f, "arcanaJNI");
-   	addAddressWrapper(f);
+   addAddressWrapper(f);
 	addBoolWrapper(f);
 }
 

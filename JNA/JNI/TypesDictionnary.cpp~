@@ -2,9 +2,9 @@
  *
  * Body for TypesDictionnary class
  */
-
-#include <fstream>
+ 
 #include "JNI/TypesDictionnary.h"
+#include <fstream>
 #include <cstdlib>
 #define TYPESDICTIONNARY nsJNI::TypesDictionnary
 using namespace nsJNI;
@@ -20,7 +20,17 @@ TYPESDICTIONNARY::TypesDictionnary(string filename)
 
 TYPESDICTIONNARY::~TypesDictionnary()
 {
-    
+   /*for(std::vector<Function*>::const_iterator it = _fcts.begin(); it != _fcts.end(); it++)
+   {
+       delete *it;
+   } */
+    _fcts.clear();
+    for ( std::map<std::string, Type*>::iterator it = _conversionMap.begin(); it != _conversionMap.end(); ++it ) {
+        delete it->second;
+    }
+    _conversionMap.clear();
+
+
 }
 
 void TYPESDICTIONNARY::addBaseType(string filename)
@@ -116,7 +126,7 @@ string TYPESDICTIONNARY::convertVM(const string& Ctype)
 }
 
 
-void TYPESDICTIONNARY::addStruct(ofstream &f, const nsC::Struct::vector& structs)
+void TYPESDICTIONNARY::addStruct(ofstream &f, ofstream &f2, const nsC::Struct::vector& structs)
 {
 	for (nsC::Struct::vector::const_iterator iterator(structs.begin());
          iterator != structs.end();
@@ -124,22 +134,21 @@ void TYPESDICTIONNARY::addStruct(ofstream &f, const nsC::Struct::vector& structs
    	{
      	const nsC::Struct CStruct(*iterator);
      	
-      	//bool haveName(!CStruct.getName().empty());  <- Unused variable 
       	bool haveTypedef(!CStruct.getTypedef().empty());
       	bool haveFields(CStruct.getFields().size() > 0);
       	bool isTypedefPointer(CStruct.getTypedefIndirection() == 1);
       	bool isDeepPointer(CStruct.getTypedefIndirection() > 1);
 		if(haveTypedef && !haveFields && (isTypedefPointer || isDeepPointer))
-      	{
       		addToMap(CStruct.getTypedef(), new Pointer("J",CStruct.getTypedef(),this,false));
-      		cout << "Typedef = "<< CStruct.getTypedef() << endl;
-      		//_conversionMap[CStruct.getTypedef()] = new Pointer("J",CStruct.getTypedef(),this);
-      	}	
       	else if(haveTypedef && haveFields && !isTypedefPointer && !isDeepPointer)
       	{
-      		addToMap(CStruct.getTypedef(), new Struct(f, f2, "L"+_filename+"$"+CStruct.getTypedef() + ";",CStruct,this));
-      		//_conversionMap[CStruct.getTypedef()] = new Struct("jobject",CStruct,this);
-	    }  	
+      		int size = _fcts.size();
+      		Struct *s = new Struct(f, f2, "L"+_filename+"$"+CStruct.getTypedef() + ";",CStruct,this);
+      		vector<nsJNI::Function*> getSet = s->getGetterSetters();
+      		copy(getSet.begin(),getSet.end(),back_inserter(_fcts));
+      		assert(_fcts.size()==size+getSet.size());
+      		addToMap(CStruct.getTypedef(), s);
+        }  	
    }
   
 }
@@ -151,12 +160,9 @@ void TYPESDICTIONNARY::addEnums(ofstream &f, const nsC::Enum::vector &enums) {
 void TYPESDICTIONNARY::addToMap(const string& cType, Type *type) {
 	size_t size = _conversionMap.size();
 	size_t sizeCType = _conversionMap.count(cType);
-	cout << "insert= "<< cType << endl;
-	cout << cType << ": " << (_conversionMap.count(cType)) << endl ;
 	assert(_conversionMap[cType]==NULL);
 	_conversionMap[cType] = type;
 	assert(_conversionMap[cType]==type);
-	cout << "Size now = " << _conversionMap.size() << " " << "Size before =" << size << endl;
 	assert(_conversionMap.size()==size+1);
 	assert(_conversionMap.count(cType)==sizeCType+1);
 }
@@ -164,6 +170,11 @@ void TYPESDICTIONNARY::addToMap(const string& cType, Type *type) {
 string TYPESDICTIONNARY::getFilename()
 {
 	return _filename;
+}
+
+vector<nsJNI::Function*> TYPESDICTIONNARY::getFcts()
+{ 
+	return _fcts;
 }
 #undef TYPESDICTIONNARY
 
