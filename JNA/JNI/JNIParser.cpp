@@ -8,6 +8,7 @@
 #define JNIPARSER nsJNI::JNIParser
 using namespace nsC;
 using namespace std;
+
 JNIPARSER::~JNIParser() {
 }
 
@@ -24,9 +25,10 @@ int JNIPARSER::run(nsModules::Module::vector modules)
 	// Get the java path from the command line parameters.
 	string javaPath = nsUtils::Parameters::getInstance().getJavaSrcDir();
 	// Creating the real path with the name of the file.
-	string realPath = nsUtils::createJavaFileName(javaPath, "", filename);
-	ofstream f(realPath.c_str());   //It seems well better now !
-	ofstream f2("ArcanaJNI.c");
+	string realJavaPath = nsUtils::createJavaFileName(javaPath, "", filename);
+	ofstream f(realJavaPath.c_str());   //It seems well better now !
+	string realJNIPath = nsUtils::createJNIFileName(javaPath, filename);
+	ofstream f2(realJNIPath.c_str());
 	java->addClassDefinition(f, filename);
 	jni->addInclude(f2);
    	jni->addContextWrapper(f2);

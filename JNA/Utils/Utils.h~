@@ -36,7 +36,7 @@ namespace nsUtils
                                    const std::string& className);
 
     std::string createJNIFileName(const std::string& srcDir,
-                                   const std::string& fileName);
+                                   const std::string& className);
 
     void makeDir(const std::string& path);
 

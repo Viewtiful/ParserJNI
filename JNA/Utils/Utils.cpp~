@@ -67,7 +67,7 @@ string nsUtils::createJNIFileName(const string& srcDir,
                                    const string& fileName)
 {
     return srcDir + '/' + 
-           fileName + ".c";
+           className + ".c";
 }
 
 void nsUtils::makeDir(const string& path)
