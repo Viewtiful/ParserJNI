@@ -24,68 +24,71 @@ int JNIPARSER::run(nsModules::Module::vector modules)
 
 	// Get the java path from the command line parameters.
 	string javaPath = nsUtils::Parameters::getInstance().getJavaSrcDir();
-	// Creating the real path with the name of the file.
+	// Creating the real path with the name of the file for Java.
 	string realJavaPath = nsUtils::createJavaFileName(javaPath, "", filename);
-	ofstream f(realJavaPath.c_str());   //It seems well better now !
+	ofstream fileJava(realJavaPath.c_str());   //It seems well better now !
+	//Same thing for the JNI file.
 	string realJNIPath = nsUtils::createJNIFileName(javaPath, filename);
-	ofstream f2(realJNIPath.c_str());
-	java->addClassDefinition(f, filename);
-	jni->addInclude(f2);
-   	jni->addContextWrapper(f2);
-	vector<Function*> gettersSetters;
+	ofstream fileJNI(realJNIPath.c_str());
+
+	//We add in the header of each file what is specific (include, class def..)
+	java->addClassDefinition(fileJava, filename);
+	jni->addInclude(fileJNI);
+   	jni->addContextWrapper(fileJNI);
 		
 	// Getting all the types from all the modules.
 	for(size_t i = 0; i<modules.size(); ++i)
 	{
 		// If there is enums, adding them.
 		if(modules[i].getEnums().size() > 0)
-			dico->addEnums(f, modules[i].getEnums());
+			dico->addEnums(fileJava, modules[i].getEnums());
 		// Same thing for structures, adding them after enums because structs
 		// can use enum type.
 		if(modules[i].getStructs().size() > 0)
-			dico->addStruct(f, f2, modules[i].getStructs());
+			dico->addStruct(fileJava, fileJNI, modules[i].getStructs());
 			
 	}
 
-	cout << "modules.size : " << modules.size() << endl;
-//
+	//We get all the functions from the header files for the future table
+	//of native functions.
 	vector<nsJNI::Function*> saveFcts;
+
+	//We also get all functions created for the structure, like create,get,set..
+	//We get them for the future table of native functions.
 	vector<nsJNI::Function*> getSet;
 	getSet = dico->getFcts();
-	cout << "SaveFctsSize : " << saveFcts.size() << endl;
-	cout << "JNIParser size : " << getSet.size() << endl;
+
+	//We copy in saved functions, all the functions from the structures.
 	copy(getSet.begin(),getSet.end(),back_inserter(saveFcts));
-	cout << "JNIParser size : " << getSet.size() << endl;
 	
-	cout << "SaveFctsSize : " << saveFcts.size() << endl;
 	// Converting everything to JNI and Java.
 	for(size_t i = 0; i<modules.size(); i++)
 	{
-		nsC::Callback::vector calls = modules[i].getCallbacks();
+		//For each module, we get all the functions and we convert them to
+		//Java and JNI.
 		nsC::Function::vector fcts = modules[i].getFunctions();
-		cout << "Show Callbacks" << endl;
-		for(size_t l = 0;l<calls.size();l++)
-			cout << calls[l] << endl;
+
 		for(size_t k = 0;k<fcts.size();k++)
 		{
 			nsJNI::Function *fct = new Function(dico);
 			saveFcts.push_back(fct);
 			fct->create(fcts[k]);
-			java->convert(f,fct);
-			jni->convert(f2,fct);
+			java->convert(fileJava,fct);
+			jni->convert(fileJNI,fct);
 
 		}
-		cout << "Java" << endl;
-	cout << "1" << endl;
-		cout << "Nom du module : " << modules[i].getModuleName() << endl;
-		cout << "2" <<endl;
 	}
 	
-	jni->addNativeFunctionTable(f2, filename, saveFcts);
-	
-	jni->generateJNIOnload(f2, filename);
+	//We then, generate the table of native functions. This is used for linking
+	//the Java part and the JNI part.
+	jni->addNativeFunctionTable(fileJNI, filename, saveFcts);
+
+	//This part generate the function JNI_LOAD. This is the first function that
+	//is checked by the VM.
+	jni->generateJNIOnload(fileJNI, filename);
+
 	// Just for tests !
-	f << "}" << endl;
+	fileJava << "}" << endl;
 	std::cout << "Nombre de Modules = " << modules.size() << std::endl; 
 
 	delete jni;
