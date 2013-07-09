@@ -34,11 +34,12 @@ void Setter::printPrototypeJNI(ofstream &f)
 
 void Setter::printContentJNI(ofstream &f)
 {
+  Type * type = _dictionnary->getType(_args[1]->getType());
 	f << "{\n\n";
 	string body = "\t\t%CLASSNAME% *C_ctx = (%CLASSNAME% *)mInternal;\n"
       "%WRITEFIELD%";
      string writeField;
-	if(_dictionnary->convertJNI(_args[1]->getType())=="jobject")
+	if(_dictionnary->convertJNI(_args[1]->getType()) == "jobject")
 	{
 		writeField = "\t\tjclass enm_%ATTRIBUTENAME%;\n"
 		"\t\tenm_%ATTRIBUTENAME% = (*env)->GetObjectClass(env, %ATTRIBUTENAME%);\n"
@@ -48,6 +49,13 @@ void Setter::printContentJNI(ofstream &f)
 		"\t\tC_ctx->%ATTRIBUTENAME% = C_%ATTRIBUTENAME%;\n";
 		stringReplace(writeField, "Type", _args[1]->getType());
 	}
+   else if( (_dictionnary->convertJNI(_args[1]->getType()) == "jlong") && !(type->isNativeType())) {
+		writeField = "\t\tC_ctx->%ATTRIBUTENAME% = %FIELDNAME%;\n"
+                   "\t\tC_ctx->%ATTRIBUTENAME% = (%CTYPE%)((contextWrapper *)%ATTRIBUTENAME%)->ctxRef;\n"
+                   "\t\t((contextWrapper *)%ATTRIBUTENAME%)->env = env;\n";
+	   	stringReplace(writeField, "FIELDNAME", _args[1]->getName());
+	   	stringReplace(writeField, "CTYPE", _args[1]->getType());
+   }
 	else
 	{
 		writeField = "\t\tC_ctx->%ATTRIBUTENAME% = %FIELDNAME%;\n";

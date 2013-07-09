@@ -27,17 +27,15 @@ void Setter::create(nsC::Param& param)
 
 void Setter::printPrototypeJNI(ofstream &f)
 {
-	cout << "returnType = " << _returnType << endl;
 	string returnType;
 	returnType = _dictionnary->convertJNI(_returnType);
-	cout << "returnType = " << returnType << endl;
 	f << "\t" << "JNIEXPORT " << returnType << " JNICALL " << "JNI_" << _name;
 }
 
 void Setter::printContentJNI(ofstream &f)
 {
 	f << "{\n\n";
-	string body = "\t\t%CLASSNAME% *C_ctx = (%CLASSNAME% *)stru;\n"
+	string body = "\t\t%CLASSNAME% *C_ctx = (%CLASSNAME% *)mInternal;\n"
       "%WRITEFIELD%";
      string writeField;
 	if(_dictionnary->convertJNI(_args[1]->getType())=="jobject")
@@ -48,18 +46,15 @@ void Setter::printContentJNI(ofstream &f)
 		"\t\tjint %ATTRIBUTENAME%_value = (*env)->CallIntMethod(env, %ATTRIBUTENAME%, get_%ATTRIBUTENAME%);\n"
 		"\t\t%Type% C_%ATTRIBUTENAME% = (%Type%)%ATTRIBUTENAME%_value;\n"
 		"\t\tC_ctx->%ATTRIBUTENAME% = C_%ATTRIBUTENAME%;\n";
-		
-		stringReplace(writeField, "ATTRIBUTENAME", _args[1]->getName());
 		stringReplace(writeField, "Type", _args[1]->getType());
 	}
 	else
 	{
 		writeField = "\t\tC_ctx->%ATTRIBUTENAME% = %FIELDNAME%;\n";
-
-	   stringReplace(writeField, "ATTRIBUTENAME", _args[1]->getName());
-	   stringReplace(writeField, "FIELDNAME", _args[1]->getName());
-	
+	   	stringReplace(writeField, "FIELDNAME", _args[1]->getName());
 	}
+	
+	stringReplace(writeField, "ATTRIBUTENAME", _args[1]->getName());
 	stringReplace(body, "CLASSNAME", _structName);
 	stringReplace(body, "WRITEFIELD", writeField);
 

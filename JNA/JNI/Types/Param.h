@@ -39,7 +39,6 @@ namespace nsJNI {
 		virtual ~Param();
 		std::string& getType();
         std::string& getName();
-        bool isNativeType();
       protected:
       	string _type; /*!< Type of the parameter*/
       	string _name; /*!< Name of the parameter*/
