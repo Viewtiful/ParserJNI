@@ -18,8 +18,6 @@ Struct::Struct(ofstream &f, ofstream &f2, const string& VMSignature, const nsC::
 	this->_jniType = "jobject";
 	toupper(_cStruct.getTypedef()[0]);
 	this->_javaType = cStruct.getTypedef();
-   //addStructToJava(f);
-   //addStructFunctionToJNI(f2);
 }
 
 
@@ -181,20 +179,6 @@ string Struct::generateRead()
 }
 
 Struct::~Struct() {
-   delete _createFunction;
-   delete _freeFunction;
-
-   for(vector<Getter*>::const_iterator it = _getters.begin(); it != _getters.end(); it++)
-   {
-       delete *it;
-   } 
-   _getters.clear();
-
-   for(vector<Setter*>::const_iterator it = _setters.begin(); it != _setters.end(); it++)
-   {
-       delete *it;
-   } 
-   _setters.clear();
 }        
 
 bool Struct::isNativeType()

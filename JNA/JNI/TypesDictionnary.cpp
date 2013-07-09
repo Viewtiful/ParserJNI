@@ -20,14 +20,12 @@ TYPESDICTIONNARY::TypesDictionnary(string filename)
 
 TYPESDICTIONNARY::~TypesDictionnary()
 {
-   /*for(std::vector<Function*>::const_iterator it = _fcts.begin(); it != _fcts.end(); it++)
-   {
-       delete *it;
-   } */
     _fcts.clear();
-   /* for ( std::map<std::string, Type*>::iterator it = _conversionMap.begin(); it != _conversionMap.end(); ++it ) {
+
+    for ( std::map<std::string, Type*>::iterator it = _conversionMap.begin(); it != _conversionMap.end(); ++it ) {
         delete it->second;
-    }*/
+    }
+
     _conversionMap.clear();
 
 
@@ -145,12 +143,7 @@ void TYPESDICTIONNARY::addStruct(ofstream &f, ofstream &f2, const nsC::Struct::v
       		{
       			int size = _fcts.size();
       			Struct *s = new Struct(f, f2, "L"+_filename+"$"+CStruct.getTypedef() + ";",CStruct,this);
-	/*
-      			vector<nsJNI::Function*> getSet = s->getGetterSetters();
-      			copy(getSet.begin(),getSet.end(),back_inserter(_fcts));
-      			assert(_fcts.size()==size+getSet.size());
-	*/
-      			addToMap(CStruct.getTypedef(), s);
+			addToMap(CStruct.getTypedef(), s);
 			createdStruct.push_back(s);
         	}  	
    	}
@@ -161,9 +154,9 @@ void TYPESDICTIONNARY::addStruct(ofstream &f, ofstream &f2, const nsC::Struct::v
 		current->addStructFunctionToJNI(f2);
 		vector<nsJNI::Function*> getSet = current->getGetterSetters();
       		copy(getSet.begin(),getSet.end(),back_inserter(_fcts));
-      		//assert(_fcts.size()==size+getSet.size());
-		getSet.clear();
-      	}	
+      		getSet.clear();
+      	}
+	createdStruct.clear();	
   		
 }
 

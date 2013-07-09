@@ -48,15 +48,6 @@ int JNIPARSER::run(nsModules::Module::vector modules)
 		copy(moduleStructs.begin(), moduleStructs.end(), back_inserter(structs));
 
 		
-		// If there is enums, adding them.
-		/*if(modules[i].getEnums().size() > 0)
-			dico->addEnums(fileJava, modules[i].getEnums());
-		*/
-		// Same thing for structures, adding them after enums because structs
-		// can use enum type.
-		/*if(modules[i].getStructs().size() > 0)
-			dico->addStruct(fileJava, fileJNI, modules[i].getStructs());
-		*/
 		moduleEnums.clear();
 		moduleStructs.clear();	
 	}
@@ -113,15 +104,10 @@ int JNIPARSER::run(nsModules::Module::vector modules)
        delete *it;
 
    saveFcts.clear();
-
-   /*for(vector<nsJNI::Function*>::const_iterator it = getSet.begin(); it != getSet.end(); it++)
-   {
-       delete *it;
-   }*/
    getSet.clear();
    enums.clear();
    structs.clear();
-	
+   		
    return EXIT_SUCCESS;
 }
 
