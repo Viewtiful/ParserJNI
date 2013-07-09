@@ -77,6 +77,7 @@ void OutputJNI::addNativeFunctionTable(ofstream &f, string filename, vector<nsJN
 		f << "\", (void *)" << "JNI_" << fcts[k]->getName() << " }";
 		if(fcts.size() > 1 && k < fcts.size() - 1)
 			f << ",\n";
+		prms.clear();
 	}
 	f << "};\n\n";
 

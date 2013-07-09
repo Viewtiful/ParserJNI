@@ -9,7 +9,7 @@ using namespace std;
 JNIPARSER::~JNIParser() {
 	delete jni;
 	delete java;
-   delete dico;
+	delete dico;
 }
 
 int JNIPARSER::run(nsModules::Module::vector modules) 
@@ -56,7 +56,9 @@ int JNIPARSER::run(nsModules::Module::vector modules)
 		// can use enum type.
 		/*if(modules[i].getStructs().size() > 0)
 			dico->addStruct(fileJava, fileJNI, modules[i].getStructs());
-		*/	
+		*/
+		moduleEnums.clear();
+		moduleStructs.clear();	
 	}
 	dico->addEnums(fileJava, enums);
 	dico->addStruct(fileJava, fileJNI, structs);
@@ -89,6 +91,7 @@ int JNIPARSER::run(nsModules::Module::vector modules)
 			jni->convert(fileJNI,fct);
 
 		}
+		fcts.clear();
 	}
 	
 	//We then, generate the table of native functions. This is used for linking
@@ -107,18 +110,19 @@ int JNIPARSER::run(nsModules::Module::vector modules)
    fileJava.close();
 
    for(vector<nsJNI::Function*>::const_iterator it = saveFcts.begin(); it != saveFcts.end(); it++)
-   {
        delete *it;
-   } 
+
    saveFcts.clear();
 
    /*for(vector<nsJNI::Function*>::const_iterator it = getSet.begin(); it != getSet.end(); it++)
    {
        delete *it;
-   } */
+   }*/
    getSet.clear();
-
-	return EXIT_SUCCESS;
+   enums.clear();
+   structs.clear();
+	
+   return EXIT_SUCCESS;
 }
 
 #undef JNIPARSER
