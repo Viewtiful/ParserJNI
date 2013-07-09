@@ -13,7 +13,15 @@ namespace nsJNI
 	class Create : public Function
 	{
 		public : 
+		/*!
+			\brief constructor with two parameters
+			Create, and initialize a Create Function with the following arguments
+			\param structName : Struct's name which contains this method
+			\param dictionnary : dictionnary of all type
+	        */
+	
 			Create(string structName, TypesDictionnary * dictionnary);
+		
 			virtual ~Create();
 			void create();
 			void printPrototypeJNI(ofstream &f);
@@ -22,8 +30,8 @@ namespace nsJNI
 			void printContentJNI(ofstream &f);
 			void prepareCall(ofstream &f);
 		private:
-			string _structName;
-			nsJNI::Param *_handledVariable; 
+			string _structName; /*!< The structure's name*/
+			nsJNI::Param *_handledVariable; /*!< Variable Name*/ 
 	
 	};
 

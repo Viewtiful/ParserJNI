@@ -29,8 +29,8 @@ namespace nsJNI {
       	\brief destructor
       */
         virtual ~NativeType();
-		NativeType(const string& javaType,const string& jniType,const string& VMSignature,bool isNativeType);
-		NativeType(const string& javaType, const string& jniType,const string& CType,const string& VMSignature,bool isNativeType);
+	NativeType(const string& javaType,const string& jniType,const string& VMSignature,bool isNativeType);
+	NativeType(const string& javaType, const string& jniType,const string& CType,const string& VMSignature,bool isNativeType);
         std::string outputJava();
         std::string outputJNI();
         bool isNativeType();
@@ -41,10 +41,11 @@ namespace nsJNI {
         string getJNIParameterName(string& varName);
         void getReturnValue(ofstream& f);
         string getCType();
+
         protected:
-        bool _isNativeType;
-        string _jniType;
-        string _CType;
+        bool _isNativeType; /*!< is a NativeType?*/
+        string _jniType; /*!< The jniType*/
+        string _CType; /*!< The C Type*/
        
     };
 }

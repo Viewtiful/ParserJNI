@@ -141,13 +141,12 @@ void TYPESDICTIONNARY::addStruct(ofstream &f, ofstream &f2, const nsC::Struct::v
       			addToMap(CStruct.getTypedef(), new Pointer("J",CStruct.getTypedef(),this,false));
       		else if(haveTypedef && haveFields && !isTypedefPointer && !isDeepPointer)
       		{
-      			int size = _fcts.size();
       			Struct *s = new Struct(f, f2, "L"+_filename+"$"+CStruct.getTypedef() + ";",CStruct,this);
 			addToMap(CStruct.getTypedef(), s);
 			createdStruct.push_back(s);
         	}  	
    	}
-	for(int i = 0;i<createdStruct.size();i++)
+	for(size_t i = 0;i<createdStruct.size();i++)
 	{
 		Struct *current = createdStruct[i];
 		current->addStructToJava(f);

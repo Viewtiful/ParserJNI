@@ -13,6 +13,13 @@ namespace nsJNI
 	class Free : public Function
 	{
 		public : 
+		/*!
+			\brief constructor with two parameters
+			Create, and initialize a Free Function with the following arguments
+			\param structName : Struct's name which contains this method
+			\param dictionnary : dictionnary of all type
+	        */
+
 			Free(string structName, TypesDictionnary * dictionnary);
 			virtual ~Free();
 			void create();
@@ -22,8 +29,8 @@ namespace nsJNI
 			void printContentJNI(ofstream &f);
 			void prepareCall(ofstream &f);
 		private:
-			string _structName;
-			nsJNI::Param *_handledVariable; 
+			string _structName; /*!< The structure's name*/
+			nsJNI::Param *_handledVariable; /*!< Variable Name*/ 
 	
 	};
 

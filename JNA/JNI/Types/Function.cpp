@@ -113,7 +113,7 @@ void Function::printContentJNI(ofstream &f)
 	if(!(_returnType=="void"))
 		f << "\t\t" << _dictionnary->convertJNI(_returnType) << " " << "JNI_result;\n\n";
 
-	for(int i = 0; i < _args.size(); ++i) {
+	for(size_t i = 0; i < _args.size(); ++i) {
 		Type * param = _dictionnary->getType(_args[i]->getType());
 
 		param->prepareCall(f, _args[i]->getName());
@@ -121,7 +121,7 @@ void Function::printContentJNI(ofstream &f)
 
    callNativeMethod(f);
 
-	for(int i = 0; i < _args.size(); ++i) {
+	for(size_t i = 0; i < _args.size(); ++i) {
 		Type * param = _dictionnary->getType(_args[i]->getType());
 
       if(param->isAddressWrapper() || param->isBooleanWrapper())
@@ -176,7 +176,7 @@ void Function::callNativeMethod(ofstream &f) {
    stringReplace(structure, "METHODNAME", _name);
 
    string params;
-   for(int i = 0; i < _args.size(); ++i) {
+   for(size_t i = 0; i < _args.size(); ++i) {
       string param ("%PARAMNAME%");
       if(i+1 < _args.size())
          param = param + ", ";

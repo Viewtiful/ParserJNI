@@ -32,11 +32,18 @@ namespace nsJNI {
       	\brief destructor
       */
         virtual ~Array();
-		Array(const string& CBaseType, const string& vmSignature, TypesDictionnary *dictionnary) ;
-		std::string outputJava();
+	/*!
+        	\brief constructor with three parameters
+        	Create, and initialize an Array with the following arguments
+        	\param CBaseType : Base C array type such as int for int[]
+        	\param VMSIgnature : signature for the java Virtual Machine
+		\param dictionnary : dictionnary of all type
+        */
+	Array(const string& CBaseType, const string& vmSignature, TypesDictionnary *dictionnary) ;
+	std::string outputJava();
         std::string outputJNI() ;
         bool isNativeType();
-		  bool isAddressWrapper();
+	bool isAddressWrapper();
         bool isBooleanWrapper();
         bool isArray();
         void prepareCall(ofstream& f,std::string& varName);
@@ -45,9 +52,9 @@ namespace nsJNI {
         void getReturnValueAndFree(ofstream& f);
         
       protected:
-        TypesDictionnary* _dictionnary;
-        std::string _CBaseType;
-        string _varName;
+        TypesDictionnary* _dictionnary; /*!< dictionnary of all type*/
+        std::string _CBaseType; /*!< C Base Type*/
+        string _varName; /*!< Variable name*/
     };
 }
 

@@ -11,7 +11,6 @@
 using namespace nsJNI;
 using namespace nsUtils;
 
-static int nbOfOcc;
 
 bool Enum::create(ofstream &f, const nsC::Enum::vector& en,
 		TypesDictionnary *dictionnary)
@@ -62,7 +61,7 @@ void Enum::addEnumToJava(ofstream &f) {
 	const nsC::Enum::EnumValues& values(_cEnum.getValues());
 	string fields;
 	
-	for(int i = 0; i < values.size(); ++i)
+	for(size_t i = 0; i < values.size(); ++i)
 	{	
 		string field("\t\t%VALUE1% (%VALUE2%)");
 		if(i+1 < values.size())

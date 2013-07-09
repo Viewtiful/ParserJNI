@@ -45,7 +45,7 @@ namespace nsJNI {
         
       	protected:
       	string _realCType;
-         string _varName;
+        string _varName;
     };
 }
 

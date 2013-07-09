@@ -50,6 +50,10 @@ namespace nsJNI {
         bool isArray();
         void prepareCall(ofstream& f,string& varName);
         string getJNIParameterName(string& varName);
+		/*!
+			\brief Generate 
+			\return the JNI Type
+		*/
         string generateGetter(bool java, const string& fieldType,const string& fieldName);
         string generateSetter(bool java, const string& fieldType,const string& fieldName);
         string generateConstructor();

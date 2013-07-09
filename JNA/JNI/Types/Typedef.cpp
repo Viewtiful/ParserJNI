@@ -22,7 +22,7 @@ std::string Typedef::outputJava()
 
 std::string Typedef::outputJNI()
 {
-	
+	return "JNI";	
 }
 
 string Typedef::getTargetType()

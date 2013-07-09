@@ -13,6 +13,13 @@ namespace nsJNI
 	class Setter : public Function
 	{
 		public : 
+		/*!
+			\brief constructor with three parameters
+			Create, and initialize a Setter with the following arguments
+			\param param : parametter that the getter can modify
+			\param structName : Struct's name which contains this method
+			\param dictionnary : dictionnary of all type
+	        */
 			Setter(nsC::Param& param,string structName, TypesDictionnary * dictionnary);
 			virtual ~Setter();
 			void create(nsC::Param& param);
@@ -22,8 +29,8 @@ namespace nsJNI
 			void printContentJNI(ofstream &f);
 			void prepareCall(ofstream &f);
 		private:
-			string _structName;
-			nsJNI::Param *_handledVariable; 
+			string _structName;/*!< The structure's name*/
+			nsJNI::Param *_handledVariable; /*!< Variable Name*/
 	
 	};
 

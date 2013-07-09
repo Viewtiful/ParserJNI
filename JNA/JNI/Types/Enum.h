@@ -42,9 +42,9 @@ namespace nsJNI{
         void getReturnValue(ofstream& f);
         
       protected : 
-         nsC::Enum _cEnum;
-         string _filename;
-         string _enumName;
+         nsC::Enum _cEnum; /*!< Objetc which represents the C Enum*/
+         string _filename; /*!< fileName*/
+         string _enumName; /*!< Name of the current Name*/
 
          Enum(ofstream &f, const string& javaType,const string& jniType,const string& vmSignature,const nsC::Enum& cEnum, string filename);
 	};

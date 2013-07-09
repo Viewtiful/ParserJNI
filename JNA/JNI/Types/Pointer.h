@@ -52,7 +52,7 @@ namespace nsJNI {
       protected:
         std::string _CBaseType; /*!< The pointer's C Type*/
         TypesDictionnary* _dictionnary/*!< Dictionnary of types*/;
-        bool _isNativeType;
+        bool _isNativeType; /*!< is a NativeType?*/
     };
 }
 

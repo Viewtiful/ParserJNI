@@ -50,10 +50,6 @@ void Getter::printContentJNI(ofstream &f)
 
 void Getter::prepareCall(ofstream &f)
 {
-
-
-
-
 }
 
 string Getter::call()
