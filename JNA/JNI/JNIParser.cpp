@@ -14,11 +14,13 @@ JNIPARSER::~JNIParser() {
 
 int JNIPARSER::run(nsModules::Module::vector modules) 
 {
+	vector<nsC::Enum> enums;
+	vector<nsC::Struct> structs;
 	string filename = "ArcanaJNI";
 	// Even if the filename ArcanaJNI is correct as a java type, we ensure that.
 	
 	filename = nsUtils::toJavaName(filename, false, false, true);
-	dico = new TypesDictionnary(filename);
+	dico = new TypesDictionnary(filename);	
 	jni = new OutputJNI(dico);
 	java = new OutputJava(dico);
 
@@ -34,21 +36,30 @@ int JNIPARSER::run(nsModules::Module::vector modules)
 	//We add in the header of each file what is specific (include, class def..)
 	java->addClassDefinition(fileJava, filename);
 	jni->addInclude(fileJNI);
-   jni->addContextWrapper(fileJNI);
+	jni->addContextWrapper(fileJNI);
 		
 	// Getting all the types from all the modules.
 	for(size_t i = 0; i<modules.size(); ++i)
 	{
+		vector<nsC::Enum> moduleEnums = modules[i].getEnums();
+		vector<nsC::Struct> moduleStructs = modules[i].getStructs();
+
+		copy(moduleEnums.begin(), moduleEnums.end(), back_inserter(enums));
+		copy(moduleStructs.begin(), moduleStructs.end(), back_inserter(structs));
+
+		
 		// If there is enums, adding them.
-		if(modules[i].getEnums().size() > 0)
+		/*if(modules[i].getEnums().size() > 0)
 			dico->addEnums(fileJava, modules[i].getEnums());
+		*/
 		// Same thing for structures, adding them after enums because structs
 		// can use enum type.
-		if(modules[i].getStructs().size() > 0)
+		/*if(modules[i].getStructs().size() > 0)
 			dico->addStruct(fileJava, fileJNI, modules[i].getStructs());
-			
+		*/	
 	}
-
+	dico->addEnums(fileJava, enums);
+	dico->addStruct(fileJava, fileJNI, structs);
 	//We get all the functions from the header files for the future table
 	//of native functions.
 	vector<nsJNI::Function*> saveFcts;
@@ -70,6 +81,7 @@ int JNIPARSER::run(nsModules::Module::vector modules)
 
 		for(size_t k = 0;k<fcts.size();k++)
 		{
+			cout << "Commentaires = " << fcts[k].getComment() << endl;
 			nsJNI::Function *fct = new Function(dico);
 			saveFcts.push_back(fct);
 			fct->create(fcts[k]);

@@ -18,8 +18,8 @@ Struct::Struct(ofstream &f, ofstream &f2, const string& VMSignature, const nsC::
 	this->_jniType = "jobject";
 	toupper(_cStruct.getTypedef()[0]);
 	this->_javaType = cStruct.getTypedef();
-   addStructToJava(f);
-   addStructFunctionToJNI(f2);
+   //addStructToJava(f);
+   //addStructFunctionToJNI(f2);
 }
 
 

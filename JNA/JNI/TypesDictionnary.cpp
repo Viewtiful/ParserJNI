@@ -128,29 +128,43 @@ string TYPESDICTIONNARY::convertVM(const string& Ctype)
 
 void TYPESDICTIONNARY::addStruct(ofstream &f, ofstream &f2, const nsC::Struct::vector& structs)
 {
+	std::vector<Struct*> createdStruct;
 	for (nsC::Struct::vector::const_iterator iterator(structs.begin());
          iterator != structs.end();
          ++iterator)
    	{
-     	const nsC::Struct CStruct(*iterator);
+     		const nsC::Struct CStruct(*iterator);
      	
-      	bool haveTypedef(!CStruct.getTypedef().empty());
-      	bool haveFields(CStruct.getFields().size() > 0);
-      	bool isTypedefPointer(CStruct.getTypedefIndirection() == 1);
-      	bool isDeepPointer(CStruct.getTypedefIndirection() > 1);
+      		bool haveTypedef(!CStruct.getTypedef().empty());
+      		bool haveFields(CStruct.getFields().size() > 0);
+      		bool isTypedefPointer(CStruct.getTypedefIndirection() == 1);
+      		bool isDeepPointer(CStruct.getTypedefIndirection() > 1);
 		if(haveTypedef && !haveFields && (isTypedefPointer || isDeepPointer))
-      		addToMap(CStruct.getTypedef(), new Pointer("J",CStruct.getTypedef(),this,false));
-      	else if(haveTypedef && haveFields && !isTypedefPointer && !isDeepPointer)
-      	{
-      		int size = _fcts.size();
-      		Struct *s = new Struct(f, f2, "L"+_filename+"$"+CStruct.getTypedef() + ";",CStruct,this);
-      		vector<nsJNI::Function*> getSet = s->getGetterSetters();
+      			addToMap(CStruct.getTypedef(), new Pointer("J",CStruct.getTypedef(),this,false));
+      		else if(haveTypedef && haveFields && !isTypedefPointer && !isDeepPointer)
+      		{
+      			int size = _fcts.size();
+      			Struct *s = new Struct(f, f2, "L"+_filename+"$"+CStruct.getTypedef() + ";",CStruct,this);
+	/*
+      			vector<nsJNI::Function*> getSet = s->getGetterSetters();
+      			copy(getSet.begin(),getSet.end(),back_inserter(_fcts));
+      			assert(_fcts.size()==size+getSet.size());
+	*/
+      			addToMap(CStruct.getTypedef(), s);
+			createdStruct.push_back(s);
+        	}  	
+   	}
+	for(int i = 0;i<createdStruct.size();i++)
+	{
+		Struct *current = createdStruct[i];
+		current->addStructToJava(f);
+		current->addStructFunctionToJNI(f2);
+		vector<nsJNI::Function*> getSet = current->getGetterSetters();
       		copy(getSet.begin(),getSet.end(),back_inserter(_fcts));
-      		assert(_fcts.size()==size+getSet.size());
-      		addToMap(CStruct.getTypedef(), s);
-        }  	
-   }
-  
+      		//assert(_fcts.size()==size+getSet.size());
+		getSet.clear();
+      	}	
+  		
 }
 
 void TYPESDICTIONNARY::addEnums(ofstream &f, const nsC::Enum::vector &enums) {
