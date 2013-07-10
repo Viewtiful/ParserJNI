@@ -108,7 +108,7 @@ void Array::getReturnValueAndFree(ofstream& f)
    stringReplace(structure, "TYPEMAJ", typeMaj);
    stringReplace(structure, "CNAME", _varName);
    stringReplace(structure, "NAME", "C_" + _varName);
-   stringReplace(structure, "CNAMELENGTH", "C_" + _varName + "_length");
+   stringReplace(structure, "CNAMELENGTH", "C_" + _varName + "_size");
 
    f << structure;
 }

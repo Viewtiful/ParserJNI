@@ -21,7 +21,11 @@ void Getter::create(nsC::Param& param)
 {
 	_name = "gen_jni_" +_structName + "_" + "get" + "_" +param.getName();
 	_args.push_back(new nsJNI::Param("long","mInternal"));
-	_returnType = param.getCType();
+
+   if(param.getCType()  == "const void *" || param.getCType()  == "void *")
+      _returnType = param.getCType() + "Array";
+   else
+	   _returnType = param.getCType();
 }
 
 void Getter::printPrototypeJNI(ofstream &f)
@@ -36,23 +40,32 @@ void Getter::printPrototypeJNI(ofstream &f)
 void Getter::printContentJNI(ofstream &f)
 {
 	f << "{\n\n";
-	string structure(
+	string structure;
+
+   if(_dictionnary->convertJNI(_returnType) == "jbyteArray") {
+      structure =
+            "\t\t%CLASSNAME% *C_ctx = (%CLASSNAME% *)mInternal;\n\n"
+            "\t\tjbyteArray result = (*env)->NewByteArray(env, C_ctx->%ATTRIBUTENAME%_size);\n"
+            "\t\t(*env)->SetByteArrayRegion(env, jbyteArray, 0, C_ctx->%ATTRIBUTENAME%_size, C_ctx->%ATTRIBUTENAME%);\n"
+            "\t\treturn result;\n"
+            ;
+   }
+   else {
+      structure =
             "\t\t%CLASSNAME% *C_ctx = (%CLASSNAME% *)mInternal;\n"
             "\t\treturn C_ctx->%ATTRIBUTENAME%;\n"
-            );
+            ;
+   }
 
 	stringReplace(structure,"CLASSNAME",_structName);
 	stringReplace(structure,"ATTRIBUTENAME",_fieldName);
+
 	f << structure;
 	f << "\t}\n\n";
 }
 
 void Getter::prepareCall(ofstream &f)
 {
-
-
-
-
 }
 
 string Getter::call()

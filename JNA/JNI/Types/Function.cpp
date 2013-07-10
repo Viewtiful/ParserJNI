@@ -177,18 +177,27 @@ void Function::callNativeMethod(ofstream &f) {
 
    string params;
    for(size_t i = 0; i < _args.size(); ++i) {
-      string param ("%PARAMNAME%");
-      if(i+1 < _args.size())
-         param = param + ", ";
 
+      string param ("%PARAMNAME%");
       Type *typeRetour = _dictionnary->getType(_args[i]->getType());
 
-      if(_args[i]->getType() == "bool *" || _args[i]->getType() == "size_t *" || typeRetour->isAddressWrapper())
+      if(_args[i]->getType() == "bool *" || _args[i]->getType() == "size_t *" || typeRetour->isAddressWrapper()) {
          stringReplace(param, "PARAMNAME", "&C_" + _args[i]->getName());
-      else
+      }      
+      else if(typeRetour->getJNIParameterName(_args[i]->getName()) == "Array") {
+         string param_size(", %PARAMNAME2%");
+         param += param_size;
          stringReplace(param, "PARAMNAME", "C_" + _args[i]->getName());
+         stringReplace(param, "PARAMNAME2", "C_" + _args[i]->getName() + "_size");
+      }
+      else {
+         stringReplace(param, "PARAMNAME", "C_" + _args[i]->getName());
+      }
 
       params += param;
+
+      if(i+1 < _args.size())
+         params += ", ";
    }
    stringReplace(structure, "PARAMS", params);
 
@@ -232,9 +241,16 @@ void Function::addArgs(const nsC::Param::vector& parameters)
 			cout << "The first argument type is Native" << endl;
 	
 	}
-	for(int i = beginArgs; i<n; i++)
+
+   bool skip = false;
+	for( int i = beginArgs; i<n; i++)
 	{
 		size_t size = _args.size();
+      if(skip) {
+         skip = false;
+         continue;
+      }
+
 		if(parameters[i].getIndirections()>0  && parameters[i].getCType()!= "const char *")
 		{
 			cout << "Pointer !" << endl;
@@ -244,6 +260,7 @@ void Function::addArgs(const nsC::Param::vector& parameters)
 				cout << "Const void* or void* array" << endl;
 				type = parameters[i].getCType();
 				_args.push_back(new nsJNI::Param(type+"Array",parameters[i].getName()));
+            skip = true;
 				continue;
 			}		
 			if(i+1<n)
@@ -259,6 +276,7 @@ void Function::addArgs(const nsC::Param::vector& parameters)
 					
 					_args.push_back(new nsJNI::Param(type+"Array",parameters[i].getName()));
 					cout << parameters[i].getType()+"Array" << endl;
+               skip = true;  //We just bypass the _size argument
 					continue;
 				}
 			}
@@ -288,15 +306,16 @@ void Function::addArgs(const nsC::Param::vector& parameters)
 	 			cout << "Creating a new Param as following" << "[" << "Address Wrapper , " << parameters[i].getName() << "]" << endl;
 				_args.push_back(new nsJNI::Param(parameters[i].getCType(),parameters[i].getName()));
 			}
-			assert(_args.size()==size+1);
-	}
-	else
-	{
-		cout << "Normal Type" << endl;
-		cout << "Creating a new Param as following" << "[" << parameters[i].getCType()<<" , "  << parameters[i].getName() << "]" << endl; 
-		_args.push_back(new nsJNI::Param(parameters[i].getCType(),parameters[i].getName()));
-	}
-	cout << "Fin Fonction" << endl;
+			
+	   }
+	   else
+	   {
+		   cout << "Normal Type" << endl;
+		   cout << "Creating a new Param as following" << "[" << parameters[i].getCType()<<" , "  << parameters[i].getName() << "]" << endl; 
+		   _args.push_back(new nsJNI::Param(parameters[i].getCType(),parameters[i].getName()));
+	   }
+      assert(_args.size()==size+1);
+	   cout << "Fin Fonction" << endl;
 	}
 }
 
