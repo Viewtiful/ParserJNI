@@ -47,18 +47,17 @@ int JNIPARSER::run(nsModules::Module::vector modules)
 		//We get all enums and structs from the modules.
 		copy(moduleEnums.begin(), moduleEnums.end(), back_inserter(enums));
 		copy(moduleStructs.begin(), moduleStructs.end(), back_inserter(structs));
-		
+		dico->addTypedefs(modules[i].getTypedefs());
+		int callbackSize = modules[i].getCallbacks().size();
+		if(callbackSize>0)
+			cout << callbackSize << "Callbacks founds, JNIParser will crash" << endl;
 		moduleEnums.clear();
 		moduleStructs.clear();	
 	}
 	//We had all enums/structures to the dictionnary.
 	dico->addEnums(fileJava, enums);
 	dico->addStruct(fileJava, fileJNI, structs);
-	for(size_t k = 0;k<modules.size();k++)
-	{
-		dico->addTypedefs(modules[k].getTypedefs());
-
-	}
+	
 	//We get all the functions from the header files for the future table
 	//of native functions.
 	vector<nsJNI::Function*> saveFcts;
