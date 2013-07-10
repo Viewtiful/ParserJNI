@@ -118,7 +118,7 @@ namespace nsJNI
 			\param typedefs: all typedefs included in C Files
 		*/
 
-		void addTypedefs(const nsC::Typedef::vector& typedefs);
+		void addTypedefs(const nsC::Typedef::vector typedefs);
 
 		/*!
 			\brief Add Structs to Dictionnary
@@ -149,6 +149,7 @@ namespace nsJNI
 			\return the Object type
 		*/
 		Type* getType(const string & Ctype);
+
 		vector<Function*> getFcts();
       protected:
 
@@ -158,6 +159,7 @@ namespace nsJNI
 		std::vector<Function*> _fcts; /*!< The structure's name*/
     };
 }
+
 
 #endif
 

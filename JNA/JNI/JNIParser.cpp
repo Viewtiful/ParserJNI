@@ -54,6 +54,11 @@ int JNIPARSER::run(nsModules::Module::vector modules)
 	//We had all enums/structures to the dictionnary.
 	dico->addEnums(fileJava, enums);
 	dico->addStruct(fileJava, fileJNI, structs);
+	for(size_t k = 0;k<modules.size();k++)
+	{
+		dico->addTypedefs(modules[k].getTypedefs());
+
+	}
 	//We get all the functions from the header files for the future table
 	//of native functions.
 	vector<nsJNI::Function*> saveFcts;

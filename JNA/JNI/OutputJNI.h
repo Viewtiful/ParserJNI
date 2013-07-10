@@ -20,52 +20,53 @@ namespace nsJNI
 
 		public:
 			/*!
-			\brief constructor with two parameters
-			Create, and initialize a Create Function with the following arguments
-			\param structName : Struct's name which contains this method
+			\brief constructor with one parameter
+			Create, and initialize a OutputJNI class with the following argument
 			\param dictionnary : dictionnary of all type
 	        	*/
 			OutputJNI(TypesDictionnary *dictionnary);
 			~OutputJNI();
+
 		/*!
-			\brief generate the Native Function Call
-			\param f: Output JNI File
+			\brief add a VMSignature to an inputType
+			\param inputType: type which need a VmSignature
+			\param vmSignature : VMSignature which will be added
 		*/
 			
 			void addVMSignature(string inputType, string vmSignature);
+
 		/*!
-			\brief generate the Native Function Call
-			\param f: Output JNI File
+			\brief give the JNI type from an inputType
+			\param inputType: considered type
+			\return jniType 
 		*/
 
 			string getJNIType(string inputType);
 		/*!
-			\brief generate the Native Function Call
-			\param f: Output JNI File
+			\brief give the VMSignature type from an inputType
+			\param inputType: considered type
+			\return : VMSignature 
 		*/
 
 			string getVMSignature(string inputType);
 		/*!
-			\brief generate the Native Function Call
-			\param f: Output JNI File
+			\brief Convert a fonction and write the result in a File
+			\param f: The file where the result will be print
+			\param fct : the function which have to be converted
 		*/
 
 			void convert(ofstream &f,Function *fct);
 		/*!
-			\brief generate the Native Function Call
-			\param f: Output JNI File
+			\brief add all header include to the target file
+			\param f: the target file
 		*/
 
 			void addInclude(ofstream &f);
+		
 		/*!
-			\brief generate the Native Function Call
-			\param f: Output JNI File
+			\brief add a ContextWrapper to the target file
+			\param f: the target file
 		*/
-		/*!
-			\brief generate the Native Function Call
-			\param f: Output JNI File
-		*/
-
 
 	         	void addContextWrapper(ofstream &f);
 		/*!
