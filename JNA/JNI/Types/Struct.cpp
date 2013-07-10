@@ -65,8 +65,12 @@ void Struct::addStructToJava(ofstream &f)
 	string getterSetter;
 	for(size_t i =0; i<fields.size(); i++) {
       string field("\t\tpublic %VALUE1% %VALUE2%;\n");
-		
-		stringReplace(field, "VALUE1", _dictionnary->convertJava(fields[i].getCType()));
+		if(fields[i].getCType() == "const void *" || fields[i].getCType() == "void *") {
+		   stringReplace(field, "VALUE1", _dictionnary->convertJava(fields[i].getCType() + "Array"));
+      }
+      else {
+		   stringReplace(field, "VALUE1", _dictionnary->convertJava(fields[i].getCType()));
+      }
 		stringReplace(field, "VALUE2", fields[i].getName());
  		Getter *g = new Getter(fields[i],_javaType, _dictionnary);
         _getters.push_back(g);

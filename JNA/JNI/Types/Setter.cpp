@@ -21,7 +21,12 @@ void Setter::create(nsC::Param& param)
 {
 	_name = "gen_jni_" +_structName + "_" + "set" + "_" +param.getName();
 	_args.push_back(new nsJNI::Param("long", "mInternal"));
-	_args.push_back(new nsJNI::Param(param.getCType(), param.getName()));
+   if( param.getCType() == "const void *" || param.getCType() == "void *") {  
+	   _args.push_back(new nsJNI::Param(param.getCType() + "Array", param.getName()));
+   }
+   else {
+	   _args.push_back(new nsJNI::Param(param.getCType(), param.getName()));
+   }
 	_returnType = "void";
 }
 
@@ -56,6 +61,15 @@ void Setter::printContentJNI(ofstream &f)
 	   	stringReplace(writeField, "FIELDNAME", _args[1]->getName());
 	   	stringReplace(writeField, "CTYPE", _args[1]->getType());
    }
+   else if( (_dictionnary->convertJNI(_args[1]->getType()) == "jbyteArray")) {
+		   writeField = "\t\tjbyte * C_%FIELDNAME%;\n"
+                      "\t\tsize_t C_%FIELDNAME%_length = (*env)->GetArrayLength(env, %FIELDNAME%);\n"
+                      "\t\tC_%FIELDNAME% = (jbyte *)malloc(C_%FIELDNAME%_length);\n"
+                      "\t\tC_%FIELDNAME% = (*env)->GetByteArrayElements(env, %FIELDNAME%, NULL);\n"
+                      "\t\tC_ctx->%ATTRIBUTENAME% = C_%FIELDNAME%;\n";
+	   	stringReplace(writeField, "FIELDNAME", _args[1]->getName());
+	   	stringReplace(writeField, "CTYPE", _args[1]->getType());
+   }
 	else
 	{
 		writeField = "\t\tC_ctx->%ATTRIBUTENAME% = %FIELDNAME%;\n";
@@ -71,10 +85,6 @@ void Setter::printContentJNI(ofstream &f)
 
 void Setter::prepareCall(ofstream &f)
 {
-
-
-
-
 }
 
 string Setter::call()
