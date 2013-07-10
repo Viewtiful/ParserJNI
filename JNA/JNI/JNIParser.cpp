@@ -16,9 +16,9 @@ int JNIPARSER::run(nsModules::Module::vector modules)
 {
 	vector<nsC::Enum> enums;
 	vector<nsC::Struct> structs;
+
 	string filename = "ArcanaJNI";
 	// Even if the filename ArcanaJNI is correct as a java type, we ensure that.
-	
 	filename = nsUtils::toJavaName(filename, false, false, true);
 	dico = new TypesDictionnary(filename);	
 	jni = new OutputJNI(dico);
@@ -28,7 +28,7 @@ int JNIPARSER::run(nsModules::Module::vector modules)
 	string javaPath = nsUtils::Parameters::getInstance().getJavaSrcDir();
 	// Creating the real path with the name of the file for Java.
 	string realJavaPath = nsUtils::createJavaFileName(javaPath, "", filename);
-	ofstream fileJava(realJavaPath.c_str());   //It seems well better now !
+	ofstream fileJava(realJavaPath.c_str());
 	//Same thing for the JNI file.
 	string realJNIPath = nsUtils::createJNIFileName(javaPath, filename);
 	ofstream fileJNI(realJNIPath.c_str());
@@ -43,14 +43,15 @@ int JNIPARSER::run(nsModules::Module::vector modules)
 	{
 		vector<nsC::Enum> moduleEnums = modules[i].getEnums();
 		vector<nsC::Struct> moduleStructs = modules[i].getStructs();
-
+	
+		//We get all enums and structs from the modules.
 		copy(moduleEnums.begin(), moduleEnums.end(), back_inserter(enums));
 		copy(moduleStructs.begin(), moduleStructs.end(), back_inserter(structs));
-
 		
 		moduleEnums.clear();
 		moduleStructs.clear();	
 	}
+	//We had all enums/structures to the dictionnary.
 	dico->addEnums(fileJava, enums);
 	dico->addStruct(fileJava, fileJNI, structs);
 	//We get all the functions from the header files for the future table
