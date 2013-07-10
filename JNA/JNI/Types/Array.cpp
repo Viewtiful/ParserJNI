@@ -58,7 +58,7 @@ void Array::prepareCall(ofstream& f,string& varName)
    _varName = varName;
 	string type = _dictionnary->convertJNI(_CBaseType);
 	string name = "C_" + varName;
-	string nameLength = name + "_length";
+	string nameLength = name + "_size";
 	string typeMaj = type.substr(1, type.size());
 	typeMaj = toJavaName(typeMaj, false, false, true);
 
