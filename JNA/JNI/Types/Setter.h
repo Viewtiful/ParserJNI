@@ -10,6 +10,10 @@ namespace nsJNI
 {
    class Function;
    class TypesDictionnary;
+	/*!
+		\class Setter
+		\brief represents a Setter
+	*/
 	class Setter : public Function
 	{
 		public : 

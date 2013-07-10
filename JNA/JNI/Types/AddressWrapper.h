@@ -31,9 +31,22 @@ namespace nsJNI {
       	\brief destructor
       */
         virtual ~AddressWrapper();
-		AddressWrapper(string realCType, string VMSignature);
-		AddressWrapper(string VMSignature);
-		std::string outputJava();
+
+	/*!
+        	\brief constructor with two parameters
+        	Create, and initialize an AddressWrapper with the following arguments
+        	\param realCType : The Data's CType which is converted to AddressWrapper
+        	\param VMSIgnature : signature for the java Virtual Machine
+        */
+	AddressWrapper(string realCType, string VMSignature);
+	
+	/*!
+        	\brief constructor with one parameters
+        	Create, and initialize an AddressWrapper with the following arguments
+        	\param VMSIgnature : signature for the java Virtual Machine
+        */
+	AddressWrapper(string VMSignature);
+	std::string outputJava();
         std::string outputJNI();
         bool isNativeType();
         bool isAddressWrapper();
@@ -44,8 +57,8 @@ namespace nsJNI {
         void getReturnValue(ofstream& f);
         
       	protected:
-      	string _realCType;
-        string _varName;
+      	string _realCType; /*!< C Type of the data's*/
+        string _varName; /*!< Variable name*/
     };
 }
 

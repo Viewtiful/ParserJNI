@@ -18,6 +18,10 @@
 
 namespace nsJNI {
 	
+	/*!
+		\class JNIParser
+		\brief The class which manage the conversion from C to JNI/Java
+	*/
 	class JNIParser: public nsUtils::Parser {
 		public:
 			virtual ~JNIParser();
@@ -30,9 +34,9 @@ namespace nsJNI {
 			int run(nsModules::Module::vector modules);
 
       protected :
-         OutputJNI *jni;
-         OutputJava *java;
-         TypesDictionnary *dico;
+         OutputJNI *jni; /*!< manager of the JNI Side*/
+         OutputJava *java; /*!< manager of the Java Side*/
+         TypesDictionnary *dico; /*!< The structure's name*/
 	};
 }
 

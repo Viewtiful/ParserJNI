@@ -10,6 +10,10 @@ namespace nsJNI
 {
    class Function;
    class TypesDictionnary;
+	/*!
+		\class Free
+		\brief generate a Free Function for structure
+	*/
 	class Free : public Function
 	{
 		public : 

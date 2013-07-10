@@ -5,11 +5,18 @@
 #include "C/Param.h"
 #include "Utils/Utils.h"
 #include <fstream>
-
+/*!
+	\namespace nsJNI 
+	JNI parser namespace
+!*/
 namespace nsJNI
 {
    class Function;
    class TypesDictionnary;
+	/*!
+		\class Create
+		\brief generate an Create Function for structure
+	*/
 	class Create : public Function
 	{
 		public : 

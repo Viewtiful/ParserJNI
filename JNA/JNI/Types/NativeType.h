@@ -29,7 +29,24 @@ namespace nsJNI {
       	\brief destructor
       */
         virtual ~NativeType();
+	/*!
+        	\brief constructor with three parameters
+        	Create, and initialize a type with the following arguments
+        	\param javaType : the corresponding java Type
+        	\param jniType : the corresponding JNI Type
+        	\param VMSIgnature : signature for the java Virtual Machine
+        	\param isNativeType : if this NativeType is a real NativeType
+	*/
 	NativeType(const string& javaType,const string& jniType,const string& VMSignature,bool isNativeType);
+	/*!
+        	\brief constructor with three parameters
+        	Create, and initialize a type with the following arguments
+        	\param javaType : the corresponding java Type
+        	\param jniType : the corresponding JNI Type
+		\param CType : C Type 
+        	\param VMSIgnature : signature for the java Virtual Machine
+        	\param isNativeType : if this NativeType is a real NativeType
+	*/
 	NativeType(const string& javaType, const string& jniType,const string& CType,const string& VMSignature,bool isNativeType);
         std::string outputJava();
         std::string outputJNI();
