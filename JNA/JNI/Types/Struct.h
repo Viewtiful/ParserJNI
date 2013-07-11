@@ -16,6 +16,10 @@
 #include "JNI/TypesDictionnary.h"
 #include "JNI/Types/Function.h"
 #include <vector>
+
+/** @addtogroup Types
+ * @{ */
+
 /*!
 	\namespace nsJNI 
 	JNI parser namespace

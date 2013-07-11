@@ -14,6 +14,10 @@
 #include <string>
 #include <iostream>
 #include <fstream>
+
+/** @addtogroup Types
+ * @{ */
+
 using namespace std;
 /*!
 	\namespace nsJNI 

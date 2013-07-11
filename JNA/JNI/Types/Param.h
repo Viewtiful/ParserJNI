@@ -13,6 +13,7 @@
 #include <iostream>
 #include <string>
 using namespace std;
+
 /*!
 	\namespace nsJNI 
 	JNI parser namespace

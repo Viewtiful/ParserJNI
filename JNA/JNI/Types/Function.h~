@@ -11,13 +11,21 @@
 
 #ifndef __JNI_FUNCTION_H
 #define __JNI_FUNCTION_H
-
+#include "JNI/TypesDictionnary.h"
+#include "C/Function.h"
+#include "JNI/Types/Param.h"
+#include "JNI/Types/Pointer.h"
+#include "JNI/Types/AddressWrapper.h"
 #include "Utils/Utils.h"
 #include <typeinfo>
 #include <iostream>
 #include <fstream>
 #include <vector>
 #include <string>
+
+/** @addtogroup Types
+ * @{ */
+
 using namespace std;
 /*!
 	\namespace nsJNI 
@@ -28,6 +36,7 @@ namespace nsJNI {
 		\class Function
 		\brief represents a Function
 	*/
+	class TypesDictionnary;
     class Function
     {
       public:

@@ -1,5 +1,5 @@
 /** @file
- *
+ * @defgroup Types All the types used by the JNIParser
  * Header for Types
  */
 
@@ -8,6 +8,10 @@
 #include <string>
 #include <iostream>
 #include <fstream>
+
+/** @addtogroup Types
+ * @{ */
+
 /*!
 	\file Type.h
 	\author Baptiste HAUDEGAND & Antoine MOISE

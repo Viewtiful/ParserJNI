@@ -5,6 +5,10 @@
 #include "C/Param.h"
 #include "Utils/Utils.h"
 #include <fstream>
+
+/** @addtogroup Types
+ * @{ */
+
 /*!
 	\namespace nsJNI 
 	JNI parser namespace

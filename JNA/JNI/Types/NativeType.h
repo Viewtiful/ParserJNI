@@ -13,6 +13,10 @@
 #include "JNI/Types/Type.h"
 #include <iostream>
 #include <string>
+
+/** @addtogroup Types
+ * @{ */
+
 /*!
 	\namespace nsJNI 
 	JNI parser namespace

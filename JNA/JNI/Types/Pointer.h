@@ -13,6 +13,10 @@
 #include <string>
 #include "JNI/Types/Type.h"
 #include "JNI/TypesDictionnary.h"
+
+/** @addtogroup Types
+ * @{ */
+
 /*!
 	\namespace nsJNI 
 	JNI parser namespace

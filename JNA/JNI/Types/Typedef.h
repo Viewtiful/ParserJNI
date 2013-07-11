@@ -16,6 +16,9 @@
 #include <map>
 #include "JNI/Types/Type.h"
 
+/** @addtogroup Types
+ * @{ */
+
 using namespace std;
 /*!
 	\namespace nsJNI 

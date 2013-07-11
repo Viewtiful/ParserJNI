@@ -15,6 +15,10 @@
 #include <iostream>
 #include <fstream>
 using namespace std;
+
+/** @addtogroup Types
+ * @{ */
+
 /*!
 	\namespace nsJNI 
 	JNI parser namespace

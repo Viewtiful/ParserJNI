@@ -10,6 +10,10 @@
 #include "C/Enum.h"
 #include "JNI/TypesDictionnary.h"
 #include "Modules/Module.h"
+
+/** @addtogroup Types
+ * @{ */
+
 /*!
 	\namespace nsJNI 
 	JNI parser namespace
