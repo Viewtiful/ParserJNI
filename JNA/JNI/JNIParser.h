@@ -37,6 +37,7 @@ namespace nsJNI {
          OutputJNI *jni; /*!< manager of the JNI Side*/
          OutputJava *java; /*!< manager of the Java Side*/
          TypesDictionnary *dico; /*!< The structure's name*/
+		
 	};
 }
 
