@@ -79,12 +79,17 @@ int JNIPARSER::run(nsModules::Module::vector modules)
 
 		for(size_t k = 0;k<fcts.size();k++)
 		{
-			cout << "Commentaires = " << fcts[k].getComment() << endl;
-			nsJNI::Function *fct = new Function(dico);
-			saveFcts.push_back(fct);
-			fct->create(fcts[k]);
-			java->convert(fileJava,fct);
-			jni->convert(fileJNI,fct);
+			nsC::Function current = fcts[k];
+			if(!current.isVariadic())
+			{
+				nsJNI::Function *fct = new Function(dico);
+				saveFcts.push_back(fct);
+				fct->create(current);
+				java->convert(fileJava,fct);
+				jni->convert(fileJNI,fct);
+			}
+			else
+				cout << "Variadic Function : " << current.getName() << endl;
 
 		}
 		fcts.clear();
