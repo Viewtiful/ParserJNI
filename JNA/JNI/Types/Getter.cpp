@@ -32,8 +32,7 @@ void Getter::printPrototypeJNI(ofstream &f)
 {
 	string returnType;
 	returnType = _dictionnary->convertJNI(_returnType);
-	if(returnType == "jobject")
-		returnType = "jint";
+
 	f << "\t" << "JNIEXPORT " << returnType << " JNICALL " << "JNI_" << _name;
 }
 
@@ -50,6 +49,28 @@ void Getter::printContentJNI(ofstream &f)
             "\t\treturn result;\n"
             ;
    }
+   else if( _dictionnary->convertJNI(_returnType) == "jobject") {
+      structure =
+               "\t\t%CLASSNAME% *C_ctx = (%CLASSNAME% *)mInternal;\n\n"
+               "\t\tjobject JNI_result;\n"
+               "\t\tjclass retObjCls;\n"
+               "\t\tretObjCls = (*env)->FindClass(env, \"ArcanaJNI$%CTYPE%\");\n"
+               "\t\tjmethodID getArrayValues = (*env)->GetStaticMethodID(env, retObjCls, \"values\", \"()[LArcanaJNI$%CTYPE%;\");\n"
+               "\t\tjobjectArray valuesArray = (jobjectArray)(*env)->CallStaticObjectMethod(env, retObjCls, getArrayValues);\n\n"
+               "\t\tint arrayLength = (*env)->GetArrayLength(env, valuesArray);\n\n"
+               "\t\tint i, val;\n"
+               "\t\tjmethodID getVal;\n"
+               "\t\tgetVal = (*env)->GetMethodID(env, retObjCls, \"getValue\", \"()I\");\n\n"
+               "\t\tfor(i = 0; i < arrayLength; ++i) {\n"
+               "\t\t\tJNI_result = (*env)->GetObjectArrayElement(env, valuesArray, i);\n"
+               "\t\t\tval = (*env)->CallIntMethod(env, JNI_result, getVal);\n"
+               "\t\t\tif(val == C_ctx->%ATTRIBUTENAME%) {\n"
+               "\t\t\t\tbreak;\n"
+               "\t\t\t}\n"
+               "\t\t}\n\n"
+               "\t\treturn JNI_result;\n"
+               ;  
+   }
    else {
       structure =
             "\t\t%CLASSNAME% *C_ctx = (%CLASSNAME% *)mInternal;\n"
@@ -59,6 +80,7 @@ void Getter::printContentJNI(ofstream &f)
 
 	stringReplace(structure,"CLASSNAME",_structName);
 	stringReplace(structure,"ATTRIBUTENAME",_fieldName);
+	stringReplace(structure,"CTYPE",_returnType);
 
 	f << structure;
 	f << "\t}\n\n";
