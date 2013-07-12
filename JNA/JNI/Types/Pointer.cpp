@@ -57,6 +57,8 @@ bool Pointer::isAddressWrapper()
 
 void Pointer::prepareCall(ofstream& f,string& varName)
 {
+   //We have a pointer from not a native type, we get the address and cast it
+   //to the corresponding type.
    if(!_isNativeType && _CBaseType != "size_t") {
       string structure (
             "\t\t%TYPE% %NAME%;\n"
@@ -96,6 +98,5 @@ string Pointer::getJNIParameterName(string& varName)
 
 void Pointer::getReturnValue(ofstream& f)
 {
-
 }
         
