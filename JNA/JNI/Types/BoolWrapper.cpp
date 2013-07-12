@@ -22,12 +22,12 @@ std::string BoolWrapper::outputJava()
 {
 	return getJavaType();
 }
- 
+
 std::string BoolWrapper::outputJNI()
 {
 	return getJNIType();
 }
-        
+
 bool BoolWrapper::isNativeType()
 {
 	return false;
@@ -50,17 +50,17 @@ bool BoolWrapper::isArray()
 
 void BoolWrapper::prepareCall(ofstream& f,string& varName)
 {
-      bool C_is_valid;
-   string structure (
-         "\t\t%TYPE% %NAME%;\n\n"
-         );
-   _varName = varName;
-   string name = "C_" + varName;
-   string type = _realCType.substr(0, _realCType.size()-2);
-   stringReplace(structure, "TYPE", type);
-   stringReplace(structure, "NAME", name);
+	bool C_is_valid;
+	string structure (
+			"\t\t%TYPE% %NAME%;\n\n"
+			);
+	_varName = varName;
+	string name = "C_" + varName;
+	string type = _realCType.substr(0, _realCType.size()-2);
+	stringReplace(structure, "TYPE", type);
+	stringReplace(structure, "NAME", name);
 
-   f << structure;
+	f << structure;
 }
 
 string BoolWrapper::getJNIParameterName(string& varName)
@@ -71,18 +71,19 @@ string BoolWrapper::getJNIParameterName(string& varName)
 
 void BoolWrapper::getReturnValue(ofstream& f)
 {
-   string structure (
-         "\t\tjclass boolWrp;\n"
-         "\t\tjmethodID setVal;\n"
-         "\t\tjboolean arg;\n"
-         "\t\tboolWrp = (*env)->GetObjectClass(env, %CNAME%);\n"
-         "\t\tsetVal = (*env)->GetMethodID(env, boolWrp, \"setValue\", \"(Z)V\");\n" 
-         "\t\targ = (jboolean) %NAME%;\n"
-         "\t\t(*env)->CallVoidMethod(%CNAME%, setVal, arg);\n\n"
-         );
+	//Return the value of the C boolean to Java.
+	string structure (
+			"\t\tjclass boolWrp;\n"
+			"\t\tjmethodID setVal;\n"
+			"\t\tjboolean arg;\n"
+			"\t\tboolWrp = (*env)->GetObjectClass(env, %CNAME%);\n"
+			"\t\tsetVal = (*env)->GetMethodID(env, boolWrp, \"setValue\", \"(Z)V\");\n" 
+			"\t\targ = (jboolean) %NAME%;\n"
+			"\t\t(*env)->CallVoidMethod(%CNAME%, setVal, arg);\n\n"
+			);
 
-   stringReplace(structure, "CNAME", _varName);
-   stringReplace(structure, "NAME", "C_" + _varName);
-   f << structure;
+	stringReplace(structure, "CNAME", _varName);
+	stringReplace(structure, "NAME", "C_" + _varName);
+	f << structure;
 }
-        
+
