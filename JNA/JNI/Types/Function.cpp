@@ -214,27 +214,26 @@ void Function::setReturnType(const string& returnType)
 
 void Function::addArgs(const nsC::Param::vector& parameters)
 {	
-	string special = "AddressWrapper";
 	int n = parameters.size();	
 	int beginArgs = 0;
 	if(_returnType=="const void *" || _returnType=="void *")
 		_returnType = _returnType+"Array";
 	cout << "Creation Fct :" << _name << endl;
-	if(_name.find("_init",0)!=string::npos && parameters.size()>0)
+	if(parameters.size()>0 && _name.find("_init",0)!=string::npos)
 	{
 		cout << "This is a init Function" << endl;
 		if(!_dictionnary->isNativeType(parameters[0].getType()))
 		{
 			cout << "The first argument type is not Native" << endl;
-			if(_dictionnary->countAt(parameters[0].getCType()+special)==0)
+			if(_dictionnary->countAt(parameters[0].getCType())==0)
 	 		{
 	 			cout << "The object does not exists = " << parameters[0].getCType();
 	 			
 				Type *object = new AddressWrapper(parameters[0].getCType(),"L" + _dictionnary->getFilename() + "$AddressWrapper;");
- 				_dictionnary->addToMap(parameters[0].getCType()+special,object);
+ 				_dictionnary->addToMap(parameters[0].getCType(),object);
 	 		}
 	 			
-			_args.push_back(new nsJNI::Param(parameters[0].getCType()+special,parameters[0].getName()));
+			_args.push_back(new nsJNI::Param(parameters[0].getCType(),parameters[0].getName()));
 			beginArgs = 1;
 		}
 		else
@@ -256,16 +255,18 @@ void Function::addArgs(const nsC::Param::vector& parameters)
 			cout << "Pointer !" << endl;
 			string type = parameters[i].getType();
 			if(i+1<n && parameters[i].getName() + "_size" == parameters[i+1].getName())
-			{			
-					cout << "Create an Array" << endl;
-					//Remplacer le if par le nombre d'indirection
-					//string type = parameters[i].getType();
-					if(type == "void" || type == "const void")
-						type = parameters[i].getCType();
-					
-					_args.push_back(new nsJNI::Param(type+"Array",parameters[i].getName()));
-					cout << parameters[i].getType()+"Array" << endl;
-               				skip = true;  //We just bypass the _size argument
+			{
+				string array = "Array";
+			
+				cout << "Create an Array" << endl;
+				//Remplacer le if par le nombre d'indirection
+				//string type = parameters[i].getType();
+				if(type == "void" || type == "const void")
+					array = " *" + array;
+				
+				_args.push_back(new nsJNI::Param(type+array,parameters[i].getName()));
+				cout << parameters[i].getType()+array << endl;
+       				skip = true;  //We just bypass the _size argument
 			}
 			else
 			{
