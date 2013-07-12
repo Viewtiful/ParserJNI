@@ -18,17 +18,22 @@ Array::~Array()
 
 std::string Array::outputJava()
 {
-	return _dictionnary->convertJava(_CBaseType)+"[]";
+	//Conversion of the Array's BaseType
+	string javaType = _dictionnary->convertJava(_CBaseType);
+	return javaType+"[]";
 }
+	
 
 std::string Array::outputJNI()
 {
+	//Conversion of the Array's BaseType
 	string jniType = _dictionnary->convertJNI(_CBaseType); // Voir si  référence possible
-	return jniType + "Array";
+	return jniType + "Array"; // Corresponding for an Array in JNI
 }
 
 bool Array::isNativeType()
 {
+	//An array is Native is its Base type is Native
 	return _dictionnary->isNativeType(_CBaseType);
 }
 
