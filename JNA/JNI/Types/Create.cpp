@@ -19,19 +19,24 @@ Create::~Create()
 
 void Create::create()
 {
+   //JNI function name.
 	_name = "gen_jni_" +_structName + "_" + "create";
+
+   //Return type of the function in C.
 	_returnType = "long";
 }
 
 void Create::printPrototypeJNI(ofstream &f)
 {
 	string returnType;
+   //Convert the return type to JNI.
 	returnType = _dictionnary->convertJNI(_returnType);
 	f << "\t" << "JNIEXPORT " << returnType << " JNICALL " << "JNI_" << _name;
 }
 
 void Create::printContentJNI(ofstream &f)
 {
+   //Allocate memory for the structure.
 	f << "{\n\n";
    string body = 
          "\t\t%CLASSNAME% *C_ctx = (%CLASSNAME% *)malloc(sizeof(%CLASSNAME%));\n"
@@ -45,13 +50,10 @@ void Create::printContentJNI(ofstream &f)
 
 void Create::prepareCall(ofstream &f)
 {
-
-
-
-
 }
 
 string Create::call()
 {
+   //Param of the JNI function.
 	return _name + "(" + _args[0]->getName()+ ");"; 
 }
