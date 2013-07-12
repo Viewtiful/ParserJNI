@@ -10,16 +10,12 @@ Function::Function(TypesDictionnary *dictionnary)
 Function::~Function()
 {
    for(vector<Param*>::const_iterator it = _args.begin(); it != _args.end(); it++)
-   {
        delete *it;
-   } 
-	_args.clear();
-
+   _args.clear();
 }
 
 void Function::create(const nsC::Function& fct)
 {
-	
 	setReturnType(fct.getReturnType());
 	_name = fct.getName();
 	addArgs(fct.getParamList());
@@ -29,9 +25,6 @@ void Function::printPrototypeJava(ofstream& file)
 {
 	string returnType;
 	returnType = _dictionnary->convertJava(_returnType);
-	/*if(returnType  == "")
-		returnType = "void";
-		*/
 	file << "\t" << "public native " << returnType << " " <<  _name ;
 }
 
@@ -46,6 +39,7 @@ void Function::printParametersJava(ofstream& file)
 		if(_args[i]->getType()=="size_t *")
 			skip = true;
 		
+		// if skip is true, we do not print the size_t* parameter
 		if(!skip)
 		{
 			file << _dictionnary->convertJava(_args[i]->getType()) << " " << _args[i]->getName();
@@ -88,6 +82,7 @@ void Function::printParametersJNI(ofstream &f)
 		skip = false;
 		if(_args[i]->getType() == "size_t *") 
 			skip = true;
+		// if skip is true, we do not print the size_t* parameter
 		if(!skip) {
 			f << _dictionnary->convertJNI(_args[i]->getType()) << " " << _args[i]->getName();
 			if(i + 1 < n && _args[i+1]->getType() != "size_t *")
@@ -112,28 +107,28 @@ void Function::printContentJNI(ofstream &f)
 	f << "{\n\n";
 	if(!(_returnType=="void"))
 		f << "\t\t" << _dictionnary->convertJNI(_returnType) << " " << "JNI_result;\n\n";
-
+	//Preparing all arguments before calling the native method
 	for(size_t i = 0; i < _args.size(); ++i) {
 		Type * param = _dictionnary->getType(_args[i]->getType());
 
 		param->prepareCall(f, _args[i]->getName());
 	}
-
-   callNativeMethod(f);
+	//calling the native method with correct parameters
+   	callNativeMethod(f);
 
 	for(size_t i = 0; i < _args.size(); ++i) {
 		Type * param = _dictionnary->getType(_args[i]->getType());
 
-      if(param->isAddressWrapper() || param->isBooleanWrapper())
+	      if(param->isAddressWrapper() || param->isBooleanWrapper())
 		   param->getReturnValue(f);
-      if(param->isArray()) {
-         Array *a = (Array *)param;
-         a->getReturnValueAndFree(f);
-      }
+	      if(param->isArray()) {
+	         Array *a = (Array *)param;
+	         a->getReturnValueAndFree(f);
+	      }
 	}
 
-   Type *typeRetour = _dictionnary->getType(_returnType);
-   typeRetour->getReturnValue(f);
+   	Type *returnValue = _dictionnary->getType(_returnType);
+   	returnValue->getReturnValue(f);
 
 	f << "\t}\n\n";
 }
@@ -143,6 +138,7 @@ void Function::callNativeMethod(ofstream &f) {
    string structure (
             "\t\t%RETURNTYPE% %NAME% %CAST%%METHODNAME% (%PARAMS%);\n\n"
             );
+	//Generate specific code to get the Return Value from native Function call
    if(_returnType != "void") {
 
       if(_dictionnary->convertJNI(_returnType) == "jbyteArray") {
@@ -176,6 +172,7 @@ void Function::callNativeMethod(ofstream &f) {
    stringReplace(structure, "METHODNAME", _name);
 
    string params;
+	//generate code to have adequate param for Native function call
    for(size_t i = 0; i < _args.size(); ++i) {
 
       string param ("%PARAMNAME%");
@@ -219,12 +216,14 @@ void Function::addArgs(const nsC::Param::vector& parameters)
 	if(_returnType=="const void *" || _returnType=="void *")
 		_returnType = _returnType+"Array";
 	cout << "Creation Fct :" << _name << endl;
+	// if the function is a init function, the first argument will be translated as an AddressWrapper
 	if(parameters.size()>0 && _name.find("_init",0)!=string::npos)
 	{
 		cout << "This is a init Function" << endl;
 		if(!_dictionnary->isNativeType(parameters[0].getType()))
 		{
 			cout << "The first argument type is not Native" << endl;
+			//If this type does not exist
 			if(_dictionnary->countAt(parameters[0].getCType())==0)
 	 		{
 	 			cout << "The object does not exists = " << parameters[0].getCType();
@@ -245,22 +244,20 @@ void Function::addArgs(const nsC::Param::vector& parameters)
 	for( int i = beginArgs; i<n; i++)
 	{
 		size_t size = _args.size();
-		//nsC::Param arraySize = parameters[i+1];
 	      if(skip) {
 		 skip = false;
 		 continue;
 	      }
+		// If the parameters's type is a Pointer
 		if(parameters[i].getIndirections()>0  && parameters[i].getCType()!= "const char *")
 		{
 			cout << "Pointer !" << endl;
 			string type = parameters[i].getType();
+			// detect if this pointer can be an Array
 			if(i+1<n && parameters[i].getName() + "_size" == parameters[i+1].getName())
 			{
 				string array = "Array";
-			
 				cout << "Create an Array" << endl;
-				//Remplacer le if par le nombre d'indirection
-				//string type = parameters[i].getType();
 				if(type == "void" || type == "const void")
 					array = " *" + array;
 				

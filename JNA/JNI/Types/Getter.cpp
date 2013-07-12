@@ -6,7 +6,7 @@ Getter::Getter(nsC::Param& param, string structName, TypesDictionnary *dictionna
 {
 
 	_structName = structName;
-   _fieldName = param.getName();
+   	_fieldName = param.getName();
 	create(param);
 }
 
@@ -16,7 +16,6 @@ Getter::~Getter()
 
 }
 			
-
 void Getter::create(nsC::Param& param)
 {
 	_name = "gen_jni_" +_structName + "_" + "get" + "_" +param.getName();
@@ -41,6 +40,7 @@ void Getter::printContentJNI(ofstream &f)
 	f << "{\n\n";
 	string structure;
 
+   //Write specific code in order to transform the return Value from C to Java
    if(_dictionnary->convertJNI(_returnType) == "jbyteArray") {
       structure =
             "\t\t%CLASSNAME% *C_ctx = (%CLASSNAME% *)mInternal;\n\n"

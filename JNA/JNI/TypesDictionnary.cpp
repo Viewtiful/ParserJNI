@@ -22,10 +22,8 @@ TYPESDICTIONNARY::~TypesDictionnary()
 {
     _fcts.clear();
 
-    for ( std::map<std::string, Type*>::iterator it = _conversionMap.begin(); it != _conversionMap.end(); ++it ) {
+    for ( std::map<std::string, Type*>::iterator it = _conversionMap.begin(); it != _conversionMap.end(); ++it ) 
         delete it->second;
-    }
-
     _conversionMap.clear();
 
 
@@ -63,9 +61,6 @@ void TYPESDICTIONNARY::addBaseType(string filename)
 
 bool TYPESDICTIONNARY::isNativeType(const string &type)
 {
-	static int call = 0;
-	cout << "Beta" << endl;
-	cout << "Type = " << type << "Call : " << call << endl;
 	assert(_conversionMap.count(type)==1);
 	return _conversionMap[type]->isNativeType();
 }
@@ -146,6 +141,7 @@ void TYPESDICTIONNARY::addStruct(ofstream &f, ofstream &f2, const nsC::Struct::v
 			createdStruct.push_back(s);
         	}  	
    	}
+	//Generate getter, setters for structs
 	for(size_t i = 0;i<createdStruct.size();i++)
 	{
 		Struct *current = createdStruct[i];
@@ -167,7 +163,9 @@ void TYPESDICTIONNARY::addToMap(const string& cType, Type *type) {
 	size_t size = _conversionMap.size();
 	size_t sizeCType = _conversionMap.count(cType);
 	assert(_conversionMap[cType]==NULL);
+
 	_conversionMap[cType] = type;
+
 	assert(_conversionMap[cType]==type);
 	assert(_conversionMap.size()==size+1);
 	assert(_conversionMap.count(cType)==sizeCType+1);
