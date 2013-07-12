@@ -18,9 +18,13 @@ Getter::~Getter()
 			
 void Getter::create(nsC::Param& param)
 {
+   //JNI function name.
 	_name = "gen_jni_" +_structName + "_" + "get" + "_" +param.getName();
+   //Add an argument for the pointer to the structure.
 	_args.push_back(new nsJNI::Param("long","mInternal"));
 
+   //If the parameter is const void * or void *, this is an array. Otherwise
+   //this is the normal type.
    if(param.getCType()  == "const void *" || param.getCType()  == "void *")
       _returnType = param.getCType() + "Array";
    else
@@ -40,7 +44,7 @@ void Getter::printContentJNI(ofstream &f)
 	f << "{\n\n";
 	string structure;
 
-   //Write specific code in order to transform the return Value from C to Java
+   //Write specific code in order to transform the return Value from C to Java.
    if(_dictionnary->convertJNI(_returnType) == "jbyteArray") {
       structure =
             "\t\t%CLASSNAME% *C_ctx = (%CLASSNAME% *)mInternal;\n\n"
@@ -92,5 +96,6 @@ void Getter::prepareCall(ofstream &f)
 
 string Getter::call()
 {
+   //JNI function argument.
 	return _name + "(" + _args[0]->getName()+ ");"; 
 }
