@@ -21,15 +21,26 @@ bool Enum::create(ofstream &f, const nsC::Enum::vector& en,
 	{
 		const nsC::Enum& CEnum(*iterator);
 
-		string enumName = CEnum.getName(); //Optimisation à faire (3 fois le même test
-		if(enumName == "") {
-			enumName = CEnum.getTypedef();
-      }
+		//Here we get the name of the enum, either from it's name parameter or
+		//it's typedef name.
+		string enumName = CEnum.getName(); 
 
-      if(CEnum.getName() != "" && CEnum.getTypedef() != "") {
-         enumName = CEnum.getTypedef();
-      }
-		dictionnary->addToMap(enumName, new Enum(f, enumName, enumName, "L" + dictionnary->getFilename() + "$" + enumName + ";", CEnum, dictionnary->getFilename()));
+		//If the name is not defined, we get the typedef as the name.
+		if(enumName.empty()) {
+			enumName = CEnum.getTypedef();
+		}
+
+		//If both the name and the typedef are defined, we use the typedef as
+		//the name.
+		if(!CEnum.getName().empty() && !CEnum.getTypedef().empty()) {
+			enumName = CEnum.getTypedef();
+		}
+
+		string VMSignature = "L" + dictionnary->getFilename() + "$" + enumName +
+			";";
+		//We then add the enum to the map of types and we create an enum.
+		dictionnary->addToMap(enumName, new Enum(f, enumName, enumName,
+					VMSignature, CEnum, dictionnary->getFilename()));
 	}
 	return true;
 }
@@ -37,13 +48,16 @@ bool Enum::create(ofstream &f, const nsC::Enum::vector& en,
 Enum::Enum(ofstream &f, const string& javaType, const string& jniType, const string& VMSignature, const nsC::Enum& cEnum, string filename) : Type(javaType, jniType, VMSignature)
 {
 	_cEnum = cEnum;
-   _filename = filename;
+	_filename = filename;
+	_enumName = javaType;
+	//We add the new enum to the Java file generated.
 	addEnumToJava(f);
 }
 
 void Enum::addEnumToJava(ofstream &f) {
 
-   string structure(
+	//This is what is generated in the Java file for an enum.
+	string structure(
 			"\tpublic static enum %ENUMNAME% {\n"
 			"%FIELDS%"
 			"\t\tint enumValue;\n\n"
@@ -58,35 +72,30 @@ void Enum::addEnumToJava(ofstream &f) {
 			"\t\t}\n"
 			"\t}\n\n"
 			);
+
+	//For each value in the C enum, we create the corresponding Java value.
 	const nsC::Enum::EnumValues& values(_cEnum.getValues());
 	string fields;
-	
+
 	for(size_t i = 0; i < values.size(); ++i)
 	{	
 		string field("\t\t%VALUE1% (%VALUE2%)");
+
+		//Putting a ',' after each value added, for the last one, we had a ';'.
 		if(i+1 < values.size())
 			field = field + ",\n";
 		else if(i == values.size()-1)
 			field = field + ";\n";
-		
+
 		stringReplace(field, "VALUE1", values[i].first);
 		stringReplace(field, "VALUE2", values[i].second);
 		fields += field;
 	}
 
-   _enumName = _cEnum.getName();
-   if(_cEnum.getName().empty()) {
-      _enumName = _cEnum.getTypedef();
-   }
-
-   if(!_cEnum.getName().empty() && !_cEnum.getTypedef().empty()) {
-      _enumName = _cEnum.getTypedef();
-   }
-   stringReplace(structure, "ENUMNAME", _enumName);
-
 	stringReplace(structure, "FIELDS", fields);
+	stringReplace(structure, "ENUMNAME", _enumName);
 
-   f << structure;
+	f << structure;
 }
 
 Enum::~Enum()
@@ -95,20 +104,12 @@ Enum::~Enum()
 
 std::string Enum::outputJava()
 {	
-	string enumName = _cEnum.getName();
-	if(enumName == "") {
-		enumName = _cEnum.getTypedef();
-   }
-
-   if(_cEnum.getName() != "" && _cEnum.getTypedef() != "") {
-      enumName = _cEnum.getTypedef();
-   }
-	return enumName;
+	return _enumName;
 }
 
 std::string Enum::outputJNI()
 {
-   return "jobject";
+	return "jobject";
 }
 
 bool Enum::isNativeType()
@@ -133,16 +134,17 @@ bool Enum::isArray()
 
 void Enum::prepareCall(ofstream& f,string& varName)
 {
-   string structure (
-         "\t\tjclass enm_%CNAME%;\n"
-         "\t\tenm_%CNAME% = (*env)->GetObjectClass(env, %CNAME%);\n"
-         "\t\tjmethodID get_%CNAME% = (*env)->GetMethodID(env, enm_%CNAME%, \"getValue\", \"()I\");\n"
-         "\t\tjint %CNAME%_value = (*env)->CallIntMethod(env, %CNAME%, get_%CNAME%);\n"
-         "\t\t%TYPE% %NAME% = (%TYPE%)%CNAME%_value;\n\n"
-         );
+	//JNI code in order to get the value of the enum from Java.
+	string structure (
+			"\t\tjclass enm_%CNAME%;\n"
+			"\t\tenm_%CNAME% = (*env)->GetObjectClass(env, %CNAME%);\n"
+			"\t\tjmethodID get_%CNAME% = (*env)->GetMethodID(env, enm_%CNAME%, \"getValue\", \"()I\");\n"
+			"\t\tjint %CNAME%_value = (*env)->CallIntMethod(env, %CNAME%, get_%CNAME%);\n"
+			"\t\t%TYPE% %NAME% = (%TYPE%)%CNAME%_value;\n\n"
+			);
 
 
-   string name = "C_" + varName;
+	string name = "C_" + varName;
 
 	stringReplace(structure, "TYPE", _enumName);
 	stringReplace(structure, "NAME", name);
@@ -159,37 +161,30 @@ string Enum::getJNIParameterName(string& varName)
 
 void Enum::getReturnValue(ofstream& f)
 {
-   string structure (
-         "\t\tjclass retObjCls = (*env)->FindClass(env, \"%FILENAME%$%ENUMNAME%\");\n"
-         "\t\tjmethodID getArrayValues = (*env)->GetStaticMethodID(env, retObjCls, \"values\", \"()[L%FILENAME%$%ENUMNAME%;\");\n"
-         "\t\tjobjectArray valuesArray = (jobjectArray)(*env)->CallStaticObjectMethod(env, retObjCls, getArrayValues);\n\n"
-         "\t\tint arrayLength = (*env)->GetArrayLength(env, valuesArray);\n\n"
-         "\t\tint i, val;\n"
-         "\t\tjmethodID getVal;\n"
-         "\t\tgetVal = (*env)->GetMethodID(env, retObjCls, \"getValue\", \"()I\");\n\n"
-         "\t\tfor(i = 0; i < arrayLength; ++i)\n"
-         "\t\t{\n"
-         "\t\t\tJNI_result = (*env)->GetObjectArrayElement(env, valuesArray, i);\n"
-         "\t\t\tval = (*env)->CallIntMethod(env, JNI_result, getVal);\n"
-         "\t\t\tif(val == tempJNI_result) {\n"
-         "\t\t\t\tbreak;\n"
-         "\t\t\t}\n"
-         "\t\t}\n"
-         "\t\treturn JNI_result;\n\n"
-         );
+	//JNI code in order to pass back to Java, the value of the C enum.
+	string structure (
+			"\t\tjclass retObjCls = (*env)->FindClass(env, \"%FILENAME%$%ENUMNAME%\");\n"
+			"\t\tjmethodID getArrayValues = (*env)->GetStaticMethodID(env, retObjCls, \"values\", \"()[L%FILENAME%$%ENUMNAME%;\");\n"
+			"\t\tjobjectArray valuesArray = (jobjectArray)(*env)->CallStaticObjectMethod(env, retObjCls, getArrayValues);\n\n"
+			"\t\tint arrayLength = (*env)->GetArrayLength(env, valuesArray);\n\n"
+			"\t\tint i, val;\n"
+			"\t\tjmethodID getVal;\n"
+			"\t\tgetVal = (*env)->GetMethodID(env, retObjCls, \"getValue\", \"()I\");\n\n"
+			"\t\tfor(i = 0; i < arrayLength; ++i)\n"
+			"\t\t{\n"
+			"\t\t\tJNI_result = (*env)->GetObjectArrayElement(env, valuesArray, i);\n"
+			"\t\t\tval = (*env)->CallIntMethod(env, JNI_result, getVal);\n"
+			"\t\t\tif(val == tempJNI_result) {\n"
+			"\t\t\t\tbreak;\n"
+			"\t\t\t}\n"
+			"\t\t}\n"
+			"\t\treturn JNI_result;\n\n"
+			);
 
-   stringReplace(structure, "FILENAME", _filename);
+	stringReplace(structure, "FILENAME", _filename);
 
-   string enumName = _cEnum.getName();
-   if(_cEnum.getName().empty()) {
-      enumName = _cEnum.getTypedef();
-   }
+	stringReplace(structure, "ENUMNAME", _enumName);
 
-   if(!_cEnum.getName().empty() && !_cEnum.getTypedef().empty()) {
-      enumName = _cEnum.getTypedef();
-   }
-   stringReplace(structure, "ENUMNAME", enumName);
-
-   f << structure;
+	f << structure;
 }
-        
+
