@@ -5,6 +5,7 @@ using namespace nsJNI;
 using namespace nsUtils;
 using namespace std;
 
+//Ensure that every items in the JNI functions are unique.
 static int nbOfOcc;
 static int nbOfRtn;
 
@@ -55,6 +56,7 @@ bool AddressWrapper::isArray()
 
 void AddressWrapper::prepareCall(ofstream& f,string& varName)
 {
+   //We create the C object equivalent of the Java one and allocate memory for it.
    string structure (
          "\t\t%TYPE% %NAME%;\n"
          "\t\tcontextWrapper *ctxWrp%VALUE% = (contextWrapper *)malloc(sizeof(contextWrapper));\n"
@@ -74,6 +76,7 @@ void AddressWrapper::prepareCall(ofstream& f,string& varName)
    stringReplace(structure, "NAME", name);
    stringReplace(structure, "VALUE", oss.str());
    f << structure;
+   //We don't forget to increment the value, in order to have each object unique.
    nbOfOcc = nbOfOcc + 1;
 }
 
@@ -84,6 +87,7 @@ string AddressWrapper::getJNIParameterName(string& varName)
 }
 void AddressWrapper::getReturnValue(ofstream& f)
 {
+   //We return the address of the C object to Java.
    string structure (
          "\t\tctxWrp%VALUE%->ctxRef = %NAME%;\n"
          "\t\tjclass adrWrp_%CNAME%;\n"
@@ -109,6 +113,8 @@ void AddressWrapper::getReturnValue(ofstream& f)
    stringReplace(structure, "NAME", name);
    
    f << structure;
+   //We don't forget to increment the value, in order to have each the object corresponding to prepareCall()
+   //and each of them to be unique.
    nbOfRtn = nbOfRtn + 1;
 }
         
