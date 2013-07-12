@@ -219,7 +219,7 @@ void Function::addArgs(const nsC::Param::vector& parameters)
 	int beginArgs = 0;
 	if(_returnType=="const void *" || _returnType=="void *")
 		_returnType = _returnType+"Array";
-	
+	cout << "Creation Fct :" << _name << endl;
 	if(_name.find("_init",0)!=string::npos && parameters.size()>0)
 	{
 		cout << "This is a init Function" << endl;
@@ -242,32 +242,21 @@ void Function::addArgs(const nsC::Param::vector& parameters)
 	
 	}
 
-   bool skip = false;
+   	bool skip = false;
 	for( int i = beginArgs; i<n; i++)
 	{
 		size_t size = _args.size();
-      if(skip) {
-         skip = false;
-         continue;
-      }
-
+		//nsC::Param arraySize = parameters[i+1];
+	      if(skip) {
+		 skip = false;
+		 continue;
+	      }
 		if(parameters[i].getIndirections()>0  && parameters[i].getCType()!= "const char *")
 		{
 			cout << "Pointer !" << endl;
 			string type = parameters[i].getType();
-			if(type == "void" || type == "const void")
-			{	
-				cout << "Const void* or void* array" << endl;
-				type = parameters[i].getCType();
-				_args.push_back(new nsJNI::Param(type+"Array",parameters[i].getName()));
-            skip = true;
-				continue;
-			}		
-			if(i+1<n)
-			{
-				nsC::Param arraySize = parameters[i+1];
-				if(parameters[i].getName() + "_size" == arraySize.getName())
-				{
+			if(i+1<n && parameters[i].getName() + "_size" == parameters[i+1].getName())
+			{			
 					cout << "Create an Array" << endl;
 					//Remplacer le if par le nombre d'indirection
 					//string type = parameters[i].getType();
@@ -276,47 +265,34 @@ void Function::addArgs(const nsC::Param::vector& parameters)
 					
 					_args.push_back(new nsJNI::Param(type+"Array",parameters[i].getName()));
 					cout << parameters[i].getType()+"Array" << endl;
-               skip = true;  //We just bypass the _size argument
-					continue;
-				}
+               				skip = true;  //We just bypass the _size argument
 			}
-			if(!_dictionnary->isNativeType(parameters[i].getType()))
-	 		{
-	 			cout << "This is not a Native Type = " << parameters[i].getType() << endl;
-	 			if(_dictionnary->countAt(parameters[i].getCType()+special)==0)
-	 			{
-	 				cout << "The object does not exists = " << parameters[i].getCType();
-	 				Type *object = new AddressWrapper(parameters[i].getCType(),"L" + _dictionnary->getFilename() + "$AddressWrapper;");
-	 				_dictionnary->addToMap(parameters[i].getCType()+special,object);
-	 			}
-	 			cout << "Creating a new Param as following" << "[" << "Address Wrapper , " << parameters[i].getName() << "]" << endl; 
-	 			_args.push_back(new nsJNI::Param(parameters[i].getCType()+special,parameters[i].getName()));
-			}
-								
 			else
 			{
-				cout << "Native Type pointer " << endl; 
 				if(_dictionnary->countAt(parameters[i].getCType())==0)
 	 			{	
 	 				cout << "The object does not exists = " << parameters[i].getCType();
-	 			
-	 				Type *object = new Pointer("J",parameters[i].getType(),_dictionnary,false);
-	 				_dictionnary->addToMap(parameters[i].getCType(),object);
+					Type *object;
+	 				if(!_dictionnary->isNativeType(type))
+						object = new AddressWrapper(parameters[i].getCType(),"L" + _dictionnary->getFilename() + "$AddressWrapper;");
+					else
+						object = new Pointer("J",parameters[i].getType(),_dictionnary,false); 
+					
+					_dictionnary->addToMap(parameters[i].getCType(),object);
 	 			}
-	 			cout << "Creating a new Param as following" << "[" << "Address Wrapper , " << parameters[i].getName() << "]" << endl;
 				_args.push_back(new nsJNI::Param(parameters[i].getCType(),parameters[i].getName()));
+
 			}
-			
-	   }
-	   else
+		}
+	else
 	   {
 		   cout << "Normal Type" << endl;
 		   cout << "Creating a new Param as following" << "[" << parameters[i].getCType()<<" , "  << parameters[i].getName() << "]" << endl; 
 		   _args.push_back(new nsJNI::Param(parameters[i].getCType(),parameters[i].getName()));
 	   }
       assert(_args.size()==size+1);
-	   cout << "Fin Fonction" << endl;
 	}
+	cout << "Fin Fonction" << endl;
 }
 
 vector<nsJNI::Param*> Function::getArgs()
