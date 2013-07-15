@@ -5,6 +5,10 @@
 #include "C/Param.h"
 #include "Utils/Utils.h"
 #include <fstream>
+
+/** @addtogroup Types
+ * @{ */
+
 namespace nsJNI
 {
 	class Getter : public Function
@@ -18,7 +22,8 @@ namespace nsJNI
 			\param dictionnary : dictionnary of all type
 	        */
 
-			Getter(nsC::Param& param,string structName, TypesDictionnary * dictionnary);
+			Getter(nsC::Param& param,string structName, TypesDictionnary * dictionnary, bool specialCase);
+         Getter(string structName, TypesDictionnary *dictionnary, bool specialCase);
 			virtual ~Getter();
 			void create(nsC::Param& param);
 			void printPrototypeJNI(ofstream &f);
@@ -28,8 +33,9 @@ namespace nsJNI
 			void prepareCall(ofstream &f);
 		private:
 			string _structName;/*!< The structure's name*/
-         		string _fieldName; /*!< field name*/
+         string _fieldName; /*!< field name*/
 			nsJNI::Param *_handledVariable; /*!< Variable Name*/
+         bool _specialCase;  /*!< if it's getter for struct size*/
 	
 	};
 

@@ -2,12 +2,25 @@
 
 using namespace nsJNI;
 using namespace nsUtils;
-Getter::Getter(nsC::Param& param, string structName, TypesDictionnary *dictionnary) : Function(dictionnary)
+Getter::Getter(nsC::Param& param, string structName, TypesDictionnary *dictionnary, bool specialCase) : Function(dictionnary)
 {
 
 	_structName = structName;
-   	_fieldName = param.getName();
+   _fieldName = param.getName();
+   _specialCase = specialCase;
 	create(param);
+}
+
+Getter::Getter(string name, string structName, TypesDictionnary *dictionnary, bool specialCase) : Function(dictionnary)
+{
+
+	_structName = structName;
+   _fieldName = name;
+   _specialCase = specialCase;
+
+   //JNI function name.
+	_name = "gen_jni_" +_structName + "_" + "get" + "_" + _fieldName;
+   _returnType = "long";
 }
 
 Getter::~Getter()
@@ -45,7 +58,12 @@ void Getter::printContentJNI(ofstream &f)
 	string structure;
 
    //Write specific code in order to transform the return Value from C to Java.
-   if(_dictionnary->convertJNI(_returnType) == "jbyteArray") {
+   if(_specialCase) {
+      structure =
+            "\t\treturn sizeof(%CLASSNAME%);\n"
+            ;
+   }
+   else if(_dictionnary->convertJNI(_returnType) == "jbyteArray") {
       structure =
             "\t\t%CLASSNAME% *C_ctx;\n"
             "\t\tif(mInternal != 0)\n"

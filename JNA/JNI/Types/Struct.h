@@ -75,6 +75,7 @@ namespace nsJNI {
       	vector<Setter*> _setters;
       	vector<Function*> _getterSetters;
          Create *_createFunction;
+         Getter *_structSize;
          Free *_freeFunction;
     };
 }

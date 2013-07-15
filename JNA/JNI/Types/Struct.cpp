@@ -34,7 +34,8 @@ std::string Struct::outputJNI() // Warning unused overridden function
 void Struct::addStructFunctionToJNI(ofstream &f) {
    _createFunction->convertJNI(f);
    _freeFunction->convertJNI(f);
-
+   _structSize->convertJNI(f);
+   
 	for(size_t i = 0;i<_getters.size();i++)
 		_getters[i]->convertJNI(f);
 
@@ -47,6 +48,7 @@ void Struct::addStructToJava(ofstream &f)
    string structure(
 		"\tpublic class %CLASSNAME% {\n"
 		"%FIELDS%\n"
+      "\t\tlong struct_size;\n"
       "\t\tprivate AddressWrapper mInternal;\n\n"
       "%CONSTRUCTOR%"
       "%FINALIZE%"
@@ -63,6 +65,11 @@ void Struct::addStructToJava(ofstream &f)
    nsC::Param::vector fields = _cStruct.getFields();
 	string fieldsTemp;
 	string getterSetter;
+
+      _structSize = new Getter("struct_size",_javaType, _dictionnary, true);
+      _structSize->convertJava(f);
+      //g->convertJNI(f);
+
 	for(size_t i =0; i<fields.size(); i++) {
       string field("\t\tpublic %VALUE1% %VALUE2%;\n");
 		if(fields[i].getCType() == "const void *" || fields[i].getCType() == "void *") {
@@ -72,11 +79,12 @@ void Struct::addStructToJava(ofstream &f)
 		   stringReplace(field, "VALUE1", _dictionnary->convertJava(fields[i].getCType()));
       }
 		stringReplace(field, "VALUE2", fields[i].getName());
- 		Getter *g = new Getter(fields[i],_javaType, _dictionnary);
-        _getters.push_back(g);
-        Setter *s = new Setter(fields[i], _javaType,  _dictionnary);
-        _setters.push_back(s);
-        fieldsTemp += field;
+
+      Getter *g = new Getter(fields[i],_javaType, _dictionnary, false);
+      _getters.push_back(g);
+      Setter *s = new Setter(fields[i], _javaType,  _dictionnary);
+      _setters.push_back(s);
+      fieldsTemp += field;
    }
 
    stringReplace(structure, "CLASSNAME", _cStruct.getTypedef());
@@ -178,7 +186,9 @@ string Struct::generateRead()
 	for(size_t i =0; i<_getters.size(); i++) {
 		fieldsTemp += "\t\t\t " + fields[i].getName() + " = " + _getters[i]->call() + "\n";
    }
+   fieldsTemp += "\t\t\tstruct_size = gen_jni_%CLASSNAME%_get_struct_size();\n";
 	
+   stringReplace(fieldsTemp, "CLASSNAME", _cStruct.getTypedef());
 	stringReplace(read, "FIELDS", fieldsTemp);
 
 	return read;
@@ -228,6 +238,7 @@ vector<Function*> Struct::getGetterSetters()
 {
    _getterSetters.push_back(_createFunction);
    _getterSetters.push_back(_freeFunction);
+   _getterSetters.push_back(_structSize);
 
 	int size = _getterSetters.size();
 	copy(_getters.begin(),_getters.end(),back_inserter(_getterSetters));
