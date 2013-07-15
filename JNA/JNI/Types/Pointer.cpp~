@@ -11,7 +11,6 @@ using namespace std;
 
 Pointer::Pointer(const string& VMSignature,const string& CBaseType,TypesDictionnary *dictionnary,bool isNativeType) : Type("long","jlong",VMSignature)
 {
-	cout << "toto" << endl;
 	this->_CBaseType = CBaseType;
 	this->_dictionnary = dictionnary;
 	_isNativeType = isNativeType;
@@ -48,7 +47,6 @@ bool Pointer::isNativeType()
 {
 	if(!_isNativeType)
 		return _isNativeType;
-	cout << "Pointer" << "CbaseType = " << _CBaseType << endl;
 	return _dictionnary->isNativeType(_CBaseType);
 }
 
@@ -59,10 +57,12 @@ bool Pointer::isAddressWrapper()
 
 void Pointer::prepareCall(ofstream& f,string& varName)
 {
+   //We have a pointer from not a native type, we get the address and cast it
+   //to the corresponding type.
    if(!_isNativeType && _CBaseType != "size_t") {
       string structure (
             "\t\t%TYPE% %NAME%;\n"
-            "\t\tif(%CNAME% != 0) {\n"
+            "\t\tif(%CName% != 0) {\n"
             "\t\t\t%NAME% = (%TYPE%)((contextWrapper *)%CName%)->ctxRef;\n"
             "\t\t\t((contextWrapper *)%CName%)->env = env;\n"
             "\t\t}\n"
@@ -98,8 +98,6 @@ string Pointer::getJNIParameterName(string& varName)
 
 void Pointer::getReturnValue(ofstream& f)
 {
-
-
 
 }
         

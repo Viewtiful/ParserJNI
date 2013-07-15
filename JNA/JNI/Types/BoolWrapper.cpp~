@@ -43,6 +43,10 @@ bool BoolWrapper::isBooleanWrapper()
 	return true;
 }
 
+bool BoolWrapper::isArray()
+{
+	return false;
+}
 
 void BoolWrapper::prepareCall(ofstream& f,string& varName)
 {

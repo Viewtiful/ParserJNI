@@ -21,7 +21,7 @@ void Free::create()
 {
    //JNI function name.
 	_name = "gen_jni_" +_structName + "_" + "free";
-   //add an argument for the pointer to the structure.
+   //Add an argument for the pointer to the structure.
 	_args.push_back(new nsJNI::Param("long","mInternal"));
 	_returnType = "void";
 }

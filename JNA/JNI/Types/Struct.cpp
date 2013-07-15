@@ -47,7 +47,7 @@ void Struct::addStructToJava(ofstream &f)
    string structure(
 		"\tpublic class %CLASSNAME% {\n"
 		"%FIELDS%\n"
-      "\t\tprivate long mInternal;\n\n"
+      "\t\tprivate AddressWrapper mInternal;\n\n"
       "%CONSTRUCTOR%"
       "%FINALIZE%"
       "%MINTERNAL%"
@@ -87,7 +87,7 @@ void Struct::addStructToJava(ofstream &f)
    stringReplace(structure, "READ", generateRead());
 
    string mInternal (
-            "\t\tlong getMInternal() {\n"
+            "\t\tAddressWrapper getMInternal() {\n"
             "\t\t\treturn mInternal;\n"
             "\t\t}\n\n"
             );
@@ -115,7 +115,8 @@ string Struct::generateConstructor()
 {
 	string constructor(
             "\t\tpublic %CLASSNAME%() {\n"
-	         "\t\t\tmInternal = gen_jni_%CLASSNAME%_create();\n"
+            "\t\t\tmInternal = new AddressWrapper();\n"
+	         "\t\t\tmInternal.setAddress(gen_jni_%CLASSNAME%_create());\n"
             "\t\t}\n\n"
             );
 	
@@ -129,7 +130,8 @@ string Struct::generateFinalize()
 	string constructor(
             "\t\t@Override\n"
             "\t\tpublic void finalize() {\n"
-	         "\t\t\tgen_jni_%CLASSNAME%_free(mInternal);\n"
+	         "\t\t\tgen_jni_%CLASSNAME%_free(mInternal.getAddress());\n"
+            "\t\t\tmInternal = null;\n"
             "\t\t}\n\n"
             );
 	
@@ -150,7 +152,7 @@ string Struct::generateWrite()
    nsC::Param::vector fields = _cStruct.getFields();
 	string fieldsTemp;
 	for(size_t i =0; i<fields.size(); i++) {
-      string field("\t\t\tgen_jni_%CLASSNAME%_set_%VALUE%(mInternal, %VALUE%);\n");
+      string field("\t\t\tgen_jni_%CLASSNAME%_set_%VALUE%(mInternal.getAddress(), %VALUE%);\n");
 		
 		stringReplace(field, "VALUE", fields[i].getName());
 	   stringReplace(field, "CLASSNAME", _cStruct.getTypedef());

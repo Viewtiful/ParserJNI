@@ -47,7 +47,11 @@ void Getter::printContentJNI(ofstream &f)
    //Write specific code in order to transform the return Value from C to Java.
    if(_dictionnary->convertJNI(_returnType) == "jbyteArray") {
       structure =
-            "\t\t%CLASSNAME% *C_ctx = (%CLASSNAME% *)mInternal;\n\n"
+            "\t\t%CLASSNAME% *C_ctx;\n"
+            "\t\tif(mInternal != 0)\n"
+            "\t\t\tC_ctx = (%CLASSNAME% *)((contextWrapper *)mInternal)->ctxRef;\n"
+            "\t\telse\n"
+            "\t\t\tC_ctx = NULL;\n\n"
             "\t\tjbyteArray result = (*env)->NewByteArray(env, C_ctx->%ATTRIBUTENAME%_size);\n"
             "\t\t(*env)->SetByteArrayRegion(env, result, 0, C_ctx->%ATTRIBUTENAME%_size, C_ctx->%ATTRIBUTENAME%);\n"
             "\t\treturn result;\n"
@@ -55,7 +59,11 @@ void Getter::printContentJNI(ofstream &f)
    }
    else if( _dictionnary->convertJNI(_returnType) == "jobject") {
       structure =
-               "\t\t%CLASSNAME% *C_ctx = (%CLASSNAME% *)mInternal;\n\n"
+               "\t\t%CLASSNAME% *C_ctx;\n"
+               "\t\tif(mInternal != 0)\n"
+               "\t\t\tC_ctx = (%CLASSNAME% *)((contextWrapper *)mInternal)->ctxRef;\n"
+               "\t\telse\n"
+               "\t\t\tC_ctx = NULL;\n\n"
                "\t\tjobject JNI_result;\n"
                "\t\tjclass retObjCls;\n"
                "\t\tretObjCls = (*env)->FindClass(env, \"ArcanaJNI$%CTYPE%\");\n"
@@ -77,7 +85,11 @@ void Getter::printContentJNI(ofstream &f)
    }
    else {
       structure =
-            "\t\t%CLASSNAME% *C_ctx = (%CLASSNAME% *)mInternal;\n"
+            "\t\t%CLASSNAME% *C_ctx;\n"
+            "\t\tif(mInternal != 0)\n"
+            "\t\t\tC_ctx = (%CLASSNAME% *)((contextWrapper *)mInternal)->ctxRef;\n"
+            "\t\telse\n"
+            "\t\t\tC_ctx = NULL;\n\n"
             "\t\treturn C_ctx->%ATTRIBUTENAME%;\n"
             ;
    }
@@ -97,5 +109,5 @@ void Getter::prepareCall(ofstream &f)
 string Getter::call()
 {
    //JNI function argument.
-	return _name + "(" + _args[0]->getName()+ ");"; 
+	return _name + "(" + _args[0]->getName()+ ".getAddress());"; 
 }
