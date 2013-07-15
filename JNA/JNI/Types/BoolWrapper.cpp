@@ -79,7 +79,7 @@ void BoolWrapper::getReturnValue(ofstream& f)
 			"\t\tboolWrp = (*env)->GetObjectClass(env, %CNAME%);\n"
 			"\t\tsetVal = (*env)->GetMethodID(env, boolWrp, \"setValue\", \"(Z)V\");\n" 
 			"\t\targ = (jboolean) %NAME%;\n"
-			"\t\t(*env)->CallVoidMethod(%CNAME%, setVal, arg);\n\n"
+			"\t\t(*env)->CallVoidMethod(env, %CNAME%, setVal, arg);\n\n"
 			);
 
 	stringReplace(structure, "CNAME", _varName);
