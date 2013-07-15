@@ -64,26 +64,26 @@ namespace nsJNI {
 		*/
 		virtual std::string outputJNI() = 0;
         
-        /*!
+        	/*!
 			\brief verify is this type is derived from a Native Type such as 'int, float...'
 			\return true if it is a NativeType, false else;
 		*/
-        virtual bool isNativeType() = 0;
+        	virtual bool isNativeType() = 0;
         
         
-        /*!
+        	/*!
 			\brief verify is this type is an AddressWrapper
 			\return true if it is an AddressWrapper, false else;
 		*/
-        virtual bool isAddressWrapper() = 0;
+       		 virtual bool isAddressWrapper() = 0;
         
         
         
-        /*!
+       		 /*!
 			\brief verify is this type is an AddressWrapper
 			\return true if it is a BooleanWrapper, false else;
 		*/
-        virtual bool isBooleanWrapper() = 0;
+        	virtual bool isBooleanWrapper() = 0;
         
         /*!
 			\brief verify is this type is an Array

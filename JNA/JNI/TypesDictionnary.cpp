@@ -65,13 +65,7 @@ bool TYPESDICTIONNARY::isNativeType(const string &type)
 	return _conversionMap[type]->isNativeType();
 }
 
-string TYPESDICTIONNARY::getRealType(const string& CType)
-{
-	int i;
-	for(i = CType.size()-1;i>0 && CType[i]=='*';i--);
-
-	return CType.substr(0,i);
-}	
+	
 
 Type* TYPESDICTIONNARY::getType(const string& Ctype) {
 	Type *object = NULL;
@@ -132,6 +126,8 @@ void TYPESDICTIONNARY::addStruct(ofstream &f, ofstream &f2, const nsC::Struct::v
       		bool haveFields(CStruct.getFields().size() > 0);
       		bool isTypedefPointer(CStruct.getTypedefIndirection() == 1);
       		bool isDeepPointer(CStruct.getTypedefIndirection() > 1);
+		assert(haveTypedef);
+
 		if(haveTypedef && !haveFields && (isTypedefPointer || isDeepPointer))
       			addToMap(CStruct.getTypedef(), new Pointer("J",CStruct.getTypedef(),this,false));
       		else if(haveTypedef && haveFields && !isTypedefPointer && !isDeepPointer)

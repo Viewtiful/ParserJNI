@@ -22,6 +22,8 @@
 	\namespace nsJNI 
 	JNI parser namespace
 !*/
+
+
 namespace nsJNI {
 
 	class TypesDictionnary;
