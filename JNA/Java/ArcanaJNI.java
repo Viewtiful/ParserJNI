@@ -28,6 +28,25 @@ public class ArcanaJNI{
 		}
 	}
 
+	public static enum ktb_kep_algo_t {
+		KTB_KEP_ALGO_DH (0),
+		KTB_KEP_ALGO_DH_PASS (1),
+		KTB_KEP_ALGO_STS (2);
+		int enumValue;
+
+		ktb_kep_algo_t (int val) {
+			enumValue = val;
+		}
+
+		int getValue() {
+			return enumValue;
+		}
+
+		void setValue(int val) {
+			enumValue = val;
+		}
+	}
+
 	public static enum ktb_errno {
 		KTB_ERR_NO_ERROR (0),
 		KTB_ERR_UNKNOWN (1),
@@ -161,30 +180,35 @@ public class ArcanaJNI{
 		}
 	}
 
+	public native long gen_jni_ktb_kep_dh_t_get_struct_size();
 	public class ktb_kep_dh_t {
 		public int dummy;
 
-		private long mInternal;
+		long struct_size;
+		private AddressWrapper mInternal;
 
 		public ktb_kep_dh_t() {
-			mInternal = gen_jni_ktb_kep_dh_t_create();
+			mInternal = new AddressWrapper();
+			mInternal.setAddress(gen_jni_ktb_kep_dh_t_create());
 		}
 
 		@Override
 		public void finalize() {
-			gen_jni_ktb_kep_dh_t_free(mInternal);
+			gen_jni_ktb_kep_dh_t_free(mInternal.getAddress());
+			mInternal = null;
 		}
 
-		long getMInternal() {
+		AddressWrapper getMInternal() {
 			return mInternal;
 		}
 
 		public void write() {
-			gen_jni_ktb_kep_dh_t_set_dummy(mInternal, dummy);
+			gen_jni_ktb_kep_dh_t_set_dummy(mInternal.getAddress(), dummy);
 		}
 
 		public void read() {
-			 dummy = gen_jni_ktb_kep_dh_t_get_dummy(mInternal);
+			 dummy = gen_jni_ktb_kep_dh_t_get_dummy(mInternal.getAddress());
+			struct_size = gen_jni_ktb_kep_dh_t_get_struct_size();
 		}
 
 	}
@@ -195,36 +219,41 @@ public class ArcanaJNI{
 
 	public native void gen_jni_ktb_kep_dh_t_set_dummy(long mInternal,int dummy);
 
+	public native long gen_jni_ktb_kep_dh_pass_t_get_struct_size();
 	public class ktb_kep_dh_pass_t {
 		public ktb_cipher_algo_t cipher_algo;
-		public byte discuss_key;
+		public byte[] discuss_key;
 		public long discuss_key_size;
 
-		private long mInternal;
+		long struct_size;
+		private AddressWrapper mInternal;
 
 		public ktb_kep_dh_pass_t() {
-			mInternal = gen_jni_ktb_kep_dh_pass_t_create();
+			mInternal = new AddressWrapper();
+			mInternal.setAddress(gen_jni_ktb_kep_dh_pass_t_create());
 		}
 
 		@Override
 		public void finalize() {
-			gen_jni_ktb_kep_dh_pass_t_free(mInternal);
+			gen_jni_ktb_kep_dh_pass_t_free(mInternal.getAddress());
+			mInternal = null;
 		}
 
-		long getMInternal() {
+		AddressWrapper getMInternal() {
 			return mInternal;
 		}
 
 		public void write() {
-			gen_jni_ktb_kep_dh_pass_t_set_cipher_algo(mInternal, cipher_algo);
-			gen_jni_ktb_kep_dh_pass_t_set_discuss_key(mInternal, discuss_key);
-			gen_jni_ktb_kep_dh_pass_t_set_discuss_key_size(mInternal, discuss_key_size);
+			gen_jni_ktb_kep_dh_pass_t_set_cipher_algo(mInternal.getAddress(), cipher_algo);
+			gen_jni_ktb_kep_dh_pass_t_set_discuss_key(mInternal.getAddress(), discuss_key);
+			gen_jni_ktb_kep_dh_pass_t_set_discuss_key_size(mInternal.getAddress(), discuss_key_size);
 		}
 
 		public void read() {
-			 cipher_algo = gen_jni_ktb_kep_dh_pass_t_get_cipher_algo(mInternal);
-			 discuss_key = gen_jni_ktb_kep_dh_pass_t_get_discuss_key(mInternal);
-			 discuss_key_size = gen_jni_ktb_kep_dh_pass_t_get_discuss_key_size(mInternal);
+			 cipher_algo = gen_jni_ktb_kep_dh_pass_t_get_cipher_algo(mInternal.getAddress());
+			 discuss_key = gen_jni_ktb_kep_dh_pass_t_get_discuss_key(mInternal.getAddress());
+			 discuss_key_size = gen_jni_ktb_kep_dh_pass_t_get_discuss_key_size(mInternal.getAddress());
+			struct_size = gen_jni_ktb_kep_dh_pass_t_get_struct_size();
 		}
 
 	}
@@ -233,46 +262,51 @@ public class ArcanaJNI{
 	public native void gen_jni_ktb_kep_dh_pass_t_free(long mInternal);
 	public native ktb_cipher_algo_t gen_jni_ktb_kep_dh_pass_t_get_cipher_algo(long mInternal);
 
-	public native byte gen_jni_ktb_kep_dh_pass_t_get_discuss_key(long mInternal);
+	public native byte[] gen_jni_ktb_kep_dh_pass_t_get_discuss_key(long mInternal);
 
 	public native long gen_jni_ktb_kep_dh_pass_t_get_discuss_key_size(long mInternal);
 
 	public native void gen_jni_ktb_kep_dh_pass_t_set_cipher_algo(long mInternal,ktb_cipher_algo_t cipher_algo);
 
-	public native void gen_jni_ktb_kep_dh_pass_t_set_discuss_key(long mInternal,byte discuss_key);
+	public native void gen_jni_ktb_kep_dh_pass_t_set_discuss_key(long mInternal,byte[] discuss_key);
 
 	public native void gen_jni_ktb_kep_dh_pass_t_set_discuss_key_size(long mInternal,long discuss_key_size);
 
+	public native long gen_jni_ktb_kep_sts_t_get_struct_size();
 	public class ktb_kep_sts_t {
 		public ktb_cipher_algo_t cipher_algo;
 		public long peer_public_key;
 		public long self_private_key;
 
-		private long mInternal;
+		long struct_size;
+		private AddressWrapper mInternal;
 
 		public ktb_kep_sts_t() {
-			mInternal = gen_jni_ktb_kep_sts_t_create();
+			mInternal = new AddressWrapper();
+			mInternal.setAddress(gen_jni_ktb_kep_sts_t_create());
 		}
 
 		@Override
 		public void finalize() {
-			gen_jni_ktb_kep_sts_t_free(mInternal);
+			gen_jni_ktb_kep_sts_t_free(mInternal.getAddress());
+			mInternal = null;
 		}
 
-		long getMInternal() {
+		AddressWrapper getMInternal() {
 			return mInternal;
 		}
 
 		public void write() {
-			gen_jni_ktb_kep_sts_t_set_cipher_algo(mInternal, cipher_algo);
-			gen_jni_ktb_kep_sts_t_set_peer_public_key(mInternal, peer_public_key);
-			gen_jni_ktb_kep_sts_t_set_self_private_key(mInternal, self_private_key);
+			gen_jni_ktb_kep_sts_t_set_cipher_algo(mInternal.getAddress(), cipher_algo);
+			gen_jni_ktb_kep_sts_t_set_peer_public_key(mInternal.getAddress(), peer_public_key);
+			gen_jni_ktb_kep_sts_t_set_self_private_key(mInternal.getAddress(), self_private_key);
 		}
 
 		public void read() {
-			 cipher_algo = gen_jni_ktb_kep_sts_t_get_cipher_algo(mInternal);
-			 peer_public_key = gen_jni_ktb_kep_sts_t_get_peer_public_key(mInternal);
-			 self_private_key = gen_jni_ktb_kep_sts_t_get_self_private_key(mInternal);
+			 cipher_algo = gen_jni_ktb_kep_sts_t_get_cipher_algo(mInternal.getAddress());
+			 peer_public_key = gen_jni_ktb_kep_sts_t_get_peer_public_key(mInternal.getAddress());
+			 self_private_key = gen_jni_ktb_kep_sts_t_get_self_private_key(mInternal.getAddress());
+			struct_size = gen_jni_ktb_kep_sts_t_get_struct_size();
 		}
 
 	}
@@ -291,76 +325,65 @@ public class ArcanaJNI{
 
 	public native void gen_jni_ktb_kep_sts_t_set_self_private_key(long mInternal,long self_private_key);
 
-	public static enum ktb_kep_algo_t {
-		KTB_KEP_ALGO_DH (0),
-		KTB_KEP_ALGO_DH_PASS (1),
-		KTB_KEP_ALGO_STS (2);
-		int enumValue;
-
-		ktb_kep_algo_t (int val) {
-			enumValue = val;
-		}
-
-		int getValue() {
-			return enumValue;
-		}
-
-		void setValue(int val) {
-			enumValue = val;
-		}
-	}
-
+	public native ktb_errno ktb_kep_init(AddressWrapper ctx,long prng,ktb_kep_algo_t algo,long algo_data,long algo_data_size,String curve_id,ktb_hash_algo_t hash_algo,long secret_key_size,int peer_count);
+	public native void ktb_kep_clear(long ctx);
+	public native byte[] ktb_kep_get_data(long ctx);
+	public native ktb_errno ktb_kep_put_data(long ctx,byte[] peer_data,BoolWrapper continue_exchange);
+	public native ktb_errno ktb_kep_finalise(long ctx,byte[] secret_key);
+	public native String ktb_kep_get_algo_name(ktb_kep_algo_t algo);
+	public native ktb_errno ktb_init();
+	public native void ktb_clear();
 	public native ktb_errno ktb_sign_init(AddressWrapper ctx,ktb_hash_algo_t algo);
 	public native void ktb_sign_clear(long ctx);
 	public native ktb_errno ktb_sign_reset(long ctx);
-	public native ktb_errno ktb_sign_process(long ctx,byte[] data,long data_size);
+	public native ktb_errno ktb_sign_process(long ctx,byte[] data);
 	public native ktb_errno ktb_sign_finalise(long ctx);
 	public native ktb_errno ktb_sign_set_public_key(long ctx,long public_key);
-	public native ktb_errno ktb_sign_verify(long ctx,byte[] signature,long signature_size,BoolWrapper is_valid);
-	public native ktb_errno ktb_sign_verify_block(ktb_hash_algo_t algo,long public_key,byte[] data,long data_size,byte[] signature,long signature_size,BoolWrapper is_valid);
+	public native ktb_errno ktb_sign_verify(long ctx,byte[] signature,BoolWrapper is_valid);
+	public native ktb_errno ktb_sign_verify_block(ktb_hash_algo_t algo,long public_key,byte[] data,byte[] signature,BoolWrapper is_valid);
 	public native ktb_errno ktb_sign_set_private_key(long ctx,long private_key,long prng);
 	public native long ktb_sign_get_sign_size(long ctx);
 	public native byte[] ktb_sign_get_sign(long ctx);
 	public native long ktb_sign_get_sign_size_from_key(long private_key);
-	public native ktb_errno ktb_sign_sign_block(ktb_hash_algo_t algo,long prng,long private_key,byte[] data,long data_size,byte[] signature,long signature_size);
-	public native ktb_errno ktb_kdf(ktb_hash_algo_t algo,byte[] seed,long seed_size,byte[] derived_key,long derived_key_size);
-	public native ktb_errno ktb_pbkdf(ktb_hash_algo_t algo,byte[] passwd,long passwd_size,byte[] salt,long salt_size,long iteration_count,byte[] derived_key,long derived_key_size);
+	public native ktb_errno ktb_sign_sign_block(ktb_hash_algo_t algo,long prng,long private_key,byte[] data,byte[] signature);
+	public native ktb_errno ktb_kdf(ktb_hash_algo_t algo,byte[] seed,byte[] derived_key);
+	public native ktb_errno ktb_pbkdf(ktb_hash_algo_t algo,byte[] passwd,byte[] salt,long iteration_count,byte[] derived_key);
 	public native long ktb_kdf_max_size(ktb_hash_algo_t algo);
-	public native int ktb_strerror(ktb_errno err,byte[] buf,long buf_size);
+	public native int ktb_strerror(ktb_errno err,byte[] buf);
 	public native long ktb_kem_psec_encrypt_size(long peer_public_key);
-	public native ktb_errno ktb_kem_psec_encrypt(ktb_hash_algo_t algo,long prng,long peer_public_key,byte[] secret_key,long secret_key_size,byte[] ciphertext,long ciphertext_size);
-	public native ktb_errno ktb_kem_psec_decrypt(ktb_hash_algo_t algo,long self_private_key,byte[] input_ciphertext,long input_ciphertext_size,byte[] secret_key,long secret_key_size);
+	public native ktb_errno ktb_kem_psec_encrypt(ktb_hash_algo_t algo,long prng,long peer_public_key,byte[] secret_key,byte[] ciphertext);
+	public native ktb_errno ktb_kem_psec_decrypt(ktb_hash_algo_t algo,long self_private_key,byte[] input_ciphertext,byte[] secret_key);
 	public native void ktb_prng_clear(long prng);
-	public native ktb_errno ktb_prng_reseed_with(long prng,byte[] buffer,long buffer_size);
+	public native ktb_errno ktb_prng_reseed_with(long prng,byte[] buffer);
 	public native ktb_errno ktb_prng_reseed(long prng);
-	public native ktb_errno ktb_prng_fill_buffer(long prng,byte[] buffer,long buffer_size);
+	public native ktb_errno ktb_prng_fill_buffer(long prng,byte[] buffer);
 	public native void ktb_keys_public_key_clear(long key);
 	public native void ktb_keys_private_key_clear(long key);
 	public native long ktb_keys_public_key_export_size(long public_key);
-	public native ktb_errno ktb_keys_public_key_export(long public_key,byte[] result,long result_size);
-	public native ktb_errno ktb_keys_public_key_import(byte[] public_key_bytes,long public_key_bytes_size,AddressWrapper public_key);
+	public native ktb_errno ktb_keys_public_key_export(long public_key,byte[] result);
+	public native ktb_errno ktb_keys_public_key_import(byte[] public_key_bytes,AddressWrapper public_key);
 	public native long ktb_keys_private_key_export_size(long key);
-	public native ktb_errno ktb_keys_private_key_export(long key,byte[] buffer,long buffer_size);
-	public native ktb_errno ktb_keys_private_key_import(byte[] private_key_bytes,long private_key_bytes_size,AddressWrapper private_key);
+	public native ktb_errno ktb_keys_private_key_export(long key,byte[] buffer);
+	public native ktb_errno ktb_keys_private_key_import(byte[] private_key_bytes,AddressWrapper private_key);
 	public native ktb_errno ktb_keys_generate_keypair(long prng,String curve_id,AddressWrapper public_key,AddressWrapper private_key);
 	public native long ktb_radix64_encode_size(long input_size);
-	public native ktb_errno ktb_radix64_encode(byte[] input,long input_size,byte[] result,long result_size);
-	public native long ktb_radix64_decode_size(byte[] input,long input_size);
-	public native ktb_errno ktb_radix64_decode(byte[] input,long input_size,byte[] result,long result_size);
-	public native ktb_errno ktb_radix64_verify(byte[] input,long input_size,BoolWrapper verified);
+	public native ktb_errno ktb_radix64_encode(byte[] input,byte[] result);
+	public native long ktb_radix64_decode_size(byte[] input);
+	public native ktb_errno ktb_radix64_decode(byte[] input,byte[] result);
+	public native ktb_errno ktb_radix64_verify(byte[] input,BoolWrapper verified);
 	public native ktb_errno ktb_cipher_init(AddressWrapper ctx,ktb_cipher_algo_t algo,ktb_cipher_mode_t mode,boolean encryption);
 	public native void ktb_cipher_clear(long ctx);
 	public native void ktb_cipher_reset(long ctx);
-	public native ktb_errno ktb_cipher_set_key(long ctx,byte[] key,long key_size);
-	public native ktb_errno ktb_cipher_set_iv(long ctx,byte[] iv,long iv_size);
-	public native ktb_errno ktb_cipher_set_auth_data(long ctx,byte[] auth_data,long auth_data_size);
+	public native ktb_errno ktb_cipher_set_key(long ctx,byte[] key);
+	public native ktb_errno ktb_cipher_set_iv(long ctx,byte[] iv);
+	public native ktb_errno ktb_cipher_set_auth_data(long ctx,byte[] auth_data);
 	public native long ktb_cipher_get_prefix_size(long ctx);
-	public native ktb_errno ktb_cipher_get_prefix(long ctx,byte[] prefix,long prefix_size);
-	public native ktb_errno ktb_cipher_set_prefix(long ctx,byte[] prefix,long prefix_size);
+	public native ktb_errno ktb_cipher_get_prefix(long ctx,byte[] prefix);
+	public native ktb_errno ktb_cipher_set_prefix(long ctx,byte[] prefix);
 	public native long ktb_cipher_get_suffix_size(long ctx);
-	public native ktb_errno ktb_cipher_get_suffix(long ctx,byte[] suffix,long suffix_size);
-	public native ktb_errno ktb_cipher_encrypt_block(long ctx,byte[] in,long in_size,byte[] out,long out_size);
-	public native ktb_errno ktb_cipher_decrypt_block(long ctx,byte[] in,long in_size,byte[] out,long out_size);
+	public native ktb_errno ktb_cipher_get_suffix(long ctx,byte[] suffix);
+	public native ktb_errno ktb_cipher_encrypt_block(long ctx,byte[] in,byte[] out);
+	public native ktb_errno ktb_cipher_decrypt_block(long ctx,byte[] in,byte[] out);
 	public native void ktb_cipher_finalise(long ctx);
 	public native byte[] ktb_cipher_get_mac(long ctx);
 	public native long ktb_cipher_get_data_size(long ctx);
@@ -371,11 +394,11 @@ public class ArcanaJNI{
 	public native long ktb_cipher_get_iv_len(long ctx);
 	public native long ktb_cipher_get_mac_size(long ctx);
 	public native long ktb_cipher_get_iv_len_from_mode(ktb_cipher_mode_t mode);
-	public native ktb_errno ktb_hash_init(AddressWrapper ctx,ktb_hash_algo_t algo);
-	public native ktb_errno ktb_hash_init_hmac(AddressWrapper ctx,ktb_hash_algo_t algo,byte[] key,long key_size);
+	public native ktb_errno ktb_hash_init(long ctx,ktb_hash_algo_t algo);
+	public native ktb_errno ktb_hash_init_hmac(long ctx,ktb_hash_algo_t algo,byte[] key);
 	public native void ktb_hash_clear(long ctx);
 	public native void ktb_hash_reset(long ctx);
-	public native void ktb_hash_process(long ctx,byte[] buf,long buf_size);
+	public native void ktb_hash_process(long ctx,byte[] buf);
 	public native void ktb_hash_finalise(long ctx);
 	public native byte[] ktb_hash_retrieve(long ctx,long size);
 	public native String ktb_hash_get_name(long ctx);
@@ -383,19 +406,11 @@ public class ArcanaJNI{
 	public native long ktb_hash_get_len(long ctx);
 	public native long ktb_hash_get_len_from_algo(ktb_hash_algo_t algo);
 	public native long ktb_hash_get_block_size(long ctx);
-	public native ktb_errno ktb_hash_block(ktb_hash_algo_t algo,byte[] block,long block_size,byte[] result,long result_size);
+	public native ktb_errno ktb_hash_block(ktb_hash_algo_t algo,byte[] block,byte[] result);
 	public native int ktb_curves_count();
 	public native String ktb_curves_id(int index);
 	public native long ktb_base64_encode_size(long input_size);
-	public native ktb_errno ktb_base64_encode(byte[] input,long input_size,byte[] result,long result_size);
-	public native long ktb_base64_decode_size(byte[] input,long input_size);
-	public native ktb_errno ktb_base64_decode(byte[] input,long input_size,byte[] result,long result_size);
-	public native ktb_errno ktb_kep_init(AddressWrapper ctx,long prng,ktb_kep_algo_t algo,long algo_data,long algo_data_size,String curve_id,ktb_hash_algo_t hash_algo,long secret_key_size,int peer_count);
-	public native void ktb_kep_clear(long ctx);
-	public native byte[] ktb_kep_get_data(long ctx);
-	public native ktb_errno ktb_kep_put_data(long ctx,byte[] peer_data,long peer_data_size,BoolWrapper continue_exchange);
-	public native ktb_errno ktb_kep_finalise(long ctx,byte[] secret_key,long secret_key_size);
-	public native String ktb_kep_get_algo_name(ktb_kep_algo_t algo);
-	public native ktb_errno ktb_init();
-	public native void ktb_clear();
+	public native ktb_errno ktb_base64_encode(byte[] input,byte[] result);
+	public native long ktb_base64_decode_size(byte[] input);
+	public native ktb_errno ktb_base64_decode(byte[] input,byte[] result);
 }
