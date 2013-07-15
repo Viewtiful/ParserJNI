@@ -185,13 +185,13 @@ void Function::callNativeMethod(ofstream &f) {
       else if(typeRetour->getJNIParameterName(_args[i]->getName()) == "Array") {
          string param_size(", %PARAMNAME2%");
          param += param_size;
-     paramName = "C_" + _args[i]->getName();
+     	paramName = "C_" + _args[i]->getName();
          stringReplace(param, "PARAMNAME2", "C_" + _args[i]->getName() + "_size");
       }
       else {
 	paramName = "C_" + _args[i]->getName();
       }
-	stringReplace(param, "PARAMNAME", "C_" + _args[i]->getName());
+	stringReplace(param, "PARAMNAME", paramName);
       params += param;
 
       if(i+1 < _args.size())
