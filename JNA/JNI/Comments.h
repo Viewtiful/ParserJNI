@@ -6,6 +6,7 @@
 #include "C/Function.h"
 #include "C/Struct.h"
 #include "C/Enum.h"
+#include <cassert>
 using namespace std;
 using namespace nsC;
 namespace nsJNI
@@ -24,7 +25,8 @@ namespace nsJNI
 			void transformToJavadoc(nsC::Struct s,ofstream &f);
 			void transformToJavadoc(nsC::Enum e,ofstream &f);
                         string format(const string& fctComments);
-		private :
+                        string getToken(int index,string &comments);	
+	private :
 			map<string,string> _lexic;
 	};
 }

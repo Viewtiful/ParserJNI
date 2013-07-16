@@ -2,6 +2,7 @@
 #include <cstdlib>
 #include <iostream>
 #include <fstream>
+#include "JNI/Comments.h"
 #define JNIPARSER nsJNI::JNIParser
 using namespace nsC;
 using namespace std;
@@ -79,7 +80,7 @@ int JNIPARSER::run(nsModules::Module::vector modules)
 		if(containsCallback(modules[i])) {
 			cout << "Module contains callback function, we ignore it." << endl;
          continue;
-      }
+        }
 
 		//For each module, we get all the functions and we convert them to
 		//Java and JNI.
@@ -88,6 +89,8 @@ int JNIPARSER::run(nsModules::Module::vector modules)
 		for(size_t k = 0;k<fcts.size();k++)
 		{
 			nsC::Function current = fcts[k];
+                        //Comments *cm = new Comments();
+                        //cm->transformToJavadoc(current,fileJava);
 			if(!current.isVariadic())
 			{
 				nsJNI::Function *fct = new Function(dico);
