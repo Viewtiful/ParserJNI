@@ -23,9 +23,9 @@ namespace nsJNI
 			void transformToJavadoc(nsC::Function fct,ofstream &f);
 			void transformToJavadoc(nsC::Struct s,ofstream &f);
 			void transformToJavadoc(nsC::Enum e,ofstream &f);
-
+                        string format(const string& fctComments);
 		private :
-			map<string,string> _conversionMap;
+			map<string,string> _lexic;
 	};
 }
 
