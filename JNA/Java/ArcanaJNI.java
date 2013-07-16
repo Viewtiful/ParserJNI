@@ -394,13 +394,13 @@ public class ArcanaJNI{
 	public native long ktb_cipher_get_iv_len(long ctx);
 	public native long ktb_cipher_get_mac_size(long ctx);
 	public native long ktb_cipher_get_iv_len_from_mode(ktb_cipher_mode_t mode);
-	public native ktb_errno ktb_hash_init(long ctx,ktb_hash_algo_t algo);
-	public native ktb_errno ktb_hash_init_hmac(long ctx,ktb_hash_algo_t algo,byte[] key);
+	public native ktb_errno ktb_hash_init(AddressWrapper ctx,ktb_hash_algo_t algo);
+	public native ktb_errno ktb_hash_init_hmac(AddressWrapper ctx,ktb_hash_algo_t algo,byte[] key);
 	public native void ktb_hash_clear(long ctx);
 	public native void ktb_hash_reset(long ctx);
 	public native void ktb_hash_process(long ctx,byte[] buf);
 	public native void ktb_hash_finalise(long ctx);
-	public native byte[] ktb_hash_retrieve(long ctx,long size);
+	public native byte[] ktb_hash_retrieve(long ctx);
 	public native String ktb_hash_get_name(long ctx);
 	public native String ktb_hash_get_name_from_algo(ktb_hash_algo_t algo);
 	public native long ktb_hash_get_len(long ctx);

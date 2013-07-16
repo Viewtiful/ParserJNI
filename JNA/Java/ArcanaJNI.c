@@ -2630,17 +2630,13 @@
 		 return JNI_result;
 	}
 
-	JNIEXPORT jobject JNICALL JNI_ktb_hash_init(JNIEnv *env, jclass cls, jlong ctx,jobject algo) {
+	JNIEXPORT jobject JNICALL JNI_ktb_hash_init(JNIEnv *env, jclass cls, jobject ctx,jobject algo) {
 
 		jobject JNI_result;
 
 		ktb_hash_ctx_t C_ctx;
-		if(ctx != 0) {
-			C_ctx = (ktb_hash_ctx_t)((contextWrapper *)ctx)->ctxRef;
-			((contextWrapper *)ctx)->env = env;
-		}
-		else
-			C_ctx = NULL;
+		contextWrapper *ctxWrp1 = (contextWrapper *)malloc(sizeof(contextWrapper));
+		ctxWrp1->env = env;
 
 		jclass enm_algo;
 		enm_algo = (*env)->GetObjectClass(env, algo);
@@ -2648,7 +2644,17 @@
 		jint algo_value = (*env)->CallIntMethod(env, algo, get_algo);
 		ktb_hash_algo_t C_algo = (ktb_hash_algo_t)algo_value;
 
-		ktb_errno tempJNI_result = ktb_hash_init (C_ctx, C_algo);
+		ktb_errno tempJNI_result = ktb_hash_init (&C_ctx, C_algo);
+
+		ctxWrp1->ctxRef = C_ctx;
+		jclass adrWrp_ctx;
+		jmethodID setAddr_ctx;
+		jlong arg_ctx;
+
+		adrWrp_ctx = (*env)->GetObjectClass(env, ctx);
+		setAddr_ctx = (*env)->GetMethodID(env, adrWrp_ctx, "setAddress", "(J)V");
+		arg_ctx = (jlong) ctxWrp1;
+		(*env)->CallVoidMethod(env, ctx, setAddr_ctx, arg_ctx);
 
 		jclass retObjCls = (*env)->FindClass(env, "ArcanaJNI$ktb_errno");
 		jmethodID getArrayValues = (*env)->GetStaticMethodID(env, retObjCls, "values", "()[LArcanaJNI$ktb_errno;");
@@ -2672,17 +2678,13 @@
 
 	}
 
-	JNIEXPORT jobject JNICALL JNI_ktb_hash_init_hmac(JNIEnv *env, jclass cls, jlong ctx,jobject algo,jbyteArray key) {
+	JNIEXPORT jobject JNICALL JNI_ktb_hash_init_hmac(JNIEnv *env, jclass cls, jobject ctx,jobject algo,jbyteArray key) {
 
 		jobject JNI_result;
 
 		ktb_hash_ctx_t C_ctx;
-		if(ctx != 0) {
-			C_ctx = (ktb_hash_ctx_t)((contextWrapper *)ctx)->ctxRef;
-			((contextWrapper *)ctx)->env = env;
-		}
-		else
-			C_ctx = NULL;
+		contextWrapper *ctxWrp2 = (contextWrapper *)malloc(sizeof(contextWrapper));
+		ctxWrp2->env = env;
 
 		jclass enm_algo;
 		enm_algo = (*env)->GetObjectClass(env, algo);
@@ -2695,7 +2697,17 @@
 		C_key = (jbyte *)malloc(C_key_size);
 		C_key = (*env)->GetByteArrayElements(env, key, NULL);
 
-		ktb_errno tempJNI_result = ktb_hash_init_hmac (C_ctx, C_algo, C_key, C_key_size);
+		ktb_errno tempJNI_result = ktb_hash_init_hmac (&C_ctx, C_algo, C_key, C_key_size);
+
+		ctxWrp2->ctxRef = C_ctx;
+		jclass adrWrp_ctx;
+		jmethodID setAddr_ctx;
+		jlong arg_ctx;
+
+		adrWrp_ctx = (*env)->GetObjectClass(env, ctx);
+		setAddr_ctx = (*env)->GetMethodID(env, adrWrp_ctx, "setAddress", "(J)V");
+		arg_ctx = (jlong) ctxWrp2;
+		(*env)->CallVoidMethod(env, ctx, setAddr_ctx, arg_ctx);
 
 		(*env)->SetByteArrayRegion(env, key, 0, C_key_size, C_key);
 		free(C_key);
@@ -2786,7 +2798,7 @@
 
 	}
 
-	JNIEXPORT jbyteArray JNICALL JNI_ktb_hash_retrieve(JNIEnv *env, jclass cls, jlong ctx,jlong size) {
+	JNIEXPORT jbyteArray JNICALL JNI_ktb_hash_retrieve(JNIEnv *env, jclass cls, jlong ctx) {
 
 		jbyteArray JNI_result;
 
@@ -2798,9 +2810,9 @@
 		else
 			C_ctx = NULL;
 
-		size_t C_size = (size_t) size;
+		size_t C_size;
 
-		void* tempJNI_result = (void*)ktb_hash_retrieve (C_ctx, C_size);
+		void* tempJNI_result = (void*)ktb_hash_retrieve (C_ctx, &C_size);
 
 		JNI_result = (*env)->NewByteArray(env, C_size);
 		(*env)->SetByteArrayRegion(env, JNI_result, 0, C_size, (jbyte *)tempJNI_result);
@@ -3170,13 +3182,13 @@ static JNINativeMethod method_table[] = {
 	{ "ktb_cipher_get_iv_len", "(J)J", (void *)JNI_ktb_cipher_get_iv_len },
 	{ "ktb_cipher_get_mac_size", "(J)J", (void *)JNI_ktb_cipher_get_mac_size },
 	{ "ktb_cipher_get_iv_len_from_mode", "(LArcanaJNI$ktb_cipher_mode_t;)J", (void *)JNI_ktb_cipher_get_iv_len_from_mode },
-	{ "ktb_hash_init", "(JLArcanaJNI$ktb_hash_algo_t;)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_hash_init },
-	{ "ktb_hash_init_hmac", "(JLArcanaJNI$ktb_hash_algo_t;[B)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_hash_init_hmac },
+	{ "ktb_hash_init", "(LArcanaJNI$AddressWrapper;LArcanaJNI$ktb_hash_algo_t;)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_hash_init },
+	{ "ktb_hash_init_hmac", "(LArcanaJNI$AddressWrapper;LArcanaJNI$ktb_hash_algo_t;[B)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_hash_init_hmac },
 	{ "ktb_hash_clear", "(J)V", (void *)JNI_ktb_hash_clear },
 	{ "ktb_hash_reset", "(J)V", (void *)JNI_ktb_hash_reset },
 	{ "ktb_hash_process", "(J[B)V", (void *)JNI_ktb_hash_process },
 	{ "ktb_hash_finalise", "(J)V", (void *)JNI_ktb_hash_finalise },
-	{ "ktb_hash_retrieve", "(JJ)[B", (void *)JNI_ktb_hash_retrieve },
+	{ "ktb_hash_retrieve", "(J)[B", (void *)JNI_ktb_hash_retrieve },
 	{ "ktb_hash_get_name", "(J)Ljava/lang/String;", (void *)JNI_ktb_hash_get_name },
 	{ "ktb_hash_get_name_from_algo", "(LArcanaJNI$ktb_hash_algo_t;)Ljava/lang/String;", (void *)JNI_ktb_hash_get_name_from_algo },
 	{ "ktb_hash_get_len", "(J)J", (void *)JNI_ktb_hash_get_len },
