@@ -1,4 +1,5 @@
 /** @file
+ *
  * @defgroup JNI_parser JNI Parser of C headers
  * @brief Parsing C headers in order to create the corresponding java class 
  * and JNI code.
@@ -32,6 +33,7 @@ namespace nsJNI {
 			 * signatures and then we write them to a java / c file.
 			*/
 			int run(nsModules::Module::vector modules);
+         bool containsCallback(nsModules::Module module);
 
       protected :
          OutputJNI *jni; /*!< manager of the JNI Side*/

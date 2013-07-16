@@ -41,6 +41,11 @@ int JNIPARSER::run(nsModules::Module::vector modules)
 	// Getting all the types from all the modules.
 	for(size_t i = 0; i<modules.size(); ++i)
 	{
+		if(containsCallback(modules[i])) {
+			cout << "Module contains callback function, we ignore it." << endl;
+         continue;
+      }
+
 		vector<nsC::Enum> moduleEnums = modules[i].getEnums();
 		vector<nsC::Struct> moduleStructs = modules[i].getStructs();
 	
@@ -48,9 +53,7 @@ int JNIPARSER::run(nsModules::Module::vector modules)
 		copy(moduleEnums.begin(), moduleEnums.end(), back_inserter(enums));
 		copy(moduleStructs.begin(), moduleStructs.end(), back_inserter(structs));
 		dico->addTypedefs(modules[i].getTypedefs());
-		int callbackSize = modules[i].getCallbacks().size();
-		if(callbackSize>0)
-			cout << callbackSize << "Callbacks founds, JNIParser will crash" << endl;
+
 		moduleEnums.clear();
 		moduleStructs.clear();	
 	}
@@ -73,6 +76,11 @@ int JNIPARSER::run(nsModules::Module::vector modules)
 	// Converting everything to JNI and Java.
 	for(size_t i = 0; i<modules.size(); i++)
 	{
+		if(containsCallback(modules[i])) {
+			cout << "Module contains callback function, we ignore it." << endl;
+         continue;
+      }
+
 		//For each module, we get all the functions and we convert them to
 		//Java and JNI.
 		nsC::Function::vector fcts = modules[i].getFunctions();
@@ -119,6 +127,10 @@ int JNIPARSER::run(nsModules::Module::vector modules)
    structs.clear();
    		
    return EXIT_SUCCESS;
+}
+
+bool JNIPARSER::containsCallback(nsModules::Module module) {
+   return (module.getCallbacks().size() > 0)? true: false;
 }
 
 #undef JNIPARSER
