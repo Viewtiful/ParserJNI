@@ -86,7 +86,7 @@ void Comments::transformRef(int index,string &comments)
     string paramToken = "@See";
     int tokenSize = paramToken.size();
     comments.erase(index,tokenSize);
-    comments.insert(index,"@See");
+    comments.insert(index,"@see");
     inRetval = false;
 }
 
@@ -131,7 +131,7 @@ void Comments::transformNote(int index, string &comments)
 void Comments::transformReturnVal(int index, string &comments)
 {
     string handledToken = "@retval";
-    string header = "<br /><u>Possible return Value</u> : <br /><ul>";
+    string header = "<br /><u>Possible return Value</u> : <br /><ul>\n\t*";
     int endOfLine;        
     if(!inRetval)
     {
