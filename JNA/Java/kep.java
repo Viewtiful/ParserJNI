@@ -1,6 +1,11 @@
+import java.io.IOException;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
+
 public class kep
 {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception{
 		ArcanaJNI aJNI = new ArcanaJNI();
 
 		if( aJNI.ktb_init() == ArcanaJNI.ktb_errno.KTB_ERR_NO_ERROR) {
@@ -39,7 +44,11 @@ public class kep
 			StringBuilder sb = new StringBuilder();
 			for(byte b : public_buffer) 
 				sb.append(String.format("%02X ", b));
-			System.out.println(sb.toString());  
+			System.out.println(sb.toString()); 
+
+         OutputStream oos = new FileOutputStream("public_key.txt"); 
+         oos.write(public_buffer);
+         oos.close();
 		} 
 		System.out.println("");
 
@@ -53,6 +62,10 @@ public class kep
 			for(byte b : private_buffer) 
 				sb.append(String.format("%02X ", b));
 			System.out.println(sb.toString());  
+
+         OutputStream oos = new FileOutputStream("private_key.txt"); 
+         oos.write(private_buffer);
+         oos.close();
 		}    
 
 		if(aJNI.ktb_kep_init(ctx, 0, ArcanaJNI.ktb_kep_algo_t.KTB_KEP_ALGO_STS, algo_params.getMInternal().getAddress(), algo_params.struct_size, "nistP521", ArcanaJNI.ktb_hash_algo_t.KTB_HASH_ALGO_SHA512, shared_key_size, 2) == ArcanaJNI.ktb_errno.KTB_ERR_NO_ERROR) {
