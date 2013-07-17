@@ -93,7 +93,7 @@ int JNIPARSER::run(nsModules::Module::vector modules)
 			if(!current.isVariadic())
 			{
                                 
-                        fileJava << cm->transformToJavadoc(current,fileJava);
+                        fileJava << cm->transformToJavadoc(current,fileJava) << endl;
 				nsJNI::Function *fct = new Function(dico);
 				saveFcts.push_back(fct);
 				fct->create(current);

@@ -8,6 +8,7 @@
 #include "C/Enum.h"
 #include <cassert>
 #include <vector>
+#include <locale>
 using namespace std;
 using namespace nsC;
 namespace nsJNI
@@ -68,9 +69,30 @@ namespace nsJNI
                          */
                         void transformA(int index, string &comments);
 
-
-	private :
+                        /*!
+                         * \brief check if a character is an letter
+                         * \return true if it is a letter, false else
+                         */
+                        bool isAlpha(char c);       
+                        
+                        /*!
+                         * \brief handle transformation of an Doxygen @note, an @note is transformed to an <b><i>
+                         * 
+                         * \param index : beginning index of the @a in the comments
+                         * \param comments : the whole comments
+                         */
+                        void transformNote(int index, string &comments);
+                        
+                        /*!
+                         * \brief handle transformation of an Doxygen @retval, an @retval is transformed to an <b>Possible return Value
+                         * 
+                         * \param index : beginning index of the @a in the comments
+                         * \param comments : the whole comments
+                         */
+                        void transformReturnVal(int index, string &comments);
+	private:
             map<string,codeGenerator> _lexic; /*!< contains handle function*/
+            bool inRetval; /*!< translating an retval*/
 	};
         
 

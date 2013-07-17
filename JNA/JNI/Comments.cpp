@@ -2,14 +2,13 @@
 using namespace nsJNI;
 Comments::Comments()
 {
-    /*_lexic["@param"] = "@param";
-    _lexic["@return"] = "@return";
-    _lexic["@ref"] = "@see";
-    _lexic["@a"] = "<i>";*/
-    
+ 
+    inRetval = false;
     _lexic["@param"] = &Comments::transformParam;
     _lexic["@ref"] = &Comments::transformRef;
-    //_lexic["@a"] = &Comments::transformA;
+    _lexic["@a"] = &Comments::transformA;
+    _lexic["@note"] = &Comments::transformNote;
+    _lexic["@retval"] = &Comments::transformReturnVal;
     
 }
 
@@ -50,6 +49,7 @@ string  Comments::transformToJavadoc(nsC::Function fct,ofstream &f)
             break;
           
     }
+    inRetval = false;
     return comments;
 }
 
@@ -57,14 +57,14 @@ string Comments::getToken(int index,string &comments)
 {
     int endofToken;
     bool endToken = false;
-    for(endofToken = index;endofToken<comments.size() && !endToken;endofToken++)
+    for(endofToken = index+1;endofToken<comments.size() && !endToken;endofToken++)
     {
         if(comments[endofToken] == '[')
         {
             comments.insert(endofToken,1,' ');
             endToken = true;
         }
-        else if(comments[endofToken] == ' ')
+        else if(comments[endofToken] == ' ' || !isAlpha(comments[endofToken]))
             endToken = true;
          
     }
@@ -78,6 +78,7 @@ void Comments::transformParam(int index,string &comments)
     int tokenSize = paramToken.size();
     comments.erase(index,tokenSize);
     comments.insert(index,"@param");
+    inRetval = false;
 }
 
 void Comments::transformRef(int index,string &comments)
@@ -86,6 +87,7 @@ void Comments::transformRef(int index,string &comments)
     int tokenSize = paramToken.size();
     comments.erase(index,tokenSize);
     comments.insert(index,"@See");
+    inRetval = false;
 }
 
 void Comments::transformA(int index, string &comments)
@@ -93,13 +95,63 @@ void Comments::transformA(int index, string &comments)
     string paramToken = "@a";
     int tokenSize = paramToken.size();
     int i;
+    int k;
+    locale loc;
+    bool letters = false;
     comments.erase(index,tokenSize);
-    for(i = index + 4;i< comments.size();i++)
+    comments.insert(index,"<i>");
+    for(i = index+4;i<comments.size();i++)
     {
-        if(isalpha(comments[i])!=0)
+        if(!letters && (isAlpha(comments[i]) || comments[i]=='*'))
+            letters = true;
+        else if(!letters && comments[i]==' ')
+            comments.erase(i,1);
+        else if(letters && !isAlpha(comments[i]))
             break;
     }
-    comments.insert(index,"<i>");
+    cout << "isalpha(=) = " << isAlpha('=') << endl;
     comments.insert(i,"</i>");
 }
 
+bool Comments::isAlpha(char c)
+{
+    return ((c>='a' && c<='z') || (c>='A' && c<='Z')); 
+}
+
+void Comments::transformNote(int index, string &comments)
+{
+    string paramToken = "<br /><b><i>Note :</i></b>";
+    string handledToken = "@note";
+    int tokenSize = paramToken.size();
+    comments.erase(index,handledToken.size());
+    comments.insert(index,paramToken);
+    inRetval = false;
+}
+
+void Comments::transformReturnVal(int index, string &comments)
+{
+    string handledToken = "@retval";
+    string header = "<br /><u>Possible return Value</u> : <br /><ul>";
+    int endOfLine;        
+    if(!inRetval)
+    {
+        comments.erase(index,handledToken.size());
+        comments.insert(index,header);
+        inRetval = true;
+        comments.insert(index+header.size(), "<li>");
+        for(endOfLine = index+header.size(); endOfLine < comments.size() ;endOfLine++)
+            if(comments[endOfLine]=='\n')
+                break;
+        comments.insert(endOfLine,"</li>");
+    }
+    else
+    {
+        comments.erase(index,handledToken.size());
+        comments.insert(index, "<li>");
+        for(endOfLine = index+3; endOfLine < comments.size() ;endOfLine++)
+            if(comments[endOfLine]=='\n')
+                break;
+        comments.insert(endOfLine,"</li>");
+    }
+    
+}
