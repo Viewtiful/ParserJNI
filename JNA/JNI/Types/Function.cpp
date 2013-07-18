@@ -124,7 +124,7 @@ void Function::printContentJNI(ofstream &f)
 		   param->getReturnValue(f);
 	      if(param->isArray()) {
 	         Array *a = (Array *)param;
-	         a->getReturnValueAndFree(f);
+	         a->getReturnValueAndFree(f, _args[i]->getName());
 	      }
 	}
 
@@ -230,7 +230,7 @@ void Function::addArgs(const nsC::Param::vector& parameters)
 				Type *object = new AddressWrapper(parameters[0].getCType(),"L" + _dictionnary->getFilename() + "$AddressWrapper;");
  				_dictionnary->addToMap(parameters[0].getCType(),object);
 	 		}
-	 			
+		 			cout << "HERE = " << parameters[0].getCType(); 			
 			_args.push_back(new nsJNI::Param(parameters[0].getCType(),parameters[0].getName()));
 			beginArgs = 1;
 		}

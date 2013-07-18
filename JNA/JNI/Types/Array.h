@@ -55,7 +55,7 @@ namespace nsJNI {
         void prepareCall(ofstream& f,std::string& varName);
         std::string getJNIParameterName(std::string& varName);
         void getReturnValue(ofstream& f);
-        void getReturnValueAndFree(ofstream& f);
+        void getReturnValueAndFree(ofstream& f, std::string& varName);
         
       protected:
         TypesDictionnary* _dictionnary; /*!< dictionnary of all type*/

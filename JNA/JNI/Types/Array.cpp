@@ -52,7 +52,7 @@ bool Array::isArray()
 	return true;
 }
 
-void Array::prepareCall(ofstream& f,string& varName) 
+void Array::prepareCall(ofstream& f, string& varName) 
 {
 	string structure (
 			"\t\t%TYPE% * %NAME%;\n"
@@ -99,7 +99,7 @@ void Array::getReturnValue(ofstream& f)
    f << structure;
 }
 
-void Array::getReturnValueAndFree(ofstream& f) 
+void Array::getReturnValueAndFree(ofstream& f, string& varName) 
 {
    string structure (
          "\t\t(*env)->Set%TYPEMAJ%ArrayRegion(env, %CNAME%, 0, %CNAMELENGTH%, %NAME%);\n"
@@ -111,9 +111,9 @@ void Array::getReturnValueAndFree(ofstream& f)
  	typeMaj = toJavaName(typeMaj, false, false, true);
 
    stringReplace(structure, "TYPEMAJ", typeMaj);
-   stringReplace(structure, "CNAME", _varName);
-   stringReplace(structure, "NAME", "C_" + _varName);
-   stringReplace(structure, "CNAMELENGTH", "C_" + _varName + "_size");
+   stringReplace(structure, "CNAME", varName);
+   stringReplace(structure, "NAME", "C_" + varName);
+   stringReplace(structure, "CNAMELENGTH", "C_" + varName + "_size");
 
    f << structure;
 }
