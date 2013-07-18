@@ -33,7 +33,7 @@ public class hash {
 			System.out.println(Utils.getCurrentTime() + "ktb_hash_block() ok");
 		else {
 			System.out.println(Utils.getCurrentTime()
-					+ "Error while initializating ktb_hash_block()");
+					+ "Error at ktb_hash_block()");
 			Utils.freeBuffer(helloB);
 			Utils.freeBuffer(hash);
 			return false;
