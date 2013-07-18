@@ -90,18 +90,18 @@ void Comments::transformParam(int index, string &comments)
         cout << "ParamName : " << paramName << "endl" << endl;
         int indexSize = paramName.find("_size",0);
         
-//        if(indexSize!=paramName.npos)
-//        {
-//            cout << "dans le if" << endl;
-//            int nextTag = comments.find('@',inOut);
-//            if(nextTag!=comments.npos)
-//                comments.erase(index,nextTag-1);
-//            else
-//            {
-//                comments.erase(index,comments.size()-2);
-//                comments.insert(comments.size(),"*/");
-//            }
-//        }
+        if(indexSize!=paramName.npos)
+        {
+            cout << "dans le if" << endl;
+            int nextTag = comments.find('@',inOut);
+            if(nextTag!=comments.npos)
+                comments.erase(index,nextTag-index-1);
+            else
+            {
+                comments.erase(index,comments.size()-index-2);
+                comments.insert(comments.size(),"*/");
+            }
+        }
         
        
     }
