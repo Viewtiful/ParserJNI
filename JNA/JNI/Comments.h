@@ -90,9 +90,13 @@ namespace nsJNI
                          * \param comments : the whole comments
                          */
                         void transformReturnVal(int index, string &comments);
+                        
+                        
+                       int bypass(int index,string &comments,char c);
 	private:
             map<string,codeGenerator> _lexic; /*!< contains handle function*/
             bool inRetval; /*!< translating an retval*/
+            int _index;
 	};
         
 

@@ -2,11 +2,10 @@
 #include <cstdlib>
 #include <iostream>
 #include <fstream>
-#include "JNI/Comments/Comments.h"
+#include "JNI/Comments.h"
 #define JNIPARSER nsJNI::JNIParser
 using namespace nsC;
 using namespace std;
-
 JNIPARSER::~JNIParser() {
 	delete jni;
 	delete java;
@@ -91,10 +90,10 @@ int JNIPARSER::run(nsModules::Module::vector modules)
 			nsC::Function current = fcts[k];
                         Comments *cm = new Comments();
 			if(!current.isVariadic())
-			{
-                                
+			{        
                         fileJava << cm->transformToJavadoc(current,fileJava) << endl;
 				nsJNI::Function *fct = new Function(dico);
+                                cout << "Comments function : "<< current.getName() << current.getComment() << endl;
 				saveFcts.push_back(fct);
 				fct->create(current);
 				java->convert(fileJava,fct);
