@@ -2,7 +2,7 @@
 #include <cstdlib>
 #include <iostream>
 #include <fstream>
-#include "JNI/Comments.h"
+#include "JNI/Comments/Comments.h"
 #define JNIPARSER nsJNI::JNIParser
 using namespace nsC;
 using namespace std;
