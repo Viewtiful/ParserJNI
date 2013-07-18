@@ -39,7 +39,7 @@ extern "C" {
  * every algorithms available.
  */
 //JNA TYPEDEF "com.sun.jna.Structure"
-typedef struct ktb_kep_algo_t *ktb_kep_algo_data_t;
+typedef void *ktb_kep_algo_data_t;
 
 /** @} */
 

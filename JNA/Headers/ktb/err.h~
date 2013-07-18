@@ -105,6 +105,31 @@ typedef enum {
     KTB_ERRNO_MAX
 } ktb_errno;
 
+/** @} */
+
+/** @name Error reporting
+ * @{ */
+
+/** The maximum length of an error's string representation (including
+ * the terminating nul character).
+ *
+ * @a KTB_MAX_STRERROR_LEN should be used with buffers given to
+ * ktb_strerror() when one needs to guarantee that ERANGE is not returned.
+ * For example
+ * @code
+ *     ktb_errno err = func_returning_an_error();
+ *     if (err != 0) {
+ *         char errstr[KTB_MAX_STRERROR_LEN];
+ *         ktb_strerror(err, errstr, KTB_MAX_STRERROR_LEN);
+ *         printf("Error: %s\n", errstr);
+ *     }
+ * @endcode
+ * Note that the above code mimics the functionality of ktb_err().  In
+ * general, ktb_strerror() should only be used when ktb_err() or ktb_ferr()
+ * cannot be used.
+ */
+
+
 #ifdef __cplusplus
 }
 #endif

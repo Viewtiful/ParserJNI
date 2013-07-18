@@ -70,7 +70,7 @@ typedef struct ktb_hash_ctx *ktb_hash_ctx_t;
  * @retval KTB_ERR_UNKNOWN_HASH_ALGO The @a algo value is invalid
  * @retval KTB_ERR_OUT_OF_MEM An error occured when trying to allocate memory
  */
-ktb_errno ktb_hash_init(ktb_hash_ctx_t ctx, ktb_hash_algo_t algo);
+ktb_errno ktb_hash_init(ktb_hash_ctx_t *ctx, ktb_hash_algo_t algo);
 
 /** Initialise an HMAC context.
  *
@@ -144,7 +144,7 @@ void ktb_hash_finalise(ktb_hash_ctx_t ctx);
  * 
  * @warning This function can only be called after calling ktb_hash_finalise().
  */
-const void *ktb_hash_retrieve(ktb_hash_ctx_t ctx, size_t size);
+const void *ktb_hash_retrieve(ktb_hash_ctx_t ctx, size_t *size);
 
 /** @} */
 
