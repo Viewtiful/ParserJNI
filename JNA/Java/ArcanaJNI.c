@@ -2381,6 +2381,7 @@
 		C_out = (jbyte *)malloc(C_out_size);
 		C_out = (*env)->GetByteArrayElements(env, out, NULL);
 
+
 		ktb_errno tempJNI_result = ktb_cipher_encrypt_block (C_ctx, C_in, C_in_size, C_out, C_out_size);
 
 		(*env)->SetByteArrayRegion(env, in, 0, C_in_size, C_in);
@@ -2411,7 +2412,7 @@
 
 	}
 
-	JNIEXPORT jobject JNICALL JNI_ktb_cipher_decrypt_block(JNIEnv *env, jclass cls, jlong ctx,jbyteArray in,jbyteArray out) {
+	JNIEXPORT jobject JNICALL JNI_ktb_cipher_decrypt_block(JNIEnv *env, jclass cls, jlong ctx,jbyteArray in, jbyteArray out) {
 
 		jobject JNI_result;
 
@@ -2425,16 +2426,18 @@
 
 		jbyte * C_in;
 		int C_in_size = (*env)->GetArrayLength(env, in);
+      printf("C_in_size : %d\n", C_in_size);
 		C_in = (jbyte *)malloc(C_in_size);
 		C_in = (*env)->GetByteArrayElements(env, in, NULL);
 
 		jbyte * C_out;
 		int C_out_size = (*env)->GetArrayLength(env, out);
+      printf("C_out_size : %d\n", C_out_size);
 		C_out = (jbyte *)malloc(C_out_size);
 		C_out = (*env)->GetByteArrayElements(env, out, NULL);
 
 		ktb_errno tempJNI_result = ktb_cipher_decrypt_block (C_ctx, C_in, C_in_size, C_out, C_out_size);
-
+      printf("tempJNi_result : %d\n", tempJNI_result);
 		(*env)->SetByteArrayRegion(env, in, 0, C_in_size, C_in);
 		free(C_in);
 

@@ -382,8 +382,8 @@ public class ArcanaJNI{
 	public native ktb_errno ktb_cipher_set_prefix(long ctx,byte[] prefix);
 	public native long ktb_cipher_get_suffix_size(long ctx);
 	public native ktb_errno ktb_cipher_get_suffix(long ctx,byte[] suffix);
-	public native ktb_errno ktb_cipher_encrypt_block(long ctx,byte[] in,byte[] out);
-	public native ktb_errno ktb_cipher_decrypt_block(long ctx,byte[] in,byte[] out);
+	public native ktb_errno ktb_cipher_encrypt_block(long ctx,byte[] in, byte[] out);
+	public native ktb_errno ktb_cipher_decrypt_block(long ctx,byte[] in, byte[] out);
 	public native void ktb_cipher_finalise(long ctx);
 	public native byte[] ktb_cipher_get_mac(long ctx);
 	public native long ktb_cipher_get_data_size(long ctx);
