@@ -103,6 +103,9 @@ void Array::getReturnValueAndFree(ofstream& f, string& varName)
 {
    string structure (
          "\t\t(*env)->Set%TYPEMAJ%ArrayRegion(env, %CNAME%, 0, %CNAMELENGTH%, %NAME%);\n"
+         "\t\tint i_%NAME%;\n"
+         "\t\tfor(i_%NAME% = 0; i_%NAME% < %CNAMELENGTH%; ++i_%NAME%)\n"
+         "\t\t\t%NAME%[i_%NAME%] = 0;\n"
          "\t\tfree(%NAME%);\n\n"
          );
 

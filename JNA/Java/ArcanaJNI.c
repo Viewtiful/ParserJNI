@@ -424,6 +424,9 @@
 		ktb_errno tempJNI_result = ktb_kep_put_data (C_ctx, C_peer_data, C_peer_data_size, &C_continue_exchange);
 
 		(*env)->SetByteArrayRegion(env, peer_data, 0, C_peer_data_size, C_peer_data);
+		int i_C_peer_data;
+		for(i_C_peer_data = 0; i_C_peer_data < C_peer_data_size; ++i_C_peer_data)
+			C_peer_data[i_C_peer_data] = 0;
 		free(C_peer_data);
 
 		jclass boolWrp;
@@ -476,6 +479,9 @@
 		ktb_errno tempJNI_result = ktb_kep_finalise (C_ctx, C_secret_key, C_secret_key_size);
 
 		(*env)->SetByteArrayRegion(env, secret_key, 0, C_secret_key_size, C_secret_key);
+		int i_C_secret_key;
+		for(i_C_secret_key = 0; i_C_secret_key < C_secret_key_size; ++i_C_secret_key)
+			C_secret_key[i_C_secret_key] = 0;
 		free(C_secret_key);
 
 		jclass retObjCls = (*env)->FindClass(env, "ArcanaJNI$ktb_errno");
@@ -668,6 +674,9 @@
 		ktb_errno tempJNI_result = ktb_sign_process (C_ctx, C_data, C_data_size);
 
 		(*env)->SetByteArrayRegion(env, data, 0, C_data_size, C_data);
+		int i_C_data;
+		for(i_C_data = 0; i_C_data < C_data_size; ++i_C_data)
+			C_data[i_C_data] = 0;
 		free(C_data);
 
 		jclass retObjCls = (*env)->FindClass(env, "ArcanaJNI$ktb_errno");
@@ -794,6 +803,9 @@
 		ktb_errno tempJNI_result = ktb_sign_verify (C_ctx, C_signature, C_signature_size, &C_is_valid);
 
 		(*env)->SetByteArrayRegion(env, signature, 0, C_signature_size, C_signature);
+		int i_C_signature;
+		for(i_C_signature = 0; i_C_signature < C_signature_size; ++i_C_signature)
+			C_signature[i_C_signature] = 0;
 		free(C_signature);
 
 		jclass boolWrp;
@@ -858,10 +870,16 @@
 
 		ktb_errno tempJNI_result = ktb_sign_verify_block (C_algo, C_public_key, C_data, C_data_size, C_signature, C_signature_size, &C_is_valid);
 
-		(*env)->SetByteArrayRegion(env, signature, 0, C_signature_size, C_signature);
-		free(C_signature);
+		(*env)->SetByteArrayRegion(env, data, 0, C_data_size, C_data);
+		int i_C_data;
+		for(i_C_data = 0; i_C_data < C_data_size; ++i_C_data)
+			C_data[i_C_data] = 0;
+		free(C_data);
 
 		(*env)->SetByteArrayRegion(env, signature, 0, C_signature_size, C_signature);
+		int i_C_signature;
+		for(i_C_signature = 0; i_C_signature < C_signature_size; ++i_C_signature)
+			C_signature[i_C_signature] = 0;
 		free(C_signature);
 
 		jclass boolWrp;
@@ -1040,9 +1058,15 @@
 		ktb_errno tempJNI_result = ktb_sign_sign_block (C_algo, C_prng, C_private_key, C_data, C_data_size, C_signature, C_signature_size);
 
 		(*env)->SetByteArrayRegion(env, data, 0, C_data_size, C_data);
+		int i_C_data;
+		for(i_C_data = 0; i_C_data < C_data_size; ++i_C_data)
+			C_data[i_C_data] = 0;
 		free(C_data);
 
 		(*env)->SetByteArrayRegion(env, signature, 0, C_signature_size, C_signature);
+		int i_C_signature;
+		for(i_C_signature = 0; i_C_signature < C_signature_size; ++i_C_signature)
+			C_signature[i_C_signature] = 0;
 		free(C_signature);
 
 		jclass retObjCls = (*env)->FindClass(env, "ArcanaJNI$ktb_errno");
@@ -1090,9 +1114,15 @@
 		ktb_errno tempJNI_result = ktb_kdf (C_algo, C_seed, C_seed_size, C_derived_key, C_derived_key_size);
 
 		(*env)->SetByteArrayRegion(env, seed, 0, C_seed_size, C_seed);
+		int i_C_seed;
+		for(i_C_seed = 0; i_C_seed < C_seed_size; ++i_C_seed)
+			C_seed[i_C_seed] = 0;
 		free(C_seed);
 
 		(*env)->SetByteArrayRegion(env, derived_key, 0, C_derived_key_size, C_derived_key);
+		int i_C_derived_key;
+		for(i_C_derived_key = 0; i_C_derived_key < C_derived_key_size; ++i_C_derived_key)
+			C_derived_key[i_C_derived_key] = 0;
 		free(C_derived_key);
 
 		jclass retObjCls = (*env)->FindClass(env, "ArcanaJNI$ktb_errno");
@@ -1146,13 +1176,22 @@
 
 		ktb_errno tempJNI_result = ktb_pbkdf (C_algo, C_passwd, C_passwd_size, C_salt, C_salt_size, C_iteration_count, C_derived_key, C_derived_key_size);
 
-		(*env)->SetByteArrayRegion(env, salt, 0, C_salt_size, C_salt);
-		free(C_salt);
+		(*env)->SetByteArrayRegion(env, passwd, 0, C_passwd_size, C_passwd);
+		int i_C_passwd;
+		for(i_C_passwd = 0; i_C_passwd < C_passwd_size; ++i_C_passwd)
+			C_passwd[i_C_passwd] = 0;
+		free(C_passwd);
 
 		(*env)->SetByteArrayRegion(env, salt, 0, C_salt_size, C_salt);
+		int i_C_salt;
+		for(i_C_salt = 0; i_C_salt < C_salt_size; ++i_C_salt)
+			C_salt[i_C_salt] = 0;
 		free(C_salt);
 
 		(*env)->SetByteArrayRegion(env, derived_key, 0, C_derived_key_size, C_derived_key);
+		int i_C_derived_key;
+		for(i_C_derived_key = 0; i_C_derived_key < C_derived_key_size; ++i_C_derived_key)
+			C_derived_key[i_C_derived_key] = 0;
 		free(C_derived_key);
 
 		jclass retObjCls = (*env)->FindClass(env, "ArcanaJNI$ktb_errno");
@@ -1210,6 +1249,9 @@
 		 JNI_result = ktb_strerror (C_err, C_buf, C_buf_size);
 
 		(*env)->SetByteArrayRegion(env, buf, 0, C_buf_size, C_buf);
+		int i_C_buf;
+		for(i_C_buf = 0; i_C_buf < C_buf_size; ++i_C_buf)
+			C_buf[i_C_buf] = 0;
 		free(C_buf);
 
 		 return JNI_result;
@@ -1270,10 +1312,16 @@
 
 		ktb_errno tempJNI_result = ktb_kem_psec_encrypt (C_algo, C_prng, C_peer_public_key, C_secret_key, C_secret_key_size, C_ciphertext, C_ciphertext_size);
 
-		(*env)->SetByteArrayRegion(env, ciphertext, 0, C_ciphertext_size, C_ciphertext);
-		free(C_ciphertext);
+		(*env)->SetByteArrayRegion(env, secret_key, 0, C_secret_key_size, C_secret_key);
+		int i_C_secret_key;
+		for(i_C_secret_key = 0; i_C_secret_key < C_secret_key_size; ++i_C_secret_key)
+			C_secret_key[i_C_secret_key] = 0;
+		free(C_secret_key);
 
 		(*env)->SetByteArrayRegion(env, ciphertext, 0, C_ciphertext_size, C_ciphertext);
+		int i_C_ciphertext;
+		for(i_C_ciphertext = 0; i_C_ciphertext < C_ciphertext_size; ++i_C_ciphertext)
+			C_ciphertext[i_C_ciphertext] = 0;
 		free(C_ciphertext);
 
 		jclass retObjCls = (*env)->FindClass(env, "ArcanaJNI$ktb_errno");
@@ -1329,9 +1377,15 @@
 		ktb_errno tempJNI_result = ktb_kem_psec_decrypt (C_algo, C_self_private_key, C_input_ciphertext, C_input_ciphertext_size, C_secret_key, C_secret_key_size);
 
 		(*env)->SetByteArrayRegion(env, input_ciphertext, 0, C_input_ciphertext_size, C_input_ciphertext);
+		int i_C_input_ciphertext;
+		for(i_C_input_ciphertext = 0; i_C_input_ciphertext < C_input_ciphertext_size; ++i_C_input_ciphertext)
+			C_input_ciphertext[i_C_input_ciphertext] = 0;
 		free(C_input_ciphertext);
 
 		(*env)->SetByteArrayRegion(env, secret_key, 0, C_secret_key_size, C_secret_key);
+		int i_C_secret_key;
+		for(i_C_secret_key = 0; i_C_secret_key < C_secret_key_size; ++i_C_secret_key)
+			C_secret_key[i_C_secret_key] = 0;
 		free(C_secret_key);
 
 		jclass retObjCls = (*env)->FindClass(env, "ArcanaJNI$ktb_errno");
@@ -1390,6 +1444,9 @@
 		ktb_errno tempJNI_result = ktb_prng_reseed_with (C_prng, C_buffer, C_buffer_size);
 
 		(*env)->SetByteArrayRegion(env, buffer, 0, C_buffer_size, C_buffer);
+		int i_C_buffer;
+		for(i_C_buffer = 0; i_C_buffer < C_buffer_size; ++i_C_buffer)
+			C_buffer[i_C_buffer] = 0;
 		free(C_buffer);
 
 		jclass retObjCls = (*env)->FindClass(env, "ArcanaJNI$ktb_errno");
@@ -1470,6 +1527,9 @@
 		ktb_errno tempJNI_result = ktb_prng_fill_buffer (C_prng, C_buffer, C_buffer_size);
 
 		(*env)->SetByteArrayRegion(env, buffer, 0, C_buffer_size, C_buffer);
+		int i_C_buffer;
+		for(i_C_buffer = 0; i_C_buffer < C_buffer_size; ++i_C_buffer)
+			C_buffer[i_C_buffer] = 0;
 		free(C_buffer);
 
 		jclass retObjCls = (*env)->FindClass(env, "ArcanaJNI$ktb_errno");
@@ -1559,6 +1619,9 @@
 		ktb_errno tempJNI_result = ktb_keys_public_key_export (C_public_key, C_result, C_result_size);
 
 		(*env)->SetByteArrayRegion(env, result, 0, C_result_size, C_result);
+		int i_C_result;
+		for(i_C_result = 0; i_C_result < C_result_size; ++i_C_result)
+			C_result[i_C_result] = 0;
 		free(C_result);
 
 		jclass retObjCls = (*env)->FindClass(env, "ArcanaJNI$ktb_errno");
@@ -1599,6 +1662,9 @@
 		ktb_errno tempJNI_result = ktb_keys_public_key_import (C_public_key_bytes, C_public_key_bytes_size, &C_public_key);
 
 		(*env)->SetByteArrayRegion(env, public_key_bytes, 0, C_public_key_bytes_size, C_public_key_bytes);
+		int i_C_public_key_bytes;
+		for(i_C_public_key_bytes = 0; i_C_public_key_bytes < C_public_key_bytes_size; ++i_C_public_key_bytes)
+			C_public_key_bytes[i_C_public_key_bytes] = 0;
 		free(C_public_key_bytes);
 
 		ctxWrp1->ctxRef = C_public_key;
@@ -1670,6 +1736,9 @@
 		ktb_errno tempJNI_result = ktb_keys_private_key_export (C_key, C_buffer, C_buffer_size);
 
 		(*env)->SetByteArrayRegion(env, buffer, 0, C_buffer_size, C_buffer);
+		int i_C_buffer;
+		for(i_C_buffer = 0; i_C_buffer < C_buffer_size; ++i_C_buffer)
+			C_buffer[i_C_buffer] = 0;
 		free(C_buffer);
 
 		jclass retObjCls = (*env)->FindClass(env, "ArcanaJNI$ktb_errno");
@@ -1710,6 +1779,9 @@
 		ktb_errno tempJNI_result = ktb_keys_private_key_import (C_private_key_bytes, C_private_key_bytes_size, &C_private_key);
 
 		(*env)->SetByteArrayRegion(env, private_key_bytes, 0, C_private_key_bytes_size, C_private_key_bytes);
+		int i_C_private_key_bytes;
+		for(i_C_private_key_bytes = 0; i_C_private_key_bytes < C_private_key_bytes_size; ++i_C_private_key_bytes)
+			C_private_key_bytes[i_C_private_key_bytes] = 0;
 		free(C_private_key_bytes);
 
 		ctxWrp1->ctxRef = C_private_key;
@@ -1843,9 +1915,15 @@
 		ktb_errno tempJNI_result = ktb_radix64_encode (C_input, C_input_size, C_result, C_result_size);
 
 		(*env)->SetByteArrayRegion(env, input, 0, C_input_size, C_input);
+		int i_C_input;
+		for(i_C_input = 0; i_C_input < C_input_size; ++i_C_input)
+			C_input[i_C_input] = 0;
 		free(C_input);
 
 		(*env)->SetByteArrayRegion(env, result, 0, C_result_size, C_result);
+		int i_C_result;
+		for(i_C_result = 0; i_C_result < C_result_size; ++i_C_result)
+			C_result[i_C_result] = 0;
 		free(C_result);
 
 		jclass retObjCls = (*env)->FindClass(env, "ArcanaJNI$ktb_errno");
@@ -1882,6 +1960,9 @@
 		 JNI_result = ktb_radix64_decode_size (C_input, C_input_size);
 
 		(*env)->SetByteArrayRegion(env, input, 0, C_input_size, C_input);
+		int i_C_input;
+		for(i_C_input = 0; i_C_input < C_input_size; ++i_C_input)
+			C_input[i_C_input] = 0;
 		free(C_input);
 
 		 return JNI_result;
@@ -1904,9 +1985,15 @@
 		ktb_errno tempJNI_result = ktb_radix64_decode (C_input, C_input_size, C_result, C_result_size);
 
 		(*env)->SetByteArrayRegion(env, input, 0, C_input_size, C_input);
+		int i_C_input;
+		for(i_C_input = 0; i_C_input < C_input_size; ++i_C_input)
+			C_input[i_C_input] = 0;
 		free(C_input);
 
 		(*env)->SetByteArrayRegion(env, result, 0, C_result_size, C_result);
+		int i_C_result;
+		for(i_C_result = 0; i_C_result < C_result_size; ++i_C_result)
+			C_result[i_C_result] = 0;
 		free(C_result);
 
 		jclass retObjCls = (*env)->FindClass(env, "ArcanaJNI$ktb_errno");
@@ -1945,6 +2032,9 @@
 		ktb_errno tempJNI_result = ktb_radix64_verify (C_input, C_input_size, &C_verified);
 
 		(*env)->SetByteArrayRegion(env, input, 0, C_input_size, C_input);
+		int i_C_input;
+		for(i_C_input = 0; i_C_input < C_input_size; ++i_C_input)
+			C_input[i_C_input] = 0;
 		free(C_input);
 
 		jclass boolWrp;
@@ -2081,6 +2171,9 @@
 		ktb_errno tempJNI_result = ktb_cipher_set_key (C_ctx, C_key, C_key_size);
 
 		(*env)->SetByteArrayRegion(env, key, 0, C_key_size, C_key);
+		int i_C_key;
+		for(i_C_key = 0; i_C_key < C_key_size; ++i_C_key)
+			C_key[i_C_key] = 0;
 		free(C_key);
 
 		jclass retObjCls = (*env)->FindClass(env, "ArcanaJNI$ktb_errno");
@@ -2125,6 +2218,9 @@
 		ktb_errno tempJNI_result = ktb_cipher_set_iv (C_ctx, C_iv, C_iv_size);
 
 		(*env)->SetByteArrayRegion(env, iv, 0, C_iv_size, C_iv);
+		int i_C_iv;
+		for(i_C_iv = 0; i_C_iv < C_iv_size; ++i_C_iv)
+			C_iv[i_C_iv] = 0;
 		free(C_iv);
 
 		jclass retObjCls = (*env)->FindClass(env, "ArcanaJNI$ktb_errno");
@@ -2169,6 +2265,9 @@
 		ktb_errno tempJNI_result = ktb_cipher_set_auth_data (C_ctx, C_auth_data, C_auth_data_size);
 
 		(*env)->SetByteArrayRegion(env, auth_data, 0, C_auth_data_size, C_auth_data);
+		int i_C_auth_data;
+		for(i_C_auth_data = 0; i_C_auth_data < C_auth_data_size; ++i_C_auth_data)
+			C_auth_data[i_C_auth_data] = 0;
 		free(C_auth_data);
 
 		jclass retObjCls = (*env)->FindClass(env, "ArcanaJNI$ktb_errno");
@@ -2230,6 +2329,9 @@
 		ktb_errno tempJNI_result = ktb_cipher_get_prefix (C_ctx, C_prefix, C_prefix_size);
 
 		(*env)->SetByteArrayRegion(env, prefix, 0, C_prefix_size, C_prefix);
+		int i_C_prefix;
+		for(i_C_prefix = 0; i_C_prefix < C_prefix_size; ++i_C_prefix)
+			C_prefix[i_C_prefix] = 0;
 		free(C_prefix);
 
 		jclass retObjCls = (*env)->FindClass(env, "ArcanaJNI$ktb_errno");
@@ -2274,6 +2376,9 @@
 		ktb_errno tempJNI_result = ktb_cipher_set_prefix (C_ctx, C_prefix, C_prefix_size);
 
 		(*env)->SetByteArrayRegion(env, prefix, 0, C_prefix_size, C_prefix);
+		int i_C_prefix;
+		for(i_C_prefix = 0; i_C_prefix < C_prefix_size; ++i_C_prefix)
+			C_prefix[i_C_prefix] = 0;
 		free(C_prefix);
 
 		jclass retObjCls = (*env)->FindClass(env, "ArcanaJNI$ktb_errno");
@@ -2335,6 +2440,9 @@
 		ktb_errno tempJNI_result = ktb_cipher_get_suffix (C_ctx, C_suffix, C_suffix_size);
 
 		(*env)->SetByteArrayRegion(env, suffix, 0, C_suffix_size, C_suffix);
+		int i_C_suffix;
+		for(i_C_suffix = 0; i_C_suffix < C_suffix_size; ++i_C_suffix)
+			C_suffix[i_C_suffix] = 0;
 		free(C_suffix);
 
 		jclass retObjCls = (*env)->FindClass(env, "ArcanaJNI$ktb_errno");
@@ -2381,13 +2489,18 @@
 		C_out = (jbyte *)malloc(C_out_size);
 		C_out = (*env)->GetByteArrayElements(env, out, NULL);
 
-
 		ktb_errno tempJNI_result = ktb_cipher_encrypt_block (C_ctx, C_in, C_in_size, C_out, C_out_size);
 
 		(*env)->SetByteArrayRegion(env, in, 0, C_in_size, C_in);
+		int i_C_in;
+		for(i_C_in = 0; i_C_in < C_in_size; ++i_C_in)
+			C_in[i_C_in] = 0;
 		free(C_in);
 
 		(*env)->SetByteArrayRegion(env, out, 0, C_out_size, C_out);
+		int i_C_out;
+		for(i_C_out = 0; i_C_out < C_out_size; ++i_C_out)
+			C_out[i_C_out] = 0;
 		free(C_out);
 
 		jclass retObjCls = (*env)->FindClass(env, "ArcanaJNI$ktb_errno");
@@ -2412,7 +2525,7 @@
 
 	}
 
-	JNIEXPORT jobject JNICALL JNI_ktb_cipher_decrypt_block(JNIEnv *env, jclass cls, jlong ctx,jbyteArray in, jbyteArray out) {
+	JNIEXPORT jobject JNICALL JNI_ktb_cipher_decrypt_block(JNIEnv *env, jclass cls, jlong ctx,jbyteArray in,jbyteArray out) {
 
 		jobject JNI_result;
 
@@ -2426,22 +2539,26 @@
 
 		jbyte * C_in;
 		int C_in_size = (*env)->GetArrayLength(env, in);
-      printf("C_in_size : %d\n", C_in_size);
 		C_in = (jbyte *)malloc(C_in_size);
 		C_in = (*env)->GetByteArrayElements(env, in, NULL);
 
 		jbyte * C_out;
 		int C_out_size = (*env)->GetArrayLength(env, out);
-      printf("C_out_size : %d\n", C_out_size);
 		C_out = (jbyte *)malloc(C_out_size);
 		C_out = (*env)->GetByteArrayElements(env, out, NULL);
 
 		ktb_errno tempJNI_result = ktb_cipher_decrypt_block (C_ctx, C_in, C_in_size, C_out, C_out_size);
-      printf("tempJNi_result : %d\n", tempJNI_result);
+
 		(*env)->SetByteArrayRegion(env, in, 0, C_in_size, C_in);
+		int i_C_in;
+		for(i_C_in = 0; i_C_in < C_in_size; ++i_C_in)
+			C_in[i_C_in] = 0;
 		free(C_in);
 
 		(*env)->SetByteArrayRegion(env, out, 0, C_out_size, C_out);
+		int i_C_out;
+		for(i_C_out = 0; i_C_out < C_out_size; ++i_C_out)
+			C_out[i_C_out] = 0;
 		free(C_out);
 
 		jclass retObjCls = (*env)->FindClass(env, "ArcanaJNI$ktb_errno");
@@ -2713,6 +2830,9 @@
 		(*env)->CallVoidMethod(env, ctx, setAddr_ctx, arg_ctx);
 
 		(*env)->SetByteArrayRegion(env, key, 0, C_key_size, C_key);
+		int i_C_key;
+		for(i_C_key = 0; i_C_key < C_key_size; ++i_C_key)
+			C_key[i_C_key] = 0;
 		free(C_key);
 
 		jclass retObjCls = (*env)->FindClass(env, "ArcanaJNI$ktb_errno");
@@ -2783,6 +2903,9 @@
 		  ktb_hash_process (C_ctx, C_buf, C_buf_size);
 
 		(*env)->SetByteArrayRegion(env, buf, 0, C_buf_size, C_buf);
+		int i_C_buf;
+		for(i_C_buf = 0; i_C_buf < C_buf_size; ++i_C_buf)
+			C_buf[i_C_buf] = 0;
 		free(C_buf);
 
 	}
@@ -2928,9 +3051,15 @@
 		ktb_errno tempJNI_result = ktb_hash_block (C_algo, C_block, C_block_size, C_result, C_result_size);
 
 		(*env)->SetByteArrayRegion(env, block, 0, C_block_size, C_block);
+		int i_C_block;
+		for(i_C_block = 0; i_C_block < C_block_size; ++i_C_block)
+			C_block[i_C_block] = 0;
 		free(C_block);
 
 		(*env)->SetByteArrayRegion(env, result, 0, C_result_size, C_result);
+		int i_C_result;
+		for(i_C_result = 0; i_C_result < C_result_size; ++i_C_result)
+			C_result[i_C_result] = 0;
 		free(C_result);
 
 		jclass retObjCls = (*env)->FindClass(env, "ArcanaJNI$ktb_errno");
@@ -3004,9 +3133,15 @@
 		ktb_errno tempJNI_result = ktb_base64_encode (C_input, C_input_size, C_result, C_result_size);
 
 		(*env)->SetByteArrayRegion(env, input, 0, C_input_size, C_input);
+		int i_C_input;
+		for(i_C_input = 0; i_C_input < C_input_size; ++i_C_input)
+			C_input[i_C_input] = 0;
 		free(C_input);
 
 		(*env)->SetByteArrayRegion(env, result, 0, C_result_size, C_result);
+		int i_C_result;
+		for(i_C_result = 0; i_C_result < C_result_size; ++i_C_result)
+			C_result[i_C_result] = 0;
 		free(C_result);
 
 		jclass retObjCls = (*env)->FindClass(env, "ArcanaJNI$ktb_errno");
@@ -3043,6 +3178,9 @@
 		 JNI_result = ktb_base64_decode_size (C_input, C_input_size);
 
 		(*env)->SetByteArrayRegion(env, input, 0, C_input_size, C_input);
+		int i_C_input;
+		for(i_C_input = 0; i_C_input < C_input_size; ++i_C_input)
+			C_input[i_C_input] = 0;
 		free(C_input);
 
 		 return JNI_result;
@@ -3065,9 +3203,15 @@
 		ktb_errno tempJNI_result = ktb_base64_decode (C_input, C_input_size, C_result, C_result_size);
 
 		(*env)->SetByteArrayRegion(env, input, 0, C_input_size, C_input);
+		int i_C_input;
+		for(i_C_input = 0; i_C_input < C_input_size; ++i_C_input)
+			C_input[i_C_input] = 0;
 		free(C_input);
 
 		(*env)->SetByteArrayRegion(env, result, 0, C_result_size, C_result);
+		int i_C_result;
+		for(i_C_result = 0; i_C_result < C_result_size; ++i_C_result)
+			C_result[i_C_result] = 0;
 		free(C_result);
 
 		jclass retObjCls = (*env)->FindClass(env, "ArcanaJNI$ktb_errno");
