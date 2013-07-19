@@ -15,7 +15,7 @@ Comments::Comments()
 
 Comments::~Comments()
 {
-
+    _lexic.clear();
 }
 
 void Comments::call(string& token, int index, string& comments)

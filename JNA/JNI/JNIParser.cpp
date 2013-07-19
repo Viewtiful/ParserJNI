@@ -2,28 +2,29 @@
 #include <cstdlib>
 #include <iostream>
 #include <fstream>
-#include "JNI/Comments.h"
 #define JNIPARSER nsJNI::JNIParser
 using namespace nsC;
 using namespace std;
 JNIPARSER::~JNIParser() {
-	delete jni;
-	delete java;
-	delete dico;
+	delete _jni;
+	delete _java;
+	delete _dico;
+        delete _cm;
 }
 
 int JNIPARSER::run(nsModules::Module::vector modules) 
 {
 	vector<nsC::Enum> enums;
 	vector<nsC::Struct> structs;
-
+        
 	string filename = "ArcanaJNI";
 	// Even if the filename ArcanaJNI is correct as a java type, we ensure that.
 	filename = nsUtils::toJavaName(filename, false, false, true);
-	dico = new TypesDictionnary(filename);	
-	jni = new OutputJNI(dico);
-	java = new OutputJava(dico);
-
+	_dico = new TypesDictionnary(filename);	
+	_jni = new OutputJNI(_dico);
+	_java = new OutputJava(_dico);
+        _cm = new Comments();
+        
 	// Get the java path from the command line parameters.
 	string javaPath = nsUtils::Parameters::getInstance().getJavaSrcDir();
 	// Creating the real path with the name of the file for Java.
@@ -34,9 +35,9 @@ int JNIPARSER::run(nsModules::Module::vector modules)
 	ofstream fileJNI(realJNIPath.c_str());
 
 	//We add in the header of each file what is specific (include, class def..)
-	java->addClassDefinition(fileJava, filename);
-	jni->addInclude(fileJNI);
-	jni->addContextWrapper(fileJNI);
+	_java->addClassDefinition(fileJava, filename);
+	_jni->addInclude(fileJNI);
+	_jni->addContextWrapper(fileJNI);
 		
 	// Getting all the types from all the modules.
 	for(size_t i = 0; i<modules.size(); ++i)
@@ -52,14 +53,14 @@ int JNIPARSER::run(nsModules::Module::vector modules)
 		//We get all enums and structs from the modules.
 		copy(moduleEnums.begin(), moduleEnums.end(), back_inserter(enums));
 		copy(moduleStructs.begin(), moduleStructs.end(), back_inserter(structs));
-		dico->addTypedefs(modules[i].getTypedefs());
+		_dico->addTypedefs(modules[i].getTypedefs());
 
 		moduleEnums.clear();
 		moduleStructs.clear();	
 	}
 	//We had all enums/structures to the dictionnary.
-	dico->addEnums(fileJava, enums);
-	dico->addStruct(fileJava, fileJNI, structs);
+	_dico->addEnums(fileJava, enums);
+	_dico->addStruct(fileJava, fileJNI, structs);
 	
 	//We get all the functions from the header files for the future table
 	//of native functions.
@@ -68,7 +69,7 @@ int JNIPARSER::run(nsModules::Module::vector modules)
 	//We also get all functions created for the structure, like create,get,set..
 	//We get them for the future table of native functions.
 	vector<nsJNI::Function*> getSet;
-	getSet = dico->getFcts();
+	getSet = _dico->getFcts();
 
 	//We copy in saved functions, all the functions from the structures.
 	copy(getSet.begin(),getSet.end(),back_inserter(saveFcts));
@@ -88,16 +89,15 @@ int JNIPARSER::run(nsModules::Module::vector modules)
 		for(size_t k = 0;k<fcts.size();k++)
 		{
 			nsC::Function current = fcts[k];
-                        Comments *cm = new Comments();
-			if(!current.isVariadic())
-			{        
-                        fileJava << cm->transformToJavadoc(current,fileJava) << endl;
-				nsJNI::Function *fct = new Function(dico);
+                        if(!current.isVariadic())
+			{
+                                fileJava << _cm->transformToJavadoc(current,fileJava) << endl;
+                               nsJNI::Function *fct = new Function(_dico);
                                 cout << "Comments function : "<< current.getName() << current.getComment() << endl;
 				saveFcts.push_back(fct);
 				fct->create(current);
-				java->convert(fileJava,fct);
-				jni->convert(fileJNI,fct);
+				_java->convert(fileJava,fct);
+				_jni->convert(fileJNI,fct);
 			}
 			else
 				cout << "Variadic Function : " << current.getName() << endl;
@@ -108,11 +108,11 @@ int JNIPARSER::run(nsModules::Module::vector modules)
 	
 	//We then, generate the table of native functions. This is used for linking
 	//the Java part and the JNI part.
-	jni->addNativeFunctionTable(fileJNI, filename, saveFcts);
+	_jni->addNativeFunctionTable(fileJNI, filename, saveFcts);
 
 	//This part generate the function JNI_LOAD. This is the first function that
 	//is checked by the VM.
-	jni->generateJNIOnload(fileJNI, filename);
+	_jni->generateJNIOnload(fileJNI, filename);
 
 	// Just for tests !
 	fileJava << "}" << endl;

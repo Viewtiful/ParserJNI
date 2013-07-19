@@ -12,7 +12,7 @@
 #include "JNI/TypesDictionnary.h"
 #include "JNI/OutputJNI.h"
 #include "JNI/OutputJava.h"
-
+#include "JNI/Comments.h"
 
 /** @addtogroup JNI_parser
  * @{ */
@@ -36,9 +36,11 @@ namespace nsJNI {
          bool containsCallback(nsModules::Module module);
 
       protected :
-         OutputJNI *jni; /*!< manager of the JNI Side*/
-         OutputJava *java; /*!< manager of the Java Side*/
-         TypesDictionnary *dico; /*!< The structure's name*/
+         OutputJNI *_jni; /*!< manager of the JNI Side*/
+         OutputJava *_java; /*!< manager of the Java Side*/
+         TypesDictionnary *_dico; /*!< The structure's name*/
+         Comments *_cm;  /*!< Generate javadoc comments for function*/
+                                
 		
 	};
 }
