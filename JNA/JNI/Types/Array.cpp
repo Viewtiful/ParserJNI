@@ -33,7 +33,7 @@ std::string Array::outputJNI()
 
 bool Array::isNativeType()
 {
-	//An array is Native is its Base type is Native
+	//An array is Native if its Base type is Native
 	return _dictionnary->isNativeType(_CBaseType);
 }
 

@@ -32,6 +32,8 @@ TYPESDICTIONNARY::~TypesDictionnary()
 void TYPESDICTIONNARY::addBaseType(string filename)
 {
 
+
+	//Adding base type
 	addToMap("short", new NativeType("short","jshort","S",true));
 	addToMap("int", new NativeType("int","jint","I",true));
 	addToMap("long", new NativeType("long","jlong","J",true));
@@ -47,6 +49,7 @@ void TYPESDICTIONNARY::addBaseType(string filename)
 	addToMap("char *", new NativeType("byte","jbyte","B",true));
 	addToMap("bool *",new BoolWrapper("bool *", "L" + filename + "$BoolWrapper;"));	
 	
+	//Adding base Arrays
 	addToMap("shortArray", new Array("short","[S",this));
 	addToMap("intArray", new Array("int","[I",this));
 	addToMap("longArray", new Array("long","[J",this));
@@ -69,9 +72,9 @@ bool TYPESDICTIONNARY::isNativeType(const string &type)
 
 Type* TYPESDICTIONNARY::getType(const string& Ctype) {
 	Type *object = NULL;
+	//Test if there Ctype is in the Map
 	if(_conversionMap.count(Ctype) == 1)
 		object = _conversionMap[Ctype];
-
 	assert(object != NULL);
 	return object;
 }
@@ -115,6 +118,7 @@ string TYPESDICTIONNARY::convertVM(const string& Ctype)
 
 void TYPESDICTIONNARY::addStruct(ofstream &f, ofstream &f2, const nsC::Struct::vector& structs)
 {
+	//Add a struct to the map
 	std::vector<Struct*> createdStruct;
 	for (nsC::Struct::vector::const_iterator iterator(structs.begin());
          iterator != structs.end();
@@ -128,10 +132,12 @@ void TYPESDICTIONNARY::addStruct(ofstream &f, ofstream &f2, const nsC::Struct::v
       		bool isDeepPointer(CStruct.getTypedefIndirection() > 1);
 		assert(haveTypedef);
 
+		// In this case, we had a Pointer
 		if(haveTypedef && !haveFields && (isTypedefPointer || isDeepPointer))
       			addToMap(CStruct.getTypedef(), new Pointer("J",CStruct.getTypedef(),this,false));
       		else if(haveTypedef && haveFields && !isTypedefPointer && !isDeepPointer)
       		{
+			//We add a real struct	
       			Struct *s = new Struct(f, f2, "L"+_filename+"$"+CStruct.getTypedef() + ";",CStruct,this);
 			addToMap(CStruct.getTypedef(), s);
 			createdStruct.push_back(s);
@@ -156,6 +162,8 @@ void TYPESDICTIONNARY::addEnums(ofstream &f, const nsC::Enum::vector &enums) {
 }
 
 void TYPESDICTIONNARY::addToMap(const string& cType, Type *type) {
+
+	//Add a Type to the map, and do several tests to verify that this type is correctly added
 	size_t size = _conversionMap.size();
 	size_t sizeCType = _conversionMap.count(cType);
 	assert(_conversionMap[cType]==NULL);
