@@ -257,6 +257,7 @@ void Function::addArgs(const nsC::Param::vector& parameters)
 			{
 				string array = "Array";
 				cout << "Create an Array" << endl;
+                                // a void* and const void* pointer are special type
 				if(type == "void" || type == "const void")
 					array = " *" + array;
 				

@@ -180,7 +180,6 @@ void Comments::transformReturnVal(int index, string &comments)
     string handledToken = "@retval";
     string header = "<br /><u>Possible return Value</u> : <br /><ul>\n\t*";
     int endOfLine;
-    int i;
     int offset;
     comments.erase(index, handledToken.size());
     if (!inRetval)
@@ -203,8 +202,7 @@ void Comments::transformReturnVal(int index, string &comments)
 
 int Comments::skipLine(int index, string &comments, char c)
 {
-    int i;
-    for (i = index; i < comments.size(); i++)
+    for (int i = index; i < comments.size(); i++)
         if (comments[i] == c && i < comments.size() + 1)
             return i + 1;
 
