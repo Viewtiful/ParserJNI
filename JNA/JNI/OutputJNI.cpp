@@ -44,44 +44,66 @@ void OutputJNI::addInclude(ofstream &f) {
 }
 
 void OutputJNI::addContextWrapper(ofstream &f) {
-   string contextWrapper (
-         "\ttypedef struct\n"
-         "\t{\n"
-         "\t\tvoid *ctxRef;\n"
-         "\t\tJNIEnv *env;\n"
-         "\t} contextWrapper;\n\n"
-         );
-   
-   f << contextWrapper;
+	string contextWrapper (
+			"\ttypedef struct\n"
+			"\t{\n"
+			"\t\tvoid *ctxRef;\n"
+			"\t\tJNIEnv *env;\n"
+			"\t} contextWrapper;\n\n"
+			);
+
+	f << contextWrapper;
 }
 
 void OutputJNI::addNativeFunctionTable(ofstream &f, string filename, vector<nsJNI::Function*> fcts) {
-	f << "static JNINativeMethod method_table[] = {\n";
+
+	string structure (
+			"static JNINativeMethod method_table[] = {\n"
+			"%METHODLIST%"
+			"};\n\n"
+			"%TABLESIZE%"
+			);
+
+	string methodList;
+
+	//writing link between the Java function and the JNI one for each function.
 	for(size_t k = 0; k < fcts.size(); k++) 
 	{
-		f << "\t{ \"" << fcts[k]->getName() << "\", \"";
-		vector<nsJNI::Param *> prms = fcts[k]->getArgs();
+		string method = "\t{\"%METHODNAME%\", \"(%VMSIGNATURE%)%VMRETURNTYPE%\", (void *)JNI_%METHODNAME%}";
+		string VMSignature = "";
 
-		f << "(";
+		//Writing VM signature param corresponding to the Java function.
+		vector<nsJNI::Param *> prms = fcts[k]->getArgs();
 		for(size_t i = 0; i < prms.size(); ++i) {
 			if(!(prms[i]->getType()=="size_t *"))
-				f << _dictionnary->convertVM(prms[i]->getType()); 
+				VMSignature += _dictionnary->convertVM(prms[i]->getType()); 
 		}
-		f << ")";
+
+		//VM signature of the return type.
 		string typeRetour = fcts[k]->getReturnType();
 		string typeRetour2 = _dictionnary->convertVM(typeRetour);
 		if(typeRetour2 == "")
 			typeRetour2 = "L" + filename + "$" + typeRetour + ";"; 
-		f << typeRetour2;
 
-		f << "\", (void *)" << "JNI_" << fcts[k]->getName() << " }";
-		if(fcts.size() > 1 && k < fcts.size() - 1)
-			f << ",\n";
 		prms.clear();
-	}
-	f << "};\n\n";
 
-	f << "static int method_table_size = sizeof(method_table) / sizeof(method_table[0]);\n\n";
+		stringReplace(method, "METHODNAME", fcts[k]->getName());   
+		stringReplace(method, "VMSIGNATURE", VMSignature);  
+		stringReplace(method, "VMRETURNTYPE", typeRetour2);  
+
+		if(fcts.size() > 1 && k < fcts.size() - 1)
+			method += ",\n"; 
+		else 
+			method += "\n";  
+
+		methodList += method;
+	}
+
+	string tableSize = "static int method_table_size = sizeof(method_table) / sizeof(method_table[0]);\n\n";
+	stringReplace(structure, "METHODLIST", methodList);  
+	stringReplace(structure, "TABLESIZE", tableSize);  
+
+	f << structure;
 
 }
 
