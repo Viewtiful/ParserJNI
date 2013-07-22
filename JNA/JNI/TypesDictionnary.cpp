@@ -32,6 +32,16 @@ TYPESDICTIONNARY::~TypesDictionnary()
 void TYPESDICTIONNARY::addBaseType(string filename)
 {
 
+        //Const void* and void* are considered as Array
+        addToMap("const void *Array", new Array("const void *","[B",this));
+	addToMap("void *Array", new Array("void *","[B",this));
+        
+        //Particular base Type
+        //Const void* and void* are translated into jbyteArray
+        addToMap("const char *", new NativeType("String","jstring","Ljava/lang/String;",true));
+	addToMap("const void *", new NativeType("byte","jbyte","B",true));
+	addToMap("void *", new NativeType("byte","jbyte","B",true));
+	
 
 	//Adding base type
 	addToMap("short", new NativeType("short","jshort","S",true));
@@ -43,9 +53,6 @@ void TYPESDICTIONNARY::addBaseType(string filename)
 	addToMap("char", new NativeType("byte","jbyte","B",true));
 	addToMap("void", new NativeType("void","void","V",true));
 	addToMap("size_t", new NativeType("long","jlong","size_t","J",true));
-	addToMap("const char *", new NativeType("String","jstring","Ljava/lang/String;",true));
-	addToMap("const void *", new NativeType("byte","jbyte","B",true));
-	addToMap("void *", new NativeType("byte","jbyte","B",true));
 	addToMap("char *", new NativeType("byte","jbyte","B",true));
 	addToMap("bool *",new BoolWrapper("bool *", "L" + filename + "$BoolWrapper;"));	
 	
@@ -58,14 +65,14 @@ void TYPESDICTIONNARY::addBaseType(string filename)
 	addToMap("boolArray", new Array("boolean","[Z",this));
 	addToMap("charArray", new Array("char","[B",this));
 	addToMap("size_tArray", new Array("long","[J",this));
-	addToMap("const void *Array", new Array("const void *","[B",this));
-	addToMap("void *Array", new Array("void *","[B",this));
+	
 }
 
 bool TYPESDICTIONNARY::isNativeType(const string &type)
 {
 	assert(_conversionMap.count(type)==1);
-	return _conversionMap[type]->isNativeType();
+        Type *object = getType(type);
+	return object->isNativeType();
 }
 
 	
@@ -81,12 +88,8 @@ Type* TYPESDICTIONNARY::getType(const string& Ctype) {
 
 string TYPESDICTIONNARY::convertJava(const string& Ctype)
 {
-	Type *object = NULL;
 	cout << "Converting to Java : "<< Ctype << endl;
-	if(_conversionMap.count(Ctype)==1)
-		object = _conversionMap[Ctype];
-		
-	assert(object!=NULL);
+        Type * object = getType(Ctype);
 	return object->outputJava();
 	
 }
@@ -98,20 +101,15 @@ int TYPESDICTIONNARY::countAt(const string& Ctype)
 
 string TYPESDICTIONNARY::convertJNI(const string& Ctype)
 {
-	Type *object = NULL;
 	cout << "Converting to JNI : "<< Ctype << endl;
-	if(_conversionMap.count(Ctype)==1)
-		object = _conversionMap[Ctype];
-		
-	assert(object!=NULL);
+	Type *object = getType(Ctype);	
 	return object->outputJNI();
 	
 }
 
 string TYPESDICTIONNARY::convertVM(const string& Ctype)
 {
-	Type *object =  _conversionMap[Ctype];
-	assert(object!=NULL);
+	Type *object =  getType(Ctype);
 	return object->getVMSignature();
 }
 
@@ -185,13 +183,13 @@ vector<nsJNI::Function*> TYPESDICTIONNARY::getFcts()
 	return _fcts;
 }
 
+//Only typedef with nativeType are handled such as typedef void* void_t;
 void TYPESDICTIONNARY::addTypedefs(const vector<nsC::Typedef> typedefs)
 {
 	for(int i = 0;i<typedefs.size();i++)
 	{
 		string cType = typedefs[i].getCType();
-		_conversionMap[cType] = new Pointer("J",cType,this,false);
-		
+		_conversionMap[cType] = new Pointer("J",cType,this,false);	
 	}
 }
 

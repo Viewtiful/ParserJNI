@@ -26,6 +26,11 @@ void Comments::call(string& token, int index, string& comments)
         codeGenerator c = _lexic[token];
         (this->*c)(index, comments);
     }
+    else if(token!="@return")
+    {
+        cout << token << " Not handled" << ",";
+        cout << "Skipping" <<endl;
+    }
 
 
 }
@@ -45,10 +50,7 @@ string Comments::transformToJavadoc(nsC::Function fct, ofstream &f)
             string token = getToken(tokenBegin, comments);
             if(token!="@see" && token!="@a" && token!="@retval")
                 inRetval = false;
-            cout << "Token = " << token << endl;
-            cout << "Token size = " << token.size() << endl;
             tokenEnd = token.size() + tokenBegin;
-            cout << "increm = " << tokenEnd << endl;
             call(token, tokenBegin, comments);
             nextI = tokenEnd + 1;
         }
@@ -64,6 +66,7 @@ string Comments::getToken(int tokenIndex, string &comments)
     int endofToken;
     bool endToken = false;
     int i;
+    
     for (i = tokenIndex + 1; i < comments.size() && !endToken; i++)
     {
         if (comments[i] == '[')
@@ -73,9 +76,10 @@ string Comments::getToken(int tokenIndex, string &comments)
         }
         else if (comments[i] == ' ' || !isAlpha(comments[i]))
             endToken = true;
-
     }
+    
     endofToken = i;
+    
     //Return the token value
     return comments.substr(tokenIndex, endofToken - tokenIndex - 1);
 
@@ -86,38 +90,40 @@ void Comments::transformParam(int index, string &comments)
     string handledToken = "@param";
     int handledTokenSize = handledToken.size();
     int endofToken = index + handledTokenSize;
-
+    int inOut;
     //If we find a tag like this : @param[in] or @param[out]
     if (comments[endofToken + 1] == '[')
     {
         //Skip until a ']' is found
-        int inOut = skipLine(endofToken + 1, comments, ']');
+        inOut = skipLine(endofToken + 1, comments, ']');
         assert(inOut != -1);
-
-        //skip until a space found, to get the parameter name
-        int value = skipLine(inOut + 1, comments, ' ');
-        assert(value != -1);
-        
-        //Get the paramName by using substr
-        string paramName = comments.substr(inOut, value - inOut);
-        int indexSize = paramName.find("_size", 0);
-
-        //If the param Name contain _size, we have to delete this comments
-        if (indexSize != paramName.npos)
-        {
-            int nextTag = comments.find('@', inOut);
-            //Jump to the next Tag or delete the remaining comments
-            if (nextTag != comments.npos)
-                comments.erase(index, nextTag - index - 1);
-            else
-            {
-                comments.erase(index, comments.size() - index - 2);
-                comments.insert(comments.size(), "*/");
-            }
-        }
-
-
     }
+    else
+        inOut = endofToken;
+    
+    //skip until a space found, to get the parameter name
+    int value = skipLine(inOut + 1, comments, ' ');
+    assert(value != -1);
+
+    //Get the paramName by using substr
+    string paramName = comments.substr(inOut, value - inOut);
+    int indexSize = paramName.find("_size", 0);
+
+    //If the param Name contain _size, we have to delete this comments
+    if (indexSize != paramName.npos)
+    {
+        int nextTag = comments.find('@', inOut);
+        //Jump to the next Tag or delete the remaining comments
+        if (nextTag != comments.npos)
+            comments.erase(index, nextTag - index - 1);
+        else
+        {
+            comments.erase(index, comments.size() - index - 2);
+            comments.insert(comments.size(), "*/");
+        }
+    }
+
+
    
 }
 
@@ -192,7 +198,8 @@ void Comments::transformReturnVal(int index, string &comments)
         offset = 0;
     
     comments.insert(index+offset, "<li>");
-    endOfLine = skipLine(index + 4, comments, '\n');
+    //4 is for length of <li>
+    endOfLine = skipLine(index + offset+ 4, comments, '\n');
         
     assert(endOfLine != -1);
     comments.insert(endOfLine-1, "</li>");

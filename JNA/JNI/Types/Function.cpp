@@ -114,7 +114,7 @@ void Function::printContentJNI(ofstream &f)
 		param->prepareCall(f, _args[i]->getName());
 	}
 
-	//calling the native method with correct parameters
+	//call the native method with correct parameters
    	callNativeMethod(f);
 
 	for(size_t i = 0; i < _args.size(); ++i) {
@@ -229,8 +229,7 @@ void Function::addArgs(const nsC::Param::vector& parameters)
 	 			
 				Type *object = new AddressWrapper(parameters[0].getCType(),"L" + _dictionnary->getFilename() + "$AddressWrapper;");
  				_dictionnary->addToMap(parameters[0].getCType(),object);
-	 		}
-		 			cout << "HERE = " << parameters[0].getCType(); 			
+	 		}		
 			_args.push_back(new nsJNI::Param(parameters[0].getCType(),parameters[0].getName()));
 			beginArgs = 1;
 		}
@@ -257,6 +256,7 @@ void Function::addArgs(const nsC::Param::vector& parameters)
 			{
 				string array = "Array";
 				cout << "Create an Array" << endl;
+                                
                                 // a void* and const void* pointer are special type
 				if(type == "void" || type == "const void")
 					array = " *" + array;
@@ -267,7 +267,7 @@ void Function::addArgs(const nsC::Param::vector& parameters)
 			}
 			else
 			{
-				//A struct's Pointer is converted to an AddressWrapper
+				//A struct Pointer is converted to an AddressWrapper
 				if(_dictionnary->countAt(parameters[i].getCType())==0)
 	 			{	
 	 				cout << "The object does not exists = " << parameters[i].getCType();

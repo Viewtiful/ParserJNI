@@ -60,6 +60,7 @@ void Typedef::prepareCall(ofstream& f,string& varName)
 
 }
 
+//Useless code but needed for polymorphism
 string Typedef::getJNIParameterName(string& varName)
 {
 	return "Typedef";

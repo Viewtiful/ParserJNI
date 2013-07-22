@@ -85,7 +85,7 @@ int JNIPARSER::run(nsModules::Module::vector modules)
 		//For each module, we get all the functions and we convert them to
 		//Java and JNI.
 		nsC::Function::vector fcts = modules[i].getFunctions();
-
+                cout << "Avant le for" << endl;
 		for(size_t k = 0;k<fcts.size();k++)
 		{
 			nsC::Function current = fcts[k];
@@ -103,6 +103,7 @@ int JNIPARSER::run(nsModules::Module::vector modules)
 				cout << "Variadic Function : " << current.getName() << endl;
 
 		}
+                cout << "Après le for" << endl;
 		fcts.clear();
 	}
 	

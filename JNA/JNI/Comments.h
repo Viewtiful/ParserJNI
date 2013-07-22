@@ -9,6 +9,7 @@
 #include <cassert>
 #include <vector>
 #include <locale>
+#include <cstdlib>
 using namespace std;
 using namespace nsC;
 namespace nsJNI {
