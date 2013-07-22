@@ -122,7 +122,7 @@ public class kem {
 
 		byte[] secret_key = new byte[128];
 
-		File file2 = new File("private_key.txt");
+		File file2 = new File("encapsulated.txt");
 		InputStream ios2 = new FileInputStream(file2);
 		long encapsulated_size = (int) file2.length();
 		byte[] encapsulated = new byte[(int) (long) encapsulated_size];
@@ -138,7 +138,7 @@ public class kem {
 					+ "ktb_kem_psec_decrypt() ok");
 		else {
 			System.out.println(Utils.getCurrentTime()
-					+ "Error at ktb_kem_psec_encrypt()");
+					+ "Error at ktb_kem_psec_decrypt()");
 			Utils.freeBuffer(key_buffer);
 			Utils.freeBuffer(encapsulated);
 			Utils.freeBuffer(secret_key);
