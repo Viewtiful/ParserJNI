@@ -14,16 +14,15 @@ namespace nsJNI
 	class Getter : public Function
 	{
 		public : 
-		/*!
-			\brief constructor with three parameters
-			Create, and initialize a Getter with the following arguments
-			\param param : parametter that the getter can return
-			\param structName : Struct's name which contains this method
-			\param dictionnary : dictionnary of all type
-	        */
-
+			/*!
+			  \brief constructor with three parameters
+			  Create, and initialize a Getter with the following arguments
+			  \param param : parametter that the getter can return
+			  \param structName : Struct's name which contains this method
+			  \param dictionnary : dictionnary of all type
+			  */
 			Getter(nsC::Param& param,string structName, TypesDictionnary * dictionnary, bool specialCase);
-         Getter(string name, string structName, TypesDictionnary *dictionnary, bool specialCase);
+			Getter(string name, string structName, TypesDictionnary *dictionnary, bool specialCase);
 			virtual ~Getter();
 			void create(nsC::Param& param);
 			void printPrototypeJNI(ofstream &f);
@@ -33,10 +32,10 @@ namespace nsJNI
 			void prepareCall(ofstream &f);
 		private:
 			string _structName;/*!< The structure's name*/
-         string _fieldName; /*!< field name*/
+			string _fieldName; /*!< field name*/
 			nsJNI::Param *_handledVariable; /*!< Variable Name*/
-         bool _specialCase;  /*!< if it's getter for struct size*/
-	
+			bool _specialCase;  /*!< if it's getter for struct size*/
+
 	};
 
 
