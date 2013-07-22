@@ -122,14 +122,12 @@ void Comments::transformParam(int index, string &comments)
             comments.insert(comments.size(), "*/");
         }
     }
-
-
    
 }
 
 void Comments::transformRef(int index, string &comments)
 {
-    string handledToken = "@see";
+    string handledToken = "@ref";
     int handledTokenSize = handledToken.size();
 
     string javadocToken = "@see";
@@ -209,8 +207,8 @@ void Comments::transformReturnVal(int index, string &comments)
 
 int Comments::skipLine(int index, string &comments, char c)
 {
-    for (int i = index; i < comments.size(); i++)
-        if (comments[i] == c && i < comments.size() + 1)
+    for (int i = index; i < comments.size()+1; i++)
+        if (comments[i] == c)
             return i + 1;
 
     return -1;
