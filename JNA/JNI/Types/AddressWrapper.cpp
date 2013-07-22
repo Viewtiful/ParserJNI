@@ -49,8 +49,8 @@ void AddressWrapper::prepareCall(ofstream& f,string& varName)
 	//We create the C object equivalent of the Java one and allocate memory for it.
 	string structure (
 			"\t\t%TYPE% %NAME%;\n"
-			"\t\tcontextWrapper *ctxWrp%CNAME% = (contextWrapper *)malloc(sizeof(contextWrapper));\n"
-			"\t\tctxWrp%CNAME%->env = env;\n\n"
+			"\t\tcontextWrapper *ctxWrp_%CNAME% = (contextWrapper *)malloc(sizeof(contextWrapper));\n"
+			"\t\tctxWrp_%CNAME%->env = env;\n\n"
 			);
 	_varName = varName;
 
@@ -76,13 +76,13 @@ void AddressWrapper::getReturnValue(ofstream& f)
 {
 	//We return the address of the C object to Java.
 	string structure (
-			"\t\tctxWrp%CNAME%->ctxRef = %NAME%;\n"
+			"\t\tctxWrp_%CNAME%->ctxRef = %NAME%;\n"
 			"\t\tjclass adrWrp_%CNAME%;\n"
 			"\t\tjmethodID setAddr_%CNAME%;\n"
 			"\t\tjlong arg_%CNAME%;\n\n"
 			"\t\tadrWrp_%CNAME% = (*env)->GetObjectClass(env, %CNAME%);\n"
 			"\t\tsetAddr_%CNAME% = (*env)->GetMethodID(env, adrWrp_%CNAME%, \"setAddress\", \"(J)V\");\n"
-			"\t\targ_%CNAME% = (jlong) ctxWrp%CNAME%;\n"
+			"\t\targ_%CNAME% = (jlong) ctxWrp_%CNAME%;\n"
 			"\t\t(*env)->CallVoidMethod(env, %CNAME%, setAddr_%CNAME%, arg_%CNAME%);\n\n"
 			);
 
