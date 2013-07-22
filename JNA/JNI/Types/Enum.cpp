@@ -155,7 +155,7 @@ void Enum::prepareCall(ofstream& f,string& varName)
 
 string Enum::getJNIParameterName(string& varName)
 {
-	return "Enum";
+   return "C_" + varName;
 }
 
 

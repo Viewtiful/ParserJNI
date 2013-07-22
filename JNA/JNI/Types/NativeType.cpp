@@ -106,7 +106,7 @@ void NativeType::prepareCall(ofstream& f,string& varName)
 
 string NativeType::getJNIParameterName(string& varName)
 {
-	return "NativeType";
+   return "C_" + varName;
 }
 
 void NativeType::getReturnValue(ofstream& f)

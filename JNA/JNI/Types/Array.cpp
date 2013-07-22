@@ -13,7 +13,6 @@ Array::Array(const string& CBaseType, const string& VMSignature, TypesDictionnar
 
 Array::~Array()
 {
-
 }
 
 std::string Array::outputJava()
@@ -27,7 +26,7 @@ std::string Array::outputJava()
 std::string Array::outputJNI()
 {
 	//Conversion of the Array's BaseType
-	string jniType = _dictionnary->convertJNI(_CBaseType); // Voir si  référence possible
+	string jniType = _dictionnary->convertJNI(_CBaseType);
 	return jniType + "Array"; // Corresponding for an Array in JNI
 }
 
@@ -78,7 +77,12 @@ void Array::prepareCall(ofstream& f, string& varName)
 
 std::string Array::getJNIParameterName(string& varName) 
 {
-	return "Array";
+   string param("%PARAMNAME%, %PARAMNAME2%");
+
+   stringReplace(param, "PARAMNAME2", "C_" + varName + "_size");
+   stringReplace(param, "PARAMNAME", "C_" + varName);
+
+   return param;
 }
 
 void Array::getReturnValue(ofstream& f) 

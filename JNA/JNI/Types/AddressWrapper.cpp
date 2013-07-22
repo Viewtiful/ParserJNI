@@ -69,7 +69,7 @@ void AddressWrapper::prepareCall(ofstream& f,string& varName)
 
 string AddressWrapper::getJNIParameterName(string& varName)
 {
-	return varName;
+	return "&C_" + varName;
 }
 
 void AddressWrapper::getReturnValue(ofstream& f)

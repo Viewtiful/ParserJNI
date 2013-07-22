@@ -225,13 +225,11 @@ bool Struct::isArray()
 
 string Struct::getJNIParameterName(string& varName)
 {
-	return "Struct";
+   return "C_" + varName;
 }
 
 void Struct::getReturnValue(ofstream& f)
 {
-
-
 }
 
 vector<Function*> Struct::getGetterSetters()

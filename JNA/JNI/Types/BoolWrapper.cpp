@@ -65,8 +65,7 @@ void BoolWrapper::prepareCall(ofstream& f,string& varName)
 
 string BoolWrapper::getJNIParameterName(string& varName)
 {
-	return varName;
-
+	return "&C_" + varName;
 }
 
 void BoolWrapper::getReturnValue(ofstream& f)

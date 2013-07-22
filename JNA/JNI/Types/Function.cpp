@@ -176,11 +176,16 @@ void Function::callNativeMethod(ofstream &f) {
 	//generate code to have adequate param for Native function call
    for(size_t i = 0; i < _args.size(); ++i) {
 
-      string param ("%PARAMNAME%");
+      string param; ("%PARAMNAME%");
       string paramName;
       Type *typeRetour = _dictionnary->getType(_args[i]->getType());
 
-      if(_args[i]->getType() == "bool *" || _args[i]->getType() == "size_t *" || typeRetour->isAddressWrapper())
+      if( _args[i]->getType() == "size_t *" ) 
+         param = "&C_" + _args[i]->getName();
+      else
+         param = typeRetour->getJNIParameterName(_args[i]->getName());
+
+    /*  if(_args[i]->getType() == "bool *" || _args[i]->getType() == "size_t *" || typeRetour->isAddressWrapper())
 	paramName = "&C_" + _args[i]->getName();      
       else if(typeRetour->getJNIParameterName(_args[i]->getName()) == "Array") {
          string param_size(", %PARAMNAME2%");
@@ -190,8 +195,9 @@ void Function::callNativeMethod(ofstream &f) {
       }
       else {
 	paramName = "C_" + _args[i]->getName();
-      }
-	stringReplace(param, "PARAMNAME", paramName);
+      }*/
+
+	//stringReplace(param, "PARAMNAME", paramName);
       params += param;
 
       if(i+1 < _args.size())
