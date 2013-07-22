@@ -18,11 +18,11 @@
  * @{ */
 
 namespace nsJNI {
-	
+
 	/*!
-		\class JNIParser
-		\brief The class which manage the conversion from C to JNI/Java
-	*/
+	  \class JNIParser
+	  \brief The class which manage the conversion from C to JNI/Java
+	  */
 	class JNIParser: public nsUtils::Parser {
 		public:
 			virtual ~JNIParser();
@@ -31,17 +31,28 @@ namespace nsJNI {
 			/**	This is where we start the conversion from C headers to 
 			 * Java/JNI. We first transform C types to Java / JNI / VM 
 			 * signatures and then we write them to a java / c file.
-			*/
+			 */
+			/*!
+			  \brief Running the JNI parser.
+			  This is where we start the conversion from C headers to 
+			  Java/JNI. We first transform C types to Java / JNI / VM 
+			  signatures and then we write them to a java / c file.
+			  \param modules : All the C headers
+			  */
 			int run(nsModules::Module::vector modules);
-         bool containsCallback(nsModules::Module module);
+			/*!
+			  \brief Return if the current module contains callback.
+			  \param modules : All the C headers
+			  */
+			bool containsCallback(nsModules::Module module);
 
-      protected :
-         OutputJNI *_jni; /*!< manager of the JNI Side*/
-         OutputJava *_java; /*!< manager of the Java Side*/
-         TypesDictionnary *_dico; /*!< The structure's name*/
-         Comments *_cm;  /*!< Generate javadoc comments for function*/
-                                
-		
+		protected :
+			OutputJNI *_jni; /*!< manager of the JNI Side*/
+			OutputJava *_java; /*!< manager of the Java Side*/
+			TypesDictionnary *_dico; /*!< Dictionnary of all types*/
+			Comments *_cm;  /*!< Generate javadoc comments for function*/
+
+
 	};
 }
 
