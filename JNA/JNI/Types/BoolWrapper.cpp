@@ -10,13 +10,10 @@ BoolWrapper::BoolWrapper(string realCType,string VMSignature) : Type("BoolWrappe
 	_realCType = realCType;
 }
 
-
-
 BoolWrapper::~BoolWrapper()
 {
 
 }
-
 
 std::string BoolWrapper::outputJava()
 {
@@ -50,7 +47,6 @@ bool BoolWrapper::isArray()
 
 void BoolWrapper::prepareCall(ofstream& f,string& varName)
 {
-	bool C_is_valid;
 	string structure (
 			"\t\t%TYPE% %NAME%;\n\n"
 			);
