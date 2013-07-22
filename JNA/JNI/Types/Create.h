@@ -10,29 +10,29 @@
  * @{ */
 
 /*!
-	\namespace nsJNI 
-	JNI parser namespace
-!*/
+  \namespace nsJNI 
+  JNI parser namespace
+  !*/
 namespace nsJNI
 {
-   class Function;
-   class TypesDictionnary;
+	class Function;
+	class TypesDictionnary;
 	/*!
-		\class Create
-		\brief generate an Create Function for structure
-	*/
+	  \class Create
+	  \brief generate an Create Function for structure
+	  */
 	class Create : public Function
 	{
 		public : 
-		/*!
-			\brief constructor with two parameters
-			Create, and initialize a Create Function with the following arguments
-			\param structName : Struct's name which contains this method
-			\param dictionnary : dictionnary of all type
-	        */
-	
+			/*!
+			  \brief constructor with two parameters
+			  Create, and initialize a Create Function with the following arguments
+			  \param structName : Struct's name which contains this method
+			  \param dictionnary : dictionnary of all type
+			  */
+
 			Create(string structName, TypesDictionnary * dictionnary);
-		
+
 			virtual ~Create();
 			void create();
 			void printPrototypeJNI(ofstream &f);
@@ -43,7 +43,7 @@ namespace nsJNI
 		private:
 			string _structName; /*!< The structure's name*/
 			nsJNI::Param *_handledVariable; /*!< Variable Name*/ 
-	
+
 	};
 
 

@@ -12,10 +12,7 @@ Create::Create(string structName, TypesDictionnary *dictionnary) : Function(dict
 
 Create::~Create()
 {
-
-
 }
-
 
 void Create::create()
 {
