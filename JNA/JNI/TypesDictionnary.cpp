@@ -37,7 +37,7 @@ void TYPESDICTIONNARY::addBaseType(string filename)
 	addToMap("const char *", new NativeType("String","jstring","Ljava/lang/String;",true));
 	addToMap("const void *", new NativeType("byte","jbyte","B",true));
 	addToMap("void *", new NativeType("byte","jbyte","B",true));
-
+        addToMap("size_t *",new Pointer("J","size_t",this,true));
 
 	//Adding base type
 	addToMap("short", new NativeType("short","jshort","S",true));

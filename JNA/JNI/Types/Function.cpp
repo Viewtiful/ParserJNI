@@ -180,10 +180,11 @@ void Function::callNativeMethod(ofstream &f) {
 		string paramName;
 		Type *typeRetour = _dictionnary->getType(_args[i]->getType());
 
-		if( _args[i]->getType() == "size_t *" ) 
+		/*if( _args[i]->getType() == "size_t *" ) 
 			param = "&C_" + _args[i]->getName();
 		else
-			param = typeRetour->getJNIParameterName(_args[i]->getName());
+                 * */
+                param = typeRetour->getJNIParameterName(_args[i]->getName());
 
 		params += param;
 
