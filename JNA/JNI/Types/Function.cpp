@@ -9,9 +9,9 @@ Function::Function(TypesDictionnary *dictionnary)
 
 Function::~Function()
 {
-   for(vector<Param*>::const_iterator it = _args.begin(); it != _args.end(); it++)
-       delete *it;
-   _args.clear();
+	for(vector<Param*>::const_iterator it = _args.begin(); it != _args.end(); it++)
+		delete *it;
+	_args.clear();
 }
 
 void Function::create(const nsC::Function& fct)
@@ -38,7 +38,7 @@ void Function::printParametersJava(ofstream& file)
 		skip = false;
 		if(_args[i]->getType()=="size_t *")
 			skip = true;
-		
+
 		// if skip is true, we do not print the size_t* parameter
 		if(!skip)
 		{
@@ -55,7 +55,7 @@ void Function::convertJava(ofstream& file)
 	file << "(";
 	printParametersJava(file);	
 	file << ");" << endl; 	
-	
+
 }
 
 void Function::convertJNI(ofstream& file)
@@ -72,7 +72,7 @@ void Function::printParametersJNI(ofstream &f)
 	int i;
 	int n = _args.size();
 	bool skip;
-	
+
 	f << "JNIEnv *env, jclass cls";
 	if(n > 0)
 		f << ", ";
@@ -115,97 +115,84 @@ void Function::printContentJNI(ofstream &f)
 	}
 
 	//call the native method with correct parameters
-   	callNativeMethod(f);
+	callNativeMethod(f);
 
 	for(size_t i = 0; i < _args.size(); ++i) {
 		Type * param = _dictionnary->getType(_args[i]->getType());
 
-	      if(param->isAddressWrapper() || param->isBooleanWrapper())
-		   param->getReturnValue(f);
-	      if(param->isArray()) {
-	         Array *a = (Array *)param;
-	         a->getReturnValueAndFree(f, _args[i]->getName());
-	      }
+		if(param->isAddressWrapper() || param->isBooleanWrapper())
+			param->getReturnValue(f);
+		if(param->isArray()) {
+			Array *a = (Array *)param;
+			a->getReturnValueAndFree(f, _args[i]->getName());
+		}
 	}
 
-   	Type *returnValue = _dictionnary->getType(_returnType);
-   	returnValue->getReturnValue(f);
+	Type *returnValue = _dictionnary->getType(_returnType);
+	returnValue->getReturnValue(f);
 
 	f << "\t}\n\n";
 }
 
 //Generate the native function call
 void Function::callNativeMethod(ofstream &f) {
-   
-   string structure (
-            "\t\t%RETURNTYPE% %NAME% %CAST%%METHODNAME% (%PARAMS%);\n\n"
-            );
+
+	string structure (
+			"\t\t%RETURNTYPE% %NAME% %CAST%%METHODNAME% (%PARAMS%);\n\n"
+			);
 	//Generate specific code to get the Return Value from native Function call
-   if(_returnType != "void") {
+	if(_returnType != "void") {
 
-      if(_dictionnary->convertJNI(_returnType) == "jbyteArray") {
-         stringReplace(structure, "RETURNTYPE", "void*");
-         stringReplace(structure, "CAST", "(void*)");
-         stringReplace(structure, "NAME", "tempJNI_result =");
-      }
-	else if (_dictionnary->convertJNI(_returnType) == "jstring") {
-         stringReplace(structure, "RETURNTYPE", "char *");
-         stringReplace(structure, "CAST", "(char *)");
-         stringReplace(structure, "NAME", "tempJNI_result =");
-      }
-      else if (_dictionnary->getType(_returnType)->isNativeType()) {
-         stringReplace(structure, "RETURNTYPE", "");
-         stringReplace(structure, "CAST", "");
-         stringReplace(structure, "NAME", "JNI_result =");
-      }
-      else {
-         stringReplace(structure, "RETURNTYPE", _returnType);
-         stringReplace(structure, "CAST", "");
-         stringReplace(structure, "NAME", "tempJNI_result =");
-      }
-   }
-   else {
-         stringReplace(structure, "RETURNTYPE", "");
-         stringReplace(structure, "CAST", "");
-         stringReplace(structure, "NAME", "");
-   }
+		if(_dictionnary->convertJNI(_returnType) == "jbyteArray") {
+			stringReplace(structure, "RETURNTYPE", "void*");
+			stringReplace(structure, "CAST", "(void*)");
+			stringReplace(structure, "NAME", "tempJNI_result =");
+		}
+		else if (_dictionnary->convertJNI(_returnType) == "jstring") {
+			stringReplace(structure, "RETURNTYPE", "char *");
+			stringReplace(structure, "CAST", "(char *)");
+			stringReplace(structure, "NAME", "tempJNI_result =");
+		}
+		else if (_dictionnary->getType(_returnType)->isNativeType()) {
+			stringReplace(structure, "RETURNTYPE", "");
+			stringReplace(structure, "CAST", "");
+			stringReplace(structure, "NAME", "JNI_result =");
+		}
+		else {
+			stringReplace(structure, "RETURNTYPE", _returnType);
+			stringReplace(structure, "CAST", "");
+			stringReplace(structure, "NAME", "tempJNI_result =");
+		}
+	}
+	else {
+		stringReplace(structure, "RETURNTYPE", "");
+		stringReplace(structure, "CAST", "");
+		stringReplace(structure, "NAME", "");
+	}
 
-   stringReplace(structure, "METHODNAME", _name);
+	stringReplace(structure, "METHODNAME", _name);
 
-   string params;
+	string params;
 	//generate code to have adequate param for Native function call
-   for(size_t i = 0; i < _args.size(); ++i) {
+	for(size_t i = 0; i < _args.size(); ++i) {
 
-      string param; ("%PARAMNAME%");
-      string paramName;
-      Type *typeRetour = _dictionnary->getType(_args[i]->getType());
+		string param; ("%PARAMNAME%");
+		string paramName;
+		Type *typeRetour = _dictionnary->getType(_args[i]->getType());
 
-      if( _args[i]->getType() == "size_t *" ) 
-         param = "&C_" + _args[i]->getName();
-      else
-         param = typeRetour->getJNIParameterName(_args[i]->getName());
+		if( _args[i]->getType() == "size_t *" ) 
+			param = "&C_" + _args[i]->getName();
+		else
+			param = typeRetour->getJNIParameterName(_args[i]->getName());
 
-    /*  if(_args[i]->getType() == "bool *" || _args[i]->getType() == "size_t *" || typeRetour->isAddressWrapper())
-	paramName = "&C_" + _args[i]->getName();      
-      else if(typeRetour->getJNIParameterName(_args[i]->getName()) == "Array") {
-         string param_size(", %PARAMNAME2%");
-         param += param_size;
-     	paramName = "C_" + _args[i]->getName();
-         stringReplace(param, "PARAMNAME2", "C_" + _args[i]->getName() + "_size");
-      }
-      else {
-	paramName = "C_" + _args[i]->getName();
-      }*/
+		params += param;
 
-	//stringReplace(param, "PARAMNAME", paramName);
-      params += param;
+		if(i+1 < _args.size())
+			params += ", ";
+	}
+	stringReplace(structure, "PARAMS", params);
 
-      if(i+1 < _args.size())
-         params += ", ";
-   }
-   stringReplace(structure, "PARAMS", params);
-
-   f << structure;
+	f << structure;
 }
 
 void Function::setReturnType(const string& returnType)
@@ -230,28 +217,28 @@ void Function::addArgs(const nsC::Param::vector& parameters)
 			cout << "The first argument type is not Native" << endl;
 			//If this type does not exist
 			if(_dictionnary->countAt(parameters[0].getCType())==0)
-	 		{
-	 			cout << "The object does not exists = " << parameters[0].getCType();
-	 			
+			{
+				cout << "The object does not exists = " << parameters[0].getCType();
+
 				Type *object = new AddressWrapper(parameters[0].getCType(),"L" + _dictionnary->getFilename() + "$AddressWrapper;");
- 				_dictionnary->addToMap(parameters[0].getCType(),object);
-	 		}		
+				_dictionnary->addToMap(parameters[0].getCType(),object);
+			}		
 			_args.push_back(new nsJNI::Param(parameters[0].getCType(),parameters[0].getName()));
 			beginArgs = 1;
 		}
 		else
 			cout << "The first argument type is Native" << endl;
-	
+
 	}
 
-   	bool skip = false;
+	bool skip = false;
 	for( int i = beginArgs; i<n; i++)
 	{
 		size_t size = _args.size();
-	      if(skip) {
-		 skip = false;
-		 continue;
-	      }
+		if(skip) {
+			skip = false;
+			continue;
+		}
 		// If the parameters's type is a Pointer
 		if(parameters[i].getIndirections()>0  && parameters[i].getCType()!= "const char *")
 		{
@@ -262,41 +249,41 @@ void Function::addArgs(const nsC::Param::vector& parameters)
 			{
 				string array = "Array";
 				cout << "Create an Array" << endl;
-                                
-                                // a void* and const void* pointer are special type
+
+				// a void* and const void* pointer are special type
 				if(type == "void" || type == "const void")
 					array = " *" + array;
-				
+
 				_args.push_back(new nsJNI::Param(type+array,parameters[i].getName()));
 				cout << parameters[i].getType()+array << endl;
-       				skip = true;  //We just bypass the _size argument
+				skip = true;  //We just bypass the _size argument
 			}
 			else
 			{
 				//A struct Pointer is converted to an AddressWrapper
 				if(_dictionnary->countAt(parameters[i].getCType())==0)
-	 			{	
-	 				cout << "The object does not exists = " << parameters[i].getCType();
+				{	
+					cout << "The object does not exists = " << parameters[i].getCType();
 					Type *object;
-	 				if(!_dictionnary->isNativeType(type))
+					if(!_dictionnary->isNativeType(type))
 						object = new AddressWrapper(parameters[i].getCType(),"L" + _dictionnary->getFilename() + "$AddressWrapper;");
 					else
 						object = new Pointer("J",parameters[i].getType(),_dictionnary,false); 
-					
+
 					_dictionnary->addToMap(parameters[i].getCType(),object);
-	 			}
+				}
 				_args.push_back(new nsJNI::Param(parameters[i].getCType(),parameters[i].getName()));
 
 			}
 		}
-	else
-	   {
+		else
+		{
 			//Normal type
-		   cout << "Normal Type" << endl;
-		   cout << "Creating a new Param as following" << "[" << parameters[i].getCType()<<" , "  << parameters[i].getName() << "]" << endl; 
-		   _args.push_back(new nsJNI::Param(parameters[i].getCType(),parameters[i].getName()));
-	   }
-      assert(_args.size()==size+1);
+			cout << "Normal Type" << endl;
+			cout << "Creating a new Param as following" << "[" << parameters[i].getCType()<<" , "  << parameters[i].getName() << "]" << endl; 
+			_args.push_back(new nsJNI::Param(parameters[i].getCType(),parameters[i].getName()));
+		}
+		assert(_args.size()==size+1);
 	}
 	cout << "Fin Fonction" << endl;
 }
