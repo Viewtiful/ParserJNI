@@ -28,18 +28,21 @@ namespace nsJNI
 	        */
 		OutputJava(TypesDictionnary* dictionnary);
 		~OutputJava();
+                
+                /*!
+			\brief give the correct java Translation for an specific c Type
+			\param inpuutType: C type which will be translated
+                 *      \return the corresponding Java Type
+		*/
 		string getJavaType(string inputType);
+                
 		/*!
-			\brief generate the Native Function Call
-			\param f: Output JNI File
+			\brief Convert a C function into an Java Function, and write the result in a file
+			\param f: Output Java File
+                 *      \param fct : function which is going to be translated
 		*/
 		void convert(ofstream &f,nsJNI::Function *fct);
 
-		/*!
-			\brief generate the Native Function Call
-			\param f: Output JNI File
-		*/
-		void printJavaHeader(ofstream &f,string CHeaderFile);
 		/*!
 			\brief generate the Native Function Call
 			\param f: Output JNI File
@@ -48,34 +51,46 @@ namespace nsJNI
 		void printLoadLibrary(ofstream &f,string library);
 
 		/*!
-			\brief generate the Native Function Call
-			\param f: Output JNI File
+			\brief print Java Header for class or enum
+			\param f: Output Java File
+                 *      \param type : Header type
+                 *      \param CHeaderFile : filename of C header
 		*/
 
+                        
 		void printJavaHeader(ofstream &f,string type,string CHeaderFile);
+                
 		/*!
-			\brief generate the Native Function Call
-			\param f: Output JNI File
+			\brief print Java Header for enum
+			\param f: Output Java File
+                 *      \param CHeaderFile : filename of C header
+		*/
+		void printJavaHeader(ofstream &f,string CHeaderFile);
+		/*!
+			\brief print the class definition in a file
+			\param f: Output Java File
+                 *      \param className : Class' name which need definition
 		*/
 
         	void addClassDefinition(ofstream &f, string className);
+                
 		/*!
-			\brief generate the Native Function Call
-			\param f: Output JNI File
+			\brief Add an addressWrapper definition in the Java file
+			\param f: Output Java File
 		*/
-
          	void addAddressWrapper(ofstream &f);
+                
 		/*!
-			\brief generate the Native Function Call
-			\param f: Output JNI File
+			\brief Add a BoolWrapper definition in the java file
+			\param f: Output Java File
 		*/
-
          	void addBoolWrapper(ofstream &f);
 		protected:
-		TypesDictionnary *_dictionnary; /*!< The structure's name*/
+		TypesDictionnary *_dictionnary; /*!< Dictionnary of all Types*/
 		
 		
 	};
 }
 
 #endif
+
