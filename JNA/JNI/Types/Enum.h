@@ -1,8 +1,8 @@
 /*!
-	\file Enum.h
-	\author Baptiste HAUDEGAND & Antoine MOISE
-	\version 1.0
-!*/
+  \file Enum.h
+  \author Baptiste HAUDEGAND & Antoine MOISE
+  \version 1.0
+  !*/
 
 #ifndef __JNI_ENUM_H
 #define __JNI_ENUM_H
@@ -15,42 +15,53 @@
  * @{ */
 
 /*!
-	\namespace nsJNI 
-	JNI parser namespace
-!*/
+  \namespace nsJNI 
+  JNI parser namespace
+  !*/
 namespace nsJNI{
 
-   class TypesDictionnary;
-   /*!
-		\class Enum
-		\brief represents an Enum
-	*/
+	class TypesDictionnary;
+	/*!
+	  \class Enum
+	  \brief represents an Enum
+	  */
 	class Enum : public Type
 	{
-	   public : 
-	   /*!
-      	\brief destructor
-      */
-         virtual ~Enum();
-       
-	    static bool create(ofstream &f, const nsC::Enum::vector& en, TypesDictionnary *dictionnary);
-        std::string outputJava();
-        std::string outputJNI();
-        void addEnumToJava(ofstream &f);
-        bool isNativeType();
-        bool isAddressWrapper();
-        bool isBooleanWrapper();
-        bool isArray();
-        void prepareCall(ofstream& f,string& varName);
-        string getJNIParameterName(string& varName);
-        void getReturnValue(ofstream& f);
-        
-      protected : 
-         nsC::Enum _cEnum; /*!< Objetc which represents the C Enum*/
-         string _filename; /*!< fileName*/
-         string _enumName; /*!< Name of the current Enum*/
+		public : 
+			/*!
+			  \brief destructor
+			  */
+			virtual ~Enum();
 
-         Enum(ofstream &f, const string& javaType,const string& jniType,const string& vmSignature,const nsC::Enum& cEnum, string filename);
+			/*!
+			  \brief Create an enum for the JNI parser.
+			  Create, and add to the dictionnary an Enum with the following arguments.
+			  \param f : The file where the enum will be written.
+			  \param en : Contains all enums from the C header (module), we are running throught.
+			  \param dictionnary : Dictionnary which contains all types.
+			  */
+			static bool create(ofstream &f, const nsC::Enum::vector& en, TypesDictionnary *dictionnary);
+			std::string outputJava();
+			std::string outputJNI();
+			/*!
+			  \brief Write the enum to the Java file 
+			  \param f : The file where the enum will be written.
+			  */
+			void addEnumToJava(ofstream &f);
+			bool isNativeType();
+			bool isAddressWrapper();
+			bool isBooleanWrapper();
+			bool isArray();
+			void prepareCall(ofstream& f,string& varName);
+			string getJNIParameterName(string& varName);
+			void getReturnValue(ofstream& f);
+
+		protected : 
+			nsC::Enum _cEnum; /*!< Object which represents the C Enum*/
+			string _filename; /*!< fileName*/
+			string _enumName; /*!< Name of the current Enum*/
+
+			Enum(ofstream &f, const string& javaType,const string& jniType,const string& vmSignature,const nsC::Enum& cEnum, string filename);
 	};
 }
 #endif
