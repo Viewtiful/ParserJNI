@@ -21,7 +21,6 @@ std::string Array::outputJava()
 	string javaType = _dictionnary->convertJava(_CBaseType);
 	return javaType+"[]";
 }
-	
 
 std::string Array::outputJNI()
 {
@@ -124,5 +123,3 @@ void Array::getReturnValueAndFree(ofstream& f, string& varName)
 
    f << structure;
 }
-        
-        
