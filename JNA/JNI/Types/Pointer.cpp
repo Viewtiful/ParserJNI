@@ -93,7 +93,7 @@ void Pointer::prepareCall(ofstream& f,string& varName)
 
 string Pointer::getJNIParameterName(string& varName)
 {
-   return "&C_" + varName;
+   return "C_" + varName;
 }
 
 void Pointer::getReturnValue(ofstream& f)
