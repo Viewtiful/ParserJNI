@@ -154,9 +154,9 @@ namespace nsJNI
       protected:
 
         /** Add base types (int, size_t, char, those stuff) */
-        std::map<std::string, Type*> _conversionMap; /*!< The structure's name*/
-		string _filename; /*!< The structure's name*/
-		std::vector<Function*> _fcts; /*!< The structure's name*/
+        std::map<std::string, Type*> _conversionMap; /*!<Map which associate an type to a class (int -> NativeType)*/
+		string _filename; /*!< filename*/
+		std::vector<Function*> _fcts; /*!< All fonctions */
     };
 }
 
