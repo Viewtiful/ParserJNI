@@ -44,10 +44,10 @@ void Setter::printContentJNI(ofstream &f)
 	f << "{\n\n";
 	//Write the Java elements in the C variables of the structure. 
 	string body = "\t\t%CLASSNAME% *C_ctx;\n"
-                 "\t\tif(mInternal != 0)\n"
-                 "\t\t\tC_ctx = (%CLASSNAME% *)((contextWrapper *)mInternal)->ctxRef;\n"
-                 "\t\telse\n"
-                 "\t\t\tC_ctx = NULL;\n"
+		"\t\tif(mInternal != 0)\n"
+		"\t\t\tC_ctx = (%CLASSNAME% *)((contextWrapper *)mInternal)->ctxRef;\n"
+		"\t\telse\n"
+		"\t\t\tC_ctx = NULL;\n"
 		"%WRITEFIELD%";
 	string writeField;
 
@@ -65,8 +65,7 @@ void Setter::printContentJNI(ofstream &f)
 	}
 	//It's a pointer.
 	else if( (_dictionnary->convertJNI(_args[1]->getType()) == "jlong") && !(type->isNativeType())) {
-		writeField = //"\t\tC_ctx->%ATTRIBUTENAME% = %FIELDNAME%;\n"
-			"\t\tC_ctx->%ATTRIBUTENAME% = (%CTYPE%)((contextWrapper *)%ATTRIBUTENAME%)->ctxRef;\n"
+		writeField = "\t\tC_ctx->%ATTRIBUTENAME% = (%CTYPE%)((contextWrapper *)%ATTRIBUTENAME%)->ctxRef;\n"
 			"\t\t((contextWrapper *)%ATTRIBUTENAME%)->env = env;\n";
 		stringReplace(writeField, "FIELDNAME", _args[1]->getName());
 		stringReplace(writeField, "CTYPE", _args[1]->getType());
