@@ -99,6 +99,13 @@ namespace nsJNI {
          * \return index where the stop Character is found
          * */
         int skipLine(int index, string &comments, char c);
+        
+        /*!
+         * \brief search the next blockTag such as @Note
+         * \param index : beginning comments index
+         * \param comments : the whole comments
+         */
+        int searchNextBlockTag(int index,string &commments);
     private:
         map<string, codeGenerator> _lexic; /*!< contains handle function*/
         bool inRetval; /*!< translating an retval*/
