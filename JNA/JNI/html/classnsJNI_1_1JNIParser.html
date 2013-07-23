@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>My Project: nsJNI::JNIParser Class Reference</title>
+<title>JNI parser: nsJNI::JNIParser Class Reference</title>
 
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -27,10 +27,10 @@
   
   
   <td style="padding-left: 0.5em;">
-   <div id="projectname">My Project
+   <div id="projectname">JNI parser
    
    </div>
-   
+   <div id="projectbrief">Generating Java/JNI code in order to call native C functions.</div>
   </td>
   
   
@@ -98,20 +98,36 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="header">
   <div class="summary">
-<a href="#pub-methods">Public Member Functions</a>  </div>
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a>  </div>
   <div class="headertitle">
 <div class="title">nsJNI::JNIParser Class Reference<div class="ingroups"><a class="el" href="group__JNI__parser.html">JNI Parser of C headers</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 <!-- doxytag: class="nsJNI::JNIParser" -->
+<p>The class which manage the conversion from C to JNI/Java.  
+ <a href="classnsJNI_1_1JNIParser.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="JNIParser_8h_source.html">JNIParser.h</a>&gt;</code></p>
+
 <p><a href="classnsJNI_1_1JNIParser-members.html">List of all members.</a></p>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__JNI__parser.html#ga8a77b08d83bba9bef37ae9e7c5c63698">run</a> (nsModules::Module::vector modules)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Running the JNI parser.  <a href="group__JNI__parser.html#ga8a77b08d83bba9bef37ae9e7c5c63698"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__JNI__parser.html#ga140a4da168243f45dddc97acfeb91559">containsCallback</a> (nsModules::Module module)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return if the current module contains callback.  <a href="group__JNI__parser.html#ga140a4da168243f45dddc97acfeb91559"></a><br/></td></tr>
+<tr><td colspan="2"><h2><a name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classnsJNI_1_1OutputJNI.html">OutputJNI</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__JNI__parser.html#ga25cc92ecc83303bce064286908ea00ea">_jni</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classnsJNI_1_1OutputJava.html">OutputJava</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__JNI__parser.html#gab9e6d119750bfb7a48aa4e3151d7b0b8">_java</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classnsJNI_1_1TypesDictionnary.html">TypesDictionnary</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__JNI__parser.html#ga2461d8f12c0738889a9d5b1a8aaf5664">_dico</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classnsJNI_1_1Comments.html">Comments</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__JNI__parser.html#ga1bd902d021207468eab4677d82b2f170">_cm</a></td></tr>
 </table>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
+<div class="textblock"><p>The class which manage the conversion from C to JNI/Java. </p>
+</div><hr/>The documentation for this class was generated from the following file:<ul>
 <li><a class="el" href="JNIParser_8h_source.html">JNIParser.h</a></li>
 </ul>
 </div><!-- contents -->
@@ -129,13 +145,5 @@ Public Member Functions</h2></td></tr>
 </iframe>
 </div>
 
-
-
-<hr class="footer"/><address class="footer"><small>
-Generated on Thu Jun 27 2013 19:34:40 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.7.6.1
-</small></address>
-
-</body>
-</html>
+<hr>
+<i>JNI Parser - Laboratoire ERISCS</i>

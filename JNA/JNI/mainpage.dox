@@ -1,11 +1,12 @@
 /**
-*\mainpage JNIParser documentation
+* \mainpage JNIParser documentation
 *
-*<PRE>   </PRE>JNIParser is a parser which make possible to call native function in C from Java.<BR>
-The parser first, parse the C headers in order to get everything from them, like<BR>
-function prototypes, structures, typedef ...<BR>
-Next, it creates a Java file which contain every native functions, structures ...<BR>
-that the user can call according to the C headers. It also create a JNI file<BR>
-written in C, that create a link with the VM of Java and the C code of the headers.<BR>
+* \section intro_sec Introduction
+* JNIParser is a parser which make possible to call native function in C from Java.
+* The parser first, parse the C headers in order to get everything from them, like
+* function prototypes, structures, typedef ...
+* Next, it creates a Java file which contain every native functions, structures ...
+* that the user can call according to the C headers. It also create a JNI file
+* written in C, that create a link with the VM of Java and the C code of the headers.
 
 */

@@ -1,7 +1,7 @@
 /** @file
  *
  * @defgroup JNI_parser JNI Parser of C headers
- * @brief Parsing C headers in order to create the corresponding java class 
+ * Parsing C headers in order to create the corresponding java class 
  * and JNI code.
  */
 
@@ -41,7 +41,7 @@ namespace nsJNI {
 			  */
 			int run(nsModules::Module::vector modules);
 			/*!
-			  \brief Return if the current module contains callback.
+			  \brief Return true if the current module contains callback.
 			  \param modules : All the C headers
 			  */
 			bool containsCallback(nsModules::Module module);
