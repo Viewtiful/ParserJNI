@@ -1,6 +1,6 @@
 /** @file
  *
- * @defgroup JNI_parser JNI Parser of C headers
+ * @defgroup JNI_parser JNI Parser of C headers.
  * Parsing C headers in order to create the corresponding java class 
  * and JNI code.
  */
@@ -21,7 +21,7 @@ namespace nsJNI {
 
 	/*!
 	  \class JNIParser
-	  \brief The class which manage the conversion from C to JNI/Java
+	  \brief The class which manage the conversion from C to JNI/Java.
 	  */
 	class JNIParser: public nsUtils::Parser {
 		public:

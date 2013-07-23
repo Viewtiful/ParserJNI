@@ -4,6 +4,7 @@
 using namespace std;
 using nsUtils::stringReplace;
 using namespace nsJNI;
+
 OutputJNI::OutputJNI(TypesDictionnary *dictionnary)
 {
 	_dictionnary = dictionnary;
@@ -12,11 +13,11 @@ OutputJNI::OutputJNI(TypesDictionnary *dictionnary)
 OutputJNI::~OutputJNI() {
 }
 
-std::string OutputJNI::getJNIType(std::string inputType) {
+string OutputJNI::getJNIType(const string& inputType) {
 	return _dictionnary->convertJNI(inputType);
 }
 
-string OutputJNI::getVMSignature(string inputType) {
+string OutputJNI::getVMSignature(const string& inputType) {
 	return _dictionnary->convertVM(inputType);
 }
 
