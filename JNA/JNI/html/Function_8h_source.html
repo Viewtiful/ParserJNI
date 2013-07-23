@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>JNIParser: Types/Function.h Source File</title>
+<title>JNI parser: Types/Function.h Source File</title>
 
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -27,10 +27,10 @@
   
   
   <td style="padding-left: 0.5em;">
-   <div id="projectname">JNIParser
+   <div id="projectname">JNI parser
    
    </div>
-   
+   <div id="projectbrief">Generating Java/JNI code in order to call native C functions.</div>
   </td>
   
   
@@ -51,6 +51,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
+      <li><a href="examples.html"><span>Examples</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -83,11 +84,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a href="Function_8h.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 
 <a name="l00012"></a>00012 <span class="preprocessor">#ifndef __JNI_FUNCTION_H</span>
 <a name="l00013"></a>00013 <span class="preprocessor"></span><span class="preprocessor">#define __JNI_FUNCTION_H</span>
-<a name="l00014"></a>00014 <span class="preprocessor"></span><span class="preprocessor">#include &quot;<a class="code" href="TypesDictionnary_8h.html" title="Header for the TypesDictionnary class.">JNI/TypesDictionnary.h</a>&quot;</span>
+<a name="l00014"></a>00014 <span class="preprocessor"></span><span class="preprocessor">#include &quot;<a class="code" href="TypesDictionnary_8h.html">JNI/TypesDictionnary.h</a>&quot;</span>
 <a name="l00015"></a>00015 <span class="preprocessor">#include &quot;C/Function.h&quot;</span>
-<a name="l00016"></a>00016 <span class="preprocessor">#include &quot;<a class="code" href="Param_8h.html" title="Header for JNIParser.">JNI/Types/Param.h</a>&quot;</span>
-<a name="l00017"></a>00017 <span class="preprocessor">#include &quot;<a class="code" href="Pointer_8h.html" title="Header for Types.">JNI/Types/Pointer.h</a>&quot;</span>
-<a name="l00018"></a>00018 <span class="preprocessor">#include &quot;<a class="code" href="AddressWrapper_8h.html" title="Header for Types.">JNI/Types/AddressWrapper.h</a>&quot;</span>
+<a name="l00016"></a>00016 <span class="preprocessor">#include &quot;<a class="code" href="Param_8h.html">JNI/Types/Param.h</a>&quot;</span>
+<a name="l00017"></a>00017 <span class="preprocessor">#include &quot;<a class="code" href="Pointer_8h.html">JNI/Types/Pointer.h</a>&quot;</span>
+<a name="l00018"></a>00018 <span class="preprocessor">#include &quot;<a class="code" href="AddressWrapper_8h.html">JNI/Types/AddressWrapper.h</a>&quot;</span>
 <a name="l00019"></a>00019 <span class="preprocessor">#include &quot;Utils/Utils.h&quot;</span>
 <a name="l00020"></a>00020 <span class="preprocessor">#include &lt;typeinfo&gt;</span>
 <a name="l00021"></a>00021 <span class="preprocessor">#include &lt;iostream&gt;</span>
@@ -101,7 +102,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00037"></a><a class="code" href="classnsJNI_1_1Function.html">00037</a>     <span class="keyword">class </span><a class="code" href="classnsJNI_1_1Function.html" title="represents a Function">Function</a>
 <a name="l00038"></a>00038     {
 <a name="l00039"></a>00039       <span class="keyword">public</span>:
-<a name="l00045"></a>00045         <a class="code" href="classnsJNI_1_1Function.html" title="represents a Function">Function</a>(<a class="code" href="classnsJNI_1_1TypesDictionnary.html" title="contains All Type, and all we need to convert">TypesDictionnary</a> *dictionnary);
+<a name="l00045"></a>00045         <a class="code" href="classnsJNI_1_1Function.html" title="represents a Function">Function</a>(<a class="code" href="classnsJNI_1_1TypesDictionnary.html" title="Contains All Type, and all we need to convert.">TypesDictionnary</a> *dictionnary);
 <a name="l00049"></a>00049                 <span class="keyword">virtual</span> ~<a class="code" href="classnsJNI_1_1Function.html" title="represents a Function">Function</a>();
 <a name="l00050"></a>00050                 
 <a name="l00055"></a>00055         <span class="keywordtype">void</span> convertJava(ofstream &amp;f);
@@ -133,7 +134,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00121"></a><a class="code" href="classnsJNI_1_1Function.html#ad3d6562f6f7f73d73f6791f33156aaf6">00121</a>         <span class="keywordtype">string</span> <a class="code" href="classnsJNI_1_1Function.html#ad3d6562f6f7f73d73f6791f33156aaf6">_returnType</a>; 
 <a name="l00122"></a><a class="code" href="classnsJNI_1_1Function.html#a3e2e05eaa1237f47b3854b2fcad4330c">00122</a>         <span class="keywordtype">string</span> <a class="code" href="classnsJNI_1_1Function.html#a3e2e05eaa1237f47b3854b2fcad4330c">_name</a>; 
 <a name="l00123"></a><a class="code" href="classnsJNI_1_1Function.html#a1b1434b63f97b282b0929d2864921217">00123</a>         vector&lt;Param*&gt; <a class="code" href="classnsJNI_1_1Function.html#a1b1434b63f97b282b0929d2864921217">_args</a>; 
-<a name="l00124"></a><a class="code" href="classnsJNI_1_1Function.html#a2e5fd2f7e2f0448a7cb3f4a4a87db933">00124</a>         <a class="code" href="classnsJNI_1_1TypesDictionnary.html" title="contains All Type, and all we need to convert">TypesDictionnary</a> *<a class="code" href="classnsJNI_1_1Function.html#a2e5fd2f7e2f0448a7cb3f4a4a87db933">_dictionnary</a>; 
+<a name="l00124"></a><a class="code" href="classnsJNI_1_1Function.html#a2e5fd2f7e2f0448a7cb3f4a4a87db933">00124</a>         <a class="code" href="classnsJNI_1_1TypesDictionnary.html" title="Contains All Type, and all we need to convert.">TypesDictionnary</a> *<a class="code" href="classnsJNI_1_1Function.html#a2e5fd2f7e2f0448a7cb3f4a4a87db933">_dictionnary</a>; 
 <a name="l00125"></a>00125     };
 <a name="l00126"></a>00126 }
 <a name="l00127"></a>00127 
@@ -154,13 +155,5 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-
-
-<hr class="footer"/><address class="footer"><small>
-Generated on Mon Jul 15 2013 09:44:05 for JNIParser by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.7.6.1
-</small></address>
-
-</body>
-</html>
+<hr>
+<i>JNI Parser - Laboratoire ERISCS</i>

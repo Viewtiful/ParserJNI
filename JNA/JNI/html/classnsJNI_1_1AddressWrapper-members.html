@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>JNIParser: Member List</title>
+<title>JNI parser: Member List</title>
 
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -27,10 +27,10 @@
   
   
   <td style="padding-left: 0.5em;">
-   <div id="projectname">JNIParser
+   <div id="projectname">JNI parser
    
    </div>
-   
+   <div id="projectbrief">Generating Java/JNI code in order to call native C functions.</div>
   </td>
   
   
@@ -51,6 +51,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
+      <li><a href="examples.html"><span>Examples</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -95,8 +96,7 @@ This is the complete list of members for <a class="el" href="classnsJNI_1_1Addre
   <tr class="memlist"><td><a class="el" href="group__Types.html#ga7db5b69319dccb540acfbee501a7975a">_realCType</a></td><td><a class="el" href="classnsJNI_1_1AddressWrapper.html">nsJNI::AddressWrapper</a></td><td><code> [protected]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="group__Types.html#ga98719b0cf1bc81d9ffc885cc1d07ea51">_varName</a></td><td><a class="el" href="classnsJNI_1_1AddressWrapper.html">nsJNI::AddressWrapper</a></td><td><code> [protected]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="group__Types.html#ga30974e23977f8bf0202ac883340137de">_VMSignature</a></td><td><a class="el" href="classnsJNI_1_1Type.html">nsJNI::Type</a></td><td><code> [protected]</code></td></tr>
-  <tr class="memlist"><td><a class="el" href="group__Types.html#ga5e97ae4caf1d514cd51fbc7441897d53">AddressWrapper</a>(string realCType, string VMSignature)</td><td><a class="el" href="classnsJNI_1_1AddressWrapper.html">nsJNI::AddressWrapper</a></td><td></td></tr>
-  <tr class="memlist"><td><a class="el" href="group__Types.html#ga96520b448366646a3860450220193282">AddressWrapper</a>(string VMSignature)</td><td><a class="el" href="classnsJNI_1_1AddressWrapper.html">nsJNI::AddressWrapper</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="group__Types.html#gae03708245a4f3f98f5c50ede9daa662c">AddressWrapper</a>(const string &amp;realCType, const string &amp;VMSignature)</td><td><a class="el" href="classnsJNI_1_1AddressWrapper.html">nsJNI::AddressWrapper</a></td><td></td></tr>
   <tr bgcolor="#f0f0f0"><td><b>getJavaType</b>() (defined in <a class="el" href="classnsJNI_1_1Type.html">nsJNI::Type</a>)</td><td><a class="el" href="classnsJNI_1_1Type.html">nsJNI::Type</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="group__Types.html#gae07087784b1a203fee674d162f7804b0">getJNIParameterName</a>(string &amp;varName)</td><td><a class="el" href="classnsJNI_1_1AddressWrapper.html">nsJNI::AddressWrapper</a></td><td><code> [virtual]</code></td></tr>
   <tr bgcolor="#f0f0f0"><td><b>getJNIType</b>() (defined in <a class="el" href="classnsJNI_1_1Type.html">nsJNI::Type</a>)</td><td><a class="el" href="classnsJNI_1_1Type.html">nsJNI::Type</a></td><td></td></tr>
@@ -111,7 +111,7 @@ This is the complete list of members for <a class="el" href="classnsJNI_1_1Addre
   <tr class="memlist"><td><a class="el" href="group__Types.html#ga56763c10485bf9fbcb5fd981efe1ee8c">prepareCall</a>(ofstream &amp;f, string &amp;varName)</td><td><a class="el" href="classnsJNI_1_1AddressWrapper.html">nsJNI::AddressWrapper</a></td><td><code> [virtual]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="group__Types.html#gac29bfd8747951f9fd41fe4b82f928771">Type</a>(string javaType, string jniType, string VMSignature)</td><td><a class="el" href="classnsJNI_1_1Type.html">nsJNI::Type</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="group__Types.html#gae3aec8411e515a1eedf8f0da1daba48f">Type</a>(string VMSignature)</td><td><a class="el" href="classnsJNI_1_1Type.html">nsJNI::Type</a></td><td></td></tr>
-  <tr class="memlist"><td><a class="el" href="group__Types.html#ga8133af8c26498e4bb19c0780dde59ba1">~AddressWrapper</a>()</td><td><a class="el" href="classnsJNI_1_1AddressWrapper.html">nsJNI::AddressWrapper</a></td><td><code> [virtual]</code></td></tr>
+  <tr bgcolor="#f0f0f0"><td><b>~AddressWrapper</b>() (defined in <a class="el" href="classnsJNI_1_1AddressWrapper.html">nsJNI::AddressWrapper</a>)</td><td><a class="el" href="classnsJNI_1_1AddressWrapper.html">nsJNI::AddressWrapper</a></td><td><code> [virtual]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="group__Types.html#ga79b5e86eb2dd658180797a1b798194a8">~Type</a>()</td><td><a class="el" href="classnsJNI_1_1Type.html">nsJNI::Type</a></td><td><code> [virtual]</code></td></tr>
 </table></div><!-- contents -->
 <!-- window showing the filter options -->
@@ -128,13 +128,5 @@ This is the complete list of members for <a class="el" href="classnsJNI_1_1Addre
 </iframe>
 </div>
 
-
-
-<hr class="footer"/><address class="footer"><small>
-Generated on Mon Jul 15 2013 09:44:06 for JNIParser by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.7.6.1
-</small></address>
-
-</body>
-</html>
+<hr>
+<i>JNI Parser - Laboratoire ERISCS</i>

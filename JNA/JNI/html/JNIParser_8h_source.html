@@ -48,8 +48,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="modules.html"><span>Modules</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
+      <li><a href="examples.html"><span>Examples</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -85,8 +87,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00010"></a>00010 <span class="preprocessor"></span><span class="preprocessor">#include &quot;Modules/Module.h&quot;</span>
 <a name="l00011"></a>00011 <span class="preprocessor">#include &quot;Utils/Parser.h&quot;</span>
 <a name="l00012"></a>00012 <span class="preprocessor">#include &quot;<a class="code" href="TypesDictionnary_8h.html">JNI/TypesDictionnary.h</a>&quot;</span>
-<a name="l00013"></a>00013 <span class="preprocessor">#include &quot;JNI/OutputJNI.h&quot;</span>
-<a name="l00014"></a>00014 <span class="preprocessor">#include &quot;JNI/OutputJava.h&quot;</span>
+<a name="l00013"></a>00013 <span class="preprocessor">#include &quot;<a class="code" href="OutputJNI_8h.html">JNI/OutputJNI.h</a>&quot;</span>
+<a name="l00014"></a>00014 <span class="preprocessor">#include &quot;<a class="code" href="OutputJava_8h.html">JNI/OutputJava.h</a>&quot;</span>
 <a name="l00015"></a>00015 <span class="preprocessor">#include &quot;JNI/Comments.h&quot;</span>
 <a name="l00016"></a>00016 
 <a name="l00020"></a>00020 <span class="keyword">namespace </span>nsJNI {
@@ -95,27 +97,28 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00027"></a>00027                 <span class="keyword">public</span>:
 <a name="l00028"></a>00028                         <span class="keyword">virtual</span> ~<a class="code" href="classnsJNI_1_1JNIParser.html" title="The class which manage the conversion from C to JNI/Java.">JNIParser</a>();
 <a name="l00029"></a>00029 
-<a name="l00031"></a>00031 
-<a name="l00042"></a>00042                         <span class="keywordtype">int</span> <a class="code" href="group__JNI__parser.html#ga8a77b08d83bba9bef37ae9e7c5c63698" title="Running the JNI parser.">run</a>(nsModules::Module::vector modules);
-<a name="l00047"></a>00047                         <span class="keywordtype">bool</span> <a class="code" href="group__JNI__parser.html#ga140a4da168243f45dddc97acfeb91559" title="Return if the current module contains callback.">containsCallback</a>(nsModules::Module module);
-<a name="l00048"></a>00048 
-<a name="l00049"></a>00049                 <span class="keyword">protected</span> :
-<a name="l00050"></a><a class="code" href="group__JNI__parser.html#ga25cc92ecc83303bce064286908ea00ea">00050</a>                         <a class="code" href="classnsJNI_1_1OutputJNI.html" title="generate, manage the JNI Side">OutputJNI</a> *<a class="code" href="group__JNI__parser.html#ga25cc92ecc83303bce064286908ea00ea">_jni</a>; 
-<a name="l00051"></a><a class="code" href="group__JNI__parser.html#gab9e6d119750bfb7a48aa4e3151d7b0b8">00051</a>                         <a class="code" href="classnsJNI_1_1OutputJava.html" title="generate, manage the Java Side">OutputJava</a> *<a class="code" href="group__JNI__parser.html#gab9e6d119750bfb7a48aa4e3151d7b0b8">_java</a>; 
-<a name="l00052"></a><a class="code" href="group__JNI__parser.html#ga2461d8f12c0738889a9d5b1a8aaf5664">00052</a>                         <a class="code" href="classnsJNI_1_1TypesDictionnary.html" title="contains All Type, and all we need to convert">TypesDictionnary</a> *<a class="code" href="group__JNI__parser.html#ga2461d8f12c0738889a9d5b1a8aaf5664">_dico</a>; 
-<a name="l00053"></a><a class="code" href="group__JNI__parser.html#ga1bd902d021207468eab4677d82b2f170">00053</a>                         <a class="code" href="classnsJNI_1_1Comments.html" title="Transform Doxygen comments to Javadoc comments.">Comments</a> *<a class="code" href="group__JNI__parser.html#ga1bd902d021207468eab4677d82b2f170">_cm</a>;  
-<a name="l00056"></a>00056         };
-<a name="l00057"></a>00057 }
-<a name="l00058"></a>00058 
-<a name="l00059"></a>00059 <span class="preprocessor">#endif</span>
-<a name="l00060"></a>00060 <span class="preprocessor"></span>
+<a name="l00037"></a>00037                         <span class="keywordtype">int</span> <a class="code" href="group__JNI__parser.html#ga8a77b08d83bba9bef37ae9e7c5c63698" title="Running the JNI parser. This is where we start the conversion from C headers to Java/JNI. We first transform C types to Java / JNI / VM signatures and then we write them to a java / c file.">run</a>(nsModules::Module::vector modules);
+<a name="l00042"></a>00042                         <span class="keywordtype">bool</span> <a class="code" href="group__JNI__parser.html#ga140a4da168243f45dddc97acfeb91559" title="Return true if the current module contains callback.">containsCallback</a>(nsModules::Module module);
+<a name="l00043"></a>00043 
+<a name="l00044"></a>00044                 <span class="keyword">protected</span> :
+<a name="l00046"></a><a class="code" href="group__JNI__parser.html#ga25cc92ecc83303bce064286908ea00ea">00046</a>                         <a class="code" href="classnsJNI_1_1OutputJNI.html" title="generate, manage the JNI Side">OutputJNI</a> *<a class="code" href="group__JNI__parser.html#ga25cc92ecc83303bce064286908ea00ea" title="manager of the JNI Side">_jni</a>; 
+<a name="l00048"></a><a class="code" href="group__JNI__parser.html#gab9e6d119750bfb7a48aa4e3151d7b0b8">00048</a>                         <a class="code" href="classnsJNI_1_1OutputJava.html" title="Generate, manage the Java Side.">OutputJava</a> *<a class="code" href="group__JNI__parser.html#gab9e6d119750bfb7a48aa4e3151d7b0b8" title="manager of the Java Side">_java</a>; 
+<a name="l00050"></a><a class="code" href="group__JNI__parser.html#ga2461d8f12c0738889a9d5b1a8aaf5664">00050</a>                         <a class="code" href="classnsJNI_1_1TypesDictionnary.html" title="Contains All Type, and all we need to convert.">TypesDictionnary</a> *<a class="code" href="group__JNI__parser.html#ga2461d8f12c0738889a9d5b1a8aaf5664" title="Dictionnary of all types.">_dico</a>;
+<a name="l00052"></a><a class="code" href="group__JNI__parser.html#ga1bd902d021207468eab4677d82b2f170">00052</a>                         <a class="code" href="classnsJNI_1_1Comments.html" title="Transform Doxygen comments to Javadoc comments.">Comments</a> *<a class="code" href="group__JNI__parser.html#ga1bd902d021207468eab4677d82b2f170" title="Generate javadoc comments for function.">_cm</a>;  
+<a name="l00053"></a>00053 
+<a name="l00054"></a>00054 
+<a name="l00055"></a>00055         };
+<a name="l00056"></a>00056 }
+<a name="l00057"></a>00057 
+<a name="l00058"></a>00058 <span class="preprocessor">#endif</span>
+<a name="l00059"></a>00059 <span class="preprocessor"></span>
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">

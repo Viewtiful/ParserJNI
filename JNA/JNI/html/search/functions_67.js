@@ -1,10 +1,20 @@
 var searchData=
 [
-  ['generatejnionload',['generateJNIOnload',['../classnsJNI_1_1OutputJNI.html#aebf83bb01e0275abcc5d576a9f377b5f',1,'nsJNI::OutputJNI']]],
-  ['getjavatype',['getJavaType',['../classnsJNI_1_1OutputJava.html#a5e91b0ad0c23a77f5f012bb3a48ca9ad',1,'nsJNI::OutputJava']]],
-  ['getjnitype',['getJNIType',['../classnsJNI_1_1OutputJNI.html#ad10aefea3e5b8bd67c4c6993a9936753',1,'nsJNI::OutputJNI']]],
-  ['getrealtype',['getRealType',['../classnsJNI_1_1TypesDictionnary.html#a5b276e3bd46d856b6f7bc11070e3474a',1,'nsJNI::TypesDictionnary']]],
+  ['generateconstructor',['generateConstructor',['../group__Types.html#ga4124e7d698160d42bf5157fb311e5b19',1,'nsJNI::Struct']]],
+  ['generatefinalize',['generateFinalize',['../group__Types.html#gadd03a27b34a9e2eca749c4e5b673e2bd',1,'nsJNI::Struct']]],
+  ['generatejnionload',['generateJNIOnload',['../group__JNI__OutputJNI.html#gaebf83bb01e0275abcc5d576a9f377b5f',1,'nsJNI::OutputJNI']]],
+  ['generateread',['generateRead',['../group__Types.html#ga00eae9bc6c6f23f95233247777fb3a90',1,'nsJNI::Struct']]],
+  ['generatewrite',['generateWrite',['../group__Types.html#ga75f98de283e42a18081237ae26760ba2',1,'nsJNI::Struct']]],
+  ['getfcts',['getFcts',['../group__JNI__Dictionnary.html#ga7b87e1206a1417411ee933f537df15f3',1,'nsJNI::TypesDictionnary']]],
+  ['getfilename',['getFilename',['../group__JNI__Dictionnary.html#ga3ee1a158b475d36f651c7ce4ba3827db',1,'nsJNI::TypesDictionnary']]],
+  ['getgettersetters',['getGetterSetters',['../group__Types.html#ga8c4278ec569e659b656489ea007effbb',1,'nsJNI::Struct']]],
+  ['getjavatype',['getJavaType',['../group__JNI__OutputJava.html#gae8e9fc0a636f834a02cf390ecebb215e',1,'nsJNI::OutputJava']]],
+  ['getjniparametername',['getJNIParameterName',['../group__Types.html#gae07087784b1a203fee674d162f7804b0',1,'nsJNI::AddressWrapper::getJNIParameterName()'],['../group__Types.html#gab2c9280d9677c4df76c6cd1ebc55d593',1,'nsJNI::BoolWrapper::getJNIParameterName()'],['../group__Types.html#ga0ae2b82d22440b5586cbba29209c3e25',1,'nsJNI::Enum::getJNIParameterName()'],['../group__Types.html#ga41c7ccbe8277d70bfdcb04d246763e29',1,'nsJNI::NativeType::getJNIParameterName()'],['../group__Types.html#ga60e1f5b1eb17e15a572ac4833c155b74',1,'nsJNI::Pointer::getJNIParameterName()'],['../group__Types.html#gab0206b57c0c6b68cdb342314bd44330e',1,'nsJNI::Struct::getJNIParameterName()'],['../group__Types.html#gaa946343b839b3a2c7b0a00bcaca37b2f',1,'nsJNI::Type::getJNIParameterName()'],['../group__Types.html#ga8e2d9b1fd7471095e67f712745c4cfb8',1,'nsJNI::Typedef::getJNIParameterName()']]],
+  ['getjnitype',['getJNIType',['../group__JNI__OutputJNI.html#gaeeaac45a64d6252968ee9eda52c8d1df',1,'nsJNI::OutputJNI']]],
+  ['getrealtype',['getRealType',['../group__JNI__Dictionnary.html#ga5b276e3bd46d856b6f7bc11070e3474a',1,'nsJNI::TypesDictionnary']]],
+  ['getreturnvalue',['getReturnValue',['../group__Types.html#ga08b71af29269ae7d759a30f939c52faa',1,'nsJNI::AddressWrapper::getReturnValue()'],['../group__Types.html#ga792d91fc06c3d5e552bc809dbeb0e0b6',1,'nsJNI::Array::getReturnValue()'],['../group__Types.html#ga0e522267ada12bde53c742d03fb59fb5',1,'nsJNI::BoolWrapper::getReturnValue()'],['../group__Types.html#ga879d69898a6cfd9543bfab33eccd763c',1,'nsJNI::Enum::getReturnValue()'],['../group__Types.html#ga3f6d5d021524f2cb000f322f994edae2',1,'nsJNI::NativeType::getReturnValue()'],['../group__Types.html#gae5c545dbca50107829bb516f7a7eeac5',1,'nsJNI::Pointer::getReturnValue()'],['../group__Types.html#gaa0a0aed8ea3f6d35c1c92b86efd1a64a',1,'nsJNI::Struct::getReturnValue()'],['../group__Types.html#ga3ba2eeadfa17e8b13f99e84853413d3a',1,'nsJNI::Type::getReturnValue()'],['../group__Types.html#gaee7cd7fe9890494f772e8197540bd16c',1,'nsJNI::Typedef::getReturnValue()']]],
+  ['getter',['Getter',['../group__Types.html#ga9fadeb2211a5a4aeef17aab0452827c3',1,'nsJNI::Getter']]],
   ['gettoken',['getToken',['../classnsJNI_1_1Comments.html#a6662641cef7f28e54a1b8804d8912a88',1,'nsJNI::Comments']]],
-  ['gettype',['getType',['../classnsJNI_1_1TypesDictionnary.html#a2f282607017dd38367f1f98714821442',1,'nsJNI::TypesDictionnary']]],
-  ['getvmsignature',['getVMSignature',['../classnsJNI_1_1OutputJNI.html#a859c66a4925649243f1b1445a17fbe07',1,'nsJNI::OutputJNI']]]
+  ['gettype',['getType',['../group__JNI__Dictionnary.html#ga2f282607017dd38367f1f98714821442',1,'nsJNI::TypesDictionnary']]],
+  ['getvmsignature',['getVMSignature',['../group__JNI__OutputJNI.html#ga22728800ee86abcdf4e0d9816035f164',1,'nsJNI::OutputJNI']]]
 ];

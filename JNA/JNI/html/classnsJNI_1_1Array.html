@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>JNIParser: nsJNI::Array Class Reference</title>
+<title>JNI parser: nsJNI::Array Class Reference</title>
 
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -27,10 +27,10 @@
   
   
   <td style="padding-left: 0.5em;">
-   <div id="projectname">JNIParser
+   <div id="projectname">JNI parser
    
    </div>
-   
+   <div id="projectbrief">Generating Java/JNI code in order to call native C functions.</div>
   </td>
   
   
@@ -51,6 +51,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
+      <li><a href="examples.html"><span>Examples</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -107,7 +108,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 <!-- doxytag: class="nsJNI::Array" --><!-- doxytag: inherits="nsJNI::Type" -->
-<p>represents a <a class="el" href="classnsJNI_1_1Array.html" title="represents a Array">Array</a>  
+<p>Represents an array in Java and JNI.  
  <a href="classnsJNI_1_1Array.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="Array_8h_source.html">Array.h</a>&gt;</code></p>
@@ -125,11 +126,8 @@ Inheritance diagram for nsJNI::Array:</div>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gabcabe567f41f7798d2f97babcc443c6f"></a><!-- doxytag: member="nsJNI::Array::~Array" ref="gabcabe567f41f7798d2f97babcc443c6f" args="()" -->
-virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Types.html#gabcabe567f41f7798d2f97babcc443c6f">~Array</a> ()</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">destructor <br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Types.html#ga042f1f99c9b29488a10cae18c6a0aa93">Array</a> (const string &amp;CBaseType, const string &amp;vmSignature, <a class="el" href="classnsJNI_1_1TypesDictionnary.html">TypesDictionnary</a> *dictionnary)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">constructor with three parameters <a class="el" href="classnsJNI_1_1Create.html" title="generate an Create Function for structure">Create</a>, and initialize an <a class="el" href="classnsJNI_1_1Array.html" title="represents a Array">Array</a> with the following arguments  <a href="group__Types.html#ga042f1f99c9b29488a10cae18c6a0aa93"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor with three parameters create, and initialize an <a class="el" href="classnsJNI_1_1Array.html" title="Represents an array in Java and JNI.">Array</a> with the following arguments,.  <a href="group__Types.html#ga042f1f99c9b29488a10cae18c6a0aa93"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Types.html#gab6ffcdd3f77597d7e5ef61f8bc96a5f7">outputJava</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a type to java <a class="el" href="classnsJNI_1_1Type.html" title="represents an abstract Type">Type</a>.  <a href="group__Types.html#gab6ffcdd3f77597d7e5ef61f8bc96a5f7"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Types.html#ga3a70e0419c7ae2ce0e528d1e3502420e">outputJNI</a> ()</td></tr>
@@ -137,19 +135,19 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="g
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Types.html#ga5a7ea35bc68ee0f556440a75a3005c28">isNativeType</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">verify is this type is derived from a Native <a class="el" href="classnsJNI_1_1Type.html" title="represents an abstract Type">Type</a> such as 'int, float...'  <a href="group__Types.html#ga5a7ea35bc68ee0f556440a75a3005c28"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Types.html#gaa085a7ec28055c2349710fda474e9ed3">isAddressWrapper</a> ()</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">verify is this type is an <a class="el" href="classnsJNI_1_1AddressWrapper.html" title="handle all struct">AddressWrapper</a>  <a href="group__Types.html#gaa085a7ec28055c2349710fda474e9ed3"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">verify is this type is an <a class="el" href="classnsJNI_1_1AddressWrapper.html" title="Handle every address of enums and structures in the Java side.">AddressWrapper</a>  <a href="group__Types.html#gaa085a7ec28055c2349710fda474e9ed3"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Types.html#gaf50ffa913a17220d57273ab76a8b39a1">isBooleanWrapper</a> ()</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">verify is this type is an <a class="el" href="classnsJNI_1_1AddressWrapper.html" title="handle all struct">AddressWrapper</a>  <a href="group__Types.html#gaf50ffa913a17220d57273ab76a8b39a1"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">verify is this type is an <a class="el" href="classnsJNI_1_1AddressWrapper.html" title="Handle every address of enums and structures in the Java side.">AddressWrapper</a>  <a href="group__Types.html#gaf50ffa913a17220d57273ab76a8b39a1"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Types.html#ga6e9ec86500faa3ddcda4f1ef74c40883">isArray</a> ()</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">verify is this type is an <a class="el" href="classnsJNI_1_1Array.html" title="represents a Array">Array</a>  <a href="group__Types.html#ga6e9ec86500faa3ddcda4f1ef74c40883"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">verify is this type is an <a class="el" href="classnsJNI_1_1Array.html" title="Represents an array in Java and JNI.">Array</a>  <a href="group__Types.html#ga6e9ec86500faa3ddcda4f1ef74c40883"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaddfd022a396a85590d862b0820a500fe"></a><!-- doxytag: member="nsJNI::Array::prepareCall" ref="gaddfd022a396a85590d862b0820a500fe" args="(ofstream &amp;f, std::string &amp;varName)" -->
 void&#160;</td><td class="memItemRight" valign="bottom"><b>prepareCall</b> (ofstream &amp;f, std::string &amp;varName)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gac3bd83fa039461d1a5cb815cec58a502"></a><!-- doxytag: member="nsJNI::Array::getJNIParameterName" ref="gac3bd83fa039461d1a5cb815cec58a502" args="(std::string &amp;varName)" -->
 std::string&#160;</td><td class="memItemRight" valign="bottom"><b>getJNIParameterName</b> (std::string &amp;varName)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Types.html#ga792d91fc06c3d5e552bc809dbeb0e0b6">getReturnValue</a> (ofstream &amp;f)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">create JNI instruction to get return value from Native function call, and convert the result to Java  <a href="group__Types.html#ga792d91fc06c3d5e552bc809dbeb0e0b6"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaf00dc796233ed1a59cc2649fffe19e6b"></a><!-- doxytag: member="nsJNI::Array::getReturnValueAndFree" ref="gaf00dc796233ed1a59cc2649fffe19e6b" args="(ofstream &amp;f)" -->
-void&#160;</td><td class="memItemRight" valign="bottom"><b>getReturnValueAndFree</b> (ofstream &amp;f)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga83fa648fd9be0dc5b2ea6c7cf06986d6"></a><!-- doxytag: member="nsJNI::Array::getReturnValueAndFree" ref="ga83fa648fd9be0dc5b2ea6c7cf06986d6" args="(ofstream &amp;f, std::string &amp;varName)" -->
+void&#160;</td><td class="memItemRight" valign="bottom"><b>getReturnValueAndFree</b> (ofstream &amp;f, std::string &amp;varName)</td></tr>
 <tr><td colspan="2"><h2><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classnsJNI_1_1TypesDictionnary.html">TypesDictionnary</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Types.html#gaab6eee9aa12c67ed87a81352946dca61">_dictionnary</a></td></tr>
@@ -157,7 +155,7 @@ Protected Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Types.html#ga2afac01b8bb2069579b70fd25f117f46">_varName</a></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
-<div class="textblock"><p>represents a <a class="el" href="classnsJNI_1_1Array.html" title="represents a Array">Array</a> </p>
+<div class="textblock"><p>Represents an array in Java and JNI. </p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Types/<a class="el" href="Array_8h_source.html">Array.h</a></li>
 <li>Types/Array.cpp</li>
@@ -177,13 +175,5 @@ Protected Attributes</h2></td></tr>
 </iframe>
 </div>
 
-
-
-<hr class="footer"/><address class="footer"><small>
-Generated on Mon Jul 15 2013 09:44:06 for JNIParser by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.7.6.1
-</small></address>
-
-</body>
-</html>
+<hr>
+<i>JNI Parser - Laboratoire ERISCS</i>

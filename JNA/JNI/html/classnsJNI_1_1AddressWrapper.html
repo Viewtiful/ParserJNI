@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>JNIParser: nsJNI::AddressWrapper Class Reference</title>
+<title>JNI parser: nsJNI::AddressWrapper Class Reference</title>
 
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -27,10 +27,10 @@
   
   
   <td style="padding-left: 0.5em;">
-   <div id="projectname">JNIParser
+   <div id="projectname">JNI parser
    
    </div>
-   
+   <div id="projectbrief">Generating Java/JNI code in order to call native C functions.</div>
   </td>
   
   
@@ -51,6 +51,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
+      <li><a href="examples.html"><span>Examples</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -107,7 +108,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 <!-- doxytag: class="nsJNI::AddressWrapper" --><!-- doxytag: inherits="nsJNI::Type" -->
-<p>handle all struct  
+<p>Handle every address of enums and structures in the Java side.  
  <a href="classnsJNI_1_1AddressWrapper.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="AddressWrapper_8h_source.html">AddressWrapper.h</a>&gt;</code></p>
@@ -125,13 +126,8 @@ Inheritance diagram for nsJNI::AddressWrapper:</div>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga8133af8c26498e4bb19c0780dde59ba1"></a><!-- doxytag: member="nsJNI::AddressWrapper::~AddressWrapper" ref="ga8133af8c26498e4bb19c0780dde59ba1" args="()" -->
-virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Types.html#ga8133af8c26498e4bb19c0780dde59ba1">~AddressWrapper</a> ()</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">destructor <br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Types.html#ga5e97ae4caf1d514cd51fbc7441897d53">AddressWrapper</a> (string realCType, string VMSignature)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">constructor with two parameters <a class="el" href="classnsJNI_1_1Create.html" title="generate an Create Function for structure">Create</a>, and initialize an <a class="el" href="classnsJNI_1_1AddressWrapper.html" title="handle all struct">AddressWrapper</a> with the following arguments  <a href="group__Types.html#ga5e97ae4caf1d514cd51fbc7441897d53"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Types.html#ga96520b448366646a3860450220193282">AddressWrapper</a> (string VMSignature)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">constructor with one parameters <a class="el" href="classnsJNI_1_1Create.html" title="generate an Create Function for structure">Create</a>, and initialize an <a class="el" href="classnsJNI_1_1AddressWrapper.html" title="handle all struct">AddressWrapper</a> with the following arguments  <a href="group__Types.html#ga96520b448366646a3860450220193282"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Types.html#gae03708245a4f3f98f5c50ede9daa662c">AddressWrapper</a> (const string &amp;realCType, const string &amp;VMSignature)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor with two parameters. create, and initialize an <a class="el" href="classnsJNI_1_1AddressWrapper.html" title="Handle every address of enums and structures in the Java side.">AddressWrapper</a> with the following arguments.  <a href="group__Types.html#gae03708245a4f3f98f5c50ede9daa662c"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Types.html#ga230d73d52a5b994081de7d6f6e1b7332">outputJava</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a type to java <a class="el" href="classnsJNI_1_1Type.html" title="represents an abstract Type">Type</a>.  <a href="group__Types.html#ga230d73d52a5b994081de7d6f6e1b7332"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Types.html#ga2469d3af9439dc50f92390462c8cd2d9">outputJNI</a> ()</td></tr>
@@ -139,11 +135,11 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="g
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Types.html#ga4e6f6cf0bf295c54e745f84edde80dae">isNativeType</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">verify is this type is derived from a Native <a class="el" href="classnsJNI_1_1Type.html" title="represents an abstract Type">Type</a> such as 'int, float...'  <a href="group__Types.html#ga4e6f6cf0bf295c54e745f84edde80dae"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Types.html#ga52d7528c0ad1040b8de4aeac5af5b209">isAddressWrapper</a> ()</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">verify is this type is an <a class="el" href="classnsJNI_1_1AddressWrapper.html" title="handle all struct">AddressWrapper</a>  <a href="group__Types.html#ga52d7528c0ad1040b8de4aeac5af5b209"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">verify is this type is an <a class="el" href="classnsJNI_1_1AddressWrapper.html" title="Handle every address of enums and structures in the Java side.">AddressWrapper</a>  <a href="group__Types.html#ga52d7528c0ad1040b8de4aeac5af5b209"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Types.html#ga15b1c3eb6575aa3deb7f260b7c6a8b40">isBooleanWrapper</a> ()</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">verify is this type is an <a class="el" href="classnsJNI_1_1AddressWrapper.html" title="handle all struct">AddressWrapper</a>  <a href="group__Types.html#ga15b1c3eb6575aa3deb7f260b7c6a8b40"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">verify is this type is an <a class="el" href="classnsJNI_1_1AddressWrapper.html" title="Handle every address of enums and structures in the Java side.">AddressWrapper</a>  <a href="group__Types.html#ga15b1c3eb6575aa3deb7f260b7c6a8b40"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Types.html#gaa4fbbf91ecfba2d1daec964037f44b1b">isArray</a> ()</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">verify is this type is an <a class="el" href="classnsJNI_1_1Array.html" title="represents a Array">Array</a>  <a href="group__Types.html#gaa4fbbf91ecfba2d1daec964037f44b1b"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">verify is this type is an <a class="el" href="classnsJNI_1_1Array.html" title="Represents an array in Java and JNI.">Array</a>  <a href="group__Types.html#gaa4fbbf91ecfba2d1daec964037f44b1b"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga56763c10485bf9fbcb5fd981efe1ee8c"></a><!-- doxytag: member="nsJNI::AddressWrapper::prepareCall" ref="ga56763c10485bf9fbcb5fd981efe1ee8c" args="(ofstream &amp;f, string &amp;varName)" -->
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Types.html#ga56763c10485bf9fbcb5fd981efe1ee8c">prepareCall</a> (ofstream &amp;f, string &amp;varName)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Prepare JNI call, before calling the native <a class="el" href="classnsJNI_1_1Function.html" title="represents a Function">Function</a>, if this type is encontered. <br/></td></tr>
@@ -157,7 +153,7 @@ Protected Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Types.html#ga98719b0cf1bc81d9ffc885cc1d07ea51">_varName</a></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
-<div class="textblock"><p>handle all struct </p>
+<div class="textblock"><p>Handle every address of enums and structures in the Java side. </p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Types/<a class="el" href="AddressWrapper_8h_source.html">AddressWrapper.h</a></li>
 <li>Types/AddressWrapper.cpp</li>
@@ -177,13 +173,5 @@ Protected Attributes</h2></td></tr>
 </iframe>
 </div>
 
-
-
-<hr class="footer"/><address class="footer"><small>
-Generated on Mon Jul 15 2013 09:44:06 for JNIParser by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.7.6.1
-</small></address>
-
-</body>
-</html>
+<hr>
+<i>JNI Parser - Laboratoire ERISCS</i>

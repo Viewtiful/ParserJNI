@@ -48,8 +48,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="modules.html"><span>Modules</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
+      <li><a href="examples.html"><span>Examples</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -72,6 +74,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
+      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
       <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
@@ -80,7 +83,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -91,7 +94,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
   <div id="nav-path" class="navpath">
     <ul>
-      <li class="navelem"><b>nsJNI</b>      </li>
+      <li class="navelem"><a class="el" href="namespacensJNI.html">nsJNI</a>      </li>
       <li class="navelem"><a class="el" href="classnsJNI_1_1TypesDictionnary.html">TypesDictionnary</a>      </li>
     </ul>
   </div>
@@ -101,11 +104,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a>  </div>
   <div class="headertitle">
-<div class="title">nsJNI::TypesDictionnary Class Reference</div>  </div>
+<div class="title">nsJNI::TypesDictionnary Class Reference<div class="ingroups"><a class="el" href="group__JNI__Dictionnary.html">Dictionnary of all Types.</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 <!-- doxytag: class="nsJNI::TypesDictionnary" -->
-<p>contains All Type, and all we need to convert  
+<p>Contains All <a class="el" href="classnsJNI_1_1Type.html" title="represents an abstract Type">Type</a>, and all we need to convert.  
  <a href="classnsJNI_1_1TypesDictionnary.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="TypesDictionnary_8h_source.html">TypesDictionnary.h</a>&gt;</code></p>
@@ -114,540 +117,54 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnsJNI_1_1TypesDictionnary.html#aada6b02e1ffe2c0ad705b33de5abe012">TypesDictionnary</a> (string filename)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">constructor with one parameter Create, and initialize a TypeDictionnary with the following argument  <a href="#aada6b02e1ffe2c0ad705b33de5abe012"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnsJNI_1_1TypesDictionnary.html#a253b2126576c1ecec097fafbb3684955">addBaseType</a> (string filename)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">add all Base Type conversion such as int and some specific conversion which not involved complex type  <a href="#a253b2126576c1ecec097fafbb3684955"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnsJNI_1_1TypesDictionnary.html#aa4a696f133de0c07199151219b4928db">convertJava</a> (const Module::vector &amp;modules)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert module to Java.  <a href="#aa4a696f133de0c07199151219b4928db"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnsJNI_1_1TypesDictionnary.html#aef6daf6f666ed138e45c2593f8bc924e">convertJNI</a> (const Module::vector &amp;modules)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert module to JNI.  <a href="#aef6daf6f666ed138e45c2593f8bc924e"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnsJNI_1_1TypesDictionnary.html#abe84ffeceef8dca86ee42c78d9555108">addToMap</a> (const string &amp;cType, Type *type)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a new Type, to a specific place in the conversion Map.  <a href="#abe84ffeceef8dca86ee42c78d9555108"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnsJNI_1_1TypesDictionnary.html#af25fbd0e758ac82120d8de51b8d57435">countAt</a> (const string &amp;Ctype)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Give the number of element in a specific place in the conversionMap.  <a href="#af25fbd0e758ac82120d8de51b8d57435"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnsJNI_1_1TypesDictionnary.html#abf0b8e2f038d93afb473f4de8dd951f8">convertJava</a> (const string &amp;Ctype)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">give the Java translation from a CType  <a href="#abf0b8e2f038d93afb473f4de8dd951f8"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnsJNI_1_1TypesDictionnary.html#abd65fd670a7b874dc740cb302a8ccec0">convertJNI</a> (const string &amp;Ctype)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">give the JNI translation from a CType  <a href="#abd65fd670a7b874dc740cb302a8ccec0"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnsJNI_1_1TypesDictionnary.html#ac6ccd197e79b539f68393277f5cf6933">convertVM</a> (const string &amp;Ctype)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">give the VM Signature from a CType  <a href="#ac6ccd197e79b539f68393277f5cf6933"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnsJNI_1_1TypesDictionnary.html#a5b276e3bd46d856b6f7bc11070e3474a">getRealType</a> (const string &amp;CType)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">generate the Native Function Call  <a href="#a5b276e3bd46d856b6f7bc11070e3474a"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3ee1a158b475d36f651c7ce4ba3827db"></a><!-- doxytag: member="nsJNI::TypesDictionnary::getFilename" ref="a3ee1a158b475d36f651c7ce4ba3827db" args="()" -->
-string&#160;</td><td class="memItemRight" valign="bottom"><b>getFilename</b> ()</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnsJNI_1_1TypesDictionnary.html#ac0bcfa22be2b6a0489fcda4f6dc8ae0e">nbIndirections</a> (const string &amp;CType)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">generate the Native Function Call  <a href="#ac0bcfa22be2b6a0489fcda4f6dc8ae0e"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnsJNI_1_1TypesDictionnary.html#a69904891023919017fb8e86eb3a4f1a3">addTypedefs</a> (const nsC::Typedef::vector typedefs)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Add Typedefs to Dictionnary.  <a href="#a69904891023919017fb8e86eb3a4f1a3"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnsJNI_1_1TypesDictionnary.html#abf0555731744c18da95bbf33d28bbc8a">addStruct</a> (ofstream &amp;fJava, ofstream &amp;fJNI, const nsC::Struct::vector &amp;structs)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Add Structs to Dictionnary.  <a href="#abf0555731744c18da95bbf33d28bbc8a"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnsJNI_1_1TypesDictionnary.html#ae09bba323c493832ff51bec01dfbf2c2">addEnums</a> (ofstream &amp;f, const nsC::Enum::vector &amp;enums)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">generate the Native Function Call  <a href="#ae09bba323c493832ff51bec01dfbf2c2"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnsJNI_1_1TypesDictionnary.html#ae4751b3e2347e280221d599606d14630">isNativeType</a> (const string &amp;type)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">inform that this type is a NativeType or not  <a href="#ae4751b3e2347e280221d599606d14630"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">Type *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnsJNI_1_1TypesDictionnary.html#a2f282607017dd38367f1f98714821442">getType</a> (const string &amp;Ctype)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">return the Object Type which handle this C Type  <a href="#a2f282607017dd38367f1f98714821442"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7b87e1206a1417411ee933f537df15f3"></a><!-- doxytag: member="nsJNI::TypesDictionnary::getFcts" ref="a7b87e1206a1417411ee933f537df15f3" args="()" -->
-vector&lt; Function * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getFcts</b> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__JNI__Dictionnary.html#gaada6b02e1ffe2c0ad705b33de5abe012">TypesDictionnary</a> (string filename)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor with one parameter <a class="el" href="classnsJNI_1_1Create.html" title="generate an Create Function for structure">Create</a>, and initialize a TypeDictionnary with the following argument.  <a href="group__JNI__Dictionnary.html#gaada6b02e1ffe2c0ad705b33de5abe012"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__JNI__Dictionnary.html#ga253b2126576c1ecec097fafbb3684955">addBaseType</a> (string filename)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Add all Base <a class="el" href="classnsJNI_1_1Type.html" title="represents an abstract Type">Type</a> conversion such as int and some specific conversion which not involved complex type.  <a href="group__JNI__Dictionnary.html#ga253b2126576c1ecec097fafbb3684955"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__JNI__Dictionnary.html#gaa4a696f133de0c07199151219b4928db">convertJava</a> (const Module::vector &amp;modules)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert module to Java.  <a href="group__JNI__Dictionnary.html#gaa4a696f133de0c07199151219b4928db"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__JNI__Dictionnary.html#gaef6daf6f666ed138e45c2593f8bc924e">convertJNI</a> (const Module::vector &amp;modules)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert module to JNI.  <a href="group__JNI__Dictionnary.html#gaef6daf6f666ed138e45c2593f8bc924e"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__JNI__Dictionnary.html#gabe84ffeceef8dca86ee42c78d9555108">addToMap</a> (const string &amp;cType, <a class="el" href="classnsJNI_1_1Type.html">Type</a> *type)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a new <a class="el" href="classnsJNI_1_1Type.html" title="represents an abstract Type">Type</a>, to a specific place in the conversion Map.  <a href="group__JNI__Dictionnary.html#gabe84ffeceef8dca86ee42c78d9555108"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__JNI__Dictionnary.html#gaf25fbd0e758ac82120d8de51b8d57435">countAt</a> (const string &amp;Ctype)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Give the number of element in a specific place in the conversionMap.  <a href="group__JNI__Dictionnary.html#gaf25fbd0e758ac82120d8de51b8d57435"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__JNI__Dictionnary.html#gabf0b8e2f038d93afb473f4de8dd951f8">convertJava</a> (const string &amp;Ctype)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">give the Java translation from a CType  <a href="group__JNI__Dictionnary.html#gabf0b8e2f038d93afb473f4de8dd951f8"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__JNI__Dictionnary.html#gabd65fd670a7b874dc740cb302a8ccec0">convertJNI</a> (const string &amp;Ctype)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">give the JNI translation from a CType  <a href="group__JNI__Dictionnary.html#gabd65fd670a7b874dc740cb302a8ccec0"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__JNI__Dictionnary.html#gac6ccd197e79b539f68393277f5cf6933">convertVM</a> (const string &amp;Ctype)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">give the VM Signature from a CType  <a href="group__JNI__Dictionnary.html#gac6ccd197e79b539f68393277f5cf6933"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__JNI__Dictionnary.html#ga5b276e3bd46d856b6f7bc11070e3474a">getRealType</a> (const string &amp;CType)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">generate the Native <a class="el" href="classnsJNI_1_1Function.html" title="represents a Function">Function</a> Call  <a href="group__JNI__Dictionnary.html#ga5b276e3bd46d856b6f7bc11070e3474a"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga3ee1a158b475d36f651c7ce4ba3827db"></a><!-- doxytag: member="nsJNI::TypesDictionnary::getFilename" ref="ga3ee1a158b475d36f651c7ce4ba3827db" args="()" -->
+string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__JNI__Dictionnary.html#ga3ee1a158b475d36f651c7ce4ba3827db">getFilename</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the filename where we write the output. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__JNI__Dictionnary.html#gac0bcfa22be2b6a0489fcda4f6dc8ae0e">nbIndirections</a> (const string &amp;CType)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">generate the Native <a class="el" href="classnsJNI_1_1Function.html" title="represents a Function">Function</a> Call  <a href="group__JNI__Dictionnary.html#gac0bcfa22be2b6a0489fcda4f6dc8ae0e"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__JNI__Dictionnary.html#ga69904891023919017fb8e86eb3a4f1a3">addTypedefs</a> (const nsC::Typedef::vector typedefs)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Add Typedefs to Dictionnary.  <a href="group__JNI__Dictionnary.html#ga69904891023919017fb8e86eb3a4f1a3"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__JNI__Dictionnary.html#gabf0555731744c18da95bbf33d28bbc8a">addStruct</a> (ofstream &amp;fJava, ofstream &amp;fJNI, const nsC::Struct::vector &amp;structs)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Add Structs to Dictionnary.  <a href="group__JNI__Dictionnary.html#gabf0555731744c18da95bbf33d28bbc8a"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__JNI__Dictionnary.html#gae09bba323c493832ff51bec01dfbf2c2">addEnums</a> (ofstream &amp;f, const nsC::Enum::vector &amp;enums)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">generate the Native <a class="el" href="classnsJNI_1_1Function.html" title="represents a Function">Function</a> Call  <a href="group__JNI__Dictionnary.html#gae09bba323c493832ff51bec01dfbf2c2"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__JNI__Dictionnary.html#gae4751b3e2347e280221d599606d14630">isNativeType</a> (const string &amp;type)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Inform that this type is a <a class="el" href="classnsJNI_1_1NativeType.html" title="represents a NativeType">NativeType</a> or not.  <a href="group__JNI__Dictionnary.html#gae4751b3e2347e280221d599606d14630"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classnsJNI_1_1Type.html">Type</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__JNI__Dictionnary.html#ga2f282607017dd38367f1f98714821442">getType</a> (const string &amp;Ctype)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the Object <a class="el" href="classnsJNI_1_1Type.html" title="represents an abstract Type">Type</a> which handle this C <a class="el" href="classnsJNI_1_1Type.html" title="represents an abstract Type">Type</a>.  <a href="group__JNI__Dictionnary.html#ga2f282607017dd38367f1f98714821442"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga7b87e1206a1417411ee933f537df15f3"></a><!-- doxytag: member="nsJNI::TypesDictionnary::getFcts" ref="ga7b87e1206a1417411ee933f537df15f3" args="()" -->
+vector&lt; <a class="el" href="classnsJNI_1_1Function.html">Function</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__JNI__Dictionnary.html#ga7b87e1206a1417411ee933f537df15f3">getFcts</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get all the functions. <br/></td></tr>
 <tr><td colspan="2"><h2><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">std::map&lt; std::string, Type * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnsJNI_1_1TypesDictionnary.html#a7f05e27574bc6e44fe87380b9b46c57a">_conversionMap</a></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnsJNI_1_1TypesDictionnary.html#a9066a547e0b24e99567378f5ea01f87f">_filename</a></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">std::vector&lt; Function * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnsJNI_1_1TypesDictionnary.html#a4051a03a2e18350a58d0b87c0b886bb5">_fcts</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::map&lt; std::string, <a class="el" href="classnsJNI_1_1Type.html">Type</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__JNI__Dictionnary.html#ga7f05e27574bc6e44fe87380b9b46c57a">_conversionMap</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__JNI__Dictionnary.html#ga9066a547e0b24e99567378f5ea01f87f">_filename</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga4051a03a2e18350a58d0b87c0b886bb5"></a><!-- doxytag: member="nsJNI::TypesDictionnary::_fcts" ref="ga4051a03a2e18350a58d0b87c0b886bb5" args="" -->
+std::vector&lt; <a class="el" href="classnsJNI_1_1Function.html">Function</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_fcts</b></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
-<div class="textblock"><p>contains All Type, and all we need to convert </p>
-</div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="aada6b02e1ffe2c0ad705b33de5abe012"></a><!-- doxytag: member="nsJNI::TypesDictionnary::TypesDictionnary" ref="aada6b02e1ffe2c0ad705b33de5abe012" args="(string filename)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classnsJNI_1_1TypesDictionnary.html#aada6b02e1ffe2c0ad705b33de5abe012">nsJNI::TypesDictionnary::TypesDictionnary</a> </td>
-          <td>(</td>
-          <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>filename</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>constructor with one parameter Create, and initialize a TypeDictionnary with the following argument </p>
-<dl class="params"><dt><b>Parameters:</b></dt><dd>
-  <table class="params">
-    <tr><td class="paramname">filename</td><td>: The Output filename (Java and JNI output files have the same name) </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<hr/><h2>Member Function Documentation</h2>
-<a class="anchor" id="a253b2126576c1ecec097fafbb3684955"></a><!-- doxytag: member="nsJNI::TypesDictionnary::addBaseType" ref="a253b2126576c1ecec097fafbb3684955" args="(string filename)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="classnsJNI_1_1TypesDictionnary.html#a253b2126576c1ecec097fafbb3684955">nsJNI::TypesDictionnary::addBaseType</a> </td>
-          <td>(</td>
-          <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>filename</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>add all Base Type conversion such as int and some specific conversion which not involved complex type </p>
-<dl class="params"><dt><b>Parameters:</b></dt><dd>
-  <table class="params">
-    <tr><td class="paramname">filename,:</td><td>The Output filename (Java and JNI output files have the same name) : useful for struct's VMSignature </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="ae09bba323c493832ff51bec01dfbf2c2"></a><!-- doxytag: member="nsJNI::TypesDictionnary::addEnums" ref="ae09bba323c493832ff51bec01dfbf2c2" args="(ofstream &amp;f, const nsC::Enum::vector &amp;enums)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="classnsJNI_1_1TypesDictionnary.html#ae09bba323c493832ff51bec01dfbf2c2">nsJNI::TypesDictionnary::addEnums</a> </td>
-          <td>(</td>
-          <td class="paramtype">ofstream &amp;&#160;</td>
-          <td class="paramname"><em>f</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const nsC::Enum::vector &amp;&#160;</td>
-          <td class="paramname"><em>enums</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>generate the Native Function Call </p>
-<dl class="params"><dt><b>Parameters:</b></dt><dd>
-  <table class="params">
-    <tr><td class="paramname">f,:</td><td>Output JNI File </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="abf0555731744c18da95bbf33d28bbc8a"></a><!-- doxytag: member="nsJNI::TypesDictionnary::addStruct" ref="abf0555731744c18da95bbf33d28bbc8a" args="(ofstream &amp;fJava, ofstream &amp;fJNI, const nsC::Struct::vector &amp;structs)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="classnsJNI_1_1TypesDictionnary.html#abf0555731744c18da95bbf33d28bbc8a">nsJNI::TypesDictionnary::addStruct</a> </td>
-          <td>(</td>
-          <td class="paramtype">ofstream &amp;&#160;</td>
-          <td class="paramname"><em>fJava</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">ofstream &amp;&#160;</td>
-          <td class="paramname"><em>fJNI</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const nsC::Struct::vector &amp;&#160;</td>
-          <td class="paramname"><em>structs</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Add Structs to Dictionnary. </p>
-<dl class="params"><dt><b>Parameters:</b></dt><dd>
-  <table class="params">
-    <tr><td class="paramname">fJava</td><td>: Output file Java </td></tr>
-    <tr><td class="paramname">fJNI</td><td>: Ouput file JNI </td></tr>
-    <tr><td class="paramname">structs,:</td><td>all structs included in C Files </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="abe84ffeceef8dca86ee42c78d9555108"></a><!-- doxytag: member="nsJNI::TypesDictionnary::addToMap" ref="abe84ffeceef8dca86ee42c78d9555108" args="(const string &amp;cType, Type *type)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="classnsJNI_1_1TypesDictionnary.html#abe84ffeceef8dca86ee42c78d9555108">nsJNI::TypesDictionnary::addToMap</a> </td>
-          <td>(</td>
-          <td class="paramtype">const string &amp;&#160;</td>
-          <td class="paramname"><em>cType</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">Type *&#160;</td>
-          <td class="paramname"><em>type</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Add a new Type, to a specific place in the conversion Map. </p>
-<dl class="params"><dt><b>Parameters:</b></dt><dd>
-  <table class="params">
-    <tr><td class="paramname">cType</td><td>: The CType which is handled by the new Type </td></tr>
-    <tr><td class="paramname">type</td><td>: The new Type </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="a69904891023919017fb8e86eb3a4f1a3"></a><!-- doxytag: member="nsJNI::TypesDictionnary::addTypedefs" ref="a69904891023919017fb8e86eb3a4f1a3" args="(const nsC::Typedef::vector typedefs)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="classnsJNI_1_1TypesDictionnary.html#a69904891023919017fb8e86eb3a4f1a3">nsJNI::TypesDictionnary::addTypedefs</a> </td>
-          <td>(</td>
-          <td class="paramtype">const nsC::Typedef::vector&#160;</td>
-          <td class="paramname"><em>typedefs</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Add Typedefs to Dictionnary. </p>
-<dl class="params"><dt><b>Parameters:</b></dt><dd>
-  <table class="params">
-    <tr><td class="paramname">typedefs,:</td><td>all typedefs included in C Files </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="aa4a696f133de0c07199151219b4928db"></a><!-- doxytag: member="nsJNI::TypesDictionnary::convertJava" ref="aa4a696f133de0c07199151219b4928db" args="(const Module::vector &amp;modules)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="classnsJNI_1_1TypesDictionnary.html#aa4a696f133de0c07199151219b4928db">nsJNI::TypesDictionnary::convertJava</a> </td>
-          <td>(</td>
-          <td class="paramtype">const Module::vector &amp;&#160;</td>
-          <td class="paramname"><em>modules</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Convert module to Java. </p>
-<dl class="params"><dt><b>Parameters:</b></dt><dd>
-  <table class="params">
-    <tr><td class="paramname">modules,:</td><td>All header file representing by Module </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="abf0b8e2f038d93afb473f4de8dd951f8"></a><!-- doxytag: member="nsJNI::TypesDictionnary::convertJava" ref="abf0b8e2f038d93afb473f4de8dd951f8" args="(const string &amp;Ctype)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">string <a class="el" href="classnsJNI_1_1TypesDictionnary.html#aa4a696f133de0c07199151219b4928db">nsJNI::TypesDictionnary::convertJava</a> </td>
-          <td>(</td>
-          <td class="paramtype">const string &amp;&#160;</td>
-          <td class="paramname"><em>Ctype</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>give the Java translation from a CType </p>
-<dl class="params"><dt><b>Parameters:</b></dt><dd>
-  <table class="params">
-    <tr><td class="paramname">CType,:</td><td>Type that we want to Translate </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>: the translated Java Type </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="aef6daf6f666ed138e45c2593f8bc924e"></a><!-- doxytag: member="nsJNI::TypesDictionnary::convertJNI" ref="aef6daf6f666ed138e45c2593f8bc924e" args="(const Module::vector &amp;modules)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="classnsJNI_1_1TypesDictionnary.html#aef6daf6f666ed138e45c2593f8bc924e">nsJNI::TypesDictionnary::convertJNI</a> </td>
-          <td>(</td>
-          <td class="paramtype">const Module::vector &amp;&#160;</td>
-          <td class="paramname"><em>modules</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Convert module to JNI. </p>
-<dl class="params"><dt><b>Parameters:</b></dt><dd>
-  <table class="params">
-    <tr><td class="paramname">modules,:</td><td>All header file representing by Module </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="abd65fd670a7b874dc740cb302a8ccec0"></a><!-- doxytag: member="nsJNI::TypesDictionnary::convertJNI" ref="abd65fd670a7b874dc740cb302a8ccec0" args="(const string &amp;Ctype)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">string <a class="el" href="classnsJNI_1_1TypesDictionnary.html#aef6daf6f666ed138e45c2593f8bc924e">nsJNI::TypesDictionnary::convertJNI</a> </td>
-          <td>(</td>
-          <td class="paramtype">const string &amp;&#160;</td>
-          <td class="paramname"><em>Ctype</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>give the JNI translation from a CType </p>
-<dl class="params"><dt><b>Parameters:</b></dt><dd>
-  <table class="params">
-    <tr><td class="paramname">CType,:</td><td>Type that we want to Translate </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>: the translated JNI Type </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="ac6ccd197e79b539f68393277f5cf6933"></a><!-- doxytag: member="nsJNI::TypesDictionnary::convertVM" ref="ac6ccd197e79b539f68393277f5cf6933" args="(const string &amp;Ctype)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">string <a class="el" href="classnsJNI_1_1TypesDictionnary.html#ac6ccd197e79b539f68393277f5cf6933">nsJNI::TypesDictionnary::convertVM</a> </td>
-          <td>(</td>
-          <td class="paramtype">const string &amp;&#160;</td>
-          <td class="paramname"><em>Ctype</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>give the VM Signature from a CType </p>
-<dl class="params"><dt><b>Parameters:</b></dt><dd>
-  <table class="params">
-    <tr><td class="paramname">CType,:</td><td>Type that we want to Translate </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>: the VM signature </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="af25fbd0e758ac82120d8de51b8d57435"></a><!-- doxytag: member="nsJNI::TypesDictionnary::countAt" ref="af25fbd0e758ac82120d8de51b8d57435" args="(const string &amp;Ctype)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int <a class="el" href="classnsJNI_1_1TypesDictionnary.html#af25fbd0e758ac82120d8de51b8d57435">nsJNI::TypesDictionnary::countAt</a> </td>
-          <td>(</td>
-          <td class="paramtype">const string &amp;&#160;</td>
-          <td class="paramname"><em>Ctype</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Give the number of element in a specific place in the conversionMap. </p>
-<dl class="params"><dt><b>Parameters:</b></dt><dd>
-  <table class="params">
-    <tr><td class="paramname">Ctype</td><td>: </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="a5b276e3bd46d856b6f7bc11070e3474a"></a><!-- doxytag: member="nsJNI::TypesDictionnary::getRealType" ref="a5b276e3bd46d856b6f7bc11070e3474a" args="(const string &amp;CType)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">string <a class="el" href="classnsJNI_1_1TypesDictionnary.html#a5b276e3bd46d856b6f7bc11070e3474a">nsJNI::TypesDictionnary::getRealType</a> </td>
-          <td>(</td>
-          <td class="paramtype">const string &amp;&#160;</td>
-          <td class="paramname"><em>CType</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>generate the Native Function Call </p>
-<dl class="params"><dt><b>Parameters:</b></dt><dd>
-  <table class="params">
-    <tr><td class="paramname">f,:</td><td>Output JNI File </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="a2f282607017dd38367f1f98714821442"></a><!-- doxytag: member="nsJNI::TypesDictionnary::getType" ref="a2f282607017dd38367f1f98714821442" args="(const string &amp;Ctype)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">Type* <a class="el" href="classnsJNI_1_1TypesDictionnary.html#a2f282607017dd38367f1f98714821442">nsJNI::TypesDictionnary::getType</a> </td>
-          <td>(</td>
-          <td class="paramtype">const string &amp;&#160;</td>
-          <td class="paramname"><em>Ctype</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>return the Object Type which handle this C Type </p>
-<dl class="params"><dt><b>Parameters:</b></dt><dd>
-  <table class="params">
-    <tr><td class="paramname">f,:</td><td>the C Type </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>the Object type </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="ae4751b3e2347e280221d599606d14630"></a><!-- doxytag: member="nsJNI::TypesDictionnary::isNativeType" ref="ae4751b3e2347e280221d599606d14630" args="(const string &amp;type)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool <a class="el" href="classnsJNI_1_1TypesDictionnary.html#ae4751b3e2347e280221d599606d14630">nsJNI::TypesDictionnary::isNativeType</a> </td>
-          <td>(</td>
-          <td class="paramtype">const string &amp;&#160;</td>
-          <td class="paramname"><em>type</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>inform that this type is a NativeType or not </p>
-<dl class="params"><dt><b>Parameters:</b></dt><dd>
-  <table class="params">
-    <tr><td class="paramname">type,:</td><td>C Type </td></tr>
-    <tr><td class="paramname">true</td><td>if it is a NativeType, false else </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="ac0bcfa22be2b6a0489fcda4f6dc8ae0e"></a><!-- doxytag: member="nsJNI::TypesDictionnary::nbIndirections" ref="ac0bcfa22be2b6a0489fcda4f6dc8ae0e" args="(const string &amp;CType)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int <a class="el" href="classnsJNI_1_1TypesDictionnary.html#ac0bcfa22be2b6a0489fcda4f6dc8ae0e">nsJNI::TypesDictionnary::nbIndirections</a> </td>
-          <td>(</td>
-          <td class="paramtype">const string &amp;&#160;</td>
-          <td class="paramname"><em>CType</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>generate the Native Function Call </p>
-<dl class="params"><dt><b>Parameters:</b></dt><dd>
-  <table class="params">
-    <tr><td class="paramname">f,:</td><td>Output JNI File </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<hr/><h2>Member Data Documentation</h2>
-<a class="anchor" id="a7f05e27574bc6e44fe87380b9b46c57a"></a><!-- doxytag: member="nsJNI::TypesDictionnary::_conversionMap" ref="a7f05e27574bc6e44fe87380b9b46c57a" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::map&lt;std::string, Type*&gt; <a class="el" href="classnsJNI_1_1TypesDictionnary.html#a7f05e27574bc6e44fe87380b9b46c57a">nsJNI::TypesDictionnary::_conversionMap</a><code> [protected]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-<p>Add base types (int, size_t, char, those stuff) Map which associate an type to a class (int -&gt; NativeType) </p>
-
-</div>
-</div>
-<a class="anchor" id="a4051a03a2e18350a58d0b87c0b886bb5"></a><!-- doxytag: member="nsJNI::TypesDictionnary::_fcts" ref="a4051a03a2e18350a58d0b87c0b886bb5" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::vector&lt;Function*&gt; <a class="el" href="classnsJNI_1_1TypesDictionnary.html#a4051a03a2e18350a58d0b87c0b886bb5">nsJNI::TypesDictionnary::_fcts</a><code> [protected]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-<p>All fonctions </p>
-
-</div>
-</div>
-<a class="anchor" id="a9066a547e0b24e99567378f5ea01f87f"></a><!-- doxytag: member="nsJNI::TypesDictionnary::_filename" ref="a9066a547e0b24e99567378f5ea01f87f" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">string <a class="el" href="classnsJNI_1_1TypesDictionnary.html#a9066a547e0b24e99567378f5ea01f87f">nsJNI::TypesDictionnary::_filename</a><code> [protected]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-<p>filename </p>
-
-</div>
-</div>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<div class="textblock"><p>Contains All <a class="el" href="classnsJNI_1_1Type.html" title="represents an abstract Type">Type</a>, and all we need to convert. </p>
+</div><hr/>The documentation for this class was generated from the following file:<ul>
 <li><a class="el" href="TypesDictionnary_8h_source.html">TypesDictionnary.h</a></li>
 </ul>
 </div><!-- contents -->
@@ -656,7 +173,7 @@ Protected Attributes</h2></td></tr>
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">

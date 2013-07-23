@@ -48,8 +48,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="modules.html"><span>Modules</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
+      <li><a href="examples.html"><span>Examples</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -82,10 +84,25 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="textblock">Here is a list of all documented files with brief descriptions:</div><table>
   <tr><td class="indexkey"><b>Comments.h</b> <a href="Comments_8h_source.html">[code]</a></td><td class="indexvalue"></td></tr>
   <tr><td class="indexkey"><a class="el" href="JNIParser_8h.html">JNIParser.h</a> <a href="JNIParser_8h_source.html">[code]</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey"><b>OutputJava.h</b> <a href="OutputJava_8h_source.html">[code]</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey"><b>OutputJNI.h</b> <a href="OutputJNI_8h_source.html">[code]</a></td><td class="indexvalue"></td></tr>
-  <tr><td class="indexkey"><a class="el" href="TypesDictionnary_8cpp.html">TypesDictionnary.cpp</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey"><a class="el" href="OutputJava_8h.html">OutputJava.h</a> <a href="OutputJava_8h_source.html">[code]</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey"><a class="el" href="OutputJNI_8h.html">OutputJNI.h</a> <a href="OutputJNI_8h_source.html">[code]</a></td><td class="indexvalue"></td></tr>
   <tr><td class="indexkey"><a class="el" href="TypesDictionnary_8h.html">TypesDictionnary.h</a> <a href="TypesDictionnary_8h_source.html">[code]</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey">Types/<a class="el" href="AddressWrapper_8h.html">AddressWrapper.h</a> <a href="AddressWrapper_8h_source.html">[code]</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey">Types/<a class="el" href="Array_8h.html">Array.h</a> <a href="Array_8h_source.html">[code]</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey">Types/<a class="el" href="BoolWrapper_8h.html">BoolWrapper.h</a> <a href="BoolWrapper_8h_source.html">[code]</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey">Types/<b>CallBack.h</b> <a href="CallBack_8h_source.html">[code]</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey">Types/<a class="el" href="Create_8h.html">Create.h</a> <a href="Create_8h_source.html">[code]</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey">Types/<a class="el" href="Enum_8h.html">Enum.h</a> <a href="Enum_8h_source.html">[code]</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey">Types/<a class="el" href="Free_8h.html">Free.h</a> <a href="Free_8h_source.html">[code]</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey">Types/<a class="el" href="Function_8h.html">Function.h</a> <a href="Function_8h_source.html">[code]</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey">Types/<a class="el" href="Getter_8h.html">Getter.h</a> <a href="Getter_8h_source.html">[code]</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey">Types/<a class="el" href="NativeType_8h.html">NativeType.h</a> <a href="NativeType_8h_source.html">[code]</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey">Types/<a class="el" href="Param_8h.html">Param.h</a> <a href="Param_8h_source.html">[code]</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey">Types/<a class="el" href="Pointer_8h.html">Pointer.h</a> <a href="Pointer_8h_source.html">[code]</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey">Types/<a class="el" href="Setter_8h.html">Setter.h</a> <a href="Setter_8h_source.html">[code]</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey">Types/<a class="el" href="Struct_8h.html">Struct.h</a> <a href="Struct_8h_source.html">[code]</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey">Types/<a class="el" href="Type_8h.html">Type.h</a> <a href="Type_8h_source.html">[code]</a></td><td class="indexvalue"></td></tr>
+  <tr><td class="indexkey">Types/<a class="el" href="Typedef_8h.html">Typedef.h</a> <a href="Typedef_8h_source.html">[code]</a></td><td class="indexvalue"></td></tr>
 </table>
 </div><!-- contents -->
 <!-- window showing the filter options -->
@@ -93,7 +110,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">

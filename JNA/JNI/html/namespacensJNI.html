@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>JNIParser: nsJNI Namespace Reference</title>
+<title>JNI parser: nsJNI Namespace Reference</title>
 
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -27,10 +27,10 @@
   
   
   <td style="padding-left: 0.5em;">
-   <div id="projectname">JNIParser
+   <div id="projectname">JNI parser
    
    </div>
-   
+   <div id="projectbrief">Generating Java/JNI code in order to call native C functions.</div>
   </td>
   
   
@@ -51,6 +51,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li class="current"><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
+      <li><a href="examples.html"><span>Examples</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -77,26 +78,29 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a>  </div>
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#typedef-members">Typedefs</a>  </div>
   <div class="headertitle">
-<div class="title">nsJNI Namespace Reference<div class="ingroups"><a class="el" href="group__JNI__parser.html">JNI Parser of C headers</a> &#124; <a class="el" href="group__Types.html">All the types used by the JNIParser</a></div></div>  </div>
+<div class="title">nsJNI Namespace Reference<div class="ingroups"><a class="el" href="group__JNI__parser.html">JNI Parser of C headers.</a> &#124; <a class="el" href="group__JNI__OutputJava.html">Writting Java code.</a> &#124; <a class="el" href="group__JNI__OutputJNI.html">Writting JNI code.</a> &#124; <a class="el" href="group__Types.html">All the types used by the JNIParser</a> &#124; <a class="el" href="group__JNI__Dictionnary.html">Dictionnary of all Types.</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="nested-classes"></a>
 Classes</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnsJNI_1_1Comments.html">Comments</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Transform Doxygen comments to Javadoc comments.  <a href="classnsJNI_1_1Comments.html#details">More...</a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnsJNI_1_1JNIParser.html">JNIParser</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The class which manage the conversion from C to JNI/Java.  <a href="classnsJNI_1_1JNIParser.html#details">More...</a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnsJNI_1_1OutputJava.html">OutputJava</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">generate, manage the Java Side  <a href="classnsJNI_1_1OutputJava.html#details">More...</a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate, manage the Java Side.  <a href="classnsJNI_1_1OutputJava.html#details">More...</a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnsJNI_1_1OutputJNI.html">OutputJNI</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">generate, manage the JNI Side  <a href="classnsJNI_1_1OutputJNI.html#details">More...</a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnsJNI_1_1AddressWrapper.html">AddressWrapper</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">handle all struct  <a href="classnsJNI_1_1AddressWrapper.html#details">More...</a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle every address of enums and structures in the Java side.  <a href="classnsJNI_1_1AddressWrapper.html#details">More...</a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnsJNI_1_1Array.html">Array</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">represents a <a class="el" href="classnsJNI_1_1Array.html" title="represents a Array">Array</a>  <a href="classnsJNI_1_1Array.html#details">More...</a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents an array in Java and JNI.  <a href="classnsJNI_1_1Array.html#details">More...</a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnsJNI_1_1BoolWrapper.html">BoolWrapper</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">handle bool* type  <a href="classnsJNI_1_1BoolWrapper.html#details">More...</a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle bool* type.  <a href="classnsJNI_1_1BoolWrapper.html#details">More...</a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnsJNI_1_1Create.html">Create</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">generate an <a class="el" href="classnsJNI_1_1Create.html" title="generate an Create Function for structure">Create</a> <a class="el" href="classnsJNI_1_1Function.html" title="represents a Function">Function</a> for structure  <a href="classnsJNI_1_1Create.html#details">More...</a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnsJNI_1_1Enum.html">Enum</a></td></tr>
@@ -121,7 +125,11 @@ Classes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnsJNI_1_1Typedef.html">Typedef</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">represents a <a class="el" href="classnsJNI_1_1Typedef.html" title="represents a Typedef">Typedef</a>  <a href="classnsJNI_1_1Typedef.html#details">More...</a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnsJNI_1_1TypesDictionnary.html">TypesDictionnary</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">contains All <a class="el" href="classnsJNI_1_1Type.html" title="represents an abstract Type">Type</a>, and all we need to convert  <a href="classnsJNI_1_1TypesDictionnary.html#details">More...</a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains All <a class="el" href="classnsJNI_1_1Type.html" title="represents an abstract Type">Type</a>, and all we need to convert.  <a href="classnsJNI_1_1TypesDictionnary.html#details">More...</a><br/></td></tr>
+<tr><td colspan="2"><h2><a name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afa87306346a95c900ab8953c888dc7be"></a><!-- doxytag: member="nsJNI::codeGenerator" ref="afa87306346a95c900ab8953c888dc7be" args=")(int, string &amp;)" -->
+typedef void(Comments::*&#160;</td><td class="memItemRight" valign="bottom"><b>codeGenerator</b> )(int, string &amp;)</td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>JNI parser namespace ! </p>
@@ -140,13 +148,5 @@ Classes</h2></td></tr>
 </iframe>
 </div>
 
-
-
-<hr class="footer"/><address class="footer"><small>
-Generated on Mon Jul 15 2013 09:44:05 for JNIParser by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.7.6.1
-</small></address>
-
-</body>
-</html>
+<hr>
+<i>JNI Parser - Laboratoire ERISCS</i>

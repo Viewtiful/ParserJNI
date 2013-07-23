@@ -48,8 +48,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="modules.html"><span>Modules</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
+      <li><a href="examples.html"><span>Examples</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -72,6 +74,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
+      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
       <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
@@ -80,7 +83,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -91,7 +94,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
   <div id="nav-path" class="navpath">
     <ul>
-      <li class="navelem"><b>nsJNI</b>      </li>
+      <li class="navelem"><a class="el" href="namespacensJNI.html">nsJNI</a>      </li>
       <li class="navelem"><a class="el" href="classnsJNI_1_1OutputJava.html">OutputJava</a>      </li>
     </ul>
   </div>
@@ -101,11 +104,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a>  </div>
   <div class="headertitle">
-<div class="title">nsJNI::OutputJava Class Reference</div>  </div>
+<div class="title">nsJNI::OutputJava Class Reference<div class="ingroups"><a class="el" href="group__JNI__OutputJava.html">Writting Java code.</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 <!-- doxytag: class="nsJNI::OutputJava" -->
-<p>generate, manage the Java Side  
+<p>Generate, manage the Java Side.  
  <a href="classnsJNI_1_1OutputJava.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="OutputJava_8h_source.html">OutputJava.h</a>&gt;</code></p>
@@ -114,336 +117,29 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnsJNI_1_1OutputJava.html#a3334f4f2f7648d4a4ee2193e96ce477e">OutputJava</a> (<a class="el" href="classnsJNI_1_1TypesDictionnary.html">TypesDictionnary</a> *dictionnary)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">constructor with two parameters Create, and initialize a Create Function with the following arguments  <a href="#a3334f4f2f7648d4a4ee2193e96ce477e"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnsJNI_1_1OutputJava.html#a5e91b0ad0c23a77f5f012bb3a48ca9ad">getJavaType</a> (string inputType)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">give the correct java Translation for an specific c Type  <a href="#a5e91b0ad0c23a77f5f012bb3a48ca9ad"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnsJNI_1_1OutputJava.html#ab141e08ef4e235ce8f4542985c5c4470">convert</a> (ofstream &amp;f, nsJNI::Function *fct)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a C function into an Java Function, and write the result in a file.  <a href="#ab141e08ef4e235ce8f4542985c5c4470"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnsJNI_1_1OutputJava.html#a1adb517a80967906b11b6174f981ac24">printLoadLibrary</a> (ofstream &amp;f, string library)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">generate the Native Function Call  <a href="#a1adb517a80967906b11b6174f981ac24"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnsJNI_1_1OutputJava.html#a320a6de5275f14f5c4eb612604314d65">printJavaHeader</a> (ofstream &amp;f, string type, string CHeaderFile)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">print Java Header for class or enum  <a href="#a320a6de5275f14f5c4eb612604314d65"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnsJNI_1_1OutputJava.html#a73031c1e6282f5cc49d77e3eafefa236">printJavaHeader</a> (ofstream &amp;f, string CHeaderFile)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">print Java Header for enum  <a href="#a73031c1e6282f5cc49d77e3eafefa236"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnsJNI_1_1OutputJava.html#a8f5300d416959c779ce94b3de386d7ab">addClassDefinition</a> (ofstream &amp;f, string className)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">print the class definition in a file  <a href="#a8f5300d416959c779ce94b3de386d7ab"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnsJNI_1_1OutputJava.html#a4f6c0e697fd31e91ef039f7785389416">addAddressWrapper</a> (ofstream &amp;f)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Add an addressWrapper definition in the Java file.  <a href="#a4f6c0e697fd31e91ef039f7785389416"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnsJNI_1_1OutputJava.html#aa59419aa21b2267348941a0491eb487d">addBoolWrapper</a> (ofstream &amp;f)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a BoolWrapper definition in the java file.  <a href="#aa59419aa21b2267348941a0491eb487d"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__JNI__OutputJava.html#ga3334f4f2f7648d4a4ee2193e96ce477e">OutputJava</a> (<a class="el" href="classnsJNI_1_1TypesDictionnary.html">TypesDictionnary</a> *dictionnary)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor with two parameters. <a class="el" href="classnsJNI_1_1Create.html" title="generate an Create Function for structure">Create</a>, and initialize a <a class="el" href="classnsJNI_1_1Create.html" title="generate an Create Function for structure">Create</a> <a class="el" href="classnsJNI_1_1Function.html" title="represents a Function">Function</a> with the following arguments.  <a href="group__JNI__OutputJava.html#ga3334f4f2f7648d4a4ee2193e96ce477e"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__JNI__OutputJava.html#gae8e9fc0a636f834a02cf390ecebb215e">getJavaType</a> (const string &amp;inputType)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Give the correct Java Translation for an specific c <a class="el" href="classnsJNI_1_1Type.html" title="represents an abstract Type">Type</a>.  <a href="group__JNI__OutputJava.html#gae8e9fc0a636f834a02cf390ecebb215e"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__JNI__OutputJava.html#gab141e08ef4e235ce8f4542985c5c4470">convert</a> (ofstream &amp;f, <a class="el" href="classnsJNI_1_1Function.html">nsJNI::Function</a> *fct)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a C function into a Java <a class="el" href="classnsJNI_1_1Function.html" title="represents a Function">Function</a>, and write the result in a file.  <a href="group__JNI__OutputJava.html#gab141e08ef4e235ce8f4542985c5c4470"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__JNI__OutputJava.html#ga7a18c18011ab6ad82314d281f243c03f">printLoadLibrary</a> (ofstream &amp;f, const string &amp;library)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The library loaded by Java containing the JNI code.  <a href="group__JNI__OutputJava.html#ga7a18c18011ab6ad82314d281f243c03f"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__JNI__OutputJava.html#ga10818ee036f98be6be65798307a8c5ef">printJavaHeader</a> (ofstream &amp;f, const string &amp;type, const string &amp;className)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Print Java Header for the main class.  <a href="group__JNI__OutputJava.html#ga10818ee036f98be6be65798307a8c5ef"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__JNI__OutputJava.html#ga33ed76bd8db9402aacddb020e06a4581">addClassDefinition</a> (ofstream &amp;f, const string &amp;className)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Print the class definition in the target file.  <a href="group__JNI__OutputJava.html#ga33ed76bd8db9402aacddb020e06a4581"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__JNI__OutputJava.html#ga4f6c0e697fd31e91ef039f7785389416">addAddressWrapper</a> (ofstream &amp;f)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Add an addressWrapper definition in the Java file.  <a href="group__JNI__OutputJava.html#ga4f6c0e697fd31e91ef039f7785389416"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__JNI__OutputJava.html#gaa59419aa21b2267348941a0491eb487d">addBoolWrapper</a> (ofstream &amp;f)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a <a class="el" href="classnsJNI_1_1BoolWrapper.html" title="Handle bool* type.">BoolWrapper</a> definition in the Java file.  <a href="group__JNI__OutputJava.html#gaa59419aa21b2267348941a0491eb487d"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classnsJNI_1_1TypesDictionnary.html">TypesDictionnary</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnsJNI_1_1OutputJava.html#a946021e818a9ac9d18157ef2a3a78693">_dictionnary</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classnsJNI_1_1TypesDictionnary.html">TypesDictionnary</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__JNI__OutputJava.html#ga946021e818a9ac9d18157ef2a3a78693">_dictionnary</a></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
-<div class="textblock"><p>generate, manage the Java Side </p>
-</div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a3334f4f2f7648d4a4ee2193e96ce477e"></a><!-- doxytag: member="nsJNI::OutputJava::OutputJava" ref="a3334f4f2f7648d4a4ee2193e96ce477e" args="(TypesDictionnary *dictionnary)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classnsJNI_1_1OutputJava.html#a3334f4f2f7648d4a4ee2193e96ce477e">OutputJava::OutputJava</a> </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classnsJNI_1_1TypesDictionnary.html">TypesDictionnary</a> *&#160;</td>
-          <td class="paramname"><em>dictionnary</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>constructor with two parameters Create, and initialize a Create Function with the following arguments </p>
-<dl class="params"><dt><b>Parameters:</b></dt><dd>
-  <table class="params">
-    <tr><td class="paramname">structName</td><td>: Struct's name which contains this method </td></tr>
-    <tr><td class="paramname">dictionnary</td><td>: dictionnary of all type </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<hr/><h2>Member Function Documentation</h2>
-<a class="anchor" id="a4f6c0e697fd31e91ef039f7785389416"></a><!-- doxytag: member="nsJNI::OutputJava::addAddressWrapper" ref="a4f6c0e697fd31e91ef039f7785389416" args="(ofstream &amp;f)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="classnsJNI_1_1OutputJava.html#a4f6c0e697fd31e91ef039f7785389416">OutputJava::addAddressWrapper</a> </td>
-          <td>(</td>
-          <td class="paramtype">ofstream &amp;&#160;</td>
-          <td class="paramname"><em>f</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Add an addressWrapper definition in the Java file. </p>
-<dl class="params"><dt><b>Parameters:</b></dt><dd>
-  <table class="params">
-    <tr><td class="paramname">f,:</td><td>Output Java File </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="aa59419aa21b2267348941a0491eb487d"></a><!-- doxytag: member="nsJNI::OutputJava::addBoolWrapper" ref="aa59419aa21b2267348941a0491eb487d" args="(ofstream &amp;f)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="classnsJNI_1_1OutputJava.html#aa59419aa21b2267348941a0491eb487d">OutputJava::addBoolWrapper</a> </td>
-          <td>(</td>
-          <td class="paramtype">ofstream &amp;&#160;</td>
-          <td class="paramname"><em>f</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Add a BoolWrapper definition in the java file. </p>
-<dl class="params"><dt><b>Parameters:</b></dt><dd>
-  <table class="params">
-    <tr><td class="paramname">f,:</td><td>Output Java File </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="a8f5300d416959c779ce94b3de386d7ab"></a><!-- doxytag: member="nsJNI::OutputJava::addClassDefinition" ref="a8f5300d416959c779ce94b3de386d7ab" args="(ofstream &amp;f, string className)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="classnsJNI_1_1OutputJava.html#a8f5300d416959c779ce94b3de386d7ab">OutputJava::addClassDefinition</a> </td>
-          <td>(</td>
-          <td class="paramtype">ofstream &amp;&#160;</td>
-          <td class="paramname"><em>f</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>className</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>print the class definition in a file </p>
-<dl class="params"><dt><b>Parameters:</b></dt><dd>
-  <table class="params">
-    <tr><td class="paramname">f,:</td><td>Output Java File </td></tr>
-    <tr><td class="paramname">className</td><td>: Class' name which need definition </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="ab141e08ef4e235ce8f4542985c5c4470"></a><!-- doxytag: member="nsJNI::OutputJava::convert" ref="ab141e08ef4e235ce8f4542985c5c4470" args="(ofstream &amp;f, nsJNI::Function *fct)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="classnsJNI_1_1OutputJava.html#ab141e08ef4e235ce8f4542985c5c4470">OutputJava::convert</a> </td>
-          <td>(</td>
-          <td class="paramtype">ofstream &amp;&#160;</td>
-          <td class="paramname"><em>f</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">nsJNI::Function *&#160;</td>
-          <td class="paramname"><em>fct</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Convert a C function into an Java Function, and write the result in a file. </p>
-<dl class="params"><dt><b>Parameters:</b></dt><dd>
-  <table class="params">
-    <tr><td class="paramname">f,:</td><td>Output Java File </td></tr>
-    <tr><td class="paramname">fct</td><td>: function which is going to be translated </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="a5e91b0ad0c23a77f5f012bb3a48ca9ad"></a><!-- doxytag: member="nsJNI::OutputJava::getJavaType" ref="a5e91b0ad0c23a77f5f012bb3a48ca9ad" args="(string inputType)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">string <a class="el" href="classnsJNI_1_1OutputJava.html#a5e91b0ad0c23a77f5f012bb3a48ca9ad">OutputJava::getJavaType</a> </td>
-          <td>(</td>
-          <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>inputType</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>give the correct java Translation for an specific c Type </p>
-<dl class="params"><dt><b>Parameters:</b></dt><dd>
-  <table class="params">
-    <tr><td class="paramname">inpuutType,:</td><td>C type which will be translated </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>the corresponding Java Type </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="a320a6de5275f14f5c4eb612604314d65"></a><!-- doxytag: member="nsJNI::OutputJava::printJavaHeader" ref="a320a6de5275f14f5c4eb612604314d65" args="(ofstream &amp;f, string type, string CHeaderFile)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="classnsJNI_1_1OutputJava.html#a320a6de5275f14f5c4eb612604314d65">OutputJava::printJavaHeader</a> </td>
-          <td>(</td>
-          <td class="paramtype">ofstream &amp;&#160;</td>
-          <td class="paramname"><em>f</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>type</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>CHeaderFile</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>print Java Header for class or enum </p>
-<dl class="params"><dt><b>Parameters:</b></dt><dd>
-  <table class="params">
-    <tr><td class="paramname">f,:</td><td>Output Java File </td></tr>
-    <tr><td class="paramname">type</td><td>: Header type </td></tr>
-    <tr><td class="paramname">CHeaderFile</td><td>: filename of C header </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="a73031c1e6282f5cc49d77e3eafefa236"></a><!-- doxytag: member="nsJNI::OutputJava::printJavaHeader" ref="a73031c1e6282f5cc49d77e3eafefa236" args="(ofstream &amp;f, string CHeaderFile)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="classnsJNI_1_1OutputJava.html#a320a6de5275f14f5c4eb612604314d65">OutputJava::printJavaHeader</a> </td>
-          <td>(</td>
-          <td class="paramtype">ofstream &amp;&#160;</td>
-          <td class="paramname"><em>f</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>CHeaderFile</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>print Java Header for enum </p>
-<dl class="params"><dt><b>Parameters:</b></dt><dd>
-  <table class="params">
-    <tr><td class="paramname">f,:</td><td>Output Java File </td></tr>
-    <tr><td class="paramname">CHeaderFile</td><td>: filename of C header </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="a1adb517a80967906b11b6174f981ac24"></a><!-- doxytag: member="nsJNI::OutputJava::printLoadLibrary" ref="a1adb517a80967906b11b6174f981ac24" args="(ofstream &amp;f, string library)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="classnsJNI_1_1OutputJava.html#a1adb517a80967906b11b6174f981ac24">OutputJava::printLoadLibrary</a> </td>
-          <td>(</td>
-          <td class="paramtype">ofstream &amp;&#160;</td>
-          <td class="paramname"><em>f</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>library</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>generate the Native Function Call </p>
-<dl class="params"><dt><b>Parameters:</b></dt><dd>
-  <table class="params">
-    <tr><td class="paramname">f,:</td><td>Output JNI File </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<hr/><h2>Member Data Documentation</h2>
-<a class="anchor" id="a946021e818a9ac9d18157ef2a3a78693"></a><!-- doxytag: member="nsJNI::OutputJava::_dictionnary" ref="a946021e818a9ac9d18157ef2a3a78693" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classnsJNI_1_1TypesDictionnary.html">TypesDictionnary</a>* <a class="el" href="classnsJNI_1_1OutputJava.html#a946021e818a9ac9d18157ef2a3a78693">nsJNI::OutputJava::_dictionnary</a><code> [protected]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-<p>Dictionnary of all Types </p>
-
-</div>
-</div>
-<hr/>The documentation for this class was generated from the following files:<ul>
+<div class="textblock"><p>Generate, manage the Java Side. </p>
+</div><hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="OutputJava_8h_source.html">OutputJava.h</a></li>
 <li>OutputJava.cpp</li>
 </ul>
@@ -453,7 +149,7 @@ Protected Attributes</h2></td></tr>
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">

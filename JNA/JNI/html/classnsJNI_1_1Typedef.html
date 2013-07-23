@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>JNIParser: nsJNI::Typedef Class Reference</title>
+<title>JNI parser: nsJNI::Typedef Class Reference</title>
 
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -27,10 +27,10 @@
   
   
   <td style="padding-left: 0.5em;">
-   <div id="projectname">JNIParser
+   <div id="projectname">JNI parser
    
    </div>
-   
+   <div id="projectbrief">Generating Java/JNI code in order to call native C functions.</div>
   </td>
   
   
@@ -51,6 +51,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
+      <li><a href="examples.html"><span>Examples</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -141,11 +142,11 @@ string&#160;</td><td class="memItemRight" valign="bottom"><b>getTargetType</b> (
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Types.html#ga9ae9e2972ab589c798851d689a73d314">isNativeType</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">verify is this type is derived from a Native <a class="el" href="classnsJNI_1_1Type.html" title="represents an abstract Type">Type</a> such as 'int, float...'  <a href="group__Types.html#ga9ae9e2972ab589c798851d689a73d314"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Types.html#gaceeae4ac30e0ad7f41e6439ac5bb788a">isAddressWrapper</a> ()</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">verify is this type is an <a class="el" href="classnsJNI_1_1AddressWrapper.html" title="handle all struct">AddressWrapper</a>  <a href="group__Types.html#gaceeae4ac30e0ad7f41e6439ac5bb788a"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">verify is this type is an <a class="el" href="classnsJNI_1_1AddressWrapper.html" title="Handle every address of enums and structures in the Java side.">AddressWrapper</a>  <a href="group__Types.html#gaceeae4ac30e0ad7f41e6439ac5bb788a"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Types.html#ga2f32fb94f0f28978288411c0a151239a">isBooleanWrapper</a> ()</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">verify is this type is an <a class="el" href="classnsJNI_1_1AddressWrapper.html" title="handle all struct">AddressWrapper</a>  <a href="group__Types.html#ga2f32fb94f0f28978288411c0a151239a"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">verify is this type is an <a class="el" href="classnsJNI_1_1AddressWrapper.html" title="Handle every address of enums and structures in the Java side.">AddressWrapper</a>  <a href="group__Types.html#ga2f32fb94f0f28978288411c0a151239a"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Types.html#ga635ca66e3cf91fc18ba52fa6cc339d71">isArray</a> ()</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">verify is this type is an <a class="el" href="classnsJNI_1_1Array.html" title="represents a Array">Array</a>  <a href="group__Types.html#ga635ca66e3cf91fc18ba52fa6cc339d71"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">verify is this type is an <a class="el" href="classnsJNI_1_1Array.html" title="Represents an array in Java and JNI.">Array</a>  <a href="group__Types.html#ga635ca66e3cf91fc18ba52fa6cc339d71"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga2884df26f9478cd7257cf940b65d00a7"></a><!-- doxytag: member="nsJNI::Typedef::prepareCall" ref="ga2884df26f9478cd7257cf940b65d00a7" args="(ofstream &amp;f, string &amp;varName)" -->
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Types.html#ga2884df26f9478cd7257cf940b65d00a7">prepareCall</a> (ofstream &amp;f, string &amp;varName)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Prepare JNI call, before calling the native <a class="el" href="classnsJNI_1_1Function.html" title="represents a Function">Function</a>, if this type is encontered. <br/></td></tr>
@@ -179,13 +180,5 @@ Protected Attributes</h2></td></tr>
 </iframe>
 </div>
 
-
-
-<hr class="footer"/><address class="footer"><small>
-Generated on Mon Jul 15 2013 09:44:09 for JNIParser by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.7.6.1
-</small></address>
-
-</body>
-</html>
+<hr>
+<i>JNI Parser - Laboratoire ERISCS</i>

@@ -48,8 +48,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="modules.html"><span>Modules</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
+      <li><a href="examples.html"><span>Examples</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -72,6 +74,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
+      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
       <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
@@ -80,7 +83,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -91,7 +94,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
   <div id="nav-path" class="navpath">
     <ul>
-      <li class="navelem"><b>nsJNI</b>      </li>
+      <li class="navelem"><a class="el" href="namespacensJNI.html">nsJNI</a>      </li>
       <li class="navelem"><a class="el" href="classnsJNI_1_1Comments.html">Comments</a>      </li>
     </ul>
   </div>
@@ -118,21 +121,23 @@ Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnsJNI_1_1Comments.html#a6662641cef7f28e54a1b8804d8912a88">getToken</a> (int index, string &amp;comments)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">parse and compute the @ token  <a href="#a6662641cef7f28e54a1b8804d8912a88"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnsJNI_1_1Comments.html#a28c23e4b4f345ce932d170bdb36dc5aa">transformParam</a> (int index, string &amp;comments)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">handle transformation of an Doxygen  <a href="#a28c23e4b4f345ce932d170bdb36dc5aa"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">handle transformation of an Doxygen @param to Javadoc @param  <a href="#a28c23e4b4f345ce932d170bdb36dc5aa"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnsJNI_1_1Comments.html#a8ac5ed04ddb446c0f89a287a7e5e3291">call</a> (string &amp;token, int index, string &amp;comments)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">call the function which handle this token's translation  <a href="#a8ac5ed04ddb446c0f89a287a7e5e3291"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnsJNI_1_1Comments.html#a981e7654a9ea81d6a24cb98a4ad4db1e">transformRef</a> (int index, string &amp;comments)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">handle transformation of an Doxygen to Javadoc  <a href="#a981e7654a9ea81d6a24cb98a4ad4db1e"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">handle transformation of an Doxygen @ref to Javadoc @see  <a href="#a981e7654a9ea81d6a24cb98a4ad4db1e"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnsJNI_1_1Comments.html#ae512e9a00f862adafc829179229a756b">transformA</a> (int index, string &amp;comments)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">handle transformation of an Doxygen <em></em>, an <em>is</em> transformed to an <em> </em>  <a href="#ae512e9a00f862adafc829179229a756b"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">handle transformation of an Doxygen @a, an @a is transformed to an &lt;i&gt; &lt;/i&gt;  <a href="#ae512e9a00f862adafc829179229a756b"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnsJNI_1_1Comments.html#ad3d84b37e8bd92dd537b29b6a05d122f">isAlpha</a> (char c)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">check if a character is an letter  <a href="#ad3d84b37e8bd92dd537b29b6a05d122f"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnsJNI_1_1Comments.html#ad95bed6a9ce4be2943af4fe91f45a05f">transformNote</a> (int index, string &amp;comments)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">handle transformation of an Doxygen  <a href="#ad95bed6a9ce4be2943af4fe91f45a05f"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">handle transformation of an Doxygen @note, an @note is transformed to an &lt;b&gt;&lt;i&gt;  <a href="#ad95bed6a9ce4be2943af4fe91f45a05f"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnsJNI_1_1Comments.html#a11c945f7b024134c0e8eeb1f5727a90e">transformReturnVal</a> (int index, string &amp;comments)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">handle transformation of an Doxygen  <a href="#a11c945f7b024134c0e8eeb1f5727a90e"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">handle transformation of an Doxygen @retval, an @retval is transformed to an &lt;b&gt;Possible return Value  <a href="#a11c945f7b024134c0e8eeb1f5727a90e"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnsJNI_1_1Comments.html#af6393eab41b6797cd91fe5abc62a639d">skipLine</a> (int index, string &amp;comments, char c)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">skip characters until one specfic character occured  <a href="#af6393eab41b6797cd91fe5abc62a639d"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnsJNI_1_1Comments.html#a01ed3c6eed1664a7f9205e4e6a2fc8f0">searchNextBlockTag</a> (int index, string &amp;commments)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">search the next blockTag such as @Note  <a href="#a01ed3c6eed1664a7f9205e4e6a2fc8f0"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>Transform Doxygen comments to Javadoc comments. </p>
@@ -238,6 +243,42 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a01ed3c6eed1664a7f9205e4e6a2fc8f0"></a><!-- doxytag: member="nsJNI::Comments::searchNextBlockTag" ref="a01ed3c6eed1664a7f9205e4e6a2fc8f0" args="(int index, string &amp;commments)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="classnsJNI_1_1Comments.html#a01ed3c6eed1664a7f9205e4e6a2fc8f0">Comments::searchNextBlockTag</a> </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string &amp;&#160;</td>
+          <td class="paramname"><em>commments</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>search the next blockTag such as @Note </p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>: beginning comments index </td></tr>
+    <tr><td class="paramname">comments</td><td>: the whole comments </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="af6393eab41b6797cd91fe5abc62a639d"></a><!-- doxytag: member="nsJNI::Comments::skipLine" ref="af6393eab41b6797cd91fe5abc62a639d" args="(int index, string &amp;comments, char c)" -->
 <div class="memitem">
 <div class="memproto">
@@ -307,10 +348,10 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>handle transformation of an Doxygen <em></em>, an <em>is</em> transformed to an <em> </em> </p>
+<p>handle transformation of an Doxygen @a, an @a is transformed to an &lt;i&gt; &lt;/i&gt; </p>
 <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramname">index</td><td>: beginning index of the <em>in</em> the comments </td></tr>
+    <tr><td class="paramname">index</td><td>: beginning index of the @a in the comments </td></tr>
     <tr><td class="paramname">comments</td><td>: the whole comments </td></tr>
   </table>
   </dd>
@@ -343,14 +384,11 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>handle transformation of an Doxygen </p>
-<dl class="note"><dt><b>Note:</b></dt><dd>, an </dd>
-<dd>
-is transformed to an <b><em></em></b></dd></dl>
+<p>handle transformation of an Doxygen @note, an @note is transformed to an &lt;b&gt;&lt;i&gt; </p>
 <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramname">index</td><td><b><em>: beginning index of the <em>in</em> the comments </em></b></td></tr>
-    <tr><td class="paramname">comments</td><td><b><em>: the whole comments </em></b></td></tr>
+    <tr><td class="paramname">index</td><td>: beginning index of the @a in the comments </td></tr>
+    <tr><td class="paramname">comments</td><td>: the whole comments </td></tr>
   </table>
   </dd>
 </dl>
@@ -382,12 +420,10 @@ is transformed to an <b><em></em></b></dd></dl>
 </div>
 <div class="memdoc">
 
-<p>handle transformation of an Doxygen </p>
+<p>handle transformation of an Doxygen @param to Javadoc @param </p>
 <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramname">to</td><td>Javadoc </td></tr>
-    <tr><td class="paramname">\param</td><td>index : beginning index of the </td></tr>
-    <tr><td class="paramname">in</td><td>the comments </td></tr>
+    <tr><td class="paramname">index</td><td>: beginning index of the @param in the comments </td></tr>
     <tr><td class="paramname">comments</td><td>: the whole comments </td></tr>
   </table>
   </dd>
@@ -420,11 +456,10 @@ is transformed to an <b><em></em></b></dd></dl>
 </div>
 <div class="memdoc">
 
-<p>handle transformation of an Doxygen to Javadoc </p>
-<dl class="see"><dt><b>See also:</b></dt><dd></dd></dl>
+<p>handle transformation of an Doxygen @ref to Javadoc @see </p>
 <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramname">index</td><td>: beginning index of the in the comments </td></tr>
+    <tr><td class="paramname">index</td><td>: beginning index of the @ref in the comments </td></tr>
     <tr><td class="paramname">comments</td><td>: the whole comments </td></tr>
   </table>
   </dd>
@@ -457,18 +492,11 @@ is transformed to an <b><em></em></b></dd></dl>
 </div>
 <div class="memdoc">
 
-<p>handle transformation of an Doxygen </p>
-<dl class="retval"><dt><b>Return values:</b></dt><dd>
-  <table class="retval">
-    <tr><td class="paramname"></td><td>an </td></tr>
-    <tr><td class="paramname">is</td><td>transformed to an <b>Possible return Value</b></td></tr>
-  </table>
-  </dd>
-</dl>
+<p>handle transformation of an Doxygen @retval, an @retval is transformed to an &lt;b&gt;Possible return Value </p>
 <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramname">index</td><td><b>: beginning index of the <em>in</em> the comments </b></td></tr>
-    <tr><td class="paramname">comments</td><td><b>: the whole comments </b></td></tr>
+    <tr><td class="paramname">index</td><td>: beginning index of the @a in the comments </td></tr>
+    <tr><td class="paramname">comments</td><td>: the whole comments </td></tr>
   </table>
   </dd>
 </dl>
@@ -515,7 +543,7 @@ is transformed to an <b><em></em></b></dd></dl>
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">

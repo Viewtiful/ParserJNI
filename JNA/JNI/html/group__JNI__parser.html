@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>JNI parser: JNI Parser of C headers</title>
+<title>JNI parser: JNI Parser of C headers.</title>
 
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -48,8 +48,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="modules.html"><span>Modules</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
+      <li><a href="examples.html"><span>Examples</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -72,10 +74,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
+<a href="#namespaces">Namespaces</a> &#124;
 <a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
-<div class="title">JNI Parser of C headers</div>  </div>
+<div class="title">JNI Parser of C headers.</div>  </div>
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
@@ -83,18 +86,29 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 Classes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnsJNI_1_1JNIParser.html">nsJNI::JNIParser</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The class which manage the conversion from C to JNI/Java.  <a href="classnsJNI_1_1JNIParser.html#details">More...</a><br/></td></tr>
+<tr><td colspan="2"><h2><a name="namespaces"></a>
+Namespaces</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacensJNI.html">nsJNI</a></td></tr>
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__JNI__parser.html#ga8a77b08d83bba9bef37ae9e7c5c63698">nsJNI::JNIParser::run</a> (nsModules::Module::vector modules)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Running the JNI parser.  <a href="#ga8a77b08d83bba9bef37ae9e7c5c63698"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Running the JNI parser. This is where we start the conversion from C headers to Java/JNI. We first transform C types to Java / JNI / VM signatures and then we write them to a java / c file.  <a href="#ga8a77b08d83bba9bef37ae9e7c5c63698"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__JNI__parser.html#ga140a4da168243f45dddc97acfeb91559">nsJNI::JNIParser::containsCallback</a> (nsModules::Module module)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return if the current module contains callback.  <a href="#ga140a4da168243f45dddc97acfeb91559"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return true if the current module contains callback.  <a href="#ga140a4da168243f45dddc97acfeb91559"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classnsJNI_1_1OutputJNI.html">OutputJNI</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__JNI__parser.html#ga25cc92ecc83303bce064286908ea00ea">nsJNI::JNIParser::_jni</a></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classnsJNI_1_1OutputJava.html">OutputJava</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__JNI__parser.html#gab9e6d119750bfb7a48aa4e3151d7b0b8">nsJNI::JNIParser::_java</a></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classnsJNI_1_1TypesDictionnary.html">TypesDictionnary</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__JNI__parser.html#ga2461d8f12c0738889a9d5b1a8aaf5664">nsJNI::JNIParser::_dico</a></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classnsJNI_1_1Comments.html">Comments</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__JNI__parser.html#ga1bd902d021207468eab4677d82b2f170">nsJNI::JNIParser::_cm</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga25cc92ecc83303bce064286908ea00ea"></a><!-- doxytag: member="JNI_parser::_jni" ref="ga25cc92ecc83303bce064286908ea00ea" args="" -->
+<a class="el" href="classnsJNI_1_1OutputJNI.html">OutputJNI</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__JNI__parser.html#ga25cc92ecc83303bce064286908ea00ea">nsJNI::JNIParser::_jni</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">manager of the JNI Side <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gab9e6d119750bfb7a48aa4e3151d7b0b8"></a><!-- doxytag: member="JNI_parser::_java" ref="gab9e6d119750bfb7a48aa4e3151d7b0b8" args="" -->
+<a class="el" href="classnsJNI_1_1OutputJava.html">OutputJava</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__JNI__parser.html#gab9e6d119750bfb7a48aa4e3151d7b0b8">nsJNI::JNIParser::_java</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">manager of the Java Side <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga2461d8f12c0738889a9d5b1a8aaf5664"></a><!-- doxytag: member="JNI_parser::_dico" ref="ga2461d8f12c0738889a9d5b1a8aaf5664" args="" -->
+<a class="el" href="classnsJNI_1_1TypesDictionnary.html">TypesDictionnary</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__JNI__parser.html#ga2461d8f12c0738889a9d5b1a8aaf5664">nsJNI::JNIParser::_dico</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Dictionnary of all types. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga1bd902d021207468eab4677d82b2f170"></a><!-- doxytag: member="JNI_parser::_cm" ref="ga1bd902d021207468eab4677d82b2f170" args="" -->
+<a class="el" href="classnsJNI_1_1Comments.html">Comments</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__JNI__parser.html#ga1bd902d021207468eab4677d82b2f170">nsJNI::JNIParser::_cm</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate javadoc comments for function. <br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <p>Parsing C headers in order to create the corresponding java class and JNI code. </p>
@@ -114,7 +128,7 @@ Variables</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Return if the current module contains callback. </p>
+<p>Return true if the current module contains callback. </p>
 <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname">modules</td><td>: All the C headers </td></tr>
@@ -139,8 +153,6 @@ Variables</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Running the JNI parser. </p>
-<p>This is where we start the conversion from C headers to Java/JNI. We first transform C types to Java / JNI / VM signatures and then we write them to a java / c file.</p>
 <p>Running the JNI parser. This is where we start the conversion from C headers to Java/JNI. We first transform C types to Java / JNI / VM signatures and then we write them to a java / c file. </p>
 <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
@@ -151,70 +163,13 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<hr/><h2>Variable Documentation</h2>
-<a class="anchor" id="ga1bd902d021207468eab4677d82b2f170"></a><!-- doxytag: member="nsJNI::JNIParser::_cm" ref="ga1bd902d021207468eab4677d82b2f170" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classnsJNI_1_1Comments.html">Comments</a>* <a class="el" href="group__JNI__parser.html#ga1bd902d021207468eab4677d82b2f170">nsJNI::JNIParser::_cm</a><code> [protected]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-<p>Generate javadoc comments for function </p>
-
-</div>
-</div>
-<a class="anchor" id="ga2461d8f12c0738889a9d5b1a8aaf5664"></a><!-- doxytag: member="nsJNI::JNIParser::_dico" ref="ga2461d8f12c0738889a9d5b1a8aaf5664" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classnsJNI_1_1TypesDictionnary.html">TypesDictionnary</a>* <a class="el" href="group__JNI__parser.html#ga2461d8f12c0738889a9d5b1a8aaf5664">nsJNI::JNIParser::_dico</a><code> [protected]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-<p>Dictionnary of all types </p>
-
-</div>
-</div>
-<a class="anchor" id="gab9e6d119750bfb7a48aa4e3151d7b0b8"></a><!-- doxytag: member="nsJNI::JNIParser::_java" ref="gab9e6d119750bfb7a48aa4e3151d7b0b8" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classnsJNI_1_1OutputJava.html">OutputJava</a>* <a class="el" href="group__JNI__parser.html#gab9e6d119750bfb7a48aa4e3151d7b0b8">nsJNI::JNIParser::_java</a><code> [protected]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-<p>manager of the Java Side </p>
-
-</div>
-</div>
-<a class="anchor" id="ga25cc92ecc83303bce064286908ea00ea"></a><!-- doxytag: member="nsJNI::JNIParser::_jni" ref="ga25cc92ecc83303bce064286908ea00ea" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classnsJNI_1_1OutputJNI.html">OutputJNI</a>* <a class="el" href="group__JNI__parser.html#ga25cc92ecc83303bce064286908ea00ea">nsJNI::JNIParser::_jni</a><code> [protected]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-<p>manager of the JNI Side </p>
-
-</div>
-</div>
 </div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">

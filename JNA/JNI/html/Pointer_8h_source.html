@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>JNIParser: Types/Pointer.h Source File</title>
+<title>JNI parser: Types/Pointer.h Source File</title>
 
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -27,10 +27,10 @@
   
   
   <td style="padding-left: 0.5em;">
-   <div id="projectname">JNIParser
+   <div id="projectname">JNI parser
    
    </div>
-   
+   <div id="projectbrief">Generating Java/JNI code in order to call native C functions.</div>
   </td>
   
   
@@ -51,6 +51,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
+      <li><a href="examples.html"><span>Examples</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -85,31 +86,31 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00012"></a>00012 <span class="preprocessor"></span><span class="preprocessor">#define __JNI_POINTER_H</span>
 <a name="l00013"></a>00013 <span class="preprocessor"></span><span class="preprocessor">#include &lt;string&gt;</span>
 <a name="l00014"></a>00014 <span class="preprocessor">#include &quot;<a class="code" href="Type_8h.html">JNI/Types/Type.h</a>&quot;</span>
-<a name="l00015"></a>00015 <span class="preprocessor">#include &quot;<a class="code" href="TypesDictionnary_8h.html" title="Header for the TypesDictionnary class.">JNI/TypesDictionnary.h</a>&quot;</span>
+<a name="l00015"></a>00015 <span class="preprocessor">#include &quot;<a class="code" href="TypesDictionnary_8h.html">JNI/TypesDictionnary.h</a>&quot;</span>
 <a name="l00016"></a>00016 
 <a name="l00024"></a>00024 <span class="keyword">namespace </span>nsJNI {
 <a name="l00025"></a>00025 
 <a name="l00026"></a>00026         <span class="keyword">class </span>TypesDictionnary;
-<a name="l00031"></a><a class="code" href="classnsJNI_1_1Pointer.html">00031</a>     <span class="keyword">class </span><a class="code" href="classnsJNI_1_1Pointer.html" title="represents a Pointer">Pointer</a> : <span class="keyword">public</span> <a class="code" href="classnsJNI_1_1Type.html" title="represents an abstract Type">Type</a> 
-<a name="l00032"></a>00032     {
-<a name="l00033"></a>00033       <span class="keyword">public</span>:
-<a name="l00037"></a>00037         <span class="keyword">virtual</span> <a class="code" href="group__Types.html#ga7222818b81cd58b704c2753948fdd33c" title="destructor">~Pointer</a>();
-<a name="l00045"></a>00045                 <a class="code" href="group__Types.html#ga1546930c6e7f9c32f53345784199a223" title="constructor with three parameters Create, and initialize a Pointer with the following arguments...">Pointer</a>(<span class="keyword">const</span> <span class="keywordtype">string</span>&amp; vmSignature, <span class="keyword">const</span> <span class="keywordtype">string</span>&amp; CBaseType, <a class="code" href="classnsJNI_1_1TypesDictionnary.html" title="contains All Type, and all we need to convert">TypesDictionnary</a> *dictionnary, <span class="keywordtype">bool</span> <a class="code" href="group__Types.html#ga1f87588359fa34039bd604981dc321fb" title="verify is this type is derived from a Native Type such as &#39;int, float...&#39;">isNativeType</a>);
-<a name="l00046"></a>00046                 std::string <a class="code" href="group__Types.html#ga7632a26cc9c6d6b6090ede5867823632" title="Convert a type to java Type.">outputJava</a>();
-<a name="l00047"></a>00047         std::string <a class="code" href="group__Types.html#ga21a26c26563c71afd654096226628084" title="Convert a type to JNI Type.">outputJNI</a>();
-<a name="l00048"></a>00048         <span class="keywordtype">bool</span> <a class="code" href="group__Types.html#ga1f87588359fa34039bd604981dc321fb" title="verify is this type is derived from a Native Type such as &#39;int, float...&#39;">isNativeType</a>();
-<a name="l00049"></a>00049         <span class="keywordtype">bool</span> <a class="code" href="group__Types.html#ga5ba37549ac51010f092363d781e9ea76" title="verify is this type is an AddressWrapper">isAddressWrapper</a>();
-<a name="l00050"></a>00050         <span class="keywordtype">bool</span> <a class="code" href="group__Types.html#gaabdfcc0eed65fc37428239dce4c33b35" title="verify is this type is an AddressWrapper">isBooleanWrapper</a>();
-<a name="l00051"></a>00051         <span class="keywordtype">bool</span> <a class="code" href="group__Types.html#gab463cd86c4a1e02dcd93be35e177b019" title="verify is this type is an Array">isArray</a>();
-<a name="l00052"></a>00052         <span class="keywordtype">void</span> <a class="code" href="group__Types.html#ga913330a3a8731c4a186924099f61e9fe" title="Prepare JNI call, before calling the native Function, if this type is encontered.">prepareCall</a>(ofstream&amp; f,<span class="keywordtype">string</span>&amp; varName);
-<a name="l00053"></a>00053         <span class="keywordtype">string</span> <a class="code" href="group__Types.html#ga60e1f5b1eb17e15a572ac4833c155b74" title="create the parameter name for the native function call">getJNIParameterName</a>(<span class="keywordtype">string</span>&amp; varName);
-<a name="l00054"></a>00054         <span class="keywordtype">void</span> <a class="code" href="group__Types.html#gae5c545dbca50107829bb516f7a7eeac5" title="create JNI instruction to get return value from Native function call, and convert the result to Java...">getReturnValue</a>(ofstream&amp; f);
-<a name="l00055"></a>00055         <span class="keywordtype">string</span> getVMSignature();
-<a name="l00056"></a>00056       <span class="keyword">protected</span>:
-<a name="l00057"></a><a class="code" href="group__Types.html#ga5d46f2e657c3a0db082e24a80a401076">00057</a>         std::string <a class="code" href="group__Types.html#ga5d46f2e657c3a0db082e24a80a401076">_CBaseType</a>; 
-<a name="l00058"></a><a class="code" href="group__Types.html#ga31f37ade121cf35e1456a1aba7c2bb34">00058</a>         <a class="code" href="classnsJNI_1_1TypesDictionnary.html" title="contains All Type, and all we need to convert">TypesDictionnary</a>* <a class="code" href="group__Types.html#ga31f37ade121cf35e1456a1aba7c2bb34">_dictionnary</a>;
-<a name="l00059"></a><a class="code" href="group__Types.html#ga6b1f7db99535ff4abfbe6b42ca6f566f">00059</a>         <span class="keywordtype">bool</span> <a class="code" href="group__Types.html#ga6b1f7db99535ff4abfbe6b42ca6f566f">_isNativeType</a>; 
-<a name="l00060"></a>00060     };
+<a name="l00031"></a><a class="code" href="classnsJNI_1_1Pointer.html">00031</a>         <span class="keyword">class </span><a class="code" href="classnsJNI_1_1Pointer.html" title="represents a Pointer">Pointer</a> : <span class="keyword">public</span> <a class="code" href="classnsJNI_1_1Type.html" title="represents an abstract Type">Type</a> 
+<a name="l00032"></a>00032         {
+<a name="l00033"></a>00033                 <span class="keyword">public</span>:
+<a name="l00037"></a>00037                         <span class="keyword">virtual</span> <a class="code" href="group__Types.html#ga7222818b81cd58b704c2753948fdd33c" title="destructor">~Pointer</a>();
+<a name="l00045"></a>00045                         <a class="code" href="group__Types.html#ga1546930c6e7f9c32f53345784199a223" title="constructor with three parameters Create, and initialize a Pointer with the following arguments...">Pointer</a>(<span class="keyword">const</span> <span class="keywordtype">string</span>&amp; vmSignature, <span class="keyword">const</span> <span class="keywordtype">string</span>&amp; CBaseType, <a class="code" href="classnsJNI_1_1TypesDictionnary.html" title="Contains All Type, and all we need to convert.">TypesDictionnary</a> *dictionnary, <span class="keywordtype">bool</span> <a class="code" href="group__Types.html#ga1f87588359fa34039bd604981dc321fb" title="verify is this type is derived from a Native Type such as &#39;int, float...&#39;">isNativeType</a>);
+<a name="l00046"></a>00046                         std::string <a class="code" href="group__Types.html#ga7632a26cc9c6d6b6090ede5867823632" title="Convert a type to java Type.">outputJava</a>();
+<a name="l00047"></a>00047                         std::string <a class="code" href="group__Types.html#ga21a26c26563c71afd654096226628084" title="Convert a type to JNI Type.">outputJNI</a>();
+<a name="l00048"></a>00048                         <span class="keywordtype">bool</span> <a class="code" href="group__Types.html#ga1f87588359fa34039bd604981dc321fb" title="verify is this type is derived from a Native Type such as &#39;int, float...&#39;">isNativeType</a>();
+<a name="l00049"></a>00049                         <span class="keywordtype">bool</span> <a class="code" href="group__Types.html#ga5ba37549ac51010f092363d781e9ea76" title="verify is this type is an AddressWrapper">isAddressWrapper</a>();
+<a name="l00050"></a>00050                         <span class="keywordtype">bool</span> <a class="code" href="group__Types.html#gaabdfcc0eed65fc37428239dce4c33b35" title="verify is this type is an AddressWrapper">isBooleanWrapper</a>();
+<a name="l00051"></a>00051                         <span class="keywordtype">bool</span> <a class="code" href="group__Types.html#gab463cd86c4a1e02dcd93be35e177b019" title="verify is this type is an Array">isArray</a>();
+<a name="l00052"></a>00052                         <span class="keywordtype">void</span> <a class="code" href="group__Types.html#ga913330a3a8731c4a186924099f61e9fe" title="Prepare JNI call, before calling the native Function, if this type is encontered.">prepareCall</a>(ofstream&amp; f,<span class="keywordtype">string</span>&amp; varName);
+<a name="l00053"></a>00053                         <span class="keywordtype">string</span> <a class="code" href="group__Types.html#ga60e1f5b1eb17e15a572ac4833c155b74" title="create the parameter name for the native function call">getJNIParameterName</a>(<span class="keywordtype">string</span>&amp; varName);
+<a name="l00054"></a>00054                         <span class="keywordtype">void</span> <a class="code" href="group__Types.html#gae5c545dbca50107829bb516f7a7eeac5" title="create JNI instruction to get return value from Native function call, and convert the result to Java...">getReturnValue</a>(ofstream&amp; f);
+<a name="l00055"></a>00055                         <span class="keywordtype">string</span> getVMSignature();
+<a name="l00056"></a>00056                 <span class="keyword">protected</span>:
+<a name="l00057"></a><a class="code" href="group__Types.html#ga5d46f2e657c3a0db082e24a80a401076">00057</a>                         std::string <a class="code" href="group__Types.html#ga5d46f2e657c3a0db082e24a80a401076">_CBaseType</a>; 
+<a name="l00058"></a><a class="code" href="group__Types.html#ga31f37ade121cf35e1456a1aba7c2bb34">00058</a>                         <a class="code" href="classnsJNI_1_1TypesDictionnary.html" title="Contains All Type, and all we need to convert.">TypesDictionnary</a>* <a class="code" href="group__Types.html#ga31f37ade121cf35e1456a1aba7c2bb34">_dictionnary</a>;
+<a name="l00059"></a><a class="code" href="group__Types.html#ga6b1f7db99535ff4abfbe6b42ca6f566f">00059</a>                         <span class="keywordtype">bool</span> <a class="code" href="group__Types.html#ga6b1f7db99535ff4abfbe6b42ca6f566f">_isNativeType</a>; 
+<a name="l00060"></a>00060         };
 <a name="l00061"></a>00061 }
 <a name="l00062"></a>00062 
 <a name="l00063"></a>00063 <span class="preprocessor">#endif</span>
@@ -129,13 +130,5 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-
-
-<hr class="footer"/><address class="footer"><small>
-Generated on Mon Jul 15 2013 09:44:05 for JNIParser by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.7.6.1
-</small></address>
-
-</body>
-</html>
+<hr>
+<i>JNI Parser - Laboratoire ERISCS</i>

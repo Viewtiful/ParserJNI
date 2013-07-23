@@ -48,8 +48,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="modules.html"><span>Modules</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
+      <li><a href="examples.html"><span>Examples</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -72,6 +74,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
+      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
       <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
@@ -80,7 +83,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -91,7 +94,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
   <div id="nav-path" class="navpath">
     <ul>
-      <li class="navelem"><b>nsJNI</b>      </li>
+      <li class="navelem"><a class="el" href="namespacensJNI.html">nsJNI</a>      </li>
       <li class="navelem"><a class="el" href="classnsJNI_1_1JNIParser.html">JNIParser</a>      </li>
     </ul>
   </div>
@@ -101,7 +104,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a>  </div>
   <div class="headertitle">
-<div class="title">nsJNI::JNIParser Class Reference<div class="ingroups"><a class="el" href="group__JNI__parser.html">JNI Parser of C headers</a></div></div>  </div>
+<div class="title">nsJNI::JNIParser Class Reference<div class="ingroups"><a class="el" href="group__JNI__parser.html">JNI Parser of C headers.</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 <!-- doxytag: class="nsJNI::JNIParser" -->
@@ -115,15 +118,23 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__JNI__parser.html#ga8a77b08d83bba9bef37ae9e7c5c63698">run</a> (nsModules::Module::vector modules)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Running the JNI parser.  <a href="group__JNI__parser.html#ga8a77b08d83bba9bef37ae9e7c5c63698"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Running the JNI parser. This is where we start the conversion from C headers to Java/JNI. We first transform C types to Java / JNI / VM signatures and then we write them to a java / c file.  <a href="group__JNI__parser.html#ga8a77b08d83bba9bef37ae9e7c5c63698"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__JNI__parser.html#ga140a4da168243f45dddc97acfeb91559">containsCallback</a> (nsModules::Module module)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return if the current module contains callback.  <a href="group__JNI__parser.html#ga140a4da168243f45dddc97acfeb91559"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return true if the current module contains callback.  <a href="group__JNI__parser.html#ga140a4da168243f45dddc97acfeb91559"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classnsJNI_1_1OutputJNI.html">OutputJNI</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__JNI__parser.html#ga25cc92ecc83303bce064286908ea00ea">_jni</a></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classnsJNI_1_1OutputJava.html">OutputJava</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__JNI__parser.html#gab9e6d119750bfb7a48aa4e3151d7b0b8">_java</a></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classnsJNI_1_1TypesDictionnary.html">TypesDictionnary</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__JNI__parser.html#ga2461d8f12c0738889a9d5b1a8aaf5664">_dico</a></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classnsJNI_1_1Comments.html">Comments</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__JNI__parser.html#ga1bd902d021207468eab4677d82b2f170">_cm</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga25cc92ecc83303bce064286908ea00ea"></a><!-- doxytag: member="nsJNI::JNIParser::_jni" ref="ga25cc92ecc83303bce064286908ea00ea" args="" -->
+<a class="el" href="classnsJNI_1_1OutputJNI.html">OutputJNI</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__JNI__parser.html#ga25cc92ecc83303bce064286908ea00ea">_jni</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">manager of the JNI Side <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gab9e6d119750bfb7a48aa4e3151d7b0b8"></a><!-- doxytag: member="nsJNI::JNIParser::_java" ref="gab9e6d119750bfb7a48aa4e3151d7b0b8" args="" -->
+<a class="el" href="classnsJNI_1_1OutputJava.html">OutputJava</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__JNI__parser.html#gab9e6d119750bfb7a48aa4e3151d7b0b8">_java</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">manager of the Java Side <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga2461d8f12c0738889a9d5b1a8aaf5664"></a><!-- doxytag: member="nsJNI::JNIParser::_dico" ref="ga2461d8f12c0738889a9d5b1a8aaf5664" args="" -->
+<a class="el" href="classnsJNI_1_1TypesDictionnary.html">TypesDictionnary</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__JNI__parser.html#ga2461d8f12c0738889a9d5b1a8aaf5664">_dico</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Dictionnary of all types. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga1bd902d021207468eab4677d82b2f170"></a><!-- doxytag: member="nsJNI::JNIParser::_cm" ref="ga1bd902d021207468eab4677d82b2f170" args="" -->
+<a class="el" href="classnsJNI_1_1Comments.html">Comments</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__JNI__parser.html#ga1bd902d021207468eab4677d82b2f170">_cm</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate javadoc comments for function. <br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>The class which manage the conversion from C to JNI/Java. </p>
@@ -136,7 +147,7 @@ Protected Attributes</h2></td></tr>
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">

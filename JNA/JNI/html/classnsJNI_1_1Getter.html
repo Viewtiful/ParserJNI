@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>JNIParser: nsJNI::Getter Class Reference</title>
+<title>JNI parser: nsJNI::Getter Class Reference</title>
 
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -27,10 +27,10 @@
   
   
   <td style="padding-left: 0.5em;">
-   <div id="projectname">JNIParser
+   <div id="projectname">JNI parser
    
    </div>
-   
+   <div id="projectbrief">Generating Java/JNI code in order to call native C functions.</div>
   </td>
   
   
@@ -51,6 +51,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
+      <li><a href="examples.html"><span>Examples</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -119,8 +120,10 @@ Inheritance diagram for nsJNI::Getter:</div>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Types.html#ga523a846404ebcc7ab8b9b6e64524c293">Getter</a> (nsC::Param &amp;param, string structName, <a class="el" href="classnsJNI_1_1TypesDictionnary.html">TypesDictionnary</a> *dictionnary)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">constructor with three parameters <a class="el" href="classnsJNI_1_1Create.html" title="generate an Create Function for structure">Create</a>, and initialize a <a class="el" href="classnsJNI_1_1Getter.html">Getter</a> with the following arguments  <a href="group__Types.html#ga523a846404ebcc7ab8b9b6e64524c293"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Types.html#ga9fadeb2211a5a4aeef17aab0452827c3">Getter</a> (nsC::Param &amp;param, string structName, <a class="el" href="classnsJNI_1_1TypesDictionnary.html">TypesDictionnary</a> *dictionnary, bool specialCase)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">constructor with three parameters <a class="el" href="classnsJNI_1_1Create.html" title="generate an Create Function for structure">Create</a>, and initialize a <a class="el" href="classnsJNI_1_1Getter.html">Getter</a> with the following arguments  <a href="group__Types.html#ga9fadeb2211a5a4aeef17aab0452827c3"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gae3f36e8e112b5c2a2859eae585773a1d"></a><!-- doxytag: member="nsJNI::Getter::Getter" ref="gae3f36e8e112b5c2a2859eae585773a1d" args="(string name, string structName, TypesDictionnary *dictionnary, bool specialCase)" -->
+&#160;</td><td class="memItemRight" valign="bottom"><b>Getter</b> (string name, string structName, <a class="el" href="classnsJNI_1_1TypesDictionnary.html">TypesDictionnary</a> *dictionnary, bool specialCase)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga4b8c9ef23e66b5dd27924c088875ce60"></a><!-- doxytag: member="nsJNI::Getter::create" ref="ga4b8c9ef23e66b5dd27924c088875ce60" args="(nsC::Param &amp;param)" -->
 void&#160;</td><td class="memItemRight" valign="bottom"><b>create</b> (nsC::Param &amp;param)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Types.html#ga9b241960f0eac5b98445d795427fd50c">printPrototypeJNI</a> (ofstream &amp;f)</td></tr>
@@ -153,13 +156,5 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>prepareCall</b> (ofst
 </iframe>
 </div>
 
-
-
-<hr class="footer"/><address class="footer"><small>
-Generated on Mon Jul 15 2013 09:44:07 for JNIParser by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.7.6.1
-</small></address>
-
-</body>
-</html>
+<hr>
+<i>JNI Parser - Laboratoire ERISCS</i>

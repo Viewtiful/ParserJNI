@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>JNIParser: nsJNI::Struct Class Reference</title>
+<title>JNI parser: nsJNI::Struct Class Reference</title>
 
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -27,10 +27,10 @@
   
   
   <td style="padding-left: 0.5em;">
-   <div id="projectname">JNIParser
+   <div id="projectname">JNI parser
    
    </div>
-   
+   <div id="projectbrief">Generating Java/JNI code in order to call native C functions.</div>
   </td>
   
   
@@ -51,6 +51,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
+      <li><a href="examples.html"><span>Examples</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -133,60 +134,49 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="g
 <tr><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Types.html#ga2f4aff7f771195376f171b4f9392cc37">outputJava</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a type to java <a class="el" href="classnsJNI_1_1Type.html" title="represents an abstract Type">Type</a>.  <a href="group__Types.html#ga2f4aff7f771195376f171b4f9392cc37"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga2cd2cad850f4ee7abc37791aea442a63"></a><!-- doxytag: member="nsJNI::Struct::addStructToJava" ref="ga2cd2cad850f4ee7abc37791aea442a63" args="(ofstream &amp;f)" -->
-void&#160;</td><td class="memItemRight" valign="bottom"><b>addStructToJava</b> (ofstream &amp;f)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Types.html#ga2cd2cad850f4ee7abc37791aea442a63">addStructToJava</a> (ofstream &amp;f)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Write the structure to a Java file. <br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaef52e8e4faf888ec74e1ba43f830989a"></a><!-- doxytag: member="nsJNI::Struct::addStructFunctionToJNI" ref="gaef52e8e4faf888ec74e1ba43f830989a" args="(ofstream &amp;f)" -->
-void&#160;</td><td class="memItemRight" valign="bottom"><b>addStructFunctionToJNI</b> (ofstream &amp;f)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Types.html#gaef52e8e4faf888ec74e1ba43f830989a">addStructFunctionToJNI</a> (ofstream &amp;f)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Write the structure to the JNI file. <br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Types.html#gaf95254769ca05699e17d996b9b1d1048">outputJNI</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a type to JNI <a class="el" href="classnsJNI_1_1Type.html" title="represents an abstract Type">Type</a>.  <a href="group__Types.html#gaf95254769ca05699e17d996b9b1d1048"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Types.html#ga90d6e9e5ae31032fedfd2d3e0e5e0de3">isNativeType</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">verify is this type is derived from a Native <a class="el" href="classnsJNI_1_1Type.html" title="represents an abstract Type">Type</a> such as 'int, float...'  <a href="group__Types.html#ga90d6e9e5ae31032fedfd2d3e0e5e0de3"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Types.html#gad24ce68d77739dbfea3ba2182769415f">isAddressWrapper</a> ()</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">verify is this type is an <a class="el" href="classnsJNI_1_1AddressWrapper.html" title="handle all struct">AddressWrapper</a>  <a href="group__Types.html#gad24ce68d77739dbfea3ba2182769415f"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">verify is this type is an <a class="el" href="classnsJNI_1_1AddressWrapper.html" title="Handle every address of enums and structures in the Java side.">AddressWrapper</a>  <a href="group__Types.html#gad24ce68d77739dbfea3ba2182769415f"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Types.html#gad902f2ee160edffcae5d29cfdd530744">isBooleanWrapper</a> ()</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">verify is this type is an <a class="el" href="classnsJNI_1_1AddressWrapper.html" title="handle all struct">AddressWrapper</a>  <a href="group__Types.html#gad902f2ee160edffcae5d29cfdd530744"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">verify is this type is an <a class="el" href="classnsJNI_1_1AddressWrapper.html" title="Handle every address of enums and structures in the Java side.">AddressWrapper</a>  <a href="group__Types.html#gad902f2ee160edffcae5d29cfdd530744"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Types.html#ga80917e5991eac137e203cb3bd15c9dc2">isArray</a> ()</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">verify is this type is an <a class="el" href="classnsJNI_1_1Array.html" title="represents a Array">Array</a>  <a href="group__Types.html#ga80917e5991eac137e203cb3bd15c9dc2"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">verify is this type is an <a class="el" href="classnsJNI_1_1Array.html" title="Represents an array in Java and JNI.">Array</a>  <a href="group__Types.html#ga80917e5991eac137e203cb3bd15c9dc2"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga8ddb587f624d916cd9048cee599f996d"></a><!-- doxytag: member="nsJNI::Struct::prepareCall" ref="ga8ddb587f624d916cd9048cee599f996d" args="(ofstream &amp;f, string &amp;varName)" -->
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Types.html#ga8ddb587f624d916cd9048cee599f996d">prepareCall</a> (ofstream &amp;f, string &amp;varName)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Prepare JNI call, before calling the native <a class="el" href="classnsJNI_1_1Function.html" title="represents a Function">Function</a>, if this type is encontered. <br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Types.html#gab0206b57c0c6b68cdb342314bd44330e">getJNIParameterName</a> (string &amp;varName)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">create the parameter name for the native function call  <a href="group__Types.html#gab0206b57c0c6b68cdb342314bd44330e"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Types.html#gab0f5575915d06f37d2017377722db5fb">generateGetter</a> (bool java, const string &amp;fieldType, const string &amp;fieldName)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate.  <a href="group__Types.html#gab0f5575915d06f37d2017377722db5fb"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaeca98ca5590216da7a3c8f50263d4eeb"></a><!-- doxytag: member="nsJNI::Struct::generateSetter" ref="gaeca98ca5590216da7a3c8f50263d4eeb" args="(bool java, const string &amp;fieldType, const string &amp;fieldName)" -->
-string&#160;</td><td class="memItemRight" valign="bottom"><b>generateSetter</b> (bool java, const string &amp;fieldType, const string &amp;fieldName)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga4124e7d698160d42bf5157fb311e5b19"></a><!-- doxytag: member="nsJNI::Struct::generateConstructor" ref="ga4124e7d698160d42bf5157fb311e5b19" args="()" -->
-string&#160;</td><td class="memItemRight" valign="bottom"><b>generateConstructor</b> ()</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gadd03a27b34a9e2eca749c4e5b673e2bd"></a><!-- doxytag: member="nsJNI::Struct::generateFinalize" ref="gadd03a27b34a9e2eca749c4e5b673e2bd" args="()" -->
-string&#160;</td><td class="memItemRight" valign="bottom"><b>generateFinalize</b> ()</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga0941e9c7a67d70211f4ff2aab6f1bcd9"></a><!-- doxytag: member="nsJNI::Struct::generateFreeFunction" ref="ga0941e9c7a67d70211f4ff2aab6f1bcd9" args="(bool java)" -->
-string&#160;</td><td class="memItemRight" valign="bottom"><b>generateFreeFunction</b> (bool java)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga75f98de283e42a18081237ae26760ba2"></a><!-- doxytag: member="nsJNI::Struct::generateWrite" ref="ga75f98de283e42a18081237ae26760ba2" args="()" -->
-string&#160;</td><td class="memItemRight" valign="bottom"><b>generateWrite</b> ()</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga00eae9bc6c6f23f95233247777fb3a90"></a><!-- doxytag: member="nsJNI::Struct::generateRead" ref="ga00eae9bc6c6f23f95233247777fb3a90" args="()" -->
-string&#160;</td><td class="memItemRight" valign="bottom"><b>generateRead</b> ()</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gabc6e03f73c3cf2b43cb1a1c40faae452"></a><!-- doxytag: member="nsJNI::Struct::generateCreateFunction" ref="gabc6e03f73c3cf2b43cb1a1c40faae452" args="(bool java)" -->
-string&#160;</td><td class="memItemRight" valign="bottom"><b>generateCreateFunction</b> (bool java)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Types.html#ga4124e7d698160d42bf5157fb311e5b19">generateConstructor</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate constructor of the structure.  <a href="group__Types.html#ga4124e7d698160d42bf5157fb311e5b19"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Types.html#gadd03a27b34a9e2eca749c4e5b673e2bd">generateFinalize</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate finalize function of the structure to free it.  <a href="group__Types.html#gadd03a27b34a9e2eca749c4e5b673e2bd"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Types.html#ga75f98de283e42a18081237ae26760ba2">generateWrite</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate write function of the structure. Write all params from Java to the C structure.  <a href="group__Types.html#ga75f98de283e42a18081237ae26760ba2"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Types.html#ga00eae9bc6c6f23f95233247777fb3a90">generateRead</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate read function of the structure. Read all params from the C structure to Java.  <a href="group__Types.html#ga00eae9bc6c6f23f95233247777fb3a90"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Types.html#gaa0a0aed8ea3f6d35c1c92b86efd1a64a">getReturnValue</a> (ofstream &amp;f)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">create JNI instruction to get return value from Native function call, and convert the result to Java  <a href="group__Types.html#gaa0a0aed8ea3f6d35c1c92b86efd1a64a"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga8c4278ec569e659b656489ea007effbb"></a><!-- doxytag: member="nsJNI::Struct::getGetterSetters" ref="ga8c4278ec569e659b656489ea007effbb" args="()" -->
-vector&lt; <a class="el" href="classnsJNI_1_1Function.html">Function</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getGetterSetters</b> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">vector&lt; <a class="el" href="classnsJNI_1_1Function.html">Function</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Types.html#ga8c4278ec569e659b656489ea007effbb">getGetterSetters</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get all the functions used by the structure. All the functions means, create/free/getters/setters.  <a href="group__Types.html#ga8c4278ec569e659b656489ea007effbb"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gad0add167de0515b387cd6a2fdec7ab7b"></a><!-- doxytag: member="nsJNI::Struct::_cStruct" ref="gad0add167de0515b387cd6a2fdec7ab7b" args="" -->
 nsC::Struct&#160;</td><td class="memItemRight" valign="bottom"><b>_cStruct</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga1ba9229d5aae83234643f64c9b3ace6f"></a><!-- doxytag: member="nsJNI::Struct::_dictionnary" ref="ga1ba9229d5aae83234643f64c9b3ace6f" args="" -->
-<a class="el" href="classnsJNI_1_1TypesDictionnary.html">TypesDictionnary</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>_dictionnary</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga82d0a0fa2a01a6a9584c436f0b6f2d27"></a><!-- doxytag: member="nsJNI::Struct::_getters" ref="ga82d0a0fa2a01a6a9584c436f0b6f2d27" args="" -->
-vector&lt; <a class="el" href="classnsJNI_1_1Getter.html">Getter</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_getters</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaafecedb5163de4beadad380e020f6f45"></a><!-- doxytag: member="nsJNI::Struct::_setters" ref="gaafecedb5163de4beadad380e020f6f45" args="" -->
-vector&lt; <a class="el" href="classnsJNI_1_1Setter.html">Setter</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_setters</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga5127b8df9bce4826ff597f919a93e988"></a><!-- doxytag: member="nsJNI::Struct::_getterSetters" ref="ga5127b8df9bce4826ff597f919a93e988" args="" -->
-vector&lt; <a class="el" href="classnsJNI_1_1Function.html">Function</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_getterSetters</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga7f202f2a89f12f612287a00fd2d09edc"></a><!-- doxytag: member="nsJNI::Struct::_createFunction" ref="ga7f202f2a89f12f612287a00fd2d09edc" args="" -->
-<a class="el" href="classnsJNI_1_1Create.html">Create</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>_createFunction</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gad332c8b65d2e0dc05426e91f6ed1b397"></a><!-- doxytag: member="nsJNI::Struct::_freeFunction" ref="gad332c8b65d2e0dc05426e91f6ed1b397" args="" -->
-<a class="el" href="classnsJNI_1_1Free.html">Free</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>_freeFunction</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classnsJNI_1_1TypesDictionnary.html">TypesDictionnary</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Types.html#ga1ba9229d5aae83234643f64c9b3ace6f">_dictionnary</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">vector&lt; <a class="el" href="classnsJNI_1_1Getter.html">Getter</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Types.html#ga82d0a0fa2a01a6a9584c436f0b6f2d27">_getters</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">vector&lt; <a class="el" href="classnsJNI_1_1Setter.html">Setter</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Types.html#gaafecedb5163de4beadad380e020f6f45">_setters</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">vector&lt; <a class="el" href="classnsJNI_1_1Function.html">Function</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Types.html#ga5127b8df9bce4826ff597f919a93e988">_getterSetters</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classnsJNI_1_1Create.html">Create</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Types.html#ga7f202f2a89f12f612287a00fd2d09edc">_createFunction</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classnsJNI_1_1Getter.html">Getter</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Types.html#ga4c72d31e89ce7854d9a01c1214a7904e">_structSize</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classnsJNI_1_1Free.html">Free</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Types.html#gad332c8b65d2e0dc05426e91f6ed1b397">_freeFunction</a></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>represents a <a class="el" href="classnsJNI_1_1Struct.html" title="represents a Struct">Struct</a> </p>
@@ -209,13 +199,5 @@ vector&lt; <a class="el" href="classnsJNI_1_1Function.html">Function</a> * &gt;&
 </iframe>
 </div>
 
-
-
-<hr class="footer"/><address class="footer"><small>
-Generated on Mon Jul 15 2013 09:44:08 for JNIParser by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.7.6.1
-</small></address>
-
-</body>
-</html>
+<hr>
+<i>JNI Parser - Laboratoire ERISCS</i>

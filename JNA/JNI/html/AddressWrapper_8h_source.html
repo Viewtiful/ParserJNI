@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>JNIParser: Types/AddressWrapper.h Source File</title>
+<title>JNI parser: Types/AddressWrapper.h Source File</title>
 
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -27,10 +27,10 @@
   
   
   <td style="padding-left: 0.5em;">
-   <div id="projectname">JNIParser
+   <div id="projectname">JNI parser
    
    </div>
-   
+   <div id="projectbrief">Generating Java/JNI code in order to call native C functions.</div>
   </td>
   
   
@@ -51,6 +51,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
+      <li><a href="examples.html"><span>Examples</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -81,42 +82,41 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 <a href="AddressWrapper_8h.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 
-<a name="l00010"></a>00010 <span class="preprocessor">#ifndef __JNI_ADDRESSWRAPPER_H</span>
-<a name="l00011"></a>00011 <span class="preprocessor"></span><span class="preprocessor">#define __JNI_ADDRESSWRAPPER_H</span>
-<a name="l00012"></a>00012 <span class="preprocessor"></span><span class="preprocessor">#include &quot;<a class="code" href="Type_8h.html">JNI/Types/Type.h</a>&quot;</span>
-<a name="l00013"></a>00013 <span class="preprocessor">#include &quot;Utils/Utils.h&quot;</span>
-<a name="l00014"></a>00014 <span class="preprocessor">#include &lt;string&gt;</span>
-<a name="l00015"></a>00015 <span class="preprocessor">#include &lt;iostream&gt;</span>
-<a name="l00016"></a>00016 <span class="preprocessor">#include &lt;fstream&gt;</span>
-<a name="l00017"></a>00017 
-<a name="l00021"></a>00021 <span class="keyword">using namespace </span>std;
-<a name="l00026"></a>00026 <span class="keyword">namespace </span>nsJNI {
-<a name="l00031"></a><a class="code" href="classnsJNI_1_1AddressWrapper.html">00031</a>     <span class="keyword">class </span><a class="code" href="classnsJNI_1_1AddressWrapper.html" title="handle all struct">AddressWrapper</a> : <span class="keyword">public</span> <a class="code" href="classnsJNI_1_1Type.html" title="represents an abstract Type">Type</a>
-<a name="l00032"></a>00032     {
-<a name="l00033"></a>00033       <span class="keyword">public</span>:
-<a name="l00037"></a>00037         <span class="keyword">virtual</span> ~<a class="code" href="classnsJNI_1_1AddressWrapper.html" title="handle all struct">AddressWrapper</a>();
-<a name="l00038"></a>00038 
-<a name="l00045"></a>00045         <a class="code" href="classnsJNI_1_1AddressWrapper.html" title="handle all struct">AddressWrapper</a>(<span class="keywordtype">string</span> realCType, <span class="keywordtype">string</span> VMSignature);
-<a name="l00046"></a>00046         
-<a name="l00052"></a>00052         <a class="code" href="classnsJNI_1_1AddressWrapper.html" title="handle all struct">AddressWrapper</a>(<span class="keywordtype">string</span> VMSignature);
-<a name="l00053"></a>00053         std::string outputJava();
-<a name="l00054"></a>00054         std::string outputJNI();
-<a name="l00055"></a>00055         <span class="keywordtype">bool</span> isNativeType();
-<a name="l00056"></a>00056         <span class="keywordtype">bool</span> isAddressWrapper();
-<a name="l00057"></a>00057         <span class="keywordtype">bool</span> isBooleanWrapper();
-<a name="l00058"></a>00058         <span class="keywordtype">bool</span> isArray();
-<a name="l00059"></a>00059         <span class="keywordtype">void</span> prepareCall(ofstream&amp; f,<span class="keywordtype">string</span>&amp; varName);
-<a name="l00060"></a>00060         <span class="keywordtype">string</span> getJNIParameterName(<span class="keywordtype">string</span>&amp; varName);
-<a name="l00061"></a>00061         <span class="keywordtype">void</span> getReturnValue(ofstream&amp; f);
-<a name="l00062"></a>00062         
-<a name="l00063"></a>00063         <span class="keyword">protected</span>:
-<a name="l00064"></a><a class="code" href="group__Types.html#ga7db5b69319dccb540acfbee501a7975a">00064</a>         <span class="keywordtype">string</span> <a class="code" href="group__Types.html#ga7db5b69319dccb540acfbee501a7975a">_realCType</a>; 
-<a name="l00065"></a><a class="code" href="group__Types.html#ga98719b0cf1bc81d9ffc885cc1d07ea51">00065</a>         <span class="keywordtype">string</span> <a class="code" href="group__Types.html#ga98719b0cf1bc81d9ffc885cc1d07ea51">_varName</a>; 
-<a name="l00066"></a>00066     };
-<a name="l00067"></a>00067 }
-<a name="l00068"></a>00068 
-<a name="l00069"></a>00069 <span class="preprocessor">#endif</span>
-<a name="l00070"></a>00070 <span class="preprocessor"></span>
+<a name="l00009"></a>00009 <span class="preprocessor">#ifndef __JNI_ADDRESSWRAPPER_H</span>
+<a name="l00010"></a>00010 <span class="preprocessor"></span><span class="preprocessor">#define __JNI_ADDRESSWRAPPER_H</span>
+<a name="l00011"></a>00011 <span class="preprocessor"></span><span class="preprocessor">#include &quot;<a class="code" href="Type_8h.html">JNI/Types/Type.h</a>&quot;</span>
+<a name="l00012"></a>00012 <span class="preprocessor">#include &quot;Utils/Utils.h&quot;</span>
+<a name="l00013"></a>00013 <span class="preprocessor">#include &lt;string&gt;</span>
+<a name="l00014"></a>00014 <span class="preprocessor">#include &lt;iostream&gt;</span>
+<a name="l00015"></a>00015 <span class="preprocessor">#include &lt;fstream&gt;</span>
+<a name="l00016"></a>00016 
+<a name="l00020"></a>00020 <span class="keyword">using namespace </span>std;
+<a name="l00025"></a>00025 <span class="keyword">namespace </span>nsJNI {
+<a name="l00030"></a><a class="code" href="classnsJNI_1_1AddressWrapper.html">00030</a>         <span class="keyword">class </span><a class="code" href="classnsJNI_1_1AddressWrapper.html" title="Handle every address of enums and structures in the Java side.">AddressWrapper</a> : <span class="keyword">public</span> <a class="code" href="classnsJNI_1_1Type.html" title="represents an abstract Type">Type</a>
+<a name="l00031"></a>00031         {
+<a name="l00032"></a>00032                 <span class="keyword">public</span>:
+<a name="l00033"></a>00033                         <span class="keyword">virtual</span> ~<a class="code" href="classnsJNI_1_1AddressWrapper.html" title="Handle every address of enums and structures in the Java side.">AddressWrapper</a>();
+<a name="l00034"></a>00034 
+<a name="l00041"></a>00041                         <a class="code" href="classnsJNI_1_1AddressWrapper.html" title="Handle every address of enums and structures in the Java side.">AddressWrapper</a>(<span class="keyword">const</span> <span class="keywordtype">string</span>&amp; realCType, <span class="keyword">const</span> <span class="keywordtype">string</span>&amp; VMSignature);
+<a name="l00042"></a>00042 
+<a name="l00043"></a>00043                         std::string outputJava();
+<a name="l00044"></a>00044                         std::string outputJNI();
+<a name="l00045"></a>00045                         <span class="keywordtype">bool</span> isNativeType();
+<a name="l00046"></a>00046                         <span class="keywordtype">bool</span> isAddressWrapper();
+<a name="l00047"></a>00047                         <span class="keywordtype">bool</span> isBooleanWrapper();
+<a name="l00048"></a>00048                         <span class="keywordtype">bool</span> isArray();
+<a name="l00049"></a>00049                         <span class="keywordtype">void</span> prepareCall(ofstream&amp; f,<span class="keywordtype">string</span>&amp; varName);
+<a name="l00050"></a>00050                         <span class="keywordtype">string</span> getJNIParameterName(<span class="keywordtype">string</span>&amp; varName);
+<a name="l00051"></a>00051                         <span class="keywordtype">void</span> getReturnValue(ofstream&amp; f);
+<a name="l00052"></a>00052 
+<a name="l00053"></a>00053                 <span class="keyword">protected</span>:
+<a name="l00054"></a><a class="code" href="group__Types.html#ga7db5b69319dccb540acfbee501a7975a">00054</a>                         <span class="keywordtype">string</span> <a class="code" href="group__Types.html#ga7db5b69319dccb540acfbee501a7975a">_realCType</a>; 
+<a name="l00055"></a><a class="code" href="group__Types.html#ga98719b0cf1bc81d9ffc885cc1d07ea51">00055</a>                         <span class="keywordtype">string</span> <a class="code" href="group__Types.html#ga98719b0cf1bc81d9ffc885cc1d07ea51">_varName</a>; 
+<a name="l00056"></a>00056         };
+<a name="l00057"></a>00057 }
+<a name="l00058"></a>00058 
+<a name="l00059"></a>00059 <span class="preprocessor">#endif</span>
+<a name="l00060"></a>00060 <span class="preprocessor"></span>
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -132,13 +132,5 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-
-
-<hr class="footer"/><address class="footer"><small>
-Generated on Mon Jul 15 2013 09:44:05 for JNIParser by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.7.6.1
-</small></address>
-
-</body>
-</html>
+<hr>
+<i>JNI Parser - Laboratoire ERISCS</i>

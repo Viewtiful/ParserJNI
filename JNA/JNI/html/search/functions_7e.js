@@ -1,8 +1,5 @@
 var searchData=
 [
-  ['_7eaddresswrapper',['~AddressWrapper',['../group__Types.html#ga8133af8c26498e4bb19c0780dde59ba1',1,'nsJNI::AddressWrapper']]],
-  ['_7earray',['~Array',['../group__Types.html#gabcabe567f41f7798d2f97babcc443c6f',1,'nsJNI::Array']]],
-  ['_7eboolwrapper',['~BoolWrapper',['../group__Types.html#ga16bcc2a2285a2a8227fc81f3836e7adf',1,'nsJNI::BoolWrapper']]],
   ['_7eenum',['~Enum',['../group__Types.html#gaa8da6534b07c9a5ee67e215fa5087b05',1,'nsJNI::Enum']]],
   ['_7efunction',['~Function',['../classnsJNI_1_1Function.html#a3b03f7cf0b75d16edebdda1dee1db6fd',1,'nsJNI::Function']]],
   ['_7enativetype',['~NativeType',['../group__Types.html#gac1a1765e75d2afe783db19ae592eec49',1,'nsJNI::NativeType']]],
