@@ -31,7 +31,7 @@ namespace nsJNI {
          * !*/
         string transformToJavadoc(nsC::Function fct, ofstream &f);
         /*!
-         * \brief parse and compute the @ token
+         * \brief parse and compute the \@ token
          * \param index : the beginning search index
          * \param comments : whole comments
          * \return the token
@@ -40,8 +40,8 @@ namespace nsJNI {
         string getToken(int index, string &comments);
 
         /*!
-         * \brief handle transformation of an Doxygen @param to Javadoc @param
-         * \param index : beginning index of the @param in the comments
+         * \brief handle transformation of an Doxygen \@param to Javadoc \@param
+         * \param index : beginning index of the \@param in the comments
          * \param comments : the whole comments
          */
         void transformParam(int index, string &comments);
@@ -55,16 +55,16 @@ namespace nsJNI {
         void call(string& token, int index, string& comments);
 
         /*!
-         * \brief handle transformation of an Doxygen @ref to Javadoc @see
-         * \param index : beginning index of the @ref in the comments
+         * \brief handle transformation of an Doxygen \@ref to Javadoc \@see
+         * \param index : beginning index of the \@ref in the comments
          * \param comments : the whole comments
          */
         void transformRef(int index, string &comments);
 
         /*!
-         * \brief handle transformation of an Doxygen @a, an @a is transformed to an <i> </i>
+         * \brief handle transformation of an Doxygen \@a, an \@a is transformed to an \<i\> \</i\>
          * 
-         * \param index : beginning index of the @a in the comments
+         * \param index : beginning index of the \@a in the comments
          * \param comments : the whole comments
          */
         void transformA(int index, string &comments);
@@ -76,17 +76,17 @@ namespace nsJNI {
         bool isAlpha(char c);
 
         /*!
-         * \brief handle transformation of an Doxygen @note, an @note is transformed to an <b><i>
+         * \brief handle transformation of an Doxygen \@note, an \@note is transformed to an \<b\>\<i\>
          * 
-         * \param index : beginning index of the @a in the comments
+         * \param index : beginning index of the \@a in the comments
          * \param comments : the whole comments
          */
         void transformNote(int index, string &comments);
 
         /*!
-         * \brief handle transformation of an Doxygen @retval, an @retval is transformed to an <b>Possible return Value
+         * \brief handle transformation of an Doxygen \@retval, an \@retval is transformed to an \<b\>Possible return Value
          * 
-         * \param index : beginning index of the @a in the comments
+         * \param index : beginning index of the \@a in the comments
          * \param comments : the whole comments
          */
         void transformReturnVal(int index, string &comments);
@@ -101,7 +101,7 @@ namespace nsJNI {
         int skipLine(int index, string &comments, char c);
         
         /*!
-         * \brief search the next blockTag such as @Note
+         * \brief search the next blockTag such as \@Note
          * \param index : beginning comments index
          * \param comments : the whole comments
          */
