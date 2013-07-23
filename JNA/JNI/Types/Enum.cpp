@@ -1,8 +1,3 @@
-/** @file
- *
- * Body for JNIParser
- */
-
 #include "JNI/Types/Enum.h"
 #include "Utils/Utils.h"
 #include <string>

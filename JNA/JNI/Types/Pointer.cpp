@@ -1,7 +1,3 @@
-/** @file
- *
- * Body for JNIParser
- */
 #define POINTER nsJNI::POINTER
 #include "JNI/Types/Pointer.h"
 #include "Utils/Utils.h"

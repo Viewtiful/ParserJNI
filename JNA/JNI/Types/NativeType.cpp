@@ -1,7 +1,3 @@
-/** @file
- *
- * Body for JNIParser
- */
 #define NATIVETYPE nsJNI::NATIVETYPE
 #include "JNI/Types/NativeType.h"
 #include "Utils/Utils.h"

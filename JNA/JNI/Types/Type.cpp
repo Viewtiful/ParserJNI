@@ -1,7 +1,3 @@
-/** @file
- *
- * Body for JNIParser
- */
 #define TYPE nsJNI::TYPE
 #include "JNI/Types/Type.h"
 
