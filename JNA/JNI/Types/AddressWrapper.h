@@ -1,6 +1,5 @@
 /** @file
- *
- * Header for Types
+ * Header for AddressWrapper
  */
 /*!
   \file AddressWrapper.h
@@ -26,30 +25,21 @@ using namespace std;
 namespace nsJNI {
 	/*!
 	  \class AddressWrapper
-	  \brief handle all struct
+	  \brief Handle every address of enums and structures in the Java side.
 	  */
 	class AddressWrapper : public Type
 	{
 		public:
-			/*!
-			  \brief destructor
-			  */
 			virtual ~AddressWrapper();
 
 			/*!
-			  \brief constructor with two parameters
-			  Create, and initialize an AddressWrapper with the following arguments
-			  \param realCType : The Data's CType which is converted to AddressWrapper
-			  \param VMSIgnature : signature for the java Virtual Machine
+			  \brief Constructor with two parameters.
+			  create, and initialize an AddressWrapper with the following arguments
+			  \param realCType : The Data's CType which is converted to AddressWrapper.
+			  \param VMSIgnature : Signature for the Java Virtual Machine.
 			  */
-			AddressWrapper(string realCType, string VMSignature);
+			AddressWrapper(const string& realCType, const string& VMSignature);
 
-			/*!
-			  \brief constructor with one parameters
-			  Create, and initialize an AddressWrapper with the following arguments
-			  \param VMSIgnature : signature for the java Virtual Machine
-			  */
-			AddressWrapper(string VMSignature);
 			std::string outputJava();
 			std::string outputJNI();
 			bool isNativeType();
@@ -61,8 +51,8 @@ namespace nsJNI {
 			void getReturnValue(ofstream& f);
 
 		protected:
-			string _realCType; /*!< C Type of the data's*/
-			string _varName; /*!< Variable name*/
+			string _realCType; /*!< C Type of the data element*/
+			string _varName; /*!< Name of the element*/
 	};
 }
 

@@ -5,7 +5,7 @@ using namespace nsJNI;
 using namespace nsUtils;
 using namespace std;
 
-AddressWrapper::AddressWrapper(string realCType,string VMSignature) : Type("AddressWrapper", "jobject", VMSignature)
+AddressWrapper::AddressWrapper(const string& realCType, const string& VMSignature) : Type("AddressWrapper", "jobject", VMSignature)
 {
 	_realCType = realCType;
 }
