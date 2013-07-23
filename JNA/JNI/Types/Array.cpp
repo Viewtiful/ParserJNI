@@ -58,7 +58,7 @@ void Array::prepareCall(ofstream& f, string& varName)
 			"\t\t%NAME% = (%TYPE% *)malloc(%NAMELENGTH%);\n"
 			"\t\t%NAME% = (*env)->Get%TYPEMAJ%ArrayElements(env, %CNAME%, NULL);\n\n"
 			);
-   _varName = varName;
+	_varName = varName;
 	string type = _dictionnary->convertJNI(_CBaseType);
 	string name = "C_" + varName;
 	string nameLength = name + "_size";
@@ -76,50 +76,50 @@ void Array::prepareCall(ofstream& f, string& varName)
 
 std::string Array::getJNIParameterName(string& varName) 
 {
-   string param("%PARAMNAME%, %PARAMNAME2%");
+	string param("%PARAMNAME%, %PARAMNAME2%");
 
-   stringReplace(param, "PARAMNAME2", "C_" + varName + "_size");
-   stringReplace(param, "PARAMNAME", "C_" + varName);
+	stringReplace(param, "PARAMNAME2", "C_" + varName + "_size");
+	stringReplace(param, "PARAMNAME", "C_" + varName);
 
-   return param;
+	return param;
 }
 
 void Array::getReturnValue(ofstream& f) 
 {
-   string structure (
-         "\t\tJNI_result = (*env)->New%TYPEMAJ%Array(env, C_size);\n" 
-         "\t\t(*env)->Set%TYPEMAJ%ArrayRegion(env, JNI_result, 0, C_size, (%CTYPE% *)tempJNI_result);\n"
-         "\t\treturn JNI_result;\n"
-         );
+	string structure (
+			"\t\tJNI_result = (*env)->New%TYPEMAJ%Array(env, C_size);\n" 
+			"\t\t(*env)->Set%TYPEMAJ%ArrayRegion(env, JNI_result, 0, C_size, (%CTYPE% *)tempJNI_result);\n"
+			"\t\treturn JNI_result;\n"
+			);
 
 	string type = _dictionnary->convertJNI(_CBaseType);
-   	string typeMaj = type.substr(1, type.size());
- 	typeMaj = toJavaName(typeMaj, false, false, true);
+	string typeMaj = type.substr(1, type.size());
+	typeMaj = toJavaName(typeMaj, false, false, true);
 
-   stringReplace(structure, "TYPEMAJ", typeMaj);
-   stringReplace(structure, "CTYPE", type);
+	stringReplace(structure, "TYPEMAJ", typeMaj);
+	stringReplace(structure, "CTYPE", type);
 
-   f << structure;
+	f << structure;
 }
 
 void Array::getReturnValueAndFree(ofstream& f, string& varName) 
 {
-   string structure (
-         "\t\t(*env)->Set%TYPEMAJ%ArrayRegion(env, %CNAME%, 0, %CNAMELENGTH%, %NAME%);\n"
-         "\t\tint i_%NAME%;\n"
-         "\t\tfor(i_%NAME% = 0; i_%NAME% < %CNAMELENGTH%; ++i_%NAME%)\n"
-         "\t\t\t%NAME%[i_%NAME%] = 0;\n"
-         "\t\tfree(%NAME%);\n\n"
-         );
+	string structure (
+			"\t\t(*env)->Set%TYPEMAJ%ArrayRegion(env, %CNAME%, 0, %CNAMELENGTH%, %NAME%);\n"
+			"\t\tint i_%NAME%;\n"
+			"\t\tfor(i_%NAME% = 0; i_%NAME% < %CNAMELENGTH%; ++i_%NAME%)\n"
+			"\t\t\t%NAME%[i_%NAME%] = 0;\n"
+			"\t\tfree(%NAME%);\n\n"
+			);
 
 	string type = _dictionnary->convertJNI(_CBaseType);
-   	string typeMaj = type.substr(1, type.size());
- 	typeMaj = toJavaName(typeMaj, false, false, true);
+	string typeMaj = type.substr(1, type.size());
+	typeMaj = toJavaName(typeMaj, false, false, true);
 
-   stringReplace(structure, "TYPEMAJ", typeMaj);
-   stringReplace(structure, "CNAME", varName);
-   stringReplace(structure, "NAME", "C_" + varName);
-   stringReplace(structure, "CNAMELENGTH", "C_" + varName + "_size");
+	stringReplace(structure, "TYPEMAJ", typeMaj);
+	stringReplace(structure, "CNAME", varName);
+	stringReplace(structure, "NAME", "C_" + varName);
+	stringReplace(structure, "CNAMELENGTH", "C_" + varName + "_size");
 
-   f << structure;
+	f << structure;
 }

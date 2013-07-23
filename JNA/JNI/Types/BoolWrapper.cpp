@@ -12,7 +12,6 @@ BoolWrapper::BoolWrapper(string realCType,string VMSignature) : Type("BoolWrappe
 
 BoolWrapper::~BoolWrapper()
 {
-
 }
 
 std::string BoolWrapper::outputJava()
