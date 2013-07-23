@@ -1,3 +1,11 @@
+/** @file
+ * Header for Free
+ */
+/*!
+  \file Free.h
+  \author Baptiste HAUDEGAND & Antoine MOISE
+  \version 1.0
+  !*/
 #ifndef __JNI_FREE_H
 #define __JNI_FREE_H
 

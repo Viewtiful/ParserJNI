@@ -1,3 +1,11 @@
+/** @file
+ * Header for Setter
+ */
+/*!
+  \file Setter.h
+  \author Baptiste HAUDEGAND & Antoine MOISE
+  \version 1.0
+  !*/
 #ifndef __JNI_SETTER_H
 #define __JNI_SETTER_H
 

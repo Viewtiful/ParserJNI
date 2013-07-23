@@ -1,3 +1,11 @@
+/** @file
+ * Header for Getter
+ */
+/*!
+  \file Getter.h
+  \author Baptiste HAUDEGAND & Antoine MOISE
+  \version 1.0
+  !*/
 #ifndef __JNI_GETTER_H
 #define __JNI_GETTER_H
 

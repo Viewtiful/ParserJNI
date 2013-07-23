@@ -1,3 +1,11 @@
+/** @file
+ * Header for Create
+ */
+/*!
+  \file Create.h
+  \author Baptiste HAUDEGAND & Antoine MOISE
+  \version 1.0
+  !*/
 #ifndef __JNI_CREATE_H
 #define __JNI_CREATE_H
 
