@@ -1,7 +1,7 @@
 /** @file
  *
  * @defgroup JNI_parser JNI Parser of C headers
- * @brief Parsing C headers in order to create the corresponding java class 
+ * Parsing C headers in order to create the corresponding java class 
  * and JNI code.
  */
 
@@ -27,11 +27,6 @@ namespace nsJNI {
 		public:
 			virtual ~JNIParser();
 
-			/// Running the JNI parser.
-			/**	This is where we start the conversion from C headers to 
-			 * Java/JNI. We first transform C types to Java / JNI / VM 
-			 * signatures and then we write them to a java / c file.
-			 */
 			/*!
 			  \brief Running the JNI parser.
 			  This is where we start the conversion from C headers to 
@@ -41,16 +36,20 @@ namespace nsJNI {
 			  */
 			int run(nsModules::Module::vector modules);
 			/*!
-			  \brief Return if the current module contains callback.
+			  \brief Return true if the current module contains callback.
 			  \param modules : All the C headers
 			  */
 			bool containsCallback(nsModules::Module module);
 
 		protected :
-			OutputJNI *_jni; /*!< manager of the JNI Side*/
-			OutputJava *_java; /*!< manager of the Java Side*/
-			TypesDictionnary *_dico; /*!< Dictionnary of all types*/
-			Comments *_cm;  /*!< Generate javadoc comments for function*/
+			//! manager of the JNI Side
+			OutputJNI *_jni; 
+			//! manager of the Java Side
+			OutputJava *_java; 
+			//! Dictionnary of all types
+			TypesDictionnary *_dico;
+			//! Generate javadoc comments for function
+			Comments *_cm;  
 
 
 	};
