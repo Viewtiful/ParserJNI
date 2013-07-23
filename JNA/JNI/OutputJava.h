@@ -1,3 +1,10 @@
+/** @file
+ *
+ * @defgroup JNI_OutputJava Writting Java code.
+ * Write a Java class corresponding to the C headers.
+ */
+
+
 #ifndef __JNI_OUTPUTJAVA_H
 #define __JNI_OUTPUTJAVA_H
 #include "Modules/Module.h"
@@ -9,86 +16,82 @@
 using namespace nsModules;
 using namespace std;
 using namespace nsC;
+
+/** @addtogroup JNI_OutputJava
+ * @{ */
+
 namespace nsJNI
 {
 	/*!
-		\class OutputJava
-		\brief generate, manage the Java Side 
-	*/
+	  \class OutputJava
+	  \brief Generate, manage the Java Side.
+	  */
 
 	class OutputJava
 	{
-	
+
 		public:
-		/*!
-			\brief constructor with two parameters
-			Create, and initialize a Create Function with the following arguments
-			\param structName : Struct's name which contains this method
-			\param dictionnary : dictionnary of all type
-	        */
-		OutputJava(TypesDictionnary* dictionnary);
-		~OutputJava();
-                
-                /*!
-			\brief give the correct java Translation for an specific c Type
-			\param inpuutType: C type which will be translated
-                 *      \return the corresponding Java Type
-		*/
-		string getJavaType(string inputType);
-                
-		/*!
-			\brief Convert a C function into an Java Function, and write the result in a file
-			\param f: Output Java File
-                 *      \param fct : function which is going to be translated
-		*/
-		void convert(ofstream &f,nsJNI::Function *fct);
+			/*!
+			  \brief Constructor with two parameters.
+			  Create, and initialize a Create Function with the following arguments.
+			  \param structName : Name of the structure which contains this method.
+			  \param dictionnary : Dictionnary of all types.
+			  */
+			OutputJava(TypesDictionnary* dictionnary);
 
-		/*!
-			\brief generate the Native Function Call
-			\param f: Output JNI File
-		*/
+			~OutputJava();
 
-		void printLoadLibrary(ofstream &f,string library);
+			/*!
+			  \brief Give the correct Java Translation for an specific c Type.
+			  \param inputType : C type which will be translated.
+			  \return The corresponding Java Type of the C type.
+			  */
+			string getJavaType(const string& inputType);
 
-		/*!
-			\brief print Java Header for class or enum
-			\param f: Output Java File
-                 *      \param type : Header type
-                 *      \param CHeaderFile : filename of C header
-		*/
+			/*!
+			  \brief Convert a C function into a Java Function, and write the result in a file
+			  \param f : The target file where the function will be written.
+			 *      \param fct : Function which is going to be translated.
+			 */
+			void convert(ofstream &f, nsJNI::Function *fct);
 
-                        
-		void printJavaHeader(ofstream &f,string type,string CHeaderFile);
-                
-		/*!
-			\brief print Java Header for enum
-			\param f: Output Java File
-                 *      \param CHeaderFile : filename of C header
-		*/
-		void printJavaHeader(ofstream &f,string CHeaderFile);
-		/*!
-			\brief print the class definition in a file
-			\param f: Output Java File
-                 *      \param className : Class' name which need definition
-		*/
+			/*!
+			  \brief The library loaded by Java containing the JNI code.
+			  \param f : The target file where the library load will be written.
+			  */
+			void printLoadLibrary(ofstream &f, const string& library);
 
-        	void addClassDefinition(ofstream &f, string className);
-                
-		/*!
-			\brief Add an addressWrapper definition in the Java file
-			\param f: Output Java File
-		*/
-         	void addAddressWrapper(ofstream &f);
-                
-		/*!
-			\brief Add a BoolWrapper definition in the java file
-			\param f: Output Java File
-		*/
-         	void addBoolWrapper(ofstream &f);
+			/*!
+			  \brief Print Java Header for the main class.
+			  \param f : The target file where the Java header of the main class will be written.
+			 *      \param type : Header type (class)
+			 *      \param className : class name of the Java class.
+			 */
+			void printJavaHeader(ofstream &f, const string& type, const string& className);
+
+			/*!
+			  \brief Print the class definition in the target file.
+			  \param f : The target file where the class definition will be written.
+			  \param className : The class name for which we write a class definition.
+			  */
+			void addClassDefinition(ofstream &f, const string& className);
+
+			/*!
+			  \brief Add an addressWrapper definition in the Java file.
+			  \param f : The target file where the AddressWrapper class will be written.
+			  */
+			void addAddressWrapper(ofstream &f);
+
+			/*!
+			  \brief Add a BoolWrapper definition in the Java file.
+			  \param f :  The target file where the BoolWrapper class will be written.
+			  */
+			void addBoolWrapper(ofstream &f);
+
 		protected:
-		TypesDictionnary *_dictionnary; /*!< Dictionnary of all Types*/
-		
-		
+			TypesDictionnary *_dictionnary; /*!< Dictionnary of all Types*/
+
+
 	};
 }
 

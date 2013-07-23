@@ -41,7 +41,7 @@ namespace nsJNI
 			  \brief Get the JNI type from a C type.
 			  \param inputType : C type that we want to translate to JNI.
 			  \return The JNI type corresponding to the C type. 
-			*/
+			  */
 			string getJNIType(const string& inputType);
 
 			/*!
@@ -66,17 +66,17 @@ namespace nsJNI
 
 			/*!
 			  \brief Add a ContextWrapper to the target file.
-          * This contextWrapper enable us to keep the address of the object allocated in JNI.
-			  \param f : The target file where the contextWrapper is written.
-			  */
+			 * This contextWrapper enable us to keep the address of the object allocated in JNI.
+			 \param f : The target file where the contextWrapper is written.
+			 */
 			void addContextWrapper(ofstream &f);
 
 			/*!
 			  \brief Generate the Native Function Call. The JNIOnload function is the first function
-          * the Java VM will try to launch. Trying to get the java Class and register all the native functions and their corresponding one in Java.
-          * 
-			  \param f : The target file where the JNIOnload function is written.
-			  */
+			 * the Java VM will try to launch. Trying to get the java Class and register all the native functions and their corresponding one in Java.
+			 * 
+			 \param f : The target file where the JNIOnload function is written.
+			 */
 			void generateJNIOnload(ofstream &f, string filename);
 
 			//void addFunctionPrototype(Function::vector fcts);
