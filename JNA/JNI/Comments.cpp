@@ -25,6 +25,7 @@ void Comments::call(string& token, int index, string& comments)
     {
         codeGenerator c = _lexic[token];
         (this->*c)(index, comments);
+	cout << "Token = " << token << endl;
     }
     else if(token!="@return")
     {
@@ -112,14 +113,15 @@ void Comments::transformParam(int index, string &comments)
     //If the param Name contain _size, we have to delete this comments
     if (indexSize != paramName.npos)
     {
-        int nextTag = comments.find('@', inOut);
+        int nextTag = searchNextBlockTag(indexSize+1,comments);
         //Jump to the next Tag or delete the remaining comments
-        if (nextTag != comments.npos)
+        if (nextTag != -1)
             comments.erase(index, nextTag - index - 1);
         else
         {
+            //At comments.size()-2 we will find "*/"
+            //So we erase from index to comments.size()-2)
             comments.erase(index, comments.size() - index - 2);
-            comments.insert(comments.size(), "*/");
         }
     }
    
@@ -212,6 +214,26 @@ int Comments::skipLine(int index, string &comments, char c)
             return i + 1;
 
     return -1;
+}
+
+int Comments::searchNextBlockTag(int index,string &comments)
+{
+    int i;
+    for(i = index;i<comments.size();i++)
+    {
+        //Search the next @
+        int tagIndex = comments.find('@');
+        //Extract the tag from the comments
+        string token = getToken(tagIndex,comments);
+        
+        //Verify if this tag is not a inline Tag
+        if(token!="@see" && token!="@a")
+        {
+            cout << "Token BT = " << token << endl;
+            return tagIndex;
+        }
+    }
+    return -1;    
 }
 
 
