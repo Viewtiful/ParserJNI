@@ -1,0 +1,41 @@
+/*! 
+\example kem 
+
+<h1>Goal</h1>
+
+This sample illustrates how the Key Encapsulation Mechanism works. It generates a random secret key and cipher it using a public key. The ciphered secret key can then only be deciphered using the associated private key.
+
+<hr>
+<h1>Usage</h1>
+
+In order to run the example, you need to have :
+<ul>
+   <li>libArcanaJNI.so</li>
+   <li>ArcanaJNI.java</li>
+   <li>The Utils.java class</li>
+   <li>A public key in a file named "public_key.txt"</li>
+   <li>A private key in a file named "private_key.txt"</li>
+   <li>And of course kem.java</li>
+</ul>
+
+The function generateKey() generate and cipher a secret key based on the public key from the file public_key.txt
+The result of this function is the creation of two files; one with the secret key in clear, and one with the encaspulated key, ciphered. This file can then be sent to the owner of the private key corresponding to the public key we used.
+
+To retrieve the secret key with the encapsulated file, the function retrieveKey() does the job. It uses the private key and this will result in the creation of the secret key file, containing the same key generated previously.
+
+\include kem.java
+
+<hr>
+<h1>Output example</h1>
+\code
+17:37:50 : ktb_init() ok
+key_buffer_size : 153
+17:37:50 : ktb_keys_public_key_import() ok
+encapsulated_size : 203
+17:37:50 : ktb_kem_psec_encrypt() ok
+key_buffer_size : 83
+17:37:50 : ktb_keys_private_key_import() ok
+encapsulated_size : 203
+17:37:51 : ktb_kem_psec_decrypt() ok
+\endcode
+ */ 

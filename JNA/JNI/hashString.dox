@@ -1,0 +1,36 @@
+/*! 
+\example hash-String 
+
+<h1>Goal</h1>
+
+The code in this sample perform one kind of hash computation :
+<ul>
+   <li>on a string, to show how one can easily compute a hash on a small buffer </li>
+</ul>
+<hr>
+<h1>Usage</h1>
+
+In order to run the example, you need to have :
+<ul>
+   <li>libArcanaJNI.so</li>
+   <li>ArcanaJNI.java</li>
+   <li>The Utils.java class</li>
+   <li>And of course hash.java</li>
+</ul>
+
+The program will output the hash as an hexadecimal string.
+
+\include hash.java
+
+<hr>
+<h1>Output example</h1>
+\code
+17:05:23 : ktb_init() ok
+hash_len : 64
+17:05:23 : ktb_hash_block() ok
+========================
+Content of the buffer : 
+6A 68 90 2D A1 F6 0F 0F 96 FB 16 93 BC E1 59 F6 BC 53 1E B8 8E EC EF 3A 15 9C EC 52 2A E4 51 B8 42 21 FB DF 84 AE A6 1F 96 43 F8 90 92 90 E0 ED 7B BF 39 24 76 D3 A8 88 BE 58 0D 44 E1 5D 2F 0E 
+========================
+\endcode
+ */ 

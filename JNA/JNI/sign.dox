@@ -1,0 +1,55 @@
+/*! 
+\example sign 
+
+<h1>Goal</h1>
+
+This sample code is able to compute the signature of a file, using a previously generated private key. It can then be used to verify that a given signature for a given file is valid using the corresponding public key.
+
+<hr>
+<h1>Usage</h1>
+This sample can be running in two modes (signing/verifying).
+
+In order to run the example, you need to have :
+<ul>
+   <li>libArcanaJNI.so</li>
+   <li>ArcanaJNI.java</li>
+   <li>A public key to sign a file contained in the file public_key.txt</li>
+   <li>A private key corresponding to the public one to verify the signature of the data (signed.txt) contained in the file private_key.txt</li>
+   <li>The data to sign in the file hello.txt</li>
+   <li>And of course sign.java</li>
+</ul>
+
+The signed data are contained in signed.txt
+Verify output is the the signature is valid or not.
+
+<h1>Sign.c</h1>
+\include sign.java
+<h1>Verify.c</h1>
+\include verify.java
+
+<hr>
+<h1>Output example for sign</h1>
+\code
+ktb_init() ok
+ktb_sign_init() ok
+key_buffer_size : 83
+ktb_keys_private_key_import ok
+ktb_sign_set_private_key ok
+ktb_sign_process ok
+ktb_sign_finalise ok
+\endcode
+
+<hr>
+<h1>Output example for verify</h1>
+\code
+ktb_init() ok
+ktb_sign_init() ok
+key_buffer_size : 153
+ktb_keys_public_key_import ok
+ktb_sign_set_public_key ok
+ktb_sign_process ok
+ktb_sign_finalise ok
+ktb_sign_get_verify ok
+File signature is valid
+\endcode
+ */ 

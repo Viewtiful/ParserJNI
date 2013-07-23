@@ -708,7 +708,7 @@ EXCLUDE_SYMBOLS        =
 # directories that contain example code fragments that are included (see
 # the \include command).
 
-EXAMPLE_PATH           =
+EXAMPLE_PATH           = ../Java/tests/
 
 # If the value of the EXAMPLE_PATH tag contains directories, you can use the
 # EXAMPLE_PATTERNS tag to specify one or more wildcard pattern (like *.cpp
@@ -722,7 +722,7 @@ EXAMPLE_PATTERNS       =
 # commands irrespective of the value of the RECURSIVE tag.
 # Possible values are YES and NO. If left blank NO is used.
 
-EXAMPLE_RECURSIVE      = NO
+EXAMPLE_RECURSIVE      = YES
 
 # The IMAGE_PATH tag can be used to specify one or more files or
 # directories that contain image that are included in the documentation (see
@@ -901,7 +901,16 @@ HTML_STYLESHEET        =
 # files. In the HTML_STYLESHEET file, use the file name only. Also note that
 # the files will be copied as-is; there are no commands or markers available.
 
-HTML_EXTRA_FILES       =
+HTML_EXTRA_FILES       = ../Java/tests/hash/hash.java
+../Java/tests/hash/hashFile.java
+../Java/tests/prng/prng.java
+../Java/tests/base64/base64.java
+../Java/tests/kem/kem.java
+../Java/tests/cipher/cipher.java
+../Java/tests/kem/kep.java
+../Java/tests/sign/sign.java
+../Java/tests/sign/verify.java
+
 
 # The HTML_COLORSTYLE_HUE tag controls the color of the HTML output.
 # Doxygen will adjust the colors in the style sheet and background images

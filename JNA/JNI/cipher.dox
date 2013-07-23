@@ -1,0 +1,61 @@
+/*! 
+\example cipher 
+
+<h1>Goal</h1>
+
+The cipher sample show how to cipher and decipher a file. It works with the "basic" counter mode.
+
+It's also a basic example on how to generate a secret key with a suitable length for ciphering.
+
+<hr>
+<h1>Usage</h1>
+This sample can work in two mode : ciphering and deciphering, each mode available in counter mode.
+
+In order to run the example, you need to have :
+<ul>
+   <li>libArcanaJNI.so</li>
+   <li>ArcanaJNI.java</li>
+   <li>A file named data.txt containing what you want to cipher</li>
+   <li>And of course cipher.java</li>
+</ul>
+
+<h1>Ciphering a file</h1>
+
+This call will cipher the data.txt file and put the ciphered content in data_cipher.txt.
+
+The (auth. data) is a string used to validate the origin of the data. The recipient of the ciphered data must know it to check the integrity of the file, although it doesn't need to be "critical" in term of security (it can even be transmitted in clear alongside the ciphered data).
+
+<h1>Deciphering a file</h1>
+
+This time, the program will decipher the content of data_cipher.txt file into decipher.txt.
+
+\include cipher.java
+
+<hr>
+<h1>Output example</h1>
+\code
+ktb init ok
+ktb_cipher_init ok
+key size : 32
+ktb_kdf ok
+F1 FC 02 FB 12 1C 50 36 86 BD A4 73 D0 AD 15 5F E5 45 D8 6D 2F B2 70 6A 8E 6C 9E 3F 09 87 A4 42 
+ktb_cipher_set_key ok
+iv_size : 16
+ktb_prn_fill_buffer ok
+ktb_cipher_set_iv ok
+ktb_cipher_get_prefix_size : 0
+block_size : 16
+ktb_cipher_encrypt_block ok
+suffix_size : 0
+ktb_cipher_init ok
+key size : 32
+ktb_kdf ok
+ktb_cipher_set_key ok
+iv_size : 16
+ktb_cipher_set_iv ok
+buffer_size : 4096
+prefix_size : 0
+ktb_cipher_decrypt_block ok
+output_size : 565
+\endcode
+ */ 

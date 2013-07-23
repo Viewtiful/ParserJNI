@@ -1,0 +1,39 @@
+/*! 
+\example hash-File 
+
+<h1>Goal</h1>
+
+The code in this sample perform one kind of hash computation :
+<ul>
+   <li>on a file, illustrating how to hash a large quantity of data</li>
+</ul>
+<hr>
+<h1>Usage</h1>
+
+In order to run the example, you need to have :
+<ul>
+   <li>libArcanaJNI.so</li>
+   <li>ArcanaJNI.java</li>
+   <li>The Utils.java class</li>
+   <li>A file named texte.txt containing what you want to hash</li>
+   <li>And of course hashFile.java</li>
+</ul>
+
+In order to create a file of size 4096 containing random values. On Linux, you could use :
+<br>\code dd if=/dev/urandom of=./texte.txt bs=1 count=4096 \endcode
+
+The program will output the hash as an hexadecimal string.
+
+\include hashFile.java
+
+<hr>
+<h1>Output example</h1>
+\code
+17:04:31 : ktb_init() ok
+17:04:31 : ktb_hash_init() ok
+========================
+Content of the buffer : 
+21 10 C5 8E 1A AC 72 B2 BA BB AD 2C AF 36 E4 64 BE EC D4 37 BF 8D 6B F6 C8 59 5A B6 3B 45 06 0F B9 58 E4 9C 72 DB 35 FD A6 56 AC 14 2A 30 55 67 57 33 3D B8 CA 4B AD CD FC 21 BB D7 8C 61 4D B5 
+========================
+\endcode
+ */ 

@@ -1,0 +1,43 @@
+/*! 
+\example base64 
+
+<h1>Goal</h1>
+
+The code in this sample perform two kind of things on a string :
+<ul>
+   <li>It encode it as a 64 bits string</li>
+   <li>It decode it as a 32 bits string and print it back again</li>
+</ul>
+<hr>
+<h1>Usage</h1>
+
+In order to run the example, you need to have :
+<ul>
+   <li>libArcanaJNI.so</li>
+   <li>ArcanaJNI.java</li>
+   <li>The Utils.java class</li>
+   <li>And of course base64.java</li>
+</ul>
+
+The program will output the encoded string as a 64 bits one in hexadecimal.
+Print it back as a 32 bits one in hexadecimal and the string decoded.
+
+\include base64.java
+
+<hr>
+<h1>Output example</h1>
+\code
+17:10:50 : ktb_init() ok
+17:10:50 : ktb_base64_encode() ok
+========================
+Content of the buffer : 
+64 47 56 7A 64 41 3D 3D 
+========================
+17:10:50 : ktb_base64_decode() ok
+========================
+Content of the buffer : 
+74 65 73 74 
+========================
+test
+\endcode
+ */ 
