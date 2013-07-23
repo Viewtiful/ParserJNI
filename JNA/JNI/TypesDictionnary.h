@@ -1,5 +1,6 @@
 /** @file
  *
+ * @defgroup JNI_Dictionnary Dictionnary of all Types.
  * Header for the TypesDictionnary class
  */
 
@@ -22,142 +23,153 @@
 #include <cassert>
 #include "Modules/Module.h"
 using namespace nsModules;
+
+/** @addtogroup JNI_Dictionnary
+ * @{ */
+
 namespace nsJNI
 {
-    
-   class Array;
-   class Function;
+
+	class Array;
+	class Function;
 	/*!
-		\class TypesDictionnary
-		\brief contains All Type, and all we need to convert  
-	*/
-    class TypesDictionnary
-    {
-      public:
-	/*!
-		\brief constructor with one parameter
-		Create, and initialize a TypeDictionnary with the following argument
-		\param filename : The Output filename (Java and JNI output files have the same name)
-	*/
-        TypesDictionnary(string filename);
-        virtual ~TypesDictionnary();
+	  \class TypesDictionnary
+	  \brief Contains All Type, and all we need to convert  
+	  */
+	class TypesDictionnary
+	{
+		public:
+			/*!
+			  \brief Constructor with one parameter
+			  Create, and initialize a TypeDictionnary with the following argument
+			  \param filename : The Output filename (Java and JNI output files have the same name)
+			  */
+			TypesDictionnary(string filename);
+			virtual ~TypesDictionnary();
 
-		/*!
-			\brief add all Base Type conversion such as int and some specific conversion which not involved complex type
-			\param filename: The Output filename (Java and JNI output files have the same name) : useful for struct's VMSignature
-		*/
+			/*!
+			  \brief Add all Base Type conversion such as int and some specific conversion which not involved complex type
+			  \param filename: The Output filename (Java and JNI output files have the same name) : useful for struct's VMSignature
+			  */
 
-        void addBaseType(string filename);
+			void addBaseType(string filename);
 
-		/*!
-			\brief Convert module to Java
-			\param modules: All header file representing by Module
-		*/
-		void convertJava(const Module::vector& modules);
+			/*!
+			  \brief Convert module to Java
+			  \param modules: All header file representing by Module
+			  */
+			void convertJava(const Module::vector& modules);
 
-		/*!
-			\brief Convert module to JNI
-			\param modules: All header file representing by Module
-		*/
-		void convertJNI(const Module::vector& modules);
+			/*!
+			  \brief Convert module to JNI
+			  \param modules: All header file representing by Module
+			  */
+			void convertJNI(const Module::vector& modules);
 
-		/*!
-			\brief Add a new Type, to a specific place in the conversion Map
-			\param cType : The CType which is handled by the new Type
-			\param type : The new Type
-		*/
-		void addToMap(const string& cType, Type *type);
+			/*!
+			  \brief Add a new Type, to a specific place in the conversion Map
+			  \param cType : The CType which is handled by the new Type
+			  \param type : The new Type
+			  */
+			void addToMap(const string& cType, Type *type);
 
-		/*!
-			\brief Give the number of element in a specific place in the conversionMap 
-			\param Ctype :  
-		*/
+			/*!
+			  \brief Give the number of element in a specific place in the conversionMap 
+			  \param Ctype :  
+			  */
 
-		int countAt(const string& Ctype);
+			int countAt(const string& Ctype);
 
-		/*!
-			\brief give the Java translation from a CType
-			\param CType: Type that we want to Translate
-			\return : the translated Java Type
-		*/
+			/*!
+			  \brief give the Java translation from a CType
+			  \param CType: Type that we want to Translate
+			  \return : the translated Java Type
+			  */
 
-		string convertJava(const string& Ctype);
+			string convertJava(const string& Ctype);
 
-		/*!
-			\brief give the JNI translation from a CType
-			\param CType: Type that we want to Translate
-			\return : the translated JNI Type
-		*/
+			/*!
+			  \brief give the JNI translation from a CType
+			  \param CType: Type that we want to Translate
+			  \return : the translated JNI Type
+			  */
 
-		string convertJNI(const string& Ctype);
+			string convertJNI(const string& Ctype);
 
-		/*!
-			\brief give the VM Signature from a CType
-			\param CType: Type that we want to Translate
-			\return : the VM signature
-		*/
+			/*!
+			  \brief give the VM Signature from a CType
+			  \param CType: Type that we want to Translate
+			  \return : the VM signature
+			  */
 
-		string convertVM(const string& Ctype);
-		/*!
-			\brief generate the Native Function Call
-			\param f: Output JNI File
-		*/
+			string convertVM(const string& Ctype);
+			/*!
+			  \brief generate the Native Function Call
+			  \param f: Output JNI File
+			  */
 
-		string getRealType(const string& CType);
-		
-		string getFilename();
+			string getRealType(const string& CType);
 
-		/*!
-			\brief generate the Native Function Call
-			\param f: Output JNI File
-		*/
-		int nbIndirections(const string& CType);
+			/*!
+			  \brief Return the filename where we write the output.
+			  */
+			string getFilename();
 
-		/*!
-			\brief Add Typedefs to Dictionnary
-			\param typedefs: all typedefs included in C Files
-		*/
+			/*!
+			  \brief generate the Native Function Call
+			  \param f: Output JNI File
+			  */
+			int nbIndirections(const string& CType);
 
-		void addTypedefs(const nsC::Typedef::vector typedefs);
+			/*!
+			  \brief Add Typedefs to Dictionnary
+			  \param typedefs: all typedefs included in C Files
+			  */
 
-		/*!
-			\brief Add Structs to Dictionnary
-			\param fJava : Output file Java
-			\param fJNI : Ouput file JNI
-			\param structs: all structs included in C Files
-		*/
-		void addStruct(ofstream &fJava, ofstream &fJNI, const nsC::Struct::vector& structs);
+			void addTypedefs(const nsC::Typedef::vector typedefs);
 
-		/*!
-			\brief generate the Native Function Call
-			\param f: Output JNI File
-		*/
+			/*!
+			  \brief Add Structs to Dictionnary
+			  \param fJava : Output file Java
+			  \param fJNI : Ouput file JNI
+			  \param structs : all structs included in C Files
+			  */
+			void addStruct(ofstream &fJava, ofstream &fJNI, const nsC::Struct::vector& structs);
 
-	   	void addEnums(ofstream &f, const nsC::Enum::vector& enums);
+			/*!
+			  \brief generate the Native Function Call
+			  \param f: Output JNI File
+			  */
 
-		/*!
-			\brief inform that this type is a NativeType or not 
-			\param type: C Type
-			\param true if it is a NativeType, false else
-		*/
+			void addEnums(ofstream &f, const nsC::Enum::vector& enums);
 
-		bool isNativeType(const string &type);
+			/*!
+			  \brief Inform that this type is a NativeType or not. 
+			  \param type: C Type
+			  \param true if it is a NativeType, false otherwise.
+			  */
 
-		/*!
-			\brief return the Object Type which handle this C Type
-			\param f: the C Type
-			\return the Object type
-		*/
-		Type* getType(const string & Ctype);
+			bool isNativeType(const string &type);
 
-		vector<Function*> getFcts();
-      protected:
+			/*!
+			  \brief Return the Object Type which handle this C Type.
+			  \param f: C Type
+			  \return Object type corresponding to the C type.
+			  */
+			Type* getType(const string & Ctype);
 
-        /** Add base types (int, size_t, char, those stuff) */
-        std::map<std::string, Type*> _conversionMap; /*!<Map which associate an type to a class (int -> NativeType)*/
-		string _filename; /*!< filename*/
-		std::vector<Function*> _fcts; /*!< All fonctions */
-    };
+			/*!
+			  \brief Get all the functions.
+			  */
+			vector<Function*> getFcts();
+		protected:
+
+			/** Add base types (int, size_t, char, those stuff). */
+			std::map<std::string, Type*> _conversionMap;
+			/** Name of the file where we write the output. */
+			string _filename;
+			std::vector<Function*> _fcts;
+	};
 }
 
 
