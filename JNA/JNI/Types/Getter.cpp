@@ -54,7 +54,7 @@ void Getter::printContentJNI(ofstream &f)
 	string structure;
 
 	//Write specific code in order to transform the return Value from C to Java.
-	if(_specialCase) {
+	if(_specialCase) {  //We want to get the size of the structure.
 		structure =
 			"\t\treturn sizeof(%CLASSNAME%);\n"
 			;
@@ -95,6 +95,7 @@ void Getter::printContentJNI(ofstream &f)
 			"\t\t\t}\n"
 			"\t\t}\n\n"
 			"\t\treturn JNI_result;\n"
+         "\t}\n\n"
 			;  
 	}
 	else {
@@ -105,6 +106,7 @@ void Getter::printContentJNI(ofstream &f)
 			"\t\telse\n"
 			"\t\t\tC_ctx = NULL;\n\n"
 			"\t\treturn C_ctx->%ATTRIBUTENAME%;\n"
+         "\t}\n\n"
 			;
 	}
 
@@ -113,11 +115,6 @@ void Getter::printContentJNI(ofstream &f)
 	stringReplace(structure,"CTYPE",_returnType);
 
 	f << structure;
-	f << "\t}\n\n";
-}
-
-void Getter::prepareCall(ofstream &f)
-{
 }
 
 string Getter::call()
