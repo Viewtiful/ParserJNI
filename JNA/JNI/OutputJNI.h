@@ -23,14 +23,14 @@ namespace nsJNI
 {
 	/*!
 	  \class OutputJNI
-	  \brief generate, manage the JNI Side 
+	  \brief Generate, manage the JNI Side 
 	  */
 	class OutputJNI{
 
 		public:
 			/*!
 			  \brief Constructor with one parameter
-			  Create, and initialize a OutputJNI class with the following argument
+			  create, and initialize a OutputJNI class with the following argument
 			  \param dictionnary : Dictionnary of all types.
 			  */
 			OutputJNI(TypesDictionnary *dictionnary);
@@ -82,7 +82,7 @@ namespace nsJNI
 			//void addFunctionPrototype(Function::vector fcts);
 			/*!
 			  \brief generate the Native Function Call
-			  \param f: Output JNI File
+			  \param f : Output JNI File
 			  */
 			void addNativeFunctionTable(ofstream &f, string filename, vector<nsJNI::Function*> fcts);
 

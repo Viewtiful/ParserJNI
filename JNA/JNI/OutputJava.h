@@ -33,8 +33,7 @@ namespace nsJNI
 		public:
 			/*!
 			  \brief Constructor with two parameters.
-			  Create, and initialize a Create Function with the following arguments.
-			  \param structName : Name of the structure which contains this method.
+			  create, and initialize OutputJava with the following arguments.
 			  \param dictionnary : Dictionnary of all types.
 			  */
 			OutputJava(TypesDictionnary* dictionnary);
@@ -42,16 +41,16 @@ namespace nsJNI
 			~OutputJava();
 
 			/*!
-			  \brief Give the correct Java Translation for an specific c Type.
+			  \brief Give the correct Java Translation for an specific C type.
 			  \param inputType : C type which will be translated.
-			  \return The corresponding Java Type of the C type.
+			  \return The corresponding Java type of the C type.
 			  */
 			string getJavaType(const string& inputType);
 
 			/*!
-			  \brief Convert a C function into a Java Function, and write the result in a file
+			  \brief Convert a C function into a Java function, and write the result in a file.
 			  \param f : The target file where the function will be written.
-			 *      \param fct : Function which is going to be translated.
+			 *      \param fct : function which is going to be translated.
 			 */
 			void convert(ofstream &f, nsJNI::Function *fct);
 
