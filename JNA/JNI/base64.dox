@@ -5,8 +5,8 @@
 
 The code in this sample perform two kind of things on a string :
 <ul>
-   <li>It encode it as a 64 bits string</li>
-   <li>It decode it as a 32 bits string and print it back again</li>
+   <li>It encodes it as a 64 bits string</li>
+   <li>It decodes it as a 32 bits string and print it back again</li>
 </ul>
 <hr>
 <h1>Usage</h1>
