@@ -57,6 +57,7 @@ void Getter::printContentJNI(ofstream &f)
 	if(_specialCase) {  //We want to get the size of the structure.
 		structure =
 			"\t\treturn sizeof(%CLASSNAME%);\n"
+         "\t}\n\n"
 			;
 	}
 	else if(_dictionnary->convertJNI(_returnType) == "jbyteArray") {
@@ -69,6 +70,7 @@ void Getter::printContentJNI(ofstream &f)
 			"\t\tjbyteArray result = (*env)->NewByteArray(env, C_ctx->%ATTRIBUTENAME%_size);\n"
 			"\t\t(*env)->SetByteArrayRegion(env, result, 0, C_ctx->%ATTRIBUTENAME%_size, C_ctx->%ATTRIBUTENAME%);\n"
 			"\t\treturn result;\n"
+         "\t}\n\n"
 			;
 	}
 	else if( _dictionnary->convertJNI(_returnType) == "jobject") {

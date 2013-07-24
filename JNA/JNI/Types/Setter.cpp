@@ -41,14 +41,16 @@ void Setter::printPrototypeJNI(ofstream &f)
 void Setter::printContentJNI(ofstream &f)
 {
 	Type * type = _dictionnary->getType(_args[1]->getType());
-	f << "{\n\n";
+
 	//Write the Java elements in the C variables of the structure. 
-	string body = "\t\t%CLASSNAME% *C_ctx;\n"
+	string body = "{\n\n"
+      "\t\t%CLASSNAME% *C_ctx;\n"
 		"\t\tif(mInternal != 0)\n"
 		"\t\t\tC_ctx = (%CLASSNAME% *)((contextWrapper *)mInternal)->ctxRef;\n"
 		"\t\telse\n"
 		"\t\t\tC_ctx = NULL;\n"
-		"%WRITEFIELD%";
+		"%WRITEFIELD%"
+      "\t}\n\n";
 	string writeField;
 
 	//If its an jobject there is an enum or a struct. We do the work to pass it
@@ -91,11 +93,7 @@ void Setter::printContentJNI(ofstream &f)
 	stringReplace(body, "CLASSNAME", _structName);
 	stringReplace(body, "WRITEFIELD", writeField);
 
-	f << body << "\t}\n\n";
-}
-
-void Setter::prepareCall(ofstream &f)
-{
+	f << body;
 }
 
 string Setter::call()
