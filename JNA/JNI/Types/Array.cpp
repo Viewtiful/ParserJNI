@@ -76,6 +76,8 @@ void Array::prepareCall(ofstream& f, const string& varName)
 
 std::string Array::getJNIParameterName(const string& varName) 
 {
+   //We add the _size parameter for the native function with the normal 
+   //parameter for the array.
 	string param("%PARAMNAME%, %PARAMNAME2%");
 
 	stringReplace(param, "PARAMNAME2", "C_" + varName + "_size");
