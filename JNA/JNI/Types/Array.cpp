@@ -50,7 +50,7 @@ bool Array::isArray()
 	return true;
 }
 
-void Array::prepareCall(ofstream& f, string& varName) 
+void Array::prepareCall(ofstream& f, const string& varName) 
 {
 	string structure (
 			"\t\t%TYPE% * %NAME%;\n"
@@ -74,7 +74,7 @@ void Array::prepareCall(ofstream& f, string& varName)
 	f << structure;
 }
 
-std::string Array::getJNIParameterName(string& varName) 
+std::string Array::getJNIParameterName(const string& varName) 
 {
 	string param("%PARAMNAME%, %PARAMNAME2%");
 
@@ -102,7 +102,7 @@ void Array::getReturnValue(ofstream& f)
 	f << structure;
 }
 
-void Array::getReturnValueAndFree(ofstream& f, string& varName) 
+void Array::getReturnValueAndFree(ofstream& f, const string& varName) 
 {
 	string structure (
 			"\t\t(*env)->Set%TYPEMAJ%ArrayRegion(env, %CNAME%, 0, %CNAMELENGTH%, %NAME%);\n"

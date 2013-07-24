@@ -44,7 +44,7 @@ bool BoolWrapper::isArray()
 	return false;
 }
 
-void BoolWrapper::prepareCall(ofstream& f,string& varName)
+void BoolWrapper::prepareCall(ofstream& f, const string& varName)
 {
 	string structure (
 			"\t\t%TYPE% %NAME%;\n\n"
@@ -58,7 +58,7 @@ void BoolWrapper::prepareCall(ofstream& f,string& varName)
 	f << structure;
 }
 
-string BoolWrapper::getJNIParameterName(string& varName)
+string BoolWrapper::getJNIParameterName(const string& varName)
 {
 	return "&C_" + varName;
 }

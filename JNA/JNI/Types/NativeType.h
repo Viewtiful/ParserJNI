@@ -41,7 +41,7 @@ namespace nsJNI {
 			  \param VMSIgnature : signature for the java Virtual Machine
 			  \param isNativeType : if this NativeType is a real NativeType
 			  */
-			NativeType(const string& javaType,const string& jniType,const string& VMSignature,bool isNativeType);
+			NativeType(const string& javaType, const string& jniType, const string& VMSignature, bool isNativeType);
 			/*!
 			  \brief constructor with three parameters
 			  Create, and initialize a type with the following arguments
@@ -58,8 +58,8 @@ namespace nsJNI {
 			bool isAddressWrapper();
 			bool isBooleanWrapper();
 			bool isArray();
-			void prepareCall(ofstream& f, string& varName);
-			string getJNIParameterName(string& varName);
+			void prepareCall(ofstream& f, const string& varName);
+			string getJNIParameterName(const string& varName);
 			void getReturnValue(ofstream& f);
 			string getCType();
 

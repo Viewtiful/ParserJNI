@@ -33,7 +33,7 @@ namespace nsJNI {
 			  \param type : type of the new Parameter
 			  \param name : name of the new Parameter
 			  */
-			Param(const string& type,const string& name);
+			Param(const string& type, const string& name);
 			/*!
 			  \brief destructor
 			  */

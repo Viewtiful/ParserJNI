@@ -55,13 +55,13 @@ bool Typedef::isArray()
 	return false;
 }
 
-void Typedef::prepareCall(ofstream& f,string& varName)
+void Typedef::prepareCall(ofstream& f, const string& varName)
 {
 
 }
 
 //Useless code but needed for polymorphism
-string Typedef::getJNIParameterName(string& varName)
+string Typedef::getJNIParameterName(const string& varName)
 {
 	return "Typedef";
 }

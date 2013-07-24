@@ -57,8 +57,8 @@ namespace nsJNI
         	bool isAddressWrapper();
          bool isBooleanWrapper();
          bool isArray();
-        	void prepareCall(ofstream& f,string& varName);
-        	string getJNIParameterName(string& varName);
+        	void prepareCall(ofstream& f, const string& varName);
+        	string getJNIParameterName(const string& varName);
         	virtual void getReturnValue(ofstream& f) =0;
         
 		protected:

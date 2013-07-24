@@ -127,7 +127,7 @@ bool Enum::isArray()
 	return false;
 }
 
-void Enum::prepareCall(ofstream& f,string& varName)
+void Enum::prepareCall(ofstream& f, const string& varName)
 {
 	//JNI code in order to get the value of the enum from Java.
 	string structure (
@@ -148,7 +148,7 @@ void Enum::prepareCall(ofstream& f,string& varName)
 	f << structure;
 }
 
-string Enum::getJNIParameterName(string& varName)
+string Enum::getJNIParameterName(const string& varName)
 {
 	return "C_" + varName;
 }

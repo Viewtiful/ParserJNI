@@ -210,7 +210,7 @@ bool Struct::isBooleanWrapper()
 	return false;
 }
 
-void Struct::prepareCall(ofstream &f,string& varName)
+void Struct::prepareCall(ofstream &f, const string& varName)
 {
 }
 
@@ -219,7 +219,7 @@ bool Struct::isArray()
 	return false;
 }
 
-string Struct::getJNIParameterName(string& varName)
+string Struct::getJNIParameterName(const string& varName)
 {
 	return "C_" + varName;
 }

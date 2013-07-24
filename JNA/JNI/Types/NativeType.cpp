@@ -61,7 +61,7 @@ bool NativeType::isArray()
 	return false;
 }
 
-void NativeType::prepareCall(ofstream& f,string& varName)
+void NativeType::prepareCall(ofstream& f, const string& varName)
 {
 	string type = getCType();
 	string name = "C_" + varName;
@@ -100,7 +100,7 @@ void NativeType::prepareCall(ofstream& f,string& varName)
 	}
 }
 
-string NativeType::getJNIParameterName(string& varName)
+string NativeType::getJNIParameterName(const string& varName)
 {
 	return "C_" + varName;
 }

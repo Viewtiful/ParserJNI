@@ -48,7 +48,7 @@ bool Pointer::isAddressWrapper()
 	return false;
 }
 
-void Pointer::prepareCall(ofstream& f,string& varName)
+void Pointer::prepareCall(ofstream& f, const string& varName)
 {
 	//We have a pointer from not a native type, we get the address and cast it
 	//to the corresponding type.
@@ -84,7 +84,7 @@ void Pointer::prepareCall(ofstream& f,string& varName)
 	}
 }
 
-string Pointer::getJNIParameterName(string& varName)
+string Pointer::getJNIParameterName(const string& varName)
 {
 	return "C_" + varName;
 }

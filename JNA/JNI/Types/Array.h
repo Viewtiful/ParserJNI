@@ -49,10 +49,10 @@ namespace nsJNI {
 			bool isAddressWrapper();
 			bool isBooleanWrapper();
 			bool isArray();
-			void prepareCall(ofstream& f,std::string& varName);
-			std::string getJNIParameterName(std::string& varName);
+			void prepareCall(ofstream& f, const string& varName);
+			std::string getJNIParameterName(const string& varName);
 			void getReturnValue(ofstream& f);
-			void getReturnValueAndFree(ofstream& f, std::string& varName);
+			void getReturnValueAndFree(ofstream& f, const string& varName);
 
 		protected:
 			/** Dictionnary of all types*/

@@ -88,13 +88,13 @@ namespace nsJNI {
 			/*!
 			  \brief Prepare JNI call with variables initialization before calling the native function.
 			  */
-			virtual void prepareCall(ofstream& f,string& varName) =0;
+			virtual void prepareCall(ofstream& f,const string& varName) =0;
 
 			/*!
 			  \brief create the parameter name for the native function call.
 			  \return the parameter name for native call.
 			  */
-			virtual string getJNIParameterName(string& varName) =0;
+			virtual string getJNIParameterName(const string& varName) =0;
 
 			/*!
 			  \brief create JNI instructions to return the value from the native function call to Java.
