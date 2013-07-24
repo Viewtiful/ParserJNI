@@ -47,10 +47,6 @@ void Create::printContentJNI(ofstream &f)
 	f << body;
 }
 
-void Create::prepareCall(ofstream &f)
-{
-}
-
 string Create::call()
 {
 	//Param of the JNI function.
