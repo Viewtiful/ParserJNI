@@ -10,8 +10,7 @@ Comments::Comments()
     _lexic["@a"] = &Comments::transformA;
     _lexic["@note"] = &Comments::transformNote;
     _lexic["@retval"] = &Comments::transformReturnVal;
-    previousParamName = "";
-    _stay = false;
+    _deleteUnusedParam = false;
     
 
 }
@@ -28,7 +27,7 @@ void Comments::call(string& token, int index, string& comments)
     if (_lexic.count(token) != 0)
     {
         codeGenerator c = _lexic[token];
-        (this->*c)(index, comments);
+       (this->*c)(index, comments);
 	cout << "Token = " << token << endl;
     }
     else if(token!="@return")
@@ -40,28 +39,27 @@ void Comments::call(string& token, int index, string& comments)
 
 }
 
-string Comments::transformToJavadoc(nsC::Function fct)
+string Comments::transformToJavadoc(string &comments,nsJNI::Function* fct)
 {
-    string comments = fct.getComment();
-    _fctParameters = fct.getParamList();
+    _fctParameters = fct->getArgs();
     int tokenBegin = 1;
     int tokenEnd = 1;
-    int nextI;
+    int nextI = 1;
     for (int i = 0; i < comments.size(); i = nextI)
     {
         tokenBegin = comments.find('@', i);
         //If there is an Tag
-        if (tokenBegin != comments.npos)
+        if (tokenBegin != string::npos)
         {
             string token = getToken(tokenBegin, comments);
             if(token!="@see" && token!="@a" && token!="@retval")
                 inRetval = false;
             tokenEnd = token.size() + tokenBegin;
-            call(token, tokenBegin, comments);
-            if(!_stay)
+           call(token, tokenBegin, comments);
+           if(!_deleteUnusedParam)
                 nextI = tokenEnd + 1;
             else
-                _stay = false;
+                _deleteUnusedParam = false;            
         }
         else // No more tag in comments
             break;
@@ -107,7 +105,6 @@ void Comments::transformParam(int index, string &comments)
         inOut = skipLine(endofToken + 1, comments, ']');
         assert(inOut != -1);
         string access = comments.substr(endofToken+2,inOut-1-endofToken-2 );
-        cout << "Access :" << access << endl;
     }
     else
         inOut = endofToken;
@@ -118,28 +115,23 @@ void Comments::transformParam(int index, string &comments)
 
     //Get the paramName by using substr
     string paramName = getParameterName(inOut,comments);
-    cout << "ParamName :" << paramName << endl;
     
     //If the param Name contain _size, we have to delete this comments
-    if (paramName == previousParamName+"_size" || paramisSize(paramName))
+    if (paramisSize(paramName))
     {
         int nextTag = searchNextBlockTag(inOut+1,comments);
         //Jump to the next Tag or delete the remaining comments
         if (nextTag != -1)
-        {
-            cout << "Index: " << comments[nextTag] << endl;
             comments.erase(index, nextTag - index );
-        }
         else
         {
             //At comments.size()-2 we will find "*/"
             //So we erase from index to comments.size()-2)
             comments.erase(index, comments.size() - index);
             comments.insert(comments.size(),"*/");
-        }
-        _stay = true;
+         }
+        _deleteUnusedParam = true;
     }
-    previousParamName = paramName;
 }
 
 void Comments::transformRef(int index, string &comments)
@@ -271,18 +263,17 @@ string Comments::getParameterName(int index,string &comments)
 
 bool Comments::paramisSize(string paramName)
 {
-    
     for(int i = 0;i<_fctParameters.size();i++)
     {
-        nsC::Param current = _fctParameters[i];
-        if(current.getName()==paramName)
+        nsJNI::Param *current = _fctParameters[i];
+        if(current->getName()==paramName)
         {
-            if(current.getCType()=="size_t *")
+            if(current->getType()=="size_t *")
                 return true;
             else
                 return false;
         }
     }
-    return false;
+    return true;
 }
 

@@ -3,16 +3,13 @@
 #include <fstream>
 #include <map>
 #include <string>
-#include "C/Function.h"
-#include "C/Struct.h"
-#include "C/Enum.h"
-#include "C/Param.h"
+#include "JNI/Types/Function.h"
+#include "JNI/Types/Param.h"
 #include <cassert>
 #include <vector>
 #include <locale>
 #include <cstdlib>
 using namespace std;
-using namespace nsC;
 namespace nsJNI {
     /*!
             \class Comments
@@ -27,10 +24,8 @@ namespace nsJNI {
         virtual ~Comments();
         /*!
          * \brief Transform  doxygen Comments to Javadoc
-         * 
-         * 
-         * !*/
-        string transformToJavadoc(nsC::Function fct);
+         */ 
+        string transformToJavadoc(string &comments,nsJNI::Function *fct);
         /*!
          * \brief parse and compute the \@ token
          * \param index : the beginning search index
@@ -126,9 +121,8 @@ namespace nsJNI {
     private:
         map<string, codeGenerator> _lexic; /*!< contains handle function*/
         bool inRetval; /*!< translating an retval*/
-        string previousParamName; /*!< the name of the previous parameter handled by tranformParam*/
-        bool _stay; /*!< flag is true if an \@param was deleted*/
-        vector<nsC::Param> _fctParameters;/*!< the fonction's parameters*/
+        bool _deleteUnusedParam; /*!< flag is true if an \@param was deleted*/
+        vector<nsJNI::Param*> _fctParameters;/*!< the fonction's parameters*/
     };
 
 
