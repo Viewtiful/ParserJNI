@@ -44,18 +44,19 @@ bool AddressWrapper::isArray()
 	return false;
 }
 
-void AddressWrapper::prepareCall(ofstream& f,string& varName)
+void AddressWrapper::prepareCall(ofstream& f, const string& varName)
 {
+	_varName = varName;
+
 	//We create the C object equivalent of the Java one and allocate memory for it.
 	string structure (
 			"\t\t%TYPE% %NAME%;\n"
 			"\t\tcontextWrapper *ctxWrp_%CNAME% = (contextWrapper *)malloc(sizeof(contextWrapper));\n"
 			"\t\tctxWrp_%CNAME%->env = env;\n\n"
 			);
-	_varName = varName;
 
 	string name = "C_" + varName;
-	//If it's a pointer, we suppress it from the type.
+	//If it's a pointer, we delete the star from the type.
 	if(_realCType.find("*", 0) != string::npos) { 
 		stringReplace(structure, "TYPE", _realCType.substr(0, _realCType.size() -2));
 	}
@@ -67,7 +68,7 @@ void AddressWrapper::prepareCall(ofstream& f,string& varName)
 	f << structure;
 }
 
-string AddressWrapper::getJNIParameterName(string& varName)
+string AddressWrapper::getJNIParameterName(const string& varName)
 {
 	return "&C_" + varName;
 }
