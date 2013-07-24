@@ -91,7 +91,7 @@ int JNIPARSER::run(nsModules::Module::vector modules)
 			nsC::Function current = fcts[k];
 			if(!current.isVariadic())
 			{
-				fileJava << _cm->transformToJavadoc(current,fileJava) << endl;
+				fileJava << _cm->transformToJavadoc(current) << endl;
 				nsJNI::Function *fct = new Function(_dico);
 				cout << "Comments function : "<< current.getName() << current.getComment() << endl;
 				saveFcts.push_back(fct);

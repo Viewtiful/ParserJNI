@@ -19,6 +19,7 @@ Comments::Comments()
 Comments::~Comments()
 {
     _lexic.clear();
+    _fctParameters.clear();
 }
 
 void Comments::call(string& token, int index, string& comments)
@@ -39,9 +40,10 @@ void Comments::call(string& token, int index, string& comments)
 
 }
 
-string Comments::transformToJavadoc(nsC::Function fct, ofstream &f)
+string Comments::transformToJavadoc(nsC::Function fct)
 {
     string comments = fct.getComment();
+    _fctParameters = fct.getParamList();
     int tokenBegin = 1;
     int tokenEnd = 1;
     int nextI;
@@ -119,7 +121,7 @@ void Comments::transformParam(int index, string &comments)
     cout << "ParamName :" << paramName << endl;
     
     //If the param Name contain _size, we have to delete this comments
-    if (paramName == previousParamName+"_size")
+    if (paramName == previousParamName+"_size" || paramisSize(paramName))
     {
         int nextTag = searchNextBlockTag(inOut+1,comments);
         //Jump to the next Tag or delete the remaining comments
@@ -265,5 +267,22 @@ string Comments::getParameterName(int index,string &comments)
     cout << "Param :" << paramName << endl;
     return paramName;
     
+}
+
+bool Comments::paramisSize(string paramName)
+{
+    
+    for(int i = 0;i<_fctParameters.size();i++)
+    {
+        nsC::Param current = _fctParameters[i];
+        if(current.getName()==paramName)
+        {
+            if(current.getCType()=="size_t *")
+                return true;
+            else
+                return false;
+        }
+    }
+    return false;
 }
 

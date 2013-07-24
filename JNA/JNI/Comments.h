@@ -6,6 +6,7 @@
 #include "C/Function.h"
 #include "C/Struct.h"
 #include "C/Enum.h"
+#include "C/Param.h"
 #include <cassert>
 #include <vector>
 #include <locale>
@@ -29,7 +30,7 @@ namespace nsJNI {
          * 
          * 
          * !*/
-        string transformToJavadoc(nsC::Function fct, ofstream &f);
+        string transformToJavadoc(nsC::Function fct);
         /*!
          * \brief parse and compute the \@ token
          * \param index : the beginning search index
@@ -114,11 +115,19 @@ namespace nsJNI {
          * \return the parameter name
          *          */
         string getParameterName(int index,string &comments);
+        
+        /*!
+         * \brief define if this parameter is an size_t *
+         * \param paramName : the paramater name
+         * \return true if it is a size_t*, false else
+         */
+        bool paramisSize(string paramName);
     private:
         map<string, codeGenerator> _lexic; /*!< contains handle function*/
         bool inRetval; /*!< translating an retval*/
         string previousParamName;
         bool _stay;
+        vector<nsC::Param> _fctParameters;
     };
 
 
