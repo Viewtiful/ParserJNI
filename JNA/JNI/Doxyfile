@@ -910,6 +910,7 @@ HTML_EXTRA_FILES       = ../Java/tests/hash/hash.java
 ../Java/tests/kem/kep.java
 ../Java/tests/sign/sign.java
 ../Java/tests/sign/verify.java
+../Java/tests/gen_keypair/gen_keypair.java
 
 
 # The HTML_COLORSTYLE_HUE tag controls the color of the HTML output.
