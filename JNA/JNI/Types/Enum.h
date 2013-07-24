@@ -23,21 +23,18 @@ namespace nsJNI{
 	class TypesDictionnary;
 	/*!
 	  \class Enum
-	  \brief represents an Enum
+	  \brief Represents an Enum
 	  */
 	class Enum : public Type
 	{
 		public : 
-			/*!
-			  \brief destructor
-			  */
 			virtual ~Enum();
 
 			/*!
-			  \brief Create an enum for the JNI parser.
-			  Create, and add to the dictionnary an Enum with the following arguments.
+			  \brief create an enum for the JNI parser.
+			  create, and add to the dictionnary an Enum with the following arguments :
 			  \param f : The file where the enum will be written.
-			  \param en : Contains all enums from the C header (module), we are running throught.
+			  \param en : Contains all enums from the C header (module), we are running through.
 			  \param dictionnary : Dictionnary which contains all types.
 			  */
 			static bool create(ofstream &f, const nsC::Enum::vector& en, TypesDictionnary *dictionnary);
@@ -57,9 +54,9 @@ namespace nsJNI{
 			void getReturnValue(ofstream& f);
 
 		protected : 
-			nsC::Enum _cEnum; /*!< Object which represents the C Enum*/
-			string _filename; /*!< fileName*/
-			string _enumName; /*!< Name of the current Enum*/
+			nsC::Enum _cEnum; /*!< Object which represents the C enum.*/
+			string _filename; /*!< Filename where the enum is written.*/
+			string _enumName; /*!< Name of the current enum*/
 
 			Enum(ofstream &f, const string& javaType,const string& jniType,const string& vmSignature,const nsC::Enum& cEnum, string filename);
 	};
