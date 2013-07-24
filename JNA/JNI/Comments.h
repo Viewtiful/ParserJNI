@@ -122,12 +122,13 @@ namespace nsJNI {
          * \return true if it is a size_t*, false else
          */
         bool paramisSize(string paramName);
+        
     private:
         map<string, codeGenerator> _lexic; /*!< contains handle function*/
         bool inRetval; /*!< translating an retval*/
-        string previousParamName;
-        bool _stay;
-        vector<nsC::Param> _fctParameters;
+        string previousParamName; /*!< the name of the previous parameter handled by tranformParam*/
+        bool _stay; /*!< flag is true if an \@param was deleted*/
+        vector<nsC::Param> _fctParameters;/*!< the fonction's parameters*/
     };
 
 
