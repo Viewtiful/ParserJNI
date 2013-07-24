@@ -10,6 +10,9 @@ Comments::Comments()
     _lexic["@a"] = &Comments::transformA;
     _lexic["@note"] = &Comments::transformNote;
     _lexic["@retval"] = &Comments::transformReturnVal;
+    previousParamName = "";
+    _stay = false;
+    
 
 }
 
@@ -53,7 +56,10 @@ string Comments::transformToJavadoc(nsC::Function fct, ofstream &f)
                 inRetval = false;
             tokenEnd = token.size() + tokenBegin;
             call(token, tokenBegin, comments);
-            nextI = tokenEnd + 1;
+            if(!_stay)
+                nextI = tokenEnd + 1;
+            else
+                _stay = false;
         }
         else // No more tag in comments
             break;
@@ -98,6 +104,8 @@ void Comments::transformParam(int index, string &comments)
         //Skip until a ']' is found
         inOut = skipLine(endofToken + 1, comments, ']');
         assert(inOut != -1);
+        string access = comments.substr(endofToken+2,inOut-1-endofToken-2 );
+        cout << "Access :" << access << endl;
     }
     else
         inOut = endofToken;
@@ -107,24 +115,29 @@ void Comments::transformParam(int index, string &comments)
     assert(value != -1);
 
     //Get the paramName by using substr
-    string paramName = comments.substr(inOut, value - inOut);
-    int indexSize = paramName.find("_size", 0);
-
+    string paramName = getParameterName(inOut,comments);
+    cout << "ParamName :" << paramName << endl;
+    
     //If the param Name contain _size, we have to delete this comments
-    if (indexSize != paramName.npos)
+    if (paramName == previousParamName+"_size")
     {
-        int nextTag = searchNextBlockTag(indexSize+1,comments);
+        int nextTag = searchNextBlockTag(inOut+1,comments);
         //Jump to the next Tag or delete the remaining comments
         if (nextTag != -1)
-            comments.erase(index, nextTag - index - 1);
+        {
+            cout << "Index: " << comments[nextTag] << endl;
+            comments.erase(index, nextTag - index );
+        }
         else
         {
             //At comments.size()-2 we will find "*/"
             //So we erase from index to comments.size()-2)
-            comments.erase(index, comments.size() - index - 2);
+            comments.erase(index, comments.size() - index);
+            comments.insert(comments.size(),"*/");
         }
+        _stay = true;
     }
-   
+    previousParamName = paramName;
 }
 
 void Comments::transformRef(int index, string &comments)
@@ -169,7 +182,7 @@ void Comments::transformA(int index, string &comments)
 
 bool Comments::isAlpha(char c)
 {
-    return ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'));
+    return ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || c=='_');
 }
 
 void Comments::transformNote(int index, string &comments)
@@ -222,7 +235,9 @@ int Comments::searchNextBlockTag(int index,string &comments)
     for(i = index;i<comments.size();i++)
     {
         //Search the next @
-        int tagIndex = comments.find('@');
+        int tagIndex = comments.find('@',i);
+        if(tagIndex == string::npos)
+            return -1;
         //Extract the tag from the comments
         string token = getToken(tagIndex,comments);
         
@@ -236,4 +251,19 @@ int Comments::searchNextBlockTag(int index,string &comments)
     return -1;    
 }
 
+string Comments::getParameterName(int index,string &comments)
+{
+    //skip until a space found, to get the parameter name
+    int beginParam = skipLine(index, comments, ' ');
+    int endParam;
+    assert(beginParam != -1);
+    
+    for(endParam = beginParam+1;endParam<comments.size() && isAlpha(comments[endParam]);endParam++);
+    
+    //Get the paramName by using substr
+    string paramName = comments.substr(beginParam, endParam-beginParam);
+    cout << "Param :" << paramName << endl;
+    return paramName;
+    
+}
 

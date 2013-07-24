@@ -106,9 +106,19 @@ namespace nsJNI {
          * \param comments : the whole comments
          */
         int searchNextBlockTag(int index,string &commments);
+        
+        /*!
+         * \brief get the parameter name from whole comments if an \@param is found
+         * \param index : beginning comments index
+         * \param comments : the whole comments
+         * \return the parameter name
+         *          */
+        string getParameterName(int index,string &comments);
     private:
         map<string, codeGenerator> _lexic; /*!< contains handle function*/
         bool inRetval; /*!< translating an retval*/
+        string previousParamName;
+        bool _stay;
     };
 
 

@@ -74,4 +74,5 @@ void OutputJava::convert(ofstream &f,nsJNI::Function *fct)
 {
 	cout << "Converting Function : "<< fct->getName() << endl;
 	fct->convertJava(f);
+        f << "\n\n" << endl;
 }
