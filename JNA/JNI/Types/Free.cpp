@@ -12,10 +12,7 @@ Free::Free(string structName, TypesDictionnary *dictionnary) : Function(dictionn
 
 Free::~Free()
 {
-
-
 }
-
 
 void Free::create()
 {
@@ -45,10 +42,6 @@ void Free::printContentJNI(ofstream &f)
 	stringReplace(body,"CLASSNAME",_structName);
 
 	f << body;
-}
-
-void Free::prepareCall(ofstream &f)
-{
 }
 
 string Free::call()

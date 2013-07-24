@@ -42,7 +42,6 @@ namespace nsJNI
 			string call();
 			string printParameters();
 			void printContentJNI(ofstream &f);
-			void prepareCall(ofstream &f);
 		private:
 			string _structName; /*!< The structure's name*/
 			nsJNI::Param *_handledVariable; /*!< Variable Name*/ 
