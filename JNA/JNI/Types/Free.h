@@ -31,7 +31,7 @@ namespace nsJNI
 		public : 
 			/*!
 			  \brief constructor with two parameters
-			  Create, and initialize a Free Function with the following arguments
+			  create, and initialize a Free Function with the following arguments
 			  \param structName : Struct's name which contains this method
 			  \param dictionnary : dictionnary of all type
 			  */
