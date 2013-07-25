@@ -1,6 +1,7 @@
 /** @file
  *
  * Header for Types
+ * \brief Handle pointer for the JNI code.
  */
 
 /*!
