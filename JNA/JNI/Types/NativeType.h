@@ -1,6 +1,7 @@
 /** @file
  *
  * Header for Types
+ * \brief Handle native simple type for the JNI code.
  */
 
 /*!
