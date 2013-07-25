@@ -5,9 +5,10 @@ using namespace nsUtils;
 using namespace nsJNI;
 using namespace std;
 
-BoolWrapper::BoolWrapper(string realCType,string VMSignature) : Type("BoolWrapper", "jobject", VMSignature)
+BoolWrapper::BoolWrapper(string realCType,string filename) : Type("BoolWrapper", "jobject")
 {
 	_realCType = realCType;
+        _VMSignature = "L" + filename + "$BoolWrapper;";
 }
 
 BoolWrapper::~BoolWrapper()

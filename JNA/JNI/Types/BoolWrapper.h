@@ -38,7 +38,7 @@ namespace nsJNI {
 			  \brief Constructor with two parameters
 			  create, and initialize a BoolWrapper with the following arguments
 			  \param realCType : The Data's CType which is converted to BoolWrapper.
-			  \param VMSIgnature : Signature for the Java Virtual Machine.
+			  \param filename : filename.
 			  */		
 			BoolWrapper(string realCType, string VMSignature);
 

@@ -50,7 +50,7 @@ void TYPESDICTIONNARY::addBaseType(string filename)
 	addToMap("void", new NativeType("void","void","V",true));
 	addToMap("size_t", new NativeType("long","jlong","size_t","J",true));
 	addToMap("char *", new NativeType("byte","jbyte","B",true));
-	addToMap("bool *",new BoolWrapper("bool *", "L" + filename + "$BoolWrapper;"));	
+	addToMap("bool *",new BoolWrapper("bool *", filename));	
 
 	//Adding base Arrays
 	addToMap("shortArray", new Array("short","[S",this));

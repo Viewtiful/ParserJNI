@@ -36,7 +36,7 @@ namespace nsJNI {
 			  \brief Constructor with two parameters.
 			  create, and initialize an AddressWrapper with the following arguments
 			  \param realCType : The Data's CType which is converted to AddressWrapper.
-			  \param VMSIgnature : Signature for the Java Virtual Machine.
+			  \param filename : filename.
 			  */
 			AddressWrapper(const string& realCType, const string& VMSignature);
 
