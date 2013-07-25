@@ -1,5 +1,6 @@
 /** @file
  * Header for Create
+ * \brief Handle create function for structure type.
  */
 /*!
   \file Create.h
@@ -42,10 +43,11 @@ namespace nsJNI
 			Create(string structName, TypesDictionnary * dictionnary);
 
 			virtual ~Create();
-			void create();
 			void printPrototypeJNI(ofstream &f);
+         /*!
+            \brief Return the name and the param of the function create
+         */
 			string call();
-			string printParameters();
 			void printContentJNI(ofstream &f);
 		private:
 			string _structName; /*!< The structure's name*/

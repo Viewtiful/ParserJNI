@@ -7,20 +7,16 @@ Create::Create(string structName, TypesDictionnary *dictionnary) : Function(dict
 {
 
 	_structName = structName;
-	create();
-}
 
-Create::~Create()
-{
-}
-
-void Create::create()
-{
 	//JNI function name.
 	_name = "gen_jni_" +_structName + "_" + "create";
 
 	//Return type of the function in C.
 	_returnType = "long";
+}
+
+Create::~Create()
+{
 }
 
 void Create::printPrototypeJNI(ofstream &f)
