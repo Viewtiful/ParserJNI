@@ -98,13 +98,15 @@ void Comments::transformParam(int index, string &comments)
     int handledTokenSize = handledToken.size();
     int endofToken = index + handledTokenSize;
     int inOut;
+    string access;
     //If we find a tag like this : @param[in] or @param[out]
     if (comments[endofToken + 1] == '[')
     {
         //Skip until a ']' is found
         inOut = skipLine(endofToken + 1, comments, ']');
         assert(inOut != -1);
-        string access = comments.substr(endofToken+2,inOut-1-endofToken-2 );
+       access = comments.substr(endofToken+2,inOut-1-endofToken-2 );
+   
     }
     else
         inOut = endofToken;
@@ -131,6 +133,8 @@ void Comments::transformParam(int index, string &comments)
             comments.insert(comments.size(),"*/");
          }
         _deleteUnusedParam = true;
+        if(!_deleteUnusedParam)
+            setWay(access,paramName);
     }
 }
 
@@ -206,7 +210,7 @@ void Comments::transformReturnVal(int index, string &comments)
     
     comments.insert(index+offset, "<li>");
     //4 is for length of <li>
-    endOfLine = skipLine(index + offset+ 4, comments, '\n');
+    endOfLine = skipLine(index + offset + 4, comments, '\n');
         
     assert(endOfLine != -1);
     comments.insert(endOfLine-1, "</li>");
@@ -277,3 +281,12 @@ bool Comments::paramisSize(string paramName)
     return true;
 }
 
+void Comments::setWay(string way,string paramName)
+{
+    Param *current;
+    for(int i = 0;i<_fctParameters.size();i++)
+    {
+        if(current->getName()==paramName)
+            current->setWay(getWay(way));
+    }
+}

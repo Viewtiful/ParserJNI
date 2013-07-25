@@ -118,6 +118,13 @@ namespace nsJNI {
          */
         bool paramisSize(string paramName);
         
+        /*!
+         * \brief set the Way for an Param
+         * \param way : the way in string format
+         * \param paramName : parameter name
+         */
+        void setWay(string way,string paramName);
+
     private:
         map<string, codeGenerator> _lexic; /*!< contains handle function*/
         bool inRetval; /*!< translating an retval*/

@@ -6,6 +6,7 @@ Param::Param(const string& type, const string& name)
 	_type = type;
 	_name = name;
 }
+
 Param::~Param()
 {
 }
@@ -18,4 +19,14 @@ std::string& Param::getName()
 std::string& Param::getType()
 {
 	return _type;
+}
+
+Way Param::getWay()
+{
+    return _way;
+}
+
+void Param::setWay(Way way)
+{
+    _way = way;
 }

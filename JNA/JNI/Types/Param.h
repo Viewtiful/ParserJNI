@@ -12,6 +12,7 @@
 #define __JNI_PARAM_H
 #include <iostream>
 #include <string>
+#include "JNI/Types/Way.h"
 using namespace std;
 
 /*!
@@ -40,9 +41,13 @@ namespace nsJNI {
 			virtual ~Param();
 			std::string& getType();
 			std::string& getName();
+                        Way getWay();
+                        void setWay(Way way);
+                        
 		protected:
 			string _type; /*!< Type of the parameter*/
 			string _name; /*!< Name of the parameter*/
+                        Way _way; /*!< The parameter way*/
 	};
 }
 
