@@ -289,8 +289,8 @@
 		jobject JNI_result;
 
 		ktb_kep_ctx_t C_ctx;
-		contextWrapper *ctxWrp1 = (contextWrapper *)malloc(sizeof(contextWrapper));
-		ctxWrp1->env = env;
+		contextWrapper *ctxWrp_ctx = (contextWrapper *)malloc(sizeof(contextWrapper));
+		ctxWrp_ctx->env = env;
 
 		ktb_prng_t C_prng;
 		if(prng != 0) {
@@ -335,14 +335,14 @@
 
 		ktb_errno tempJNI_result = ktb_kep_init (&C_ctx, C_prng, C_algo, C_algo_data, C_algo_data_size, C_curve_id, C_hash_algo, C_secret_key_size, C_peer_count);
 
-		ctxWrp1->ctxRef = C_ctx;
+		ctxWrp_ctx->ctxRef = C_ctx;
 		jclass adrWrp_ctx;
 		jmethodID setAddr_ctx;
 		jlong arg_ctx;
 
 		adrWrp_ctx = (*env)->GetObjectClass(env, ctx);
 		setAddr_ctx = (*env)->GetMethodID(env, adrWrp_ctx, "setAddress", "(J)V");
-		arg_ctx = (jlong) ctxWrp1;
+		arg_ctx = (jlong) ctxWrp_ctx;
 		(*env)->CallVoidMethod(env, ctx, setAddr_ctx, arg_ctx);
 
 		jclass retObjCls = (*env)->FindClass(env, "ArcanaJNI$ktb_errno");
@@ -422,12 +422,6 @@
 		bool C_continue_exchange;
 
 		ktb_errno tempJNI_result = ktb_kep_put_data (C_ctx, C_peer_data, C_peer_data_size, &C_continue_exchange);
-
-		(*env)->SetByteArrayRegion(env, peer_data, 0, C_peer_data_size, C_peer_data);
-		int i_C_peer_data;
-		for(i_C_peer_data = 0; i_C_peer_data < C_peer_data_size; ++i_C_peer_data)
-			C_peer_data[i_C_peer_data] = 0;
-		free(C_peer_data);
 
 		jclass boolWrp;
 		jmethodID setVal;
@@ -561,8 +555,8 @@
 		jobject JNI_result;
 
 		ktb_sign_ctx_t C_ctx;
-		contextWrapper *ctxWrp1 = (contextWrapper *)malloc(sizeof(contextWrapper));
-		ctxWrp1->env = env;
+		contextWrapper *ctxWrp_ctx = (contextWrapper *)malloc(sizeof(contextWrapper));
+		ctxWrp_ctx->env = env;
 
 		jclass enm_algo;
 		enm_algo = (*env)->GetObjectClass(env, algo);
@@ -572,14 +566,14 @@
 
 		ktb_errno tempJNI_result = ktb_sign_init (&C_ctx, C_algo);
 
-		ctxWrp1->ctxRef = C_ctx;
+		ctxWrp_ctx->ctxRef = C_ctx;
 		jclass adrWrp_ctx;
 		jmethodID setAddr_ctx;
 		jlong arg_ctx;
 
 		adrWrp_ctx = (*env)->GetObjectClass(env, ctx);
 		setAddr_ctx = (*env)->GetMethodID(env, adrWrp_ctx, "setAddress", "(J)V");
-		arg_ctx = (jlong) ctxWrp1;
+		arg_ctx = (jlong) ctxWrp_ctx;
 		(*env)->CallVoidMethod(env, ctx, setAddr_ctx, arg_ctx);
 
 		jclass retObjCls = (*env)->FindClass(env, "ArcanaJNI$ktb_errno");
@@ -672,12 +666,6 @@
 		C_data = (*env)->GetByteArrayElements(env, data, NULL);
 
 		ktb_errno tempJNI_result = ktb_sign_process (C_ctx, C_data, C_data_size);
-
-		(*env)->SetByteArrayRegion(env, data, 0, C_data_size, C_data);
-		int i_C_data;
-		for(i_C_data = 0; i_C_data < C_data_size; ++i_C_data)
-			C_data[i_C_data] = 0;
-		free(C_data);
 
 		jclass retObjCls = (*env)->FindClass(env, "ArcanaJNI$ktb_errno");
 		jmethodID getArrayValues = (*env)->GetStaticMethodID(env, retObjCls, "values", "()[LArcanaJNI$ktb_errno;");
@@ -802,12 +790,6 @@
 
 		ktb_errno tempJNI_result = ktb_sign_verify (C_ctx, C_signature, C_signature_size, &C_is_valid);
 
-		(*env)->SetByteArrayRegion(env, signature, 0, C_signature_size, C_signature);
-		int i_C_signature;
-		for(i_C_signature = 0; i_C_signature < C_signature_size; ++i_C_signature)
-			C_signature[i_C_signature] = 0;
-		free(C_signature);
-
 		jclass boolWrp;
 		jmethodID setVal;
 		jboolean arg;
@@ -869,18 +851,6 @@
 		bool C_is_valid;
 
 		ktb_errno tempJNI_result = ktb_sign_verify_block (C_algo, C_public_key, C_data, C_data_size, C_signature, C_signature_size, &C_is_valid);
-
-		(*env)->SetByteArrayRegion(env, data, 0, C_data_size, C_data);
-		int i_C_data;
-		for(i_C_data = 0; i_C_data < C_data_size; ++i_C_data)
-			C_data[i_C_data] = 0;
-		free(C_data);
-
-		(*env)->SetByteArrayRegion(env, signature, 0, C_signature_size, C_signature);
-		int i_C_signature;
-		for(i_C_signature = 0; i_C_signature < C_signature_size; ++i_C_signature)
-			C_signature[i_C_signature] = 0;
-		free(C_signature);
 
 		jclass boolWrp;
 		jmethodID setVal;
@@ -1057,12 +1027,6 @@
 
 		ktb_errno tempJNI_result = ktb_sign_sign_block (C_algo, C_prng, C_private_key, C_data, C_data_size, C_signature, C_signature_size);
 
-		(*env)->SetByteArrayRegion(env, data, 0, C_data_size, C_data);
-		int i_C_data;
-		for(i_C_data = 0; i_C_data < C_data_size; ++i_C_data)
-			C_data[i_C_data] = 0;
-		free(C_data);
-
 		(*env)->SetByteArrayRegion(env, signature, 0, C_signature_size, C_signature);
 		int i_C_signature;
 		for(i_C_signature = 0; i_C_signature < C_signature_size; ++i_C_signature)
@@ -1112,12 +1076,6 @@
 		C_derived_key = (*env)->GetByteArrayElements(env, derived_key, NULL);
 
 		ktb_errno tempJNI_result = ktb_kdf (C_algo, C_seed, C_seed_size, C_derived_key, C_derived_key_size);
-
-		(*env)->SetByteArrayRegion(env, seed, 0, C_seed_size, C_seed);
-		int i_C_seed;
-		for(i_C_seed = 0; i_C_seed < C_seed_size; ++i_C_seed)
-			C_seed[i_C_seed] = 0;
-		free(C_seed);
 
 		(*env)->SetByteArrayRegion(env, derived_key, 0, C_derived_key_size, C_derived_key);
 		int i_C_derived_key;
@@ -1175,18 +1133,6 @@
 		C_derived_key = (*env)->GetByteArrayElements(env, derived_key, NULL);
 
 		ktb_errno tempJNI_result = ktb_pbkdf (C_algo, C_passwd, C_passwd_size, C_salt, C_salt_size, C_iteration_count, C_derived_key, C_derived_key_size);
-
-		(*env)->SetByteArrayRegion(env, passwd, 0, C_passwd_size, C_passwd);
-		int i_C_passwd;
-		for(i_C_passwd = 0; i_C_passwd < C_passwd_size; ++i_C_passwd)
-			C_passwd[i_C_passwd] = 0;
-		free(C_passwd);
-
-		(*env)->SetByteArrayRegion(env, salt, 0, C_salt_size, C_salt);
-		int i_C_salt;
-		for(i_C_salt = 0; i_C_salt < C_salt_size; ++i_C_salt)
-			C_salt[i_C_salt] = 0;
-		free(C_salt);
 
 		(*env)->SetByteArrayRegion(env, derived_key, 0, C_derived_key_size, C_derived_key);
 		int i_C_derived_key;
@@ -1247,12 +1193,6 @@
 		C_buf = (*env)->GetByteArrayElements(env, buf, NULL);
 
 		 JNI_result = ktb_strerror (C_err, C_buf, C_buf_size);
-
-		(*env)->SetByteArrayRegion(env, buf, 0, C_buf_size, C_buf);
-		int i_C_buf;
-		for(i_C_buf = 0; i_C_buf < C_buf_size; ++i_C_buf)
-			C_buf[i_C_buf] = 0;
-		free(C_buf);
 
 		 return JNI_result;
 	}
@@ -1376,12 +1316,6 @@
 
 		ktb_errno tempJNI_result = ktb_kem_psec_decrypt (C_algo, C_self_private_key, C_input_ciphertext, C_input_ciphertext_size, C_secret_key, C_secret_key_size);
 
-		(*env)->SetByteArrayRegion(env, input_ciphertext, 0, C_input_ciphertext_size, C_input_ciphertext);
-		int i_C_input_ciphertext;
-		for(i_C_input_ciphertext = 0; i_C_input_ciphertext < C_input_ciphertext_size; ++i_C_input_ciphertext)
-			C_input_ciphertext[i_C_input_ciphertext] = 0;
-		free(C_input_ciphertext);
-
 		(*env)->SetByteArrayRegion(env, secret_key, 0, C_secret_key_size, C_secret_key);
 		int i_C_secret_key;
 		for(i_C_secret_key = 0; i_C_secret_key < C_secret_key_size; ++i_C_secret_key)
@@ -1442,12 +1376,6 @@
 		C_buffer = (*env)->GetByteArrayElements(env, buffer, NULL);
 
 		ktb_errno tempJNI_result = ktb_prng_reseed_with (C_prng, C_buffer, C_buffer_size);
-
-		(*env)->SetByteArrayRegion(env, buffer, 0, C_buffer_size, C_buffer);
-		int i_C_buffer;
-		for(i_C_buffer = 0; i_C_buffer < C_buffer_size; ++i_C_buffer)
-			C_buffer[i_C_buffer] = 0;
-		free(C_buffer);
 
 		jclass retObjCls = (*env)->FindClass(env, "ArcanaJNI$ktb_errno");
 		jmethodID getArrayValues = (*env)->GetStaticMethodID(env, retObjCls, "values", "()[LArcanaJNI$ktb_errno;");
@@ -1656,25 +1584,19 @@
 		C_public_key_bytes = (*env)->GetByteArrayElements(env, public_key_bytes, NULL);
 
 		ktb_public_key_t C_public_key;
-		contextWrapper *ctxWrp1 = (contextWrapper *)malloc(sizeof(contextWrapper));
-		ctxWrp1->env = env;
+		contextWrapper *ctxWrp_public_key = (contextWrapper *)malloc(sizeof(contextWrapper));
+		ctxWrp_public_key->env = env;
 
 		ktb_errno tempJNI_result = ktb_keys_public_key_import (C_public_key_bytes, C_public_key_bytes_size, &C_public_key);
 
-		(*env)->SetByteArrayRegion(env, public_key_bytes, 0, C_public_key_bytes_size, C_public_key_bytes);
-		int i_C_public_key_bytes;
-		for(i_C_public_key_bytes = 0; i_C_public_key_bytes < C_public_key_bytes_size; ++i_C_public_key_bytes)
-			C_public_key_bytes[i_C_public_key_bytes] = 0;
-		free(C_public_key_bytes);
-
-		ctxWrp1->ctxRef = C_public_key;
+		ctxWrp_public_key->ctxRef = C_public_key;
 		jclass adrWrp_public_key;
 		jmethodID setAddr_public_key;
 		jlong arg_public_key;
 
 		adrWrp_public_key = (*env)->GetObjectClass(env, public_key);
 		setAddr_public_key = (*env)->GetMethodID(env, adrWrp_public_key, "setAddress", "(J)V");
-		arg_public_key = (jlong) ctxWrp1;
+		arg_public_key = (jlong) ctxWrp_public_key;
 		(*env)->CallVoidMethod(env, public_key, setAddr_public_key, arg_public_key);
 
 		jclass retObjCls = (*env)->FindClass(env, "ArcanaJNI$ktb_errno");
@@ -1773,25 +1695,19 @@
 		C_private_key_bytes = (*env)->GetByteArrayElements(env, private_key_bytes, NULL);
 
 		ktb_private_key_t C_private_key;
-		contextWrapper *ctxWrp1 = (contextWrapper *)malloc(sizeof(contextWrapper));
-		ctxWrp1->env = env;
+		contextWrapper *ctxWrp_private_key = (contextWrapper *)malloc(sizeof(contextWrapper));
+		ctxWrp_private_key->env = env;
 
 		ktb_errno tempJNI_result = ktb_keys_private_key_import (C_private_key_bytes, C_private_key_bytes_size, &C_private_key);
 
-		(*env)->SetByteArrayRegion(env, private_key_bytes, 0, C_private_key_bytes_size, C_private_key_bytes);
-		int i_C_private_key_bytes;
-		for(i_C_private_key_bytes = 0; i_C_private_key_bytes < C_private_key_bytes_size; ++i_C_private_key_bytes)
-			C_private_key_bytes[i_C_private_key_bytes] = 0;
-		free(C_private_key_bytes);
-
-		ctxWrp1->ctxRef = C_private_key;
+		ctxWrp_private_key->ctxRef = C_private_key;
 		jclass adrWrp_private_key;
 		jmethodID setAddr_private_key;
 		jlong arg_private_key;
 
 		adrWrp_private_key = (*env)->GetObjectClass(env, private_key);
 		setAddr_private_key = (*env)->GetMethodID(env, adrWrp_private_key, "setAddress", "(J)V");
-		arg_private_key = (jlong) ctxWrp1;
+		arg_private_key = (jlong) ctxWrp_private_key;
 		(*env)->CallVoidMethod(env, private_key, setAddr_private_key, arg_private_key);
 
 		jclass retObjCls = (*env)->FindClass(env, "ArcanaJNI$ktb_errno");
@@ -1836,33 +1752,33 @@
 		}
 
 		ktb_public_key_t C_public_key;
-		contextWrapper *ctxWrp2 = (contextWrapper *)malloc(sizeof(contextWrapper));
-		ctxWrp2->env = env;
+		contextWrapper *ctxWrp_public_key = (contextWrapper *)malloc(sizeof(contextWrapper));
+		ctxWrp_public_key->env = env;
 
 		ktb_private_key_t C_private_key;
-		contextWrapper *ctxWrp3 = (contextWrapper *)malloc(sizeof(contextWrapper));
-		ctxWrp3->env = env;
+		contextWrapper *ctxWrp_private_key = (contextWrapper *)malloc(sizeof(contextWrapper));
+		ctxWrp_private_key->env = env;
 
 		ktb_errno tempJNI_result = ktb_keys_generate_keypair (C_prng, C_curve_id, &C_public_key, &C_private_key);
 
-		ctxWrp2->ctxRef = C_public_key;
+		ctxWrp_public_key->ctxRef = C_public_key;
 		jclass adrWrp_public_key;
 		jmethodID setAddr_public_key;
 		jlong arg_public_key;
 
 		adrWrp_public_key = (*env)->GetObjectClass(env, public_key);
 		setAddr_public_key = (*env)->GetMethodID(env, adrWrp_public_key, "setAddress", "(J)V");
-		arg_public_key = (jlong) ctxWrp2;
+		arg_public_key = (jlong) ctxWrp_public_key;
 		(*env)->CallVoidMethod(env, public_key, setAddr_public_key, arg_public_key);
 
-		ctxWrp3->ctxRef = C_private_key;
+		ctxWrp_private_key->ctxRef = C_private_key;
 		jclass adrWrp_private_key;
 		jmethodID setAddr_private_key;
 		jlong arg_private_key;
 
 		adrWrp_private_key = (*env)->GetObjectClass(env, private_key);
 		setAddr_private_key = (*env)->GetMethodID(env, adrWrp_private_key, "setAddress", "(J)V");
-		arg_private_key = (jlong) ctxWrp3;
+		arg_private_key = (jlong) ctxWrp_private_key;
 		(*env)->CallVoidMethod(env, private_key, setAddr_private_key, arg_private_key);
 
 		jclass retObjCls = (*env)->FindClass(env, "ArcanaJNI$ktb_errno");
@@ -1914,12 +1830,6 @@
 
 		ktb_errno tempJNI_result = ktb_radix64_encode (C_input, C_input_size, C_result, C_result_size);
 
-		(*env)->SetByteArrayRegion(env, input, 0, C_input_size, C_input);
-		int i_C_input;
-		for(i_C_input = 0; i_C_input < C_input_size; ++i_C_input)
-			C_input[i_C_input] = 0;
-		free(C_input);
-
 		(*env)->SetByteArrayRegion(env, result, 0, C_result_size, C_result);
 		int i_C_result;
 		for(i_C_result = 0; i_C_result < C_result_size; ++i_C_result)
@@ -1959,12 +1869,6 @@
 
 		 JNI_result = ktb_radix64_decode_size (C_input, C_input_size);
 
-		(*env)->SetByteArrayRegion(env, input, 0, C_input_size, C_input);
-		int i_C_input;
-		for(i_C_input = 0; i_C_input < C_input_size; ++i_C_input)
-			C_input[i_C_input] = 0;
-		free(C_input);
-
 		 return JNI_result;
 	}
 
@@ -1983,12 +1887,6 @@
 		C_result = (*env)->GetByteArrayElements(env, result, NULL);
 
 		ktb_errno tempJNI_result = ktb_radix64_decode (C_input, C_input_size, C_result, C_result_size);
-
-		(*env)->SetByteArrayRegion(env, input, 0, C_input_size, C_input);
-		int i_C_input;
-		for(i_C_input = 0; i_C_input < C_input_size; ++i_C_input)
-			C_input[i_C_input] = 0;
-		free(C_input);
 
 		(*env)->SetByteArrayRegion(env, result, 0, C_result_size, C_result);
 		int i_C_result;
@@ -2031,12 +1929,6 @@
 
 		ktb_errno tempJNI_result = ktb_radix64_verify (C_input, C_input_size, &C_verified);
 
-		(*env)->SetByteArrayRegion(env, input, 0, C_input_size, C_input);
-		int i_C_input;
-		for(i_C_input = 0; i_C_input < C_input_size; ++i_C_input)
-			C_input[i_C_input] = 0;
-		free(C_input);
-
 		jclass boolWrp;
 		jmethodID setVal;
 		jboolean arg;
@@ -2072,8 +1964,8 @@
 		jobject JNI_result;
 
 		ktb_cipher_ctx_t C_ctx;
-		contextWrapper *ctxWrp1 = (contextWrapper *)malloc(sizeof(contextWrapper));
-		ctxWrp1->env = env;
+		contextWrapper *ctxWrp_ctx = (contextWrapper *)malloc(sizeof(contextWrapper));
+		ctxWrp_ctx->env = env;
 
 		jclass enm_algo;
 		enm_algo = (*env)->GetObjectClass(env, algo);
@@ -2091,14 +1983,14 @@
 
 		ktb_errno tempJNI_result = ktb_cipher_init (&C_ctx, C_algo, C_mode, C_encryption);
 
-		ctxWrp1->ctxRef = C_ctx;
+		ctxWrp_ctx->ctxRef = C_ctx;
 		jclass adrWrp_ctx;
 		jmethodID setAddr_ctx;
 		jlong arg_ctx;
 
 		adrWrp_ctx = (*env)->GetObjectClass(env, ctx);
 		setAddr_ctx = (*env)->GetMethodID(env, adrWrp_ctx, "setAddress", "(J)V");
-		arg_ctx = (jlong) ctxWrp1;
+		arg_ctx = (jlong) ctxWrp_ctx;
 		(*env)->CallVoidMethod(env, ctx, setAddr_ctx, arg_ctx);
 
 		jclass retObjCls = (*env)->FindClass(env, "ArcanaJNI$ktb_errno");
@@ -2170,12 +2062,6 @@
 
 		ktb_errno tempJNI_result = ktb_cipher_set_key (C_ctx, C_key, C_key_size);
 
-		(*env)->SetByteArrayRegion(env, key, 0, C_key_size, C_key);
-		int i_C_key;
-		for(i_C_key = 0; i_C_key < C_key_size; ++i_C_key)
-			C_key[i_C_key] = 0;
-		free(C_key);
-
 		jclass retObjCls = (*env)->FindClass(env, "ArcanaJNI$ktb_errno");
 		jmethodID getArrayValues = (*env)->GetStaticMethodID(env, retObjCls, "values", "()[LArcanaJNI$ktb_errno;");
 		jobjectArray valuesArray = (jobjectArray)(*env)->CallStaticObjectMethod(env, retObjCls, getArrayValues);
@@ -2217,12 +2103,6 @@
 
 		ktb_errno tempJNI_result = ktb_cipher_set_iv (C_ctx, C_iv, C_iv_size);
 
-		(*env)->SetByteArrayRegion(env, iv, 0, C_iv_size, C_iv);
-		int i_C_iv;
-		for(i_C_iv = 0; i_C_iv < C_iv_size; ++i_C_iv)
-			C_iv[i_C_iv] = 0;
-		free(C_iv);
-
 		jclass retObjCls = (*env)->FindClass(env, "ArcanaJNI$ktb_errno");
 		jmethodID getArrayValues = (*env)->GetStaticMethodID(env, retObjCls, "values", "()[LArcanaJNI$ktb_errno;");
 		jobjectArray valuesArray = (jobjectArray)(*env)->CallStaticObjectMethod(env, retObjCls, getArrayValues);
@@ -2263,12 +2143,6 @@
 		C_auth_data = (*env)->GetByteArrayElements(env, auth_data, NULL);
 
 		ktb_errno tempJNI_result = ktb_cipher_set_auth_data (C_ctx, C_auth_data, C_auth_data_size);
-
-		(*env)->SetByteArrayRegion(env, auth_data, 0, C_auth_data_size, C_auth_data);
-		int i_C_auth_data;
-		for(i_C_auth_data = 0; i_C_auth_data < C_auth_data_size; ++i_C_auth_data)
-			C_auth_data[i_C_auth_data] = 0;
-		free(C_auth_data);
 
 		jclass retObjCls = (*env)->FindClass(env, "ArcanaJNI$ktb_errno");
 		jmethodID getArrayValues = (*env)->GetStaticMethodID(env, retObjCls, "values", "()[LArcanaJNI$ktb_errno;");
@@ -2374,12 +2248,6 @@
 		C_prefix = (*env)->GetByteArrayElements(env, prefix, NULL);
 
 		ktb_errno tempJNI_result = ktb_cipher_set_prefix (C_ctx, C_prefix, C_prefix_size);
-
-		(*env)->SetByteArrayRegion(env, prefix, 0, C_prefix_size, C_prefix);
-		int i_C_prefix;
-		for(i_C_prefix = 0; i_C_prefix < C_prefix_size; ++i_C_prefix)
-			C_prefix[i_C_prefix] = 0;
-		free(C_prefix);
 
 		jclass retObjCls = (*env)->FindClass(env, "ArcanaJNI$ktb_errno");
 		jmethodID getArrayValues = (*env)->GetStaticMethodID(env, retObjCls, "values", "()[LArcanaJNI$ktb_errno;");
@@ -2491,12 +2359,6 @@
 
 		ktb_errno tempJNI_result = ktb_cipher_encrypt_block (C_ctx, C_in, C_in_size, C_out, C_out_size);
 
-		(*env)->SetByteArrayRegion(env, in, 0, C_in_size, C_in);
-		int i_C_in;
-		for(i_C_in = 0; i_C_in < C_in_size; ++i_C_in)
-			C_in[i_C_in] = 0;
-		free(C_in);
-
 		(*env)->SetByteArrayRegion(env, out, 0, C_out_size, C_out);
 		int i_C_out;
 		for(i_C_out = 0; i_C_out < C_out_size; ++i_C_out)
@@ -2548,12 +2410,6 @@
 		C_out = (*env)->GetByteArrayElements(env, out, NULL);
 
 		ktb_errno tempJNI_result = ktb_cipher_decrypt_block (C_ctx, C_in, C_in_size, C_out, C_out_size);
-
-		(*env)->SetByteArrayRegion(env, in, 0, C_in_size, C_in);
-		int i_C_in;
-		for(i_C_in = 0; i_C_in < C_in_size; ++i_C_in)
-			C_in[i_C_in] = 0;
-		free(C_in);
 
 		(*env)->SetByteArrayRegion(env, out, 0, C_out_size, C_out);
 		int i_C_out;
@@ -2755,8 +2611,8 @@
 		jobject JNI_result;
 
 		ktb_hash_ctx_t C_ctx;
-		contextWrapper *ctxWrp1 = (contextWrapper *)malloc(sizeof(contextWrapper));
-		ctxWrp1->env = env;
+		contextWrapper *ctxWrp_ctx = (contextWrapper *)malloc(sizeof(contextWrapper));
+		ctxWrp_ctx->env = env;
 
 		jclass enm_algo;
 		enm_algo = (*env)->GetObjectClass(env, algo);
@@ -2766,14 +2622,14 @@
 
 		ktb_errno tempJNI_result = ktb_hash_init (&C_ctx, C_algo);
 
-		ctxWrp1->ctxRef = C_ctx;
+		ctxWrp_ctx->ctxRef = C_ctx;
 		jclass adrWrp_ctx;
 		jmethodID setAddr_ctx;
 		jlong arg_ctx;
 
 		adrWrp_ctx = (*env)->GetObjectClass(env, ctx);
 		setAddr_ctx = (*env)->GetMethodID(env, adrWrp_ctx, "setAddress", "(J)V");
-		arg_ctx = (jlong) ctxWrp1;
+		arg_ctx = (jlong) ctxWrp_ctx;
 		(*env)->CallVoidMethod(env, ctx, setAddr_ctx, arg_ctx);
 
 		jclass retObjCls = (*env)->FindClass(env, "ArcanaJNI$ktb_errno");
@@ -2803,8 +2659,8 @@
 		jobject JNI_result;
 
 		ktb_hash_ctx_t C_ctx;
-		contextWrapper *ctxWrp2 = (contextWrapper *)malloc(sizeof(contextWrapper));
-		ctxWrp2->env = env;
+		contextWrapper *ctxWrp_ctx = (contextWrapper *)malloc(sizeof(contextWrapper));
+		ctxWrp_ctx->env = env;
 
 		jclass enm_algo;
 		enm_algo = (*env)->GetObjectClass(env, algo);
@@ -2819,21 +2675,15 @@
 
 		ktb_errno tempJNI_result = ktb_hash_init_hmac (&C_ctx, C_algo, C_key, C_key_size);
 
-		ctxWrp2->ctxRef = C_ctx;
+		ctxWrp_ctx->ctxRef = C_ctx;
 		jclass adrWrp_ctx;
 		jmethodID setAddr_ctx;
 		jlong arg_ctx;
 
 		adrWrp_ctx = (*env)->GetObjectClass(env, ctx);
 		setAddr_ctx = (*env)->GetMethodID(env, adrWrp_ctx, "setAddress", "(J)V");
-		arg_ctx = (jlong) ctxWrp2;
+		arg_ctx = (jlong) ctxWrp_ctx;
 		(*env)->CallVoidMethod(env, ctx, setAddr_ctx, arg_ctx);
-
-		(*env)->SetByteArrayRegion(env, key, 0, C_key_size, C_key);
-		int i_C_key;
-		for(i_C_key = 0; i_C_key < C_key_size; ++i_C_key)
-			C_key[i_C_key] = 0;
-		free(C_key);
 
 		jclass retObjCls = (*env)->FindClass(env, "ArcanaJNI$ktb_errno");
 		jmethodID getArrayValues = (*env)->GetStaticMethodID(env, retObjCls, "values", "()[LArcanaJNI$ktb_errno;");
@@ -2901,12 +2751,6 @@
 		C_buf = (*env)->GetByteArrayElements(env, buf, NULL);
 
 		  ktb_hash_process (C_ctx, C_buf, C_buf_size);
-
-		(*env)->SetByteArrayRegion(env, buf, 0, C_buf_size, C_buf);
-		int i_C_buf;
-		for(i_C_buf = 0; i_C_buf < C_buf_size; ++i_C_buf)
-			C_buf[i_C_buf] = 0;
-		free(C_buf);
 
 	}
 
@@ -3050,12 +2894,6 @@
 
 		ktb_errno tempJNI_result = ktb_hash_block (C_algo, C_block, C_block_size, C_result, C_result_size);
 
-		(*env)->SetByteArrayRegion(env, block, 0, C_block_size, C_block);
-		int i_C_block;
-		for(i_C_block = 0; i_C_block < C_block_size; ++i_C_block)
-			C_block[i_C_block] = 0;
-		free(C_block);
-
 		(*env)->SetByteArrayRegion(env, result, 0, C_result_size, C_result);
 		int i_C_result;
 		for(i_C_result = 0; i_C_result < C_result_size; ++i_C_result)
@@ -3132,12 +2970,6 @@
 
 		ktb_errno tempJNI_result = ktb_base64_encode (C_input, C_input_size, C_result, C_result_size);
 
-		(*env)->SetByteArrayRegion(env, input, 0, C_input_size, C_input);
-		int i_C_input;
-		for(i_C_input = 0; i_C_input < C_input_size; ++i_C_input)
-			C_input[i_C_input] = 0;
-		free(C_input);
-
 		(*env)->SetByteArrayRegion(env, result, 0, C_result_size, C_result);
 		int i_C_result;
 		for(i_C_result = 0; i_C_result < C_result_size; ++i_C_result)
@@ -3177,12 +3009,6 @@
 
 		 JNI_result = ktb_base64_decode_size (C_input, C_input_size);
 
-		(*env)->SetByteArrayRegion(env, input, 0, C_input_size, C_input);
-		int i_C_input;
-		for(i_C_input = 0; i_C_input < C_input_size; ++i_C_input)
-			C_input[i_C_input] = 0;
-		free(C_input);
-
 		 return JNI_result;
 	}
 
@@ -3201,12 +3027,6 @@
 		C_result = (*env)->GetByteArrayElements(env, result, NULL);
 
 		ktb_errno tempJNI_result = ktb_base64_decode (C_input, C_input_size, C_result, C_result_size);
-
-		(*env)->SetByteArrayRegion(env, input, 0, C_input_size, C_input);
-		int i_C_input;
-		for(i_C_input = 0; i_C_input < C_input_size; ++i_C_input)
-			C_input[i_C_input] = 0;
-		free(C_input);
 
 		(*env)->SetByteArrayRegion(env, result, 0, C_result_size, C_result);
 		int i_C_result;
@@ -3237,117 +3057,118 @@
 	}
 
 static JNINativeMethod method_table[] = {
-	{ "gen_jni_ktb_kep_dh_t_create", "()J", (void *)JNI_gen_jni_ktb_kep_dh_t_create },
-	{ "gen_jni_ktb_kep_dh_t_free", "(J)V", (void *)JNI_gen_jni_ktb_kep_dh_t_free },
-	{ "gen_jni_ktb_kep_dh_t_get_struct_size", "()J", (void *)JNI_gen_jni_ktb_kep_dh_t_get_struct_size },
-	{ "gen_jni_ktb_kep_dh_t_get_dummy", "(J)I", (void *)JNI_gen_jni_ktb_kep_dh_t_get_dummy },
-	{ "gen_jni_ktb_kep_dh_t_set_dummy", "(JI)V", (void *)JNI_gen_jni_ktb_kep_dh_t_set_dummy },
-	{ "gen_jni_ktb_kep_dh_pass_t_create", "()J", (void *)JNI_gen_jni_ktb_kep_dh_pass_t_create },
-	{ "gen_jni_ktb_kep_dh_pass_t_free", "(J)V", (void *)JNI_gen_jni_ktb_kep_dh_pass_t_free },
-	{ "gen_jni_ktb_kep_dh_pass_t_get_struct_size", "()J", (void *)JNI_gen_jni_ktb_kep_dh_pass_t_get_struct_size },
-	{ "gen_jni_ktb_kep_dh_pass_t_get_cipher_algo", "(J)LArcanaJNI$ktb_cipher_algo_t;", (void *)JNI_gen_jni_ktb_kep_dh_pass_t_get_cipher_algo },
-	{ "gen_jni_ktb_kep_dh_pass_t_get_discuss_key", "(J)[B", (void *)JNI_gen_jni_ktb_kep_dh_pass_t_get_discuss_key },
-	{ "gen_jni_ktb_kep_dh_pass_t_get_discuss_key_size", "(J)J", (void *)JNI_gen_jni_ktb_kep_dh_pass_t_get_discuss_key_size },
-	{ "gen_jni_ktb_kep_dh_pass_t_set_cipher_algo", "(JLArcanaJNI$ktb_cipher_algo_t;)V", (void *)JNI_gen_jni_ktb_kep_dh_pass_t_set_cipher_algo },
-	{ "gen_jni_ktb_kep_dh_pass_t_set_discuss_key", "(J[B)V", (void *)JNI_gen_jni_ktb_kep_dh_pass_t_set_discuss_key },
-	{ "gen_jni_ktb_kep_dh_pass_t_set_discuss_key_size", "(JJ)V", (void *)JNI_gen_jni_ktb_kep_dh_pass_t_set_discuss_key_size },
-	{ "gen_jni_ktb_kep_sts_t_create", "()J", (void *)JNI_gen_jni_ktb_kep_sts_t_create },
-	{ "gen_jni_ktb_kep_sts_t_free", "(J)V", (void *)JNI_gen_jni_ktb_kep_sts_t_free },
-	{ "gen_jni_ktb_kep_sts_t_get_struct_size", "()J", (void *)JNI_gen_jni_ktb_kep_sts_t_get_struct_size },
-	{ "gen_jni_ktb_kep_sts_t_get_cipher_algo", "(J)LArcanaJNI$ktb_cipher_algo_t;", (void *)JNI_gen_jni_ktb_kep_sts_t_get_cipher_algo },
-	{ "gen_jni_ktb_kep_sts_t_get_peer_public_key", "(J)J", (void *)JNI_gen_jni_ktb_kep_sts_t_get_peer_public_key },
-	{ "gen_jni_ktb_kep_sts_t_get_self_private_key", "(J)J", (void *)JNI_gen_jni_ktb_kep_sts_t_get_self_private_key },
-	{ "gen_jni_ktb_kep_sts_t_set_cipher_algo", "(JLArcanaJNI$ktb_cipher_algo_t;)V", (void *)JNI_gen_jni_ktb_kep_sts_t_set_cipher_algo },
-	{ "gen_jni_ktb_kep_sts_t_set_peer_public_key", "(JJ)V", (void *)JNI_gen_jni_ktb_kep_sts_t_set_peer_public_key },
-	{ "gen_jni_ktb_kep_sts_t_set_self_private_key", "(JJ)V", (void *)JNI_gen_jni_ktb_kep_sts_t_set_self_private_key },
-	{ "ktb_kep_init", "(LArcanaJNI$AddressWrapper;JLArcanaJNI$ktb_kep_algo_t;JJLjava/lang/String;LArcanaJNI$ktb_hash_algo_t;JI)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_kep_init },
-	{ "ktb_kep_clear", "(J)V", (void *)JNI_ktb_kep_clear },
-	{ "ktb_kep_get_data", "(J)[B", (void *)JNI_ktb_kep_get_data },
-	{ "ktb_kep_put_data", "(J[BLArcanaJNI$BoolWrapper;)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_kep_put_data },
-	{ "ktb_kep_finalise", "(J[B)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_kep_finalise },
-	{ "ktb_kep_get_algo_name", "(LArcanaJNI$ktb_kep_algo_t;)Ljava/lang/String;", (void *)JNI_ktb_kep_get_algo_name },
-	{ "ktb_init", "()LArcanaJNI$ktb_errno;", (void *)JNI_ktb_init },
-	{ "ktb_clear", "()V", (void *)JNI_ktb_clear },
-	{ "ktb_sign_init", "(LArcanaJNI$AddressWrapper;LArcanaJNI$ktb_hash_algo_t;)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_sign_init },
-	{ "ktb_sign_clear", "(J)V", (void *)JNI_ktb_sign_clear },
-	{ "ktb_sign_reset", "(J)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_sign_reset },
-	{ "ktb_sign_process", "(J[B)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_sign_process },
-	{ "ktb_sign_finalise", "(J)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_sign_finalise },
-	{ "ktb_sign_set_public_key", "(JJ)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_sign_set_public_key },
-	{ "ktb_sign_verify", "(J[BLArcanaJNI$BoolWrapper;)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_sign_verify },
-	{ "ktb_sign_verify_block", "(LArcanaJNI$ktb_hash_algo_t;J[B[BLArcanaJNI$BoolWrapper;)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_sign_verify_block },
-	{ "ktb_sign_set_private_key", "(JJJ)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_sign_set_private_key },
-	{ "ktb_sign_get_sign_size", "(J)J", (void *)JNI_ktb_sign_get_sign_size },
-	{ "ktb_sign_get_sign", "(J)[B", (void *)JNI_ktb_sign_get_sign },
-	{ "ktb_sign_get_sign_size_from_key", "(J)J", (void *)JNI_ktb_sign_get_sign_size_from_key },
-	{ "ktb_sign_sign_block", "(LArcanaJNI$ktb_hash_algo_t;JJ[B[B)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_sign_sign_block },
-	{ "ktb_kdf", "(LArcanaJNI$ktb_hash_algo_t;[B[B)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_kdf },
-	{ "ktb_pbkdf", "(LArcanaJNI$ktb_hash_algo_t;[B[BJ[B)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_pbkdf },
-	{ "ktb_kdf_max_size", "(LArcanaJNI$ktb_hash_algo_t;)J", (void *)JNI_ktb_kdf_max_size },
-	{ "ktb_strerror", "(LArcanaJNI$ktb_errno;[B)I", (void *)JNI_ktb_strerror },
-	{ "ktb_kem_psec_encrypt_size", "(J)J", (void *)JNI_ktb_kem_psec_encrypt_size },
-	{ "ktb_kem_psec_encrypt", "(LArcanaJNI$ktb_hash_algo_t;JJ[B[B)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_kem_psec_encrypt },
-	{ "ktb_kem_psec_decrypt", "(LArcanaJNI$ktb_hash_algo_t;J[B[B)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_kem_psec_decrypt },
-	{ "ktb_prng_clear", "(J)V", (void *)JNI_ktb_prng_clear },
-	{ "ktb_prng_reseed_with", "(J[B)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_prng_reseed_with },
-	{ "ktb_prng_reseed", "(J)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_prng_reseed },
-	{ "ktb_prng_fill_buffer", "(J[B)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_prng_fill_buffer },
-	{ "ktb_keys_public_key_clear", "(J)V", (void *)JNI_ktb_keys_public_key_clear },
-	{ "ktb_keys_private_key_clear", "(J)V", (void *)JNI_ktb_keys_private_key_clear },
-	{ "ktb_keys_public_key_export_size", "(J)J", (void *)JNI_ktb_keys_public_key_export_size },
-	{ "ktb_keys_public_key_export", "(J[B)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_keys_public_key_export },
-	{ "ktb_keys_public_key_import", "([BLArcanaJNI$AddressWrapper;)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_keys_public_key_import },
-	{ "ktb_keys_private_key_export_size", "(J)J", (void *)JNI_ktb_keys_private_key_export_size },
-	{ "ktb_keys_private_key_export", "(J[B)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_keys_private_key_export },
-	{ "ktb_keys_private_key_import", "([BLArcanaJNI$AddressWrapper;)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_keys_private_key_import },
-	{ "ktb_keys_generate_keypair", "(JLjava/lang/String;LArcanaJNI$AddressWrapper;LArcanaJNI$AddressWrapper;)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_keys_generate_keypair },
-	{ "ktb_radix64_encode_size", "(J)J", (void *)JNI_ktb_radix64_encode_size },
-	{ "ktb_radix64_encode", "([B[B)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_radix64_encode },
-	{ "ktb_radix64_decode_size", "([B)J", (void *)JNI_ktb_radix64_decode_size },
-	{ "ktb_radix64_decode", "([B[B)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_radix64_decode },
-	{ "ktb_radix64_verify", "([BLArcanaJNI$BoolWrapper;)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_radix64_verify },
-	{ "ktb_cipher_init", "(LArcanaJNI$AddressWrapper;LArcanaJNI$ktb_cipher_algo_t;LArcanaJNI$ktb_cipher_mode_t;Z)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_cipher_init },
-	{ "ktb_cipher_clear", "(J)V", (void *)JNI_ktb_cipher_clear },
-	{ "ktb_cipher_reset", "(J)V", (void *)JNI_ktb_cipher_reset },
-	{ "ktb_cipher_set_key", "(J[B)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_cipher_set_key },
-	{ "ktb_cipher_set_iv", "(J[B)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_cipher_set_iv },
-	{ "ktb_cipher_set_auth_data", "(J[B)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_cipher_set_auth_data },
-	{ "ktb_cipher_get_prefix_size", "(J)J", (void *)JNI_ktb_cipher_get_prefix_size },
-	{ "ktb_cipher_get_prefix", "(J[B)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_cipher_get_prefix },
-	{ "ktb_cipher_set_prefix", "(J[B)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_cipher_set_prefix },
-	{ "ktb_cipher_get_suffix_size", "(J)J", (void *)JNI_ktb_cipher_get_suffix_size },
-	{ "ktb_cipher_get_suffix", "(J[B)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_cipher_get_suffix },
-	{ "ktb_cipher_encrypt_block", "(J[B[B)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_cipher_encrypt_block },
-	{ "ktb_cipher_decrypt_block", "(J[B[B)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_cipher_decrypt_block },
-	{ "ktb_cipher_finalise", "(J)V", (void *)JNI_ktb_cipher_finalise },
-	{ "ktb_cipher_get_mac", "(J)[B", (void *)JNI_ktb_cipher_get_mac },
-	{ "ktb_cipher_get_data_size", "(J)J", (void *)JNI_ktb_cipher_get_data_size },
-	{ "ktb_cipher_get_name_from_algo", "(LArcanaJNI$ktb_cipher_algo_t;)Ljava/lang/String;", (void *)JNI_ktb_cipher_get_name_from_algo },
-	{ "ktb_cipher_get_name_from_mode", "(LArcanaJNI$ktb_cipher_mode_t;)Ljava/lang/String;", (void *)JNI_ktb_cipher_get_name_from_mode },
-	{ "ktb_cipher_get_key_len", "(J)J", (void *)JNI_ktb_cipher_get_key_len },
-	{ "ktb_cipher_get_block_len", "(J)J", (void *)JNI_ktb_cipher_get_block_len },
-	{ "ktb_cipher_get_iv_len", "(J)J", (void *)JNI_ktb_cipher_get_iv_len },
-	{ "ktb_cipher_get_mac_size", "(J)J", (void *)JNI_ktb_cipher_get_mac_size },
-	{ "ktb_cipher_get_iv_len_from_mode", "(LArcanaJNI$ktb_cipher_mode_t;)J", (void *)JNI_ktb_cipher_get_iv_len_from_mode },
-	{ "ktb_hash_init", "(LArcanaJNI$AddressWrapper;LArcanaJNI$ktb_hash_algo_t;)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_hash_init },
-	{ "ktb_hash_init_hmac", "(LArcanaJNI$AddressWrapper;LArcanaJNI$ktb_hash_algo_t;[B)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_hash_init_hmac },
-	{ "ktb_hash_clear", "(J)V", (void *)JNI_ktb_hash_clear },
-	{ "ktb_hash_reset", "(J)V", (void *)JNI_ktb_hash_reset },
-	{ "ktb_hash_process", "(J[B)V", (void *)JNI_ktb_hash_process },
-	{ "ktb_hash_finalise", "(J)V", (void *)JNI_ktb_hash_finalise },
-	{ "ktb_hash_retrieve", "(J)[B", (void *)JNI_ktb_hash_retrieve },
-	{ "ktb_hash_get_name", "(J)Ljava/lang/String;", (void *)JNI_ktb_hash_get_name },
-	{ "ktb_hash_get_name_from_algo", "(LArcanaJNI$ktb_hash_algo_t;)Ljava/lang/String;", (void *)JNI_ktb_hash_get_name_from_algo },
-	{ "ktb_hash_get_len", "(J)J", (void *)JNI_ktb_hash_get_len },
-	{ "ktb_hash_get_len_from_algo", "(LArcanaJNI$ktb_hash_algo_t;)J", (void *)JNI_ktb_hash_get_len_from_algo },
-	{ "ktb_hash_get_block_size", "(J)J", (void *)JNI_ktb_hash_get_block_size },
-	{ "ktb_hash_block", "(LArcanaJNI$ktb_hash_algo_t;[B[B)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_hash_block },
-	{ "ktb_curves_count", "()I", (void *)JNI_ktb_curves_count },
-	{ "ktb_curves_id", "(I)Ljava/lang/String;", (void *)JNI_ktb_curves_id },
-	{ "ktb_base64_encode_size", "(J)J", (void *)JNI_ktb_base64_encode_size },
-	{ "ktb_base64_encode", "([B[B)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_base64_encode },
-	{ "ktb_base64_decode_size", "([B)J", (void *)JNI_ktb_base64_decode_size },
-	{ "ktb_base64_decode", "([B[B)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_base64_decode }};
+	{"gen_jni_ktb_kep_dh_t_create", "()J", (void *)JNI_gen_jni_ktb_kep_dh_t_create},
+	{"gen_jni_ktb_kep_dh_t_free", "(J)V", (void *)JNI_gen_jni_ktb_kep_dh_t_free},
+	{"gen_jni_ktb_kep_dh_t_get_struct_size", "()J", (void *)JNI_gen_jni_ktb_kep_dh_t_get_struct_size},
+	{"gen_jni_ktb_kep_dh_t_get_dummy", "(J)I", (void *)JNI_gen_jni_ktb_kep_dh_t_get_dummy},
+	{"gen_jni_ktb_kep_dh_t_set_dummy", "(JI)V", (void *)JNI_gen_jni_ktb_kep_dh_t_set_dummy},
+	{"gen_jni_ktb_kep_dh_pass_t_create", "()J", (void *)JNI_gen_jni_ktb_kep_dh_pass_t_create},
+	{"gen_jni_ktb_kep_dh_pass_t_free", "(J)V", (void *)JNI_gen_jni_ktb_kep_dh_pass_t_free},
+	{"gen_jni_ktb_kep_dh_pass_t_get_struct_size", "()J", (void *)JNI_gen_jni_ktb_kep_dh_pass_t_get_struct_size},
+	{"gen_jni_ktb_kep_dh_pass_t_get_cipher_algo", "(J)LArcanaJNI$ktb_cipher_algo_t;", (void *)JNI_gen_jni_ktb_kep_dh_pass_t_get_cipher_algo},
+	{"gen_jni_ktb_kep_dh_pass_t_get_discuss_key", "(J)[B", (void *)JNI_gen_jni_ktb_kep_dh_pass_t_get_discuss_key},
+	{"gen_jni_ktb_kep_dh_pass_t_get_discuss_key_size", "(J)J", (void *)JNI_gen_jni_ktb_kep_dh_pass_t_get_discuss_key_size},
+	{"gen_jni_ktb_kep_dh_pass_t_set_cipher_algo", "(JLArcanaJNI$ktb_cipher_algo_t;)V", (void *)JNI_gen_jni_ktb_kep_dh_pass_t_set_cipher_algo},
+	{"gen_jni_ktb_kep_dh_pass_t_set_discuss_key", "(J[B)V", (void *)JNI_gen_jni_ktb_kep_dh_pass_t_set_discuss_key},
+	{"gen_jni_ktb_kep_dh_pass_t_set_discuss_key_size", "(JJ)V", (void *)JNI_gen_jni_ktb_kep_dh_pass_t_set_discuss_key_size},
+	{"gen_jni_ktb_kep_sts_t_create", "()J", (void *)JNI_gen_jni_ktb_kep_sts_t_create},
+	{"gen_jni_ktb_kep_sts_t_free", "(J)V", (void *)JNI_gen_jni_ktb_kep_sts_t_free},
+	{"gen_jni_ktb_kep_sts_t_get_struct_size", "()J", (void *)JNI_gen_jni_ktb_kep_sts_t_get_struct_size},
+	{"gen_jni_ktb_kep_sts_t_get_cipher_algo", "(J)LArcanaJNI$ktb_cipher_algo_t;", (void *)JNI_gen_jni_ktb_kep_sts_t_get_cipher_algo},
+	{"gen_jni_ktb_kep_sts_t_get_peer_public_key", "(J)J", (void *)JNI_gen_jni_ktb_kep_sts_t_get_peer_public_key},
+	{"gen_jni_ktb_kep_sts_t_get_self_private_key", "(J)J", (void *)JNI_gen_jni_ktb_kep_sts_t_get_self_private_key},
+	{"gen_jni_ktb_kep_sts_t_set_cipher_algo", "(JLArcanaJNI$ktb_cipher_algo_t;)V", (void *)JNI_gen_jni_ktb_kep_sts_t_set_cipher_algo},
+	{"gen_jni_ktb_kep_sts_t_set_peer_public_key", "(JJ)V", (void *)JNI_gen_jni_ktb_kep_sts_t_set_peer_public_key},
+	{"gen_jni_ktb_kep_sts_t_set_self_private_key", "(JJ)V", (void *)JNI_gen_jni_ktb_kep_sts_t_set_self_private_key},
+	{"ktb_kep_init", "(LArcanaJNI$AddressWrapper;JLArcanaJNI$ktb_kep_algo_t;JJLjava/lang/String;LArcanaJNI$ktb_hash_algo_t;JI)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_kep_init},
+	{"ktb_kep_clear", "(J)V", (void *)JNI_ktb_kep_clear},
+	{"ktb_kep_get_data", "(J)[B", (void *)JNI_ktb_kep_get_data},
+	{"ktb_kep_put_data", "(J[BLArcanaJNI$BoolWrapper;)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_kep_put_data},
+	{"ktb_kep_finalise", "(J[B)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_kep_finalise},
+	{"ktb_kep_get_algo_name", "(LArcanaJNI$ktb_kep_algo_t;)Ljava/lang/String;", (void *)JNI_ktb_kep_get_algo_name},
+	{"ktb_init", "()LArcanaJNI$ktb_errno;", (void *)JNI_ktb_init},
+	{"ktb_clear", "()V", (void *)JNI_ktb_clear},
+	{"ktb_sign_init", "(LArcanaJNI$AddressWrapper;LArcanaJNI$ktb_hash_algo_t;)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_sign_init},
+	{"ktb_sign_clear", "(J)V", (void *)JNI_ktb_sign_clear},
+	{"ktb_sign_reset", "(J)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_sign_reset},
+	{"ktb_sign_process", "(J[B)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_sign_process},
+	{"ktb_sign_finalise", "(J)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_sign_finalise},
+	{"ktb_sign_set_public_key", "(JJ)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_sign_set_public_key},
+	{"ktb_sign_verify", "(J[BLArcanaJNI$BoolWrapper;)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_sign_verify},
+	{"ktb_sign_verify_block", "(LArcanaJNI$ktb_hash_algo_t;J[B[BLArcanaJNI$BoolWrapper;)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_sign_verify_block},
+	{"ktb_sign_set_private_key", "(JJJ)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_sign_set_private_key},
+	{"ktb_sign_get_sign_size", "(J)J", (void *)JNI_ktb_sign_get_sign_size},
+	{"ktb_sign_get_sign", "(J)[B", (void *)JNI_ktb_sign_get_sign},
+	{"ktb_sign_get_sign_size_from_key", "(J)J", (void *)JNI_ktb_sign_get_sign_size_from_key},
+	{"ktb_sign_sign_block", "(LArcanaJNI$ktb_hash_algo_t;JJ[B[B)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_sign_sign_block},
+	{"ktb_kdf", "(LArcanaJNI$ktb_hash_algo_t;[B[B)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_kdf},
+	{"ktb_pbkdf", "(LArcanaJNI$ktb_hash_algo_t;[B[BJ[B)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_pbkdf},
+	{"ktb_kdf_max_size", "(LArcanaJNI$ktb_hash_algo_t;)J", (void *)JNI_ktb_kdf_max_size},
+	{"ktb_strerror", "(LArcanaJNI$ktb_errno;[B)I", (void *)JNI_ktb_strerror},
+	{"ktb_kem_psec_encrypt_size", "(J)J", (void *)JNI_ktb_kem_psec_encrypt_size},
+	{"ktb_kem_psec_encrypt", "(LArcanaJNI$ktb_hash_algo_t;JJ[B[B)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_kem_psec_encrypt},
+	{"ktb_kem_psec_decrypt", "(LArcanaJNI$ktb_hash_algo_t;J[B[B)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_kem_psec_decrypt},
+	{"ktb_prng_clear", "(J)V", (void *)JNI_ktb_prng_clear},
+	{"ktb_prng_reseed_with", "(J[B)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_prng_reseed_with},
+	{"ktb_prng_reseed", "(J)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_prng_reseed},
+	{"ktb_prng_fill_buffer", "(J[B)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_prng_fill_buffer},
+	{"ktb_keys_public_key_clear", "(J)V", (void *)JNI_ktb_keys_public_key_clear},
+	{"ktb_keys_private_key_clear", "(J)V", (void *)JNI_ktb_keys_private_key_clear},
+	{"ktb_keys_public_key_export_size", "(J)J", (void *)JNI_ktb_keys_public_key_export_size},
+	{"ktb_keys_public_key_export", "(J[B)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_keys_public_key_export},
+	{"ktb_keys_public_key_import", "([BLArcanaJNI$AddressWrapper;)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_keys_public_key_import},
+	{"ktb_keys_private_key_export_size", "(J)J", (void *)JNI_ktb_keys_private_key_export_size},
+	{"ktb_keys_private_key_export", "(J[B)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_keys_private_key_export},
+	{"ktb_keys_private_key_import", "([BLArcanaJNI$AddressWrapper;)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_keys_private_key_import},
+	{"ktb_keys_generate_keypair", "(JLjava/lang/String;LArcanaJNI$AddressWrapper;LArcanaJNI$AddressWrapper;)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_keys_generate_keypair},
+	{"ktb_radix64_encode_size", "(J)J", (void *)JNI_ktb_radix64_encode_size},
+	{"ktb_radix64_encode", "([B[B)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_radix64_encode},
+	{"ktb_radix64_decode_size", "([B)J", (void *)JNI_ktb_radix64_decode_size},
+	{"ktb_radix64_decode", "([B[B)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_radix64_decode},
+	{"ktb_radix64_verify", "([BLArcanaJNI$BoolWrapper;)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_radix64_verify},
+	{"ktb_cipher_init", "(LArcanaJNI$AddressWrapper;LArcanaJNI$ktb_cipher_algo_t;LArcanaJNI$ktb_cipher_mode_t;Z)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_cipher_init},
+	{"ktb_cipher_clear", "(J)V", (void *)JNI_ktb_cipher_clear},
+	{"ktb_cipher_reset", "(J)V", (void *)JNI_ktb_cipher_reset},
+	{"ktb_cipher_set_key", "(J[B)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_cipher_set_key},
+	{"ktb_cipher_set_iv", "(J[B)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_cipher_set_iv},
+	{"ktb_cipher_set_auth_data", "(J[B)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_cipher_set_auth_data},
+	{"ktb_cipher_get_prefix_size", "(J)J", (void *)JNI_ktb_cipher_get_prefix_size},
+	{"ktb_cipher_get_prefix", "(J[B)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_cipher_get_prefix},
+	{"ktb_cipher_set_prefix", "(J[B)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_cipher_set_prefix},
+	{"ktb_cipher_get_suffix_size", "(J)J", (void *)JNI_ktb_cipher_get_suffix_size},
+	{"ktb_cipher_get_suffix", "(J[B)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_cipher_get_suffix},
+	{"ktb_cipher_encrypt_block", "(J[B[B)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_cipher_encrypt_block},
+	{"ktb_cipher_decrypt_block", "(J[B[B)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_cipher_decrypt_block},
+	{"ktb_cipher_finalise", "(J)V", (void *)JNI_ktb_cipher_finalise},
+	{"ktb_cipher_get_mac", "(J)[B", (void *)JNI_ktb_cipher_get_mac},
+	{"ktb_cipher_get_data_size", "(J)J", (void *)JNI_ktb_cipher_get_data_size},
+	{"ktb_cipher_get_name_from_algo", "(LArcanaJNI$ktb_cipher_algo_t;)Ljava/lang/String;", (void *)JNI_ktb_cipher_get_name_from_algo},
+	{"ktb_cipher_get_name_from_mode", "(LArcanaJNI$ktb_cipher_mode_t;)Ljava/lang/String;", (void *)JNI_ktb_cipher_get_name_from_mode},
+	{"ktb_cipher_get_key_len", "(J)J", (void *)JNI_ktb_cipher_get_key_len},
+	{"ktb_cipher_get_block_len", "(J)J", (void *)JNI_ktb_cipher_get_block_len},
+	{"ktb_cipher_get_iv_len", "(J)J", (void *)JNI_ktb_cipher_get_iv_len},
+	{"ktb_cipher_get_mac_size", "(J)J", (void *)JNI_ktb_cipher_get_mac_size},
+	{"ktb_cipher_get_iv_len_from_mode", "(LArcanaJNI$ktb_cipher_mode_t;)J", (void *)JNI_ktb_cipher_get_iv_len_from_mode},
+	{"ktb_hash_init", "(LArcanaJNI$AddressWrapper;LArcanaJNI$ktb_hash_algo_t;)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_hash_init},
+	{"ktb_hash_init_hmac", "(LArcanaJNI$AddressWrapper;LArcanaJNI$ktb_hash_algo_t;[B)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_hash_init_hmac},
+	{"ktb_hash_clear", "(J)V", (void *)JNI_ktb_hash_clear},
+	{"ktb_hash_reset", "(J)V", (void *)JNI_ktb_hash_reset},
+	{"ktb_hash_process", "(J[B)V", (void *)JNI_ktb_hash_process},
+	{"ktb_hash_finalise", "(J)V", (void *)JNI_ktb_hash_finalise},
+	{"ktb_hash_retrieve", "(J)[B", (void *)JNI_ktb_hash_retrieve},
+	{"ktb_hash_get_name", "(J)Ljava/lang/String;", (void *)JNI_ktb_hash_get_name},
+	{"ktb_hash_get_name_from_algo", "(LArcanaJNI$ktb_hash_algo_t;)Ljava/lang/String;", (void *)JNI_ktb_hash_get_name_from_algo},
+	{"ktb_hash_get_len", "(J)J", (void *)JNI_ktb_hash_get_len},
+	{"ktb_hash_get_len_from_algo", "(LArcanaJNI$ktb_hash_algo_t;)J", (void *)JNI_ktb_hash_get_len_from_algo},
+	{"ktb_hash_get_block_size", "(J)J", (void *)JNI_ktb_hash_get_block_size},
+	{"ktb_hash_block", "(LArcanaJNI$ktb_hash_algo_t;[B[B)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_hash_block},
+	{"ktb_curves_count", "()I", (void *)JNI_ktb_curves_count},
+	{"ktb_curves_id", "(I)Ljava/lang/String;", (void *)JNI_ktb_curves_id},
+	{"ktb_base64_encode_size", "(J)J", (void *)JNI_ktb_base64_encode_size},
+	{"ktb_base64_encode", "([B[B)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_base64_encode},
+	{"ktb_base64_decode_size", "([B)J", (void *)JNI_ktb_base64_decode_size},
+	{"ktb_base64_decode", "([B[B)LArcanaJNI$ktb_errno;", (void *)JNI_ktb_base64_decode}
+};
 
 static int method_table_size = sizeof(method_table) / sizeof(method_table[0]);
 

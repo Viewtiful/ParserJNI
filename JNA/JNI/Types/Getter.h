@@ -37,6 +37,8 @@ namespace nsJNI
 			string call();
 			string printParameters();
 			void printContentJNI(ofstream &f);
+         string printContentJNIArray();
+         string printContentJNIObject();
 		private:
 			string _structName;/*!< The structure's name*/
 			string _fieldName; /*!< field name*/
