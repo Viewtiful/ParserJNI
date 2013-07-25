@@ -220,7 +220,7 @@ void Function::addArgs(const nsC::Param::vector& parameters)
 			{
 				cout << "The object does not exists = " << parameters[0].getCType();
 
-				Type *object = new AddressWrapper(parameters[0].getCType(),"L" + _dictionnary->getFilename() + "$AddressWrapper;");
+				Type *object = new AddressWrapper(parameters[0].getCType(),_dictionnary->getFilename());
 				_dictionnary->addToMap(parameters[0].getCType(),object);
 			}		
 			_args.push_back(new nsJNI::Param(parameters[0].getCType(),parameters[0].getName()));
@@ -266,7 +266,7 @@ void Function::addArgs(const nsC::Param::vector& parameters)
 					cout << "The object does not exists = " << parameters[i].getCType();
 					Type *object;
 					if(!_dictionnary->isNativeType(type))
-						object = new AddressWrapper(parameters[i].getCType(),"L" + _dictionnary->getFilename() + "$AddressWrapper;");
+						object = new AddressWrapper(parameters[i].getCType(),_dictionnary->getFilename());
 					else
 						object = new Pointer("J",parameters[i].getType(),_dictionnary,false); 
 

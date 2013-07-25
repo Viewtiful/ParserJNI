@@ -15,6 +15,12 @@ Type::Type(string VMSignature)
 	_VMSignature = VMSignature;
 }
 
+Type::Type(string javaType, string jniType)
+{
+    _javaType = javaType;
+    _jniType = jniType;
+}
+
 Type::~Type()
 {
 }

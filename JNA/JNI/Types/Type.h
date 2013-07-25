@@ -47,7 +47,14 @@ namespace nsJNI {
 			  \param VMSIgnature : The corresponding signature for the Java VM.
 			  */
 			Type(string VMSignature);
-
+                        /*!
+			  \brief constructor with two parameters.
+                         * create, and initialize a type with the following arguments
+			  \param javaType : The corresponding Java type.
+			  \param jniType : The corresponding JNI type.
+			  
+			*/
+                        Type(string javaType,string jniType);
 			/*!
 			  \brief Convert a C type to a Java type.
 			  \return The corresponding Java type.
