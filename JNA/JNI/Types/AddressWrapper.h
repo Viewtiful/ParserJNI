@@ -1,5 +1,6 @@
 /** @file
  * Header for AddressWrapper
+ * \brief Handle pointer for the JNI code.
  */
 /*!
   \file AddressWrapper.h
