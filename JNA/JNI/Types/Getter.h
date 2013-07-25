@@ -1,5 +1,6 @@
 /** @file
  * Header for Getter
+ * \brief Handle getter function for a type within a structure type.
  */
 /*!
   \file Getter.h
@@ -34,10 +35,18 @@ namespace nsJNI
 			virtual ~Getter();
 			void create(nsC::Param& param);
 			void printPrototypeJNI(ofstream &f);
+         /*!
+            \brief Return the name and the param of the getter function.
+         */
 			string call();
-			string printParameters();
 			void printContentJNI(ofstream &f);
+         /*!
+            \brief Print the content in the case we have an array to handle it in JNI code
+         */
          string printContentJNIArray();
+         /*!
+            \brief Print the content in the case we have an enum/pointer to handle it in JNI code.
+         */
          string printContentJNIObject();
 		private:
 			string _structName;/*!< The structure's name*/

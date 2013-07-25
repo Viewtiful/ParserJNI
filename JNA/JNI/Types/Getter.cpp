@@ -2,6 +2,7 @@
 
 using namespace nsJNI;
 using namespace nsUtils;
+
 Getter::Getter(nsC::Param& param, string structName, TypesDictionnary *dictionnary, bool specialCase) : Function(dictionnary)
 {
 	_structName = structName;
