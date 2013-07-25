@@ -48,20 +48,8 @@ void Getter::printPrototypeJNI(ofstream &f)
 	f << "\t" << "JNIEXPORT " << returnType << " JNICALL " << "JNI_" << _name;
 }
 
-void Getter::printContentJNI(ofstream &f)
-{
-	f << "{\n\n";
-	string structure;
-
-	//Write specific code in order to transform the return Value from C to Java.
-	if(_specialCase) {  //We want to get the size of the structure.
-		structure =
-			"\t\treturn sizeof(%CLASSNAME%);\n"
-         "\t}\n\n"
-			;
-	}
-	else if(_dictionnary->convertJNI(_returnType) == "jbyteArray") {
-		structure =
+string Getter::printContentJNIArray() {
+   string structure =
 			"\t\t%CLASSNAME% *C_ctx;\n"
 			"\t\tif(mInternal != 0)\n"
 			"\t\t\tC_ctx = (%CLASSNAME% *)((contextWrapper *)mInternal)->ctxRef;\n"
@@ -72,9 +60,12 @@ void Getter::printContentJNI(ofstream &f)
 			"\t\treturn result;\n"
          "\t}\n\n"
 			;
-	}
-	else if( _dictionnary->convertJNI(_returnType) == "jobject") {
-		structure =
+
+   return structure;
+}
+
+string Getter::printContentJNIObject() {
+   string structure =
 			"\t\t%CLASSNAME% *C_ctx;\n"
 			"\t\tif(mInternal != 0)\n"
 			"\t\t\tC_ctx = (%CLASSNAME% *)((contextWrapper *)mInternal)->ctxRef;\n"
@@ -99,8 +90,29 @@ void Getter::printContentJNI(ofstream &f)
 			"\t\treturn JNI_result;\n"
          "\t}\n\n"
 			;  
+
+   return structure;
+}
+
+void Getter::printContentJNI(ofstream &f)
+{
+	f << "{\n\n";
+	string structure;
+
+	//Write specific code in order to transform the return Value from C to Java.
+	if(_specialCase) {  //We want to get the size of the structure.
+		structure =
+			"\t\treturn sizeof(%CLASSNAME%);\n"
+         "\t}\n\n"
+			;
 	}
-	else {
+	else if(_dictionnary->convertJNI(_returnType) == "jbyteArray") {
+		structure = printContentJNIArray();
+	}
+	else if( _dictionnary->convertJNI(_returnType) == "jobject") {
+		structure = printContentJNIObject();
+	}
+	else {  //Everything others types.
 		structure =
 			"\t\t%CLASSNAME% *C_ctx;\n"
 			"\t\tif(mInternal != 0)\n"
