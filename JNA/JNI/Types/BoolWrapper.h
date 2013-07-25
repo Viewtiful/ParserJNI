@@ -1,6 +1,7 @@
 /** @file
  *
  * Header for BoolWrapper.
+ * \brief Handle boolean pointer for the JNI code.
  */
 
 /*!
