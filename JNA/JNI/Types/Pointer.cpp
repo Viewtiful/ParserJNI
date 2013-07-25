@@ -50,38 +50,29 @@ bool Pointer::isAddressWrapper()
 
 void Pointer::prepareCall(ofstream& f, const string& varName)
 {
+   string structure (
+         "\t\t%TYPE% %NAME%;\n\n"
+         );
+
 	//We have a pointer from not a native type, we get the address and cast it
 	//to the corresponding type.
 	if(!_isNativeType && _CBaseType != "size_t") {
-		string structure (
-				"\t\t%TYPE% %NAME%;\n"
+		structure +=
 				"\t\tif(%CName% != 0) {\n"
 				"\t\t\t%NAME% = (%TYPE%)((contextWrapper *)%CName%)->ctxRef;\n"
 				"\t\t\t((contextWrapper *)%CName%)->env = env;\n"
 				"\t\t}\n"
 				"\t\telse\n"
-				"\t\t\t%NAME% = NULL;\n\n"
-				);
+				"\t\t\t%NAME% = NULL;\n\n";
 
-		string name = "C_" + varName;
-
-		stringReplace(structure, "TYPE", _CBaseType);
-		stringReplace(structure, "NAME", name);
 		stringReplace(structure, "CName", varName);
-
-		f << structure;
 	}
-	else if(_CBaseType == "size_t") {
-		string structure (
-				"\t\t%TYPE% %NAME%;\n\n"
-				);
 
-		string name = "C_" + varName;
-		stringReplace(structure, "TYPE", _CBaseType);
-		stringReplace(structure, "NAME", name);
+   string name = "C_" + varName;
+   stringReplace(structure, "TYPE", _CBaseType);
+   stringReplace(structure, "NAME", name);
 
-		f << structure;
-	}
+   f << structure;
 }
 
 string Pointer::getJNIParameterName(const string& varName)
