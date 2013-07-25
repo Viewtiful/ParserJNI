@@ -122,7 +122,7 @@ void Function::printContentJNI(ofstream &f)
 
 		if(param->isAddressWrapper() || param->isBooleanWrapper())
 			param->getReturnValue(f);
-		if(param->isArray()) {
+		if(param->isArray() && _args[i]->getWay() == OUT) {
 			Array *a = (Array *)param;
 			a->getReturnValueAndFree(f, _args[i]->getName());
 		}
