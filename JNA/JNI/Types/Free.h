@@ -1,5 +1,6 @@
 /** @file
  * Header for Free
+ * \brief Handle free function for structure type.
  */
 /*!
   \file Free.h
@@ -37,22 +38,15 @@ namespace nsJNI
 
 			Free(string structName, TypesDictionnary * dictionnary);
 			virtual ~Free();
-			void create();
 			void printPrototypeJNI(ofstream &f);
+         /*!
+            \brief Return the name and the param of the function free.
+         */
 			string call();
-			string printParameters();
 			void printContentJNI(ofstream &f);
 		private:
 			string _structName; /*!< The structure's name*/
 			nsJNI::Param *_handledVariable; /*!< Variable Name*/ 
-
 	};
-
-
-
-
-
-
-
 }
 #endif
