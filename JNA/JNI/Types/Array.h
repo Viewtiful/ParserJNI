@@ -1,6 +1,6 @@
 /** @file
  *
- * Header for Array
+ * \brief Handle an array for the JNI code.
  */
 
 /*!
