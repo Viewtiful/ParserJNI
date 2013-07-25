@@ -49,9 +49,19 @@ namespace nsJNI {
 			bool isAddressWrapper();
 			bool isBooleanWrapper();
 			bool isArray();
+         /*!
+            \brief prepare the call of the native function by converting Java type to native type.
+            \param f : The target file where is written the preparation of an array type.
+            \param varName : Name of the array.
+         */
 			void prepareCall(ofstream& f, const string& varName);
 			std::string getJNIParameterName(const string& varName);
 			void getReturnValue(ofstream& f);
+         /*!
+            \brief Convert and return the native array to Java and free the native array.
+            \param f : The target file where is written the code in order to return the array.
+            \param varName : Name of the array.
+         */
 			void getReturnValueAndFree(ofstream& f, const string& varName);
 
 		protected:
