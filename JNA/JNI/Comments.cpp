@@ -28,7 +28,6 @@ void Comments::call(string& token, int index, string& comments)
     {
         codeGenerator c = _lexic[token];
        (this->*c)(index, comments);
-	cout << "Token = " << token << endl;
     }
     else if(token!="@return")
     {
@@ -56,6 +55,7 @@ string Comments::transformToJavadoc(string &comments,nsJNI::Function* fct)
                 inRetval = false;
             tokenEnd = token.size() + tokenBegin;
            call(token, tokenBegin, comments);
+           //If the last tag is deteted
            if(!_deleteUnusedParam)
                 nextI = tokenEnd + 1;
             else
@@ -105,6 +105,7 @@ void Comments::transformParam(int index, string &comments)
         //Skip until a ']' is found
         inOut = skipLine(endofToken + 1, comments, ']');
         assert(inOut != -1);
+        //Compute the parametrs access
        access = comments.substr(endofToken+2,inOut-1-endofToken-2 );
    
     }
@@ -132,8 +133,10 @@ void Comments::transformParam(int index, string &comments)
             comments.erase(index, comments.size() - index);
             comments.insert(comments.size(),"*/");
          }
+        //Here this param is deleted
         _deleteUnusedParam = true;
     }
+    //Set the type of param
     if(!_deleteUnusedParam)
             setWay(access,paramName);
 }
@@ -241,10 +244,8 @@ int Comments::searchNextBlockTag(int index,string &comments)
         
         //Verify if this tag is not a inline Tag
         if(token!="@see" && token!="@a")
-        {
-            cout << "Token BT = " << token << endl;
             return tagIndex;
-        }
+     
     }
     return -1;    
 }
@@ -260,7 +261,6 @@ string Comments::getParameterName(int index,string &comments)
     
     //Get the paramName by using substr
     string paramName = comments.substr(beginParam, endParam-beginParam);
-    cout << "Param :" << paramName << endl;
     return paramName;
     
 }
@@ -285,11 +285,7 @@ void Comments::setWay(string way,string paramName)
 {
     Param *current;
     for(int i = 0;i<_fctParameters.size();i++)
-    {
         if(current->getName()==paramName)
-        {
-            cout << "way =" << way << endl;
             current->setWay(getWay(way));
-        }
-    }
+    
 }
