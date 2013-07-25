@@ -16,6 +16,7 @@ In order to run the example, you need to have :
    <li>ArcanaJNI.java</li>
    <li>The Utils.java class</li>
    <li>A file named texte.txt containing what you want to hash</li>
+   <li>The Arcana library : libtkb.so</li>
    <li>And of course hashFile.java</li>
 </ul>
 

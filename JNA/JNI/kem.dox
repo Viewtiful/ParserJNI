@@ -15,6 +15,7 @@ In order to run the example, you need to have :
    <li>The Utils.java class</li>
    <li>A public key in a file named "public_key.txt"</li>
    <li>A private key in a file named "private_key.txt"</li>
+   <li>The Arcana library : libtkb.so</li>
    <li>And of course kem.java</li>
 </ul>
 

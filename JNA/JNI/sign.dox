@@ -16,6 +16,7 @@ In order to run the example, you need to have :
    <li>A public key to sign a file contained in the file public_key.txt</li>
    <li>A private key corresponding to the public one to verify the signature of the data (signed.txt) contained in the file private_key.txt</li>
    <li>The data to sign in the file hello.txt</li>
+   <li>The Arcana library : libtkb.so</li>
    <li>And of course sign.java</li>
 </ul>
 

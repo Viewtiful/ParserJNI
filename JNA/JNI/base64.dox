@@ -16,6 +16,7 @@ In order to run the example, you need to have :
    <li>libArcanaJNI.so</li>
    <li>ArcanaJNI.java</li>
    <li>The Utils.java class</li>
+   <li>The Arcana library : libtkb.so</li>
    <li>And of course base64.java</li>
 </ul>
 
