@@ -1,6 +1,7 @@
 /** @file
  *
  * Header for Types
+  \brief Handle a structure for the JNI/Java code.
  */
 
 /*!

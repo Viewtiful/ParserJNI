@@ -1,6 +1,6 @@
 /*!
   \file Enum.h
-  \brief Handle an enum for the JNI code.
+  \brief Handle an enum for the JNI/Java code.
   \author Baptiste HAUDEGAND & Antoine MOISE
   \version 1.0
   !*/
