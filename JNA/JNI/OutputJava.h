@@ -1,5 +1,5 @@
 /** @file
- *
+ * \brief Write a Java class corresponding to the C headers.
  * @defgroup JNI_OutputJava Writting Java code.
  * Write a Java class corresponding to the C headers.
  */

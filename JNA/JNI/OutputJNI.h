@@ -1,5 +1,5 @@
 /** @file
- *
+ * \brief Write a JNI class creating a brigde between java and C functions.
  * @defgroup JNI_OutputJNI Writting JNI code.
  * Write a JNI class creating a brigde between java and C functions.
  */
@@ -81,7 +81,7 @@ namespace nsJNI
 
 			//void addFunctionPrototype(Function::vector fcts);
 			/*!
-			  \brief generate the Native Function Call
+			  \brief generate the native function call
 			  \param f : Output JNI File
 			  */
 			void addNativeFunctionTable(ofstream &f, string filename, vector<nsJNI::Function*> fcts);
