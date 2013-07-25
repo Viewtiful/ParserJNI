@@ -133,9 +133,9 @@ void Comments::transformParam(int index, string &comments)
             comments.insert(comments.size(),"*/");
          }
         _deleteUnusedParam = true;
-        if(!_deleteUnusedParam)
-            setWay(access,paramName);
     }
+    if(!_deleteUnusedParam)
+            setWay(access,paramName);
 }
 
 void Comments::transformRef(int index, string &comments)
@@ -287,6 +287,9 @@ void Comments::setWay(string way,string paramName)
     for(int i = 0;i<_fctParameters.size();i++)
     {
         if(current->getName()==paramName)
+        {
+            cout << "way =" << way << endl;
             current->setWay(getWay(way));
+        }
     }
 }
