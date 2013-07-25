@@ -25,7 +25,7 @@ namespace nsJNI
 		public : 
 			/*!
 			  \brief constructor with three parameters
-			  Create, and initialize a Getter with the following arguments
+			  create, and initialize a Getter with the following arguments
 			  \param param : parametter that the getter can return
 			  \param structName : Struct's name which contains this method
 			  \param dictionnary : dictionnary of all type

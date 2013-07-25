@@ -38,7 +38,7 @@ namespace nsJNI {
 			virtual ~Pointer();
 			/*!
 			  \brief constructor with three parameters
-			  Create, and initialize a Pointer with the following arguments
+			  create, and initialize a Pointer with the following arguments
 			  \param vmSignature : signature for the java Virtual Machine
 			  \param CBaseType : pointer's type
 			  \param dictionnary : dictionnary of all type

@@ -36,7 +36,7 @@ namespace nsJNI {
 			virtual ~NativeType();
 			/*!
 			  \brief constructor with three parameters
-			  Create, and initialize a type with the following arguments
+			  create, and initialize a type with the following arguments
 			  \param javaType : the corresponding java Type
 			  \param jniType : the corresponding JNI Type
 			  \param VMSIgnature : signature for the java Virtual Machine

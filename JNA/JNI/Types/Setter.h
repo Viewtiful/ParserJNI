@@ -1,5 +1,6 @@
 /** @file
  * Header for Setter
+ * \brief Handle setter function for a type within a structure type.
  */
 /*!
   \file Setter.h
@@ -30,7 +31,7 @@ namespace nsJNI
 		public : 
 			/*!
 			  \brief constructor with three parameters
-			  Create, and initialize a Setter with the following arguments
+			  create, and initialize a Setter with the following arguments
 			  \param param : parametter that the getter can modify
 			  \param structName : Struct's name which contains this method
 			  \param dictionnary : dictionnary of all type
@@ -39,8 +40,10 @@ namespace nsJNI
 			virtual ~Setter();
 			void create(nsC::Param& param);
 			void printPrototypeJNI(ofstream &f);
+         /*!
+            \brief Return the name and the param of the getter function.
+         */
 			string call();
-			string printParameters();
 			void printContentJNI(ofstream &f);
 		private:
 			string _structName;/*!< The structure's name*/
