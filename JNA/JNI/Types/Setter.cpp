@@ -41,6 +41,7 @@ void Setter::printPrototypeJNI(ofstream &f)
 void Setter::printContentJNI(ofstream &f)
 {
 	Type * type = _dictionnary->getType(_args[1]->getType());
+   string returnType = _dictionnary->convertJNI(_args[1]->getType());
 
 	//Write the Java elements in the C variables of the structure. 
 	string body = "{\n\n"
@@ -55,7 +56,7 @@ void Setter::printContentJNI(ofstream &f)
 
 	//If its an jobject there is an enum or a struct. We do the work to pass it
 	//to the C variable.
-	if(_dictionnary->convertJNI(_args[1]->getType()) == "jobject")
+	if(returnType == "jobject")
 	{
 		writeField = "\t\tjclass enm_%ATTRIBUTENAME%;\n"
 			"\t\tenm_%ATTRIBUTENAME% = (*env)->GetObjectClass(env, %ATTRIBUTENAME%);\n"
@@ -66,14 +67,14 @@ void Setter::printContentJNI(ofstream &f)
 		stringReplace(writeField, "Type", _args[1]->getType());
 	}
 	//It's a pointer.
-	else if( (_dictionnary->convertJNI(_args[1]->getType()) == "jlong") && !(type->isNativeType())) {
+	else if( returnType == "jlong" && !(type->isNativeType())) {
 		writeField = "\t\tC_ctx->%ATTRIBUTENAME% = (%CTYPE%)((contextWrapper *)%ATTRIBUTENAME%)->ctxRef;\n"
 			"\t\t((contextWrapper *)%ATTRIBUTENAME%)->env = env;\n";
 		stringReplace(writeField, "FIELDNAME", _args[1]->getName());
 		stringReplace(writeField, "CTYPE", _args[1]->getType());
 	}
 	//It's an array.
-	else if( (_dictionnary->convertJNI(_args[1]->getType()) == "jbyteArray")) {
+	else if( returnType == "jbyteArray") {
 		writeField = "\t\tjbyte * C_%FIELDNAME%;\n"
 			"\t\tsize_t C_%FIELDNAME%_length = (*env)->GetArrayLength(env, %FIELDNAME%);\n"
 			"\t\tC_%FIELDNAME% = (jbyte *)malloc(C_%FIELDNAME%_length);\n"
