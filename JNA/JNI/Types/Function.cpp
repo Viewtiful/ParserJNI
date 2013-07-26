@@ -207,31 +207,31 @@ void Function::addArgs(const nsC::Param::vector& parameters)
 	if(_returnType=="const void *" || _returnType=="void *")
 		_returnType = _returnType+"Array";
 	cout << "Creation Fct :" << _name << endl;
+        
+//      if the function is a init function, the first argument will be translated as an AddressWrapper
+//	if(parameters.size()>0 && _name.find("_init",0)!=string::npos)
+//	{
+//		cout << "This is a init Function" << endl;
+//		if(!_dictionnary->isNativeType(parameters[0].getType()))
+//		{
+//			cout << "The first argument type is not Native" << endl;
+//			//If this type does not exist
+//			if(_dictionnary->countAt(parameters[0].getCType())==0)
+//			{
+//				cout << "The object does not exists = " << parameters[0].getCType();
+//
+//				Type *object = new AddressWrapper(parameters[0].getCType(),_dictionnary->getFilename());
+//				_dictionnary->addToMap(parameters[0].getCType(),object);
+//			}		
+//			_args.push_back(new nsJNI::Param(parameters[0].getCType(),parameters[0].getName()));
+//			beginArgs = 1;
+//		}
+//		else
+//			cout << "The first argument type is Native" << endl;
+//
+//	}
 
-	// if the function is a init function, the first argument will be translated as an AddressWrapper
-	if(parameters.size()>0 && _name.find("_init",0)!=string::npos)
-	{
-		cout << "This is a init Function" << endl;
-		if(!_dictionnary->isNativeType(parameters[0].getType()))
-		{
-			cout << "The first argument type is not Native" << endl;
-			//If this type does not exist
-			if(_dictionnary->countAt(parameters[0].getCType())==0)
-			{
-				cout << "The object does not exists = " << parameters[0].getCType();
-
-				Type *object = new AddressWrapper(parameters[0].getCType(),_dictionnary->getFilename());
-				_dictionnary->addToMap(parameters[0].getCType(),object);
-			}		
-			_args.push_back(new nsJNI::Param(parameters[0].getCType(),parameters[0].getName()));
-			beginArgs = 1;
-		}
-		else
-			cout << "The first argument type is Native" << endl;
-
-	}
-
-	bool skip = false;
+        bool skip = false;
 	for( int i = beginArgs; i<n; i++)
 	{
 		size_t size = _args.size();
