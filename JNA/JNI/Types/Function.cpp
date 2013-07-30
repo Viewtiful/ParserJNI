@@ -206,8 +206,9 @@ void Function::addArgs(const nsC::Param::vector& parameters)
 {	
 	int n = parameters.size();	
 	int beginArgs = 0;
-	if(_returnType=="const void *" || _returnType=="void *")
-		_returnType = _returnType+"Array";
+        if(_returnType.find("void *",0)!=string::npos)
+        	_returnType = _returnType+"Array";
+       
 	cout << "Creation Fct :" << _name << endl;
         bool skip = false;
 	for( int i = beginArgs; i<n; i++)
