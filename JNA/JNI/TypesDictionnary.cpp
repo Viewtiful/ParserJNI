@@ -180,7 +180,8 @@ void TYPESDICTIONNARY::addTypedefs(const vector<nsC::Typedef> typedefs)
 	for(int i = 0;i<typedefs.size();i++)
 	{
 		string cType = typedefs[i].getCType();
-		_conversionMap[cType] = new Pointer("J",cType,this,false);	
+                addToMap(cType,new Pointer("J",cType,this,false));
+		//_conversionMap[cType] = new Pointer("J",cType,this,false);	
 	}
 }
 
