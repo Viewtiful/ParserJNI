@@ -31,8 +31,9 @@ void Free::printContentJNI(ofstream &f)
 	//De-alloc the structure allocated with create().
 	f << "{\n\n";
 	string body = 
-		"\t\t%CLASSNAME% *C_ctx = (%CLASSNAME% *)mInternal;\n"
+		"\t\t%CLASSNAME% *C_ctx = (%CLASSNAME% *)((contextWrapper *)mInternal)->ctxRef;\n"
 		"\t\tfree(C_ctx);\n"
+		"\t\tfree((contextWrapper *)mInternal);\n"
 		"\t}\n\n";
 
 	stringReplace(body,"CLASSNAME",_structName);

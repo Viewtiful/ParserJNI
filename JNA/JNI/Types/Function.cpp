@@ -126,6 +126,8 @@ void Function::printContentJNI(ofstream &f)
 			Array *a = (Array *)param;
 			a->getReturnValueAndFree(f, _args[i]->getName());
 		}
+		if(_name.find("_clear", 0) != string::npos)                                 
+			f << "\t\tfree((contextWrapper*)" + _args[i]->getName() + ");\n"; 
 	}
 
 	Type *returnValue = _dictionnary->getType(_returnType);
