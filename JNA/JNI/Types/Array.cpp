@@ -104,15 +104,19 @@ void Array::getReturnValue(ofstream& f)
 	f << structure;
 }
 
-void Array::getReturnValueAndFree(ofstream& f, const string& varName) 
+void Array::getReturnValueAndFree(ofstream& f, const string& varName, bool way) 
 {
-	string structure (
-			"\t\t(*env)->Set%TYPEMAJ%ArrayRegion(env, %CNAME%, 0, %CNAMELENGTH%, %NAME%);\n"
+	string structure;
+
+   if(way == OUT) {
+      structure = "\t\t(*env)->Set%TYPEMAJ%ArrayRegion(env, %CNAME%, 0, %CNAMELENGTH%, %NAME%);\n";
+   }
+	
+   structure += 
 			"\t\tint i_%NAME%;\n"
 			"\t\tfor(i_%NAME% = 0; i_%NAME% < %CNAMELENGTH%; ++i_%NAME%)\n"
 			"\t\t\t%NAME%[i_%NAME%] = 0;\n"
-			"\t\tfree(%NAME%);\n\n"
-			);
+			"\t\tfree(%NAME%);\n\n";
 
 	string type = _dictionnary->convertJNI(_CBaseType);
 	string typeMaj = type.substr(1, type.size());

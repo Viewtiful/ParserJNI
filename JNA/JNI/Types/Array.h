@@ -62,7 +62,7 @@ namespace nsJNI {
             \param f : The target file where is written the code in order to return the array.
             \param varName : Name of the array.
          */
-			void getReturnValueAndFree(ofstream& f, const string& varName);
+			void getReturnValueAndFree(ofstream& f, const string& varName, bool way);
 
 		protected:
 			/** Dictionnary of all types*/

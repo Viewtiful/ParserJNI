@@ -122,10 +122,10 @@ void Function::printContentJNI(ofstream &f)
 
 		if(param->isAddressWrapper() || param->isBooleanWrapper())
 			param->getReturnValue(f);
-		if(param->isArray() && _args[i]->getWay() == OUT) {
+		if(param->isArray()) {
 			Array *a = (Array *)param;
-			a->getReturnValueAndFree(f, _args[i]->getName());
-		}
+			a->getReturnValueAndFree(f, _args[i]->getName(), _args[i]->getWay());
+	   }
 		if(_name.find("_clear", 0) != string::npos)                                 
 			f << "\t\tfree((contextWrapper*)" + _args[i]->getName() + ");\n"; 
 	}
