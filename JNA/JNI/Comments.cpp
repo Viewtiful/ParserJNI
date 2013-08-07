@@ -29,11 +29,7 @@ void Comments::call(string& token, int index, string& comments)
         codeGenerator c = _lexic[token];
        (this->*c)(index, comments);
     }
-    else if(token!="@return")
-    {
-        cout << token << " Not handled" << ",";
-        cout << "Skipping" <<endl;
-    }
+    
 
 
 }
@@ -286,6 +282,6 @@ void Comments::setWay(string way,string paramName)
     Param *current;
     for(int i = 0;i<_fctParameters.size();i++)
         if(current->getName()==paramName)
-            current->setWay(getWay(way));
+            current->setWay(getWay(way)); // Uses getWay() function from Way.cpp
     
 }

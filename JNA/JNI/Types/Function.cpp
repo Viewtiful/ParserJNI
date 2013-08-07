@@ -210,9 +210,7 @@ void Function::addArgs(const nsC::Param::vector& parameters)
 	int beginArgs = 0;
         if(_returnType.find("void *",0)!=string::npos)
         	_returnType = _returnType+"Array";
-       
-	cout << "Creation Fct :" << _name << endl;
-        bool skip = false;
+       	bool skip = false;
 	for( int i = beginArgs; i<n; i++)
 	{
 		size_t size = _args.size();
@@ -223,20 +221,16 @@ void Function::addArgs(const nsC::Param::vector& parameters)
 		// If the parameters's type is a Pointer
 		if(parameters[i].getIndirections()>0  && parameters[i].getCType()!= "const char *")
 		{
-			cout << "Pointer !" << endl;
 			string type = parameters[i].getType();
 			// detect if this pointer can be an Array
 			if(i+1<n && parameters[i].getName() + "_size" == parameters[i+1].getName())
 			{
 				string array = "Array";
-				cout << "Create an Array" << endl;
-
 				// a void* and const void* pointer are special type
 				if(type == "void" || type == "const void")
 					array = " *" + array;
 
 				_args.push_back(new nsJNI::Param(type+array,parameters[i].getName()));
-				cout << parameters[i].getType()+array << endl;
 				skip = true;  //We just bypass the _size argument
 			}
 			else
@@ -244,7 +238,6 @@ void Function::addArgs(const nsC::Param::vector& parameters)
 				//A struct Pointer is converted to an AddressWrapper
 				if(_dictionnary->countAt(parameters[i].getCType())==0)
 				{	
-					cout << "The object does not exists = " << parameters[i].getCType();
 					Type *object;
 					if(!_dictionnary->isNativeType(type))
 						object = new AddressWrapper(parameters[i].getCType(),_dictionnary->getFilename());
@@ -258,15 +251,10 @@ void Function::addArgs(const nsC::Param::vector& parameters)
 			}
 		}
 		else
-		{
-			//Normal type
-			cout << "Normal Type" << endl;
-			cout << "Creating a new Param as following" << "[" << parameters[i].getCType()<<" , "  << parameters[i].getName() << "]" << endl; 
-			_args.push_back(new nsJNI::Param(parameters[i].getCType(),parameters[i].getName()));
-		}
+			_args.push_back(new nsJNI::Param(parameters[i].getCType(),parameters[i].getName())); //Normal type
+	
 		assert(_args.size()==size+1);
 	}
-	cout << "Fin Fonction" << endl;
 }
 
 vector<nsJNI::Param*> Function::getArgs()

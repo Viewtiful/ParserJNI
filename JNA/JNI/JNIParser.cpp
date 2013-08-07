@@ -85,7 +85,6 @@ int JNIPARSER::run(nsModules::Module::vector modules)
 		//For each module, we get all the functions and we convert them to
 		//Java and JNI.
 		nsC::Function::vector fcts = modules[i].getFunctions();
-		cout << "Avant le for" << endl;
 		for(size_t k = 0;k<fcts.size();k++)
 		{
 			nsC::Function current = fcts[k];
@@ -93,7 +92,6 @@ int JNIPARSER::run(nsModules::Module::vector modules)
 			{
 				nsJNI::Function *fct = new Function(_dico);
                                 string comments = current.getComment();
-				cout << "Comments function : "<< current.getName() << current.getComment() << endl;
 				saveFcts.push_back(fct);
 				fct->create(current);
                                 fileJava << _cm->transformToJavadoc(comments, fct) << endl;
@@ -104,7 +102,6 @@ int JNIPARSER::run(nsModules::Module::vector modules)
 				cout << "Variadic Function : " << current.getName() << endl;
 
 		}
-		cout << "Après le for" << endl;
 		fcts.clear();
 	}
 
@@ -118,7 +115,6 @@ int JNIPARSER::run(nsModules::Module::vector modules)
 
 	// Just for tests !
 	fileJava << "}" << endl;
-	std::cout << "Nombre de Modules = " << modules.size() << std::endl; 
 
 	fileJNI.close();
 	fileJava.close();
