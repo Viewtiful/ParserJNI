@@ -280,8 +280,10 @@ bool Comments::paramisSize(string paramName)
 void Comments::setWay(string way,string paramName)
 {
     Param *current;
-    for(int i = 0;i<_fctParameters.size();i++)
+    for(int i = 0;i<_fctParameters.size();i++) {
+        current = _fctParameters[i];
         if(current->getName()==paramName)
             current->setWay(getWay(way)); // Uses getWay() function from Way.cpp
+    }
     
 }
